@@ -1,7 +1,7 @@
 ---
 layout: page
 title: Scala.js
-tagline: A JavaScript backend for Scala
+tagline: A Scala to JavaScript compiler
 ---
 {% include JB/setup %}
 
