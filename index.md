@@ -11,4 +11,5 @@ Scala.js. In the meantime, a few links:
 *   [Scala.js on GitHub](https://github.com/lampepfl/scala-js)
 *   Example application written in Scala.js and running live:
     [Reversi]({{ BASE_PATH }}/examples/reversi/)
-
+*   [Barebone skeleton](https://github.com/sjrd/scala-js-example-app)
+    for writing your own application in Scala.js
