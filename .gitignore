@@ -1,3 +1,6 @@
+/target/
+/examples/
+
 _site/*
 _theme_packages/*
 
