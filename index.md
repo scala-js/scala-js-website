@@ -14,3 +14,8 @@ Scala.js. In the meantime, a few links:
     [Reversi]({{ BASE_PATH }}/examples/reversi/)
 *   [Barebone skeleton](https://github.com/sjrd/scala-js-example-app)
     for writing your own application in Scala.js
+
+## Contribute
+
+Want to contribute to Scala.js? Check out the
+[list of contributing opportunities](contribute/).
