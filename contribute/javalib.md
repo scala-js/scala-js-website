@@ -14,8 +14,15 @@ basically boils down to
 
 1.  Identifying what classes are needed (either because they are used by the
     Scala library, or because their are generally useful)
-2.  Translate their definition from Java to Scala
+2.  Implement their specification in Scala
 3.  "Native" methods in Java are typically implemented in Scala.js using the
     interoperability with JavaScript.
+
+For license considerations, this must be a clean room implementation with
+respect to most existing implementations.
+However, as far as I understand it, the
+[Apache Harmony](http://harmony.apache.org/) implementation, although
+discontinued since 2011, can be used, since its license is compatible with
+the BSD-style license of Scala.js.
 
 See [the Scala-JavaLib repo on GitHub](https://github.com/sjrd/scala-javalib/tree/scala-js).
