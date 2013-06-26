@@ -20,3 +20,10 @@ Scala.js. In the meantime, a few links:
 
 Want to contribute to Scala.js? Check out the
 [list of contributing opportunities](contribute/).
+
+## Built with Scala.js
+
+Beginning a list of websites using Scala.js:
+
+*   [Collidium Online](http://collidium.shadaj.me/) by
+    [@ShadajL](https://twitter.com/ShadajL)
