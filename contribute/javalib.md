@@ -25,4 +25,4 @@ However, as far as I understand it, the
 discontinued since 2011, can be used, since its license is compatible with
 the BSD-style license of Scala.js.
 
-See [the Scala-JavaLib repo on GitHub](https://github.com/sjrd/scala-javalib/tree/scala-js).
+See [the JavaLib subdirectory on GitHub](https://github.com/lampepfl/scala-js/tree/master/javalib/source/src/java).
