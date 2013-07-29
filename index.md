@@ -25,5 +25,12 @@ Want to contribute to Scala.js? Check out the
 
 Beginning a list of websites using Scala.js:
 
-*   [Collidium Online](http://collidium.shadaj.me/) by
-    [@ShadajL](https://twitter.com/ShadajL)
+*   July 2013
+
+    -   [Knapsack on a graph](http://krishnanraman.github.io/scala-js/examples/helloworld/helloworld.html)
+        by Krishnan Raman
+
+*   June 2013
+
+    -   [Collidium Online](http://collidium.shadaj.me/) by
+        [@ShadajL](https://twitter.com/ShadajL)
