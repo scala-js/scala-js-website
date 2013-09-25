@@ -149,6 +149,27 @@ they will not cause a compiler error.
 Methods can have varargs, denoted by `*` like in regular Scala. They map to
 JavaScript varargs, i.e., the method is called with more arguments.
 
+### JavaScript field/method names and their Scala counterpart
+
+Sometimes, a JavaScript API defines fields and/or methods with names that do
+not fell right in Scala. For example, jQuery objects feature a method named
+`val()`, which, obviously, is a keyword in Scala.
+
+They can be defined in Scala in two ways. The trivial one is simply to use
+backquotes to escape them in Scala:
+
+    def `val`(): js.String
+    def `val`(v: js.String): this.type
+
+However, it becomes annoying very quickly. An often better solution is to use
+the `scala.js.annotation.JSName` annotation to specify the JavaScript name to
+use, which can be different from the Scala name:
+
+    @JSName("val")
+    def value(): js.String
+    @JSName("val")
+    def value(v: js.String): this.type
+
 ### JavaScript classes
 
 It is also possible to define JavaScript *classes* as Scala classes inheriting,
