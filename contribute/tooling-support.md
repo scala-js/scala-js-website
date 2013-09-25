@@ -10,10 +10,6 @@ There is rudimentary support for Scala.js projects using
 [sbt](http://www.scala-sbt.org/) through an sbt plugin, but it is far from
 being *good*.
 
-*   There is dependency management for the classpath (so that the types
-    declared in a library are available to your application) but there is
-    none for the actual emitted JavaScript code. Basically we need some Ivy
-    tweaking to support that.
 *   Incremental compilation is not supported, i.e., all the source files are
     recompiled everytime. To have this, we need some support from `sbt`
     itself. Check out

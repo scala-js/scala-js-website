@@ -32,4 +32,4 @@ If you think about something else, come and discuss on the mailing list too!
 *   [Threading and Co.](threading.html):
     what can we do about threads, futures, and Akka?
 *   [Compiler](compiler.html):
-    `Long`, Closure-friendly encoding, etc.
+    true `Long`'s, etc.
