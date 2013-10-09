@@ -170,6 +170,25 @@ use, which can be different from the Scala name:
     @JSName("val")
     def value(v: js.String): this.type
 
+### Scala methods representing bracket access (`obj[x]`)
+
+The annotation `scala.js.annotation.JSBracketAccess` can be used on methods to
+mark them as representing bracket access on an object. The target method must
+either have one parameter and a non-Unit result type (in which case it
+represents read access) or two parameters and a Unit result type (in which case
+it represents write access).
+
+A typical example can be found in the `js.Array[A]` class itself, of course:
+
+    @JSBracketAccess
+    def apply(index: js.Number): A
+    @JSBracketAccess
+    def update(index: js.Number, v: A): Unit
+
+The Scala method names are irrelevant for the translation to JavaScript. The
+duo `apply`/`update` is often a sensible choice, because it gives array-like
+access on Scala's side as well, but it is not required to use these names.
+
 ### JavaScript classes
 
 It is also possible to define JavaScript *classes* as Scala classes inheriting,
