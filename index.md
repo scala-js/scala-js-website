@@ -17,6 +17,13 @@ Scala.js. In the meantime, a few links:
 *   [Barebone skeleton](https://github.com/sjrd/scala-js-example-app)
     for writing your own application in Scala.js
 
+## Useful links
+
+*   [Static types for the DOM API](https://github.com/lihaoyi/scala-js-dom),
+    by Haoyi Li
+*   [Port of the Dart benchmark harness](https://github.com/jonas/scalajs-benchmarks)
+    by Jonas Fonseca
+
 ## Contribute
 
 Want to contribute to Scala.js? Check out the
