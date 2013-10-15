@@ -26,6 +26,11 @@ Want to contribute to Scala.js? Check out the
 
 Beginning a list of websites using Scala.js:
 
+*   October 2013
+
+    -   [Several games](http://lihaoyi.github.io/scala-js-games/)
+        by Haoyi Li
+
 *   July 2013
 
     -   [Knapsack on a graph](http://krishnanraman.github.io/scala-js/examples/helloworld/helloworld.html)
