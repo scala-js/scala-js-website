@@ -22,8 +22,6 @@ If you think about something else, come and discuss on the mailing list too!
     expand the port of the Java library written in Scala.js
 *   [Testing infrastructure](testing-infrastructure.html):
     come up with some testing infrastructure for Scala.js
-*   [Tooling support](tooling-support.html):
-    sbt, IDEs, etc.
 *   [Libraries](libraries.html):
     lightweight collection library, UI library, networking, etc.
 *   [Integration with Play](play.html):
