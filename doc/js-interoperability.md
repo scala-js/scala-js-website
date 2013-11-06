@@ -72,7 +72,6 @@ There are implicit conversions from corresponding Scala types and back:
     <tr><td>Unit</td><td>js.Undefined</td></tr>
     <tr><td>Array[A]</td><td>js.Array[A]</td></tr>
     <tr><td>FunctionN[T1, ..., TN, R]</td><td>js.FunctionN[T1, ..., TN, R]</td></tr>
-    <tr><td colspan="2">(only from Scala to JavaScript)</td></tr>
   </tbody>
 </table>
 
