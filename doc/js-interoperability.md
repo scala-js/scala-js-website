@@ -80,7 +80,15 @@ There are implicit conversions from corresponding Scala types and back:
 There is no type `js.Null`, because `scala.Null` can be used in its stead with
 the appropriate semantics.
 
-`isInstanceOf[T]` is not supported for any `T` inheriting from `js.Any`.
+`isInstanceOf[T]` for `T` being `js.Number`, `js.Boolean`, `js.String`, or
+`js.Undefined`, is supported and is implemented with a `typeof` test.
+
+`isInstanceOf[T]` is supported for _classes_ inheriting from `js.Object`, e.g.,
+`js.Date`, `js.Array[_]`, `js.Object` itself, and is implemented with an
+`instanceof` test.
+
+`isInstanceOf[T]` is not supported for any other `T` (i.e., traits) inheriting
+from `js.Any`.
 Consequently, pattern matching for such types is not supported either.
 
 `asInstanceOf[T]` is completely erased for any `T` inheriting from `js.Any`,
