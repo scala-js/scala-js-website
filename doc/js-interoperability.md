@@ -371,9 +371,9 @@ object in Scala.js with some methods:
 
 A reference to `my.application.EntryPoint` can be obtained in JavaScript with
 
-    var entryPoint = ScalaJS.modules.my\ufe33application\ufe33EntryPoint()
+    var entryPoint = ScalaJS.modules.my_application_EntryPoint();
 
-Note the `\ufe33` instead of `.`, and the parentheses at the end.
+Note the use of `_` instead of `.`, and the parentheses at the end.
 
 You can then call methods trivially:
 
@@ -385,7 +385,7 @@ Note that overloading works. It is resolved dynamically with type tests.
 
 You can create a new instance of a class `my.application.SomeClass` with
 
-    var obj = new ScalaJS.classes.my\ufe33application\ufe33EntryPoint(someArg);
+    var obj = new ScalaJS.classes.my_application_SomeClass(someArg);
 
 You can of course alias the class to a simpler name if you use it multiple
 times.
