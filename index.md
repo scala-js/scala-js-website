@@ -5,7 +5,19 @@ tagline: A Scala to JavaScript compiler
 ---
 {% include JB/setup %}
 
-This Website gathers all the existing resources about Scala.js.
+Scala.js compiles Scala code down to JavaScript, allowing you to write your
+Web application entirely in Scala!
+
+It provides very good interoperability with JavaScript code, both from Scala.js
+to JavaScript and vice versa. For example, use jQuery and HTML5 from your
+Scala.js code, either in a typed or untyped way. Or create Scala.js objects and
+call their methods from JavaScript.
+
+Other outstanding features include generation of
+[Source Maps](http://www.html5rocks.com/en/tutorials/developertools/sourcemaps/)
+for a smooth debugging experience, and integration with the
+[Google Closure Compiler](https://developers.google.com/closure/compiler/)
+for producing minimal code for production.
 
 ## Get started
 
