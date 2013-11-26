@@ -37,11 +37,13 @@
       <div class="navbar-inner">
         <div class="container-narrow">
           <a class="brand" href="{{ HOME_PATH }}">{{ site.title }}</a>
+          {% comment %}
           <ul class="nav">
             {% assign pages_list = site.pages %}
             {% assign group = 'navigation' %}
             {% include JB/pages_list %}
           </ul>
+          {% endcomment %}
         </div>
       </div>
     </div>
