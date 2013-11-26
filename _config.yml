@@ -10,7 +10,7 @@ pygments: true
 # so be sure to set them if your theme uses them.
 #
 title : Scala.js
-tagline: A JavaScript backend for Scala
+tagline: A Scala to JavaScript compiler
 author :
   name : Sébastien Doeraene
   email : sjrdoeraene@gmail.com
