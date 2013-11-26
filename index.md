@@ -23,11 +23,14 @@ Scala.js. In the meantime, a few links:
     by Haoyi Li
 *   [Port of the Dart benchmark harness](https://github.com/jonas/scalajs-benchmarks)
     by Jonas Fonseca
+*   [Scala.js workbench](https://github.com/lihaoyi/scala-js-workbench),
+    an sbt plugin for Scala.js projects to make development in the browser more
+    pleasant, by Haoyi Li
 
 ## Contribute
 
 Want to contribute to Scala.js? Check out the
-[list of contributing opportunities](contribute/).
+[list of contributing opportunities](./contribute/).
 
 ## Built with Scala.js
 
