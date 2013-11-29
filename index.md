@@ -5,24 +5,30 @@ tagline: A Scala to JavaScript compiler
 ---
 {% include JB/setup %}
 
-Scala.js compiles Scala code down to JavaScript, allowing you to write your
+Scala.js compiles Scala code to JavaScript, allowing you to write your
 Web application entirely in Scala!
 
-It provides very good interoperability with JavaScript code, both from Scala.js
-to JavaScript and vice versa. For example, use jQuery and HTML5 from your
-Scala.js code, either in a typed or untyped way. Or create Scala.js objects and
-call their methods from JavaScript.
+Outstanding features are:
 
-Other outstanding features include generation of
-[Source Maps](http://www.html5rocks.com/en/tutorials/developertools/sourcemaps/)
-for a smooth debugging experience, and integration with the
-[Google Closure Compiler](https://developers.google.com/closure/compiler/)
-for producing minimal code for production.
+*   Support all of Scala (including macros!),
+    modulo [a few semantic differences](http://www.scala-js.org/doc/semantics.html)
+*   Very good [interoperability with JavaScript code](http://www.scala-js.org/doc/js-interoperability.html).
+    For example, use jQuery and HTML5 from your Scala.js code, either in a
+    typed or untyped way. Or create Scala.js objects and call their methods
+    from JavaScript.
+*   Integrated with [sbt](http://www.scala-sbt.org/)
+    (including support for dependency management and incremental compilation)
+*   Can be used with your favorite IDE for Scala
+*   Generates [Source Maps](http://www.html5rocks.com/en/tutorials/developertools/sourcemaps/)
+    for a smooth debugging experience (step through your Scala code from within
+    your browser supporting source maps)
+*   Integrates [Google Closure Compiler](https://developers.google.com/closure/compiler/)
+    for producing minimal code for production.
 
 ## Get started
 
 The easiest way to get started is to fork the
-[Barebone skeleton](https://github.com/sjrd/scala-js-example-app)
+[bootstrapping skeleton](https://github.com/sjrd/scala-js-example-app)
 and follow the instructions in its readme.
 
 ## Resources
@@ -33,17 +39,28 @@ and follow the instructions in its readme.
 
 ## Useful links
 
-*   [Static types for the DOM API](https://github.com/lihaoyi/scala-js-dom),
+#### Libraries
+
+*   [Static types for the DOM API](https://github.com/scala-js/scala-js-dom),
     by Haoyi Li
-*   [Port of the Dart benchmark harness](https://github.com/jonas/scalajs-benchmarks)
-    by Jonas Fonseca
+
+*   [Static types for jQuery](https://github.com/scala-js/scala-js-jquery),
+    brought to you by Sébastien Doeraene
+
+#### Tools
+
 *   [Scala.js workbench](https://github.com/lihaoyi/scala-js-workbench),
     an sbt plugin for Scala.js projects to make development in the browser more
     pleasant, by Haoyi Li
 
+#### Miscellaneous
+
+*   [Port of the Dart benchmark harness](https://github.com/jonas/scalajs-benchmarks)
+    by Jonas Fonseca
+
 ## Contribute
 
-*   [Scala.js on GitHub](https://github.com/lampepfl/scala-js)
+*   [Scala.js on GitHub](https://github.com/scala-js/scala-js)
 
 Want to contribute to Scala.js? Check out the
 [list of contributing opportunities](./contribute/).
