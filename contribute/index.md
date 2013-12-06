@@ -11,13 +11,14 @@ and a minimal sbt plugin. But there is a lot more to do, and you can help!
 This page is a non-exhaustive list of things that you can do to contribute to
 Scala.js, pushing it to a production-ready state.
 
-You can fork [the repo on GitHub](https://github.com/lampepfl/scala-js) to get
-started. If you start seriously on something, make sure to
+If you start seriously on something, make sure to
 [mention it on the mailing list](https://groups.google.com/forum/?fromgroups#!forum/scala-js)
 to avoid duplicating efforts.
 
 If you think about something else, come and discuss on the mailing list too!
 
+*   Improve this website and the documentation by
+    [forking it on GitHub](https://github.com/scala-js/scala-js-website)
 *   [Port the Java library](javalib.html):
     expand the port of the Java library written in Scala.js
 *   [Testing infrastructure](testing-infrastructure.html):
