@@ -1,4 +1,9 @@
 # Website for Scala.js
 
-This repo is a Jekyll-Bootstrap-powered website for
-[Scala.js](https://github.com/lampepfl/scala-js).
+This is the source code for the Scala.js website at
+[http://www.scala-js.org/](http://www.scala-js.org/).
+It is built with [Jekyll](http://jekyllrb.com/).
+Pull requests welcome!
+
+Looking for the source code of Scala.js itself?
+It is [over there](https://github.com/scala-js/scala-js).
