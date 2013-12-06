@@ -5,6 +5,8 @@ tagline: A Scala to JavaScript compiler
 ---
 {% include JB/setup %}
 
+[![Build Status](https://travis-ci.org/scala-js/scala-js.png?branch=master)](https://travis-ci.org/scala-js/scala-js)
+
 Scala.js compiles Scala code to JavaScript, allowing you to write your
 Web application entirely in Scala!
 
