@@ -27,8 +27,8 @@ latter.
 
 ### Primitive JavaScript types
 
-The package `scala.js`
-([code on GitHub](https://github.com/lampepfl/scala-js/tree/master/library/src/main/scala/scala/js))
+The package `scala.scalajs.js`
+([code on GitHub](https://github.com/lampepfl/scala-js/tree/master/library/src/main/scala/scala/scalajs/js))
 contains static type definitions for all the types, functions and variables
 that are part of the ECMAScript 5 standard library, including the primitive
 types.
