@@ -49,3 +49,7 @@ are slightly different from
 [Java regular expressions](http://docs.oracle.com/javase/6/docs/api/java/util/regex/Pattern.html).
 The support for regular expressions in Scala.js is implemented on top of
 JavaScript regexes.
+
+## Symbols
+
+`scala.Symbol` is unsupported since its implementation requires weak references in order to not leak memory.
