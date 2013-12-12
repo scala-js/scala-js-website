@@ -12,7 +12,7 @@ Web application entirely in Scala!
 
 <p><b><span style="color: red">Important notice!</span></b> Scala.js is still <i>experimental</i>!
 Although this is a project of LAMP/EPFL for which we will continue to provide
-best-effort improvements and bug fixes, it is <i>not</i> supported by TypeSafe,
+best-effort improvements and bug fixes, it is <i>not</i> supported by Typesafe,
 and not part of any of their support contracts. You have been warned!</p>
 
 Outstanding features are:
