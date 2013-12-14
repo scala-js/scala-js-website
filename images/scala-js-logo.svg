@@ -1,0 +1,321 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<?xml-stylesheet href="sp-styles.css" type="text/css"?><svg
+   xmlns:dc="http://purl.org/dc/elements/1.1/"
+   xmlns:cc="http://creativecommons.org/ns#"
+   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+   xmlns:svg="http://www.w3.org/2000/svg"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:xlink="http://www.w3.org/1999/xlink"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   viewBox="0 0 550 550"
+   preserveAspectRatio="xMidYMid meet"
+   id="svg3021"
+   version="1.1"
+   inkscape:version="0.48.4 r9939"
+   width="100%"
+   height="100%"
+   sodipodi:docname="scala-js-logo.svg"
+   inkscape:export-filename="C:\Users\Sepi\Documents\Projets\scalajs-website\images\scala-js-logo-32.png"
+   inkscape:export-xdpi="5.2399998"
+   inkscape:export-ydpi="5.2399998">
+  <metadata
+     id="metadata3055">
+    <rdf:RDF>
+      <cc:Work
+         rdf:about="">
+        <dc:format>image/svg+xml</dc:format>
+        <dc:type
+           rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
+        <dc:title>Scala.js</dc:title>
+        <cc:license
+           rdf:resource="http://creativecommons.org/licenses/by/3.0/" />
+      </cc:Work>
+      <cc:License
+         rdf:about="http://creativecommons.org/licenses/by/3.0/">
+        <cc:permits
+           rdf:resource="http://creativecommons.org/ns#Reproduction" />
+        <cc:permits
+           rdf:resource="http://creativecommons.org/ns#Distribution" />
+        <cc:requires
+           rdf:resource="http://creativecommons.org/ns#Notice" />
+        <cc:requires
+           rdf:resource="http://creativecommons.org/ns#Attribution" />
+        <cc:permits
+           rdf:resource="http://creativecommons.org/ns#DerivativeWorks" />
+      </cc:License>
+    </rdf:RDF>
+  </metadata>
+  <sodipodi:namedview
+     pagecolor="#ffffff"
+     bordercolor="#666666"
+     borderopacity="1"
+     objecttolerance="10"
+     gridtolerance="10"
+     guidetolerance="10"
+     inkscape:pageopacity="0"
+     inkscape:pageshadow="2"
+     inkscape:window-width="1122"
+     inkscape:window-height="910"
+     id="namedview3053"
+     showgrid="false"
+     inkscape:zoom="0.5"
+     inkscape:cx="249.45833"
+     inkscape:cy="306.33903"
+     inkscape:window-x="391"
+     inkscape:window-y="48"
+     inkscape:window-maximized="0"
+     inkscape:current-layer="svg3021"
+     fit-margin-left="50"
+     fit-margin-right="50" />
+  <title
+     id="title3023">Scala.js</title>
+  <desc
+     id="desc3025">The Scala Logo</desc>
+  <defs
+     id="defs3027">
+    <linearGradient
+       id="red-gradient"
+       x1="0"
+       y1="0"
+       x2="1"
+       y2="0">
+      <stop
+         offset="0%"
+         style="stop-color:rgb(160,0,0);stop-opacity:1"
+         id="stop3030" />
+      <stop
+         offset="100%"
+         style="stop-color:rgb(255,0,0);stop-opacity:1"
+         id="stop3032" />
+    </linearGradient>
+    <linearGradient
+       id="grey-gradient"
+       x1="0"
+       y1="0"
+       x2="1"
+       y2="0">
+      <stop
+         offset="0%"
+         style="stop-color:rgb(100,100,100);stop-opacity:1"
+         id="stop3035" />
+      <stop
+         offset="100%"
+         style="stop-color:rgb(0,0,0);stop-opacity:1"
+         id="stop3037" />
+    </linearGradient>
+    <linearGradient
+       inkscape:collect="always"
+       xlink:href="#grey-gradient"
+       id="linearGradient3207"
+       x1="30.983867"
+       y1="0"
+       x2="340.82253"
+       y2="0"
+       gradientTransform="scale(0.96824584,1.0327956)"
+       gradientUnits="userSpaceOnUse" />
+    <linearGradient
+       inkscape:collect="always"
+       xlink:href="#grey-gradient"
+       id="linearGradient3209"
+       x1="30.983867"
+       y1="0"
+       x2="340.82253"
+       y2="0"
+       gradientTransform="scale(0.96824584,1.0327956)"
+       gradientUnits="userSpaceOnUse" />
+    <linearGradient
+       inkscape:collect="always"
+       xlink:href="#grey-gradient"
+       id="linearGradient3211"
+       x1="37.947332"
+       y1="-31.622777"
+       x2="417.42065"
+       y2="-31.622777"
+       gradientTransform="scale(0.79056942,1.2649111)"
+       gradientUnits="userSpaceOnUse" />
+    <linearGradient
+       inkscape:collect="always"
+       xlink:href="#red-gradient"
+       id="linearGradient3213"
+       x1="30.983867"
+       y1="0"
+       x2="340.82253"
+       y2="0"
+       gradientTransform="scale(0.96824584,1.0327956)"
+       gradientUnits="userSpaceOnUse" />
+    <linearGradient
+       inkscape:collect="always"
+       xlink:href="#red-gradient"
+       id="linearGradient3215"
+       x1="30.983867"
+       y1="154.91933"
+       x2="340.82253"
+       y2="154.91933"
+       gradientTransform="scale(0.96824584,1.0327956)"
+       gradientUnits="userSpaceOnUse" />
+    <linearGradient
+       inkscape:collect="always"
+       xlink:href="#red-gradient"
+       id="linearGradient3217"
+       x1="30.983867"
+       y1="309.83867"
+       x2="340.82253"
+       y2="309.83867"
+       gradientTransform="scale(0.96824584,1.0327956)"
+       gradientUnits="userSpaceOnUse" />
+    <linearGradient
+       inkscape:collect="always"
+       xlink:href="#red-gradient"
+       id="linearGradient3219"
+       x1="43.817805"
+       y1="0"
+       x2="481.99585"
+       y2="0"
+       gradientTransform="scale(0.6846532,1.4605935)"
+       gradientUnits="userSpaceOnUse" />
+    <linearGradient
+       inkscape:collect="always"
+       xlink:href="#grey-gradient"
+       id="linearGradient3230"
+       gradientUnits="userSpaceOnUse"
+       gradientTransform="scale(0.96824584,1.0327956)"
+       x1="30.983867"
+       y1="0"
+       x2="340.82253"
+       y2="0" />
+    <linearGradient
+       inkscape:collect="always"
+       xlink:href="#grey-gradient"
+       id="linearGradient3232"
+       gradientUnits="userSpaceOnUse"
+       gradientTransform="scale(0.96824584,1.0327956)"
+       x1="30.983867"
+       y1="0"
+       x2="340.82253"
+       y2="0" />
+    <linearGradient
+       inkscape:collect="always"
+       xlink:href="#grey-gradient"
+       id="linearGradient3234"
+       gradientUnits="userSpaceOnUse"
+       gradientTransform="scale(0.79056942,1.2649111)"
+       x1="37.947332"
+       y1="-31.622777"
+       x2="417.42065"
+       y2="-31.622777" />
+    <linearGradient
+       inkscape:collect="always"
+       xlink:href="#red-gradient"
+       id="linearGradient3236"
+       gradientUnits="userSpaceOnUse"
+       gradientTransform="scale(0.96824584,1.0327956)"
+       x1="30.983867"
+       y1="0"
+       x2="340.82253"
+       y2="0" />
+    <linearGradient
+       inkscape:collect="always"
+       xlink:href="#red-gradient"
+       id="linearGradient3238"
+       gradientUnits="userSpaceOnUse"
+       gradientTransform="scale(0.96824584,1.0327956)"
+       x1="30.983867"
+       y1="154.91933"
+       x2="340.82253"
+       y2="154.91933" />
+    <linearGradient
+       inkscape:collect="always"
+       xlink:href="#red-gradient"
+       id="linearGradient3240"
+       gradientUnits="userSpaceOnUse"
+       gradientTransform="scale(0.96824584,1.0327956)"
+       x1="30.983867"
+       y1="309.83867"
+       x2="340.82253"
+       y2="309.83867" />
+    <linearGradient
+       inkscape:collect="always"
+       xlink:href="#red-gradient"
+       id="linearGradient3242"
+       gradientUnits="userSpaceOnUse"
+       gradientTransform="scale(0.6846532,1.4605935)"
+       x1="43.817805"
+       y1="0"
+       x2="481.99585"
+       y2="0" />
+  </defs>
+  <g
+     id="g3221"
+     transform="translate(95,14.985755)">
+    <g
+       style="fill:url(#linearGradient3234)"
+       id="g3039"
+       ry="55"
+       rx="85"
+       cy="70"
+       cx="200">
+      <path
+         style="fill:url(#linearGradient3230)"
+         inkscape:connector-curvature="0"
+         id="path3041"
+         transform="matrix(1,0,0,-1,0,280)"
+         d="M 30,80 C 30,80 330,50 330,0 l 0,120 c 0,0 0,50 -300,80 l 0,120 z" />
+      <path
+         style="fill:url(#linearGradient3232)"
+         inkscape:connector-curvature="0"
+         id="path3043"
+         transform="matrix(1,0,0,-1,0,440)"
+         d="M 30,80 C 30,80 330,50 330,0 l 0,120 c 0,0 0,50 -300,80 l 0,120 z" />
+    </g>
+    <g
+       style="fill:url(#linearGradient3242)"
+       id="g3045"
+       ry="55"
+       rx="85"
+       cy="70"
+       cx="200">
+      <path
+         style="fill:url(#linearGradient3236)"
+         inkscape:connector-curvature="0"
+         id="path3047"
+         d="M 30,80 C 30,80 330,50 330,0 l 0,120 c 0,0 0,50 -300,80 l 0,120 z" />
+      <path
+         style="fill:url(#linearGradient3238)"
+         inkscape:connector-curvature="0"
+         id="path3049"
+         d="m 30,240 c 0,0 300,-30 300,-80 l 0,120 c 0,0 0,50 -300,80 l 0,120 z" />
+      <path
+         style="fill:url(#linearGradient3240)"
+         inkscape:connector-curvature="0"
+         id="path3051"
+         d="m 30,400 c 0,0 300,-30 300,-80 l 0,120 c 0,0 0,50 -300,80 l 0,120 z" />
+    </g>
+  </g>
+  <g
+     inkscape:groupmode="layer"
+     id="layer1"
+     inkscape:label="JS logo" />
+  <g
+     transform="matrix(0.7938213,0,0,0.7938213,81.441541,182.0606)"
+     id="g3171">
+    <path
+       d="M 286.922,401.662 257.25,68.756 h 326.391 l -29.672,332.906 -133.885,37.633"
+       id="path3142"
+       inkscape:connector-curvature="0"
+       style="fill:#d6ba32" />
+    <path
+       d="M 420.807,412.832 528.639,383.159 553.969,98.018 H 420.807 v 314.814 z"
+       id="path3144"
+       inkscape:connector-curvature="0"
+       style="fill:#ffda3e" />
+    <polygon
+       points="407.247,140.576 375.665,140.576 375.665,311.462 312.498,293.866 312.498,331.972 407.247,358.362 "
+       id="polygon3148"
+       style="fill:#ebebeb" />
+    <polygon
+       points="496.805,303.403 433.639,320.169 433.639,358.273 521.762,335.195 530.045,229.17 465.221,237.16 465.221,178.682 534.186,178.682 537.5,140.576 433.639,140.576 433.639,282.064 498.461,270.466 "
+       id="polygon3150"
+       style="fill:#ffffff" />
+  </g>
+</svg>
