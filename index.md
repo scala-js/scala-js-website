@@ -80,6 +80,11 @@ Want to contribute to Scala.js? Check out the
 
 Beginning a list of websites using Scala.js:
 
+*   December 2013
+
+    -   [Untitled game](http://lihaoyi.github.io/scala-js-game-2/)
+        by Haoyi Li
+
 *   October 2013
 
     -   [Several games](http://lihaoyi.github.io/scala-js-games/)
