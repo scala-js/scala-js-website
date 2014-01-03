@@ -359,7 +359,7 @@ If you use the dynamic interface a lot, it is convenient to import
 
 TODO Improve this section.
 
-The recommanded entry point from JavaScript to Scala.js is to use a top-level
+The recommended entry point from JavaScript to Scala.js is to use a top-level
 object in Scala.js with some methods:
 
     package my.application
