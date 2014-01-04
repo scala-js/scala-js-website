@@ -85,6 +85,11 @@ Beginning a list of websites using Scala.js:
     -   [Untitled game](http://lihaoyi.github.io/scala-js-game-2/)
         by Haoyi Li
 
+*   December 2013
+
+    -   [Sliding Puzzle](https://github.com/sebnozzi/sliding-puzzle)
+        by [Sebastian Nozzi](http://www.sebnozzi.com/)
+
 *   October 2013
 
     -   [Several games](http://lihaoyi.github.io/scala-js-games/)
@@ -102,6 +107,6 @@ Beginning a list of websites using Scala.js:
 
 *   April 2013
 
-    -   The [Reversi]({{ BASE_PATH }}/examples/reversi/) example by myself
+    -   The [Reversi]({{ BASE_PATH }}/examples/reversi/) example by Sébastien Doeraene
 
 <a href="https://github.com/scala-js/scala-js-website"><img style="position: absolute; top: 0; right: 0; border: 0;" src="https://s3.amazonaws.com/github/ribbons/forkme_right_orange_ff7600.png" alt="Fork me on GitHub"></a>
