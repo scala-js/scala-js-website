@@ -10,9 +10,9 @@ a few language semantics differences exist.
 
 ## Numbers and characters
 
-All primitive number types of Scala.js, as well as the `Char` type, are mapped
-to JavaScript `Number`'s, i.e., `Double`'s, and no overflow detection is
-performed.
+Except `Long`, all primitive number types of Scala.js, as well as the `Char`
+type, are mapped to JavaScript `Number`'s, i.e., `Double`'s, and no overflow
+detection is performed.
 
 This means that operations on numbers that would overflow their range do not
 wrap, but instead take on bigger values.
@@ -22,6 +22,8 @@ return an integer.
 
 Binary operations (`&`, `|`, etc.) are always performed on signed 32-bit
 integers, just as in JavaScript.
+
+`Long`s are 64-bits and follow the same semantics as on the JVM.
 
 ## JavaScript interoperability
 
@@ -52,4 +54,5 @@ JavaScript regexes.
 
 ## Symbols
 
-`scala.Symbol` is unsupported since its implementation requires weak references in order to not leak memory.
+`scala.Symbol` is unsupported since its implementation requires weak references
+in order to not leak memory.

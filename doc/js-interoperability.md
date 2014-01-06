@@ -48,7 +48,12 @@ The core type hierarchy is as follows:
              +- js.Function0[+R]
              +- js.Function1[-T1, +R]
              +- ...
-             +- js.Function5[-T1, ..., -T5, +R]
+             +- js.Function22[-T1, ..., -T22, +R]
+             +- js.ThisFunction
+                 +- js.ThisFunction0[-T0, +R]
+                 +- js.ThisFunction1[-T0, -T1, +R]
+                 +- ...
+                 +- js.ThisFunction21[-T0, ..., -T21, +R]
 
 A value of any of these types is encoded as is in JavaScript, without boxing.
 Even when such a value is assigned to a `val` of type `scala.Any` or of a
@@ -71,9 +76,12 @@ There are implicit conversions from corresponding Scala types and back:
     <tr><td>java.lang.String</td><td>js.String</td></tr>
     <tr><td>Unit</td><td>js.Undefined</td></tr>
     <tr><td>Array[A]</td><td>js.Array[A]</td></tr>
-    <tr><td>FunctionN[T1, ..., TN, R]</td><td>js.FunctionN[T1, ..., TN, R]</td></tr>
+    <tr><td rowspan="2">FunctionN[T1, ..., TN, R]</td><td>js.FunctionN[T1, ..., TN, R]</td></tr>
+    <tr>                                              <td>js.ThisFunction{N-1}[T1, ..., TN, R]</td></tr>
   </tbody>
 </table>
+
+`js.ThisFunction` will be elaborated on later.
 
 #### Remarks
 
@@ -159,7 +167,7 @@ JavaScript varargs, i.e., the method is called with more arguments.
 ### JavaScript field/method names and their Scala counterpart
 
 Sometimes, a JavaScript API defines fields and/or methods with names that do
-not fell right in Scala. For example, jQuery objects feature a method named
+not feel right in Scala. For example, jQuery objects feature a method named
 `val()`, which, obviously, is a keyword in Scala.
 
 They can be defined in Scala in two ways. The trivial one is simply to use
@@ -203,16 +211,6 @@ directly or indirectly, from `js.Object`. The only difference compared to
 traits is that classes have constructors, hence they also provide instantiation
 of objects with the `new` keyword.
 
-For practical reasons (e.g., definition of subclasses), the primary constructor
-should always have no parameter. If that is not a legal constructor in the
-underlying JavaScript API, it should still exist but be made `protected`. E.g.,
-
-    class RegExp protected () extends js.Object {
-      def this(pattern: js.String, flags: js.String) = this()
-      def this(pattern: js.String) = this()
-      ...
-    }
-
 The call `new RegExp("[ab]*")` will map to exactly the same thing in JavaScript,
 meaning that the identifier `RegExp` will be looked up in the global scope.
 If it is impractical or inconvenient to declare the Scala class with the
@@ -222,6 +220,12 @@ to specify the JavaScript name:
 
     @JSName("THREE.Scene")
     class Scene extends js.Object
+
+#### Remarks
+
+If the class does not have any constructor without argument, and it has to be
+subclassed, you may either decide to add a fake protected no-arg constructor,
+or call an inherited constructor with `???`s.
 
 ### Top-level JavaScript objects
 
