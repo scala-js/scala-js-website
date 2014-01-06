@@ -22,7 +22,7 @@ If you think about something else, come and discuss on the mailing list too!
 *   [Port the Java library](javalib.html):
     expand the port of the Java library written in Scala.js
 *   [Testing infrastructure](testing-infrastructure.html):
-    come up with some testing infrastructure for Scala.js
+    improve the testing infrastructure for Scala.js
 *   [Libraries](libraries.html):
     lightweight collection library, UI library, networking, etc.
 *   [Integration with Play](play.html):
@@ -30,5 +30,3 @@ If you think about something else, come and discuss on the mailing list too!
     (maybe also Lift?)
 *   [Threading and Co.](threading.html):
     what can we do about threads, futures, and Akka?
-*   [Compiler](compiler.html):
-    true `Long`'s, etc.
