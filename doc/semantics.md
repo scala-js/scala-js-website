@@ -25,6 +25,15 @@ integers, just as in JavaScript.
 
 `Long`s are 64-bits and follow the same semantics as on the JVM.
 
+Note that float literals are still truncated to their (binary)
+precision. However, output does not truncate to that precision. This
+can lead to the following behavior (this works as expected when using
+doubles):
+
+    println(13.345f)
+    // Scala:    13.345
+    // Scala.js: 13.345000267028809
+
 ## JavaScript interoperability
 
 The JavaScript interoperability feature is, in itself, a big semantic
