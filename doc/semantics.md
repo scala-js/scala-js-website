@@ -61,6 +61,12 @@ are slightly different from
 The support for regular expressions in Scala.js is implemented on top of
 JavaScript regexes.
 
+This sometimes has an impact on functions in the Scala library that
+use regular expressions themselves. A list of known functions that are
+affected is given here:
+
+- `StringLike.split(x: Array[Char])` (see issue #105)
+
 ## Symbols
 
 `scala.Symbol` is unsupported since its implementation requires weak references
