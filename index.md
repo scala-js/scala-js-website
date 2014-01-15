@@ -18,7 +18,7 @@ Although this is a project of LAMP/EPFL for which we will continue to provide
 best-effort improvements and bug fixes, it is <i>not</i> supported by Typesafe,
 and not part of any of their support contracts. You have been warned!</p>
 
-Outstanding features are:
+Noteworthy features:
 
 *   Support all of Scala (including macros!),
     modulo [a few semantic differences](http://www.scala-js.org/doc/semantics.html)
