@@ -66,7 +66,7 @@ and follow the instructions in its readme.
 
 #### Miscellaneous
 
-*   [Port of the Dart benchmark harness](https://github.com/jonas/scalajs-benchmarks)
+*   [Port of the Dart benchmark harness](https://github.com/jonas/scala-js-benchmarks)
     by Jonas Fonseca
 
 ## Contribute
