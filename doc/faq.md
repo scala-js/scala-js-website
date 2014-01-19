@@ -37,6 +37,8 @@ It features a number of non trivial setups with Scala.js:
 *   Macros
 *   Compiler plugins (currently only the continuations plugin, but there's
     going to be a custom one too at some point)
+    
+You can also take a look at these projects [built with Scala.js](../#built_with_scalajs).
 
 ### Have you considered targeting [asm.js](http://asmjs.org/)? Would it help?
 
