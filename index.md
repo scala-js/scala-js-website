@@ -53,10 +53,13 @@ and follow the instructions in its readme.
 #### Libraries
 
 *   [Static types for the DOM API](https://github.com/scala-js/scala-js-dom),
-    by Haoyi Li
+    by Li Haoyi
 
 *   [Static types for jQuery](https://github.com/scala-js/scala-js-jquery),
     brought to you by Sébastien Doeraene
+
+*   [Scalatags](https://github.com/lihaoyi/scalatags), a HTML templating 
+    library/DSL, by Li Haoyi
 
 #### Skeletons
 
@@ -66,8 +69,7 @@ and follow the instructions in its readme.
 #### Tools
 
 *   [Scala.js workbench](https://github.com/lihaoyi/scala-js-workbench),
-    an sbt plugin for Scala.js projects to make development in the browser more
-    pleasant, by Haoyi Li
+    an sbt plugin for Scala.js projects for live-reloading in the browser, by Li Haoyi
 
 #### Miscellaneous
 
@@ -87,8 +89,8 @@ Beginning a list of websites using Scala.js:
 
 *   December 2013
 
-    -   [Untitled game](http://lihaoyi.github.io/scala-js-game-2/)
-        by Haoyi Li
+    -   [Roll](http://lihaoyi.github.io/scala-js-game-2/), a 2D Physics Platformer
+        by Li Haoyi
 
 *   December 2013
 
@@ -98,7 +100,7 @@ Beginning a list of websites using Scala.js:
 *   October 2013
 
     -   [Several games](http://lihaoyi.github.io/scala-js-games/)
-        by Haoyi Li
+        by Li Haoyi
 
 *   July 2013
 
