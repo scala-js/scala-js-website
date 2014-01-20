@@ -58,6 +58,11 @@ and follow the instructions in its readme.
 *   [Static types for jQuery](https://github.com/scala-js/scala-js-jquery),
     brought to you by Sébastien Doeraene
 
+#### Skeletons
+
+*   [Node.js module with Scala.js](https://github.com/rockymadden/scala-node-example),
+    by Rocky Madden
+
 #### Tools
 
 *   [Scala.js workbench](https://github.com/lihaoyi/scala-js-workbench),
