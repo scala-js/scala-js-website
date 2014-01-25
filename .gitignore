@@ -11,3 +11,6 @@ Thumbs.db
 
 .rbenv-version
 .rvmrc
+
+.project
+*~
