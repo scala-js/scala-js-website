@@ -7,9 +7,9 @@ title: Cookbook
 # Project Setup
 
 * Creating a Scala.js project from scratch
-* Creating a Scala.js project from the example application
-* Customizing the example application
-* Creating a Scala.js project from the giter8 template
+* [Cloning the example application](./setup/example-app.html)
+* [Customizing the example application](./setup/customize-app.html)
+* [Creating a Scala.js project with giter8](./setup/giter8.html)
 * Including 3rd party JavaScript libraries
 * Including the DOM wrapper
 * Including the jQuery wrapper
@@ -17,7 +17,7 @@ title: Cookbook
 
 # Development Tasks
 
-* Enabling incremental compilation
+* Using incremental compilation
 * Setting breakpoints on the browser
 * Logging on the browser
 * Using 3rd party JavaScript libraries
