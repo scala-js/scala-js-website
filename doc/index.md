@@ -13,8 +13,9 @@ Alternatively, create a project with *custom naming* by using this [giter8 templ
 
 ## Reference
 
-*   [Differences between the semantics of Scala and Scala.js](./semantics.html)
-*   [JavaScript interoperability](./js-interoperability.html)
+* [Differences between the semantics of Scala and Scala.js](./semantics.html)
+* [JavaScript interoperability](./js-interoperability.html)
+* [Scala.js Cookbook](./cookbook/)
 
 ## FAQ
 
