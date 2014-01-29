@@ -89,7 +89,7 @@ Beginning a list of websites using Scala.js:
 
 *   December 2013
 
-    -   [Roll](http://lihaoyi.github.io/scala-js-game-2/), a 2D Physics Platformer
+    -   [Roll](http://lihaoyi.github.io/roll/), a 2D Physics Platformer
         by Li Haoyi
 
 *   December 2013
