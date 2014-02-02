@@ -8,25 +8,17 @@ tagline: to Scala.js
 Scala.js is a fairly young project. Currently, it has a working core compiler,
 and a minimal sbt plugin. But there is a lot more to do, and you can help!
 
-This page is a non-exhaustive list of things that you can do to contribute to
-Scala.js, pushing it to a production-ready state.
+*   Improve this website and the documentation by
+    [forking it on GitHub](https://github.com/scala-js/scala-js-website)
+*   [Port the Java library](javalib.html):
+    expand the port of the Java library written in Scala.js
+*   Check out the [ideas](https://github.com/scala-js/scala-js/issues?labels=ideas&page=1&state=open) on
+    the issue tracker for other cool things you could work on,
+    like [Play! Integration](https://github.com/scala-js/scala-js/issues/188) or a
+    [Testing Suite](https://github.com/scala-js/scala-js/issues/96)
 
 If you start seriously on something, make sure to
 [mention it on the mailing list](https://groups.google.com/forum/?fromgroups#!forum/scala-js)
 to avoid duplicating efforts.
 
 If you think about something else, come and discuss on the mailing list too!
-
-*   Improve this website and the documentation by
-    [forking it on GitHub](https://github.com/scala-js/scala-js-website)
-*   [Port the Java library](javalib.html):
-    expand the port of the Java library written in Scala.js
-*   [Testing infrastructure](testing-infrastructure.html):
-    improve the testing infrastructure for Scala.js
-*   [Libraries](libraries.html):
-    lightweight collection library, UI library, networking, etc.
-*   [Integration with Play](play.html):
-    supporting Scala.js in addition to JS and CoffeeScript in a Play project
-    (maybe also Lift?)
-*   [Threading and Co.](threading.html):
-    what can we do about threads, futures, and Akka?
