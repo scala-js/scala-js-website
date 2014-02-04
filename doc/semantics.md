@@ -30,9 +30,11 @@ precision. However, output does not truncate to that precision. This
 can lead to the following behavior (this works as expected when using
 doubles):
 
-    println(13.345f)
-    // Scala:    13.345
-    // Scala.js: 13.345000267028809
+{% highlight scala %}
+println(13.345f)
+// Scala:    13.345
+// Scala.js: 13.345000267028809
+{% endhighlight %}
 
 ## JavaScript interoperability
 

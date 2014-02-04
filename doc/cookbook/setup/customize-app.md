@@ -16,7 +16,9 @@ For this recipe we'll assume that your organization is `com.mycompany` and your 
 
 Edit the `buid.sbt` and change the name to `My Cool Project`:
 
-    name := "My Cool Project"
+{% highlight scala %}
+name := "My Cool Project"
+{% endhighlight %}
 
 ### Renaming the packages
 
@@ -36,8 +38,10 @@ At the end, the directory structure should match this:
 
 And the the Scala classes should refer to the new package:
 
-    package com.mycompany.mycoolproject
-    
+{% highlight scala %}
+package com.mycompany.mycoolproject
+{% endhighlight %}
+
 ### Renaming the classes
 
 Rename both file-names and classes:
@@ -49,16 +53,22 @@ Make sure that you rename both files and classes, as in Scala they don’t need 
 
 Also watch out for the test class, since it references (imports) the main class. If your IDE didn’t pick up the rename, you’ll have to fix it yourself:
 
-    it("should implement square()") {
-      import MyCoolProject._
-      
+{% highlight scala %}
+it("should implement square()") {
+  import MyCoolProject._
+{% endhighlight %}
+
 Lastly, though not critical, it would also be correct to change this line in the test class:
 
-    describe("ScalaJSExample") {
-  
+{% highlight scala %}
+describe("ScalaJSExample") {
+{% endhighlight %}
+
 to:
 
-    describe("MyCoolProject") {
+{% highlight scala %}
+describe("MyCoolProject") {
+{% endhighlight %}
 
 ### Fixing the JavaScript file-references
 
@@ -88,4 +98,6 @@ We need to change both the references to the package and the main class (the met
 
 The end-result should look like:
 
-    ScalaJS.modules.com_mycompany_mycoolproject_MyCoolProject().main();
+{% highlight javascript %}
+ScalaJS.modules.com_mycompany_mycoolproject_MyCoolProject().main();
+{% endhighlight %}

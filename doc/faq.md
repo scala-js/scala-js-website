@@ -10,13 +10,15 @@ The best way to do this is two have two sbt projects, with two different base
 directories, that share their source directory. This is easily done with the
 `sourceDirectory` setting of sbt.
 
-    lazy val core = project
+{% highlight scala %}
+lazy val core = project
 
-    lazy val corejs = project.settings(
-        scalaJSSettings:_*
-    ).settings(
-        sourceDirectory := (sourceDirectory in core).value
-    )
+lazy val corejs = project.settings(
+    scalaJSSettings:_*
+).settings(
+    sourceDirectory := (sourceDirectory in core).value
+)
+{% endhighlight %}
 
 ### Can I use macros with Scala.js? What about compiler plugins?
 
@@ -37,7 +39,7 @@ It features a number of non trivial setups with Scala.js:
 *   Macros
 *   Compiler plugins (currently only the continuations plugin, but there's
     going to be a custom one too at some point)
-    
+
 You can also take a look at these projects [built with Scala.js](../#built_with_scalajs).
 
 ### Have you considered targeting [asm.js](http://asmjs.org/)? Would it help?

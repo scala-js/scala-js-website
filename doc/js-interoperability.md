@@ -121,19 +121,21 @@ JS traits can contain `val`, `var` and `def` definitions, and the latter can
 be overloaded. All definitions should have `???` as body, to soothe the
 compiler's soul. E.g.,
 
-    trait Window extends js.Object {
-      val document: DOMDocument = ???
-      var location: js.String = ???
+{% highlight scala %}
+trait Window extends js.Object {
+  val document: DOMDocument = ???
+  var location: js.String = ???
 
-      def innerWidth: js.Number = ???
-      def innerHeight: js.Number = ???
+  def innerWidth: js.Number = ???
+  def innerHeight: js.Number = ???
 
-      def alert(message: js.String): Unit = ???
+  def alert(message: js.String): Unit = ???
 
-      def open(url: js.String, target: js.String, features: js.String): Window = ???
-      def open(url: js.String, target: js.String): Window = ???
-      def close(): Unit = ???
-    }
+  def open(url: js.String, target: js.String, features: js.String): Window = ???
+  def open(url: js.String, target: js.String): Window = ???
+  def close(): Unit = ???
+}
+{% endhighlight %}
 
 #### Remarks
 
@@ -173,17 +175,21 @@ not feel right in Scala. For example, jQuery objects feature a method named
 They can be defined in Scala in two ways. The trivial one is simply to use
 backquotes to escape them in Scala:
 
-    def `val`(): js.String
-    def `val`(v: js.String): this.type
+{% highlight scala %}
+def `val`(): js.String
+def `val`(v: js.String): this.type
+{% endhighlight %}
 
 However, it becomes annoying very quickly. An often better solution is to use
 the `scala.js.annotation.JSName` annotation to specify the JavaScript name to
 use, which can be different from the Scala name:
 
-    @JSName("val")
-    def value(): js.String
-    @JSName("val")
-    def value(v: js.String): this.type
+{% highlight scala %}
+@JSName("val")
+def value(): js.String
+@JSName("val")
+def value(v: js.String): this.type
+{% endhighlight %}
 
 ### Scala methods representing bracket access (`obj[x]`)
 
@@ -195,10 +201,12 @@ it represents write access).
 
 A typical example can be found in the `js.Array[A]` class itself, of course:
 
-    @JSBracketAccess
-    def apply(index: js.Number): A
-    @JSBracketAccess
-    def update(index: js.Number, v: A): Unit
+{% highlight scala %}
+@JSBracketAccess
+def apply(index: js.Number): A
+@JSBracketAccess
+def update(index: js.Number, v: A): Unit
+{% endhighlight %}
 
 The Scala method names are irrelevant for the translation to JavaScript. The
 duo `apply`/`update` is often a sensible choice, because it gives array-like
@@ -218,8 +226,10 @@ same name as the JavaScript class (e.g., because it is defined in a namespace,
 like `THREE.Scene`), the annotation `scala.js.annotation.JSName` can be used
 to specify the JavaScript name:
 
-    @JSName("THREE.Scene")
-    class Scene extends js.Object
+{% highlight scala %}
+@JSName("THREE.Scene")
+class Scene extends js.Object
+{% endhighlight %}
 
 #### Remarks
 
@@ -234,24 +244,28 @@ the `Math` object provides methods for standard mathematical functions. These
 can be declared in Scala.js with `object`'s inheriting directly or indirectly
 from `js.Object`.
 
-    object Math extends js.Object {
-      val E: js.Number = ???
-      val PI: js.Number = ???
+{% highlight scala %}
+object Math extends js.Object {
+  val E: js.Number = ???
+  val PI: js.Number = ???
 
-      def sin(x: js.Number): js.Number = ???
-      def min(values: js.Number*): js.Number = ???
+  def sin(x: js.Number): js.Number = ???
+  def min(values: js.Number*): js.Number = ???
 
-      ...
-    }
+  ...
+}
+{% endhighlight %}
 
 An access like `Math.sin(a)` will map in JavaScript to the same code, meaning
 that the identifier `Math` will be looked up in the global scope. Similarly to
 classes, the JavaScript name can be specified with `@JSName`, e.g.,
 
-    @JSName("jQuery")
-    object JQuery extends js.Object {
-      def apply(x: js.Any): JQuery
-    }
+{% highlight scala %}
+@JSName("jQuery")
+object JQuery extends js.Object {
+  def apply(x: js.Any): JQuery
+}
+{% endhighlight %}
 
 ### Variables and functions in the global scope
 
@@ -261,24 +275,28 @@ functions. Instead, in Scala.js, top-level objects inheriting directly or
 indirectly from `js.GlobalScope` (which itself extends `js.Object`) are
 considered to represent the global scope.
 
-    object StdGlobalScope extends js.GlobalScope {
-      val NaN: js.Number = ???
+{% highlight scala %}
+object StdGlobalScope extends js.GlobalScope {
+  val NaN: js.Number = ???
 
-      def parseInt(s: js.String, radix: js.Number): js.Number = ???
-      def parseInt(s: js.String): js.Number = ???
-    }
+  def parseInt(s: js.String, radix: js.Number): js.Number = ???
+  def parseInt(s: js.String): js.Number = ???
+}
+{% endhighlight %}
 
 Note that this rule applies to package objects as well. It is often sensible
 to use package objects for this purpose, e.g.,
 
-    package scala
+{% highlight scala %}
+package scala
 
-    package object js extends js.GlobalScope {
-      val NaN: js.Number = ???
+package object js extends js.GlobalScope {
+  val NaN: js.Number = ???
 
-      def parseInt(s: js.String, radix: js.Number): js.Number = ???
-      def parseInt(s: js.String): js.Number = ???
-    }
+  def parseInt(s: js.String, radix: js.Number): js.Number = ???
+  def parseInt(s: js.String): js.Number = ???
+}
+{% endhighlight %}
 
 ### Pimp-my-library pattern
 
@@ -291,14 +309,16 @@ available to so-called jQuery objects, of type `JQuery`. Such a plugin can be
 declared in Scala.js with a separate trait, say `JQueryGreenify`, and an
 implicit conversions from `JQuery` to `JQueryGreenify`.
 
-    trait JQueryGreenify extends JQuery {
-      def greenify(): this.type = ???
-    }
+{% highlight scala %}
+trait JQueryGreenify extends JQuery {
+  def greenify(): this.type = ???
+}
 
-    object JQueryGreenify {
-      implicit def jq2greenify(jq: JQuery): JQueryGreenify =
-        jq.asInstanceOf[JQueryGreenify]
-    }
+object JQueryGreenify {
+  implicit def jq2greenify(jq: JQuery): JQueryGreenify =
+    jq.asInstanceOf[JQueryGreenify]
+}
+{% endhighlight %}
 
 Recall that `asInstanceOf[JQueryGreenify]` will be erased when mapping to
 JavaScript.
@@ -322,12 +342,14 @@ can chain any kind of call of field access.
 For example, this snippet taken from the Hello World example uses the
 dynamically typed interface to manipulate the DOM model.
 
-    val document = js.Dynamic.global.document
-    val playground = document.getElementById("playground")
+{% highlight scala %}
+val document = js.Dynamic.global.document
+val playground = document.getElementById("playground")
 
-    val newP = document.createElement("p")
-    newP.innerHTML = "Hello world! <i>-- DOM</i>"
-    playground.appendChild(newP)
+val newP = document.createElement("p")
+newP.innerHTML = "Hello world! <i>-- DOM</i>"
+playground.appendChild(newP)
+{% endhighlight %}
 
 In this example, `document`, `playground` and `newP` are all inferred to be of
 type `js.Dynamic`. When calling `getElementById` of assigning to the field
@@ -350,14 +372,18 @@ To instantiate an object of a class with the dynamic interface, you need to
 obtain a `js.Dynamic` reference to the class value, and call the
 `js.Dynamic.newInstance` method like this:
 
-    val today = js.Dynamic.newInstance(js.Dynamic.global.Date)()
+{% highlight scala %}
+val today = js.Dynamic.newInstance(js.Dynamic.global.Date)()
+{% endhighlight %}
 
 If you use the dynamic interface a lot, it is convenient to import
 `js.Dynamic.global` and/or `newInstance` under simple names, e.g.,
 
-    import js.Dynamic.{ global => g, newInstance => jsnew }
+{% highlight scala %}
+import js.Dynamic.{ global => g, newInstance => jsnew }
 
-    val today = jsnew(g.Date)()
+val today = jsnew(g.Date)()
+{% endhighlight %}
 
 ## Calling Scala.js from JavaScript
 
@@ -366,30 +392,38 @@ TODO Improve this section.
 The recommended entry point from JavaScript to Scala.js is to use a top-level
 object in Scala.js with some methods:
 
-    package my.application
-    object EntryPoint {
-      def main(): Unit = { ... }
-      def foo(x: Int) = ...
-      def foo(x: String) = ...
-    }
+{% highlight scala %}
+package my.application
+object EntryPoint {
+  def main(): Unit = { ... }
+  def foo(x: Int) = ...
+  def foo(x: String) = ...
+}
+{% endhighlight %}
 
 A reference to `my.application.EntryPoint` can be obtained in JavaScript with
 
-    var entryPoint = ScalaJS.modules.my_application_EntryPoint();
+{% highlight scala %}
+var entryPoint = ScalaJS.modules.my_application_EntryPoint();
+{% endhighlight %}
 
 Note the use of `_` instead of `.`, and the parentheses at the end.
 
 You can then call methods trivially:
 
-    entryPoint.main();
-    entryPoint.foo(42);
-    entryPoint.foo("hello");
+{% highlight scala %}
+entryPoint.main();
+entryPoint.foo(42);
+entryPoint.foo("hello");
+{% endhighlight %}
 
 Note that overloading works. It is resolved dynamically with type tests.
 
 You can create a new instance of a class `my.application.SomeClass` with
 
-    var obj = new ScalaJS.classes.my_application_SomeClass(someArg);
+{% highlight scala %}
+var obj = new ScalaJS.classes.my_application_SomeClass(someArg);
+{% endhighlight %}
 
 You can of course alias the class to a simpler name if you use it multiple
 times.
