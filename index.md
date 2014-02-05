@@ -71,6 +71,8 @@ and follow the instructions in its readme.
 *   [Scala.js workbench](https://github.com/lihaoyi/scala-js-workbench),
     an sbt plugin for Scala.js projects for live-reloading in the browser, by Li Haoyi
 
+*   [Scala.js Resource](https://github.com/lihaoyi/scala-js-resource), an sbt plugin for bundling of binary files so they can be accessed from the browser, by Li Haoyi
+
 #### Miscellaneous
 
 *   [Port of the Dart benchmark harness](https://github.com/jonas/scala-js-benchmarks)
