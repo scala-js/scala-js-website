@@ -59,7 +59,12 @@ and follow the instructions in its readme.
     brought to you by Sébastien Doeraene
 
 *   [Scalatags](https://github.com/lihaoyi/scalatags), a HTML templating 
-    library/DSL, by Li Haoyi
+    library/DSL that works on both Scala-JVM and Scala-JS, by Li Haoyi
+
+*   [Scala.Rx](https://github.com/lihaoyi/scala.rx), a change-propagation/FRP library that runs on both Scala-JVM and Scala-JS, by Li Haoyi
+
+*   [uTest](https://github.com/lihaoyi/utest#%C2%B5test-011), a tiny, portable unit testing library that lets you run the same tests on both Scala-JVM and Scala-JS, by Li Haoyi
+
 
 #### Skeletons
 
