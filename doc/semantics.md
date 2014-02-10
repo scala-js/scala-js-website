@@ -52,8 +52,12 @@ for any Scala.js object (not for objects that come from JavaScript interop).
 
 In general, Scala.js supports exceptions, including catching them based on their
 type. However, exceptions that are typically triggered by the JVM have flaky
-semantics. E.g., `ArrayIndexOutOfBoundsException` are not checked; and
-`NullPointerException` are reported as JavaScript `TypeError` instead.
+semantics, in particular:
+
+- `ArrayIndexOutOfBoundsException` is never thrown.
+- `NullPointerException` is reported as JavaScript `TypeError` instead.
+- `StackOverflowError` is unsupported since the underlying JavaScript exception
+  type varies based on the browser.
 
 ## Regular expressions
 
