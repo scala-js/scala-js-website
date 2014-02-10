@@ -21,8 +21,8 @@ and not part of any of their support contracts. You have been warned!</p>
 Noteworthy features:
 
 *   Support all of Scala (including macros!),
-    modulo [a few semantic differences](http://www.scala-js.org/doc/semantics.html)
-*   Very good [interoperability with JavaScript code](http://www.scala-js.org/doc/js-interoperability.html).
+    modulo [a few semantic differences](./doc/semantics.html)
+*   Very good [interoperability with JavaScript code](./doc/js-interoperability.html).
     For example, use jQuery and HTML5 from your Scala.js code, either in a
     typed or untyped way. Or create Scala.js objects and call their methods
     from JavaScript.
