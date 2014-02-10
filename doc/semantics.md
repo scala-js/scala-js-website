@@ -36,6 +36,12 @@ println(13.345f)
 // Scala.js: 13.345000267028809
 {% endhighlight %}
 
+## Strings
+
+JavaScript uses UCS-2 for encoding strings and does not support
+conversion to or from other character sets. As a result, `String`
+constructors taking `Byte` arrays are not supported by Scala.js.
+
 ## JavaScript interoperability
 
 The JavaScript interoperability feature is, in itself, a big semantic
