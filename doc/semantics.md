@@ -71,5 +71,7 @@ affected is given here:
 
 ## Symbols
 
-`scala.Symbol` is unsupported since its implementation requires weak references
-in order to not leak memory.
+`scala.Symbol` is supported, but is a potential source of memory leaks
+in applications that make heavy use of symbols. The main reason is that
+JavaScript does not support weak references, causing all symbols created
+by Scala.js tow remain in memory throughout the lifetime of the application.
