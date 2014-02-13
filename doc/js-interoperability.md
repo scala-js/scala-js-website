@@ -81,8 +81,6 @@ There are implicit conversions from corresponding Scala types and back:
   </tbody>
 </table>
 
-`js.ThisFunction` will be elaborated on later.
-
 #### Remarks
 
 There is no type `js.Null`, because `scala.Null` can be used in its stead with
@@ -110,6 +108,96 @@ is valid, although we recommend using the implicit conversions.
 
 The previous remark is however *not true* about function types and arrays.
 
+### Literal object construction
+
+Scala.js provides two syntaxes for creating JavaScript objects in a literal
+way. The following JavaScript object
+
+{% highlight javascript %}
+{foo: 42, bar: "foobar"}
+{% endhighlight %}
+
+can be written in Scala.js either as
+
+{% highlight scala %}
+js.Dynamic.literal(foo = 42, bar = "foobar")
+{% endhighlight %}
+
+or as
+
+{% highlight scala %}
+js.Dynamic.literal("foo" -> 42, "bar" -> "foobar")
+{% endhighlight %}
+
+### js.FunctionN and js.ThisFunctionN
+
+`js.FunctionN[T1, ..., TN, R]` is, as expected, the type of a JavaScript
+function taking N parameters of types `T1` to `TN`, and returning a value of
+type `R`. Conversions to/from `scala.FunctionN` have the obvious meaning.
+
+The series of `js.ThisFunctionN` solve the problem of modelling the `this`
+value in JavaScript. Consider the following call to the `each` method of a
+jQuery object:
+
+{% highlight javascript %}
+var lis = jQuery("ol > li");
+lis.each(function() {
+  jQuery(this).text(jQuery(this).text() + " - transformed")
+});
+{% endhighlight %}
+
+Inside the closure, the value of `this` is the DOM element currently being
+enumerated. This usage of `this`, which is nonsense from a Scala point of view,
+is standard in JavaScript. `this` can actually be thought of as an additional,
+implicit parameter to the closure.
+
+In Scala.js, the `this` keyword always follows the same rules as in Scala,
+i.e., it binds to the enclosing named class or object. It will never bind to
+the equivalent of the JavaScript `this` in an anonymous function.
+
+To access the JavaScript `this` in Scala.js, it can be made explicit using
+`js.ThisFunctionN`. A `js.ThisFunctionN[T0, T1, ..., TN, R]` is the type of a
+JavaScript function taking a `this` parameter of type `T0`, as well as N
+normal parameters of types `T1` to `TN`, and returning a value of type `R`.
+From Scala.js, the `this` parameter appears as any other parameter: it has a
+non-keyword name, a type, and is listed first in the parameter list. Hence,
+a `scala.FunctionN` is convertible to/from a `js.ThisFunction{N-1}`.
+
+The previous example would be written as follows in Scala.js:
+
+{% highlight scala %}
+val lis = jQuery("ol > li")
+lis.each({ (li: dom.HTMLElement) =>
+  jQuery(li).text(jQuery(li).text() + " - transformed")
+}: js.ThisFunction)
+{% endhighlight %}
+
+Skipping over the irrelevant details, note that we parameter `li` completely
+corresponds to the JavaScript `this`. Note also that we have ascribed the
+lambda with `: js.ThisFunction` explicitly to make sure that the right implicit
+conversion is being used (by default it would convert it to a `js.Function1`).
+If you call a statically typed API which expects a `js.ThisFunction0`, this is
+not needed.
+
+The mapping between JS `this` and first parameter of a `js.ThisFunction` also
+works in the other direction, i.e., if calling the `apply` method of a
+`js.ThisFunction`, the first actual argument is transferred to the called
+function as its `this`. For example, the following snippet:
+
+{% highlight scala %}
+val f: js.ThisFunction1[js.Object, js.Number, js.Number] = ???
+val o = new js.Object
+val x = f(o, 4)
+{% endhighlight %}
+
+will map to
+
+{% highlight javascript %}
+var f = ...;
+var o = new Object();
+var x = f.call(o, 4);
+{% endhighlight %}
+
 ### Defining JavaScript interfaces with traits
 
 Most JavaScript APIs work with interfaces, that are defined structurally. In
@@ -131,8 +219,7 @@ trait Window extends js.Object {
 
   def alert(message: js.String): Unit = ???
 
-  def open(url: js.String, target: js.String, features: js.String): Window = ???
-  def open(url: js.String, target: js.String): Window = ???
+  def open(url: js.String, target: js.String, features: js.String = ""): Window = ???
   def close(): Unit = ???
 }
 {% endhighlight %}
@@ -155,13 +242,19 @@ return any value.
 Calls to the `apply` method of an object `x` map to calling `x`, i.e., `x(...)`
 instead of `x.apply(...)`.
 
-Methods cannot have default parameters. You must use overloads instead.
+Methods can have parameters with default values, to mark them as optional.
+However, the actual value is irrelevant and never used. Instead, the parameter
+is omitted entirely (or set to `undefined`). The value is only indicative, as
+implicit documentation.
+
+Methods can be overloaded. This is useful to type accurately some APIs that
+behave differently depending of the number of types of arguments.
 
 JS traits and their methods can have type parameters, abstract type members
 and type aliases, without restriction compared to Scala's type system.
 
-However, inner traits, classes and objects don't make sense, although currently
-they will not cause a compiler error.
+However, inner traits, classes and objects don't make sense and are forbidden.
+It is however allowed to declare a JS trait in a top-level object.
 
 Methods can have varargs, denoted by `*` like in regular Scala. They map to
 JavaScript varargs, i.e., the method is called with more arguments.
@@ -190,6 +283,10 @@ def value(): js.String
 @JSName("val")
 def value(v: js.String): this.type
 {% endhighlight %}
+
+If necessary, several overloads a method with the same name can have different
+`@JSName`'s. Conversely, several methods with different names in Scala can have
+the same `@JSName`.
 
 ### Scala methods representing bracket access (`obj[x]`)
 
@@ -298,9 +395,9 @@ package object js extends js.GlobalScope {
 }
 {% endhighlight %}
 
-### Pimp-my-library pattern
+### Monkey patching
 
-In JavaScript, the pimp-my-library pattern is common, where some top-level
+In JavaScript, a common pattern is monkey patching, where some top-level
 object, or class' prototype, is meant to be extended by third-party code. This
 pattern is easily encoded in Scala.js' type system with `implicit` conversions.
 
@@ -321,7 +418,7 @@ object JQueryGreenify {
 {% endhighlight %}
 
 Recall that `asInstanceOf[JQueryGreenify]` will be erased when mapping to
-JavaScript.
+JavaScript because `JQueryGreenify` in a JS trait.
 
 ## Calling JavaScript from Scala.js with dynamic types
 
