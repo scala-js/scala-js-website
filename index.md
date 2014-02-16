@@ -74,7 +74,7 @@ and follow the instructions in its readme.
 #### Tools
 
 *   [Scala.js workbench](https://github.com/lihaoyi/scala-js-workbench),
-    an sbt plugin for Scala.js projects for live-reloading in the browser, by Li Haoyi
+    an sbt plugin for Scala.js projects for live-reloading in the browser ([example app](https://github.com/lihaoyi/workbench-example-app)), by Li Haoyi
 
 *   [Scala.js Resource](https://github.com/lihaoyi/scala-js-resource), an sbt plugin for bundling of binary files so they can be accessed from the browser, by Li Haoyi
 
@@ -94,6 +94,10 @@ Want to contribute to Scala.js? Check out the
 
 Beginning a list of websites using Scala.js:
 
+*   February 2014
+
+    -   [Sierpinski Triangle](http://lihaoyi.github.io/workbench-example-app/triangle.html) and [Dodge the dot](http://lihaoyi.github.io/workbench-example-app/dodge.html) (Scala.js workbench [example apps](https://github.com/lihaoyi/workbench-example-app)), by Li Haoyi
+    
 *   December 2013
 
     -   [Roll](http://lihaoyi.github.io/roll/), a 2D Physics Platformer
