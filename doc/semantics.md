@@ -85,3 +85,40 @@ affected is given here:
 in applications that make heavy use of symbols. The main reason is that
 JavaScript does not support weak references, causing all symbols created
 by Scala.js tow remain in memory throughout the lifetime of the application.
+
+## Enumerations
+
+The methods `Value()` and `Value(i: Int)` on `scala.Enumeration` use
+reflection to retrieve a string representation of the member name and
+are therefore -- in principle -- unsupported. However, since
+Enumerations are an integral part of the Scala library, Scala.js adds
+limited support for these two methods:
+
+<ol>
+<li>Calls to either of these two methods of the forms:
+
+{% highlight scala %}
+val <ident> = Value
+val <ident> = Value(<num>)
+{% endhighlight %}
+
+are statically rewritten to
+
+{% highlight scala %}
+val <ident> = Value("<ident>")
+val <ident> = Value(<num>,"<ident>")
+{% endhighlight %}
+
+Note that this also includes calls like
+{% highlight scala %}
+val A,B,C,D = Value
+{% endhighlight %}
+since they are desugared into separate <code>val</code> definitions.
+</li>
+<li>Calls to either of these two methods which could not be rewritten
+will issue a warning.</li>
+</ol>
+
+We believe that this covers most use cases of
+`scala.Enumeration`. Please let us know if another (generalized)
+rewrite would make your life easier.
