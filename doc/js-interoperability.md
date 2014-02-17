@@ -420,6 +420,54 @@ object JQueryGreenify {
 Recall that `asInstanceOf[JQueryGreenify]` will be erased when mapping to
 JavaScript because `JQueryGreenify` in a JS trait.
 
+### Reflective calls
+Scala.js does not support reflective calls on any subtype of
+`js.Any`. This is mainly due to the `@JSName` annotation. Since we
+cannot statically enforce this restriction, reflective calls on
+subtypes of `js.Any` *will fail at runtime*. Therefore, we recommend
+to avoid reflective calls altogether.
+
+#### What is a reflective call?
+Calling a method on a structural type in Scala creates a so-called
+reflective call. A reflective call is a type-safe method call that
+uses Java reflection at runtime. The following is an example for a
+reflective call:
+
+{% highlight scala %}
+// A structural type
+type T = { def foo(x: Int): String }
+def print(obj: T) = obj.foo(100)
+//                      ^ this is a reflective call
+{% endhighlight %}
+
+Any object conforming structurally to `T` can now be passed to
+`print`:
+
+{% highlight scala %}
+class A { def foo(x: Int) = s"Input: $x" }
+print(new A())
+{% endhighlight %}
+Note that `A` does *not* extend `T` but only conforms structurally
+(i.e. it has a method `foo` with corresponding signature).
+
+The Scala compiler issues a warning for every reflective call, unless
+the `scala.language.reflectiveCalls` is imported.
+
+#### Why do reflective calls not work on `js.Any`?
+Since JavaScript is dynamic by nature, a reflective method lookup as
+in Java is not required for reflective calls. However, in order to
+generate the right method call, the call-site needs to know the exact
+function name in JavaScript. The Scala.js compiler generates proxy
+methods for that specific purpose.
+
+However, we are unable to generate these forwarder methods on `js.Any`
+types without leaking prototype members on non-Scala.js objects. This
+is something which -- in our opinion -- we must avoid at all
+cost. Lack of forwarder methods combined with the fact that a
+JavaScript method can be arbitrarily renamed using `@JSName`, makes it
+impossible to know the method name to be called at the call-site. The
+reflective call can therefore not be generated.
+
 ## Calling JavaScript from Scala.js with dynamic types
 
 Because JavaScript is dynamically typed, it is not often practical, sometimes
