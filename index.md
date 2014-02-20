@@ -53,41 +53,35 @@ and follow the instructions in its readme.
 
 #### Libraries
 
-*   [Static types for the DOM API](https://github.com/scala-js/scala-js-dom),
-    by Li Haoyi
-
-*   [Static types for jQuery](https://github.com/scala-js/scala-js-jquery),
-    brought to you by Sébastien Doeraene
-
-*   [Scalatags](https://github.com/lihaoyi/scalatags), a HTML templating
-    library/DSL that works on both Scala-JVM and Scala-JS, by Li Haoyi
-
-*   [Scala.Rx](https://github.com/lihaoyi/scala.rx), a change-propagation/FRP library that runs on both Scala-JVM and Scala-JS, by Li Haoyi
-
-*   [uTest](https://github.com/lihaoyi/utest#%C2%B5test-011), a tiny, portable unit testing library that lets you run the same tests on both Scala-JVM and Scala-JS, by Li Haoyi
-
+* [Static types for the DOM API](https://github.com/scala-js/scala-js-dom),
+  by Li Haoyi
+* [Static types for jQuery](https://github.com/scala-js/scala-js-jquery),
+  brought to you by Sébastien Doeraene
+* [Scalatags](https://github.com/lihaoyi/scalatags), a HTML templating
+  library/DSL that works on both Scala-JVM and Scala-JS, by Li Haoyi
+* [Scala.Rx](https://github.com/lihaoyi/scala.rx), a change-propagation/FRP library that runs on both Scala-JVM and Scala-JS, by Li Haoyi
+* [uTest](https://github.com/lihaoyi/utest#%C2%B5test-011), a tiny, portable unit testing library that lets you run the same tests on both Scala-JVM and Scala-JS, by Li Haoyi
 
 #### Skeletons
 
-*   [Play! application with Scala.js](https://github.com/vmunier/play-with-scalajs-example)
-*   [Node.js module with Scala.js](https://github.com/rockymadden/scala-node-example),
-    by Rocky Madden
+* [Play! application with Scala.js](https://github.com/vmunier/play-with-scalajs-example)
+* [Node.js module with Scala.js](https://github.com/rockymadden/scala-node-example),
+  by Rocky Madden
 
 #### Tools
 
-*   [Scala.js workbench](https://github.com/lihaoyi/scala-js-workbench),
-    an sbt plugin for Scala.js projects for live-reloading in the browser ([example app](https://github.com/lihaoyi/workbench-example-app)), by Li Haoyi
-
-*   [Scala.js Resource](https://github.com/lihaoyi/scala-js-resource), an sbt plugin for bundling of binary files so they can be accessed from the browser, by Li Haoyi
+* [Scala.js workbench](https://github.com/lihaoyi/scala-js-workbench),
+  an sbt plugin for Scala.js projects for live-reloading in the browser ([example app](https://github.com/lihaoyi/workbench-example-app)), by Li Haoyi
+* [Scala.js Resource](https://github.com/lihaoyi/scala-js-resource), an sbt plugin for bundling of binary files so they can be accessed from the browser, by Li Haoyi
 
 #### Miscellaneous
 
-*   [Port of the Dart benchmark harness](https://github.com/jonas/scala-js-benchmarks)
-    by Jonas Fonseca
+* [Port of the Dart benchmark harness](https://github.com/jonas/scala-js-benchmarks)
+  by Jonas Fonseca
 
 ## Contribute
 
-*   [Scala.js on GitHub](https://github.com/scala-js/scala-js)
+* [Scala.js on GitHub](https://github.com/scala-js/scala-js)
 
 Want to contribute to Scala.js? Check out the
 [list of contributing opportunities](./contribute/).
@@ -96,37 +90,24 @@ Want to contribute to Scala.js? Check out the
 
 Beginning a list of websites using Scala.js:
 
-*   February 2014
-
-    -   [Sierpinski Triangle](http://lihaoyi.github.io/workbench-example-app/triangle.html) and [Dodge the dot](http://lihaoyi.github.io/workbench-example-app/dodge.html) (Scala.js workbench [example apps](https://github.com/lihaoyi/workbench-example-app)), by Li Haoyi
-
-*   December 2013
-
-    -   [Roll](http://lihaoyi.github.io/roll/), a 2D Physics Platformer
-        by Li Haoyi
-
-*   December 2013
-
-    -   [Sliding Puzzle](https://github.com/sebnozzi/sliding-puzzle)
-        by [Sebastian Nozzi](http://www.sebnozzi.com/)
-
-*   October 2013
-
-    -   [Several games](http://lihaoyi.github.io/scala-js-games/)
-        by Li Haoyi
-
-*   July 2013
-
-    -   [Knapsack on a graph](http://krishnanraman.github.io/scala-js/examples/helloworld/helloworld.html)
-        by Krishnan Raman
-
-*   June 2013
-
-    -   [Collidium Online](http://collidium.shadaj.me/) by
-        [@ShadajL](https://twitter.com/ShadajL)
-
-*   April 2013
-
-    -   The [Reversi]({{ BASE_PATH }}/examples/reversi/) example by Sébastien Doeraene
+* February 2014
+  - [Sierpinski Triangle](http://lihaoyi.github.io/workbench-example-app/triangle.html) and [Dodge the dot](http://lihaoyi.github.io/workbench-example-app/dodge.html) (Scala.js workbench [example apps](https://github.com/lihaoyi/workbench-example-app)), by Li Haoyi
+* December 2013
+  - [Roll](http://lihaoyi.github.io/roll/), a 2D Physics Platformer
+    by Li Haoyi
+* December 2013
+  - [Sliding Puzzle](https://github.com/sebnozzi/sliding-puzzle)
+    by [Sebastian Nozzi](http://www.sebnozzi.com/)
+* October 2013
+  - [Several games](http://lihaoyi.github.io/scala-js-games/)
+    by Li Haoyi
+* July 2013
+  - [Knapsack on a graph](http://krishnanraman.github.io/scala-js/examples/helloworld/helloworld.html)
+    by Krishnan Raman
+* June 2013
+  - [Collidium Online](http://collidium.shadaj.me/) by
+    [@ShadajL](https://twitter.com/ShadajL)
+* April 2013
+  - The [Reversi]({{ BASE_PATH }}/examples/reversi/) example by Sébastien Doeraene
 
 <a href="https://github.com/scala-js/scala-js-website"><img style="position: absolute; top: 0; right: 0; border: 0;" src="https://s3.amazonaws.com/github/ribbons/forkme_right_orange_ff7600.png" alt="Fork me on GitHub"></a>

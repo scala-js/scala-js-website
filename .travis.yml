@@ -1,7 +1,7 @@
 language: ruby
 install:
   - sudo pip install Pygments
-  - gem install jekyll
+  - gem install rdiscount jekyll
 script:
   - jekyll build --safe
 after_success:
