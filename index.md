@@ -59,7 +59,7 @@ and follow the instructions in its readme.
 *   [Static types for jQuery](https://github.com/scala-js/scala-js-jquery),
     brought to you by Sébastien Doeraene
 
-*   [Scalatags](https://github.com/lihaoyi/scalatags), a HTML templating 
+*   [Scalatags](https://github.com/lihaoyi/scalatags), a HTML templating
     library/DSL that works on both Scala-JVM and Scala-JS, by Li Haoyi
 
 *   [Scala.Rx](https://github.com/lihaoyi/scala.rx), a change-propagation/FRP library that runs on both Scala-JVM and Scala-JS, by Li Haoyi
@@ -69,6 +69,7 @@ and follow the instructions in its readme.
 
 #### Skeletons
 
+*   [Play! application with Scala.js](https://github.com/vmunier/play-with-scalajs-example)
 *   [Node.js module with Scala.js](https://github.com/rockymadden/scala-node-example),
     by Rocky Madden
 
@@ -98,7 +99,7 @@ Beginning a list of websites using Scala.js:
 *   February 2014
 
     -   [Sierpinski Triangle](http://lihaoyi.github.io/workbench-example-app/triangle.html) and [Dodge the dot](http://lihaoyi.github.io/workbench-example-app/dodge.html) (Scala.js workbench [example apps](https://github.com/lihaoyi/workbench-example-app)), by Li Haoyi
-    
+
 *   December 2013
 
     -   [Roll](http://lihaoyi.github.io/roll/), a 2D Physics Platformer
