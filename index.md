@@ -94,6 +94,7 @@ Want to contribute to Scala.js? Check out the
 Beginning a list of websites using Scala.js:
 
 * February 2014
+  - [TodoMVC](http://lihaoyi.github.io/workbench-example-app/todo.html), an implementation of the [TodoMVC example application](http://todomvc.com/) using Scala.js, Scalatags, Scala.Rx and scala-js-dom, by Li Haoyi
   - [Sierpinski Triangle](http://lihaoyi.github.io/workbench-example-app/triangle.html) and [Dodge the dot](http://lihaoyi.github.io/workbench-example-app/dodge.html) (Scala.js workbench [example apps](https://github.com/lihaoyi/workbench-example-app)), by Li Haoyi
 * December 2013
   - [Roll](http://lihaoyi.github.io/roll/), a 2D Physics Platformer
