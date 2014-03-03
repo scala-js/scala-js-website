@@ -39,7 +39,7 @@ Noteworthy features:
 
 The easiest way to get started is to fork the
 [bootstrapping skeleton](https://github.com/sjrd/scala-js-example-app)
-and follow the instructions in its readme.
+and follow the instructions in its readme. You can also [try it out in the browser](http://www.scala-js-fiddle.com/).
 
 ## Resources
 
@@ -96,6 +96,7 @@ Beginning a list of websites using Scala.js:
 * February 2014
   - [TodoMVC](http://lihaoyi.github.io/workbench-example-app/todo.html), an implementation of the [TodoMVC example application](http://todomvc.com/) using Scala.js, Scalatags, Scala.Rx and scala-js-dom, by Li Haoyi
   - [Sierpinski Triangle](http://lihaoyi.github.io/workbench-example-app/triangle.html) and [Dodge the dot](http://lihaoyi.github.io/workbench-example-app/dodge.html) (Scala.js workbench [example apps](https://github.com/lihaoyi/workbench-example-app)), by Li Haoyi
+  - [Scala.jsFiddle](http://www.scala-js-fiddle.com/), an online scratchpad that lets you compile and run Scala.js snippets right in the browser, by Li Haoyi
 * December 2013
   - [Roll](http://lihaoyi.github.io/roll/), a 2D Physics Platformer
     by Li Haoyi
