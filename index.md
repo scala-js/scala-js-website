@@ -46,6 +46,10 @@ and follow the instructions in its readme. You can also [try it out in the brows
 *   [Documentation](./doc/)
 *   [Official mailing list](https://groups.google.com/forum/?fromgroups#!forum/scala-js)
 *   [Scala.js tag on Stackoverflow](http://stackoverflow.com/questions/tagged/scala.js). Please help building it up by asking questions.
+
+Presentations:
+
+*   [Live Coding Scala.js at SF Scala 2014](http://vimeo.com/87845442) by Li Haoyi
 *   [Live-coding with Scala.js at Scala eXchange 2013](http://skillsmatter.com/podcast/scala/scala-js-write-in-scala-for-the-browser-4567)
 *   [Presentation of Scala.js at Scala Days 2013](http://www.parleys.com/play/51c380bfe4b0ed8770356866) (older and somewhat obsolete)
 
