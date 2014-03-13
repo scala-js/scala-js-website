@@ -22,25 +22,11 @@ lazy val corejs = project.settings(
 
 ### Can I use macros with Scala.js? What about compiler plugins?
 
-Yes, you can. Just make sure that project containing the macro definitions is
-compiled with the regular Scala, not Scala.js. Then your normal project can
-depend on the macro project, and be compiled with Scala.js.
-
-The same applies to compiler plugins.
+Yes, you can. There is nothing specific to Scala.js here.
 
 ### Where can I find an example of non trivial Scala.js project?
 
-I suggest my own personal project
-[FunLabyrinthe](https://github.com/sjrd/funlabyrinthe-scala).
-It features a number of non trivial setups with Scala.js:
-
-*   Multiple projects, some being cross-compiled between Scala and Scala.js,
-    some being specific to one platform
-*   Macros
-*   Compiler plugins (currently only the continuations plugin, but there's
-    going to be a custom one too at some point)
-
-You can also take a look at these projects [built with Scala.js](../#built_with_scalajs).
+Have a look at these projects [built with Scala.js](../#built_with_scalajs).
 
 ### Have you considered targeting [asm.js](http://asmjs.org/)? Would it help?
 
