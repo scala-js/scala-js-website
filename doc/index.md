@@ -20,3 +20,7 @@ Alternatively, create a project with *custom naming* by using this [giter8 templ
 ## FAQ
 
 [Frequently Asked Questions](./faq.html) about Scala.js
+
+## Internal documentation
+
+[Documentation about the internals of Scala.js](./internals/)
