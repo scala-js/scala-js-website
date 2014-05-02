@@ -119,4 +119,8 @@ Beginning a list of websites using Scala.js:
 * April 2013
   - The [Reversi]({{ BASE_PATH }}/examples/reversi/) example by Sébastien Doeraene
 
+## Hall of Fame
+
+* [Bug in node.js/v8](http://github.com/joyent/node/issues/7528) discovered by Scala.js through Scala test suite
+
 <a href="https://github.com/scala-js/scala-js-website"><img style="position: absolute; top: 0; right: 0; border: 0;" src="https://s3.amazonaws.com/github/ribbons/forkme_right_orange_ff7600.png" alt="Fork me on GitHub"></a>
