@@ -14,3 +14,5 @@ Thumbs.db
 
 .project
 *~
+
+/build/
