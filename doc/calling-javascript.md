@@ -25,30 +25,37 @@ types.
 The core type hierarchy is as follows:
 
     js.Any
-     +- js.Number
-     +- js.Boolean
-     +- js.String
-     +- js.Undefined
      +- js.Object
-         +- js.Date
-         +- js.RegExp
-         +- js.Array[A]
-         +- js.Function
-             +- js.Function0[+R]
-             +- js.Function1[-T1, +R]
-             +- ...
-             +- js.Function22[-T1, ..., -T22, +R]
-             +- js.ThisFunction
-                 +- js.ThisFunction0[-T0, +R]
-                 +- js.ThisFunction1[-T0, -T1, +R]
-                 +- ...
-                 +- js.ThisFunction21[-T0, ..., -T21, +R]
+     |   +- js.Date
+     |   +- js.RegExp
+     |   +- js.Array[A]
+     |   +- js.Dictionary[A]
+     |   +- js.Function
+     |       +- js.Function0[+R]
+     |       +- js.Function1[-T1, +R]
+     |       +- ...
+     |       +- js.Function22[-T1, ..., -T22, +R]
+     |       +- js.ThisFunction
+     |           +- js.ThisFunction0[-T0, +R]
+     |           +- js.ThisFunction1[-T0, -T1, +R]
+     |           +- ...
+     |           +- js.ThisFunction21[-T0, ..., -T21, +R]
+     +- js.prim.Number
+     +- js.prim.Boolean
+     +- js.prim.String
+     +- js.prim.Undefined
 
-A value of any of these types is encoded as is in JavaScript, without boxing.
+
+Note that the types in the `prim` package should not directly be used,
+since they have a direct correspondance in Scala (see the
+[interoperability](./js-interoperability.html) page). The reason they
+exist is that for example a `scala.Double` can be stored in a variable
+of type `js.Any` (through implicit conversion to `js.prim.Number`).
+
+A value of any of these types is encoded as is in JavaScript, without wrapping.
 Even when such a value is assigned to a `val` of type `scala.Any` or of a
-generic type, there is no boxing. E.g., a `js.Array[js.Number]` is a JavaScript
-`Array` which contains JavaScript `number`'s at runtime (not some boxing of
-`number`'s).
+generic type, there is no boxing. E.g., a `js.Array[js.Date]` is a JavaScript
+`Array` which contains JavaScript `Date`'s at runtime.
 
 These types have all the fields and methods available in the JavaScript API.
 
@@ -59,11 +66,11 @@ There are implicit conversions from corresponding Scala types and back:
     <tr><th>Scala type</th><th>JavaScript type</th></tr>
   </thead>
   <tbody>
-    <tr><td>Byte<br/>Short<br/>Int<br/>Long<br/>Float<br/>Double</td><td>js.Number</td></tr>
-    <tr><td colspan="2">(from js.Number to Double only)</td></tr>
-    <tr><td>Boolean</td><td>js.Boolean</td></tr>
-    <tr><td>java.lang.String</td><td>js.String</td></tr>
-    <tr><td>Unit</td><td>js.Undefined</td></tr>
+    <tr><td>Byte<br/>Short<br/>Int<br/>Long<br/>Float<br/>Double</td><td>js.prim.Number</td></tr>
+    <tr><td colspan="2">(from js.prim.Number to Double only)</td></tr>
+    <tr><td>Boolean</td><td>js.prim.Boolean</td></tr>
+    <tr><td>java.lang.String</td><td>js.prim.String</td></tr>
+    <tr><td>Unit</td><td>js.prim.Undefined</td></tr>
     <tr><td>Array[A]</td><td>js.Array[A]</td></tr>
     <tr><td rowspan="2">FunctionN[T1, ..., TN, R]</td><td>js.FunctionN[T1, ..., TN, R]</td></tr>
     <tr>                                              <td>js.ThisFunction{N-1}[T1, ..., TN, R]</td></tr>
@@ -75,12 +82,14 @@ There are implicit conversions from corresponding Scala types and back:
 There is no type `js.Null`, because `scala.Null` can be used in its stead with
 the appropriate semantics.
 
-`isInstanceOf[T]` for `T` being `js.Number`, `js.Boolean`, `js.String`, or
-`js.Undefined`, is supported and is implemented with a `typeof` test.
-
 `isInstanceOf[T]` is supported for _classes_ inheriting from `js.Object`, e.g.,
 `js.Date`, `js.Array[_]`, `js.Object` itself, and is implemented with an
 `instanceof` test.
+
+`isInstanceOf[T]` for `T` being `js.prim.Number`, `js.prim.Boolean`,
+`js.prim.String`, or `js.prim.Undefined`, is supported and is
+implemented with a `typeof` test. However, it should be avoided in
+preference of `T` being `Double`, `Boolean`, `String` or `Unit`.
 
 `isInstanceOf[T]` is not supported for any other `T` (i.e., traits) inheriting
 from `js.Any`.
@@ -224,8 +233,11 @@ if the result will always be the same (e.g., `document`), and `def` when
 subsequent accesses to the field might return a different value (e.g.,
 `innerWidth`).
 
-Use `Unit` instead of `js.Undefined` as result type of methods that do not
-return any value.
+Use Scala primitive types instead of types in `js.prim._`. Instead of
+`js.prim.Number`, use `Int` where applicable (integral value, not
+`NaN`, in signed 32-bit integer range). Otherwise `Double` should be
+used (note that `Long` is opaque to JavaScript and therefore cannot be
+used).
 
 Calls to the `apply` method of an object `x` map to calling `x`, i.e., `x(...)`
 instead of `x.apply(...)`.

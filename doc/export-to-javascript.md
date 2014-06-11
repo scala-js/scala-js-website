@@ -4,17 +4,12 @@ title: Export Scala.js APIs to JavaScript
 ---
 {% include JB/setup %}
 
-**New in Scala.js v0.4**
-
 By default, Scala.js classes, objects, methods and properties are not available
 to JavaScript. Entities that have to be accessed from JavaScript must be
 annotated explicitly as *exported*. The `@JSExport` annotation is the main way
 to do this.
 
 ## A simple example
-
-You have probably already seen two uses of `@JSExport` in the `Main` class of
-the bootstrapping skeleton (or any other template of Scala.js application):
 
 {% highlight scala %}
 package example
@@ -39,9 +34,34 @@ HelloWorld().main();
 
 Note the `()` when accessing the object, `HelloWorld` is a function.
 
-This simple pair of `@JSExport` should be sufficient for most application, i.e.,
-in cases you only want to get into the entry point of your app, and then live
-in the Scala.js world.
+You have probably already used an `@JSExport` without knowing it
+through the `JSApp` trait in the `Main` class of the bootstrapping
+skeleton (or any other template of Scala.js application). In fact, any
+Scala.js application must export at least a class or an object and a
+method in order to be invokable at all.
+
+Most of the time, however, it is sufficient to just extend the `JSApp`
+trait:
+
+{% highlight scala %}
+package example
+
+import scala.scalajs.js
+import js.annotation.JSExport
+
+object HelloWorld extends js.JSApp {
+  def main(): Unit = {
+    println("Hello world!")
+  }
+}
+{% endhighlight %}
+
+And call like this (see documentation about
+`@JSExportDescendentObjects` below for internal workings):
+
+{% highlight javascript %}
+example.HelloWorld().main();
+{% endhighlight %}
 
 ## Exporting top-level objects
 
@@ -249,8 +269,9 @@ objects of a given trait or class. You can use the
 objects to be exported to their fully qualified name.
 
 This feature is especially useful in conjunction with exported
-abstract methods and is used by the test libraries of Scala.js. The
-following is just an example, how the feature can be used:
+abstract methods and is used by the test libraries of Scala.js and the
+`scala.scalajs.js.JSApp` trait. The following is just an example, how
+the feature can be used:
 
 {% highlight scala %}
 package foo.test
