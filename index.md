@@ -24,7 +24,7 @@ Noteworthy features:
     For example, use jQuery and HTML5 from your Scala.js code, either in a
     typed or untyped way. Or create Scala.js objects and call their methods
     from JavaScript.
-*   Integrated with [sbt](http://www.scala-sbt.org/)
+*   [Integrated with sbt](./doc/sbt-plugin.html)
     (including support for dependency management and incremental compilation)
 *   Can be used with your favorite IDE for Scala
 *   Generates [Source Maps](http://www.html5rocks.com/en/tutorials/developertools/sourcemaps/)
