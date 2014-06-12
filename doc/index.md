@@ -15,7 +15,14 @@ Alternatively, create a project with *custom naming* by using this [giter8 templ
 
 * [Differences between the semantics of Scala and Scala.js](./semantics.html)
 * [JavaScript interoperability](./js-interoperability.html)
+  * [Call JavaScript APIs from Scala.js](./calling-javascript.html)
+  * [Export Scala.js APIs to JavaScript](./export-to-javascript.html)
 * [SBT plugin](./sbt-plugin.html)
+  * [Setup](./sbt/setup.html)
+  * [Compiling, Running, Linking, Optimizing](./sbt/run.html)
+  * [Depending on Libraries](./sbt/depending.html)
+  * [JavaScript Environments](./sbt/js-envs.html)
+  * [Cross-Building](./sbt/cross-building.html)
 * [Scala.js Cookbook](./cookbook/)
 
 ## API
