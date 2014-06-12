@@ -17,6 +17,21 @@ Alternatively, create a project with *custom naming* by using this [giter8 templ
 * [JavaScript interoperability](./js-interoperability.html)
 * [Scala.js Cookbook](./cookbook/)
 
+## API
+
+Generated Scaladocs are available here:
+
+#### Scala.js 0.5.0-RC2
+* [0.5.0-RC2 scalajs-library]({{ BASE_PATH }}/api/scalajs-library/0.5.0-RC2/)
+* [0.5.0-RC2 scalajs-tools]({{ BASE_PATH }}/api/scalajs-tools/0.5.0-RC2/)
+* [0.5.0-RC2 scalajs-test-bridge]({{ BASE_PATH }}/api/scalajs-test-bridge/0.5.0-RC2/)
+* [0.5.0-RC2 scalajs-jasmine-test-framework]({{ BASE_PATH }}/api/scalajs-jasmine-test-framework/0.5.0-RC2/)
+
+#### Scala.js 0.4.4
+* [0.4.4 scalajs-library]({{ BASE_PATH }}/api/scalajs-library/0.4.4/)
+* [0.4.4 scalajs-tools]({{ BASE_PATH }}/api/scalajs-tools/0.4.4/)
+* [0.4.4 scalajs-jasmine-test-framework]({{ BASE_PATH }}/api/scalajs-jasmine-test-framework/0.4.4/)
+
 ## FAQ
 
 [Frequently Asked Questions](./faq.html) about Scala.js
