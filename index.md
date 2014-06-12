@@ -35,9 +35,9 @@ Noteworthy features:
 
 ## Get started
 
-The easiest way to get started is to fork the
+The easiest way to get started is to follow our [tutorial](./doc/tutorial.html). You can also fork the
 [bootstrapping skeleton](https://github.com/sjrd/scala-js-example-app)
-and follow the instructions in its readme. You can also [try it out in the browser](http://www.scala-js-fiddle.com/).
+and follow the instructions in its readme or [try it out in the browser](http://www.scala-js-fiddle.com/).
 
 We also have a [standalone distribution](./downloads.html) that doesn't require SBT.
 
