@@ -8,8 +8,6 @@ tagline: A Scala to JavaScript compiler
 <img id="front-page-logo" alt="Scala.js logo" title="Scala.js logo"
     src="{{ BASE_PATH }}/images/scala-js-logo.svg" />
 
-[![Build Status](https://travis-ci.org/scala-js/scala-js.png?branch=master,scala-2.11)](https://travis-ci.org/scala-js/scala-js)
-
 Scala.js compiles Scala code to JavaScript, allowing you to write your
 Web application entirely in Scala!
 
