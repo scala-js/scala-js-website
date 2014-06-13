@@ -29,6 +29,12 @@ Alternatively, create a project with *custom naming* by using this [giter8 templ
 
 Generated Scaladocs are available here:
 
+#### Scala.js 0.5.0
+* [0.5.0 scalajs-library]({{ BASE_PATH }}/api/scalajs-library/0.5.0/)
+* [0.5.0 scalajs-tools]({{ BASE_PATH }}/api/scalajs-tools/0.5.0/)
+* [0.5.0 scalajs-test-bridge]({{ BASE_PATH }}/api/scalajs-test-bridge/0.5.0/)
+* [0.5.0 scalajs-jasmine-test-framework]({{ BASE_PATH }}/api/scalajs-jasmine-test-framework/0.5.0/)
+
 #### Scala.js 0.5.0-RC2
 * [0.5.0-RC2 scalajs-library]({{ BASE_PATH }}/api/scalajs-library/0.5.0-RC2/)
 * [0.5.0-RC2 scalajs-tools]({{ BASE_PATH }}/api/scalajs-tools/0.5.0-RC2/)
