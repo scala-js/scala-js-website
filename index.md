@@ -16,6 +16,8 @@ Although this is a project of LAMP/EPFL for which we will continue to provide
 best-effort improvements and bug fixes, it is <i>not</i> supported by Typesafe,
 and not part of any of their support contracts. You have been warned!</p>
 
+<p style="text-align: center"><a href="{{ BASE_PATH }}/news/2014/06/13/announcing-scalajs-0.5.0/" class="btn btn-large btn-success">Latest stable release: 0.5.0</a></p>
+
 Noteworthy features:
 
 *   Support all of Scala (including macros!),
