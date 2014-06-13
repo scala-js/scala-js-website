@@ -16,6 +16,8 @@ Although this is a project of LAMP/EPFL for which we will continue to provide
 best-effort improvements and bug fixes, it is <i>not</i> supported by Typesafe,
 and not part of any of their support contracts. You have been warned!</p>
 
+<p style="text-align: center"><a href="{{ BASE_PATH }}/news/2014/06/13/announcing-scalajs-0.5.0/" class="btn btn-large btn-success">Latest stable release: 0.5.0</a></p>
+
 Noteworthy features:
 
 *   Support all of Scala (including macros!),
@@ -24,7 +26,7 @@ Noteworthy features:
     For example, use jQuery and HTML5 from your Scala.js code, either in a
     typed or untyped way. Or create Scala.js objects and call their methods
     from JavaScript.
-*   Integrated with [sbt](http://www.scala-sbt.org/)
+*   [Integrated with sbt](./doc/sbt-plugin.html)
     (including support for dependency management and incremental compilation)
 *   Can be used with your favorite IDE for Scala
 *   Generates [Source Maps](http://www.html5rocks.com/en/tutorials/developertools/sourcemaps/)
@@ -35,9 +37,9 @@ Noteworthy features:
 
 ## Get started
 
-The easiest way to get started is to fork the
+The easiest way to get started is to follow our [tutorial](./doc/tutorial.html). You can also fork the
 [bootstrapping skeleton](https://github.com/sjrd/scala-js-example-app)
-and follow the instructions in its readme. You can also [try it out in the browser](http://www.scala-js-fiddle.com/).
+and follow the instructions in its readme or [try it out in the browser](http://www.scala-js-fiddle.com/).
 
 We also have a [standalone distribution](./downloads.html) that doesn't require SBT.
 

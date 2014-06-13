@@ -10,20 +10,16 @@ a few language semantics differences exist.
 
 ## Numbers and characters
 
-Except `Long`, all primitive number types of Scala.js, as well as the `Char`
-type, are mapped to JavaScript `Number`'s, i.e., `Double`'s, and no overflow
-detection is performed.
+Numbers and characters have the same semantics as on the JVM
+(including overflow and full 64-bit Longs) with the following three
+exceptions. For information about how Scala numeric types map to
+JavaScript numeric types, have a look at the
+[interoparability guide](./js-interoperability.html).
 
-This means that operations on numbers that would overflow their range do not
-wrap, but instead take on bigger values.
-
-Integer division does follow the expected semantics, though, i.e., it always
-return an integer.
-
-Binary operations (`&`, `|`, etc.) are always performed on signed 32-bit
-integers, just as in JavaScript.
-
-`Long`s are 64-bits and follow the same semantics as on the JVM.
+### Floats behave like Doubles
+Since JavaScript doesn't have a native float type, we represent them
+using doubles/numbers, rather than manually implementing float
+arithmetic.
 
 Note that float literals are still truncated to their (binary)
 precision. However, output does not truncate to that precision. This
@@ -35,6 +31,33 @@ println(13.345f)
 // Scala:    13.345
 // Scala.js: 13.345000267028809
 {% endhighlight %}
+
+### Integer division by 0 is undefined
+Unlike the JVM where dividing an integer type by 0 throws an
+exception, in Scala.js integer division by 0 is undefined.
+This allows for efficient implementation of division. Dividing a
+`Double` or `Float` by 0 yields positive or negative infinity as
+expected.
+
+### isInstanceOf tests are based on value
+Instance tests (and consequently pattern matching) on any of `Byte`,
+`Short`, `Int`, `Float`, `Double` are based on the value and not the
+type they were created with. The following are examples:
+
+- 1 matches `Byte`, `Short`, `Int`, `Float`, `Double`
+- 128 (`> Byte.MaxValue`) matches `Short`, `Int`, `Float`, `Double`
+- 32768 (`> Short.MaxValue`) matches `Int`, `Float`, `Double`
+- 2147483648 (`> Int.MaxValue`) matches `Float`, `Double`
+- 1.2 matches `Float`, `Double`
+        
+As a consequence, the following apparent subtyping relationship holds:
+
+    Byte <:< Short <:< Int <:< Float =:= Double
+    
+## Unit
+`scala.Unit` is represented using JavaScript's `undefined`. Therefore,
+calling `toString()` on `Unit` will return `undefined` rather than
+`()`.
 
 ## Strings
 
@@ -102,7 +125,7 @@ val <ident> = Value
 val <ident> = Value(<num>)
 {% endhighlight %}
 
-are statically rewritten to
+are statically rewritten to (a slightly more complicated version of):
 
 {% highlight scala %}
 val <ident> = Value("<ident>")
@@ -115,9 +138,22 @@ val A,B,C,D = Value
 {% endhighlight %}
 since they are desugared into separate <code>val</code> definitions.
 </li>
-<li>Calls to either of these two methods which could not be rewritten
-will issue a warning.</li>
+<li>Calls to either of these two methods which could not be rewritten,
+or calls to constructors of the protected <code>Val</code> class without an
+explicit name as parameter, will issue a warning.</li>
 </ol>
+
+Note that the name rewriting honors the `nextName`
+iterator. Therefore, the full rewrite is:
+
+{% highlight scala %}
+val <ident> = Value(
+  if (nextName != null && nextName.hasNext)
+    nextName.next()
+  else
+    "<ident>"
+)
+{% endhighlight %}
 
 We believe that this covers most use cases of
 `scala.Enumeration`. Please let us know if another (generalized)
