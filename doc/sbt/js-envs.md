@@ -16,7 +16,7 @@ For example, to switch to Phantom.js, you can set:
 
 We'd like to stress here again, that you need to separately install Node.js and Phantom.js if you would like to use these environments.
 
-## Node.js on Ubuntu
+## <a name="node-on-ubuntu"></a> Node.js on Ubuntu
 
 On Ubuntu, the Node.js command from the [nodejs package](http://packages.ubuntu.com/utopic/nodejs) is called `nodejs` instead of `node` (when installed through the package manager). This will make the Node.js environment fail (since it simply calls `node`).
 
