@@ -33,7 +33,7 @@ We also setup basic project settings and Scala.js settings in the sbt build file
 
     scalaVersion := "2.11.1"
 
-Last, we need a `build.properties` to specify the sbt version:
+Last, we need a `project/build.properties` to specify the sbt version:
 
     sbt.version=0.13.0
 
