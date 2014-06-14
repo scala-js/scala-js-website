@@ -32,7 +32,7 @@ This will make your project depend on the respective WebJar and include a file n
 
     <script type="text/javascript" src="..."></script>
 
-However, sometimes this doesn't work when running with Node.js. If this happens to you, change to Phantom.js (see below on how to do that).
+However, sometimes this doesn't work when running with Node.js. If this happens to you, change to PhantomJS (see below on how to do that).
 
 All `jsDependencies` and associated metadata (e.g. for ordering) are persisted in a file (called `JS_DEPENDENCIES`) and shipped with the artifact your project publishes. For example, if you depend on the `jasmine-test-framework` package for Scala.js (a thin wrapper around Jasmine), you do not need to explicitly depend or include `jasmine.js`; this mechanism does it for you.
 

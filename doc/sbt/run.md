@@ -29,7 +29,7 @@ If you want to run this code, you can tell sbt to run after the linking stage:
 
     sbt> fastOptStage::run
 
-This will invoke an external JavaScript interpreter and pass the generated file to it. Depending on your `requiresDOM` setting, it will either invoke Node.js or Phantom.js. *You need to install these separately* and make them available on the execution path (i.e. as shell commands `node` and `phantomjs`).
+This will invoke an external JavaScript interpreter and pass the generated file to it. Depending on your `requiresDOM` setting, it will either invoke Node.js or PhantomJS. *You need to install these separately* and make them available on the execution path (i.e. as shell commands `node` and `phantomjs`).
 
 Note that running in the `fastOptStage` is often faster than running just after compilation since the external virtual machines are much faster. We recommend you to operate in the `fastOptStage` in your development cycle.
 

@@ -33,7 +33,7 @@ We also setup basic project settings and Scala.js settings in the sbt build file
 
     scalaVersion := "2.11.1"
 
-Last, we need a `build.properties` to specify the sbt version:
+Last, we need a `project/build.properties` to specify the sbt version:
 
     sbt.version=0.13.0
 
@@ -313,7 +313,165 @@ We now have an application whose UI is completely setup from within Scala.js. Th
 
 ## <a name="testing"></a> Step 6: Testing
 
-Coming soon... (relies on external library not yet published for Scala.js 0.5.0)
+In this section we will show how such an application can be tested using [uTest](http://github.com/lihaoyi/utest), a tiny testing framework which compiles to both Scala.js and Scala JVM. As a note aside, this framework is also a good choice to test libraries that cross compile. See our [cross compiliation guide](./sbt/cross-building.html) for details.
+
+### Supporting the DOM
+
+Before we start writing tests which we will be able to run through the sbt console, we first have to solve another issue. Remember the task `run`? If you try to invoke it now, you will see something like this:
+
+    > run
+    [info] Running tutorial.webapp.TutorialApp
+    org.mozilla.javascript.EcmaError: ReferenceError: "window" is not defined. (/home/ts/.ivy2/cache/org.webjars/jquery/jars/jquery-1.10.2.jar#META-INF/resources/webjars/jquery/1.10.2/jquery.js#14)
+	(...)
+    [trace] Stack trace suppressed: run last compile:run for the full output.
+    [error] (compile:run) Exception while running JS code: ReferenceError: "window" is not defined. (/home/ts/.ivy2/cache/org.webjars/jquery/jars/jquery-1.10.2.jar#META-INF/resources/webjars/jquery/1.10.2/jquery.js#14)
+    [error] (...)
+
+What basically happens here, is that jQuery (yes, it is included automatically) tries to access the `window` object of the DOM, which doesn't exist by default in the Rhino runner. To make the DOM available in Rhino, add the following to your `build.sbt`:
+
+    requiresDOM := true
+
+After reloading, you can invoke `run` successfully:
+
+    > run
+    [info] Running tutorial.webapp.TutorialApp
+    [success] (...)
+
+### Running with Node.js or PhantomJS
+
+This step is optional and requires installing PhantomJS. You may skip it if you like.
+
+You can run your Scala.js code after the fast-optimization stage using [Node.js](http://nodejs.org/) or [PhantomJS](http://phantomjs.org/). The sbt plugin defaults to Node.js and only runs PhantomJS if `requiresDOM` is set to true. Note that you need to install Node.js and/or PhantomJS separately for this to work (also see the note about running [Node.js on Ubuntu](./sbt/js-envs.html#node-on-ubuntu)).
+
+After installing [PhantomJS](http://phantomjs.org/), you can invoke:
+
+    > fastOptStage::run
+    [info] Running tutorial.webapp.TutorialApp
+    [success] (...)
+
+If you remember the `last` command from the beginning, you can use it to check that we are actually running PhantomJS:
+
+    > last
+    (...)
+    [debug] with JSEnv of type class scala.scalajs.sbtplugin.env.phantomjs.PhantomJSEnv
+    [debug] with classpath of type class scala.scalajs.tools.classpath.CompleteCIClasspath$SimpleCompleteCIClasspath
+    [debug] PhantomJS using webpage launcher at: /tmp/phantomjs-launcher-webpage2065180431563237581.html
+    [success] (...)
+
+This even shows you the temporary webpage the plugin generates to launch PhantomJS. This can be useful for debugging.
+
+### Adding uTest
+
+According to the [explanation in uTest's readme](http://github.com/lihaoyi/utest#scalajs-and-sbt), we add the following to our `build.sbt`:
+
+    libraryDependencies += "com.lihaoyi" %%% "utest" % "0.1.6" % "test"
+
+    (loadedTestFrameworks in Test) := {
+      (loadedTestFrameworks in Test).value.updated(
+        sbt.TestFramework(classOf[utest.jsrunner.JsFramework].getName),
+        new utest.jsrunner.JsFramework(environment = (ScalaJSKeys.jsEnv in Test).value)
+      )
+    }
+
+    testLoader := scala.scalajs.sbtplugin.testing.JSClasspathLoader((ScalaJSKeys.execClasspath in Compile).value)
+
+And the following to our `project/build.sbt`:
+
+    addSbtPlugin("com.lihaoyi" % "utest-js-plugin" % "0.1.6")
+
+We are now ready to add a first simple test suite (`src/test/scala/tutorial/webapp/TutorialTest.scala`):
+
+{% highlight scala %}
+package tutorial.webapp
+
+import utest._
+
+import org.scalajs.jquery.jQuery
+
+object TutorialTest extends TestSuite {
+
+  // Initialize App
+  TutorialApp.setupUI()
+
+  def tests = TestSuite {
+    'HelloWorld {
+      assert(jQuery("p:contains('Hello World')").length == 1)
+    }
+  }
+}
+{% endhighlight %}
+
+This test uses jQuery to verify that our page contains exactly one `<p>` element which contains the text "Hello World" after the UI has been set up.
+
+To run this test, simply invoke the `test` task:
+
+    > test
+    [info] Compiling 1 Scala source to (...)/scalajs-tutorial/target/scala-2.11/test-classes...
+    [info] 1/2     tutorial.webapp.TutorialTest.HelloWorld		Success
+    [info] 2/2     tutorial.webapp.TutorialTest		Success
+    [info] -----------------------------------Results-----------------------------------
+    [info] tutorial.webapp.TutorialTest		Success
+    [info]     HelloWorld		Success
+    [info] Failures:
+    [info]
+    [info] Tests: 2
+    [info] Passed: 2
+    [info] Failed: 0
+    [success] (...)
+
+We have successfully created a simple test. Note that just like for `run`, you can run `fastOptStage::test`. Of course you'll need PhantomJS installed. It is possible that you see some warnings from the fast-optimizer, these come from uTest: It references Java classes which do not exist in Scala.js (mainly concurrency related).
+
+### A more complex test
+
+We also would like to test the functionality of our button. For this we face another small issue: The button doesn't exist when testing, since the tests start with an empty DOM tree. To solve this, we create the button in the `setupUI` method and remove it from the HTML:
+
+{% highlight scala %}
+jQuery("""<button type="button">Click me!</button>""")
+  .click(addClickedMessage _)
+  .appendTo(jQuery("body"))
+{% endhighlight %}
+
+This brings another unexpected advantage: We don't need to give it an ID anymore but can directly use the jQuery object to install the on-click handler.
+
+We now define the `ButtonClick` test just below the `HelloWorld` test:
+
+{% highlight scala %}
+'ButtonClick {
+  def messageCount =
+    jQuery("p:contains('You clicked the button!')").length
+
+  val button = jQuery("button:contains('Click me!')")
+  assert(button.length == 1)
+  assert(messageCount == 0)
+
+  for (c <- 1 to 5) {
+    button.click()
+    assert(messageCount == c)
+  }
+}
+{% endhighlight %}
+
+After defining a helper method that counts the number of messages, we retrieve the button from the DOM and verify we have exactly one button and no messages. In the loop, we simulate a click on the button and then verify that the number of messages has increased.
+
+You can now call the `test` task again:
+
+    > test
+    [info] Compiling 1 Scala source to (...)/scalajs-tutorial/target/scala-2.11/test-classes...
+    [info] 1/3     tutorial.webapp.TutorialTest.HelloWorld		Success
+    [info] 2/3     tutorial.webapp.TutorialTest.ButtonClick		Success
+    [info] 3/3     tutorial.webapp.TutorialTest		Success
+    [info] -----------------------------------Results-----------------------------------
+    [info] tutorial.webapp.TutorialTest		Success
+    [info]     HelloWorld		Success
+    [info]     ButtonClick		Success
+    [info] Failures:
+    [info]
+    [info] Tests: 3
+    [info] Passed: 3
+    [info] Failed: 0
+    [success] (...)
+
+This completes the testing part of this tutorial.
 
 ## <a name="optimizing"></a> Step 7: Optimizing for Production
 
@@ -328,7 +486,7 @@ Size is critical for JavaScript code on the web. To compress the compiled code e
     [info] Closure: 0 error(s), 0 warning(s)
     [success] (...)
 
-Note that this can take a while on a larger project (tens of seconds) we do therefore not recommend to use `fullOptJS` during development.
+Note that this can take a while on a larger project (tens of seconds) we do therefore not recommend to use `fullOptJS` during development. If you have used the `fastOptStage` before, there is an equivalent `fullOptStage` to run code after full optimization.
 
 ### Automatically Creating a Launcher
 
@@ -336,7 +494,9 @@ Before creating another HTML file which includes the fully optimized JavaScript,
 
     ScalaJSKeys.persistLauncher in Compile := true
 
-We can now include this file in our HTML page instead of the manual launcher:
+    ScalaJSKeys.persistLauncher in Test := false
+
+We set `persistLauncher` to false for testing, since we do not have an application to run. In our HTML page, we can now include this file instead of the manual launcher:
 
 {% highlight html %}
 <!-- Run JSApp -->
@@ -357,8 +517,6 @@ We can now create our final production HTML file `scalajs-tutorial.html` which i
     <title>The Scala.js Tutorial</title>
   </head>
   <body>
-    <button id="click-me-button" type="button">Click me!</button>
-
     <!-- Include JavaScript dependencies -->
     <script type="text/javascript" src="./target/scala-2.11/scala-js-tutorial-jsdeps.js"></script>
     <!-- Include Scala.js compiled code -->
