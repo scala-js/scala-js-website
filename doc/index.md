@@ -29,22 +29,26 @@ Alternatively, create a project with *custom naming* by using this [giter8 templ
 
 Generated Scaladocs are available here:
 
+### Scala.js
+
 #### Scala.js 0.5.0
-* [0.5.0 scalajs-library]({{ BASE_PATH }}/api/scalajs-library/0.5.0/)
+* [0.5.0 scalajs-library]({{ BASE_PATH }}/api/scalajs-library/0.5.0/#scala.scalajs.js.package)
 * [0.5.0 scalajs-tools]({{ BASE_PATH }}/api/scalajs-tools/0.5.0/)
 * [0.5.0 scalajs-test-bridge]({{ BASE_PATH }}/api/scalajs-test-bridge/0.5.0/)
 * [0.5.0 scalajs-jasmine-test-framework]({{ BASE_PATH }}/api/scalajs-jasmine-test-framework/0.5.0/)
 
-#### Scala.js 0.5.0-RC2
-* [0.5.0-RC2 scalajs-library]({{ BASE_PATH }}/api/scalajs-library/0.5.0-RC2/)
-* [0.5.0-RC2 scalajs-tools]({{ BASE_PATH }}/api/scalajs-tools/0.5.0-RC2/)
-* [0.5.0-RC2 scalajs-test-bridge]({{ BASE_PATH }}/api/scalajs-test-bridge/0.5.0-RC2/)
-* [0.5.0-RC2 scalajs-jasmine-test-framework]({{ BASE_PATH }}/api/scalajs-jasmine-test-framework/0.5.0-RC2/)
-
 #### Scala.js 0.4.4
-* [0.4.4 scalajs-library]({{ BASE_PATH }}/api/scalajs-library/0.4.4/)
+* [0.4.4 scalajs-library]({{ BASE_PATH }}/api/scalajs-library/0.4.4/#scala.scalajs.js.package)
 * [0.4.4 scalajs-tools]({{ BASE_PATH }}/api/scalajs-tools/0.4.4/)
 * [0.4.4 scalajs-jasmine-test-framework]({{ BASE_PATH }}/api/scalajs-jasmine-test-framework/0.4.4/)
+
+### JavaScript APIs
+
+#### DOM API
+* [0.6 scalajs-dom]({{ BASE_PATH }}/api/scalajs-dom/0.6/#org.scalajs.dom.package)
+
+#### jQuery API
+* [0.6 scalajs-jquery]({{ BASE_PATH }}/api/scalajs-jquery/0.6/#org.scalajs.jquery.package)
 
 ## FAQ
 
