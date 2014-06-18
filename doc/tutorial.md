@@ -329,7 +329,7 @@ Before we start writing tests which we will be able to run through the sbt conso
 
 What basically happens here, is that jQuery (yes, it is included automatically) tries to access the `window` object of the DOM, which doesn't exist by default in the Rhino runner. To make the DOM available in Rhino, add the following to your `build.sbt`:
 
-    requiresDOM := true
+    ScalaJSKeys.requiresDOM := true
 
 After reloading, you can invoke `run` successfully:
 
