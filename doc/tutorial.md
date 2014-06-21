@@ -21,11 +21,11 @@ To setup Scala.js in a new sbt project, we need to do two things:
 1. Add the Scala.js sbt plugin
 2. Apply the Scala.js specific settings to the project
 
-Adding the Scala.js sbt plugin is a one-liner in `project/build.sbt`:
+Adding the Scala.js sbt plugin is a one-liner in `project/plugins.sbt` (all file names we write in this tutorial are relative to the project root):
 
     addSbtPlugin("org.scala-lang.modules.scalajs" % "scalajs-sbt-plugin" % "0.5.0")
 
-We also setup basic project settings and Scala.js settings in the sbt build file (`build.sbt`):
+We also setup basic project settings and Scala.js settings in the sbt build file (`build.sbt`, in the project root directory):
 
     scalaJSSettings
 
@@ -40,6 +40,10 @@ Last, we need a `project/build.properties` to specify the sbt version:
 That is all we need to configure the build.
 
 If at this point you prefer to use Eclipse or IDEA as your IDE, you may use [sbteclipse](https://github.com/typesafehub/sbteclipse/wiki/Using-sbteclipse) or [idea-eclipse](https://github.com/mpeltonen/sbt-idea) project files for the IDE. Note that for compiling and running your application, you will still need to use sbt from the command line.
+
+#### Alternative versions
+
+You may instead use 2.10.2, 2.10.3, 2.10.4 or 2.11.0 for `scalaVersion` if you so wish. Similarly, any 0.13.x version of sbt should work without itch, for example 0.13.5.
 
 ### HelloWorld application
 
@@ -65,6 +69,8 @@ As you expect, this will simply print "HelloWorld" when run. To run this, simply
     [info] Running tutorial.webapp.TutorialApp
     Hello world!
     [success] (...)
+
+**Troubleshooting**: Should you experience errors with the `PermGen` size of the JVM at this point, you can increase it. Refer, for example, to [this StackOverflow question](http://stackoverflow.com/questions/8331135/transient-outofmemoryerror-when-compiling-scala-classes).
 
 Congratulations! You have successfully compiled and run your first Scala.js application. The code is actually run by a JavaScript interpreter. If you do not believe this (it happens to us occasionally), you can use sbt's `last`:
 
@@ -92,11 +98,11 @@ To generate a single JavaScript file using sbt, just use the `fastOptJS` task:
     [info] Fast optimizing (...)/scala-js-tutorial/target/scala-2.11/scala-js-tutorial-fastopt.js
     [success] (...)
 
-This will perform some dead-code elimination and generate the `scala-js-tutorial-fastopt.js` file containing reachable JavaScript code.
+This will perform some fast optimizations and generate the `target/scala-2.11/scala-js-tutorial-fastopt.js` file containing the JavaScript code.
 
 ### Create the HTML Page
 
-The only thing which is specific to Scala.js, is how we can call the Scala code from JavaScript. First have a look at our HTML page (`scalajs-tutorial-fastopt.html` in the project root), we will go in the details right after.
+To load and launch the created JavaScript, you will need an HTML file. Create the file `scalajs-tutorial-fastopt.html` (or whatever name you prefer, for example `index-fastopt.html`) in the project root with the following content. We will go in the details right after.
 
 {% highlight html %}
 <!DOCTYPE html>
@@ -130,7 +136,7 @@ As the last step has shown, running JavaScript inside a HTML page is not particu
 
 ### Adding the DOM Library
 
-To use the JavaScript DOM library in Scala.js, it is best to use the Scala.js DOM library which provides types for the DOM. To add it to your sbt project, add the following line to your `build.sbt`:
+To use the DOM, it is best to use the statically typed Scala.js DOM library. To add it to your sbt project, add the following line to your `build.sbt`:
 
     libraryDependencies += "org.scala-lang.modules.scalajs" %%% "scalajs-dom" % "0.6"
 
@@ -263,11 +269,11 @@ jQuery("body").append("<p>[message]</p>")
 
 Where `[message]` is the string originally passed to `appendPar`.
 
+If you try to reload your webpage now, it will not work (typically a `TypeError` would be reported in the console). The problem is that we haven't included the jQuery library itself, which is a plain JavaScript library.
+
 ### Adding JavaScript libraries
 
-You can now try and reload your webpage. You will observe that - although it seems we have done everything right - you don't see a "Hello World" message. Some browsers might give you a `TypeError`. The problem is that we haven't included the jQuery library itself, which is a plain JavaScript library.
-
-An option is to include `jquery.js` from an external source, such as [jsDelivr](http://www.jsdelivr.com/)
+An option is to include `jquery.js` from an external source, such as [jsDelivr](http://www.jsdelivr.com/).
 
 {% highlight html %}
 <script type="text/javascript" src="http://cdn.jsdelivr.net/jquery/2.1.1/jquery.js"></script>
@@ -375,7 +381,7 @@ According to the [explanation in uTest's readme](http://github.com/lihaoyi/utest
 
     testLoader := scala.scalajs.sbtplugin.testing.JSClasspathLoader((ScalaJSKeys.execClasspath in Compile).value)
 
-And the following to our `project/build.sbt`:
+And the following to our `project/plugins.sbt`:
 
     addSbtPlugin("com.lihaoyi" % "utest-js-plugin" % "0.1.6")
 
