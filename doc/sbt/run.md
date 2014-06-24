@@ -15,7 +15,9 @@ You now can run your application already by using the `run` task:
 
     sbt> run
 
-This will detect and run classes that extend `scala.scalajs.js.JSApp`, while optionally prompting the user to choose a class if multiple such classes exist. To run the `.sjsir` files, we invoke the Rhino JavaScript interpreter with a special scope that lazily reads and loads required `.sjsir` files on the fly (much like Java class loading). Note that by default, this environment doesn't have a DOM. If you need it set `requiresDOM := true` in your settings.
+This will detect and run classes that extend `scala.scalajs.js.JSApp`, while optionally prompting the user to choose a class if multiple such classes exist (fails with multiple classes if `persistLauncher := true`, see section below for details).
+
+To run the `.sjsir` files, we invoke the Rhino JavaScript interpreter with a special scope that lazily reads and loads required `.sjsir` files on the fly (much like Java class loading). Note that by default, this environment doesn't have a DOM. If you need it set `requiresDOM := true` in your settings.
 
 ## Fast-Optimize
 
@@ -23,7 +25,7 @@ To produce a proper JavaScript file from your code, you need to call the linker:
 
     sbt> fastOptJS
 
-This will perform a coarse dead-code elimination and write all remaining code to a single JavaScript file. You can now use this JavaScript file in your HTML-page or in whatever way you like. The resulting file in the target folder will have the suffix `-fastopt.js`.
+This will perform a coarse dead-code elimination and write all remaining code to a single JavaScript file. You can now use this JavaScript file in your HTML page or in whatever way you like. The resulting file in the target folder will have the suffix `-fastopt.js`.
 
 If you want to run this code, you can tell sbt to run after the linking stage:
 

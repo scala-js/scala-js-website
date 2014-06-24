@@ -11,8 +11,7 @@ direction of interoperability.
 
 Because JavaScript is dynamically typed, it is possible to call JS libraries in
 a dynamically typed way. However, it is also possible to interop with static
-types, for better leveraging of Scala. The former actually builds on top of the
-latter.
+types, for better leveraging of Scala.
 
 ## Primitive JavaScript types
 
@@ -197,7 +196,7 @@ var x = f.call(o, 4);
 
 ## Defining JavaScript interfaces with traits
 
-Most JavaScript APIs work with interfaces, that are defined structurally. In
+Most JavaScript APIs work with interfaces that are defined structurally. In
 Scala.js, the corresponding concept are traits. To mark a trait as being a
 representative of a JavaScript API, it must inherit directly or indirectly
 from `js.Object`.
@@ -233,11 +232,7 @@ if the result will always be the same (e.g., `document`), and `def` when
 subsequent accesses to the field might return a different value (e.g.,
 `innerWidth`).
 
-Use Scala primitive types instead of types in `js.prim._`. Instead of
-`js.prim.Number`, use `Int` where applicable (integral value, not
-`NaN`, in signed 32-bit integer range). Otherwise `Double` should be
-used (note that `Long` is opaque to JavaScript and therefore cannot be
-used).
+Use Scala primitive types instead of types in `js.prim._`. Use `Byte`, `Short` or `Int` where applicable (attention: `NaN` is not a value of any of these types). Otherwise `Double` should be used. `Long` is opaque to JavaScript and therefore cannot be used. `Float` is the same as `Double` and should generally not be used in JavaScript typings.
 
 Calls to the `apply` method of an object `x` map to calling `x`, i.e., `x(...)`
 instead of `x.apply(...)`.
@@ -248,7 +243,7 @@ is omitted entirely (or set to `undefined`). The value is only indicative, as
 implicit documentation.
 
 Methods can be overloaded. This is useful to type accurately some APIs that
-behave differently depending of the number or types of arguments.
+behave differently depending on the number or types of arguments.
 
 JS traits and their methods can have type parameters, abstract type members
 and type aliases, without restriction compared to Scala's type system.
@@ -284,7 +279,7 @@ def value(): js.String
 def value(v: js.String): this.type
 {% endhighlight %}
 
-If necessary, several overloads a method with the same name can have different
+If necessary, several overloads of a method with the same name can have different
 `@JSName`'s. Conversely, several methods with different names in Scala can have
 the same `@JSName`.
 
@@ -398,10 +393,10 @@ package object js extends js.GlobalScope {
 ## Monkey patching
 
 In JavaScript, a common pattern is monkey patching, where some top-level
-object, or class' prototype, is meant to be extended by third-party code. This
+object or class' prototype, is meant to be extended by third-party code. This
 pattern is easily encoded in Scala.js' type system with `implicit` conversions.
 
-E.g., in jQuery, `$.fn` can be extended with new methods, that will be
+E.g., in jQuery, `$.fn` can be extended with new methods that will be
 available to so-called jQuery objects, of type `JQuery`. Such a plugin can be
 declared in Scala.js with a separate trait, say `JQueryGreenify`, and an
 implicit conversions from `JQuery` to `JQueryGreenify`.
@@ -430,7 +425,7 @@ to avoid reflective calls altogether.
 ### What is a reflective call?
 Calling a method on a structural type in Scala creates a so-called
 reflective call. A reflective call is a type-safe method call that
-uses Java reflection at runtime. The following is an example for a
+uses Java reflection at runtime. The following is an example of a
 reflective call:
 
 {% highlight scala %}
@@ -473,7 +468,7 @@ reflective call can therefore not be generated.
 Because JavaScript is dynamically typed, it is not often practical, sometimes
 impossible, to give sensible type definitions for JavaScript APIs.
 
-Scala.js lets you call JavaScript call in a dynamically typed fashion if you
+Scala.js lets you call JavaScript in a dynamically typed fashion if you
 want to. The basic entry point is to grab a dynamically typed reference to the
 global scope, with `js.Dynamic.global`, which is of type `js.Dynamic`.
 
@@ -497,7 +492,7 @@ playground.appendChild(newP)
 {% endhighlight %}
 
 In this example, `document`, `playground` and `newP` are all inferred to be of
-type `js.Dynamic`. When calling `getElementById` of assigning to the field
+type `js.Dynamic`. When calling `getElementById` or assigning to the field
 `innerHTML`, the String is implicitly converted to a `js.String` to conform to
 `js.Any`.
 

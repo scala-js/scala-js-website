@@ -6,7 +6,7 @@ title: JavaScript interoperability
 
 A key feature of Scala.js is its interoperability with JavaScript code, which
 far exceeds that of many other languages targeting JavaScript. Except of course
-for languages that translate almost litterally to JavaScript (e.g.,
+for languages that translate almost literally to JavaScript (e.g.,
 [TypeScript](http://www.typescriptlang.org/) and
 [CoffeeScript](http://coffeescript.org/)).
 
