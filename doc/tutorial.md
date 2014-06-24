@@ -285,6 +285,8 @@ In your `build.sbt`, set:
 
     skip in ScalaJSKeys.packageJSDependencies := false
 
+As an alternative to prefixing with `ScalaJSKeys`, you may import all its members (`import ScalaJSKeys._`). Most of the documentation omits the `ScalaJSKeys` prefix for brevity.
+
 After reloading and rerunning `fastOptJS`, this will create `scala-js-tutorial-jsdeps.js` containing all JavaScript libraries next to the main JavaScript file. We can then simply include this file and don't need to worry about JavaScript libraries anymore:
 
 {% highlight html %}
