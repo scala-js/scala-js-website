@@ -96,7 +96,7 @@ Presentations:
 Want to contribute to Scala.js? Check out the
 [list of contributing opportunities](./contribute/).
 
-## Built with Scala.js
+## <a name="built_with_scalajs"></a> Built with Scala.js
 
 Beginning a list of websites using Scala.js:
 
