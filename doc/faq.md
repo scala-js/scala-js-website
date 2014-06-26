@@ -6,19 +6,11 @@ title: Frequently Asked Questions
 
 ### How to structure a .sbt build to cross-compile with Scala and Scala.js?
 
-The best way to do this is two have two sbt projects, with two different base
-directories, that share their source directory. This is easily done with the
-`sourceDirectory` setting of sbt.
+The best way to do this is to have two sbt projects, with two different base
+directories that share a common source directory. This is easily done with the
+`sourceDirectory` or the `unmanagedSourceDirectories` setting of sbt.
 
-{% highlight scala %}
-lazy val core = project
-
-lazy val corejs = project.settings(
-    scalaJSSettings:_*
-).settings(
-    sourceDirectory := (sourceDirectory in core).value
-)
-{% endhighlight %}
+Please follow our [cross-building guide](./sbt/cross-building.html) for details.
 
 ### Can I use macros with Scala.js? What about compiler plugins?
 
