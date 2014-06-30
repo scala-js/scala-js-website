@@ -71,6 +71,7 @@ Presentations:
   a cross-compiling pickling (aka serialization) library for Scala.js and Scala
   with a common JSON-based format, by Sébastien Doeraene
 * [Monifu](https://github.com/alexandru/monifu), reactive extensions (Rx) with back-pressure, atomic references and other multi-threading primitives cross-compiled to Scala.js
+* [Scalaz for Scala.js](https://github.com/japgolly/scalaz/tree/v7.1.0-RC1-js) maintained by David Barri
 
 #### Skeletons
 
