@@ -14,7 +14,7 @@ Please report any issues [on GitHub](https://github.com/scala-js/scala-js/issues
 
 ## Improvements in the 0.5.1 release
 
-For changes introduced in 0.5.0, how to upgrade, getting started etc. have a look at the [0.5.0 announcement](./2014-06-13-announcing-scalajs-0.5.0.html).
+For changes introduced in 0.5.0, how to upgrade, getting started etc. have a look at the [0.5.0 announcement]({{ BASE_PATH }}/news/2014/06/13/announcing-scalajs-0.5.0/).
 
 #### Additions to the Java library
 
