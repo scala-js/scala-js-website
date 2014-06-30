@@ -23,7 +23,7 @@ To setup Scala.js in a new sbt project, we need to do two things:
 
 Adding the Scala.js sbt plugin is a one-liner in `project/plugins.sbt` (all file names we write in this tutorial are relative to the project root):
 
-    addSbtPlugin("org.scala-lang.modules.scalajs" % "scalajs-sbt-plugin" % "0.5.0")
+    addSbtPlugin("org.scala-lang.modules.scalajs" % "scalajs-sbt-plugin" % "0.5.1")
 
 We also setup basic project settings and Scala.js settings in the sbt build file (`build.sbt`, in the project root directory):
 
@@ -372,20 +372,13 @@ This even shows you the temporary webpage the plugin generates to launch Phantom
 
 According to the [explanation in uTest's readme](http://github.com/lihaoyi/utest#scalajs-and-sbt), we add the following to our `build.sbt`:
 
-    libraryDependencies += "com.lihaoyi" %%% "utest" % "0.1.6" % "test"
+    libraryDependencies += "com.lihaoyi" %%% "utest" % "0.1.7" % "test"
 
-    (loadedTestFrameworks in Test) := {
-      (loadedTestFrameworks in Test).value.updated(
-        sbt.TestFramework(classOf[utest.jsrunner.JsFramework].getName),
-        new utest.jsrunner.JsFramework(environment = (ScalaJSKeys.jsEnv in Test).value)
-      )
-    }
-
-    testLoader := scala.scalajs.sbtplugin.testing.JSClasspathLoader((ScalaJSKeys.execClasspath in Compile).value)
+    utest.jsrunner.Plugin.utestJsSettings
 
 And the following to our `project/plugins.sbt`:
 
-    addSbtPlugin("com.lihaoyi" % "utest-js-plugin" % "0.1.6")
+    addSbtPlugin("com.lihaoyi" % "utest-js-plugin" % "0.1.7")
 
 We are now ready to add a first simple test suite (`src/test/scala/tutorial/webapp/TutorialTest.scala`):
 
