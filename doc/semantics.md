@@ -16,12 +16,13 @@ exceptions. For information about how Scala numeric types map to
 JavaScript numeric types, have a look at the
 [interoparability guide](./js-interoperability.html).
 
-### Floats behave like Doubles
-Since JavaScript doesn't have a native float type, we represent them
-using doubles/numbers, rather than manually implementing float
-arithmetic.
+### Floats may behave like Doubles
+Since JavaScript doesn't have a native float type, we sometimes represent Floats
+using doubles/numbers, rather than with lower-precision 32-bit floats.
 
-Note that float literals are still truncated to their (binary)
+The choice of how to represent floats is up to the implementation. You may not rely on floats providing 64-bit floating point precision.
+
+Float literals are truncated to their (binary)
 precision. However, output does not truncate to that precision. This
 can lead to the following behavior (this works as expected when using
 doubles):

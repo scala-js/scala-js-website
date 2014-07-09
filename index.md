@@ -16,7 +16,7 @@ Although this is a project of LAMP/EPFL for which we will continue to provide
 best-effort improvements and bug fixes, it is <i>not</i> supported by Typesafe,
 and not part of any of their support contracts. You have been warned!</p>
 
-<p style="text-align: center"><a href="{{ BASE_PATH }}/news/2014/06/30/announcing-scalajs-0.5.1/" class="btn btn-large btn-success">Latest stable release: 0.5.1</a></p>
+<p style="text-align: center"><a href="{{ BASE_PATH }}/news/2014/07/09/announcing-scalajs-0.5.2/" class="btn btn-large btn-success">Latest stable release: 0.5.2</a></p>
 
 Noteworthy features:
 
