@@ -5,7 +5,7 @@ title: Scala.js sbt Setup
 
 Load the sbt plugin (`project/plugins.sbt`)
 
-    addSbtPlugin("org.scala-lang.modules.scalajs" % "scalajs-sbt-plugin" % "0.5.0")
+    addSbtPlugin("org.scala-lang.modules.scalajs" % "scalajs-sbt-plugin" % "0.5.1")
 
 Add Scala.js settings (`build.sbt`):
 
