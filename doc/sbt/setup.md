@@ -5,14 +5,17 @@ title: Scala.js sbt Setup
 
 Load the sbt plugin (`project/plugins.sbt`)
 
-    addSbtPlugin("org.scala-lang.modules.scalajs" % "scalajs-sbt-plugin" % "0.5.0")
+    addSbtPlugin("org.scala-lang.modules.scalajs" % "scalajs-sbt-plugin" % "{{ site.scalaJSVersion }}")
 
 Add Scala.js settings (`build.sbt`):
 
     scalaJSSettings
 
-There is also a list of settings that doesn't change the `run` and `test` tasks (`build.sbt`):
+If you are using a `Build.scala` definition, import the following:
 
-    scalaJSBuildSettings
+    import scala.scalajs.sbtplugin.ScalaJSPlugin._
 
-Note that `scalaJSSettings` contains all these settings, so don't use both of them.
+Either way, you might want to add the following import for some of the keys
+specific to Scala.js to be available in the scope of your build:
+
+    import ScalaJSKeys._

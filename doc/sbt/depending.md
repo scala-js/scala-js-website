@@ -26,6 +26,10 @@ This will fetch the required JAR containing jQuery. However, it will not include
 
 The Scala.js sbt plugin has `jsDependencies` for this purpose. You can write:
 
+    ScalaJSKeys.jsDependencies += "org.webjars" % "jquery" % "1.10.2" / "jquery.js"
+
+or, with `import ScalaJSKeys._`:
+
     jsDependencies += "org.webjars" % "jquery" % "1.10.2" / "jquery.js"
 
 This will make your project depend on the respective WebJar and include a file named `jquery.js` in the said WebJar when your project is run or tested. We are trying to make the semantics of "include" to be as close as possible to writing:
@@ -62,6 +66,6 @@ This will look for `myJSLibrary.js` in the resources and include it. It is an er
 
 If you want all JavaScript dependencies to be concatenated to a single file (for easy inclusion into a HTML file for example), you can set:
 
-    skip in packageJSDependencies := false
+    skip in ScalaJSKeys.packageJSDependencies := false
 
 in your project settings. The resulting file in the target folder will have the suffix `-jsdeps.js`.
