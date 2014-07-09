@@ -42,7 +42,7 @@ Starting from sbt 0.13, you can write a multi-project build in a `.sbt` file. Th
 You now have separate projects to compile towards Scala.js and Scala JVM. Note the same name given to both projects, this allows them to be published with corresponding artifact names:
 
 - `foo_2.10-0.1-SNAPSHOT.jar`
-- `foo_sjs0.5_2.10-0.1-SNAPSHOT.jar`
+- `foo_sjs{{ site.scalaJSBinaryVersion }}_2.10-0.1-SNAPSHOT.jar`
 
 If you do not publish the artifacts, you may choose different names for the projects.
 
