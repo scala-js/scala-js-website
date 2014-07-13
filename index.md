@@ -56,11 +56,28 @@ This is a collection of libraries that work with Scala.js. Some of them, like `s
 "org.scala-lang.modules.scalajs" %%% "scalajs-dom" % "0.6"
 ```
 Static types for the DOM API, by Li Haoyi
+
 ####[scala-js-jquery](https://github.com/scala-js/scala-js-jquery)
 ```scala
 "org.scala-lang.modules.scalajs" %%% "scalajs-jquery" % "0.6"
 ```
 Static types for jQuery, by Sébastien Doeraene
+
+####[scala-js-react](https://github.com/japgolly/scalajs-react)
+```scala
+"com.github.japgolly.scalajs-react" %%% "scalajs-react" % "0.2.0"
+```
+Lifts Facebook's React library into Scala.js and endeavours to make it as type-safe and Scala-compatible as possible, By David Barri
+
+####[scala-js-binding](https://github.com/antonkulaga/scala-js-binding)
+```scala
+addSbtPlugin("me.lessis" % "bintray-sbt" % "0.1") // project/build.sbt
+resolvers += bintray.Opts.resolver.repo("denigma", "denigma-releases")
+libraryDependencies += "org.denigma" %%% "binding" % "0.4.4"
+```
+
+A ScalaJS html binding library, by Anton Kulaga
+
 ####[Scalatags](https://github.com/lihaoyi/scalatags)
 ```scala
 "com.scalatags" %%% "scalatags" % "0.3.8"
@@ -75,7 +92,7 @@ A change-propagation/FRP library that runs on both Scala-JVM and Scala-JS, by Li
 
 ####[uTest](https://github.com/lihaoyi/utest#%C2%B5test-011)
 ```scala
-addSbtPlugin("com.lihaoyi" % "utest-js-plugin" % "0.1.8")
+addSbtPlugin("com.lihaoyi" % "utest-js-plugin" % "0.1.8") // project/build.sbt
 "com.lihaoyi" %%% "utest" % "0.1.8"
 ```
 
