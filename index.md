@@ -49,6 +49,8 @@ Presentations:
 
 ### Libraries
 
+This is a collection of libraries that work with Scala.js. Some of them, like `scala-js-dom` and `scala-js-jquery`, are specific to Javascript and don't make sense on the JVM. Some others are pure-macro projects, and thus work with Scala.js out of the box. Most of them, though, started off as Scala-JVM projects and were ported over, and thus have separate artifacts to run on each platforms. The SBT snippets given are for the version that runs on Scala.js.
+
 ####[scala-js-dom](https://github.com/scala-js/scala-js-dom)
 ```scala
 "org.scala-lang.modules.scalajs" %%% "scalajs-dom" % "0.6"
@@ -115,7 +117,20 @@ libraryDependencies += "name.myltsev" %% "parboiled_sjs0.5" % "2.0.0"
 ```
 
 Port of Shapeless to Scala.js, maintained by Alexander Myltsev
+
+####[Scala-Async](https://github.com/scala/async)
+
+```scala
+"org.scala-lang.modules" %% "scala-async" % "0.9.1"
+```
+
+Scala-Async is a pure-macro project without any runtime dependencies. Thus it works with Scala.js out of the box, without needing to be specially compiled for it. 
  
+ 
+####Scalaxy [Loops](https://github.com/ochafik/Scalaxy/tree/master/Loops) and [Streams](https://github.com/ochafik/Scalaxy/tree/master/Streams)
+
+Another pure-macro project, Scalaxy loops and streams work great with Scala.js without needing to be specially compiled for it.
+
 ### Skeletons
 
 ####[workbench-example-app](https://github.com/lihaoyi/workbench-example-app)
