@@ -12,11 +12,21 @@ Scala.js compiles Scala code to JavaScript, allowing you to write your web appli
 
 ## Get started
 
+<span><a href="{{ BASE_PATH }}/doc/tutorial.html" class="btn btn-large btn-success">Start the Tutorial</a></span>
+&nbsp;&nbsp;&nbsp;
+<span><a href="http://www.scala-js-fiddle.com/" class="btn btn-large btn-success">Try it in the Browser</a></span>
+
 The easiest way to get started is to follow our [tutorial](./doc/tutorial.html). You can also fork the
 [bootstrapping skeleton](https://github.com/sjrd/scala-js-example-app)
 and follow the instructions in its readme or [try it out in the browser](http://www.scala-js-fiddle.com/).
 
 We also have a [standalone distribution](./downloads.html) that doesn't require SBT.
+
+<p><b><span style="color: red">Important notice!</span></b> Scala.js is still <i>experimental</i>!
+Although this is a project of LAMP/EPFL for which we will continue to provide
+best-effort improvements and bug fixes, it is <i>not</i> supported by Typesafe,
+and not part of any of their support contracts. You have been warned!</p>
+
 
 ## Noteworthy features
 
@@ -49,71 +59,71 @@ Presentations:
 
 ### Libraries
 
-This is a collection of libraries that work with Scala.js. Some of them, like `scala-js-dom` and `scala-js-jquery`, are specific to Javascript and don't make sense on the JVM. Some others are pure-macro projects, and thus work with Scala.js out of the box. Most of them, though, started off as Scala-JVM projects and were ported over, and thus have separate artifacts to run on each platforms. The SBT snippets given are for the version that runs on Scala.js.
+This is a collection of libraries that work with Scala.js. Some of them, like `scala-js-dom` and `scala-js-jquery`, are specific to Javascript and don't make sense on the JVM. Some others are such as `scala-async` are pure-macro projects, and thus work with Scala.js out of the box. Most of them, though, started off as Scala-JVM projects and were ported over, and thus have separate artifacts to run on each platforms. The SBT snippets given are for the version that runs on Scala.js.
 
 ####[scala-js-dom](https://github.com/scala-js/scala-js-dom)
-```scala
+{% highlight scala %}
 "org.scala-lang.modules.scalajs" %%% "scalajs-dom" % "0.6"
-```
+{% endhighlight %}
 Static types for the DOM API, by Li Haoyi
 
 ####[scala-js-jquery](https://github.com/scala-js/scala-js-jquery)
-```scala
+{% highlight scala %}
 "org.scala-lang.modules.scalajs" %%% "scalajs-jquery" % "0.6"
-```
+{% endhighlight %}
 Static types for jQuery, by Sébastien Doeraene
 
 ####[scala-js-react](https://github.com/japgolly/scalajs-react)
-```scala
+{% highlight scala %}
 "com.github.japgolly.scalajs-react" %%% "scalajs-react" % "0.2.0"
-```
+{% endhighlight %}
 Lifts Facebook's React library into Scala.js and endeavours to make it as type-safe and Scala-compatible as possible, By David Barri
 
 ####[scala-js-binding](https://github.com/antonkulaga/scala-js-binding)
-```scala
+{% highlight scala %}
 addSbtPlugin("me.lessis" % "bintray-sbt" % "0.1") // project/build.sbt
 resolvers += bintray.Opts.resolver.repo("denigma", "denigma-releases")
 libraryDependencies += "org.denigma" %%% "binding" % "0.4.4"
-```
+{% endhighlight %}
 
 A ScalaJS html binding library, by Anton Kulaga
 
 ####[Scalatags](https://github.com/lihaoyi/scalatags)
-```scala
+{% highlight scala %}
 "com.scalatags" %%% "scalatags" % "0.3.8"
-```
+{% endhighlight %}
 A HTML templating library/DSL that works on both Scala-JVM and Scala-JS, by Li Haoyi
 
 ####[Scala.Rx](https://github.com/lihaoyi/scala.rx)
-```scala
+{% highlight scala %}
 "com.scalarx" %%% "scalarx" % "0.2.5"
-```
+{% endhighlight %}
 A change-propagation/FRP library that runs on both Scala-JVM and Scala-JS, by Li Haoyi
 
 ####[uTest](https://github.com/lihaoyi/utest#%C2%B5test-011)
-```scala
+{% highlight scala %}
 addSbtPlugin("com.lihaoyi" % "utest-js-plugin" % "0.1.8") // project/build.sbt
 "com.lihaoyi" %%% "utest" % "0.1.8"
-```
+{% endhighlight %}
 
 A tiny, portable unit testing library that lets you run the same tests on both Scala-JVM and Scala-JS, by Li Haoyi
 
 ####[uPickle](https://github.com/lihaoyi/upickle)
-```scala
+{% highlight scala %}
 "com.lihaoyi" %%% "upickle" % "0.1.5"
-```
+{% endhighlight %}
 Statically-typed pickling (via typeclasses/macros) for both Scala-JVM and Scala-JS, by Li Haoyi
 
 ####[autowire](https://github.com/lihaoyi/autowire)
-```scala
+{% highlight scala %}
 "com.lihaoyi" %%% "autowire" % "0.1.0"
-```
+{% endhighlight %}
 Statically-typed Ajax calls and RPCs for both Scala-JVM and Scala-JS, by Li Haoyi
 
 ####[Scala.js Pickling](https://github.com/scala-js/scala-js-pickling)
-```scala
+{% highlight scala %}
 "org.scalajs" %%% "scalajs-pickling" % "0.3"
-```
+{% endhighlight %}
 A cross-compiling pickling (aka serialization) library for Scala.js and Scala
 with a common JSON-based format, by Sébastien Doeraene
 
@@ -122,24 +132,29 @@ with a common JSON-based format, by Sébastien Doeraene
 Reactive extensions (Rx) with back-pressure, atomic references and other multi-threading primitives cross-compiled to Scala.js, by Alexandru Nedelcu
  
 ####[Scalaz](https://github.com/japgolly/scalaz/tree/v7.1.0-RC1-js)
-```scala
+{% highlight scala %}
 "com.github.japgolly.fork.scalaz" %%% "scalaz-core" % "7.1.0-RC1"
-```
-Port of Scalaz to Scala.js, maintained by David Barri
+{% endhighlight %}
+Port of [Scalaz](https://github.com/scalaz/scalaz) to Scala.js, maintained by David Barri
 
+####[Monocle](https://github.com/japgolly/Monocle)
+{% highlight scala %}
+"com.github.japgolly.fork.monocle" %%% "monocle-core" % "0.4.0"
+{% endhighlight %}
+Port of [Monocle](https://github.com/julien-truffaut/Monocle) to Scala.js, maintained by David Barri
 ####[Shapeless](https://groups.google.com/forum/#!searchin/scala-js/shapeless/scala-js/5Sf2up0z3PU/9F9SYB0qHEcJ)
-```scala
+{% highlight scala %}
 resolvers += "bintray-alexander_myltsev" at "http://dl.bintray.com/content/alexander-myltsev/maven"
 libraryDependencies += "name.myltsev" %% "parboiled_sjs0.5" % "2.0.0" 
-```
+{% endhighlight %}
 
-Port of Shapeless to Scala.js, maintained by Alexander Myltsev
+Port of [Shapeless](https://github.com/milessabin/shapeless) to Scala.js, maintained by Alexander Myltsev
 
 ####[Scala-Async](https://github.com/scala/async)
 
-```scala
+{% highlight scala %}
 "org.scala-lang.modules" %% "scala-async" % "0.9.1"
-```
+{% endhighlight %}
 
 Scala-Async is a pure-macro project without any runtime dependencies. Thus it works with Scala.js out of the box, without needing to be specially compiled for it. 
  
@@ -172,7 +187,7 @@ A sbt plugin for Scala.js projects for live-reloading in the browser ([example a
 
 A sbt plugin for bundling of binary files so they can be accessed from the browser, by Li Haoyi
 
-#### Miscellaneous
+### Miscellaneous
 
 * [Port of the Dart benchmark harness](https://github.com/jonas/scala-js-benchmarks)
   by Jonas Fonseca
@@ -234,9 +249,4 @@ List of websites using Scala.js:
 * [Bug in node.js/v8](http://github.com/joyent/node/issues/7528) discovered by Scala.js through Scala test suite
 
 <a href="https://github.com/scala-js/scala-js-website"><img style="position: absolute; top: 0; right: 0; border: 0;" src="https://s3.amazonaws.com/github/ribbons/forkme_right_orange_ff7600.png" alt="Fork me on GitHub"></a>
-
-<p><b><span style="color: red">Important notice!</span></b> Scala.js is still <i>experimental</i>!
-Although this is a project of LAMP/EPFL for which we will continue to provide
-best-effort improvements and bug fixes, it is <i>not</i> supported by Typesafe,
-and not part of any of their support contracts. You have been warned!</p>
 
