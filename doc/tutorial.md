@@ -23,19 +23,25 @@ To setup Scala.js in a new sbt project, we need to do two things:
 
 Adding the Scala.js sbt plugin is a one-liner in `project/plugins.sbt` (all file names we write in this tutorial are relative to the project root):
 
-    addSbtPlugin("org.scala-lang.modules.scalajs" % "scalajs-sbt-plugin" % "{{ site.scalaJSVersion }}")
+{% highlight scala %}
+addSbtPlugin("org.scala-lang.modules.scalajs" % "scalajs-sbt-plugin" % "{{ site.scalaJSVersion }}")
+{% endhighlight %}
 
 We also setup basic project settings and Scala.js settings in the sbt build file (`build.sbt`, in the project root directory):
 
-    scalaJSSettings
+{% highlight scala %}
+scalaJSSettings
 
-    name := "Scala.js Tutorial"
+name := "Scala.js Tutorial"
 
-    scalaVersion := "2.11.1"
+scalaVersion := "2.11.1"
+{% endhighlight %}
 
 Last, we need a `project/build.properties` to specify the sbt version:
 
-    sbt.version=0.13.0
+{% highlight scala %}
+sbt.version=0.13.0
+{% endhighlight %}
 
 That is all we need to configure the build.
 
@@ -138,7 +144,9 @@ As the last step has shown, running JavaScript inside a HTML page is not particu
 
 To use the DOM, it is best to use the statically typed Scala.js DOM library. To add it to your sbt project, add the following line to your `build.sbt`:
 
+{% highlight scala %}
     libraryDependencies += "org.scala-lang.modules.scalajs" %%% "scalajs-dom" % "0.6"
+{% endhighlight %}
 
 sbt-savvy folks will notice the `%%%` instead of the usual `%%`. It means we are using a Scala.js library and not a normal Scala library. Have a look at the [Depending on Libraries](./sbt/depending.html) guide for details. Don't forget to reload the build file if sbt is still running:
 
@@ -239,7 +247,9 @@ Larger web applications have a tendency to set up reactions to events in JavaScr
 
 Just like for the DOM, there is a typed library for jQuery, especially packaged for Scala.js. Replace the `libraryDependencies += ...` line in your `build.sbt` by:
 
+{% highlight scala %}
     libraryDependencies += "org.scala-lang.modules.scalajs" %%% "scalajs-jquery" % "0.6"
+{% endhighlight %}
 
 Since we won't be using the DOM directly, we don't need the old library anymore. Note that the jQuery library internally depends on the DOM, but we don't have to care about this. sbt takes care of it automatically.
 
@@ -283,7 +293,9 @@ This can easily become very cumbersome, if you depend on multiple libraries. The
 
 In your `build.sbt`, set:
 
+{% highlight scala %}
     skip in ScalaJSKeys.packageJSDependencies := false
+{% endhighlight %}
 
 As an alternative to prefixing with `ScalaJSKeys`, you may import all its members (`import ScalaJSKeys._`). Most of the documentation omits the `ScalaJSKeys` prefix for brevity.
 
@@ -372,13 +384,16 @@ This even shows you the temporary webpage the plugin generates to launch Phantom
 
 According to the [explanation in uTest's readme](http://github.com/lihaoyi/utest#scalajs-and-sbt), we add the following to our `build.sbt`:
 
-    libraryDependencies += "com.lihaoyi" %%% "utest" % "0.1.7" % "test"
-
-    utest.jsrunner.Plugin.utestJsSettings
+{% highlight scala %}
+libraryDependencies += "com.lihaoyi" %%% "utest" % "0.1.7" % "test"
+utest.jsrunner.Plugin.utestJsSettings
+{% endhighlight %}
 
 And the following to our `project/plugins.sbt`:
 
-    addSbtPlugin("com.lihaoyi" % "utest-js-plugin" % "0.1.7")
+{% highlight scala %}
+addSbtPlugin("com.lihaoyi" % "utest-js-plugin" % "0.1.7")
+{% endhighlight %}
 
 We are now ready to add a first simple test suite (`src/test/scala/tutorial/webapp/TutorialTest.scala`):
 
@@ -493,9 +508,11 @@ Note that this can take a while on a larger project (tens of seconds) we do ther
 
 Before creating another HTML file which includes the fully optimized JavaScript, we are going to introduce another feature of the sbt plugin. Since the sbt plugin is able to detect the `JSApp` object of the application, there is no need to repeat this in the HTML file. If you add the following setting to your `build.sbt`, sbt will create a `scala-js-tutorial-launcher.js` file which calls the main method:
 
+{% highlight scala %}
     ScalaJSKeys.persistLauncher in Compile := true
 
     ScalaJSKeys.persistLauncher in Test := false
+{% endhighlight %}
 
 We set `persistLauncher` to false for testing, since we do not have an application to run. In our HTML page, we can now include this file instead of the manual launcher:
 
