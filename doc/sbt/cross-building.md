@@ -31,12 +31,14 @@ Starting from sbt 0.13, you can write a multi-project build in a `.sbt` file. Th
 
     lazy val fooJS = project.in(file("foo-js")).settings(scalaJSSettings: _*).settings(
       name := "foo",
-      unmanagedSourceDirectories in Compile += root.base / "foo-shared" / "src" / "main" / "scala"
+      unmanagedSourceDirectories in Compile +=
+        (baseDirectory in root).value / "foo-shared" / "src" / "main" / "scala"
     )
 
     lazy val fooJVM = project.in(file("foo-jvm")).settings(
       name := "foo",
-      unmanagedSourceDirectories in Compile += root.base / "foo-shared" / "src" / "main" / "scala"
+      unmanagedSourceDirectories in Compile +=
+        (baseDirectory in root).value / "foo-shared" / "src" / "main" / "scala"
     )
 
 You now have separate projects to compile towards Scala.js and Scala JVM. Note the same name given to both projects, this allows them to be published with corresponding artifact names:
