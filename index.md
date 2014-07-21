@@ -204,6 +204,8 @@ Want to contribute to Scala.js? Check out the
 
 List of websites using Scala.js:
 
+* July 2014
+  - [Play and Scala.js Showcase](https://github.com/hussachai/play-scalajs-showcase), by Hussachai Puripunpinyo
 * May 2014
   - [Papa-Carlo Incremental Parser Demo](http://lakhin.com/projects/papa-carlo/demo/), by Eliah-Lakhin
 * April 2014
