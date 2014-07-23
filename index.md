@@ -111,13 +111,13 @@ A tiny, portable unit testing library that lets you run the same tests on both S
 
 ####[uPickle](https://github.com/lihaoyi/upickle)
 {% highlight scala %}
-"com.lihaoyi" %%% "upickle" % "0.1.5"
+"com.lihaoyi" %%% "upickle" % "0.2.0"
 {% endhighlight %}
 Statically-typed pickling (via typeclasses/macros) for both Scala-JVM and Scala-JS, by Li Haoyi
 
 ####[autowire](https://github.com/lihaoyi/autowire)
 {% highlight scala %}
-"com.lihaoyi" %%% "autowire" % "0.1.0"
+"com.lihaoyi" %%% "autowire" % "0.1.2"
 {% endhighlight %}
 Statically-typed Ajax calls and RPCs for both Scala-JVM and Scala-JS, by Li Haoyi
 
