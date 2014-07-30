@@ -27,7 +27,7 @@ For changes introduced in 0.5.0, how to upgrade, getting started etc. have a loo
 #### Performance improvements
 
 Scala.js 0.5.3 is the first release to include an actual *optimizer* specific to Scala.js.
-This optimizer runs as part of the `fastOptJS` task, and consistently brings speedups to all applications from 1.3x to 3.3x, along with code size reduction (15 % for the fastOpt version and 6 % for the fullOpt on our demo application) and less memory usage.
+This optimizer runs as part of the `fastOptJS` task, and consistently brings speedups to all applications from 1.3x to 3.3x ([Rough benchmarks](https://docs.google.com/document/d/17b18-oLJEIADixkSPR2mYof13ny1nGTtEVfsdiM7AGE/edit)), along with code size reduction (15 % for the fastOpt version and 6 % for the fullOpt on our demo application) and less memory usage.
 Because it runs at link time, the optimizer also applies to libraries you depend on that have been compiled with Scala.js 0.5.0 to 0.5.2 (although a few optimizations won't be as effective).
 
 The optimizer is *incremental* in the same sense as the incremental compilation of sbt: on each run, it will reoptimize only the parts of your application that need reoptimizing.
