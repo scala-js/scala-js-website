@@ -25,7 +25,7 @@ To produce a proper JavaScript file from your code, you need to call the linker:
 
     sbt> fastOptJS
 
-This will perform a coarse dead-code elimination and write all remaining code to a single JavaScript file. You can now use this JavaScript file in your HTML page or in whatever way you like. The resulting file in the target folder will have the suffix `-fastopt.js`.
+This will perform fast Scala.js-specific optimizations and write the resulting code to a single JavaScript file. You can now use this JavaScript file in your HTML page or in whatever way you like. The resulting file in the target folder will have the suffix `-fastopt.js`.
 
 If you want to run this code, you can tell sbt to run after the linking stage:
 
@@ -33,15 +33,35 @@ If you want to run this code, you can tell sbt to run after the linking stage:
 
 This will invoke an external JavaScript interpreter and pass the generated file to it. Depending on your `requiresDOM` setting, it will either invoke Node.js or PhantomJS. *You need to install these separately* and make them available on the execution path (i.e. as shell commands `node` and `phantomjs`).
 
-Note that running in the `fastOptStage` is often faster than running just after compilation since the external virtual machines are much faster. We recommend you to operate in the `fastOptStage` in your development cycle.
+Note that running in the `fastOptStage` is often faster than running just after compilation because
+
+a. As their name implies, fast optimizations are *really* fast (starting from the second run in an sbt session),
+b. External virtual machines are much faster than Rhino, and
+c. The code is, well, optimized, so faster itself.
+
+We recommend you to operate in the `fastOptStage` in your development cycle.
+
+#### Disabling the optimizations
+
+If, for some reason, you want to disable the optimizations of the fast-optimizer (while still enjoying its other advantages: one small .js file, running an external VM), you can do so with the following sbt setting:
+
+{% highlight scala %}
+ScalaJSKeys.inliningMode := scala.scalajs.sbtplugin.InliningMode.Off
+{% endhighlight %}
+
+Alternatively, you can force the optimizer to run in batch mode (non incremental) on every run with the following setting:
+
+{% highlight scala %}
+ScalaJSKeys.inliningMode := scala.scalajs.sbtplugin.InliningMode.Batch
+{% endhighlight %}
 
 ## Full-Optimize
 
-To make the resulting JavaScript even smaller, the sbt plugin integrates the Google Closure Compiler to minimize code even further. You can optimize by issuing:
+To make the resulting JavaScript even smaller (and usually faster as well), the sbt plugin integrates the Google Closure Compiler under the so-called full-optimizations. You can use them by issuing:
 
     sbt> fullOptJS
 
-This will call the Google Closure Compiler on the result of the linking stage. Note that this can take a while and is therefore not recommended in the development cycle. The resulting file in the target folder will have the suffix `-opt.js`.
+This will call the Google Closure Compiler on the result of the fast-optimizations stage. Note that this can take a while and is therefore not recommended in the development cycle. The resulting file in the target folder will have the suffix `-opt.js`.
 
 Equivalent to the `fastOptStage` you can run your JavaScript code after the `fullOptStage`:
 

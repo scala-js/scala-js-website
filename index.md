@@ -53,7 +53,7 @@ and not part of any of their support contracts. You have been warned!</p>
 
 Presentations:
 
-*   [Scala.js at Scaladays 2014](http://www.parleys.com/play/53a7d2cbe4b0543940d9e555), by Sébastien Doeraene 
+*   [Scala.js at Scaladays 2014](http://www.parleys.com/play/53a7d2cbe4b0543940d9e555), by Sébastien Doeraene
 *   [Live Coding Scala.js at SF Scala 2014](http://vimeo.com/87845442) by Li Haoyi
 *   [Live-coding with Scala.js at Scala eXchange 2013](http://skillsmatter.com/podcast/scala/scala-js-write-in-scala-for-the-browser-4567)
 *   [Presentation of Scala.js at Scala Days 2013](http://www.parleys.com/play/51c380bfe4b0ed8770356866) (older and somewhat obsolete)
@@ -131,7 +131,7 @@ with a common JSON-based format, by Sébastien Doeraene
 ####[Monifu](https://github.com/alexandru/monifu)
 
 Reactive extensions (Rx) with back-pressure, atomic references and other multi-threading primitives cross-compiled to Scala.js, by Alexandru Nedelcu
- 
+
 ####[Scalaz](https://github.com/japgolly/scalaz/tree/v7.1.0-RC1-js)
 {% highlight scala %}
 "com.github.japgolly.fork.scalaz" %%% "scalaz-core" % "7.1.0-RC1"
@@ -146,7 +146,7 @@ Port of [Monocle](https://github.com/julien-truffaut/Monocle) to Scala.js, maint
 ####[Shapeless](https://groups.google.com/forum/#!searchin/scala-js/shapeless/scala-js/5Sf2up0z3PU/9F9SYB0qHEcJ)
 {% highlight scala %}
 resolvers += "bintray-alexander_myltsev" at "http://dl.bintray.com/content/alexander-myltsev/maven"
-libraryDependencies += "name.myltsev" %% "parboiled_sjs0.5" % "2.0.0" 
+libraryDependencies += "name.myltsev" %% "parboiled_sjs0.5" % "2.0.0"
 {% endhighlight %}
 
 Port of [Shapeless](https://github.com/milessabin/shapeless) to Scala.js, maintained by Alexander Myltsev
@@ -157,9 +157,9 @@ Port of [Shapeless](https://github.com/milessabin/shapeless) to Scala.js, mainta
 "org.scala-lang.modules" %% "scala-async" % "0.9.1"
 {% endhighlight %}
 
-Scala-Async is a pure-macro project without any runtime dependencies. Thus it works with Scala.js out of the box, without needing to be specially compiled for it. 
- 
- 
+Scala-Async is a pure-macro project without any runtime dependencies. Thus it works with Scala.js out of the box, without needing to be specially compiled for it.
+
+
 ####Scalaxy [Loops](https://github.com/ochafik/Scalaxy/tree/master/Loops) and [Streams](https://github.com/ochafik/Scalaxy/tree/master/Streams)
 
 Another pure-macro project, Scalaxy loops and streams work great with Scala.js without needing to be specially compiled for it.
@@ -235,6 +235,7 @@ List of websites using Scala.js:
 
 ## Version History
 
+- [0.5.3](/news/2014/07/30/announcing-scalajs-0.5.3/)
 - [0.5.2](/news/2014/07/09/announcing-scalajs-0.5.2/)
 - [0.5.1](/news/2014/06/30/announcing-scalajs-0.5.1/)
 - [0.5.0](/news/2014/06/13/announcing-scalajs-0.5.0/)

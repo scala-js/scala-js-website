@@ -34,7 +34,7 @@ scalaJSSettings
 
 name := "Scala.js Tutorial"
 
-scalaVersion := "2.11.1"
+scalaVersion := "2.11.2"
 {% endhighlight %}
 
 Last, we need a `project/build.properties` to specify the sbt version:
@@ -49,7 +49,7 @@ If at this point you prefer to use Eclipse or IDEA as your IDE, you may use [sbt
 
 #### Alternative versions
 
-You may instead use 2.10.2, 2.10.3, 2.10.4 or 2.11.0 for `scalaVersion` if you so wish. Similarly, any 0.13.x version of sbt should work without itch, for example 0.13.5.
+You may instead use 2.10.2, 2.10.3, 2.10.4, 2.11.0 or 2.11.1 for `scalaVersion` if you so wish. Similarly, any 0.13.x version of sbt should work without itch, for example 0.13.5.
 
 ### HelloWorld application
 
@@ -385,14 +385,13 @@ This even shows you the temporary webpage the plugin generates to launch Phantom
 According to the [explanation in uTest's readme](http://github.com/lihaoyi/utest#scalajs-and-sbt), we add the following to our `build.sbt`:
 
 {% highlight scala %}
-libraryDependencies += "com.lihaoyi" %%% "utest" % "0.1.7" % "test"
 utest.jsrunner.Plugin.utestJsSettings
 {% endhighlight %}
 
 And the following to our `project/plugins.sbt`:
 
 {% highlight scala %}
-addSbtPlugin("com.lihaoyi" % "utest-js-plugin" % "0.1.7")
+addSbtPlugin("com.lihaoyi" % "utest-js-plugin" % "0.1.8")
 {% endhighlight %}
 
 We are now ready to add a first simple test suite (`src/test/scala/tutorial/webapp/TutorialTest.scala`):

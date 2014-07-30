@@ -7,7 +7,9 @@ title: Depending on Libraries
 
 To be able to use a Scala library in Scala.js, it has to be separately compiled for Scala.js. You then can add it to your library dependencies as follows:
 
-    libraryDependencies += "org.scala-lang.modules.scalajs" %%% "scalajs-dom" % "0.5"
+{% highlight scala %}
+libraryDependencies += "org.scala-lang.modules.scalajs" %%% "scalajs-dom" % "0.6"
+{% endhighlight %}
 
 Note the `%%%` (instead of the usual `%%`) which will add the current Scala.js version to the artifact name. This allows to
 
@@ -20,23 +22,29 @@ Some Scala.js core libraries (such as the Scala.js library itself) do not need t
 
 Thanks to [WebJars](http://www.webjars.org/), you can easily fetch a JavaScript library like so:
 
-    libraryDependencies += "org.webjars" % "jquery" % "1.10.2"
+{% highlight scala %}
+libraryDependencies += "org.webjars" % "jquery" % "1.10.2"
+{% endhighlight %}
 
 This will fetch the required JAR containing jQuery. However, it will not include it once you run your JavaScript code, since there is no class-loading process for JavaScript.
 
 The Scala.js sbt plugin has `jsDependencies` for this purpose. You can write:
 
-    ScalaJSKeys.jsDependencies += "org.webjars" % "jquery" % "1.10.2" / "jquery.js"
+{% highlight scala %}
+ScalaJSKeys.jsDependencies += "org.webjars" % "jquery" % "1.10.2" / "jquery.js"
+{% endhighlight %}
 
 or, with `import ScalaJSKeys._`:
 
-    jsDependencies += "org.webjars" % "jquery" % "1.10.2" / "jquery.js"
+{% highlight scala %}
+jsDependencies += "org.webjars" % "jquery" % "1.10.2" / "jquery.js"
+{% endhighlight %}
 
 This will make your project depend on the respective WebJar and include a file named `jquery.js` in the said WebJar when your project is run or tested. We are trying to make the semantics of "include" to be as close as possible to writing:
 
-    <script type="text/javascript" src="..."></script>
-
-However, sometimes this doesn't work when running with Node.js. If this happens to you, change to PhantomJS (see below on how to do that).
+{% highlight html %}
+<script type="text/javascript" src="..."></script>
+{% endhighlight %}
 
 All `jsDependencies` and associated metadata (e.g. for ordering) are persisted in a file (called `JS_DEPENDENCIES`) and shipped with the artifact your project publishes. For example, if you depend on the `jasmine-test-framework` package for Scala.js (a thin wrapper around Jasmine), you do not need to explicitly depend or include `jasmine.js`; this mechanism does it for you.
 
@@ -44,13 +52,27 @@ All `jsDependencies` and associated metadata (e.g. for ordering) are persisted i
 
 You may scope `jsDependencies` on a given configuration, just like for normal `libraryDependencies`:
 
-    jsDependencies += "org.webjars" % "jquery" % "1.10.2" / "jquery.js" % "test"
+{% highlight scala %}
+jsDependencies += "org.webjars" % "jquery" % "1.10.2" / "jquery.js" % "test"
+{% endhighlight %}
+
+### CommonJS name
+
+Some (most?) JavaScript libraries try to adapt the best they can to the environment in which they are being executed.
+When they do so, you have to specify explicitly the name under which they are exported in a CommonJS environment (such as Node.js), otherwise they won't work when executed in Node.js.
+This is the purpose of the `commonJSName` directive, to be used like this:
+
+{% highlight scala %}
+jsDependencies += "org.webjars" % "mustachejs" % "0.8.2" / "mustache.js" commonJSName "Mustache"
+{% endhighlight %}
 
 ### Dependency Ordering
 
 Since JavaScript does not have a class loading mechanism, the order in which libraries are loaded may matter. If this is the case, you can specify a library's dependencies like so:
 
-    jsDependencies += "org.webjars" % "jasmine" % "1.3.1" / "jasmine-html.js" dependsOn "jasmine.js"
+{% highlight scala %}
+jsDependencies += "org.webjars" % "jasmine" % "1.3.1" / "jasmine-html.js" dependsOn "jasmine.js"
+{% endhighlight %}
 
 Note that the dependee must be declared as explicit dependency elsewhere, but not necessarily in this project (for example in a project the current project depends on).
 
@@ -58,7 +80,9 @@ Note that the dependee must be declared as explicit dependency elsewhere, but no
 
 If you need to include JavaScript files which are provided in the resources of your project, use:
 
-    jsDependencies += ProvidedJS / "myJSLibrary.js"
+{% highlight scala %}
+jsDependencies += ProvidedJS / "myJSLibrary.js"
+{% endhighlight %}
 
 This will look for `myJSLibrary.js` in the resources and include it. It is an error if it doesn't exist. You may use ordering and scoping if you need.
 
@@ -66,6 +90,8 @@ This will look for `myJSLibrary.js` in the resources and include it. It is an er
 
 If you want all JavaScript dependencies to be concatenated to a single file (for easy inclusion into a HTML file for example), you can set:
 
-    skip in ScalaJSKeys.packageJSDependencies := false
+{% highlight scala %}
+skip in ScalaJSKeys.packageJSDependencies := false
+{% endhighlight %}
 
 in your project settings. The resulting file in the target folder will have the suffix `-jsdeps.js`.
