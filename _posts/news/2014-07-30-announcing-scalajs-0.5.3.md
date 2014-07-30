@@ -54,7 +54,9 @@ The following classes from the Java standard library are now available:
 * `InputStream`, `FilterInputStream`, `DataInput`, `ByteArrayInputStream`
 * `scala.scalajs.js.typearray.ArrayBufferInputStream`, an implementation of `InputStream` reading a JavaScript `TypedArray`
 
-Additional Java classes are also available in the `javalib-ex` package.
+These classes are automatically available in all your Scala.js projects.
+
+Other, additional Java classes are also available in the `javalib-ex` package.
 These classes require some features of ECMAScript 6 to be implemented by the JavaScript engine, and must therefore be enabled explicitly with this dependency:
 
 {% highlight scala %}
