@@ -76,9 +76,17 @@ Static types for jQuery, by Sébastien Doeraene
 
 ####[scala-js-react](https://github.com/japgolly/scalajs-react)
 {% highlight scala %}
-"com.github.japgolly.scalajs-react" %%% "scalajs-react" % "0.2.0"
+// Minimal usage
+libraryDependencies += "com.github.japgolly.scalajs-react" %%% "core" % "0.4.0"
+
+// Test support including ReactTestUtils
+libraryDependencies += "com.github.japgolly.scalajs-react" %%% "test" % "0.4.0" % "test"
+
+// Scalaz support
+libraryDependencies += "com.github.japgolly.scalajs-react" %%% "ext-scalaz70" % "0.4.0" // or
+libraryDependencies += "com.github.japgolly.scalajs-react" %%% "ext-scalaz71" % "0.4.0"
 {% endhighlight %}
-Lifts Facebook's React library into Scala.js and endeavours to make it as type-safe and Scala-compatible as possible, By David Barri
+Lifts Facebook's React library into Scala.js and endeavours to make it as type-safe and Scala-compatible as possible, by David Barri
 
 ####[scala-js-binding](https://github.com/antonkulaga/scala-js-binding)
 {% highlight scala %}
@@ -132,15 +140,15 @@ with a common JSON-based format, by Sébastien Doeraene
 
 Reactive extensions (Rx) with back-pressure, atomic references and other multi-threading primitives cross-compiled to Scala.js, by Alexandru Nedelcu
 
-####[Scalaz](https://github.com/japgolly/scalaz/tree/v7.1.0-RC1-js)
+####[Scalaz](https://github.com/japgolly/scalaz)
 {% highlight scala %}
-"com.github.japgolly.fork.scalaz" %%% "scalaz-core" % "7.1.0-RC1"
+"com.github.japgolly.fork.scalaz" %%% "scalaz-core" % "7.1.0"
 {% endhighlight %}
 Port of [Scalaz](https://github.com/scalaz/scalaz) to Scala.js, maintained by David Barri
 
 ####[Monocle](https://github.com/japgolly/Monocle)
 {% highlight scala %}
-"com.github.japgolly.fork.monocle" %%% "monocle-core" % "0.4.0"
+"com.github.japgolly.fork.monocle" %%% "monocle-core" % "0.5.0"
 {% endhighlight %}
 Port of [Monocle](https://github.com/julien-truffaut/Monocle) to Scala.js, maintained by David Barri
 ####[Shapeless](https://groups.google.com/forum/#!searchin/scala-js/shapeless/scala-js/5Sf2up0z3PU/9F9SYB0qHEcJ)
