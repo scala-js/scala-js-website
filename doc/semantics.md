@@ -11,7 +11,7 @@ a few language semantics differences exist.
 ## Numbers and characters
 
 Numbers and characters have the same semantics as on the JVM
-(including overflow and full 64-bit Longs) with the following three
+(including overflow and full 64-bit Longs) with the following four
 exceptions. For information about how Scala numeric types map to
 JavaScript numeric types, have a look at the
 [interoparability guide](./js-interoperability.html).
@@ -50,11 +50,32 @@ type they were created with. The following are examples:
 - 32768 (`> Short.MaxValue`) matches `Int`, `Float`, `Double`
 - 2147483648 (`> Int.MaxValue`) matches `Float`, `Double`
 - 1.2 matches `Float`, `Double`
-        
+
 As a consequence, the following apparent subtyping relationship holds:
 
     Byte <:< Short <:< Int <:< Float =:= Double
-    
+
+### toString for integral Floats and Doubles
+Calling `toString` on a Float or a Double that holds an integral
+value, will not append ".0" to that value:
+
+{% highlight scala %}
+println(1.0)
+// Scala:    1.0
+// Scala.js: 1
+{% endhighlight %}
+
+This is due to how numeric values are represented at runtime in
+Scala.js. Use a formatting interpolator if you always want to show
+decimals:
+
+{% highlight scala %}
+val x = 1.0
+println(f"$x%.1f")
+// Scala:    1.0
+// Scala.js: 1.0
+{% endhighlight %}
+
 ## Unit
 `scala.Unit` is represented using JavaScript's `undefined`. Therefore,
 calling `toString()` on `Unit` will return `undefined` rather than
