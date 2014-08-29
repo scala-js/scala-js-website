@@ -53,3 +53,68 @@ JavaScript code.
     </tr>
   </tbody>
 </table>
+
+On the other hand, some JavaScript (collection) types have similar types in Scala. Instead of mapping them directly, Scala.js provides conversions between them. We show with a couple of snippets how you can convert from JavaScript to Scala types and back. Please refer to the [Scaladocs]({{ BASE_PATH }}/doc/index.html#api) for details.
+
+*** js.Array[T] <--> mutable.Seq[T] ***
+
+{% highlight scala %}
+import scala.scalajs.js
+
+val jsArr = js.Array(1, 2, 3)
+
+// Scala style operations on js.Array (returns a js.Array)
+val x: js.Array[Int] = jsArr.takeWhile(_ < 3)
+
+// Use a js.Array as a Scala mutable.Seq
+val y: mutable.Seq[Int] = jsArr
+
+// toArray (from js.ArrayOps) -- Copy into scala.Array
+val z: scala.Array[Int] = jsArr.toArray
+
+import js.JSConverters._
+
+val scSeq = Seq(1, 2, 3)
+
+// Seq to js.Array -- Copy to js.Array
+val jsArray: js.Array[Int] = scSeq.toJSArray
+{% endhighlight %}
+
+*** js.Dictionary[T] <--> mutable.Map[String, T] ***
+
+{% highlight scala %}
+import scala.scalajs.js
+
+val jsDict = js.Dictionary("a" -> 1, "b" -> 2)
+
+// Scala style operations on js.Dictionary (returns mutable.Map)
+val x: mutable.Map[String, Int] = jsDict.mapValues(_ * 2)
+
+// Use a js.Dictionary as Scala mutable.Map
+val y: mutable.Map[String, Int] = jsDict
+
+import js.JSConverters._
+
+val scMap = Map("a" -> 1, "b" -> 2)
+
+// Map to js.Dictionary -- Copy to js.Dictionary
+val jsDictionary: js.Dictionary[Int] = scMap.toJSDictionary
+{% endhighlight %}
+
+*** js.UndefOr[T] <--> Option[T] ***
+
+{% highlight scala %}
+import scala.scalajs.js
+
+val jsUndefOr: js.UndefOr[Int] = 1
+
+// Convert to scala.Option
+val x: Option[Int] = jsUndefOr.toOption
+
+import js.JSConverters._
+
+val opt = Some(1)
+
+// Convert to js.Undefined
+val y: js.UndefOr[Int] = opt.orUndefined
+{% endhighlight %}

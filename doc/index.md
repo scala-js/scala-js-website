@@ -25,7 +25,7 @@ Alternatively, create a project with *custom naming* by using this [giter8 templ
   * [Cross-Building](./sbt/cross-building.html)
 * [Scala.js Cookbook](./cookbook/)
 
-## API
+## <a name="api"></a> API
 
 Generated Scaladocs are available here:
 
