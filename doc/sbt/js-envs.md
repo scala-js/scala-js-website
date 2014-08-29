@@ -16,6 +16,23 @@ For example, to switch to PhantomJS, you can set:
 
 We'd like to stress here again, that you need to separately install Node.js and PhantomJS if you would like to use these environments.
 
+## <a name="phantomjs-no-auto-terminate"></a> Disabling auto-termination of PhantomJS
+
+By default, the PhantomJS interpreter terminates itself as soon as the `main()` method returns.
+This may not be what you want, if for example you register time-outs or use WebSockets.
+You can disable this behavior with the following setting:
+
+{% highlight scala %}
+ScalaJSKeys.postLinkJSEnv := new scala.scalajs.sbtplugin.env.phantomjs.PhantomJSEnv(
+    autoExit = false)
+{% endhighlight %}
+
+You can terminate the interpreter from your Scala code with
+
+{% highlight scala %}
+System.exit(0)
+{% endhighlight %}
+
 ## <a name="phantomjs-arguments"></a> Passing arguments to PhantomJS
 
 You can pass command-line arguments to the PhantomJS interpreter like this:
