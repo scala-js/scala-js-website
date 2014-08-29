@@ -342,14 +342,16 @@ Before we start writing tests which we will be able to run through the sbt conso
     > run
     [info] Running tutorial.webapp.TutorialApp
     org.mozilla.javascript.EcmaError: ReferenceError: "window" is not defined. (/home/ts/.ivy2/cache/org.webjars/jquery/jars/jquery-1.10.2.jar#META-INF/resources/webjars/jquery/1.10.2/jquery.js#14)
-	(...)
+    (...)
     [trace] Stack trace suppressed: run last compile:run for the full output.
     [error] (compile:run) Exception while running JS code: ReferenceError: "window" is not defined. (/home/ts/.ivy2/cache/org.webjars/jquery/jars/jquery-1.10.2.jar#META-INF/resources/webjars/jquery/1.10.2/jquery.js#14)
     [error] (...)
 
 What basically happens here, is that jQuery (yes, it is included automatically) tries to access the `window` object of the DOM, which doesn't exist by default in the Rhino runner. To make the DOM available in Rhino, add the following to your `build.sbt`:
 
-    ScalaJSKeys.requiresDOM := true
+{% highlight scala %}
+ScalaJSKeys.jsDependencies += scala.scalajs.sbtplugin.RuntimeDOM
+{% endhighlight %}
 
 After reloading, you can invoke `run` successfully:
 
@@ -357,11 +359,13 @@ After reloading, you can invoke `run` successfully:
     [info] Running tutorial.webapp.TutorialApp
     [success] (...)
 
+Just like other library dependencies, this setting applies transitively: if you depend on a library that depends on the DOM, the you depend on the DOM as well.
+
 ### Running with Node.js or PhantomJS
 
 This step is optional and requires installing PhantomJS. You may skip it if you like.
 
-You can run your Scala.js code after the fast-optimization stage using [Node.js](http://nodejs.org/) or [PhantomJS](http://phantomjs.org/). The sbt plugin defaults to Node.js and only runs PhantomJS if `requiresDOM` is set to true. Note that you need to install Node.js and/or PhantomJS separately for this to work (also see the note about running [Node.js on Ubuntu](./sbt/js-envs.html#node-on-ubuntu)).
+You can run your Scala.js code after the fast-optimization stage using [Node.js](http://nodejs.org/) or [PhantomJS](http://phantomjs.org/). The sbt plugin defaults to Node.js and only runs PhantomJS if the project depends on `RuntimeDOM`. Note that you need to install Node.js and/or PhantomJS separately for this to work (also see the note about running [Node.js on Ubuntu](./sbt/js-envs.html#node-on-ubuntu)).
 
 After installing [PhantomJS](http://phantomjs.org/), you can invoke:
 
@@ -391,7 +395,7 @@ utest.jsrunner.Plugin.utestJsSettings
 And the following to our `project/plugins.sbt`:
 
 {% highlight scala %}
-addSbtPlugin("com.lihaoyi" % "utest-js-plugin" % "0.1.8")
+addSbtPlugin("com.lihaoyi" % "utest-js-plugin" % "0.2.3")
 {% endhighlight %}
 
 We are now ready to add a first simple test suite (`src/test/scala/tutorial/webapp/TutorialTest.scala`):

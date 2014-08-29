@@ -18,6 +18,8 @@ Note the `%%%` (instead of the usual `%%`) which will add the current Scala.js v
 
 Some Scala.js core libraries (such as the Scala.js library itself) do not need the `%%%` since their version number *is* the Scala.js version number itself.
 
+Note that you can also use `%%%` in a Scala/JVM project, in which case it will be the same as `%%`. This allows you to use the same `libraryDependencies` settings when cross compiling Scala/JVM and Scala.js.
+
 ## Depending on JavaScript libraries
 
 Thanks to [WebJars](http://www.webjars.org/), you can easily fetch a JavaScript library like so:

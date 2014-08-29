@@ -25,11 +25,17 @@ Alternatively, create a project with *custom naming* by using this [giter8 templ
   * [Cross-Building](./sbt/cross-building.html)
 * [Scala.js Cookbook](./cookbook/)
 
-## API
+## <a name="api"></a> API
 
 Generated Scaladocs are available here:
 
 ### Scala.js
+
+#### Scala.js 0.5.4
+* [0.5.4 scalajs-library]({{ BASE_PATH }}/api/scalajs-library/0.5.4/#scala.scalajs.js.package)
+* [0.5.4 scalajs-tools]({{ BASE_PATH }}/api/scalajs-tools/0.5.4/) ([Scala.js version]({{ BASE_PATH }}/api/scalajs-tools/0.5.4/))
+* [0.5.4 scalajs-test-bridge]({{ BASE_PATH }}/api/scalajs-test-bridge/0.5.4/)
+* [0.5.4 scalajs-jasmine-test-framework]({{ BASE_PATH }}/api/scalajs-jasmine-test-framework/0.5.4/)
 
 #### Scala.js 0.5.3
 * [0.5.3 scalajs-library]({{ BASE_PATH }}/api/scalajs-library/0.5.3/#scala.scalajs.js.package)

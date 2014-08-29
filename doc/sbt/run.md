@@ -69,6 +69,12 @@ Equivalent to the `fastOptStage` you can run your JavaScript code after the `ful
 
 The same stage commands can be applied to the command `test` (have a look at the [bootstrapping skeleton](https://github.com/sjrd/scala-js-example-app) for a testing example).
 
+Since 0.5.4, Scala.js directly passes ASTs to the Google Closure Compiler. In case this fails and you experience regression, you may fallback to the old behavior (write file, read file) by setting `directFullOptJS` to false:
+
+{% highlight scala %}
+ScalaJSKeys.directFullOptJS := false
+{% endhighlight %}
+
 ## Writing Launcher Code
 
 If you want the code which is used to run the main class to be written to a file, you can set `ScalaJSKeys.persistLauncher := true`. Note that this will require your main class to be either unique or explicitly set (`mainClass := Some(<name>)`). The resulting file in the target folder will have the suffix `-launcher.js`.
