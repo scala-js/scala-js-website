@@ -16,6 +16,15 @@ For example, to switch to PhantomJS, you can set:
 
 We'd like to stress here again, that you need to separately install Node.js and PhantomJS if you would like to use these environments.
 
+## <a name="phantomjs-arguments"></a> Passing arguments to PhantomJS
+
+You can pass command-line arguments to the PhantomJS interpreter like this:
+
+{% highlight scala %}
+ScalaJSKeys.postLinkJSEnv := new scala.scalajs.sbtplugin.env.phantomjs.PhantomJSEnv(
+    Seq("arg1", "arg2"))
+{% endhighlight %}
+
 ## <a name="node-on-ubuntu"></a> Node.js on Ubuntu
 
 On Ubuntu, the Node.js command from the [nodejs package](http://packages.ubuntu.com/utopic/nodejs) is called `nodejs` instead of `node` (when installed through the package manager). This will make the Node.js environment fail (since it simply calls `node`).
