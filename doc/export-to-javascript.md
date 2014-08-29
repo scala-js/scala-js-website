@@ -209,6 +209,45 @@ gives:
 Hint to recognize this error: the methods are named `$js$exported$meth$`
 followed by the JavaScript export name.
 
+### Exporting for call with named parameters
+It is customary in Scala to call methods with named parameters if this eases understanding of the code or if many arguments with default values are present:
+
+{% highlight scala %}
+def foo(x: Int = 1, y: Int = 2, z: Int = 3) = ???
+
+foo(y = 3, x = 2)
+{% endhighlight %}
+
+A rough equivalent in JavaScript is to pass an object with the respective properties:
+{% highlight javascript %}
+foo({
+  y: 3,
+  x: 2
+});
+{% endhighlight %}
+
+The `@JSExportNamed` annotation allows to export Scala methods for use in JavaScript with named parameters:
+
+{% highlight scala %}
+class A {
+  @JSExportNamed
+  def foo(x: Int, y: Int = 2, z: Int = 3) = ???
+}
+{% endhighlight %}
+
+Note that default parameters are not required. `foo` can then be called like this:
+{% highlight javascript %}
+var a = // ...
+a.foo({
+  y: 3,
+  x: 2
+});
+{% endhighlight %}
+
+Not specifying `x` in this case will fail at runtime (since it does not have a default value).
+
+Just like `@JSExport`, `@JSExportNamed` takes the name of the exported method as an optional argument.
+
 ## Exporting properties
 
 `val`s, `var`s and `def`s without parentheses, as well as `def`s whose name
