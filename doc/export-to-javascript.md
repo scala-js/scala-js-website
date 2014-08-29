@@ -209,7 +209,7 @@ gives:
 Hint to recognize this error: the methods are named `$js$exported$meth$`
 followed by the JavaScript export name.
 
-### Exporting for call with named parameters
+### <a name="JSExportNamed"></a> Exporting for call with named parameters
 It is customary in Scala to call methods with named parameters if this eases understanding of the code or if many arguments with default values are present:
 
 {% highlight scala %}
@@ -301,7 +301,7 @@ In case you overload properties in a way the compiler cannot
 disambiguate, the methods in the error messages will be prefixed by
 `$js$exported$prop$`.
 
-### Export fields directly declared in constructors
+### <a name="constructor-params"></a> Export fields directly declared in constructors
 If you want to export fields that are directly declared in a class constructor, you'll have to use the `@field` meta annotation to avoid annotating the constructor arguments (exporting an argument is nonsensical and will fail):
 
 {% highlight scala %}
@@ -346,7 +346,7 @@ object Test1 extends Test {
 }
 {% endhighlight %}
 
-## Automatically export all members
+## <a name="JSExportAll"></a> Automatically export all members
 Instead of writing `@JSExport` on every member of a class or object, you may use the `@JSExportAll` annotation. It is equivalent to adding `@JSExport` on every public (term) member directly declared in the class/object:
 
 {% highlight scala %}
