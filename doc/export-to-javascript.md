@@ -262,6 +262,22 @@ In case you overload properties in a way the compiler cannot
 disambiguate, the methods in the error messages will be prefixed by
 `$js$exported$prop$`.
 
+### Export fields directly declared in constructors
+If you want to export fields that are directly declared in a class constructor, you'll have to use the `@field` meta annotation to avoid annotating the constructor arguments (exporting an argument is nonsensical and will fail):
+
+{% highlight scala %}
+import scala.annotation.meta.field
+
+class Point(
+    @(JSExport @field) val x: Double,
+    @(JSExport @field) val y: Double)
+
+// Also applies to case classes
+case class Point(
+    @(JSExport @field) x: Double,
+    @(JSExport @field) y: Double)
+{% endhighlight %}
+
 ## Automatically exporting descendent objects
 Sometimes it is desirable to automatically export all descendent
 objects of a given trait or class. You can use the
