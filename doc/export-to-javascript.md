@@ -306,3 +306,44 @@ object Test1 extends Test {
   }
 }
 {% endhighlight %}
+
+## Automatically export all members
+Instead of writing `@JSExport` on every member of a class or object, you may use the `@JSExportAll` annotation. It is equivalent to adding `@JSExport` on every public (term) member directly declared in the class/object:
+
+{% highlight scala %}
+class A {
+  def mul(x: Int, y: Int): Int = x * y
+}
+
+@JSExportAll
+class B(val a: Int) extends A {
+  def sum(x: Int, y: Int): Int = x + y
+}
+{% endhighlight %}
+
+This is strictly equivalent to writing:
+
+{% highlight scala %}
+class A {
+  def mul(x: Int, y: Int): Int = x * y
+}
+
+class B(@(JSExport @field) val a: Int) extends A {
+  @JSExport
+  def sum(x: Int, y: Int): Int = x + y
+}
+{% endhighlight %}
+
+It is important to note that this does **not** export inherited members. If you wish to do so, you'll have to override them explicitly:
+
+{% highlight scala %}
+class A {
+  def mul(x: Int, y: Int): Int = x * y
+}
+
+@JSExportAll
+class B(val a: Int) extends A {
+  override def mul(x: Int, y: Int): Int = super.mul(x,y)
+  def sum(x: Int, y: Int): Int = x + y
+}
+{% endhighlight %}
