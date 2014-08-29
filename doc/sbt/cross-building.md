@@ -50,16 +50,23 @@ If you do not publish the artifacts, you may choose different names for the proj
 
 ## Dependencies
 
-If your cross compiled source depends on libraries, you will have to add the dependencies on the libraries separately for each project (using the `%%%` for the Scala.js project). For example, if your code uses [Scalatags](http://github.com/lihaoyi/scalatags), your project definitions look like this:
+If your cross compiled source depends on libraries, you may use `%%%` for both projects. It will automatically determine whether you are in a Scala/JVM or a Scala.js project. For example, if your code uses [Scalatags](http://github.com/lihaoyi/scalatags), your project definitions look like this:
 
-    lazy val fooJS = project.in(file("foo-js")).settings(scalaJSSettings: _*).settings(
-      name := "foo",
-      unmanagedSourceDirectories in Compile += root.base / "foo-shared" / "src" / "main" / "scala",
-      libraryDependencies += "com.scalatags" %%% "scalatags" % "0.3.5"
+    val dependencySettings = Seq(
+        libraryDependencies += "com.scalatags" %%% "scalatags" % "0.3.5"
     )
 
-    lazy val fooJVM = project.in(file("foo-jvm")).settings(
-      name := "foo",
-      unmanagedSourceDirectories in Compile += root.base / "foo-shared" / "src" / "main" / "scala",
-      libraryDependencies += "com.scalatags" %% "scalatags" % "0.3.5"
-    )
+    lazy val fooJS = project.in(file("foo-js"))
+      .settings(scalaJSSettings: _*)
+      .settings(dependencySettings: _*)
+      .settings(
+        name := "foo",
+        unmanagedSourceDirectories in Compile += root.base / "foo-shared" / "src" / "main" / "scala"
+      )
+
+    lazy val fooJVM = project.in(file("foo-jvm"))
+      .settings(dependencySettings: _*)
+      .settings(
+        name := "foo",
+        unmanagedSourceDirectories in Compile += root.base / "foo-shared" / "src" / "main" / "scala"
+      )
