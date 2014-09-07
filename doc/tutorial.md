@@ -45,7 +45,7 @@ sbt.version=0.13.0
 
 That is all we need to configure the build.
 
-If at this point you prefer to use Eclipse or IDEA as your IDE, you may use [sbteclipse](https://github.com/typesafehub/sbteclipse/wiki/Using-sbteclipse) or [idea-eclipse](https://github.com/mpeltonen/sbt-idea) project files for the IDE. Note that for compiling and running your application, you will still need to use sbt from the command line.
+If at this point you prefer to use Eclipse or IDEA as your IDE, you may use [sbteclipse](https://github.com/typesafehub/sbteclipse/wiki/Using-sbteclipse) or [sbt-idea](https://github.com/mpeltonen/sbt-idea) project files for the IDE. Note that for compiling and running your application, you will still need to use sbt from the command line.
 
 #### Alternative versions
 
