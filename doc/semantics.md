@@ -122,7 +122,7 @@ This sometimes has an impact on functions in the Scala library that
 use regular expressions themselves. A list of known functions that are
 affected is given here:
 
-- `StringLike.split(x: Array[Char])` (see issue #105)
+- `StringLike.split(x: Array[Char])` (see issue [#105](https://github.com/scala-js/scala-js/issues/105))
 
 ## Symbols
 
