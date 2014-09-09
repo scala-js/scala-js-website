@@ -117,6 +117,13 @@ addSbtPlugin("com.lihaoyi" % "utest-js-plugin" % "0.1.8") // project/build.sbt
 
 A tiny, portable unit testing library that lets you run the same tests on both Scala-JVM and Scala-JS, by Li Haoyi
 
+####[Little Spec](https://github.com/eecolor/little-spec)
+{% highlight scala %}
+libraryDependencies += "org.qirx" %%% "little-spec" % "0.3" % "test"
+ScalaJSKeys.scalaJSTestFramework in Test := "org.qirx.littlespec.scalajs.TestFramework"
+{% endhighlight %}
+A small extendable test/specification library that can generate documentation, works on both Scala-JVM and Scala-JS, by EECOLOR
+
 ####[uPickle](https://github.com/lihaoyi/upickle)
 {% highlight scala %}
 "com.lihaoyi" %%% "upickle" % "0.2.0"
