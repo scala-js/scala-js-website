@@ -179,6 +179,10 @@ Scala-Async is a pure-macro project without any runtime dependencies. Thus it wo
 
 Another pure-macro project, Scalaxy loops and streams work great with Scala.js without needing to be specially compiled for it.
 
+####[scalajs-angular](https://github.com/greencatsoft/scalajs-angular) with [TodoMvc example](https://github.com/greencatsoft/scalajs-angular-todomvc)
+
+Static types and complementary API for AngularJS, by Xavier Cho
+
 ### Skeletons
 
 ####[workbench-example-app](https://github.com/lihaoyi/workbench-example-app)
