@@ -100,7 +100,7 @@ A ScalaJS html binding library, by Anton Kulaga
 
 ####[Scalatags](https://github.com/lihaoyi/scalatags)
 {% highlight scala %}
-"com.scalatags" %%% "scalatags" % "0.3.8"
+"com.scalatags" %%% "scalatags" % "0.4.0"
 {% endhighlight %}
 A HTML templating library/DSL that works on both Scala-JVM and Scala-JS, by Li Haoyi
 
@@ -150,13 +150,15 @@ Reactive extensions (Rx) with back-pressure, atomic references and other multi-t
 
 ####[Scalaz](https://github.com/japgolly/scalaz)
 {% highlight scala %}
-"com.github.japgolly.fork.scalaz" %%% "scalaz-core" % "7.1.0"
+"com.github.japgolly.fork.scalaz" %%% "scalaz-core"   % "7.1.0-2"
+"com.github.japgolly.fork.scalaz" %%% "scalaz-effect" % "7.1.0-2"
+// etc
 {% endhighlight %}
 Port of [Scalaz](https://github.com/scalaz/scalaz) to Scala.js, maintained by David Barri
 
 ####[Monocle](https://github.com/japgolly/Monocle)
 {% highlight scala %}
-"com.github.japgolly.fork.monocle" %%% "monocle-core" % "0.5.0"
+"com.github.japgolly.fork.monocle" %%% "monocle-core" % "0.5.1"
 {% endhighlight %}
 Port of [Monocle](https://github.com/julien-truffaut/Monocle) to Scala.js, maintained by David Barri
 ####[Shapeless](https://groups.google.com/forum/#!searchin/scala-js/shapeless/scala-js/5Sf2up0z3PU/9F9SYB0qHEcJ)
