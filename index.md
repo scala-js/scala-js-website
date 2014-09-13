@@ -53,6 +53,7 @@ and not part of any of their support contracts. You have been warned!</p>
 
 Presentations:
 
+*   [Scala's evolving ecosystem- Introduction to Scala.js](http://blog.knoldus.com/2014/09/03/meet-up-on-scalas-evolving-ecosystem-introduction-to-scala-js/), by Ayush Mishra, Knoldus Software LLP
 *   [Scala.js at Scaladays 2014](http://www.parleys.com/play/53a7d2cbe4b0543940d9e555), by Sébastien Doeraene
 *   [Live Coding Scala.js at SF Scala 2014](http://vimeo.com/87845442) by Li Haoyi
 *   [Live-coding with Scala.js at Scala eXchange 2013](http://skillsmatter.com/podcast/scala/scala-js-write-in-scala-for-the-browser-4567)
