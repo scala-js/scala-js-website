@@ -9,6 +9,12 @@ We strongly recommend using the SBT plugin, as shown in the [bootstrapping skele
 
 The CLI distribution requires `scala` and `scalac` (of the right major version) to be on the execution path. Unpack it wherever you like and add the `bin/` folder to your execution path.
 
+#### Scala.js 0.5.5
+* [0.5.5, Scala 2.11 (tgz, 15MB)]({{ BASE_PATH }}/files/scalajs_2.11-0.5.5.tgz)
+* [0.5.5, Scala 2.11 (zip, 15MB)]({{ BASE_PATH }}/files/scalajs_2.11-0.5.5.zip)
+* [0.5.5, Scala 2.10 (tgz, 16MB)]({{ BASE_PATH }}/files/scalajs_2.10-0.5.5.tgz)
+* [0.5.5, Scala 2.10 (zip, 16MB)]({{ BASE_PATH }}/files/scalajs_2.10-0.5.5.zip)
+
 #### Scala.js 0.5.4
 * [0.5.4, Scala 2.11 (tgz, 15MB)]({{ BASE_PATH }}/files/scalajs_2.11-0.5.4.tgz)
 * [0.5.4, Scala 2.11 (zip, 15MB)]({{ BASE_PATH }}/files/scalajs_2.11-0.5.4.zip)
