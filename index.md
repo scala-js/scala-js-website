@@ -53,6 +53,7 @@ and not part of any of their support contracts. You have been warned!</p>
 
 Presentations:
 
+*   [Cross-Platform Development in Scala.js](https://www.youtube.com/watch?v=Ksoi6AG9nbA), by Li Haoyi
 *   [Scala's evolving ecosystem- Introduction to Scala.js](http://blog.knoldus.com/2014/09/03/meet-up-on-scalas-evolving-ecosystem-introduction-to-scala-js/), by [Ayush Mishra](https://www.linkedin.com/pub/ayush-mishra/23/87b/a27), [Knoldus Software LLP](http://www.knoldus.com/home.knol)
 *   [Scala.js at Scaladays 2014](http://www.parleys.com/play/53a7d2cbe4b0543940d9e555), by Sébastien Doeraene
 *   [Live Coding Scala.js at SF Scala 2014](http://vimeo.com/87845442) by Li Haoyi
