@@ -172,7 +172,7 @@ Port of [RNG](https://github.com/NICTA/rng) to Scala.js, maintained by David Bar
 ####[Shapeless](https://groups.google.com/forum/#!searchin/scala-js/shapeless/scala-js/5Sf2up0z3PU/9F9SYB0qHEcJ)
 {% highlight scala %}
 resolvers += "bintray-alexander_myltsev" at "http://dl.bintray.com/content/alexander-myltsev/maven"
-libraryDependencies += "name.myltsev" %% "parboiled_sjs0.5" % "2.0.0"
+libraryDependencies += "name.myltsev" %% "shapeless_sjs0.5" % "2.0.0"
 {% endhighlight %}
 
 Port of [Shapeless](https://github.com/milessabin/shapeless) to Scala.js, maintained by Alexander Myltsev
