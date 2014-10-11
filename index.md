@@ -79,14 +79,14 @@ Static types for jQuery, by Sébastien Doeraene
 ####[scala-js-react](https://github.com/japgolly/scalajs-react)
 {% highlight scala %}
 // Minimal usage
-libraryDependencies += "com.github.japgolly.scalajs-react" %%% "core" % "0.4.0"
+libraryDependencies += "com.github.japgolly.scalajs-react" %%% "core" % "0.4.1"
 
 // Test support including ReactTestUtils
-libraryDependencies += "com.github.japgolly.scalajs-react" %%% "test" % "0.4.0" % "test"
+libraryDependencies += "com.github.japgolly.scalajs-react" %%% "test" % "0.4.1" % "test"
 
 // Scalaz support
-libraryDependencies += "com.github.japgolly.scalajs-react" %%% "ext-scalaz70" % "0.4.0" // or
-libraryDependencies += "com.github.japgolly.scalajs-react" %%% "ext-scalaz71" % "0.4.0"
+libraryDependencies += "com.github.japgolly.scalajs-react" %%% "ext-scalaz70" % "0.4.1" // or
+libraryDependencies += "com.github.japgolly.scalajs-react" %%% "ext-scalaz71" % "0.4.1"
 {% endhighlight %}
 Lifts Facebook's React library into Scala.js and endeavours to make it as type-safe and Scala-compatible as possible, by David Barri
 
@@ -101,7 +101,7 @@ A ScalaJS html binding library, by Anton Kulaga
 
 ####[Scalatags](https://github.com/lihaoyi/scalatags)
 {% highlight scala %}
-"com.scalatags" %%% "scalatags" % "0.4.0"
+"com.scalatags" %%% "scalatags" % "0.4.2"
 {% endhighlight %}
 A HTML templating library/DSL that works on both Scala-JVM and Scala-JS, by Li Haoyi
 
@@ -113,8 +113,8 @@ A change-propagation/FRP library that runs on both Scala-JVM and Scala-JS, by Li
 
 ####[uTest](https://github.com/lihaoyi/utest#%C2%B5test-011)
 {% highlight scala %}
-addSbtPlugin("com.lihaoyi" % "utest-js-plugin" % "0.1.8") // project/build.sbt
-"com.lihaoyi" %%% "utest" % "0.1.8"
+addSbtPlugin("com.lihaoyi" % "utest-js-plugin" % "0.2.4") // project/build.sbt
+"com.lihaoyi" %%% "utest" % "0.2.4"
 {% endhighlight %}
 
 A tiny, portable unit testing library that lets you run the same tests on both Scala-JVM and Scala-JS, by Li Haoyi
@@ -128,7 +128,7 @@ A small extendable test/specification library that can generate documentation, w
 
 ####[uPickle](https://github.com/lihaoyi/upickle)
 {% highlight scala %}
-"com.lihaoyi" %%% "upickle" % "0.2.0"
+"com.lihaoyi" %%% "upickle" % "0.2.5"
 {% endhighlight %}
 Statically-typed pickling (via typeclasses/macros) for both Scala-JVM and Scala-JS, by Li Haoyi
 
@@ -151,8 +151,8 @@ Reactive extensions (Rx) with back-pressure, atomic references and other multi-t
 
 ####[Scalaz](https://github.com/japgolly/scalaz)
 {% highlight scala %}
-"com.github.japgolly.fork.scalaz" %%% "scalaz-core"   % "7.1.0-2"
-"com.github.japgolly.fork.scalaz" %%% "scalaz-effect" % "7.1.0-2"
+"com.github.japgolly.fork.scalaz" %%% "scalaz-core"   % "7.1.0-4"
+"com.github.japgolly.fork.scalaz" %%% "scalaz-effect" % "7.1.0-4"
 // etc
 {% endhighlight %}
 Port of [Scalaz](https://github.com/scalaz/scalaz) to Scala.js, maintained by David Barri
@@ -162,6 +162,13 @@ Port of [Scalaz](https://github.com/scalaz/scalaz) to Scala.js, maintained by Da
 "com.github.japgolly.fork.monocle" %%% "monocle-core" % "0.5.1"
 {% endhighlight %}
 Port of [Monocle](https://github.com/julien-truffaut/Monocle) to Scala.js, maintained by David Barri
+
+####[RNG](https://github.com/japgolly/rng)
+{% highlight scala %}
+"com.github.japgolly.fork.nicta" %%% "rng" % "1.3.0"
+{% endhighlight %}
+Port of [RNG](https://github.com/NICTA/rng) to Scala.js, maintained by David Barri
+
 ####[Shapeless](https://groups.google.com/forum/#!searchin/scala-js/shapeless/scala-js/5Sf2up0z3PU/9F9SYB0qHEcJ)
 {% highlight scala %}
 resolvers += "bintray-alexander_myltsev" at "http://dl.bintray.com/content/alexander-myltsev/maven"
