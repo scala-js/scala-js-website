@@ -161,6 +161,13 @@ Port of [Scalaz](https://github.com/scalaz/scalaz) to Scala.js, maintained by Da
 "com.github.japgolly.fork.monocle" %%% "monocle-core" % "0.5.1"
 {% endhighlight %}
 Port of [Monocle](https://github.com/julien-truffaut/Monocle) to Scala.js, maintained by David Barri
+
+####[RNG](https://github.com/japgolly/rng)
+{% highlight scala %}
+"com.github.japgolly.fork.nicta" %%% "rng" % "1.3.0"
+{% endhighlight %}
+Port of [RNG](https://github.com/NICTA/rng) to Scala.js, maintained by David Barri
+
 ####[Shapeless](https://groups.google.com/forum/#!searchin/scala-js/shapeless/scala-js/5Sf2up0z3PU/9F9SYB0qHEcJ)
 {% highlight scala %}
 resolvers += "bintray-alexander_myltsev" at "http://dl.bintray.com/content/alexander-myltsev/maven"
