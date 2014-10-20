@@ -78,16 +78,16 @@ Static types for jQuery, by Sébastien Doeraene
 ####[scala-js-react](https://github.com/japgolly/scalajs-react)
 {% highlight scala %}
 // Minimal usage
-libraryDependencies += "com.github.japgolly.scalajs-react" %%% "core" % "0.4.1"
+libraryDependencies += "com.github.japgolly.scalajs-react" %%% "core" % "0.5.0"
 
 // Test support including ReactTestUtils
-libraryDependencies += "com.github.japgolly.scalajs-react" %%% "test" % "0.4.1" % "test"
+libraryDependencies += "com.github.japgolly.scalajs-react" %%% "test" % "0.5.0" % "test"
 
 // Scalaz support
-libraryDependencies += "com.github.japgolly.scalajs-react" %%% "ext-scalaz70" % "0.4.1" // or
-libraryDependencies += "com.github.japgolly.scalajs-react" %%% "ext-scalaz71" % "0.4.1"
+libraryDependencies += "com.github.japgolly.scalajs-react" %%% "ext-scalaz70" % "0.5.0" // or
+libraryDependencies += "com.github.japgolly.scalajs-react" %%% "ext-scalaz71" % "0.5.0"
 {% endhighlight %}
-Lifts Facebook's React library into Scala.js and endeavours to make it as type-safe and Scala-compatible as possible, by David Barri
+Lifts Facebook's React library into Scala.js and endeavours to make it as type-safe and Scala-friendly as possible, by David Barri
 
 ####[scala-js-binding](https://github.com/antonkulaga/scala-js-binding)
 {% highlight scala %}
