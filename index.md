@@ -145,6 +145,13 @@ Statically-typed Ajax calls and RPCs for both Scala-JVM and Scala-JS, by Li Haoy
 A cross-compiling pickling (aka serialization) library for Scala.js and Scala
 with a common JSON-based format, by Sébastien Doeraene
 
+####[Prickle](https://github.com/benhutchison/prickle)
+{% highlight scala %}
+"com.github.benhutchison" %%% "prickle" % "1.1.0"
+{% endhighlight %}
+Yet another statically-typed pickling library for Scala.js / Scala.jvm, with support for pickling object graphs
+containing shared objects and cycles, by Ben Hutchison
+
 ####[Monifu](https://github.com/alexandru/monifu)
 
 Reactive extensions (Rx) with back-pressure, atomic references and other multi-threading primitives cross-compiled to Scala.js, by Alexandru Nedelcu
