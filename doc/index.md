@@ -31,6 +31,12 @@ Generated Scaladocs are available here:
 
 ### Scala.js
 
+#### Scala.js 0.5.6
+* [0.5.6 scalajs-library]({{ BASE_PATH }}/api/scalajs-library/0.5.6/#scala.scalajs.js.package)
+* [0.5.6 scalajs-tools]({{ BASE_PATH }}/api/scalajs-tools/0.5.6/) ([Scala.js version]({{ BASE_PATH }}/api/scalajs-tools/0.5.6/))
+* [0.5.6 scalajs-test-bridge]({{ BASE_PATH }}/api/scalajs-test-bridge/0.5.6/)
+* [0.5.6 scalajs-jasmine-test-framework]({{ BASE_PATH }}/api/scalajs-jasmine-test-framework/0.5.6/)
+
 #### Scala.js 0.5.5
 * [0.5.5 scalajs-library]({{ BASE_PATH }}/api/scalajs-library/0.5.5/#scala.scalajs.js.package)
 * [0.5.5 scalajs-tools]({{ BASE_PATH }}/api/scalajs-tools/0.5.5/) ([Scala.js version]({{ BASE_PATH }}/api/scalajs-tools/0.5.5/))
