@@ -40,7 +40,7 @@ scalaVersion := "2.11.2"
 Last, we need a `project/build.properties` to specify the sbt version:
 
 {% highlight scala %}
-sbt.version=0.13.0
+sbt.version=0.13.5
 {% endhighlight %}
 
 That is all we need to configure the build.
