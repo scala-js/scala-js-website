@@ -18,7 +18,7 @@ Scala.js compiles Scala code to JavaScript, allowing you to write your web appli
 
 The easiest way to get started is to follow our [tutorial](./doc/tutorial.html). You can also fork the
 [bootstrapping skeleton](https://github.com/sjrd/scala-js-example-app)
-and follow the instructions in its readme or [try it out in the browser](http://www.scala-js-fiddle.com/).
+and follow the instructions in its readme or [try it out in the browser](http://www.scala-js-fiddle.com/). There's also an e-book [Hands-on Scala.js](lihaoyi.github.io/hands-on-scala-js) which contains a lot of introductory material to help you get started.
 
 We also have a [standalone distribution](./downloads.html) that doesn't require SBT.
 
@@ -52,7 +52,7 @@ and not part of any of their support contracts. You have been warned!</p>
 *   [Scala.js tag on Stackoverflow](http://stackoverflow.com/questions/tagged/scala.js). Please help building it up by asking questions.
 
 Presentations:
-
+*   [Hands-on Scala.js](http://vimeo.com/111978847) at PNWScala, by Li Haoyi
 *   [Cross-Platform Development in Scala.js](https://www.youtube.com/watch?v=Ksoi6AG9nbA), by Li Haoyi
 *   [Scala's evolving ecosystem- Introduction to Scala.js](http://blog.knoldus.com/2014/09/03/meet-up-on-scalas-evolving-ecosystem-introduction-to-scala-js/), by [Ayush Mishra](https://www.linkedin.com/pub/ayush-mishra/23/87b/a27), [Knoldus Software LLP](http://www.knoldus.com/home.knol)
 *   [Scala.js at Scaladays 2014](http://www.parleys.com/play/53a7d2cbe4b0543940d9e555), by Sébastien Doeraene
@@ -220,10 +220,6 @@ by Rocky Madden
 ####[Scala.js workbench](https://github.com/lihaoyi/scala-js-workbench)
 
 A sbt plugin for Scala.js projects for live-reloading in the browser ([example app](https://github.com/lihaoyi/workbench-example-app)), by Li Haoyi
-
-####[Scala.js Resource](https://github.com/lihaoyi/scala-js-resource)
-
-A sbt plugin for bundling of binary files so they can be accessed from the browser, by Li Haoyi
 
 ### Miscellaneous
 
