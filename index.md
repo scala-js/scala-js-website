@@ -18,7 +18,7 @@ Scala.js compiles Scala code to JavaScript, allowing you to write your web appli
 
 The easiest way to get started is to follow our [tutorial](./doc/tutorial.html). You can also fork the
 [bootstrapping skeleton](https://github.com/sjrd/scala-js-example-app)
-and follow the instructions in its readme or [try it out in the browser](http://www.scala-js-fiddle.com/). There's also an e-book [Hands-on Scala.js](lihaoyi.github.io/hands-on-scala-js) which contains a lot of introductory material to help you get started.
+and follow the instructions in its readme or [try it out in the browser](http://www.scala-js-fiddle.com/). There's also an e-book [Hands-on Scala.js](https://lihaoyi.github.io/hands-on-scala-js) which contains a lot of introductory material to help you get started.
 
 We also have a [standalone distribution](./downloads.html) that doesn't require SBT.
 
