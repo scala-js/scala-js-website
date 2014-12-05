@@ -52,6 +52,7 @@ and not part of any of their support contracts. You have been warned!</p>
 *   [Scala.js tag on Stackoverflow](http://stackoverflow.com/questions/tagged/scala.js). Please help building it up by asking questions.
 
 Presentations:
+
 *   [Hands-on Scala.js](http://vimeo.com/111978847) at PNWScala, by Li Haoyi
 *   [Cross-Platform Development in Scala.js](https://www.youtube.com/watch?v=Ksoi6AG9nbA), by Li Haoyi
 *   [Scala's evolving ecosystem- Introduction to Scala.js](http://blog.knoldus.com/2014/09/03/meet-up-on-scalas-evolving-ecosystem-introduction-to-scala-js/), by [Ayush Mishra](https://www.linkedin.com/pub/ayush-mishra/23/87b/a27), [Knoldus Software LLP](http://www.knoldus.com/home.knol)
