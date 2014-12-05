@@ -270,6 +270,7 @@ List of websites using Scala.js:
 
 ## Version History
 
+- [0.6.0-M2](/news/2014/12/05/announcing-scalajs-0.6.0-M2/)
 - [0.6.0-M1](/news/2014/12/01/announcing-scalajs-0.6.0-M1/)
 - [0.5.6](/news/2014/11/19/announcing-scalajs-0.5.6/)
 - [0.5.5](/news/2014/09/18/announcing-scalajs-0.5.5/)
