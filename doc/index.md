@@ -31,6 +31,16 @@ Generated Scaladocs are available here:
 
 ### Scala.js
 
+#### Scala.js 0.6.0-M2
+* [0.6.0-M2 scalajs-library]({{ BASE_PATH }}/api/scalajs-library/0.6.0-M2/#scala.scalajs.js.package)
+* [0.6.6-M2 scalajs-test-interface]({{ BASE_PATH }}/api/scalajs-test-interface/0.6.0-M2/)
+* [0.6.0-M2 scalajs-stubs]({{ BASE_PATH }}/api/scalajs-stubs/0.6.0-M2/)
+* [0.6.0-M2 scalajs-ir]({{ BASE_PATH }}/api/scalajs-ir/0.6.0-M2/#org.scalajs.core.ir.package)
+* [0.6.0-M2 scalajs-tools]({{ BASE_PATH }}/api/scalajs-tools/0.6.0-M2/#org.scalajs.core.tools.package) ([Scala.js version]({{ BASE_PATH }}/api/scalajs-tools-js/0.6.0-M2/#org.scalajs.core.tools.package))
+* [0.6.0-M2 scalajs-js-envs]({{ BASE_PATH }}/api/scalajs-js-envs/0.6.0-M2/#org.scalajs.jsenv.package)
+* [0.6.0-M2 scalajs-test-adapter]({{ BASE_PATH }}/api/scalajs-test-adapter/0.6.0-M2/#org.scalajs.testadapter.package)
+* [0.6.0-M2 sbt-scalajs]({{ BASE_PATH }}/api/sbt-scalajs/0.6.0-M2/#org.scalajs.sbtplugin.package)
+
 #### Scala.js 0.6.0-M1
 * [0.6.0-M1 scalajs-library]({{ BASE_PATH }}/api/scalajs-library/0.6.0-M1/#scala.scalajs.js.package)
 * [0.6.6-M1 scalajs-test-interface]({{ BASE_PATH }}/api/scalajs-test-interface/0.6.0-M1/)
