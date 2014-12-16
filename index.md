@@ -134,8 +134,12 @@ libraryDependencies += "org.monifu" %%% "minitest" % "0.2" % "test"
 testFrameworks += new TestFramework("minitest.runner.Framework")
 {% endhighlight %}
 
-A light and effective testing framework for Scala, that lets you
+MiniTest is a light and effective testing framework for Scala, that lets you
 share tests across Scala on the JVM and Scala.js, by Alexandru Nedelcu.
+
+NOTE: At this point it is compiled for Scala.js
+[milestone 0.6.0-M2](http://www.scala-js.org/news/2014/12/05/announcing-scalajs-0.6.0-M2/),
+and won't work with the stable `0.5.x`.
 
 ####[uPickle](https://github.com/lihaoyi/upickle)
 {% highlight scala %}
