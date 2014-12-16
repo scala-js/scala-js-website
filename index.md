@@ -127,6 +127,20 @@ ScalaJSKeys.scalaJSTestFramework in Test := "org.qirx.littlespec.scalajs.TestFra
 {% endhighlight %}
 A small extendable test/specification library that can generate documentation, works on both Scala-JVM and Scala-JS, by EECOLOR
 
+####[MiniTest](https://github.com/monifu/minitest)
+{% highlight scala %}
+libraryDependencies += "org.monifu" %%% "minitest" % "0.2" % "test"
+
+testFrameworks += new TestFramework("minitest.runner.Framework")
+{% endhighlight %}
+
+MiniTest is a light and effective testing framework for Scala, that lets you
+share tests across Scala on the JVM and Scala.js, by Alexandru Nedelcu.
+
+NOTE: At this point it is compiled for Scala.js
+[milestone 0.6.0-M2](http://www.scala-js.org/news/2014/12/05/announcing-scalajs-0.6.0-M2/),
+and won't work with the stable `0.5.x`.
+
 ####[uPickle](https://github.com/lihaoyi/upickle)
 {% highlight scala %}
 "com.lihaoyi" %%% "upickle" % "0.2.5"
@@ -294,4 +308,3 @@ List of websites using Scala.js:
 * [Bug in node.js/v8](http://github.com/joyent/node/issues/7528) discovered by Scala.js through Scala test suite
 
 <a href="https://github.com/scala-js/scala-js-website"><img style="position: absolute; top: 0; right: 0; border: 0;" src="https://s3.amazonaws.com/github/ribbons/forkme_right_orange_ff7600.png" alt="Fork me on GitHub"></a>
-
