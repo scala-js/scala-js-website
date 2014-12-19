@@ -80,14 +80,14 @@ Static types for jQuery, by Sébastien Doeraene
 ####[scala-js-react](https://github.com/japgolly/scalajs-react)
 {% highlight scala %}
 // Minimal usage
-libraryDependencies += "com.github.japgolly.scalajs-react" %%% "core" % "0.5.0"
+libraryDependencies += "com.github.japgolly.scalajs-react" %%% "core" % "0.6.1"
 
 // Test support including ReactTestUtils
-libraryDependencies += "com.github.japgolly.scalajs-react" %%% "test" % "0.5.0" % "test"
+libraryDependencies += "com.github.japgolly.scalajs-react" %%% "test" % "0.6.1" % "test"
 
 // Scalaz support
-libraryDependencies += "com.github.japgolly.scalajs-react" %%% "ext-scalaz70" % "0.5.0" // or
-libraryDependencies += "com.github.japgolly.scalajs-react" %%% "ext-scalaz71" % "0.5.0"
+libraryDependencies += "com.github.japgolly.scalajs-react" %%% "ext-scalaz70" % "0.6.1" // or
+libraryDependencies += "com.github.japgolly.scalajs-react" %%% "ext-scalaz71" % "0.6.1"
 {% endhighlight %}
 Lifts Facebook's React library into Scala.js and endeavours to make it as type-safe and Scala-friendly as possible, by David Barri
 
@@ -181,7 +181,7 @@ Port of [Scalaz](https://github.com/scalaz/scalaz) to Scala.js, maintained by Da
 
 ####[Monocle](https://github.com/japgolly/Monocle)
 {% highlight scala %}
-"com.github.japgolly.fork.monocle" %%% "monocle-core" % "0.5.1"
+"com.github.japgolly.fork.monocle" %%% "monocle-core" % "1.0.1"
 {% endhighlight %}
 Port of [Monocle](https://github.com/julien-truffaut/Monocle) to Scala.js, maintained by David Barri
 
