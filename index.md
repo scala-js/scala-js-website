@@ -47,9 +47,10 @@ and not part of any of their support contracts. You have been warned!</p>
 
 ## Resources
 
-*   [Documentation](./doc/)
-*   [Official mailing list](https://groups.google.com/forum/?fromgroups#!forum/scala-js)
-*   [Scala.js tag on Stackoverflow](http://stackoverflow.com/questions/tagged/scala.js). Please help building it up by asking questions.
+*   [Documentation](./doc/): APIs, guides, and reference.
+*   [Scala.js tag on Stackoverflow](http://stackoverflow.com/questions/tagged/scala.js): for delimited technical questions on using Scala.js.
+*   [Official mailing list](https://groups.google.com/forum/?fromgroups#!forum/scala-js): for general discussion, ideas, announcements of your libraries, etc.
+*   [Gitter chat room](https://gitter.im/scala-js/scala-js): come and meet the community of Scala.js users.
 
 Presentations:
 
