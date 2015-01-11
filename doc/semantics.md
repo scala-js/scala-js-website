@@ -5,42 +5,54 @@ tagline: and how they differ from Scala
 ---
 {% include JB/setup %}
 
-Because the target platform of Scala.js is quite different from that of Scala,
-a few language semantics differences exist.
+In general, the semantics of the Scala.js language are the same as Scala on
+the JVM.
+However, a few differences exist, which we mention here.
 
-## Numbers and characters
+## Primitive data types
 
-Numbers and characters have the same semantics as on the JVM
-(including overflow and full 64-bit Longs) with the following four
-exceptions. For information about how Scala numeric types map to
-JavaScript numeric types, have a look at the
-[interoparability guide](./js-interoperability.html).
+All primitive data types work exactly as on the JVM, with the following three
+exceptions.
 
-### Floats may behave like Doubles
-Since JavaScript doesn't have a native float type, we sometimes represent Floats
-using doubles/numbers, rather than with lower-precision 32-bit floats.
+### Floats can behave as Doubles by default
 
-The choice of how to represent floats is up to the implementation. You may not rely on floats providing 64-bit floating point precision.
+Scala.js underspecifies the behavior of `Float`s by default.
+Any `Float` value can be stored as a `Double` instead, and any operation on
+`Float`s can be computed with double precision.
+The choice of whether or not to behave as such, when and where, is left to the
+implementation.
 
-Float literals are truncated to their (binary)
-precision. However, output does not truncate to that precision. This
-can lead to the following behavior (this works as expected when using
-doubles):
+If exact single precision operations are important to your application, you can
+enable strict-floats semantics in Scala.js, with the following sbt setting:
 
 {% highlight scala %}
-println(13.345f)
-// Scala:    13.345
-// Scala.js: 13.345000267028809
+scalaJSSemantics ~= { _.withStrictFloats(true) }
 {% endhighlight %}
 
-### Integer division by 0 is undefined
-Unlike the JVM where dividing an integer type by 0 throws an
-exception, in Scala.js integer division by 0 is undefined.
-This allows for efficient implementation of division. Dividing a
-`Double` or `Float` by 0 yields positive or negative infinity as
-expected.
+Note that this can have a major impact on performance of your application on
+JS interpreters that do not support
+[the `Math.fround` function](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Math/fround).
 
-### isInstanceOf tests are based on value
+### `toString` of `Float`, `Double` and `Unit`
+
+`x.toString()` returns slightly different results for floating point numbers
+and `()` (`Unit`).
+
+{% highlight scala %}
+().toString   // "undefined", instead of "()"
+1.0.toString  // "1", instead of "1.0"
+1.4f.toString // "1.399999976158142" instead of "1.4"
+{% endhighlight %}
+
+In general, a trailing `.0` is omitted.
+Floats print in a weird way because they are printed as if they were Doubles,
+which means their lack of precision shows up.
+
+To get sensible and portable string representation of floating point numbers,
+use `String.format()` or related methods.
+
+### Runtime type tests are based on values
+
 Instance tests (and consequently pattern matching) on any of `Byte`,
 `Short`, `Int`, `Float`, `Double` are based on the value and not the
 type they were created with. The following are examples:
@@ -48,44 +60,83 @@ type they were created with. The following are examples:
 - 1 matches `Byte`, `Short`, `Int`, `Float`, `Double`
 - 128 (`> Byte.MaxValue`) matches `Short`, `Int`, `Float`, `Double`
 - 32768 (`> Short.MaxValue`) matches `Int`, `Float`, `Double`
+- 2147483647 matches `Int`, `Double` if strict-floats are enabled
+  (because that number cannot be represented in a strict 32-bit `Float`),
+  otherwise `Int`, `Float` and `Double`
 - 2147483648 (`> Int.MaxValue`) matches `Float`, `Double`
-- 1.2 matches `Float`, `Double`
+- 1.5 matches `Float`, `Double`
+- 1.4 matches `Double` only if strict-floats are enabled,
+  otherwise `Float` and `Double`
+  (unlike 1.5, the value 1.4 cannot be represented in a strict 32-bit `Float`)
+- `NaN`, `Infinity`, `-Infinity` and `-0.0` match `Float`, `Double`
 
-As a consequence, the following apparent subtyping relationship holds:
+As a consequence, the following apparent subtyping relationships hold:
+
+    Byte <:< Short <:<  Int  <:< Double
+                   <:< Float <:<
+
+if strict-floats are enabled, or
 
     Byte <:< Short <:< Int <:< Float =:= Double
 
-### toString for integral Floats and Doubles
-Calling `toString` on a Float or a Double that holds an integral
-value, will not append ".0" to that value:
+otherwise.
+
+## Undefined behaviors
+
+The JVM is a very well specified environment, which even specifies how some
+bugs are reported as exceptions.
+Some examples are:
+
+* `NullPointerException`
+* `ArrayIndexOutOfBoundsException` and `StringIndexOutOfBoundsException`
+* `ClassCastException`
+* `ArithmeticException` (such as integer division by 0)
+* `StackOverflowError` and other `VirtualMachineError`s
+
+Because Scala.js does not receive VM support to detect such erroneous
+conditions, checking them is typically too expensive.
+
+Therefore, all of these are considered
+[undefined behavior](http://en.wikipedia.org/wiki/Undefined_behavior).
+
+Some of these, however, can be configured to be compliant with the JVM
+specification using sbt settings.
+Currently, only `ClassCastException`s (thrown by invalid `asInstanceOf` calls)
+are configurable, but the list will probably expand in future versions.
+
+Every configurable undefined behavior has 3 possible modes:
+
+* `Compliant`: behaves as specified on a JVM
+* `Unchecked`: completely unchecked and undefined
+* `Fatal`: checked, but throws
+  [`UndefinedBehaviorError`s]({{ BASE_PATH }}/api/scalajs-library/{{ site.scalaJSVersion }}/#scala.scalajs.runtime.UndefinedBehaviorError)
+  instead of the specified exception.
+
+By default, undefined behaviors are in `Fatal` mode for `fastOptJS` and in
+`Unchecked` mode for `fullOptJS`.
+This is so that bugs can be detected more easily during development, with
+predictable exceptions and stack traces.
+In production code (`fullOptJS`), the checks are removed for maximum
+efficiency.
+
+`UndefinedBehaviorError`s are *fatal* in the sense that they are not matched by
+`case NonFatal(e)` handlers.
+This makes sure that they always crash your program as early as possible, so
+that you can detect and fix the bug.
+It is *never* OK to catch an `UndefinedBehaviorError` (other than in a testing
+framework), since that means your program will behave differently in `fullOpt`
+stage than in `fastOpt`.
+
+If you need a particular kind of exception to be thrown in compliance with the
+JVM semantics, you can do so with an sbt setting.
+For example, this setting enables compliant `asInstanceOf`s:
 
 {% highlight scala %}
-println(1.0)
-// Scala:    1.0
-// Scala.js: 1
+scalaJSSemantics ~= { _.withAsInstanceOfs(
+  org.scalajs.core.tools.sem.CheckedBehavior.Compliant) }
 {% endhighlight %}
 
-This is due to how numeric values are represented at runtime in
-Scala.js. Use a formatting interpolator if you always want to show
-decimals:
-
-{% highlight scala %}
-val x = 1.0
-println(f"$x%.1f")
-// Scala:    1.0
-// Scala.js: 1.0
-{% endhighlight %}
-
-## Unit
-`scala.Unit` is represented using JavaScript's `undefined`. Therefore,
-calling `toString()` on `Unit` will return `undefined` rather than
-`()`.
-
-## Strings
-
-JavaScript uses UCS-2 for encoding strings and does not support
-conversion to or from other character sets. As a result, `String`
-constructors taking `Byte` arrays are not supported by Scala.js.
+Note that this will have (potentially major) performance impacts.
 
 ## JavaScript interoperability
 
@@ -98,17 +149,6 @@ difference. However, its details are discussed in a
 Java reflection and, a fortiori, Scala reflection, are not supported. There is
 limited support for `java.lang.Class`, e.g., `obj.getClass.getName` will work
 for any Scala.js object (not for objects that come from JavaScript interop).
-
-## Exceptions
-
-In general, Scala.js supports exceptions, including catching them based on their
-type. However, exceptions that are typically triggered by the JVM have flaky
-semantics, in particular:
-
-- `ArrayIndexOutOfBoundsException` is never thrown.
-- `NullPointerException` is reported as JavaScript `TypeError` instead.
-- `StackOverflowError` is unsupported since the underlying JavaScript exception
-  type varies based on the browser.
 
 ## Regular expressions
 
@@ -129,7 +169,7 @@ affected is given here:
 `scala.Symbol` is supported, but is a potential source of memory leaks
 in applications that make heavy use of symbols. The main reason is that
 JavaScript does not support weak references, causing all symbols created
-by Scala.js tow remain in memory throughout the lifetime of the application.
+by Scala.js to remain in memory throughout the lifetime of the application.
 
 ## Enumerations
 
@@ -151,12 +191,12 @@ are statically rewritten to (a slightly more complicated version of):
 
 {% highlight scala %}
 val <ident> = Value("<ident>")
-val <ident> = Value(<num>,"<ident>")
+val <ident> = Value(<num>, "<ident>")
 {% endhighlight %}
 
 Note that this also includes calls like
 {% highlight scala %}
-val A,B,C,D = Value
+val A, B, C, D = Value
 {% endhighlight %}
 since they are desugared into separate <code>val</code> definitions.
 </li>
