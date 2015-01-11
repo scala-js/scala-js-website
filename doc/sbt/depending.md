@@ -8,13 +8,13 @@ title: Depending on Libraries
 To be able to use a Scala library in Scala.js, it has to be separately compiled for Scala.js. You then can add it to your library dependencies as follows:
 
 {% highlight scala %}
-libraryDependencies += "org.scala-lang.modules.scalajs" %%% "scalajs-dom" % "0.6"
+libraryDependencies += "org.scala-js" %%% "scalajs-dom" % "0.7.0"
 {% endhighlight %}
 
 Note the `%%%` (instead of the usual `%%`) which will add the current Scala.js version to the artifact name. This allows to
 
 - Cross-publish libraries to different Scala.js versions
-- Disambiguate Scala.js from Scala JVM libraries
+- Disambiguate Scala.js artifacts from their JVM counterparts
 
 Some Scala.js core libraries (such as the Scala.js library itself) do not need the `%%%` since their version number *is* the Scala.js version number itself.
 
@@ -33,12 +33,6 @@ This will fetch the required JAR containing jQuery. However, it will not include
 The Scala.js sbt plugin has `jsDependencies` for this purpose. You can write:
 
 {% highlight scala %}
-ScalaJSKeys.jsDependencies += "org.webjars" % "jquery" % "1.10.2" / "jquery.js"
-{% endhighlight %}
-
-or, with `import ScalaJSKeys._`:
-
-{% highlight scala %}
 jsDependencies += "org.webjars" % "jquery" % "1.10.2" / "jquery.js"
 {% endhighlight %}
 
@@ -48,7 +42,7 @@ This will make your project depend on the respective WebJar and include a file n
 <script type="text/javascript" src="..."></script>
 {% endhighlight %}
 
-All `jsDependencies` and associated metadata (e.g. for ordering) are persisted in a file (called `JS_DEPENDENCIES`) and shipped with the artifact your project publishes. For example, if you depend on the `jasmine-test-framework` package for Scala.js (a thin wrapper around Jasmine), you do not need to explicitly depend or include `jasmine.js`; this mechanism does it for you.
+All `jsDependencies` and associated metadata (e.g. for ordering) are persisted in a file (called `JS_DEPENDENCIES`) and shipped with the artifact your project publishes. For example, if you depend on the `scalajs-jquery` package for Scala.js, you do not need to explicitly depend or include `jquery.js`; this mechanism does it for you.
 
 Note: This will **not** dump the JavaScript libraries in the file containing your compiled Scala.js code as this would not work across all JavaScript virtual machines. However, the Scala.js plugin can generate a separate file that contains all raw JavaScript dependencies (see [below](#packageJSDependencies)).
 
@@ -95,7 +89,7 @@ This will look for `myJSLibrary.js` in the resources and include it. It is an er
 If you want all JavaScript dependencies to be concatenated to a single file (for easy inclusion into a HTML file for example), you can set:
 
 {% highlight scala %}
-skip in ScalaJSKeys.packageJSDependencies := false
+skip in packageJSDependencies := false
 {% endhighlight %}
 
 in your project settings. The resulting file in the target folder will have the suffix `-jsdeps.js`.
