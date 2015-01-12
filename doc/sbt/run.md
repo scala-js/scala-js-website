@@ -16,7 +16,7 @@ You now can run your application already by using the `run` task:
     sbt> run
 
 This will detect and run classes that extend
-[`js.JSApp`]({{ BASE_PATH }}/api/scalajs-library/{{ site.scalaJSVersion }}/#scala.scalajs.js.JSApp), while optionally prompting the user to choose a class if multiple such classes exist (fails with multiple classes if `persistLauncher := true`, see section below for details).
+[`js.JSApp`]({{ site.production_url }}/api/scalajs-library/{{ site.scalaJSVersion }}/#scala.scalajs.js.JSApp), while optionally prompting the user to choose a class if multiple such classes exist (fails with multiple classes if `persistLauncher := true`, see section below for details).
 
 To run the `.sjsir` files, we invoke the Rhino JavaScript interpreter with a special scope that lazily reads and loads required `.sjsir` files on the fly (much like Java class loading).
 Note that by default, this environment doesn't have a DOM.
@@ -64,7 +64,7 @@ scalaJSOptimizerOptions ~= { _.withDisableOptimizer(true) }
 {% endhighlight %}
 
 `scalaJSOptimizerOptions` contains various other options controlling the optimizer.
-See [the ScalaDoc]({{ BASE_PATH }}/api/sbt-scalajs/{{ site.scalaJSVersion }}/#org.scalajs.sbtplugin.OptimizerOptions)
+See [the ScalaDoc]({{ site.production_url }}/api/sbt-scalajs/{{ site.scalaJSVersion }}/#org.scalajs.sbtplugin.OptimizerOptions)
 for details.
 
 ## Full-Optimize

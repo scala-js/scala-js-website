@@ -43,7 +43,7 @@ postLinkJSEnv := PhantomJSEnv(args = Seq("arg1", "arg2")).value
 {% endhighlight %}
 
 For more options of the PhantomJS environment, see
-[the ScalaDoc of `PhantomJSEnv`]({{ BASE_PATH }}/api/sbt-scalajs/{{ site.scalaJSVersion }}/#org.scalajs.sbtplugin.ScalaJSPlugin$$AutoImport$).
+[the ScalaDoc of `PhantomJSEnv`]({{ site.production_url }}/api/sbt-scalajs/{{ site.scalaJSVersion }}/#org.scalajs.sbtplugin.ScalaJSPlugin$$AutoImport$).
 
 ## <a name="node-on-ubuntu"></a> Node.js on Ubuntu
 
@@ -59,4 +59,4 @@ postLinkJSEnv := NodeJSEnv(executable = "nodejs").value
 {% endhighlight %}
 
 For more options of the Node.js environment, see
-[the ScalaDoc of `NodeJSEnv`]({{ BASE_PATH }}/api/sbt-scalajs/{{ site.scalaJSVersion }}/#org.scalajs.sbtplugin.ScalaJSPlugin$$AutoImport$).
+[the ScalaDoc of `NodeJSEnv`]({{ site.production_url }}/api/sbt-scalajs/{{ site.scalaJSVersion }}/#org.scalajs.sbtplugin.ScalaJSPlugin$$AutoImport$).

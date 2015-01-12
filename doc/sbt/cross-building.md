@@ -8,7 +8,7 @@ In order to do this, you need two different projects, one for Scala.js and one f
 You can then tell sbt to use the shared source folder in addition to the normal source locations.
 
 To do this, we provide a builder, `crossProject`, which constructs two related sbt projects, one for the JVM, and one for JS.
-See [the ScalaDoc of `CrossProject`]({{ BASE_PATH }}/api/sbt-scalajs/{{ site.scalaJSVersion }}/#org.scalajs.sbtplugin.cross.CrossProject)
+See [the ScalaDoc of `CrossProject`]({{ site.production_url }}/api/sbt-scalajs/{{ site.scalaJSVersion }}/#org.scalajs.sbtplugin.cross.CrossProject)
 for examples and documentation.
 
 We give a simple example of how such a project, we call it `foo`, could look. You can find this project on [GitHub](https://github.com/scala-js/scalajs-cross-compile-example).

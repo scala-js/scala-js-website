@@ -205,7 +205,7 @@ Should you run into trouble, don't hesitate to ask on the mailing list!
 When writing cross-compiling code, we need to have two separate projects in sbt for the JVM target and the JS target.
 The new `CrossProject` type, and its `crossProject` builder, helps in defining these pairs of projects in a DRY way.
 
-See the [documentation of `CrossProject`]({{ BASE_PATH }}/api/sbt-scalajs/0.6.0-RC2/#org.scalajs.sbtplugin.cross.CrossProject) for more information and examples.
+See the [documentation of `CrossProject`]({{ site.production_url }}/api/sbt-scalajs/0.6.0-RC2/#org.scalajs.sbtplugin.cross.CrossProject) for more information and examples.
 
 ### Faster!
 
@@ -225,7 +225,7 @@ The title says it all: `js.Array[A]` and `js.Dictionary[A]` receive the entire S
 ### Implicits to make "writing JavaScript" easier
 
 Sometimes, for example when porting existing JavaScript code, we want to just "write JavaScript" inside our Scala.js code.
-A new object `js.DynamicImplicits` ([API]({{ BASE_PATH }}/api/scalajs-library/0.6.0-RC2/#scala.scalajs.js.DynamicImplicits$)) provides implicit conversions that allow to write dynamically typed JavaScriptish code directly in Scala.js with a mimimal amount of boilerplate.
+A new object `js.DynamicImplicits` ([API]({{ site.production_url }}/api/scalajs-library/0.6.0-RC2/#scala.scalajs.js.DynamicImplicits$)) provides implicit conversions that allow to write dynamically typed JavaScriptish code directly in Scala.js with a mimimal amount of boilerplate.
 Needless to say, these implicits should be handled with care, but they can come in handy.
 
 ### On-demand strict floats

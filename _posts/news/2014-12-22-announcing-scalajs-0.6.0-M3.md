@@ -203,7 +203,7 @@ Should you run into trouble, don't hesitate to ask on the mailing list!
 When writing cross-compiling code, we need to have two separate projects in sbt for the JVM target and the JS target.
 The new `CrossProject` type, and its `crossProject` builder, helps in defining these pairs of projects in a DRY way.
 
-See the [documentation of `CrossProject`]({{ BASE_PATH }}/api/sbt-scalajs/0.6.0-M3/#org.scalajs.sbtplugin.cross.CrossProject) for more information and examples.
+See the [documentation of `CrossProject`]({{ site.production_url }}/api/sbt-scalajs/0.6.0-M3/#org.scalajs.sbtplugin.cross.CrossProject) for more information and examples.
 
 ### Faster!
 

@@ -109,7 +109,7 @@ Every configurable undefined behavior has 3 possible modes:
 * `Compliant`: behaves as specified on a JVM
 * `Unchecked`: completely unchecked and undefined
 * `Fatal`: checked, but throws
-  [`UndefinedBehaviorError`s]({{ BASE_PATH }}/api/scalajs-library/{{ site.scalaJSVersion }}/#scala.scalajs.runtime.UndefinedBehaviorError)
+  [`UndefinedBehaviorError`s]({{ site.production_url }}/api/scalajs-library/{{ site.scalaJSVersion }}/#scala.scalajs.runtime.UndefinedBehaviorError)
   instead of the specified exception.
 
 By default, undefined behaviors are in `Fatal` mode for `fastOptJS` and in
