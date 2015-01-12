@@ -52,15 +52,10 @@ and not part of any of their support contracts. You have been warned!</p>
 *   [Official mailing list](https://groups.google.com/forum/?fromgroups#!forum/scala-js): for general discussion, ideas, announcements of your libraries, etc.
 *   [Gitter chat room](https://gitter.im/scala-js/scala-js): come and meet the community of Scala.js users.
 
-Presentations:
+Featured presentations to get you convinced:
 
-*   [Hands-on Scala.js](http://vimeo.com/111978847) at PNWScala, by Li Haoyi
-*   [Cross-Platform Development in Scala.js](https://www.youtube.com/watch?v=Ksoi6AG9nbA), by Li Haoyi
-*   [Scala's evolving ecosystem- Introduction to Scala.js](http://blog.knoldus.com/2014/09/03/meet-up-on-scalas-evolving-ecosystem-introduction-to-scala-js/), by [Ayush Mishra](https://www.linkedin.com/pub/ayush-mishra/23/87b/a27), [Knoldus Software LLP](http://www.knoldus.com/home.knol)
-*   [Scala.js at Scaladays 2014](http://www.parleys.com/play/53a7d2cbe4b0543940d9e555), by Sébastien Doeraene
-*   [Live Coding Scala.js at SF Scala 2014](http://vimeo.com/87845442) by Li Haoyi
-*   [Live-coding with Scala.js at Scala eXchange 2013](http://skillsmatter.com/podcast/scala/scala-js-write-in-scala-for-the-browser-4567)
-*   [Presentation of Scala.js at Scala Days 2013](http://www.parleys.com/play/51c380bfe4b0ed8770356866) (older and somewhat obsolete)
+*   [Hands-on Scala.js](http://vimeo.com/111978847) at Pacific North-West Scala 2014, by Li Haoyi
+*   [Cross-Platform Development in Scala.js](https://www.youtube.com/watch?v=Ksoi6AG9nbA) at Scala by the Bay 2014, by Li Haoyi
 
 ## Libraries
 
