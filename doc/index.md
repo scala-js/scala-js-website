@@ -23,7 +23,6 @@ Alternatively, create a project with *custom naming* by using this [giter8 templ
   * [Depending on Libraries](./sbt/depending.html)
   * [JavaScript Environments](./sbt/js-envs.html)
   * [Cross-Building](./sbt/cross-building.html)
-* [Scala.js Cookbook](./cookbook/)
 
 ## <a name="api"></a> API
 
