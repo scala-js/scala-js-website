@@ -9,8 +9,6 @@ title: Documentation
 Get started with Scala.js by following our [tutorial](./tutorial.html) or by forking off our
 [barebone skeleton](https://github.com/sjrd/scala-js-example-app).
 
-Alternatively, create a project with *custom naming* by using this [giter8 template](https://github.com/sebnozzi/scala-js.g8).
-
 ## Reference
 
 * [Differences between the semantics of Scala and Scala.js](./semantics.html)
