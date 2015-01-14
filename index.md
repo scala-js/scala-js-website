@@ -81,6 +81,7 @@ All these testing frameworks cross-compile on the JVM and JS.
 *   [uTest](https://github.com/lihaoyi/utest)
 *   [MiniTest](https://github.com/monifu/minitest)
 *   [Little Spec](https://github.com/eecolor/little-spec)
+*   [Nyaya](https://github.com/japgolly/nyaya): Property testing and related.
 
 ### HTML templating libraries
 
@@ -88,7 +89,7 @@ All these testing frameworks cross-compile on the JVM and JS.
 
 ### UI frameworks
 
-*   [scala-js-react](https://github.com/japgolly/scalajs-react): type-safe and Scala-friendly library to use Facebook's React.js
+*   [scalajs-react](https://github.com/japgolly/scalajs-react): Type-safe and Scala-friendly library over Facebook's [React](http://facebook.github.io/react/).
 *   [scala-js-binding](https://github.com/antonkulaga/scala-js-binding): An all-Scala.js HTML binding library
 *   [scalajs-angular](https://github.com/greencatsoft/scalajs-angular) with [TodoMvc example](https://github.com/greencatsoft/scalajs-angular-todomvc): static types and complementary API for AngularJS
 
@@ -109,10 +110,10 @@ All these testing frameworks cross-compile on the JVM and JS.
 
 ### Ports of well-known Scala libraries
 
-*   [Scalaz](https://github.com/japgolly/scalaz)
-*   [Monocle](https://github.com/japgolly/Monocle)
-*   [RNG](https://github.com/japgolly/rng)
-*   [Shapeless](https://groups.google.com/forum/#!searchin/scala-js/shapeless/scala-js/5Sf2up0z3PU/9F9SYB0qHEcJ)
+*   [NICTA/rng](https://github.com/japgolly/rng): Pure-functional random value generation.
+*   [Monocle](https://github.com/japgolly/Monocle): Optics library strongly inspired by Haskell [Lens](https://github.com/ekmett/lens).
+*   [Scalaz](https://github.com/japgolly/scalaz): Library for functional programming.
+*   [Shapeless](https://github.com/japgolly/shapeless): Generic programming for Scala.
 
 ### Miscellaneous
 
