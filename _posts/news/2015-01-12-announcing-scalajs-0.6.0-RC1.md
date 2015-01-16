@@ -34,6 +34,7 @@ The following libraries and testing frameworks have already been upgraded and pu
 * [Autowire](https://github.com/lihaoyi/autowire): `"com.lihaoyi" %%% "autowire" % "0.2.4-RC1"`
 * [µPickle](https://github.com/lihaoyi/upickle): `"com.lihaoyi" %%% "upickle" % "0.2.6-RC1"`
 * [µTest](https://github.com/lihaoyi/utest): `"com.lihaoyi" %%% "utest" % "0.2.5-RC1" % "test"`
+* [MiniTest](https://github.com/monifu/minitest): `"org.monifu" %%% "minitest" % "0.10" % "test"`
 
 ## Preparations before upgrading from 0.5.x
 
