@@ -82,6 +82,7 @@ All these testing frameworks cross-compile on the JVM and JS.
 *   [MiniTest](https://github.com/monifu/minitest)
 *   [Little Spec](https://github.com/eecolor/little-spec)
 *   [Nyaya](https://github.com/japgolly/nyaya): Property testing and related.
+*   [zcheck](https://github.com/InTheNow/zcheck): A wrapper around scalacheck and scalaz's Speclite.
 
 ### HTML templating libraries
 
