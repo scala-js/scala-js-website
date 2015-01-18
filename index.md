@@ -93,6 +93,7 @@ All these testing frameworks cross-compile on the JVM and JS.
 *   [scalajs-react](https://github.com/japgolly/scalajs-react): Type-safe and Scala-friendly library over Facebook's [React](http://facebook.github.io/react/).
 *   [scala-js-binding](https://github.com/antonkulaga/scala-js-binding): An all-Scala.js HTML binding library
 *   [scalajs-angular](https://github.com/greencatsoft/scalajs-angular) with [TodoMvc example](https://github.com/greencatsoft/scalajs-angular-todomvc): static types and complementary API for AngularJS
+*   [scalajs-angulate](https://github.com/jokade/scalajs-angulate): another binding to AngularJS with enhancements
 
 ### Serialization/pickling libraries
 
