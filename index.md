@@ -136,9 +136,6 @@ All these testing frameworks cross-compile on the JVM and JS.
 
 * [Scala.js on GitHub](https://github.com/scala-js/scala-js)
 
-Want to contribute to Scala.js? Check out the
-[list of contributing opportunities](./contribute/).
-
 ## <a name="built_with_scalajs"></a> Built with Scala.js
 
 List of websites using Scala.js:
