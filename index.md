@@ -129,8 +129,7 @@ All these testing frameworks cross-compile on the JVM and JS.
 
 ## Miscellaneous
 
-* [Port of the Dart benchmark harness](https://github.com/jonas/scala-js-benchmarks)
-  by Jonas Fonseca
+* [Port of the Dart benchmark harness](https://github.com/sjrd/scalajs-benchmarks)
 
 ## Contribute
 
