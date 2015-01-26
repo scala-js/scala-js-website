@@ -22,10 +22,8 @@ and follow the instructions in its readme or [try it out in the browser](http://
 
 We also have a [standalone distribution](./downloads.html) that doesn't require SBT.
 
-<p><b><span style="color: red">Important notice!</span></b> Scala.js is still <i>experimental</i>!
-Although this is a project of LAMP/EPFL for which we will continue to provide
-best-effort improvements and bug fixes, it is <i>not</i> supported by Typesafe,
-and not part of any of their support contracts. You have been warned!</p>
+_Note that Scala.js is not part of the Typesafe Reactive platform.
+Thus, although we consider Scala.js production-ready, Typesafe does not provide any commercial support for it._
 
 
 ## Noteworthy features
