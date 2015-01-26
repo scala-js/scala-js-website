@@ -42,6 +42,8 @@ Thus, although we consider Scala.js production-ready, Typesafe does not provide 
     your browser supporting source maps)
 *   Integrates [Google Closure Compiler](https://developers.google.com/closure/compiler/)
     for producing minimal code for production. Compiled blobs range from 170-400kb
+*   Produces (very) efficient JavaScript code
+    ([benchmarks](https://github.com/sjrd/scalajs-benchmarks))
 
 ## Resources
 
