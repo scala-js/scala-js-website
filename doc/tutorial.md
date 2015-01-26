@@ -513,6 +513,7 @@ Before creating another HTML file which includes the fully optimized JavaScript,
 
 {% highlight scala %}
 ScalaJSKeys.persistLauncher in Compile := true
+
 ScalaJSKeys.persistLauncher in Test := false
 {% endhighlight %}
 
