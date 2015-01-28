@@ -50,6 +50,8 @@ This will make your project depend on the respective WebJar and include a file n
 
 All `jsDependencies` and associated metadata (e.g. for ordering) are persisted in a file (called `JS_DEPENDENCIES`) and shipped with the artifact your project publishes. For example, if you depend on the `jasmine-test-framework` package for Scala.js (a thin wrapper around Jasmine), you do not need to explicitly depend or include `jasmine.js`; this mechanism does it for you.
 
+Note: This will **not** dump the JavaScript libraries in the file containing your compiled Scala.js code as this would not work across all JavaScript virtual machines. However, the Scala.js plugin can generate a separate file that contains all raw JavaScript dependencies (see [below](#packageJSDependencies)).
+
 ### Scoping to a Configuration
 
 You may scope `jsDependencies` on a given configuration, just like for normal `libraryDependencies`:
@@ -88,7 +90,7 @@ jsDependencies += ProvidedJS / "myJSLibrary.js"
 
 This will look for `myJSLibrary.js` in the resources and include it. It is an error if it doesn't exist. You may use ordering and scoping if you need.
 
-### Write a Dependency File
+### <a name="packageJSDependencies"></a> Write a Dependency File
 
 If you want all JavaScript dependencies to be concatenated to a single file (for easy inclusion into a HTML file for example), you can set:
 
