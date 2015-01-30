@@ -512,9 +512,9 @@ Note that this can take a while on a larger project (tens of seconds) we do ther
 Before creating another HTML file which includes the fully optimized JavaScript, we are going to introduce another feature of the sbt plugin. Since the sbt plugin is able to detect the `JSApp` object of the application, there is no need to repeat this in the HTML file. If you add the following setting to your `build.sbt`, sbt will create a `scala-js-tutorial-launcher.js` file which calls the main method:
 
 {% highlight scala %}
-    ScalaJSKeys.persistLauncher in Compile := true
+ScalaJSKeys.persistLauncher in Compile := true
 
-    ScalaJSKeys.persistLauncher in Test := false
+ScalaJSKeys.persistLauncher in Test := false
 {% endhighlight %}
 
 We set `persistLauncher` to false for testing, since we do not have an application to run. In our HTML page, we can now include this file instead of the manual launcher:
