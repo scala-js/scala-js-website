@@ -179,7 +179,7 @@ That's what the DOM API is for.
 To use the DOM, it is best to use the statically typed Scala.js DOM library. To add it to your sbt project, add the following line to your `build.sbt`:
 
 {% highlight scala %}
-libraryDependencies += "org.scala-js" %%% "scalajs-dom" % "0.7.0"
+libraryDependencies += "org.scala-js" %%% "scalajs-dom" % "0.8.0"
 {% endhighlight %}
 
 sbt-savvy folks will notice the `%%%` instead of the usual `%%`. It means we are using a Scala.js library and not a normal Scala library. Have a look at the [Depending on Libraries](./sbt/depending.html) guide for details. Don't forget to reload the build file if sbt is still running:
@@ -283,7 +283,7 @@ Larger web applications have a tendency to set up reactions to events in JavaScr
 Just like for the DOM, there is a typed library for jQuery available in Scala.js. Replace the `libraryDependencies += ...` line in your `build.sbt` by:
 
 {% highlight scala %}
-libraryDependencies += "be.doeraene" %%% "scalajs-jquery" % "0.7.0"
+libraryDependencies += "be.doeraene" %%% "scalajs-jquery" % "0.8.0"
 {% endhighlight %}
 
 Since we won't be using the DOM directly, we don't need the old library anymore. Note that the jQuery library internally depends on the DOM, but we don't have to care about this. sbt takes care of it automatically.
