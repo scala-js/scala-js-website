@@ -42,7 +42,7 @@ The following testing frameworks are available:
 
 * [µTest](https://github.com/lihaoyi/utest): `"com.lihaoyi" %%% "utest" % "0.3.0" % "test"`
 * [MiniTest](https://github.com/monifu/minitest): `"org.monifu" %%% "minitest" % "0.11" % "test"`
-* [Greenlight](https://github.com/greencatsoft/greenlight)
+* [Greenlight](https://github.com/greencatsoft/greenlight): `"com.greencatsoft" %%% "greenlight" % "0.1-SNAPSHOT" % "test"`
 * [ScalaCheck](https://github.com/rickynils/scalacheck): `"com.github.inthenow" %%% "scalacheck" % "1.12.2" % "test"`
 * [zCheck](https://github.com/InTheNow/zcheck): `"com.github.inthenow" %%% "zcheck" % "0.6.0" % "test"`
 
