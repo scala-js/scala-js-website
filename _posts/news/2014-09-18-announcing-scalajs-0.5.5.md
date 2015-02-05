@@ -57,7 +57,7 @@ Note that these conversions apply equally to other Scala collections like `Seq` 
 #### packageJS
 `packageJS` has been deprecated in favor of `fastOptJS`.
 
-Its providing tasks (`packageExternalDepsJS`, `packageInternalDepsJS` and `packageExportedProductsJS`) have been deprecated without replacement. If such a mechanism is required, [`ScalaJSPackager`]({{ BASE_PATH }}/api/scalajs-tools/0.5.5/#scala.scalajs.tools.packager.ScalaJSPackager) should be used directly.
+Its providing tasks (`packageExternalDepsJS`, `packageInternalDepsJS` and `packageExportedProductsJS`) have been deprecated without replacement. If such a mechanism is required, [`ScalaJSPackager`]({{ site.production_url }}/api/scalajs-tools/0.5.5/#scala.scalajs.tools.packager.ScalaJSPackager) should be used directly.
 
 #### sbt Task Renamings
 

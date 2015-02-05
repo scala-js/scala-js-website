@@ -1,7 +1,7 @@
 ---
 layout: page
 title: Scala.js
-tagline: A Scala to JavaScript compiler
+tagline: the Scala to JavaScript compiler
 ---
 {% include JB/setup %}
 
@@ -22,10 +22,8 @@ and follow the instructions in its readme or [try it out in the browser](http://
 
 We also have a [standalone distribution](./downloads.html) that doesn't require SBT.
 
-<p><b><span style="color: red">Important notice!</span></b> Scala.js is still <i>experimental</i>!
-Although this is a project of LAMP/EPFL for which we will continue to provide
-best-effort improvements and bug fixes, it is <i>not</i> supported by Typesafe,
-and not part of any of their support contracts. You have been warned!</p>
+_Note that Scala.js is not part of the Typesafe Reactive platform.
+Thus, although we consider Scala.js production-ready, Typesafe does not provide any commercial support for it._
 
 
 ## Noteworthy features
@@ -44,6 +42,8 @@ and not part of any of their support contracts. You have been warned!</p>
     your browser supporting source maps)
 *   Integrates [Google Closure Compiler](https://developers.google.com/closure/compiler/)
     for producing minimal code for production. Compiled blobs range from 170-400kb
+*   Produces (very) efficient JavaScript code
+    ([benchmarks](https://github.com/sjrd/scalajs-benchmarks))
 
 ## Resources
 
@@ -52,15 +52,10 @@ and not part of any of their support contracts. You have been warned!</p>
 *   [Official mailing list](https://groups.google.com/forum/?fromgroups#!forum/scala-js): for general discussion, ideas, announcements of your libraries, etc.
 *   [Gitter chat room](https://gitter.im/scala-js/scala-js): come and meet the community of Scala.js users.
 
-Presentations:
+Featured presentations to get you convinced:
 
-*   [Hands-on Scala.js](http://vimeo.com/111978847) at PNWScala, by Li Haoyi
-*   [Cross-Platform Development in Scala.js](https://www.youtube.com/watch?v=Ksoi6AG9nbA), by Li Haoyi
-*   [Scala's evolving ecosystem- Introduction to Scala.js](http://blog.knoldus.com/2014/09/03/meet-up-on-scalas-evolving-ecosystem-introduction-to-scala-js/), by [Ayush Mishra](https://www.linkedin.com/pub/ayush-mishra/23/87b/a27), [Knoldus Software LLP](http://www.knoldus.com/home.knol)
-*   [Scala.js at Scaladays 2014](http://www.parleys.com/play/53a7d2cbe4b0543940d9e555), by Sébastien Doeraene
-*   [Live Coding Scala.js at SF Scala 2014](http://vimeo.com/87845442) by Li Haoyi
-*   [Live-coding with Scala.js at Scala eXchange 2013](http://skillsmatter.com/podcast/scala/scala-js-write-in-scala-for-the-browser-4567)
-*   [Presentation of Scala.js at Scala Days 2013](http://www.parleys.com/play/51c380bfe4b0ed8770356866) (older and somewhat obsolete)
+*   [Hands-on Scala.js](http://vimeo.com/111978847) at Pacific North-West Scala 2014, by Li Haoyi
+*   [Cross-Platform Development in Scala.js](https://www.youtube.com/watch?v=Ksoi6AG9nbA) at Scala by the Bay 2014, by Li Haoyi
 
 ## Libraries
 
@@ -134,15 +129,11 @@ All these testing frameworks cross-compile on the JVM and JS.
 
 ## Miscellaneous
 
-* [Port of the Dart benchmark harness](https://github.com/jonas/scala-js-benchmarks)
-  by Jonas Fonseca
+* [Port of the Dart benchmark harness](https://github.com/sjrd/scalajs-benchmarks)
 
 ## Contribute
 
 * [Scala.js on GitHub](https://github.com/scala-js/scala-js)
-
-Want to contribute to Scala.js? Check out the
-[list of contributing opportunities](./contribute/).
 
 ## <a name="built_with_scalajs"></a> Built with Scala.js
 
@@ -183,6 +174,7 @@ List of websites using Scala.js:
 
 ## Version History
 
+- [0.6.0](/news/2015/02/05/announcing-scalajs-0.6.0/)
 - [0.6.0-RC2](/news/2015/01/23/announcing-scalajs-0.6.0-RC2/)
 - [0.6.0-RC1](/news/2015/01/12/announcing-scalajs-0.6.0-RC1/)
 - [0.6.0-M3](/news/2014/12/22/announcing-scalajs-0.6.0-M3/)

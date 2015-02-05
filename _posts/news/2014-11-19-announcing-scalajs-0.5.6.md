@@ -40,7 +40,7 @@ The following features of the Java library have been added:
 
 Scala.js now supports the [standard charset conversions](https://docs.oracle.com/javase/7/docs/api/index.html?java/nio/charset/StandardCharsets.html) that every JRE supports. You can now pass instances of `Charset` to methods that convert bytes to characters and vice versa.
 
-Note that you should avoid using `Charset.forName` (and methods that take charsets as strings in general), since they will make all `Charset` implementations reachable and hence explode your code size. If you compile on JDK6 (which does not have `StandardCharsets`), you may use [`scala.scalajs.niocharset.StandardCharsets`]({{ BASE_PATH }}/api/scalajs-library/0.5.6/#scala.scalajs.niocharset.StandardCharsets) to retrieve an instance of the desired `Charset`.
+Note that you should avoid using `Charset.forName` (and methods that take charsets as strings in general), since they will make all `Charset` implementations reachable and hence explode your code size. If you compile on JDK6 (which does not have `StandardCharsets`), you may use [`scala.scalajs.niocharset.StandardCharsets`]({{ site.production_url }}/api/scalajs-library/0.5.6/#scala.scalajs.niocharset.StandardCharsets) to retrieve an instance of the desired `Charset`.
 
 This also allowed to implement `String.getBytes` ([#1087](https://github.com/scala-js/scala-js/issues/1087)).
 

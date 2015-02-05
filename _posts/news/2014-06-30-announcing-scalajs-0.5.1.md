@@ -42,7 +42,7 @@ The new sbt setting `jsDependencyFilter` can be used to modify the dependencies 
 
     jsDependencyFilter := (_.filter(_.resourceName != "jquery.js"))
 
-The above would prevent "jquery.js" from being included by the sbt runners. See [FlatJSDependency]({{ BASE_PATH }}/api/scalajs-tools/0.5.1/#scala.scalajs.tools.jsdep.FlatJSDependency) for fields that you can use.
+The above would prevent "jquery.js" from being included by the sbt runners. See [FlatJSDependency]({{ site.production_url }}/api/scalajs-tools/0.5.1/#scala.scalajs.tools.jsdep.FlatJSDependency) for fields that you can use.
 
 #### Ordered testing output
 

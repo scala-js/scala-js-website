@@ -1,56 +1,74 @@
 ---
 layout: post
-title: Announcing Scala.js 0.6.0-RC2
+title: Announcing Scala.js 0.6.0
 category: news
 tags: [releases]
 ---
 {% include JB/setup %}
 
-We are excited to announce the second release candidate of Scala.js 0.6.0, aka 0.6.0-RC2!
-Unless there are blocking issues with this RC, or issues requiring binary incompatible changes, this version will become 0.6.0 final.
+We are thrilled to announce the final release of Scala.js 0.6.0!
 
-Compared to 0.6.0-RC1, this is strictly a bug fix release.
-The following bugs have been fixed in this second RC:
+As of this version, we do not consider Scala.js to be experimental anymore.
+We believe it has reached maturity, and from now on, the language semantics as well as the APIs will only evolve in backward compatible ways, or go through proper deprecation cycles.
 
-* [#1451](https://github.com/scala-js/scala-js/issues/1451) ScalaDoc run crashes with property `@JSExports`
-* [#1452](https://github.com/scala-js/scala-js/issues/1452) PhantomJS sometimes doesn't shut down properly on Linux
-* [#1453](https://github.com/scala-js/scala-js/issues/1453) Critical incorrect constant folding of `* (-1)` in the optimizer
-* [#1455](https://github.com/scala-js/scala-js/issues/1455) Runs for ScalaDoc complain about `@JSExport(SomeFinalVal)`
-* [#1458](https://github.com/scala-js/scala-js/issues/1458) PhantomJS 2 expects a scheme name (`file:///`) for all urls, not just a path to local files
+Today is also the 2-year anniversary of Scala.js!
+The [first commit](https://github.com/scala-js/scala-js/commit/9ad7627c2418e5d345375705ca087a60e3aa2c22) was pushed on February 5, 2013.
 
-Scala.js 0.6.0-RC2 is backward and forward binary compatible with 0.6.0-RC1.
-Libraries already published for RC1 need therefore not be published again against RC2.
+## Getting started
 
-To upgrade from 0.6.0-Mx/RC1, simply change the version number.
-If you're upgrading from M1/M2, you might need to address some compilation errors regarding the `js` package, but it should be straightforward.
-Should you encounter any trouble, do not hesitate to ask.
+If you are new to Scala.js, head over to
+[the tutorial]({{ BASE_PATH }}/doc/tutorial.html).
 
-The rest of this announcement is cumulative with the changes introduced in the milestones and RC1, and is therefore written wrt. 0.5.6.
-
-<hr/>
+## Release notes
 
 As the change in "major" version number witnesses, this release is *not* binary compatible with 0.5.x.
-Libraries need to be recompiled and republished using 0.6.0-RC1 or RC2 to be compatible.
+Libraries need to be recompiled and republished using 0.6.0 to be compatible.
 More importantly, this release is not source compatible with 0.5.x either.
 
 Please report any issues [on GitHub](https://github.com/scala-js/scala-js/issues).
 
-The following libraries and testing frameworks have already been upgraded and published for 0.6.0-RC1/RC2:
+The following libraries have already been upgraded and published for 0.6.0:
 
 * [DOM types](https://github.com/scala-js/scala-js-dom): `"org.scala-js" %%% "scalajs-dom" % "0.7.0"`
 * [jQuery types](https://github.com/scala-js/scala-js-jquery): `"be.doeraene" %%% "scalajs-jquery" % "0.7.0"`
-* [Scala.rx](https://github.com/lihaoyi/scala.rx): `"com.lihaoyi" %%% "scalarx" % "0.2.7-RC1"`
-* [ScalaTags](https://github.com/lihaoyi/scalatags): `"com.lihaoyi" %%% "scalatags" % "0.4.3-RC1"`
-* [Autowire](https://github.com/lihaoyi/autowire): `"com.lihaoyi" %%% "autowire" % "0.2.4-RC1"`
-* [µPickle](https://github.com/lihaoyi/upickle): `"com.lihaoyi" %%% "upickle" % "0.2.6-RC1"`
-* [µTest](https://github.com/lihaoyi/utest): `"com.lihaoyi" %%% "utest" % "0.2.5-RC1" % "test"`
-* [MiniTest](https://github.com/monifu/minitest): `"org.monifu" %%% "minitest" % "0.10" % "test"`
+* [Scala.rx](https://github.com/lihaoyi/scala.rx): `"com.lihaoyi" %%% "scalarx" % "0.2.7"`
+* [µPickle](https://github.com/lihaoyi/upickle): `"com.lihaoyi" %%% "upickle" % "0.2.6"`
+* [Autowire](https://github.com/lihaoyi/autowire): `"com.lihaoyi" %%% "autowire" % "0.2.4"`
+* [scalajs-angulate](https://github.com/jokade/scalajs-angulate): `"biz.enef" %%% "scalajs-angulate" % "0.1"`
+* [scalajs-angular](https://github.com/greencatsoft/scalajs-angular): `"com.greencatsoft" %%% "scalajs-angular" % "0.3"`
+* [scalaz](https://github.com/japgolly/scalaz): `"com.github.inthenow" %%% "scalaz" % "7.1.0-4"` (via [@japgolly](https://github.com/japgolly))
+
+The following testing frameworks are available:
+
+* [µTest](https://github.com/lihaoyi/utest): `"com.lihaoyi" %%% "utest" % "0.3.0" % "test"`
+* [MiniTest](https://github.com/monifu/minitest): `"org.monifu" %%% "minitest" % "0.11" % "test"`
+* [Greenlight](https://github.com/greencatsoft/greenlight)
+* [ScalaCheck](https://github.com/rickynils/scalacheck): `"com.github.inthenow" %%% "scalacheck" % "1.12.2" % "test"`
+* [zCheck](https://github.com/InTheNow/zcheck): `"com.github.inthenow" %%% "zcheck" % "0.6.0" % "test"`
+
+And the following helper sbt plugins as well:
+
+* [Workbench](https://github.com/lihaoyi/workbench): `addSbtPlugin("com.lihaoyi" % "workbench" % "0.2.3")`
+* @InTheNow's [sbt-scalajs](https://github.com/InTheNow/sbt-scalajs): `addSbtPlugin("com.github.inthenow" % "sbt-scalajs" % "0.6.0")`
+
+There is also a new--and incompatible--version of the DOM API.
+We recommend that you first upgrade to 0.7.0 and the above libraries while upgrading to Scala.js 0.6.0.
+As a second step, you can upgrade to the DOM API version 0.8.0.
+Libraries depending on the DOM API must also be republished against this version of the DOM API, since it is by and large incompatible with 0.7.0.
+Here are the 0.8.0 versions of said libraries:
+
+* [DOM types](https://github.com/scala-js/scala-js-dom): `"org.scala-js" %%% "scalajs-dom" % "0.8.0"`
+* [jQuery types](https://github.com/scala-js/scala-js-jquery): `"be.doeraene" %%% "scalajs-jquery" % "0.8.0"`
+* [ScalaTags](https://github.com/lihaoyi/scalatags): `"com.lihaoyi" %%% "scalatags" % "0.4.5"`
+* [scalajs-angulate](https://github.com/jokade/scalajs-angulate) and [scalajs-angular](https://github.com/greencatsoft/scalajs-angular): not yet published
+
+To start a Play! project with Scala.js, have a look at [play-with-scalajs-example](https://github.com/vmunier/play-with-scalajs-example).
 
 ## Preparations before upgrading from 0.5.x
 
 ### Upgrade to 0.5.6 if not already done
 
-Before upgrading to 0.6.0-RC2, **we strongly recommend that you upgrade to Scala.js 0.5.6**, and address all deprecation warnings.
+Before upgrading to 0.6.0, **we strongly recommend that you upgrade to Scala.js 0.5.6**, and address all deprecation warnings.
 Scala.js 0.5.6 contains warnings for the most vicious breaking changes of 0.6.x.
 
 ### Migrate away from the Scala.js Jasmine test framework
@@ -61,21 +79,21 @@ The Jasmine test framework wrapper is *not* a good testing framework for Scala.j
 Possible replacements:
 
 * [uTest](https://github.com/lihaoyi/utest)
-* [Little Spec](https://github.com/eecolor/little-spec)
-* [otest](https://github.com/cgta/otest)
 * [MiniTest](https://github.com/monifu/minitest)
+* [Greenlight](https://github.com/greencatsoft/greenlight)
+* [otest](https://github.com/cgta/otest)
 
-Note that these testing frameworks also need to upgrade to 0.6.0-RC1/RC2 before you can use them.
+Note that these testing frameworks also need to upgrade to 0.6.0 before you can use them.
 
-## Upgrade to 0.6.0-RC2 from 0.5.6
+## Upgrade to 0.6.0 from 0.5.6
 
-Basically, you need to apply the same kind of changes to your build files as in [this commit](https://github.com/sjrd/scala-js-example-app/commit/07e940a6fe4d2208ab633402d6849eb020ec277d), which mostly consists in:
+Basically, you need to apply the same kind of changes to your build files as in [this commit](https://github.com/sjrd/scala-js-example-app/commit/6ccd5f64c3d46b203685a3c0762142513f5cc3e9), which mostly consists in:
 
-* Upgrade to sbt >= 0.13.6 (the current version is 0.13.7).
+* Upgrade to sbt >= 0.13.7.
 * Adaptations to new groupId and artifact names for Scala.js packages.
 * Adaptation to the new `AutoPlugin` infrastructure of the sbt plugin.
-* Drop the prefix `ScalaJSKeys.` for Scala.js-specific sbt keys, as they are not needed anymore.
-* Upgrade to 0.6.0-RC2-enabled versions of your dependencies.
+* Drop the prefix `ScalaJSKeys.` for Scala.js-specific sbt keys.
+* Upgrade to 0.6.0-enabled versions of your dependencies.
 
 On the sbt command line, not much changes, except the way you use the `fastOpt` and `fullOpt` stages.
 In Scala 0.5.x, you could run in the `fastOpt` stage with:
@@ -121,7 +139,8 @@ The idea of `UndefinedBehaviorError` is that you can enjoy strict checks and sta
 If you really want `ClassCastException`s to be thrown reliably (in all stages), you can enable them in your application, at the expense of runtime performance, with the following sbt setting:
 
 {% highlight scala %}
-scalaJSSemantics ~= { _.withAsInstanceOfs(org.scalajs.core.tools.sem.CheckedBehavior.Compliant) }
+scalaJSSemantics ~= { _.withAsInstanceOfs(
+    org.scalajs.core.tools.sem.CheckedBehavior.Compliant) }
 {% endhighlight %}
 
 This applies to the entire application, including dependencies.
@@ -185,13 +204,13 @@ Although quite good in its own right, it suffered from several limitations, incl
 Scala.js 0.6.x now supports its JS version of the original sbt testing interface, with all its power, API, and usability features.
 We also offer tools to make your testing framework fully source-compatible with the JVM and JS variants of the testing interface, without a single line of platform-specific source code.
 
-An existing barebone cross-compiling testing framework can be found [in our tests](https://github.com/scala-js/scala-js/tree/v0.6.0-RC2/sbt-plugin-test).
+An existing barebone cross-compiling testing framework can be found [in our tests](https://github.com/scala-js/scala-js/tree/v0.6.0/sbt-plugin-test).
 Some highlights:
 
-* [Build definition for the cross-compiling framework](https://github.com/scala-js/scala-js/blob/v0.6.0-RC2/sbt-plugin-test/build.sbt#L49-L64)
-* [(Cross-compiling) source code of the testing framework](https://github.com/scala-js/scala-js/tree/v0.6.0-RC2/sbt-plugin-test/testFramework/src/main/scala/sbttest/framework)
-* [Build definition for a cross-compiling project using the framework](https://github.com/scala-js/scala-js/blob/v0.6.0-RC2/sbt-plugin-test/build.sbt#L66-L86)
-* [Source code of the project using the framework](https://github.com/scala-js/scala-js/tree/v0.6.0-RC2/sbt-plugin-test/multiTest)
+* [Build definition for the cross-compiling framework](https://github.com/scala-js/scala-js/blob/v0.6.0/sbt-plugin-test/build.sbt#L49-L64)
+* [(Cross-compiling) source code of the testing framework](https://github.com/scala-js/scala-js/tree/v0.6.0/sbt-plugin-test/testFramework/src/main/scala/sbttest/framework)
+* [Build definition for a cross-compiling project using the framework](https://github.com/scala-js/scala-js/blob/v0.6.0/sbt-plugin-test/build.sbt#L66-L86)
+* [Source code of the project using the framework](https://github.com/scala-js/scala-js/tree/v0.6.0/sbt-plugin-test/multiTest)
 
 Adapting your testing framework to follow this structure is likely to be the easiest path of migration.
 You may also want to take a look at [the PR we made to uTest](https://github.com/lihaoyi/utest/pull/45) to migrate to Scala.js 0.6.x.
@@ -205,11 +224,11 @@ Should you run into trouble, don't hesitate to ask on the mailing list!
 When writing cross-compiling code, we need to have two separate projects in sbt for the JVM target and the JS target.
 The new `CrossProject` type, and its `crossProject` builder, helps in defining these pairs of projects in a DRY way.
 
-See the [documentation of `CrossProject`]({{ site.production_url }}/api/sbt-scalajs/0.6.0-RC2/#org.scalajs.sbtplugin.cross.CrossProject) for more information and examples.
+See the [documentation of `CrossProject`]({{ site.production_url }}/api/sbt-scalajs/0.6.0/#org.scalajs.sbtplugin.cross.CrossProject) for more information and examples.
 
 ### Faster!
 
-Scala.js 0.6.x benefits from many performance improvements, most notably:
+Scala.js 0.6.0 benefits from many performance improvements, most notably:
 
 * `asInstanceOf`s are unchecked (see above), giving `fullOpt` code up to twice as fast as before
 * `Range.foreach`, aka the `for (i <- 0 until n)` kind of loops, is inlined away, giving the same performance as an explicit `while` loop.
@@ -225,7 +244,7 @@ The title says it all: `js.Array[A]` and `js.Dictionary[A]` receive the entire S
 ### Implicits to make "writing JavaScript" easier
 
 Sometimes, for example when porting existing JavaScript code, we want to just "write JavaScript" inside our Scala.js code.
-A new object `js.DynamicImplicits` ([API]({{ site.production_url }}/api/scalajs-library/0.6.0-RC2/#scala.scalajs.js.DynamicImplicits$)) provides implicit conversions that allow to write dynamically typed JavaScriptish code directly in Scala.js with a mimimal amount of boilerplate.
+A new object `js.DynamicImplicits` ([API]({{ site.production_url }}/api/scalajs-library/0.6.0/#scala.scalajs.js.DynamicImplicits$)) provides implicit conversions that allow to write dynamically typed JavaScriptish code directly in Scala.js with a mimimal amount of boilerplate.
 Needless to say, these implicits should be handled with care, but they can come in handy.
 
 ### On-demand strict floats
@@ -257,9 +276,9 @@ This changes the value returned by `x.getClass.getName` or `classOf[C].getName`.
 
 ### We publish to Maven Central
 
-This should probably not affect sbt users, but it now becomes possible to imagine a Maven plugin for Scala.js.
+This should probably not affect sbt users, but it now becomes possible to imagine Maven and Gradle plugins for Scala.js.
 To this effect, the sbt plugin codebase has also been refactored, and all parts that are not strictly bound to sbt as a build tool have been extracted in Mavenized artifacts.
-An enthusiast Maven user could therefore build a Maven plugin with relatively few lines of code.
+An enthusiast Maven/Gradle user could therefore build a Maven/Gradle plugin with relatively few lines of code.
 As a measurable figure, the code specific to sbt contains only 1,686 lines of code.
 
 ## Bugfixes
