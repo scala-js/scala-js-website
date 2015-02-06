@@ -406,7 +406,7 @@ It typically boils down to two sbt settings in the `build.sbt` file.
 For uTest, these are:
 
 {% highlight scala %}
-libraryDependencies += "com.lihaoyi" %%% "utest" % "0.2.5" % "test"
+libraryDependencies += "com.lihaoyi" %%% "utest" % "0.3.0" % "test"
 
 testFrameworks += new TestFramework("utest.runner.Framework")
 {% endhighlight %}
