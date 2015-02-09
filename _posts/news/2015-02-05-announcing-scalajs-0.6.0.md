@@ -36,7 +36,12 @@ The following libraries have already been upgraded and published for 0.6.0:
 * [Autowire](https://github.com/lihaoyi/autowire): `"com.lihaoyi" %%% "autowire" % "0.2.4"`
 * [scalajs-angulate](https://github.com/jokade/scalajs-angulate): `"biz.enef" %%% "scalajs-angulate" % "0.1"`
 * [scalajs-angular](https://github.com/greencatsoft/scalajs-angular): `"com.greencatsoft" %%% "scalajs-angular" % "0.3"`
-* [scalaz](https://github.com/japgolly/scalaz): `"com.github.inthenow" %%% "scalaz" % "7.1.0-4"` (via [@japgolly](https://github.com/japgolly))
+* [scalaz](https://github.com/japgolly/scalaz): `"com.github.japgolly.fork.scalaz" %%% "scalaz-xxx" % "7.1.0-4"`
+* [Monocle](https://github.com/japgolly/Monocle): `"com.github.japgolly.fork.monocle" %%% "monocle-xxx" % "1.0.1"`
+* [NICTA/rng](https://github.com/japgolly/rng): `"com.github.japgolly.fork.nicta" %%% "rng" % "1.3.0"`
+* [Shapeless](https://github.com/japgolly/shapeless): `"com.github.japgolly.fork.shapeless" %%% "shapeless" % "2.0.0"`
+* [scalajs-react](https://github.com/japgolly/scalajs-react): `"com.github.japgolly.scalajs-react" %%% "xxx" % "0.7.2"`
+* [nyaya](https://github.com/japgolly/nyaya): `"com.github.japgolly.nyaya" %%% "xxx" % "0.5.2"`
 
 The following testing frameworks are available:
 
