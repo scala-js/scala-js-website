@@ -36,12 +36,12 @@ The following libraries have already been upgraded and published for 0.6.0:
 * [Autowire](https://github.com/lihaoyi/autowire): `"com.lihaoyi" %%% "autowire" % "0.2.4"`
 * [scalajs-angulate](https://github.com/jokade/scalajs-angulate): `"biz.enef" %%% "scalajs-angulate" % "0.1"`
 * [scalajs-angular](https://github.com/greencatsoft/scalajs-angular): `"com.greencatsoft" %%% "scalajs-angular" % "0.3"`
-* [scalaz](https://github.com/japgolly/scalaz): `"com.github.japgolly.fork.scalaz" %%% "scalaz-xxx" % "7.1.0-4"`
-* [Monocle](https://github.com/japgolly/Monocle): `"com.github.japgolly.fork.monocle" %%% "monocle-xxx" % "1.0.1"`
+* [scalaz](https://github.com/japgolly/scalaz): `"com.github.japgolly.fork.scalaz" %%% "scalaz-core" % "7.1.0-4"` _(plus other modules + version 7.1.1)_
+* [Monocle](https://github.com/japgolly/Monocle): `"com.github.japgolly.fork.monocle" %%% "monocle-core" % "1.0.1"` _(plus other modules)_
 * [NICTA/rng](https://github.com/japgolly/rng): `"com.github.japgolly.fork.nicta" %%% "rng" % "1.3.0"`
 * [Shapeless](https://github.com/japgolly/shapeless): `"com.github.japgolly.fork.shapeless" %%% "shapeless" % "2.0.0"`
-* [scalajs-react](https://github.com/japgolly/scalajs-react): `"com.github.japgolly.scalajs-react" %%% "xxx" % "0.7.2"`
-* [nyaya](https://github.com/japgolly/nyaya): `"com.github.japgolly.nyaya" %%% "xxx" % "0.5.2"`
+* [scalajs-react](https://github.com/japgolly/scalajs-react): `"com.github.japgolly.scalajs-react" %%% "core" % "0.7.2"` _(plus other modules)_
+* [nyaya](https://github.com/japgolly/nyaya): `"com.github.japgolly.nyaya" %%% "nyaya-core" % "0.5.2"`
 
 The following testing frameworks are available:
 
@@ -66,6 +66,7 @@ Here are the 0.8.0 versions of said libraries:
 * [jQuery types](https://github.com/scala-js/scala-js-jquery): `"be.doeraene" %%% "scalajs-jquery" % "0.8.0"`
 * [ScalaTags](https://github.com/lihaoyi/scalatags): `"com.lihaoyi" %%% "scalatags" % "0.4.5"`
 * [scalajs-angulate](https://github.com/jokade/scalajs-angulate) and [scalajs-angular](https://github.com/greencatsoft/scalajs-angular): not yet published
+* [scalajs-react](https://github.com/japgolly/scalajs-react): `"com.github.japgolly.scalajs-react" %%% "core" % "0.8.0"` _(plus other modules)_
 
 To start a Play! project with Scala.js, have a look at [play-with-scalajs-example](https://github.com/vmunier/play-with-scalajs-example).
 
