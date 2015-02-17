@@ -123,6 +123,7 @@ All these testing frameworks cross-compile on the JVM and JS.
 *   [workbench-example-app](https://github.com/lihaoyi/workbench-example-app): skeleton application using [Scala.js workbench](https://github.com/lihaoyi/scala-js-workbench) for live-reloading in the browser, together with a collection of sample applications developed using it
 *   [Play! application with Scala.js](https://github.com/vmunier/play-with-scalajs-example)
 *   [Node.js module with Scala.js](https://github.com/rockymadden/scala-node-example)
+*   [SPA tutorial with Scala.js and React](https://github.com/ochrons/scalajs-spa-tutorial): Simple Single Page Application tutorial built upon scalajs-react, Spray and Bootstrap.
 
 ## Tools
 
