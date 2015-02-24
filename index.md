@@ -68,6 +68,7 @@ Most of them, though, are cross-compiling over JVM and JS, and thus have separat
 
 *   [scalajs-dom](https://github.com/scala-js/scala-js-dom): static types for the DOM API, plus a few extensions
 *   [scalajs-jquery](https://github.com/scala-js/scala-js-jquery): static types for jQuery
+*   [scalajs-puchdb](https://github.com/chandu0101/scalajs-facades/tree/master/core/src/main/scala/chandu0101/scalajs/facades/pouchdb): static types for PouchDB
 
 ### Testing frameworks
 
