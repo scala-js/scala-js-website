@@ -28,9 +28,19 @@ Generated Scaladocs are available here:
 
 ### Scala.js
 
+#### Scala.js 0.6.1
+* [0.6.1 scalajs-library]({{ site.production_url }}/api/scalajs-library/0.6.1/#scala.scalajs.js.package)
+* [0.6.1 scalajs-test-interface]({{ site.production_url }}/api/scalajs-test-interface/0.6.1/)
+* [0.6.1 scalajs-stubs]({{ site.production_url }}/api/scalajs-stubs/0.6.1/)
+* [0.6.1 scalajs-ir]({{ site.production_url }}/api/scalajs-ir/0.6.1/#org.scalajs.core.ir.package)
+* [0.6.1 scalajs-tools]({{ site.production_url }}/api/scalajs-tools/0.6.1/#org.scalajs.core.tools.package) ([Scala.js version]({{ site.production_url }}/api/scalajs-tools-js/0.6.1/#org.scalajs.core.tools.package))
+* [0.6.1 scalajs-js-envs]({{ site.production_url }}/api/scalajs-js-envs/0.6.1/#org.scalajs.jsenv.package)
+* [0.6.1 scalajs-test-adapter]({{ site.production_url }}/api/scalajs-sbt-test-adapter/0.6.1/#org.scalajs.testadapter.package)
+* [0.6.1 sbt-scalajs]({{ site.production_url }}/api/sbt-scalajs/0.6.1/#org.scalajs.sbtplugin.package)
+
 #### Scala.js 0.6.0
 * [0.6.0 scalajs-library]({{ site.production_url }}/api/scalajs-library/0.6.0/#scala.scalajs.js.package)
-* [0.6.6 scalajs-test-interface]({{ site.production_url }}/api/scalajs-test-interface/0.6.0/)
+* [0.6.0 scalajs-test-interface]({{ site.production_url }}/api/scalajs-test-interface/0.6.0/)
 * [0.6.0 scalajs-stubs]({{ site.production_url }}/api/scalajs-stubs/0.6.0/)
 * [0.6.0 scalajs-ir]({{ site.production_url }}/api/scalajs-ir/0.6.0/#org.scalajs.core.ir.package)
 * [0.6.0 scalajs-tools]({{ site.production_url }}/api/scalajs-tools/0.6.0/#org.scalajs.core.tools.package) ([Scala.js version]({{ site.production_url }}/api/scalajs-tools-js/0.6.0/#org.scalajs.core.tools.package))
