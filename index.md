@@ -91,6 +91,7 @@ All these testing frameworks cross-compile on the JVM and JS.
 *   [scala-js-binding](https://github.com/antonkulaga/scala-js-binding): An all-Scala.js HTML binding library
 *   [scalajs-angular](https://github.com/greencatsoft/scalajs-angular) with [TodoMvc example](https://github.com/greencatsoft/scalajs-angular-todomvc): static types and complementary API for AngularJS
 *   [scalajs-angulate](https://github.com/jokade/scalajs-angulate): another binding to AngularJS with enhancements
+*   [Widok](https://widok.github.io/): Reactive web framework for the JVM and Scala.js
 
 ### Serialization/pickling libraries
 
