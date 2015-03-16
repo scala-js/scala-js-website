@@ -93,10 +93,6 @@ All these testing frameworks cross-compile on the JVM and JS.
 *   [scalajs-angulate](https://github.com/jokade/scalajs-angulate): another binding to AngularJS with enhancements
 *   [Widok](https://widok.github.io/): Reactive web framework for the JVM and Scala.js
 
-### Visualization
-
-*   [Paths.scala.js](https://github.com/andreaferretti/paths-scala-js): a library to generate SVG charts and shapes (wrapper over [Paths.js](https://github.com/andreaferretti/paths-js))
-
 ### Serialization/pickling libraries
 
 *   [uPickle](https://github.com/lihaoyi/upickle): cross-compiling statically-typed pickling (via typeclasses/macros) for both Scala/JVM and Scala.js
@@ -106,6 +102,10 @@ All these testing frameworks cross-compile on the JVM and JS.
 ### Client-server communication
 
 *   [autowire](https://github.com/lihaoyi/autowire): cross-compiling statically-typed Ajax calls and RPCs
+
+### Visualization
+
+*   [Paths.scala.js](https://github.com/andreaferretti/paths-scala-js): a library to generate SVG charts and shapes (wrapper over [Paths.js](https://github.com/andreaferretti/paths-js))
 
 ### FRP/reactive extensions
 
