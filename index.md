@@ -103,6 +103,10 @@ All these testing frameworks cross-compile on the JVM and JS.
 
 *   [autowire](https://github.com/lihaoyi/autowire): cross-compiling statically-typed Ajax calls and RPCs
 
+### Visualization
+
+*   [Paths.scala.js](https://github.com/andreaferretti/paths-scala-js): a library to generate SVG charts and shapes (wrapper over [Paths.js](https://github.com/andreaferretti/paths-js))
+
 ### FRP/reactive extensions
 
 *   [Scala.Rx](https://github.com/lihaoyi/scala.rx): cross-compiling change-propagation/FRP library
