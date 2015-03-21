@@ -120,6 +120,10 @@ in order not to disturb your teammates, in a separate `.sbt` file (say,
 
 This will enable the fastOpt stage by default when launching sbt.
 
+**Source maps in Node.js**: To get your stack traces resolved on Node.js, you will have to install the `source-map-support` package.
+
+    npm install source-map-support
+
 ## <a name="integrating-html"></a> Step 2: Integrating with HTML
 
 Now that we have a simple JavaScript application, we would like to use it in an HTML page. To do this, we need two steps:
