@@ -68,6 +68,7 @@ Most of them, though, are cross-compiling over JVM and JS, and thus have separat
 
 *   [scalajs-dom](https://github.com/scala-js/scala-js-dom): static types for the DOM API, plus a few extensions
 *   [scalajs-jquery](https://github.com/scala-js/scala-js-jquery): static types for jQuery
+*   [jquery-facade](https://github.com/jducoeur/jquery-facade): alternate static types for jQuery -- less complete, more strongly typed
 *   [scalajs-pouchdb](https://github.com/chandu0101/scalajs-facades/tree/master/core/src/main/scala/chandu0101/scalajs/facades/pouchdb): static types for PouchDB
 
 ### Testing frameworks
@@ -123,6 +124,7 @@ All these testing frameworks cross-compile on the JVM and JS.
 
 *   [Scala-Async](https://github.com/scala/async) (works out-of-box with Scala.js)
 *   Scalaxy [Loops](https://github.com/ochafik/Scalaxy/tree/master/Loops) and [Streams](https://github.com/ochafik/Scalaxy/tree/master/Streams) (work out-of-box with Scala.js)
+*   [jsext](https://github.com/jducoeur/jsext): utilities for developing facades
 
 ## Skeletons
 
