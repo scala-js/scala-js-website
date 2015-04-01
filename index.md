@@ -149,6 +149,8 @@ All these testing frameworks cross-compile on the JVM and JS.
 
 List of websites using Scala.js:
 
+* April 2015
+  - [Querki](http://www.querki.net/help/#Learning-Querki), a cloud-based system for small-scale data management
 * March 2015
   - [Doctus](http://entelijan.net/art/doctus/), a library for the creation of visual art pieces, by [Wolfgang Wagner](http://entelijan.net/)
 * September 2014
