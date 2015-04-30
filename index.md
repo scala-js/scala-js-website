@@ -64,6 +64,12 @@ Some of them, like `scala-js-dom` and `scala-js-jquery`, are specific to Javascr
 Some others, such as `scala-async`, are pure-macro projects, and thus work with Scala.js out of the box.
 Most of them, though, are cross-compiling over JVM and JS, and thus have separate artifacts to run on each platform.
 
+If you have a library that would be useful to the Scala.js community, please add it to this list! 
+[This link](https://github.com/scala-js/scala-js-website/edit/master/index.md) takes you directly to the 
+editor for this page in GitHub. Add a new entry for the library under the appropriate category below (please 
+look through all the categories, and choose the one that best suits), and press "Propose file change". 
+That will submit a pull request to the owners of this site.
+
 ### Static types for JavaScript libraries
 
 *   [scalajs-dom](https://github.com/scala-js/scala-js-dom): static types for the DOM API, plus a few extensions
