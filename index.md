@@ -75,6 +75,7 @@ and then "Create a Pull Request".
 *   [scalajs-jquery](https://github.com/scala-js/scala-js-jquery): static types for jQuery
 *   [jquery-facade](https://github.com/jducoeur/jquery-facade): alternate static types for jQuery -- less complete, more strongly typed
 *   [scalajs-pouchdb](https://github.com/chandu0101/scalajs-facades/tree/master/core/src/main/scala/chandu0101/scalajs/facades/pouchdb): static types for PouchDB
+*   [bootstrap-datepicker-facade](https://github.com/jducoeur/bootstrap-datepicker-scalajs): static types for [bootstrap-datepicker](https://github.com/eternicode/bootstrap-datepicker)
 
 ### Testing frameworks
 
