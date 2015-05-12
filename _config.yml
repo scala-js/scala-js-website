@@ -18,7 +18,7 @@ author :
   twitter : sjrdoeraene
   feedburner : feedname
 
-scalaJSVersion: 0.6.2
+scalaJSVersion: 0.6.3
 scalaJSBinaryVersion: 0.6
 
 # The production_url is only used when full-domain names are needed
