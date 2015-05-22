@@ -139,6 +139,7 @@ All these testing frameworks cross-compile on the JVM and JS.
 *   [Play! application with Scala.js](https://github.com/vmunier/play-with-scalajs-example)
 *   [Node.js module with Scala.js](https://github.com/rockymadden/scala-node-example)
 *   [SPA tutorial with Scala.js and React](https://github.com/ochrons/scalajs-spa-tutorial): Simple Single Page Application tutorial built upon scalajs-react, Spray and Bootstrap.
+*   [scalaWUI](https://github.com/mathieuleclaire/scalaWUI): A ready to work Client/Server application built with  [scalatra](http://scalatra.org/), [scala.rx](https://github.com/lihaoyi/scala.rx), [autowire](https://github.com/lihaoyi/autowire). An example using the D3.js lib.
 
 ## Tools
 
