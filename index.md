@@ -106,6 +106,7 @@ All these testing frameworks cross-compile on the JVM and JS.
 
 *   [uPickle](https://github.com/lihaoyi/upickle): cross-compiling statically-typed pickling (via typeclasses/macros) for both Scala/JVM and Scala.js
 *   [Prickle](https://github.com/benhutchison/prickle): cross-compiling statically-typed pickling library with support for pickling object graphs containing shared objects and cycles
+*   [BooPickle](https://github.com/ochrons/boopickle): highly efficient binary serialization for both Scala and Scala.js
 *   [Scala.js Pickling](https://github.com/scala-js/scala-js-pickling): cross-compiling pickling library based on explicit registration of picklers
 
 ### Client-server communication
