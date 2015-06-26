@@ -80,6 +80,7 @@ and then "Create a Pull Request".
 *   [scala-js-vaadin-components](https://github.com/hezamu/scala-js-vaadin-components): static types for [Vaadin Components](http://vaadin.com/components)
 *   [scalajs-createjs](https://github.com/takezoe/scalajs-createjs): static types for [CreateJS](http://createjs.com/)
 *   [scalajs-ace](https://github.com/takezoe/scalajs-ace): static types for [Ace](http://ace.c9.io/)
+*   [scala-js-chrome](https://github.com/lucidd/scala-js-chrome): static types for Chrome [App](https://developer.chrome.com/apps/api_index) and [Extension](https://developer.chrome.com/extensions/api_index) APIs 
 
 ### Testing frameworks
 
