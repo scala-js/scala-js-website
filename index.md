@@ -138,6 +138,7 @@ All these testing frameworks cross-compile on the JVM and JS.
 *   Scalaxy [Loops](https://github.com/ochafik/Scalaxy/tree/master/Loops) and [Streams](https://github.com/ochafik/Scalaxy/tree/master/Streams) (work out-of-box with Scala.js)
 *   [jsext](https://github.com/jducoeur/jsext): utilities for developing facades and working with Futures
 *   [slogging](https://github.com/jokade/slogging): a simple logging library with an API compatible to scala-logging (and slf4j)
+*   [FastParse](http://lihaoyi.github.io/fastparse/): Fast to write, fast-running parser-combinators in Scala/Scala.js
 
 ## Skeletons
 
