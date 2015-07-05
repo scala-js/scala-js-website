@@ -81,6 +81,10 @@ and then "Create a Pull Request".
 *   [scalajs-createjs](https://github.com/takezoe/scalajs-createjs): static types for [CreateJS](http://createjs.com/)
 *   [scalajs-ace](https://github.com/takezoe/scalajs-ace): static types for [Ace](http://ace.c9.io/)
 *   [scala-js-chrome](https://github.com/lucidd/scala-js-chrome): static types for Chrome [App](https://developer.chrome.com/apps/api_index) and [Extension](https://developer.chrome.com/extensions/api_index) APIs 
+*   [threejs-facade](https://github.com/antonkulaga/threejs-facade): static types for [Three.js 3D library](https://threejs.org)
+*   [codemirror-facade](https://github.com/antonkulaga/codemirror-facade): static types for [Codemirror code editor](http://codemirror.net)
+*   [selectize-facade](https://github.com/antonkulaga/selectize-facade): static types for [Selectize](http://brianreavis.github.io/selectize.js/)
+
 
 ### Testing frameworks
 
