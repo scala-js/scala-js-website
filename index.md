@@ -78,8 +78,8 @@ and then "Create a Pull Request".
 *   [bootstrap-datepicker-facade](https://github.com/jducoeur/bootstrap-datepicker-scalajs): static types for [bootstrap-datepicker](https://github.com/eternicode/bootstrap-datepicker)
 *   [scalajs-google-maps](https://github.com/coreyauger/scalajs-google-maps): static types for google maps v3
 *   [scala-js-vaadin-components](https://github.com/hezamu/scala-js-vaadin-components): static types for [Vaadin Components](http://vaadin.com/components)
-*   [scalajs-createjs](https://github.com/takezoe/scalajs-createjs): static types for [CreateJS](http://createjs.com/)
-*   [scalajs-ace](https://github.com/takezoe/scalajs-ace): static types for [Ace](http://ace.c9.io/)
+*   [scalajs-createjs](https://github.com/scalawarrior/scalajs-createjs): static types for [CreateJS](http://createjs.com/)
+*   [scalajs-ace](https://github.com/scalawarrior/scalajs-ace): static types for [Ace](http://ace.c9.io/)
 *   [scala-js-chrome](https://github.com/lucidd/scala-js-chrome): static types for Chrome [App](https://developer.chrome.com/apps/api_index) and [Extension](https://developer.chrome.com/extensions/api_index) APIs 
 *   [threejs-facade](https://github.com/antonkulaga/threejs-facade): static types for [Three.js 3D library](https://threejs.org)
 *   [codemirror-facade](https://github.com/antonkulaga/codemirror-facade): static types for [Codemirror code editor](http://codemirror.net)
