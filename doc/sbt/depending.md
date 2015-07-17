@@ -93,3 +93,16 @@ skip in packageJSDependencies := false
 {% endhighlight %}
 
 in your project settings. The resulting file in the target folder will have the suffix `-jsdeps.js`.
+
+### Minified versions of JS dependencies
+
+The `minified` modifier to `jsDependencies` allows to specify minified alternatives of JS libraries.
+Use it like this:
+
+    jsDependencies +=
+      "org.webjars" % "immutable" % "3.4.0" / "immutable.js" minified "immutable.min.js"
+
+Minified dependencies are packaged with `packageMinifiedJSDependencies`, which is automatically called when `fullOptJS` is invoked.
+The result is put in a file `-jsdeps.min.js` next to `-jsdeps.js`.
+
+Obviously, for JS dependencies that do not specify a minified version, their non-minified version is used instead.
