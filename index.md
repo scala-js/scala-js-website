@@ -131,6 +131,7 @@ All these testing frameworks cross-compile on the JVM and JS.
 
 ### Ports of well-known Scala libraries
 
+*   [Akka](https://github.com/unicredit/akka.js): Toolkit and runtime for building concurrent, distributed applications
 *   [NICTA/rng](https://github.com/japgolly/rng): Pure-functional random value generation.
 *   [Monocle](https://github.com/japgolly/Monocle): Optics library strongly inspired by Haskell [Lens](https://github.com/ekmett/lens).
 *   [Scalaz](https://github.com/japgolly/scalaz): Library for functional programming.
