@@ -173,6 +173,8 @@ List of websites using Scala.js:
   - [Querki](http://www.querki.net/help/#Learning-Querki), a cloud-based system for small-scale data management
 * March 2015
   - [Doctus](http://entelijan.net/art/doctus/), a library for the creation of visual art pieces, by [Wolfgang Wagner](http://entelijan.net/)
+* January 2015
+  - [Kerbal Calculator](http://fommil.github.io/kerbal/), a rocket solver for [Kerbal Space Programme](https://kerbalspaceprogram.com/en/) (works well on a tablet or smartphone to complement gameplay)
 * September 2014
   - [Weather Information System](https://github.com/knoldus/ScalaJs_Weather_Report), by [Ayush Mishra](https://www.linkedin.com/pub/ayush-mishra/23/87b/a27), [Knoldus Software LLP](http://www.knoldus.com/home.knol)
 * July 2014
