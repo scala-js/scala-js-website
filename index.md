@@ -169,6 +169,8 @@ All these testing frameworks cross-compile on the JVM and JS.
 
 List of websites using Scala.js:
 
+* August 2015
+  - [NetLogo Web](http://netlogoweb.org/launch), an agent-based simulation language. (only the NetLogo-to-JavaScript compiler is written in Scala, not the front end)
 * April 2015
   - [Querki](http://www.querki.net/help/#Learning-Querki), a cloud-based system for small-scale data management
 * March 2015
