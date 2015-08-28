@@ -176,6 +176,8 @@ or as
 js.Dynamic.literal("foo" -> 42, "bar" -> "foobar")
 {% endhighlight %}
 
+Alternatively, you can use anonymous classes extending `js.Object` or a [Scala.js-defined JS trait](./sjs-defined-js-classes.html).
+
 ## Defining JavaScript interfaces with traits
 
 Most JavaScript APIs work with interfaces that are defined structurally. In
@@ -186,12 +188,17 @@ from `js.Any` (usually from `js.Object`).
 JS traits can contain `val`, `var` and `def` definitions, and the latter can
 be overloaded.
 
-All definitions must have `js.native` as body.
-Any other body (including omitting the `=` altogether) will be handled as if
-it were `js.native`, and a warning will be emitted.
+By default, types extending `js.Any` are native JS types.
+There also exist [Scala.js-defined JS types](./sjs-defined-js-classes.html).
+Native JS types should be annotated with `@js.native` for forward source compatibility with Scala.js 1.0.0.
+
+**Pre 0.6.5 note**: Before Scala.js 0.6.5, the `@js.native` annotation did not exist, so you will find old code that does not yet use it to annotate native JS types.
+
+In native JS types, all concrete definitions must have `= js.native` as body.
+Any other body will be handled as if it were `= js.native`, and a warning will be emitted.
 (In Scala.js 1.0.0, this will become an error.)
 
-**0.5.x note**: In Scala.js 0.5.x, `js.native` did not exist. The recommended
+**0.5.x note**: In Scala.js 0.5.x, `= js.native` did not exist either. The recommended
 best practice was to put `???` as body, but this was not enforced by the
 compiler. This has been changed to improve intuition and remove warts.
 
@@ -199,6 +206,7 @@ Here is an example giving types to a small portion of the API of `Window`
 objects in browsers.
 
 {% highlight scala %}
+@js.native
 trait Window extends js.Object {
   val document: HTMLDocument = js.native
   var location: String = js.native
@@ -233,6 +241,8 @@ Methods can have parameters with default values, to mark them as optional.
 However, the actual value is irrelevant and never used. Instead, the parameter
 is omitted entirely (or set to `undefined`). The value is only indicative, as
 implicit documentation.
+
+Fields, parameters, or result types that can have different, unrelated types, can be accurately typed with the [pseudo-union type `A | B`]({{ site.production_url }}/api/scalajs-library/{{ site.scalaJSVersion }}/#scala.scalajs.js.$bar).
 
 Methods can be overloaded. This is useful to type accurately some APIs that
 behave differently depending on the number or types of arguments.
@@ -303,9 +313,9 @@ The Scala method names are irrelevant for the translation to JavaScript. The
 duo `apply`/`update` is often a sensible choice, because it gives array-like
 access on Scala's side as well, but it is not required to use these names.
 
-## JavaScript classes
+## Native JavaScript classes
 
-It is also possible to define JavaScript *classes* as Scala classes inheriting,
+It is also possible to define native JavaScript *classes* as Scala classes inheriting,
 directly or indirectly, from `js.Any` (like traits, usually from `js.Object`).
 The main difference compared to traits is that classes have constructors, hence
 they also provide instantiation of objects with the `new` keyword.
@@ -321,6 +331,7 @@ to specify the JavaScript name:
 
 {% highlight scala %}
 @JSName("THREE.Scene")
+@js.native
 class Scene extends js.Object
 {% endhighlight %}
 
@@ -348,6 +359,7 @@ These can be declared in Scala.js with `object`'s inheriting directly or
 indirectly from `js.Any` (again, often `js.Object`).
 
 {% highlight scala %}
+@js.native
 object JSON extends js.Object {
   def parse(text: String): js.Any = js.native
 
@@ -363,10 +375,14 @@ Similarly to classes, the JavaScript name can be specified with `@JSName`, e.g.,
 
 {% highlight scala %}
 @JSName("jQuery")
+@js.native
 object JQuery extends js.Object {
   def apply(x: String): JQuery = js.native
 }
 {% endhighlight %}
+
+Unlike classes and traits, native JS objects can have inner native JS classes, traits and objects.
+Inner classes and objects will be looked up as fields of the enclosing JS object.
 
 ## Variables and functions in the global scope
 
@@ -377,6 +393,7 @@ indirectly from `js.GlobalScope` (which itself extends `js.Object`) are
 considered to represent the global scope.
 
 {% highlight scala %}
+@js.native
 object DOMGlobalScope extends js.GlobalScope {
   val document: HTMLDocument = js.native
 
@@ -411,6 +428,7 @@ The implicit conversion is implemented with a hard cast, since in effect we
 just want to extend the API, not actually change the value.
 
 {% highlight scala %}
+@js.native
 trait JQueryGreenify extends JQuery {
   def greenify(): this.type = ???
 }
