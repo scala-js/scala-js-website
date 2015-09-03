@@ -84,6 +84,7 @@ and then "Create a Pull Request".
 *   [threejs-facade](https://github.com/antonkulaga/threejs-facade): static types for [Three.js 3D library](https://threejs.org)
 *   [codemirror-facade](https://github.com/antonkulaga/codemirror-facade): static types for [Codemirror code editor](http://codemirror.net)
 *   [selectize-facade](https://github.com/antonkulaga/selectize-facade): static types for [Selectize](http://brianreavis.github.io/selectize.js/)
+*   [scaladget](https://github.com/mathieuleclaire/scaladget): static types for [D3.js](http://d3js.org), [Ace](http://ace.c9.io), [Tooltipster](http://iamceege.github.io/tooltipster/),  [Bootstrap.js](http://getbootstrap.com/) (and an API for the latter)
 
 
 ### Testing frameworks
