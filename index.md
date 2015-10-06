@@ -85,7 +85,7 @@ and then "Create a Pull Request".
 *   [codemirror-facade](https://github.com/antonkulaga/codemirror-facade): static types for [Codemirror code editor](http://codemirror.net)
 *   [selectize-facade](https://github.com/antonkulaga/selectize-facade): static types for [Selectize](http://brianreavis.github.io/selectize.js/)
 *   [scaladget](https://github.com/mathieuleclaire/scaladget): static types for [D3.js](http://d3js.org), [Ace](http://ace.c9.io), [Tooltipster](http://iamceege.github.io/tooltipster/),  [Bootstrap.js](http://getbootstrap.com/) (and an API for the latter)
-
+*   [scalajs-velocity](https://github.com/fancellu/scalajs-velocity): Scala.js bindings for [Velocity.js](http://julian.com/research/velocity/) animation library and example applications
 
 ### Testing frameworks
 
@@ -109,6 +109,8 @@ All these testing frameworks cross-compile on the JVM and JS.
 *   [scalajs-angular](https://github.com/greencatsoft/scalajs-angular) with [TodoMvc example](https://github.com/greencatsoft/scalajs-angular-todomvc): static types and complementary API for AngularJS
 *   [scalajs-angulate](https://github.com/jokade/scalajs-angulate): another binding to AngularJS with enhancements
 *   [Widok](https://widok.github.io/): Reactive web framework for the JVM and Scala.js
+*   [scalajs-vue](https://github.com/fancellu/scalajs-vue): Scala.js bindings for [Vue.js](http://vuejs.org/) and an example application
+*   [scalajs-ractive](https://github.com/fancellu/scalajs-ractive): Scala.js bindings for [Ractive.js](http://www.ractivejs.org/) and an example application
 
 ### Serialization/pickling libraries
 
