@@ -22,6 +22,12 @@ Get started with Scala.js by following our [tutorial](./tutorial.html) or by for
   * [JavaScript Environments](./sbt/js-envs.html)
   * [Cross-Building](./sbt/cross-building.html)
 
+## Talks about Scala.js internals
+
+* [Semantics](https://www.parleys.com/tutorial/scala-js-semantics-how-support-performance-javascript-interop) at ScalaDays 2015 Amsterdam by Sébastien Doeraene
+* [Compilation Pipeline](https://www.youtube.com/watch?v=nRswfBJL0dQ) at Scala By the Bay 2015 by Tobias Schlatter
+* [Optimizations](https://www.youtube.com/watch?v=IvB1APFZK5Q) at VM Meetup 2015 by Sébastien Doeraene
+
 ## <a name="api"></a> API
 
 Generated Scaladocs are available here:
