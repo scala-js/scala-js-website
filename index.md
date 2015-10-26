@@ -172,6 +172,8 @@ All these testing frameworks cross-compile on the JVM and JS.
 
 List of websites using Scala.js:
 
+* October 2015
+  - [Insightware](https://insightware.com), a next-generation A/B testing tool. All of the dashboard is built with Scaja.js.
 * August 2015
   - [NetLogo Web](http://netlogoweb.org/launch), an agent-based simulation language. (only the NetLogo-to-JavaScript compiler is written in Scala, not the front end)
 * April 2015
