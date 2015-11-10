@@ -4,9 +4,10 @@ title: Announcing Scala.js 0.5.2
 category: news
 tags: [releases]
 ---
-{% include JB/setup %}
+
 
 We are excited to announce the release of Scala.js 0.5.2!
+<!--more-->
 
 Scala.js 0.5.2 is backward binary compatible with older versions of the 0.5.x branch. However, it is *not* forward binary compatible. This means:
 

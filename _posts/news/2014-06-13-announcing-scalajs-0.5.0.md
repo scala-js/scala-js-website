@@ -4,7 +4,7 @@ title: Announcing Scala.js 0.5.0
 category: news
 tags: [releases]
 ---
-{% include JB/setup %}
+
 
 We are very excited to announce the final release of Scala.js 0.5.0!
 This version is a major milestone towards the maturity of Scala.js, probably
@@ -12,6 +12,7 @@ the most important release since its very first prototype.
 
 Scala.js is a compiler from Scala to JavaScript. It allows you to write your
 entire web application in Scala and simply compile to JavaScript!
+<!--more-->
 
 *   [Tutorial]({{ BASE_PATH }}/doc/tutorial.html),
     for newcomers to Scala.js

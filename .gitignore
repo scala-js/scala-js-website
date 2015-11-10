@@ -1,8 +1,4 @@
-/target/
-/examples/
-
 /_site
-_theme_packages/*
 
 Thumbs.db
 .DS_Store
@@ -15,4 +11,5 @@ Thumbs.db
 .project
 *~
 
-/build/
+*.iml
+.idea

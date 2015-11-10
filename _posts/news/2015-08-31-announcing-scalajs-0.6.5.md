@@ -4,7 +4,7 @@ title: Announcing Scala.js 0.6.5
 category: news
 tags: [releases]
 ---
-{% include JB/setup %}
+
 
 We are thrilled to announce the release of Scala.js 0.6.5!
 
@@ -15,6 +15,7 @@ It brings significant advances to interoperability with JavaScript:
 * Using the same semantics, you can now define object literals with `new js.Object { val x = 5 }`
 * There is a new unboxed pseudo-union type `A | B` to more accurately type your JavaScript facades
 * You can statically typecheck that the `@JSExport`s of a Scala class comply with a JavaScript facade trait with `js.use(x).as[T]`
+<!--more-->
 
 ## Getting started
 

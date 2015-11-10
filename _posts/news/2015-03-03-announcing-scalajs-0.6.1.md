@@ -4,12 +4,13 @@ title: Announcing Scala.js 0.6.1
 category: news
 tags: [releases]
 ---
-{% include JB/setup %}
+
 
 We are excited to announce the release of Scala.js 0.6.1!
 
 This release mostly contains bug fixes, including inefficiencies in the incremental `fastOptJS`.
 It also brings the entire `java.nio.Buffer`s API, with interoperability with the JavaScript [Typed Arrays](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/TypedArray) API.
+<!--more-->
 
 ## Getting started
 

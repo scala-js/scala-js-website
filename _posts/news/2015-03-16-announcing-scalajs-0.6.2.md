@@ -4,7 +4,7 @@ title: Announcing Scala.js 0.6.2
 category: news
 tags: [releases]
 ---
-{% include JB/setup %}
+
 
 We are excited to announce the release of Scala.js 0.6.2!
 
@@ -12,6 +12,7 @@ This release mostly contains bug fixes, among which the lack of support of `java
 It also brings code size reduction and performance improvements to fastOpt code (although nothing changes in fullOpt).
 
 We are also happy to share that Scala.js is now part of [Scala's community build](https://github.com/scala/community-builds).
+<!--more-->
 
 ## Getting started
 

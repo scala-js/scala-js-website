@@ -1,0 +1,54 @@
+- text: Introduction
+  url: /doc/
+#- text: Quick Start
+#  url: /doc/quick-start.html
+- text: Why Scala.js?
+  url: /doc/why-scalajs.html
+- text: Scala.js for JavaScript developers
+  url: /doc/sjs_for_js/
+  subitems:
+    - text: "From ES6 to Scala: Basics"
+      url: /doc/sjs_for_js/es6_to_scala_part1.html
+    - text: "From ES6 to Scala: Collections"
+      url: /doc/sjs_for_js/es6_to_scala_part2.html
+    - text: "From ES6 to Scala: Advanced"
+      url: /doc/sjs_for_js/es6_to_scala_part3.html
+#- text: Scala.js for Scala developers
+#  url: /doc/scalajs_for_scaladevs.html
+- text: Project setup
+  url: /doc/project/
+  subitems:
+    - text: Building the application
+      url: /doc/project/building.html
+    - text: Dependencies
+      url: /doc/project/dependencies.html
+    - text: JavaScript Environments
+      url: /doc/project/js_environments.html
+    - text: Cross-building
+      url: /doc/project/cross_build.html
+- text: JavaScript interoperability
+  url: /doc/interoperability/
+  subitems:
+    - text: JavaScript types
+      url: /doc/interoperability/types.html
+    - text: Call JavaScript APIs
+      url: /doc/interoperability/calling_js.html
+    - text: Export Scala.js APIs
+      url: /doc/interoperability/export_to_js.html
+    - text: Write JavaScript classes in Scala.js
+      url: /doc/interoperability/sjs_defined_js_classes.html
+- text: Scala.js API
+  url: /doc/api.html
+- text: Semantics of Scala.js
+  url: /doc/semantics.html
+- text: Internals
+  url: /doc/internals/
+  subitems:
+    - text: Performance
+      url: /doc/internals/performance.html
+    - text: Standalone distribution
+      url: /doc/internals/downloads.html
+    - text: Version history
+      url: /doc/internals/history.html
+- text: FAQ
+  url: /doc/faq.html

@@ -1,0 +1,349 @@
+---
+layout: index
+title: Home
+permalink: /
+---
+<div id="headerwrap">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 col-lg-offset-2">
+                <img width="128" src="{{ '/assets/img/scala-js-logo.svg' | prepend: site.baseurl }}">
+
+                <div>
+                    <h4>A safer way to build complex, bug-free<br/> front-end web applications!</h4>
+                </div>
+                <div>
+                    <a class="btn btn-theme" href="{{ site.baseurl }}/tutorial">Learn in 15 mins</a>
+                    <a class="btn btn-theme" href="http://www.scala-js-fiddle.com/">Try it in the browser</a>
+                </div>
+            </div>
+        </div>
+        <!-- /row -->
+    </div>
+    <!-- /container -->
+</div><!-- /headerwrap -->
+
+<div id="service">
+    <div class="container">
+        <div class="row centered">
+            <div class="col-md-4">
+                <div class="center-align">
+                    <a href="{{ site.baseurl }}/doc/why-scalajs.html"><i class="fa fa-check-square"></i>
+                        <h4>Correctness</h4></a>
+                </div>
+                Strong typing guarantees your code is free of silly mistakes; no more
+                mixing up strings or numbers, forgetting what keys an object has, or
+                worrying about typos in your method names. Scala.js takes care of all this
+                tedious book-keeping for you, letting you focus on the actual, more interesting
+                problem your website is trying to solve.
+            </div>
+            <div class="col-md-4">
+                <div class="center-align">
+                    <a href="{{ site.baseurl}}/doc/internals/performance.html"><i class="fa fa-rocket"></i>
+                        <h4>Performance</h4></a>
+                </div>
+                Scala.js compiles Scala code into highly efficient JavaScript utilizing an internal optimizer.
+                Incremental compilation guarantees speedy (1-2s) turn-around times when your code changes.
+                Generated JavaScript is both fast and small, starting from 45kB gzipped for a full application.
+            </div>
+            <div class="col-md-4">
+                <div class="center-align">
+                    <a href="{{ site.baseurl }}/doc/interoperability"><i class="fa fa-cogs"></i>
+                        <h4>Interoperability</h4></a>
+                </div>
+                Use jQuery or any HTML5 feature directly from your Scala.js code, either in a typed or untyped way. All
+                <a href="{{ site.baseurl }}/community/libraries/facades.html">JavaScript libraries</a> work with
+                Scala.js
+                code. If you like React.js, or Angular.js, that's great! You can keep using them while getting the
+                benefits of Scala.js
+            </div>
+        </div>
+    </div>
+    <! --/container -->
+</div><! --/service -->
+
+<div class="container mtb">
+    <div class="row">
+        <div class="col-md-7">
+            <h4><a href="{{ site.baseurl }}/community">Build amazing applications fast!</a></h4>
+
+            <p>
+                Your Scala.js application can utilize the full extent of <i>HTML5</i>, <i>CSS3</i> and all <i>existing
+                JavaScript libraries</i>, including Angular and React.
+                Focus on writing clean and error-free code with the help of Scala's strong type system and you will be
+                delivering in no time! Less hassle, more productivity with Scala's excellent libraries, fully at your
+                disposal even on the browser.
+            </p>
+        </div>
+
+        <div class="hidden-sm hidden-xs col-md-5">
+            <img class="img-responsive" style="max-height: 180px;"
+                 src="{{ '/assets/img/web-logos.svg' | prepend: site.baseurl }}">
+        </div>
+
+    </div>
+    <! --/row -->
+    <div class="row">
+        <div class="col-md-7">
+            <h4>Excellent editor support</h4>
+            <p>
+                With Scala.js, typos and type-errors are immediately caught and shown to you
+                in your editor, <i>without even needing to run your code</i>. Refactor any field 
+                or method with ease, with the confidence that if you mess it up the editor will tell 
+                you immediately. Stop flipping back and forth between your editor and MDN, 
+                because your editor will display what methods are available, what arguments they
+                take, and what they return, right in-line with your code!
+            </p>
+
+        </div>
+        <div class="col-md-5">
+            <img class="img-responsive" src="{{ '/assets/img/ide-screenshot.png' | prepend: site.baseurl }}">
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-lg-12">
+            <h4><a href="{{ site.baseurl }}/doc/sjs_for_js">Go beyond Javascript ES6, today</a></h4>
+
+            <p>
+                Scala language already has all the new features coming in ES6 and much more.
+            </p>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-12">
+            <h5>Classes</h5>
+        </div>
+        <div class="col-md-6">
+            <h6 class="code-block-header">JavaScript</h6>
+                    <pre><code class="javascript">var Person = function(firstName) {
+    this.firstName = firstName;
+};
+
+Person.prototype.walk = function() {
+    console.log("I am walking!");
+};
+
+Person.prototype.sayHello = function(target) {
+    console.log("Hello " + target +
+                ", I'm " + this.firstName);
+};</code></pre>
+        </div>
+        <div class="col-md-6">
+            <h6 class="code-block-header">Scala.js</h6>
+                    <pre><code class="scala">class Person(firstName: String) {
+  def walk = println("I am walking!")
+
+  def sayHello(target: String) =
+    println(s"Hello $target, I'm $firstName")
+}</code></pre>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-12">
+            <h5>Fat arrow functions</h5>
+        </div>
+        <div class="col-md-6">
+            <h6 class="code-block-header">JavaScript</h6>
+                    <pre><code class="javascript">var names = persons.map(function(p) {
+    return p.firstName
+});</code></pre>
+        </div>
+        <div class="col-md-6">
+            <h6 class="code-block-header">Scala.js</h6>
+                    <pre><code class="scala">val names = persons.map(p => p.firstName)
+// or an even shorter version
+val names = persons.map(_.firstName)</code></pre>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-12">
+            <h5>Collections</h5>
+        </div>
+        <div class="col-md-6">
+            <h6 class="code-block-header">JavaScript</h6>
+                    <pre><code class="javascript">var personMap = {
+    "10": new Person("Roger Moore"),
+    "20": new Person("James Bond")
+};
+var names = [];
+for(var key in personMap) {
+    if(Object.prototype.hasOwnProperty.call(names, key)) {
+        if(parseInt(key) > 15) {
+            names.push(
+                key + " = " + personMap[key].firstName
+            );
+        }
+    }
+}</code></pre>
+        </div>
+        <div class="col-md-6">
+            <h6 class="code-block-header">Scala.js</h6>
+                    <pre><code class="scala">val personMap = Map(
+  10 -> new Person("Roger Moore"),
+  20 -> new Person("James Bond")
+)
+val names = for {
+  (key, person) <- personMap
+  if key > 15
+} yield s"$key = ${person.firstName}"</code></pre>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-9">
+            <p>
+                To find out more about what Scala.js looks like coming from Javascript, checkout
+                out the <a href="{{ site.baseurl }}/doc/sjs_for_js">detailed comparisons</a>. If
+                you want to try it out yourself, check out the
+                <a href="{{ site.baseurl }}/tutorial">Tutorials!</a>
+            </p>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-12">
+            <h4><a href="{{ site.baseurl }}/doc/sjs_for_js">Safer, Better JavaScript</a></h4>
+            <p>
+                Several variants of plain JavaScript (ES5) exist today, most notably ES6 and TypeScript.
+                If you're already going to compile something to JavaScript, why not compile something nicer?
+            </p>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-6">
+            <h6 class="code-block-header">JavaScript</h6>
+            <pre><code class="javascript">js> ["10", "10", "10", "10"].map(parseInt)
+[10, NaN, 2, 3] // WTF</code></pre>
+        </div>
+        <div class="col-md-6">
+            <h6 class="code-block-header">Scala</h6>
+            <pre><code class="scala">scala> List("10", "10", "10", "10").map(parseInt)
+List(10, 10, 10, 10) // Yay!</code></pre>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-12">
+            <p>
+                While TypeScript and ES6 make your code safer and more modern, they still leave
+                many of JavaScript's <a href="https://en.wikipedia.org/wiki/Gotcha_%28programming%29">Gotcha</a>s
+                wide-open for you to trip on. Scala.js provides all
+                the same awesome things that TypeScript or ES6/ES7 provide, but better: more
+                modern than ES6, more safe than TypeScript, on top of fixing many of the silly
+                issues that makes programming in JavaScript frustrating.
+            </p>
+
+            <table class="table table-striped table-condensed">
+                <thead>
+                <tr>
+                    <th width="54%">Feature</th>
+                    <th width="12%">JavaScript ES5</th>
+                    <th width="12%">JavaScript ES6</th>
+                    <th width="12%">TypeScript</th>
+                    <th width="12%">Scala.js</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr>
+                    <td colspan="5" class="info"><strong>Interoperability</strong></td>
+                </tr>
+                <tr>
+                    <td>Fully EcmaScript5 compatible</td>
+                    <td><i class="fa fa-circle"></i></td>
+                    <td><i class="fa fa-circle"></i></td>
+                    <td><i class="fa fa-circle"></i></td>
+                    <td><i class="fa fa-circle"></i></td>
+                </tr>
+                <tr>
+                    <td>No compilation required</td>
+                    <td><i class="fa fa-circle"></i></td>
+                    <td><i class="fa fa-circle-o"></i></td>
+                    <td><i class="fa fa-circle-o"></i></td>
+                    <td><i class="fa fa-circle-o"></i></td>
+                </tr>
+                <tr>
+                    <td>Use existing JS libraries</td>
+                    <td><i class="fa fa-circle"></i></td>
+                    <td><i class="fa fa-circle"></i></td>
+                    <td><i class="fa fa-circle"></i></td>
+                    <td><i class="fa fa-circle"></i></td>
+                </tr>
+                <tr>
+                    <td colspan="5" class="info"><strong>Language features</strong></td>
+                </tr>
+                <tr>
+                    <td>Classes with inheritance</td>
+                    <td><i class="fa fa-circle-o"></i></td>
+                    <td><i class="fa fa-circle"></i></td>
+                    <td><i class="fa fa-circle"></i></td>
+                    <td><i class="fa fa-circle"></i></td>
+                </tr>
+                <tr>
+                    <td>Modules</td>
+                    <td><i class="fa fa-circle-o"></i></td>
+                    <td><i class="fa fa-circle"></i></td>
+                    <td><i class="fa fa-circle"></i></td>
+                    <td><i class="fa fa-circle"></i></td>
+                </tr>
+                <tr>
+                    <td>Support for types</td>
+                    <td><i class="fa fa-circle-o"></i></td>
+                    <td><i class="fa fa-circle-o"></i></td>
+                    <td><i class="fa fa-circle"></i></td>
+                    <td><i class="fa fa-circle"></i></td>
+                </tr>
+                <tr>
+                    <td>Strong type system</td>
+                    <td><i class="fa fa-circle-o"></i></td>
+                    <td><i class="fa fa-circle-o"></i></td>
+                    <td><i class="fa fa-circle-o"></i></td>
+                    <td><i class="fa fa-circle"></i></td>
+                </tr>
+                <tr>
+                    <td>Extensive system libraries</td>
+                    <td><i class="fa fa-circle-o"></i></td>
+                    <td><i class="fa fa-circle-o"></i></td>
+                    <td><i class="fa fa-circle-o"></i></td>
+                    <td><i class="fa fa-circle"></i></td>
+                </tr>
+                <tr>
+                    <td>Optimizing compiler</td>
+                    <td><i class="fa fa-circle-o"></i></td>
+                    <td><i class="fa fa-circle-o"></i></td>
+                    <td><i class="fa fa-circle-o"></i></td>
+                    <td><i class="fa fa-circle"></i></td>
+                </tr>
+                <tr>
+                    <td>Macros, to extend the language</td>
+                    <td><i class="fa fa-circle-o"></i></td>
+                    <td><i class="fa fa-circle-o"></i></td>
+                    <td><i class="fa fa-circle-o"></i></td>
+                    <td><i class="fa fa-circle"></i></td>
+                </tr>
+                <tr>
+                    <td colspan="5" class="info"><strong>IDE support</strong></td>
+                </tr>
+                <tr>
+                    <td>Catch most errors in IDE</td>
+                    <td><i class="fa fa-circle-o"></i></td>
+                    <td><i class="fa fa-circle-o"></i></td>
+                    <td><i class="fa fa-circle"></i></td>
+                    <td><i class="fa fa-circle"></i></td>
+                </tr>
+                <tr>
+                    <td>Easy and reliable refactoring</td>
+                    <td><i class="fa fa-circle-o"></i></td>
+                    <td><i class="fa fa-circle-o"></i></td>
+                    <td><i class="fa fa-circle"></i></td>
+                    <td><i class="fa fa-circle"></i></td>
+                </tr>
+                <tr>
+                    <td>Reliable code completion</td>
+                    <td><i class="fa fa-circle-o"></i></td>
+                    <td><i class="fa fa-circle-o"></i></td>
+                    <td><i class="fa fa-circle-o"></i></td>
+                    <td><i class="fa fa-circle"></i></td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+<! --/container -->

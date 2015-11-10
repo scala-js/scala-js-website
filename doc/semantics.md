@@ -1,9 +1,8 @@
 ---
-layout: page
+layout: doc
 title: Semantics of Scala.js
 tagline: and how they differ from Scala
 ---
-{% include JB/setup %}
 
 In general, the semantics of the Scala.js language are the same as Scala on
 the JVM.
@@ -142,7 +141,7 @@ Note that this will have (potentially major) performance impacts.
 
 The JavaScript interoperability feature is, in itself, a big semantic
 difference. However, its details are discussed in a
-[dedicated page](./js-interoperability.html).
+[dedicated page](./interoperability).
 
 ## Reflection
 

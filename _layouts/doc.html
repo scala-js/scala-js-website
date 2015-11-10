@@ -1,0 +1,19 @@
+---
+layout: default
+---
+
+{% include wrap.html %}
+
+<div class="container mtb">
+    <div class="row">
+        <div class="col-md-9">
+            {{ content }}
+            <div class="spacing"></div>
+        </div>
+        <div class="col-md-3">
+            <nav class="toc" role="navigation">
+                {% include docnav.html nav=site.data.doc%}
+            </nav>
+        </div>
+    </div>
+</div>

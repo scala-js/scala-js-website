@@ -4,12 +4,13 @@ title: Announcing Scala.js 0.5.3
 category: news
 tags: [releases]
 ---
-{% include JB/setup %}
+
 
 We are excited to announce the release of Scala.js 0.5.3!
 
 This release was focused mostly on *performance*, bringing speedups from 1.3x to 3.3x to your applications.
 In some cases, Scala.js becomes slightly *faster than JavaScript*!
+<!--more-->
 
 Scala.js 0.5.3 is backward binary compatible with older versions of the 0.5.x branch. However, it is *not* forward binary compatible. This means:
 

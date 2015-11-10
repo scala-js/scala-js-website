@@ -4,7 +4,7 @@ title: Announcing Scala.js 0.6.0-M2
 category: news
 tags: [releases]
 ---
-{% include JB/setup %}
+
 
 We are excited to announce the second milestone of Scala.js 0.6.0, aka 0.6.0-M2!
 This release fixes the last outstanding issues from M1.
@@ -13,6 +13,7 @@ It also introduces [a builder for cross-compiling projects in sbt](#cross-projec
 
 Scala.js 0.6.0-M2 is forward and backward binary compatible with M1, and uses the same cross-compilation suffix (i.e., `_sjs0.6.0-M1`), so you can use libraries built with 0.6.0-M1 in 0.6.0-M2, and conversely.
 It is also backward source compatible with M1.
+<!--more-->
 
 The rest of this announcement is cumulative with the changes introduced in M1.
 

@@ -4,7 +4,7 @@ title: Announcing Scala.js 0.6.0-M1
 category: news
 tags: [releases]
 ---
-{% include JB/setup %}
+
 
 We are excited to announce the first milestone of Scala.js 0.6.0, aka 0.6.0-M1!
 
@@ -15,6 +15,7 @@ Libraries need to be recompiled and republished using this milestone to be compa
 
 More importantly, this release is not source compatible with 0.5.x either.
 We expect, however, that further milestones and 0.6.x will stay source compatible with this first milestone.
+<!--more-->
 
 Please report any issues [on GitHub](https://github.com/scala-js/scala-js/issues).
 

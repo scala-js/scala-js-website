@@ -4,11 +4,13 @@ title: Announcing Scala.js 0.5.1
 category: news
 tags: [releases]
 ---
-{% include JB/setup %}
+
 
 We are excited to announce the release of Scala.js 0.5.1!
 
-This version features bug fixes and improvements while remaining binary compatible with Scala.js 0.5.0. Therefore, Scala.js libraries may, but need not be republished with Scala.js 0.5.1.
+This version features bug fixes and improvements while remaining binary compatible with Scala.js 0.5.0. Therefore,
+Scala.js libraries may, but need not be republished with Scala.js 0.5.1.
+<!--more-->
 
 Please report any issues [on GitHub](https://github.com/scala-js/scala-js/issues).
 

@@ -1,0 +1,37 @@
+{% capture header %}
+
+{% if page.title %}
+<meta property="og:type" content="article" />
+<meta property="og:title" content="{{ page.title }}" />
+{% else %}
+<meta property="og:type" content="website" />
+{% endif %}
+
+{% include meta.html property="og:site_name" content=site.title %}
+
+{% capture page_url %}{{ page.url | replace:'/index.html','/' | prepend: site.url }}{% endcapture %}
+{% include meta.html property="og:url" content=page_url %}
+
+{% capture image_url %}{{ site.url | append: '/assets/img/scala-js-logo-256.png'}}{% endcapture %}
+{% include meta.html content=image_url property="og:image" %}
+
+{% if page.date %}
+{% capture page_date %}{{page.date | date_to_xmlschema}}{% endcapture %}
+{% include meta.html property="article:published_time" content=page_date %}
+{% endif %}
+
+{% if page.author.url %}
+<meta property="article:author" content="{{ page.author.url }}" />
+<link rel="author" href="{{ page.author.url }}" />
+{% elsif site.owner_link %}
+<meta property="article:author" content="{{ site.owner_link }}" />
+<link rel="author" href="{{ site.owner_link }}" />
+{% endif %}
+
+{% if page.tags %}
+{% for tag in page.tags %}
+{% include meta.html content=tag property="article:tag" %}
+{% endfor %}
+{% endif %}
+
+{% endcapture %}{{ header | strip_newlines }}
