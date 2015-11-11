@@ -110,8 +110,7 @@ in matching.
 {% columns %}
 {% column 6 ES6 %}
 {% highlight javascript %}
-const person = {first: "James", last: "Bond", 
-  age: 42};
+const person = {first: "James", last: "Bond", age: 42};
 const {first, last, age: years} = person;
 // first = "James", last = "Bond", years = 42
 const seq = [1, 2, 3, 4, 5];
@@ -124,8 +123,7 @@ const seq2 = [a, b].concat(c); // [1, 2, 4, 5]
         
 {% column 6 Scala %}
 {% highlight scala %}
-case class Person(first: String, last: String, 
-  age: Int)
+case class Person(first: String, last: String, age: Int)
 val person = Person("James", "Bond", 42)
 val Person(first, last, years) = person
 // first = "James", last = "Bond", years = 42
@@ -316,8 +314,7 @@ String.prototype.toDate = function() {
         
 {% column 6 Scala %}
 {% highlight scala %}
-implicit class StrToDate(val s: String) 
-  extends AnyVal {
+implicit class StrToDate(val s: String) {
   def toDate = convertToDate(s)
 }
 "2015-10-09".toDate // = Date(2015,10,9)
@@ -336,7 +333,7 @@ StrToDate("2010-10-09").toDate` which is then inlined/optimized (due to the use 
 Scala IDEs are also smart enough to know what implicit extension methods are in scope and will show them to you next
 to the other methods.
 
-![Extension method in IDE]({{site.baseurl}}/assets/img/implicitIDE.png)
+<img src="{{site.baseurl}}/assets/img/implicitIDE.png" onload="this.width/=2;this.onload=null;"/>
 
 Implicit extension methods are safe and easy to refactor. If you, say, rename or remove a method, the compiler will
 immediately give errors in places where you use that method. IDEs provide great tools for automatically renaming all

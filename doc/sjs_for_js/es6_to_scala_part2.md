@@ -291,7 +291,7 @@ Accessing `Map` contents can be done in many ways.
 // object syntax
 const name = `${m.last}, ${m.first} ${m.last}`
 // ES6 Map syntax
-const name2 = `${m2.get("last"), m2.get("first") m2.get("last")`
+const name2 = `${m2.get("last")}, ${m2.get("first")} ${m2.get("last")}`
 // use default value when missing
 const age = m.age === undefined ? "42" : m.age;
 // check all fields are present
