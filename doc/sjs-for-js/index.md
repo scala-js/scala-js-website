@@ -47,9 +47,9 @@ have fallen in love with the new features in ES6 like _arrow functions_ or _dest
 
 The walk-through has been split into three parts: 
 
-- [basics](es6_to_scala_part1.html)
-- [collections](es6_to_scala_part2.html)
-- [advanced](es6_to_scala_part3.html) 
+- [basics](es6-to-scala-part1.html)
+- [collections](es6-to-scala-part2.html)
+- [advanced](es6-to-scala-part3.html)
 
 Each part has a lot of code examples comparing ES6 code to corresponding Scala code.
 

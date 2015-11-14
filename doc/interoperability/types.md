@@ -27,7 +27,7 @@ when calling Scala.js code from JavaScript and when defining typed interfaces fo
     <tr><td>scala.Unit</td><td>undefined</td><td></td></tr>
     <tr><td>scala.Null</td><td>null</td><td></td></tr>
     <tr><td>subtypes of js.Object</td><td><i>corresponding JavaScript
-  type</i></td><td>see <a href="calling_js.html">calling JavaScript guide</a></td></tr>
+  type</i></td><td>see <a href="calling-javascript.html">calling JavaScript guide</a></td></tr>
     <tr>
       <td>
         other Scala classes<br />
@@ -37,7 +37,7 @@ when calling Scala.js code from JavaScript and when defining typed interfaces fo
         <i>opaque, except for exported methods</i><br />
         <small>Note: <code>toString()</code> is always exported</small>
       </td>
-      <td>see <a href="export_to_js.html">exporting Scala.js APIs to JavaScript</a></td>
+      <td>see <a href="export-to-javascript.html">exporting Scala.js APIs to JavaScript</a></td>
     </tr>
   </tbody>
 </table>

@@ -12,6 +12,6 @@ for languages that translate almost literally to JavaScript (e.g.,
 Scala.js exhibits both means to call JavaScript APIs from Scala.js, and to be
 called from JavaScript code.
 
-* [Call JavaScript APIs from Scala.js](calling_js.html)
-* [Export Scala.js APIs to JavaScript](export_to_js.html)
+* [Call JavaScript APIs from Scala.js](calling-javascript.html)
+* [Export Scala.js APIs to JavaScript](export-to-javascript.html)
 

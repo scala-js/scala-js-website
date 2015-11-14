@@ -729,4 +729,4 @@ val res = data.filter(x => x.isDefined)
 {% endcolumns %}
 
 `Option` provides many _collection like_ methods like `map`, `filter` and `flatMap`, which are discussed in the [next
-chapter](es6_to_scala_part2.html).
+chapter](es6-to-scala-part2.html).

@@ -468,4 +468,4 @@ val words = text.split(" ")
 {% endcolumn %}
 {% endcolumns %}
 
-Next, let's look at some more [advanced paradigms](es6_to_scala_part3.html) and features of Scala.
+Next, let's look at some more [advanced paradigms](es6-to-scala-part3.html) and features of Scala.
