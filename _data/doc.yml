@@ -2,8 +2,6 @@
   url: /doc/
 #- text: Quick Start
 #  url: /doc/quick-start.html
-- text: Why Scala.js?
-  url: /doc/why-scalajs.html
 - text: Scala.js for JavaScript developers
   url: /doc/sjs-for-js/
   subitems:
