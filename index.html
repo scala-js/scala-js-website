@@ -119,16 +119,16 @@ permalink: /
         <div class="col-md-6 snippet snippet-es5">
             <h6 class="code-block-header">JavaScript</h6>
             <pre><code class="javascript">var Person = function(firstName) {
-    this.firstName = firstName;
+  this.firstName = firstName;
 };
 
 Person.prototype.walk = function() {
-    console.log("I am walking!");
+  console.log("I am walking!");
 };
 
 Person.prototype.sayHello = function(target) {
-    console.log("Hello " + target +
-                ", I'm " + this.firstName);
+  console.log("Hello " + target +
+      ", I'm " + this.firstName);
 };</code></pre>
         </div>
         <div class="col-md-6 snippet snippet-es6" style="display: none;">
@@ -212,9 +212,9 @@ for (var key in personMap) {
   if (Object.prototype.hasOwnProperty.call(names, key)) {
     if (parseInt(key) > 15) {
       names.push(key + " = " + personMap[key].firstName);
-    };
-  };
-};</code></pre>
+    }
+  }
+}</code></pre>
         </div>
         <div class="col-md-6 snippet snippet-es6" style="display: none;">
             <h6 class="code-block-header">ECMAScript 6</h6>
@@ -226,8 +226,8 @@ const names = [];
 for (const [key, value] of personMap) {
   if (key > 15) {
     names.push(`${key} = ${value}.firstName`);
-  };
-};</code></pre>
+  }
+}</code></pre>
         </div>
         <div class="col-md-6 snippet snippet-typescript" style="display: none;">
             <h6 class="code-block-header">TypeScript</h6>
@@ -241,8 +241,8 @@ const names = new Array&lt;string&gt;();
 for (const [key, value] of personMap) {
   if (key > 15) {
     names.push(`${key} = ${value}.firstName`);
-  };
-};</code></pre>
+  }
+}</code></pre>
         </div>
         <div class="col-md-6">
             <h6 class="code-block-header">Scala.js</h6>
