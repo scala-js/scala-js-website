@@ -1,12 +1,13 @@
 language: ruby
+rvm: 2.2.3
 install:
-  - sudo pip install Pygments
-  - gem install rdiscount jekyll
+  - gem install jekyll jekyll-paginate
 script:
-  - jekyll build --safe
+  - jekyll build
 after_success:
   - if [[ "${TRAVIS_PULL_REQUEST}" == "false" && "${TRAVIS_BRANCH}" == "master" && "${DEPLOY_USER}" != "" && "${DEPLOY_PASS}" != "" ]]; then sudo apt-get update -qq; sudo apt-get install -qq sshpass; sshpass -p "${DEPLOY_PASS}" rsync -e "ssh -o StrictHostKeyChecking=no" -atv _site/ "${DEPLOY_USER}@scala-js.org:www/"; fi
 env:
   global:
+    - JEKYLL_ENV=production
     - secure: "LqFs6BOc37nDgdBIw7hD4mYru2PCem4OV3H8X3oYcNt+FtzSs4YLi5Y8rOtYkwrZTPv+hConsX6/lHA7gFt2ln26iezOtLbPUmzUhMwuV5n2siX4CTaJW3lcwmr1sle3SmtcZeSoE2lXo0vQYYY1dyO1Z7wBwACHOuvxEX3DCis="
     - secure: "WXFxQFhiwYyIfQKy8s8oUGQn7pdUzj4wj4Jp77gdOhMPgiY4UKeA3KD7bp5tcf999t+LLzVvVC0l6CpBEGyc4MH9vikm+adDouqPanQ3xtyLCiPf4AWRt39U90BOXh54afuRaF6Kb0pmwqRXlJdWLc1W8C7SJ2vJEWDDP/3dhDc="
