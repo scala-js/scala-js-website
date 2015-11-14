@@ -14,7 +14,7 @@ relevant SBT dependency definition.
 
 If you didn't find a facade for the library you'd like to use, it's quite easy to do one yourself. Check out the
 [facade documentation](../../doc/interoperability/calling-javascript.html) and the
-[TypeScript conversion tool](https://github.com/sjrd/scala-js-ts-importer). You can also skip whole facade-business and just [call Javascript APIs dynamically](../../doc/interoperability/calling-javascript.html#calling-javascript-from-scalajs-with-dynamic-types), without type-checking, the same way you do it when programming in Javascript itself.
+[TypeScript conversion tool](https://github.com/sjrd/scala-js-ts-importer). You can also skip whole facade-business and just [call JavaScript APIs dynamically](../../doc/interoperability/calling-javascript.html#calling-javascript-from-scalajs-with-dynamic-types), without type-checking, the same way you do it when programming in JavaScript itself.
 
 -------
 
