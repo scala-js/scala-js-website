@@ -88,9 +88,9 @@ permalink: /
             <h4>Excellent editor support</h4>
             <p>
                 With Scala.js, typos and type-errors are immediately caught and shown to you
-                in your editor, <i>without even needing to run your code</i>. Refactor any field 
-                or method with ease, with the confidence that if you mess it up the editor will tell 
-                you immediately. Stop flipping back and forth between your editor and MDN, 
+                in your editor, <i>without even needing to run your code</i>. Refactor any field
+                or method with ease, with the confidence that if you mess it up the editor will tell
+                you immediately. Stop flipping back and forth between your editor and MDN,
                 because your editor will display what methods are available, what arguments they
                 take, and what they return, right in-line with your code!
             </p>
@@ -107,11 +107,18 @@ permalink: /
     </div>
     <div class="row">
         <div class="col-md-12">
+          <ul class="nav nav-tabs">
+            <li role="presentation" class="show-snippet-tab active"><a class="show-snippet-link" data-language="es5" href="#">JavaScript/ES5</a></li>
+            <li role="presentation" class="show-snippet-tab"><a class="show-snippet-link" data-language="es6" href="#">ECMAScript 6</a></li>
+            <li role="presentation" class="show-snippet-tab"><a class="show-snippet-link" data-language="typescript" href="#">TypeScript</a></li>
+          </ul>
+        </div>
+        <div class="col-md-12">
             <h5>Classes</h5>
         </div>
-        <div class="col-md-6">
+        <div class="col-md-6 snippet snippet-es5">
             <h6 class="code-block-header">JavaScript</h6>
-                    <pre><code class="javascript">var Person = function(firstName) {
+            <pre><code class="javascript">var Person = function(firstName) {
     this.firstName = firstName;
 };
 
@@ -124,12 +131,43 @@ Person.prototype.sayHello = function(target) {
                 ", I'm " + this.firstName);
 };</code></pre>
         </div>
+        <div class="col-md-6 snippet snippet-es6" style="display: none;">
+            <h6 class="code-block-header">ECMAScript 6</h6>
+            <pre><code class="javascript">class Person {
+  constructor(firstName) {
+    this.firstName = firstName;
+  }
+
+  walk() {
+    console.log("I am walking!");
+  }
+
+  sayHello(target) {
+    console.log(`Hello ${target}, I'm ${this.firstName}`);
+  }
+}</code></pre>
+        </div>
+        <div class="col-md-6 snippet snippet-typescript" style="display: none;">
+            <h6 class="code-block-header">TypeScript</h6>
+            <pre><code class="typescript">class Person {
+  constructor(public firstName: string) {
+  }
+
+  walk() {
+    console.log("I am walking!");
+  }
+
+  sayHello(target: string) {
+    console.log(`Hello ${target}, I'm ${this.firstName}`);
+  }
+}</code></pre>
+        </div>
         <div class="col-md-6">
             <h6 class="code-block-header">Scala.js</h6>
-                    <pre><code class="scala">class Person(firstName: String) {
-  def walk = println("I am walking!")
+            <pre><code class="scala">class Person(val firstName: String) {
+  def walk(): Unit = println("I am walking!")
 
-  def sayHello(target: String) =
+  def sayHello(target: String): Unit =
     println(s"Hello $target, I'm $firstName")
 }</code></pre>
         </div>
@@ -138,15 +176,23 @@ Person.prototype.sayHello = function(target) {
         <div class="col-md-12">
             <h5>Fat arrow functions</h5>
         </div>
-        <div class="col-md-6">
+        <div class="col-md-6 snippet snippet-es5">
             <h6 class="code-block-header">JavaScript</h6>
-                    <pre><code class="javascript">var names = persons.map(function(p) {
-    return p.firstName
+            <pre><code class="javascript">var names = persons.map(function(p) {
+  return p.firstName;
 });</code></pre>
+        </div>
+        <div class="col-md-6 snippet snippet-es6" style="display: none;">
+            <h6 class="code-block-header">ECMAScript 6</h6>
+            <pre><code class="javascript">const names = persons.map(p => p.firstName);</code></pre>
+        </div>
+        <div class="col-md-6 snippet snippet-typescript" style="display: none;">
+            <h6 class="code-block-header">TypeScript</h6>
+            <pre><code class="typescript">const names = persons.map(p => p.firstName);</code></pre>
         </div>
         <div class="col-md-6">
             <h6 class="code-block-header">Scala.js</h6>
-                    <pre><code class="scala">val names = persons.map(p => p.firstName)
+            <pre><code class="scala">val names = persons.map(p => p.firstName)
 // or an even shorter version
 val names = persons.map(_.firstName)</code></pre>
         </div>
@@ -155,26 +201,52 @@ val names = persons.map(_.firstName)</code></pre>
         <div class="col-md-12">
             <h5>Collections</h5>
         </div>
-        <div class="col-md-6">
+        <div class="col-md-6 snippet snippet-es5">
             <h6 class="code-block-header">JavaScript</h6>
-                    <pre><code class="javascript">var personMap = {
-    "10": new Person("Roger Moore"),
-    "20": new Person("James Bond")
+            <pre><code class="javascript">var personMap = {
+  "10": new Person("Roger Moore"),
+  "20": new Person("James Bond")
 };
 var names = [];
-for(var key in personMap) {
-    if(Object.prototype.hasOwnProperty.call(names, key)) {
-        if(parseInt(key) > 15) {
-            names.push(
-                key + " = " + personMap[key].firstName
-            );
-        }
-    }
-}</code></pre>
+for (var key in personMap) {
+  if (Object.prototype.hasOwnProperty.call(names, key)) {
+    if (parseInt(key) > 15) {
+      names.push(key + " = " + personMap[key].firstName);
+    };
+  };
+};</code></pre>
+        </div>
+        <div class="col-md-6 snippet snippet-es6" style="display: none;">
+            <h6 class="code-block-header">ECMAScript 6</h6>
+            <pre><code class="javascript">const personMap = new Map([
+  [10, new Person("Roger Moore")],
+  [20, new Person("James Bond")]
+]);
+const names = [];
+for (const [key, value] of personMap) {
+  if (key > 15) {
+    names.push(`${key} = ${value}.firstName`);
+  };
+};</code></pre>
+        </div>
+        <div class="col-md-6 snippet snippet-typescript" style="display: none;">
+            <h6 class="code-block-header">TypeScript</h6>
+            <pre><code class="typescript">/// &lt;reference path="dts/typescript/lib.es6.d.ts" /&gt;
+
+const personMap = new Map&lt;number, Person&gt;([
+  [10, new Person("Roger Moore")],
+  [20, new Person("James Bond")]
+]);
+const names = new Array&lt;string&gt;();
+for (const [key, value] of personMap) {
+  if (key > 15) {
+    names.push(`${key} = ${value}.firstName`);
+  };
+};</code></pre>
         </div>
         <div class="col-md-6">
             <h6 class="code-block-header">Scala.js</h6>
-                    <pre><code class="scala">val personMap = Map(
+            <pre><code class="scala">val personMap = Map(
   10 -> new Person("Roger Moore"),
   20 -> new Person("James Bond")
 )

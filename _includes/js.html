@@ -4,6 +4,19 @@
 <script src="{{ '/assets/js/highlight.pack.js' | prepend: site.baseurl }}"></script>
 <script src="{{ '/assets/js/custom.js' | prepend: site.baseurl }}"></script>
 
+<script type="text/javascript">
+console.log("booh");
+$(".show-snippet-link").click(function(e) {
+  console.log("clicked");
+  e.preventDefault();
+  var language = $(this).data("language");
+  $(".snippet").hide();
+  $(".snippet-" + language).show();
+  $(".show-snippet-tab").removeClass("active");
+  $(this.parentNode).addClass("active");
+});
+</script>
+
 {% if jekyll.environment == "production" %}
 <script>
 (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
