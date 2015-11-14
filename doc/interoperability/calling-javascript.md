@@ -418,5 +418,5 @@ When using `js.Dynamic`, you are very close to writing raw JavaScript within
 Scala.js, with all the warts of the language coming to haunt you.
 However, to get the full extent of JavaScriptish code, you can import the
 implicit conversions in
-[js.DynamicImplicts]({{ site.production_url }}/api/scalajs-library/{{ site.scalaJSVersion }}/#scala.scalajs.js.DynamicImplicits$).
+[js.DynamicImplicts]({{ site.production_url }}/api/scalajs-library/{{ site.versions.scalaJS }}/#scala.scalajs.js.DynamicImplicits$).
 Use at your own risk!

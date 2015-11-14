@@ -116,7 +116,7 @@ Primitive JavaScript types (`number`, `boolean`, `string`, `null` and
 [above](#type-correspondence).
 
 For other pre-defined JavaScript types, such as arrays and functions, the package `scala.scalajs.js`
-([ScalaDoc]({{ site.production_url }}/api/scalajs-library/{{ site.scalaJSVersion }}/#scala.scalajs.js.package))
+([ScalaDoc]({{ site.production_url }}/api/scalajs-library/{{ site.versions.scalaJS }}/#scala.scalajs.js.package))
 provides dedicated definitions.
 
 The class hierarchy for these standard types is as follows:

@@ -262,7 +262,7 @@ With run-time overload resolution, however, the type tests are executed again, a
 
 ### `js.constructorOf[C]`
 
-To obtain the JavaScript constructor function of a Scala.js-defined JS class without instantiating it nor exporting it, you can use [`js.constructorOf[C]`]({{ site.production_url }}/api/scalajs-library/{{ site.scalaJSVersion }}/#scala.scalajs.js.package@constructorOf[T<:scala.scalajs.js.Any]:scala.scalajs.js.Dynamic), whose signature is:
+To obtain the JavaScript constructor function of a Scala.js-defined JS class without instantiating it nor exporting it, you can use [`js.constructorOf[C]`]({{ site.production_url }}/api/scalajs-library/{{ site.versions.scalaJS }}/#scala.scalajs.js.package@constructorOf[T<:scala.scalajs.js.Any]:scala.scalajs.js.Dynamic), whose signature is:
 
 {% highlight scala %}
 package object js {
