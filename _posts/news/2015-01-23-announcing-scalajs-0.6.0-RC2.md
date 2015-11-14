@@ -3,6 +3,7 @@ layout: post
 title: Announcing Scala.js 0.6.0-RC2
 category: news
 tags: [releases]
+permalink: /news/2015/01/23/announcing-scalajs-0.6.0-RC2/
 ---
 
 
