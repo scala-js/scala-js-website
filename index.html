@@ -29,33 +29,33 @@ permalink: /
             <div class="col-md-4">
                 <div class="center-align">
                     <i class="fa fa-check-square"></i>
-                        <h4>Correctness</h4>
+                    <h4>Type inference</h4>
                 </div>
-                Strong typing guarantees your code is free of silly mistakes; no more
-                mixing up strings or numbers, forgetting what keys an object has, or
-                worrying about typos in your method names. Scala.js takes care of all this
-                tedious book-keeping for you, letting you focus on the actual, more interesting
-                problem your website is trying to solve.
+                So the type system doesn't feel so static. Don't work for the type system. Let the type system work for you!
+                Write a couple types for the API of your classes, and let the compiler figure out the rest and check it for you.
+                No more mixing up strings or numbers, forgetting what keys an object has, or
+                worrying about typos in your method names.
             </div>
             <div class="col-md-4">
                 <div class="center-align">
-                    <a href="{{ site.baseurl}}/doc/internals/performance.html"><i class="fa fa-rocket"></i>
-                        <h4>Performance</h4></a>
+                    <i class="fa fa-rocket"></i>
+                    <h4>Performance</h4>
                 </div>
-                Scala.js compiles Scala code into highly efficient JavaScript utilizing an internal optimizer.
+                Scala.js optimizes your Scala code into
+                <a href="{{ site.baseurl}}/doc/internals/performance.html">highly efficient JavaScript</a>.
                 Incremental compilation guarantees speedy (1-2s) turn-around times when your code changes.
-                Generated JavaScript is both fast and small, starting from 45kB gzipped for a full application.
+                The generated JavaScript is both fast and small, starting from 45kB gzipped for a full application.
             </div>
             <div class="col-md-4">
                 <div class="center-align">
-                    <a href="{{ site.baseurl }}/doc/interoperability"><i class="fa fa-cogs"></i>
-                        <h4>Interoperability</h4></a>
+                    <i class="fa fa-cogs"></i>
+                    <h4>Interoperability</h4>
                 </div>
-                Use jQuery or any HTML5 feature directly from your Scala.js code, either in a typed or untyped way. All
-                <a href="{{ site.baseurl }}/community/libraries/facades.html">JavaScript libraries</a> work with
-                Scala.js
-                code. If you like React.js, or Angular.js, that's great! You can keep using them while getting the
-                benefits of Scala.js
+                Scala.js <a href="{{ site.baseurl }}/community/libraries/facades.html">loves JavaScript libraries</a>,
+                including React and AngularJS.
+                You can use any JavaScript library right from your Scala.js code, either in a statically or dynamically typed way.
+                You won't even notice you're crossing a language border!
+                <a href="{{ site.baseurl }}/doc/interoperability">Learn more.</a>
             </div>
         </div>
     </div>
