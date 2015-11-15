@@ -1,8 +1,5 @@
 - text: Community
   url: /community/
-- text: Get help!
-  url: /community/gethelp.html
-  subitems:
 - text: Libraries and skeletons
   url: /community/libraries/
   subitems:

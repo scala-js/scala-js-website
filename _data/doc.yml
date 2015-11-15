@@ -11,8 +11,6 @@
       url: /doc/sjs-for-js/es6-to-scala-part2.html
     - text: "From ES6 to Scala: Advanced"
       url: /doc/sjs-for-js/es6-to-scala-part3.html
-#- text: Scala.js for Scala developers
-#  url: /doc/scalajs-for-scaladevs.html
 - text: Project setup
   url: /doc/project/
   subitems:
