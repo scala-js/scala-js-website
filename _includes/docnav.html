@@ -1,9 +1,10 @@
-{% assign navurl = page.url | remove: 'index.html' %}
+{% assign navurl = page.url | remove: 'index.html' | remove: '.html'%}
 <ul>
     {% for item in include.nav %}
     <li>
         <a href="{{ site.baseurl }}{{ item.url }}">
-            {% if item.url == navurl %}
+            {% assign itemurl = item.url | remove: '.html'%}
+            {% if itemurl == navurl %}
             <b>{{ item.text }}</b>
             {% else %}
             {{ item.text }}

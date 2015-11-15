@@ -27,8 +27,8 @@
   subitems:
     - text: JavaScript types
       url: /doc/interoperability/types.html
-    - text: Call JavaScript APIs
-      url: /doc/interoperability/calling-javascript.html
+    - text: Write facade types for JS APIs
+      url: /doc/interoperability/facade-types.html
     - text: Export Scala.js APIs
       url: /doc/interoperability/export-to-javascript.html
     - text: Write JavaScript classes in Scala.js
