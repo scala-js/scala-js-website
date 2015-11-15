@@ -3,7 +3,7 @@ layout: doc
 title: Scala.js-defined JS classes
 ---
 
-As explained in detail in the [guide to write facade types](./calling-javascript.html), classes, traits and objects inheriting from `js.Any` are native by default.
+As explained in detail in the [guide to write facade types](./facade-types.html), classes, traits and objects inheriting from `js.Any` are native by default.
 To implement a JavaScript class in Scala.js, it should be annotated with `@ScalaJSDefined`:
 
 {% highlight scala %}
