@@ -58,7 +58,7 @@ actually used.
 Fast optimizing is a task that identifies all the classes and methods reachable
 from a given set of entry points, and removes everything else.
 Entry points are classes and methods that are
-[exported to JavaScript](../interoperability/export_to_js.html).
+[exported to JavaScript](../interoperability/export-to-javascript.html).
 
 The fast optimizer uses information stored by the compilation step in .sjsir
 to derive a reachability graph from the entry points.

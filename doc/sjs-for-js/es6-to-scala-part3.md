@@ -19,13 +19,13 @@ statement. However, it can be used for much more, for example checking the type 
 function printType(o) {
   switch (typeof o) {
     case "string":
-      console.log(`It's a string: ${o}`); 
+      console.log(`It's a string: ${o}`);
       break;
     case "number":
-      console.log(`It's a number: ${o}`); 
+      console.log(`It's a number: ${o}`);
       break;
     case "boolean":
-      console.log(`It's a boolean: ${o}`); 
+      console.log(`It's a boolean: ${o}`);
       break;
     default:
       console.log(`It's something else`);
@@ -33,10 +33,10 @@ function printType(o) {
 }
 {% endhighlight %}
 {% endcolumn %}
-        
+
 {% column 6 Scala %}
 {% highlight scala %}
-def printType(o: Any) {
+def printType(o: Any): Unit = {
   o match {
     case s: String =>
       println(s"It's a string: $s")
@@ -69,7 +69,7 @@ function parse(str, magicKey) {
       res.push("letter");
     else if (c.match(/\s/))
       res.push(" ");
-    else 
+    else
       res.push("char");
   }
   return res;
@@ -78,10 +78,10 @@ const r = parse("JB/007", '/');
 // [letter, letter, magic, digit, digit, digit]
 {% endhighlight %}
 {% endcolumn %}
-        
+
 {% column 6 Scala %}
 {% highlight scala %}
-def parse(str: String, magicKey: Char)= {
+def parse(str: String, magicKey: Char): String = {
   str.map {
     case c if c == magicKey =>
       "magic"
@@ -120,7 +120,7 @@ const [a, b, , ...c] = seq;
 const seq2 = [a, b].concat(c); // [1, 2, 4, 5]
 {% endhighlight %}
 {% endcolumn %}
-        
+
 {% column 6 Scala %}
 {% highlight scala %}
 case class Person(first: String, last: String, age: Int)
@@ -128,7 +128,7 @@ val person = Person("James", "Bond", 42)
 val Person(first, last, years) = person
 // first = "James", last = "Bond", years = 42
 val seq = Seq(1, 2, 3, 4, 5)
-val Seq(a, b, _, c @ _*) = seq 
+val Seq(a, b, _, c @ _*) = seq
 // a = 1, b = 2, c = Seq(4, 5)
 
 val seq2 = Seq(a, b) ++ c // Seq(1, 2, 4, 5)
@@ -157,13 +157,13 @@ const persons = [
 ageSum(persons, "Bond") == 77;
 {% endhighlight %}
 {% endcolumn %}
-        
+
 {% column 6 Scala %}
 {% highlight scala %}
-def ageSum(persons: Seq[Person], 
-           family: String): Int = {
+def ageSum(persons: Seq[Person],
+    family: String): Int = {
   persons.collect {
-    case Person(_, last, age) if last == family => 
+    case Person(_, last, age) if last == family =>
       age
   }.sum
 }
@@ -192,38 +192,42 @@ function convertToDate(d) {
   const YMD = /(\d{4})-(\d{1,2})-(\d{1,2})/
   const MDY = /(\d{1,2})\/(\d{1,2})\/(\d{4})/
   const DMY = /(\d{1,2})\.(\d{1,2})\.(\d{4})/
-  {
-    const [, year, month, day] = YMD.exec(d) || [];
-    if (year !== undefined)
-      return {year: parseInt(year), 
-              month: parseInt(month), 
-              day: parseInt(day)};
-    else {
-      const [, month, day, year] = 
-        MDY.exec(d) || [];
-      if (year !== undefined)
-        return {year: parseInt(year), 
-                month: parseInt(month), 
-                day: parseInt(day)};
-      else {
-        const [, day, month, year] = 
-          DMY.exec(d) || [];
-        if (year !== undefined)
-          return {year: parseInt(year), 
-                  month: parseInt(month), 
-                  day: parseInt(day)};
+
+  const [, year, month, day] = YMD.exec(d) || [];
+  if (year !== undefined) {
+    return {
+      year: parseInt(year),
+      month: parseInt(month),
+      day: parseInt(day)
+    };
+  } else {
+    const [, month, day, year] = MDY.exec(d) || [];
+    if (year !== undefined) {
+      return {
+        year: parseInt(year),
+        month: parseInt(month),
+        day: parseInt(day)
+      };
+    } else {
+      const [, day, month, year] = DMY.exec(d) || [];
+      if (year !== undefined) {
+        return {
+          year: parseInt(year),
+          month: parseInt(month),
+          day: parseInt(day)
+        };
       }
     }
   }
-  throw "Invalid date!";
+  throw new Error("Invalid date!");
 }
-convertToDate("2015-10-9"); // {year:2015,month:10,day:9}
-convertToDate("10/9/2015"); // {year:2015,month:10,day:9}
-convertToDate("9.10.2015"); // {year:2015,month:10,day:9}
-convertToDate("10 Nov 2015") // exception
+convertToDate("2015-10-9"); //{year:2015,month:10,day:9}
+convertToDate("10/9/2015"); //{year:2015,month:10,day:9}
+convertToDate("9.10.2015"); //{year:2015,month:10,day:9}
+convertToDate("10 Nov 2015"); // exception
 {% endhighlight %}
 {% endcolumn %}
-        
+
 {% column 6 Scala %}
 {% highlight scala %}
 case class Date(year: Int, month: Int, day: Int)
@@ -233,13 +237,13 @@ def convertToDate(d: String): Date = {
   val MDY = """(\d{1,2})/(\d{1,2})/(\d{4})""".r
   val DMY = """(\d{1,2})\.(\d{1,2})\.(\d{4})""".r
   d match {
-    case YMD(year, month, day) => 
+    case YMD(year, month, day) =>
       Date(year.toInt, month.toInt, day.toInt)
     case MDY(month, day, year) =>
       Date(year.toInt, month.toInt, day.toInt)
     case DMY(day, month, year) =>
       Date(year.toInt, month.toInt, day.toInt)
-    case _ => 
+    case _ =>
       throw new Exception("Invalid date!")
   }
 }
@@ -287,7 +291,7 @@ val p = Person("James Bond", new java.util.Date)
 When these implicit conversion functions are in lexical scope, you can use JS and Scala dates interchangeably. Outside
 the scope they are not visible and you must use correct types or provide conversion yourself.
 
-#### Implicit conversions for "monkey patching" 
+#### Implicit conversions for "monkey patching"
 
 Monkey patching -term became famous among Ruby developers and it has been adopted into JavaScript to describe
 a way of extending existing classes with new methods. It has several pitfalls in dynamic languages and is generally
@@ -311,7 +315,7 @@ String.prototype.toDate = function() {
 "2015-10-09".toDate; // = {year:2015,month:10,day:9}
 {% endhighlight %}
 {% endcolumn %}
-        
+
 {% column 6 Scala %}
 {% highlight scala %}
 implicit class StrToDate(val s: String) {
@@ -349,11 +353,12 @@ more accurate, we are extending `DOMList[T]` which provides a type for the nodes
 {% column 12 Scala %}
 {% highlight scala %}
 implicit class NodeListSeq[T <: Node](nodes: DOMList[T]) extends IndexedSeq[T] {
-  override def foreach[U](f: (T) => U): Unit = {
+  override def foreach[U](f: T => U): Unit = {
     for (i <- 0 until nodes.length) {
       f(nodes(i))
     }
   }
+
   override def length: Int = nodes.length
 
   override def apply(idx: Int): T = nodes(idx)
@@ -401,23 +406,23 @@ a value, or fail with an error/exception. Let's look at a typical use case of fe
 // using jQuery
 
 $.ajax("http://api.openweathermap.org/" +
-  "data/2.5/weather?q=Tampere").then(
+    "data/2.5/weather?q=Tampere").then(
    (data, textStatus, jqXHR) =>
       console.log(data)
 );
 {% endhighlight %}
 {% endcolumn %}
-        
+
 {% column 6 Scala %}
 {% highlight scala %}
 import org.scalajs.dom
 import dom.ext.Ajax
 
 Ajax.get("http://api.openweathermap.org/" +
-  "data/2.5/weather?q=Tampere").foreach { 
+    "data/2.5/weather?q=Tampere").foreach {
   xhr =>
     println(xhr.responseText)
-}               
+}
 {% endhighlight %}
 {% endcolumn %}
 {% endcolumns %}
@@ -466,7 +471,7 @@ function onLoadPromise(img) {
   if (img.complete) {
     return Promise.resolve(img.src);
   } else {
-    const p = new Promise( (success) => {
+    const p = new Promise((success) => {
       img.onload = (e) => {
         success(img.src);
       };
@@ -476,12 +481,12 @@ function onLoadPromise(img) {
 }
 
 const img = document.querySelector("#mapimage");
-onLoadPromise(img).then( url => 
-  console.log(`Image ${url} loaded`) 
+onLoadPromise(img).then(url =>
+  console.log(`Image ${url} loaded`)
 );
 {% endhighlight %}
 {% endcolumn %}
-        
+
 {% column 6 Scala %}
 {% highlight scala %}
 def onLoadFuture(img: HTMLImageElement) = {
@@ -489,7 +494,7 @@ def onLoadFuture(img: HTMLImageElement) = {
     Future.successful(img.src)
   } else {
     val p = Promise[String]()
-    img.onload = (e: Event) => {
+    img.onload = { (e: Event) =>
       p.success(img.src)
     }
     p.future
@@ -506,7 +511,7 @@ onLoadFuture(img).foreach { url =>
 {% endcolumns %}
 
 Because image might have already loaded when we create the promise, we must check for that separately and just return a
-completed future in that case. 
+completed future in that case.
 
 Next we'll add an `onloadF` extension method to the {% domdoc raw.HTMLImageElement %} class, to make it really easy to
 use the futurized version.

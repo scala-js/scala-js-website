@@ -7,6 +7,7 @@ Understanding how different types are mapped between Scala.js and JavaScript is 
 Some types map quite directly (like `String`) where others require some conversions. 
  
 ## <a name="type-correspondence"></a> Type Correspondence
+
 Some Scala types are directly mapped to corresponding underlying JavaScript types. These correspondences can be used
 when calling Scala.js code from JavaScript and when defining typed interfaces for JavaScript code.
 
@@ -27,7 +28,7 @@ when calling Scala.js code from JavaScript and when defining typed interfaces fo
     <tr><td>scala.Unit</td><td>undefined</td><td></td></tr>
     <tr><td>scala.Null</td><td>null</td><td></td></tr>
     <tr><td>subtypes of js.Object</td><td><i>corresponding JavaScript
-  type</i></td><td>see <a href="calling_js.html">calling JavaScript guide</a></td></tr>
+  type</i></td><td>see <a href="calling-javascript.html">calling JavaScript guide</a></td></tr>
     <tr>
       <td>
         other Scala classes<br />
@@ -37,16 +38,36 @@ when calling Scala.js code from JavaScript and when defining typed interfaces fo
         <i>opaque, except for exported methods</i><br />
         <small>Note: <code>toString()</code> is always exported</small>
       </td>
-      <td>see <a href="export_to_js.html">exporting Scala.js APIs to JavaScript</a></td>
+      <td>see <a href="export-to-javascript.html">exporting Scala.js APIs to JavaScript</a></td>
     </tr>
   </tbody>
 </table>
 
-On the other hand, some JavaScript (collection) types have similar types in Scala. Instead of mapping them directly,
-Scala.js provides conversions between them. We show with a couple of snippets how you can convert from JavaScript to
-Scala types and back. Please refer to the [Scaladocs]({{ BASE_PATH }}/doc/index.html#api) for details.
+On the other hand, some JavaScript (collection) types have similar types in Scala.
+Instead of mapping them directly, Scala.js provides conversions between them.
+We show with a couple of snippets how you can convert from JavaScript to Scala types and back.
+Please refer to the [Scaladocs]({{ BASE_PATH }}/doc/index.html#api) for details.
 
-##### js.Array[T] <--> mutable.Seq[T]
+#### `js.FunctionN` <--> `scala.FunctionN`
+
+Functions from JavaScript and Scala are not exactly the same thing, therefore
+they have different types. However, implicit conversions are available by
+default to go from one to the other, which means the following snippets compile
+out of the box:
+
+{% highlight scala %}
+import scala.scalajs.js
+
+val scalaFun: Int => Int = (x: Int) => x * x
+val jsFun: js.Function1[Int, Int] = scalaFun
+val scalaFunAgain: Int => Int = jsFun
+{% endhighlight %}
+
+Most of the time, you don't even need to worry about those, except if you
+[write facade types for JavaScript APIs](facade-types.html), in which case you
+have to use the JS function types.
+
+#### `js.Array[T]` <--> `mutable.Seq[T]`
 
 {% highlight scala %}
 import scala.scalajs.js
@@ -70,7 +91,7 @@ val scSeq = Seq(1, 2, 3)
 val jsArray: js.Array[Int] = scSeq.toJSArray
 {% endhighlight %}
 
-##### js.Dictionary[T] <--> mutable.Map[String, T]
+#### `js.Dictionary[T]` <--> `mutable.Map[String, T]`
 
 {% highlight scala %}
 import scala.scalajs.js
@@ -91,7 +112,7 @@ val scMap = Map("a" -> 1, "b" -> 2)
 val jsDictionary: js.Dictionary[Int] = scMap.toJSDictionary
 {% endhighlight %}
 
-##### js.UndefOr[T] <--> Option[T]
+#### `js.UndefOr[T]` <--> `Option[T]`
 
 {% highlight scala %}
 import scala.scalajs.js
@@ -116,7 +137,7 @@ Primitive JavaScript types (`number`, `boolean`, `string`, `null` and
 [above](#type-correspondence).
 
 For other pre-defined JavaScript types, such as arrays and functions, the package `scala.scalajs.js`
-([ScalaDoc]({{ site.production_url }}/api/scalajs-library/{{ site.scalaJSVersion }}/#scala.scalajs.js.package))
+([ScalaDoc]({{ site.production_url }}/api/scalajs-library/{{ site.versions.scalaJS }}/#scala.scalajs.js.package))
 provides dedicated definitions.
 
 The class hierarchy for these standard types is as follows:
@@ -249,3 +270,53 @@ var o = new Object();
 var x = f.call(o, 4);
 {% endhighlight %}
 
+## Dynamically typed interface: `js.Dynamic`
+
+Because JavaScript is dynamically typed, it is not often practical, sometimes
+impossible, to give sensible type definitions for JavaScript APIs.
+
+Scala.js lets you call JavaScript in a dynamically typed fashion if you
+want to. The basic entry point is to grab a dynamically typed reference to the
+global scope, with `js.Dynamic.global`, which is of type `js.Dynamic`.
+
+You can read and write any field of a `js.Dynamic`, as well as call any method
+with any number of arguments, and you always receive back a `js.Dynamic`.
+
+For example, this snippet taken from the Hello World example uses the
+dynamically typed interface to manipulate the DOM model.
+
+{% highlight scala %}
+val document = js.Dynamic.global.document
+val playground = document.getElementById("playground")
+
+val newP = document.createElement("p")
+newP.innerHTML = "Hello world! <i>-- DOM</i>"
+playground.appendChild(newP)
+{% endhighlight %}
+
+In this example, `document`, `playground` and `newP` are all inferred to be of
+type `js.Dynamic`.
+
+### Literal object construction
+
+Scala.js provides two syntaxes for creating JavaScript objects in a literal
+way. The following JavaScript object
+
+{% highlight javascript %}
+{foo: 42, bar: "foobar"}
+{% endhighlight %}
+
+can be written in Scala.js either as
+
+{% highlight scala %}
+js.Dynamic.literal(foo = 42, bar = "foobar")
+{% endhighlight %}
+
+or as
+
+{% highlight scala %}
+js.Dynamic.literal("foo" -> 42, "bar" -> "foobar")
+{% endhighlight %}
+
+Alternatively, you can use anonymous classes extending `js.Object` or a
+[Scala.js-defined JS trait](./sjs-defined-js-classes.html).

@@ -1,6 +1,6 @@
 ---
 layout: doc
-title: Calling JavaScript from Scala.js
+title: Write facade types for JavaScript APIs
 ---
 
 When writing an application with Scala.js, it is expected that the main
@@ -8,32 +8,9 @@ application logic be written in Scala.js, and that existing JavaScript libraries
 are leveraged. Calling JavaScript from Scala.js is therefore the most important
 direction of interoperability.
 
-Because JavaScript is dynamically typed, it is possible to call JS libraries in
-a dynamically typed way. However, it is also possible to interop with static
-types, for better leveraging of Scala.
-
-## Literal object construction
-
-Scala.js provides two syntaxes for creating JavaScript objects in a literal
-way. The following JavaScript object
-
-{% highlight javascript %}
-{foo: 42, bar: "foobar"}
-{% endhighlight %}
-
-can be written in Scala.js either as
-
-{% highlight scala %}
-js.Dynamic.literal(foo = 42, bar = "foobar")
-{% endhighlight %}
-
-or as
-
-{% highlight scala %}
-js.Dynamic.literal("foo" -> 42, "bar" -> "foobar")
-{% endhighlight %}
-
-Alternatively, you can use anonymous classes extending `js.Object` or a [Scala.js-defined JS trait](./sjs-defined-js-classes.html).
+Facade types are zero-overhead typed APIs for JavaScript libraries. They are
+similar in spirit to
+[TypeScript type definitions](http://www.typescriptlang.org/Handbook#modules-working-with-other-javascript-libraries).
 
 ## Defining JavaScript interfaces with traits
 
@@ -418,5 +395,5 @@ When using `js.Dynamic`, you are very close to writing raw JavaScript within
 Scala.js, with all the warts of the language coming to haunt you.
 However, to get the full extent of JavaScriptish code, you can import the
 implicit conversions in
-[js.DynamicImplicts]({{ site.production_url }}/api/scalajs-library/{{ site.scalaJSVersion }}/#scala.scalajs.js.DynamicImplicits$).
+[js.DynamicImplicts]({{ site.production_url }}/api/scalajs-library/{{ site.versions.scalaJS }}/#scala.scalajs.js.DynamicImplicits$).
 Use at your own risk!

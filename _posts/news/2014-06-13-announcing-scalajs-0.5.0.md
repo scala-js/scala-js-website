@@ -3,6 +3,7 @@ layout: post
 title: Announcing Scala.js 0.5.0
 category: news
 tags: [releases]
+permalink: /news/2014/06/13/announcing-scalajs-0.5.0/
 ---
 
 

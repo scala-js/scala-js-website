@@ -3,6 +3,7 @@ layout: post
 title: Announcing Scala.js 0.6.0-M3
 category: news
 tags: [releases]
+permalink: /news/2014/12/22/announcing-scalajs-0.6.0-M3/
 ---
 
 

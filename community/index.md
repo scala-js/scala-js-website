@@ -3,12 +3,27 @@ layout: community
 title: Community
 ---
 
-Scala.js started as an experimental compiler project but it has since matured to a full ecosystem with a lot of
-enthusiastic developers writing libraries, facades for JS libs, tutorials and documentation.
+Scala.js has a very active and friendly community supporting newcomers as well as seasoned Scala.js developers. To solve
+your issues, please use following resources.
+
+### [Stackoverflow](http://stackoverflow.com/questions/tagged/scala.js)
+
+Many developers have probably faced the same issues are you have, so there might be an answer on Stackoverflow just
+waiting to be read.
+
+### [Gitter chat room](https://gitter.im/scala-js/scala-js)
+
+For fastest answers, join our [Scala.js Gitter chat room](https://gitter.im/scala-js/scala-js) and ask your questions,
+or just chat with other Scala.js developers! There are currently over 500 users in the chat room.
+
+### [Official mailing list](https://groups.google.com/forum/?fromgroups#!forum/scala-js)
+
+This is the place for general discussion, ideas, announcements of your libraries, etc.
 
 ## Built with Scala.js
 
-Following web applications are built with Scala.js
+Want to get a peek at some Web applications that have been built with Scala.js?
+Here you go:
 
 - [Seventh Sense](https://7thsense.io), predictive analytics for sales and marketing. Scala.js+react components used inside legacy angular application.
 - [Querki](https://www.querki.net/help/#Learning-Querki), a cloud-based system for small-scale data management

@@ -23,7 +23,7 @@ To setup Scala.js in a new sbt project, we need to do two things:
 Adding the Scala.js sbt plugin is a one-liner in `project/plugins.sbt` (all file names we write in this tutorial are relative to the project root):
 
 {% highlight scala %}
-addSbtPlugin("org.scala-js" % "sbt-scalajs" % "{{ site.scalaJSVersion }}")
+addSbtPlugin("org.scala-js" % "sbt-scalajs" % "{{ site.versions.scalaJS }}")
 {% endhighlight %}
 
 We also setup basic project settings and enable this plugin in the sbt build file (`build.sbt`, in the project root directory):
@@ -170,7 +170,7 @@ In the second script tag, we first get the `TutorialApp` object. Note the `()`: 
 
 Since `TutorialApp` extends `JSApp`, the object itself and its `main` method are automatically made available to
 JavaScript. This is not true in general. Continue reading this tutorial or have a look at the [Export Scala.js API to
-JavaScript](../../doc/interoperability/export_to_js.html) guide for details.
+JavaScript](../../doc/interoperability/export-to-javascript.html) guide for details.
 
 If you now open the newly created HTML page in your favorite browser, you will see ... nothing. The `println` in the `main` method goes right to the JavaScript console, which is not shown by default in a browser. However, if you open the JavaScript console (e.g. in Chrome: right click -> Inspect Element -> Console) you can see the HelloWorld message.
 
@@ -272,7 +272,7 @@ import scala.scalajs.js.annotation.JSExport
 {% endhighlight %}
 
 To find out more about how to call Scala.js methods from JavaScript, have a look at the [Export Scala.js API to
-JavaScript](../../doc/interoperability/export_to_js.html) guide.
+JavaScript](../../doc/interoperability/export-to-javascript.html) guide.
 
 Since we now have a method that is callable from JavaScript, all we have to do is add a button to our HTML and set its
 `onclick` attribute (make sure to add the button *before* the `<script>` tags):
@@ -392,7 +392,7 @@ this application.
 
 In this section we will show how such an application can be tested using [uTest](http://github.com/lihaoyi/utest), a
 tiny testing framework which compiles to both Scala.js and Scala JVM. As a note aside, this framework is also a good
-choice to test libraries that cross compile. See our [cross compilation guide](../../doc/project/cross_build.html) for
+choice to test libraries that cross compile. See our [cross compilation guide](../../doc/project/cross-build.html) for
 details.
 
 ### Supporting the DOM

@@ -7,7 +7,7 @@ In JavaScript there are basically two kinds of collections you have used to stor
 data and {% jsdoc Object %} (aka dictionary or hash map) for storing key-value pairs. Furthermore both of these are mutable by
 default, so if you pass them to a function, that function might go and modify them without your knowledge.
 
-ES6 extends your options with four new collection types {% jsdoc Map %}, {% jsdoc Set %}, {% jsdoc WeakMap %} and 
+ES6 extends your options with four new collection types {% jsdoc Map %}, {% jsdoc Set %}, {% jsdoc WeakMap %} and
 {% jsdoc WeakSet %}. Of these the `WeakMap` and `WeakSet` are for special purposes only, so in your application you
 would typically use only `Map` and `Set`.
 
@@ -48,10 +48,10 @@ a.push("me"); // Fox jumped over me
 a.unshift("Red"); // Red Fox jumped over me
 const fox = a[1];
 a[a.length - 1] = "you"; // Red Fox jumped over you
-console.log(a.join(" ")); 
+console.log(a.join(" "));
 {% endhighlight %}
 {% endcolumn %}
-        
+
 {% column 6 Scala %}
 {% highlight scala %}
 import scala.collection.mutable
@@ -76,11 +76,11 @@ p["profession"] = "Spy";
 const name = `${p.first} ${p.last}`
 {% endhighlight %}
 {% endcolumn %}
-        
+
 {% column 6 Scala %}
 {% highlight scala %}
 import scala.collection.mutable
-val p = mutable.HashMap("first" -> "James", 
+val p = mutable.HashMap("first" -> "James",
   "last" -> "Bond")
 p("profession") = "Spy"
 val name = s"${p("first")} ${p("last")}"
@@ -183,9 +183,9 @@ val product = ar.foldLeft(1)((a, x) => a * x) // foldLeft comes from WrappedArra
 {% endcolumn %}
 {% endcolumns %}
 
-The `Seq` trait exposes many methods familiar to the users of JavaScript arrays, including 
-{% scaladoc foreach collection.Seq@foreach(f:A=>Unit):Unit %}, {% scaladoc map collection.Seq@map[B](f:A=>B):Seq[B] %}, 
-{% scaladoc filter collection.Seq@filter(p:A=>Boolean):Repr %}, {% scaladoc slice collection.Seq@slice(from:Int,until:Int):Repr %} 
+The `Seq` trait exposes many methods familiar to the users of JavaScript arrays, including
+{% scaladoc foreach collection.Seq@foreach(f:A=>Unit):Unit %}, {% scaladoc map collection.Seq@map[B](f:A=>B):Seq[B] %},
+{% scaladoc filter collection.Seq@filter(p:A=>Boolean):Repr %}, {% scaladoc slice collection.Seq@slice(from:Int,until:Int):Repr %}
 and {% scaladoc reverse collection.Seq@reverse:Repr %}. In addition to these, there are several more useful methods
 shown with examples in the code block below.
 
@@ -218,15 +218,15 @@ JavaScript {% jsdoc Array.reduce Array.reduce %} functionality is covered by sep
 and {% scaladoc foldLeft collection.Seq@foldLeft[B](z:B)(op:(B,A)=>B):B %} methods. The difference is that in `foldLeft`
 you provide an initial ("zero") value (which is optional parameter to `Array.reduce`) and in  `reduceLeft` you don't.
 Also note that in `foldLeft` the type of the accumulator can be something else, for example a tuple, but in `reduceLeft`
-it must always be a supertype of the value. 
+it must always be a supertype of the value.
 
 {% columns %}
 {% column 6 ES6 %}
 {% highlight javascript %}
 function sumProduct(s) {
   // destructuring works in the function argument
-  return s.reduce(([sum, product], x) => 
-    [sum + x, product * x], 
+  return s.reduce(([sum, product], x) =>
+    [sum + x, product * x],
     [0, 1] // use an array to represent a tuple
   );
 }
@@ -236,8 +236,8 @@ function sumProduct(s) {
 {% highlight scala %}
 def sumProduct(s: Seq[Int]): (Int, Int) = {
   // use a tuple accumulator to hold sum and product
-  s.foldLeft((0, 1)){ case ((sum, product), x) => 
-    (sum + x, product * x) 
+  s.foldLeft((0, 1)){ case ((sum, product), x) =>
+    (sum + x, product * x)
   }
 }
 {% endhighlight %}
@@ -270,7 +270,7 @@ const data = [["first", "James"], ["last", "Bond"]];
 const m2 = new Map(data);
 {% endhighlight %}
 {% endcolumn %}
-        
+
 {% column 6 Scala %}
 {% highlight scala %}
 val m = Map("first" -> "James", "last" -> "Bond")
@@ -295,13 +295,13 @@ const name2 = `${m2.get("last")}, ${m2.get("first")} ${m2.get("last")}`
 // use default value when missing
 const age = m.age === undefined ? "42" : m.age;
 // check all fields are present
-const person = m.first !== undefined && 
-  m.last !== undefined && 
+const person = m.first !== undefined &&
+  m.last !== undefined &&
   m.age !== undefined ? `${m.last}, ${m.first}: ${m.age}` :
   "missing";
 {% endhighlight %}
 {% endcolumn %}
-        
+
 {% column 6 Scala %}
 {% highlight scala %}
 val name = s"${m("last")}, ${m("first")} ${m("last")}"
@@ -309,11 +309,12 @@ val name = s"${m("last")}, ${m("first")} ${m("last")}"
 val age = m.getOrElse("age", "42")
 // check all fields are present
 val person = (for {
-    first <- m.get("first")
-    last <- m.get("last")
-    age <- m.get("age")
-  } yield s"$last, $first: $age"
-  ).getOrElse("missing")
+  first <- m.get("first")
+  last <- m.get("last")
+  age <- m.get("age")
+} yield {
+  s"$last, $first: $age"
+}).getOrElse("missing")
 {% endhighlight %}
 {% endcolumn %}
 {% endcolumns %}
@@ -332,7 +333,7 @@ could be represented by a `Map[String, Seq[Int]]`
 const scores = {};
 
 function addScore(player, score) {
-  if (scores[player] === undefined) 
+  if (scores[player] === undefined)
     scores[player] = [];
   scores[player].push(score);
 }
@@ -340,11 +341,11 @@ function addScore(player, score) {
 function bestScore() {
   let bestScore = 0;
   let bestPlayer = "";
-  for(let player in scores) {
-    const max = scores[player].reduce( (a, score) =>
+  for (let player in scores) {
+    const max = scores[player].reduce((a, score) =>
       Math.max(score, a)
     );
-    if( max > bestScore ) {
+    if (max > bestScore) {
       bestScore = max;
       bestPlayer = player;
     }
@@ -355,28 +356,28 @@ function bestScore() {
 function averageScore() {
   let sum = 0;
   let count = 0;
-  for(let player in scores) {
-    for(let score of scores[player]) {
+  for (let player in scores) {
+    for (let score of scores[player]) {
       sum += score;
       count++;
     }
   }
-  if( count == 0 )
+  if (count == 0)
     return 0;
-  else 
-    return Math.round(sum / count); 
+  else
+    return Math.round(sum / count);
 }
 {% endhighlight %}
 {% endcolumn %}
-        
+
 {% column 6 Scala %}
 {% highlight scala %}
 import scala.collection.mutable
 
-val scores = mutable.Map.empty[String, 
-                               mutable.Buffer[Int]]
+val scores =
+  mutable.Map.empty[String, mutable.Buffer[Int]]
 
-def addScore(player: String, score: Int) {
+def addScore(player: String, score: Int): Unit = {
   scores.getOrElseUpdate(player, mutable.Buffer())
     .append(score)
 }
@@ -425,7 +426,7 @@ based on reference equality making it less useful when dealing with complex valu
 In Scala sets are quite often used when you need to have distinct values with no duplicates. Adding values to a set
 automatically guarantees that all duplicate values are eliminated. They are also useful when you just need to check if
 something exists, without storing its value. Set operations like {% scaladoc diff collection.Set@diff(that:scala.collection.GenSet[A]):This %},
-{% scaladoc intersect collection.Set@intersect(that:scala.collection.GenSet[A]):Repr %} and 
+{% scaladoc intersect collection.Set@intersect(that:scala.collection.GenSet[A]):Repr %} and
 {% scaladoc union collection.Set@union(that:scala.collection.GenSet[A]):This %} allow you to build new sets out of other
 sets to check, for example, what has changed.
 
@@ -447,15 +448,15 @@ Sets are also a convenient way to check for multiple values in methods like `fil
 {% columns %}
 {% column 6 ES6 %}
 {% highlight javascript %}
-const common = {"a":true, "the":true, "an":true, 
-  "and":true};
+const common = {"a": true, "the": true,
+  "an": true, "and": true};
 const text = "The sun is a star and an energy source"
 const words = text.split(" ")
   .map(s => s.toLowerCase())
   .filter(s => !common[s]);
 {% endhighlight %}
 {% endcolumn %}
-        
+
 {% column 6 Scala %}
 {% highlight scala %}
 val common = Set("a", "the", "an", "and")
@@ -468,4 +469,4 @@ val words = text.split(" ")
 {% endcolumn %}
 {% endcolumns %}
 
-Next, let's look at some more [advanced paradigms](es6_to_scala_part3.html) and features of Scala.
+Next, let's look at some more [advanced paradigms](es6-to-scala-part3.html) and features of Scala.

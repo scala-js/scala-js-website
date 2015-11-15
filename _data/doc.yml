@@ -2,19 +2,15 @@
   url: /doc/
 #- text: Quick Start
 #  url: /doc/quick-start.html
-- text: Why Scala.js?
-  url: /doc/why-scalajs.html
 - text: Scala.js for JavaScript developers
-  url: /doc/sjs_for_js/
+  url: /doc/sjs-for-js/
   subitems:
     - text: "From ES6 to Scala: Basics"
-      url: /doc/sjs_for_js/es6_to_scala_part1.html
+      url: /doc/sjs-for-js/es6-to-scala-part1.html
     - text: "From ES6 to Scala: Collections"
-      url: /doc/sjs_for_js/es6_to_scala_part2.html
+      url: /doc/sjs-for-js/es6-to-scala-part2.html
     - text: "From ES6 to Scala: Advanced"
-      url: /doc/sjs_for_js/es6_to_scala_part3.html
-#- text: Scala.js for Scala developers
-#  url: /doc/scalajs_for_scaladevs.html
+      url: /doc/sjs-for-js/es6-to-scala-part3.html
 - text: Project setup
   url: /doc/project/
   subitems:
@@ -23,20 +19,20 @@
     - text: Dependencies
       url: /doc/project/dependencies.html
     - text: JavaScript Environments
-      url: /doc/project/js_environments.html
+      url: /doc/project/js-environments.html
     - text: Cross-building
-      url: /doc/project/cross_build.html
+      url: /doc/project/cross-build.html
 - text: JavaScript interoperability
   url: /doc/interoperability/
   subitems:
     - text: JavaScript types
       url: /doc/interoperability/types.html
     - text: Call JavaScript APIs
-      url: /doc/interoperability/calling_js.html
+      url: /doc/interoperability/calling-javascript.html
     - text: Export Scala.js APIs
-      url: /doc/interoperability/export_to_js.html
+      url: /doc/interoperability/export-to-javascript.html
     - text: Write JavaScript classes in Scala.js
-      url: /doc/interoperability/sjs_defined_js_classes.html
+      url: /doc/interoperability/sjs-defined-js-classes.html
 - text: Scala.js API
   url: /doc/api.html
 - text: Semantics of Scala.js

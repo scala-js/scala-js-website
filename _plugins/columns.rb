@@ -20,7 +20,7 @@ module Tags
             return "" if @width.empty?
 
             site      = context.registers[:site]
-            converter = site.getConverterImpl(Jekyll::Converters::Markdown)
+            converter = site.find_converter_instance(Jekyll::Converters::Markdown)
 
             content = super.strip
             content = converter.convert(content)

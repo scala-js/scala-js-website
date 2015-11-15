@@ -20,7 +20,7 @@ School](https://twitter.github.io/scala_school/) and official [Scala Tutorials](
 Scala is a modern multi-paradigm programming language designed to express common programming patterns in a concise,
 elegant, and type-safe way. It smoothly integrates features of _object-oriented_ and _functional languages_. Scala is a
 pure object-oriented language in the sense that every value is an object. It is also a functional language in the sense
-that every function is a value. 
+that every function is a value.
 
 The biggest difference to JavaScript is that Scala is _statically typed_. This means that it is equipped with an
 expressive type system that enforces statically that abstractions are used in a safe and coherent manner, meaning the
@@ -41,9 +41,9 @@ let x = 5;
 const y = "Constant";
 {% endhighlight %}
 {% endcolumn %}
-        
+
 {% column 6 Scala %}
-{% highlight scala %}            
+{% highlight scala %}
 // mutable variable
 var x = 5
 // immutable variable
@@ -66,7 +66,7 @@ Scala defines several primitive types, of which most have corresponding types in
   <tbody>
     <tr><td>String</td><td>string</td><td></td></tr>
     <tr><td>Boolean</td><td>boolean</td><td></td></tr>
-    <tr><td>Char</td><td><i>N/A</i></td><td>16-bit Unicode code point</td></tr>
+    <tr><td>Char</td><td><i>N/A</i></td><td>UTF-16 code unit</td></tr>
     <tr><td>Byte</td><td>number</td><td>integer, range (-128, 127)</td></tr>
     <tr><td>Short</td><td>number</td><td>integer, range (-32768, 32767)</td></tr>
     <tr><td>Int</td><td>number</td><td>integer, range (-2147483648, 2147483647)</td></tr>
@@ -85,10 +85,10 @@ with another `Int`, the result is rounded to an `Int`.
 {% columns %}
 {% column 6 ES6 %}
 {% highlight javascript %}
-const x = 5 / 3; // == 1.6666666666666667 
+const x = 5 / 3; // == 1.6666666666666667
 {% endhighlight %}
 {% endcolumn %}
-        
+
 {% column 6 Scala %}
 {% highlight scala %}
 val x = 5 / 3 // == 1
@@ -130,13 +130,13 @@ function is automatically used as the return value. Return type is usually autom
 {% column 6 ES6 %}
 {% highlight javascript %}
 function mult(x, y) {
-   return x * y;
+  return x * y;
 }
 {% endhighlight %}
 {% endcolumn %}
-        
+
 {% column 6 Scala %}
-{% highlight scala %}            
+{% highlight scala %}
 def mult(x: Double, y: Double): Double = x * y
 {% endhighlight %}
 {% endcolumn %}
@@ -157,11 +157,11 @@ const l = p.map(s => s.length)
   .reduce((a, b) => a + b, 0); // == 15
 {% endhighlight %}
 {% endcolumn %}
-        
+
 {% column 6 Scala %}
 {% highlight scala %}
 val f = (x: Double, y: Double) => x + y
-         
+
 val p = Array("Fox", "jumped", "over", "me")
 val l = p.map(s => s.length)
   .foldLeft(0)((a, b) => a + b) // == 15
@@ -179,11 +179,13 @@ in ES6 you need to supply them with the object notation.
 {% column 6 ES6 %}
 {% highlight javascript %}
 // default value
-function mult(x, y = 42.0) { return x * y; }
+function mult(x, y = 42.0) {
+  return x * y;
+}
 
 // variable number of parameters
-function sum(first, ...rest) {
-  return first + rest.reduce((a, b) => a + b, 0);
+function sum(...args) {
+  return args.reduce((a, b) => a + b, 0);
 }
 
 const s = sum(5, 4, 3, 2, 1); // == 15
@@ -198,22 +200,24 @@ const v = vec({x: 8, z: 42}); // Vec(8, 0, 42)
 {% endcolumn %}
 
 {% column 6 Scala %}
-{% highlight scala %}            
+{% highlight scala %}
 // default value
 def mult(x: Double, y: Double = 42.0): Double =
   x * y
 
 
 // variable number of parameters
-def sum(first: Double, rest: Double*): Double =
-  first + rest.foldLeft(0.0)((a, b) => a + b) 
+def sum(args: Double*): Double =
+  args.foldLeft(0.0)((a, b) => a + b)
+
 
 val s = sum(5, 4, 3, 2, 1) // == 15
 
 // named parameters (works directly)
 def vec(x: Int = 0, y: Int = 0, z: Int = 0): Vec =
   new Vec(x, y, z)
-  
+
+
 val v = vec(8, z = 42) // Vec(8, 0, 42)
 {% endhighlight %}
 {% endcolumn %}
@@ -234,10 +238,10 @@ JavaScript you have the special `a ? b : c` construct to achieve the same result
 const res = (name === "") ? 0 : 1;
 {% endhighlight %}
 {% endcolumn %}
-        
+
 {% column 6 Scala %}
 {% highlight scala %}
-val res = if (name.isEmpty) 0 else 1
+val res = if (name == "") 0 else 1
 {% endhighlight %}
 {% endcolumn %}
 {% endcolumns %}
@@ -250,21 +254,21 @@ it to iterate over numerical ranges or collections in both languages:
 {% highlight javascript %}
 let x = 0;
 for (let i = 0; i < 100; i++)
-  x += i*i;
-  
+  x += i * i;
+
 const p = ["Fox", "jumped", "over", "me"];
 for (let s of p) {
   console.log(`Word ${s}`);
 }
 {% endhighlight %}
 {% endcolumn %}
-        
+
 {% column 6 Scala %}
 {% highlight scala %}
 var x = 0
 for (i <- 0 until 100)
-  x += i*i
-  
+  x += i * i
+
 val p = Array("Fox", "jumped", "over", "me")
 for (s <- p) {
   println(s"Word $s")
@@ -291,13 +295,13 @@ function findPairs(n, sum) {
 findPairs(20, 31);
 {% endhighlight %}
 {% endcolumn %}
-        
+
 {% column 6 Scala %}
 {% highlight scala %}
 def findPairs(n: Int, sum: Int): Unit = {
-  for { 
+  for {
     i <- 0 until n
-    j <- i until n if i + j == sum 
+    j <- i until n if i + j == sum
   } println(s"Found pair $i, $j")
 }
 findPairs(20, 31)
@@ -335,7 +339,7 @@ switch(animal) {
 console.log(description);
 {% endhighlight %}
 {% endcolumn %}
-        
+
 {% column 6 Scala %}
 {% highlight scala %}
 val animal = "Dog"
@@ -376,12 +380,12 @@ class Shape {
     this.x = x;
     this.y = y;
   }
-  
+
   move(dx, dy) {
     this.x += dx;
     this.y += dy;
   }
-  
+
   draw() {
     console.log(`Shape at ${this.x}, ${this.y}`);
   }
@@ -403,28 +407,28 @@ const r = c.r; // == 42
 
 {% endhighlight %}
 {% endcolumn %}
-        
+
 {% column 6 Scala %}
 {% highlight scala %}
 // use var to make coordinates mutable
 abstract class Shape(var x: Int, var y: Int) {
-  def move(dx: Int, dy: Int) {
+  def move(dx: Int, dy: Int): Unit = {
     x += dx
     y += dy
   }
-  
-  def draw() {
+
+  def draw(): Unit = {
     println(s"Shape at $x, $y")
   }
 }
-  
-// r is immutable but accessible outside class  
-class Circle(x: Int, y: Int, val r: Int) 
-  extends Shape(x, y) {
-  override def draw() {
+
+// r is immutable but accessible outside the class
+class Circle(x: Int, y: Int, val r: Int)
+    extends Shape(x, y) {
+  override def draw(): Unit = {
     println(s"Circle at $x, $y with radius $r")
   }
-}  
+}
 
 val c = new Circle(5, 5, 42)
 val r = c.r // == 42
@@ -450,9 +454,9 @@ using a case class instead.
 const person = {first: "James", last: "Bond"};
 {% endhighlight %}
 {% endcolumn %}
-        
+
 {% column 6 Scala %}
-{% highlight scala %}            
+{% highlight scala %}
 case class Person(first: String, last: String)
 
 val person = Person("James", "Bond")
@@ -482,7 +486,7 @@ if (_.isEqual(o1, o2)) {
 }
 {% endhighlight %}
 {% endcolumn %}
-        
+
 {% column 6 Scala %}
 {% highlight scala %}
 case class AX(a: Int, x: String)
@@ -506,12 +510,12 @@ same result.
 {% highlight javascript %}
 const o1 = {a: 1, x: "test"};
 
-// start with empty object to prevent 
+// start with empty object to prevent
 // modification of o1
-const o2 = Object.assign({}, o1, {a: 42}); 
+const o2 = Object.assign({}, o1, {a: 42});
 {% endhighlight %}
 {% endcolumn %}
-        
+
 {% column 6 Scala %}
 {% highlight scala %}
 case class AX(a: Int, x: String)
@@ -522,7 +526,7 @@ val o2 = o1.copy(a = 42)
 {% endcolumn %}
 {% endcolumns %}
 
-Finally case classes can be used nicely in _pattern matching_ which is covered in the advanced section.
+Finally case classes can be used nicely in _pattern matching_, which is covered in the advanced section.
 
 #### Objects
 
@@ -536,44 +540,48 @@ not done as it makes things complicated.
 {% column 6 ES6 %}
 {% highlight javascript %}
 const RandomGen = {
-    _privateMethod() {
-        console.log("I am private");
-    },
-    
-    _rnd() { return Math.random() },
-    
-    publicMethod() {
-        console.log("The public can see me!");
-        this._privateMethod();
-    },
-    
-    name: "RandomGen",
-    
-    getRandomNumber() { return this._rnd() }
+  _privateMethod() {
+    console.log("I am private");
+  },
+
+  _rnd() {
+    return Math.random()
+  },
+
+  publicMethod() {
+    console.log("The public can see me!");
+    this._privateMethod();
+  },
+
+  name: "RandomGen",
+
+  getRandomNumber() {
+    return this._rnd()
+  }
 }
 
 const r = RandomGen.getRandomNumber();
 {% endhighlight %}
 {% endcolumn %}
-        
+
 {% column 6 Scala %}
 {% highlight scala %}
 import scala.util.Random
 
 object RandomGen {
-  private def privateMethod() {
+  private def privateMethod(): Unit = {
     println("I am private")
   }
-  
+
   private val rnd = new Random()
-  
-  def publicMethod() {
+
+  def publicMethod(): Unit = {
     println("The public can see me!")
     privateMethod()
   }
-  
+
   val name = "RandomGen"
-  
+
   def getRandomNumber: Double = rnd.nextDouble()
 }
 
@@ -609,7 +617,9 @@ class Circle extends Shape {
 }
 
 const Clickable = {
-  onClick() { console.log("Clicked!"); }
+  onClick() {
+    console.log("Clicked!");
+  }
 };
 
 class ClickableCircle extends Circle {}
@@ -619,25 +629,27 @@ const cc = new ClickableCircle(0, 0, 42);
 cc.onClick();
 {% endhighlight %}
 {% endcolumn %}
-        
+
 {% column 6 Scala %}
 {% highlight scala %}
-class Circle(x: Int, y: Int, val r: Int) 
-  extends Shape(x, y) {
-  override def draw() {
+class Circle(x: Int, y: Int, val r: Int)
+    extends Shape(x, y) {
+  override def draw(): Unit = {
     println(s"Circle at $x, $y with radius $r")
   }
-}  
-
-trait Clickable {
-  def onClick() { println("Clicked!") }
 }
 
-class ClickableCircle(x: Int, y: Int, r: Int) 
-  extends Circle(x, y, r) with Clickable
+trait Clickable {
+  def onClick(): Unit = {
+    println("Clicked!")
+  }
+}
+
+class ClickableCircle(x: Int, y: Int, r: Int)
+    extends Circle(x, y, r) with Clickable
 
 val cc = new ClickableCircle(0, 0, 42)
-cc.onClick()            
+cc.onClick()
 {% endhighlight %}
 {% endcolumn %}
 {% endcolumns %}
@@ -652,7 +664,7 @@ allowing you to drop function parameters or leave variables undefined. But then 
 you write extra code to check for `undefined`. Quite often `undefined` is used to make a distinction between an
 existing value (of any type) and a missing value.
 
-Scala doesn't have `undefined` (it does have `null` but its use is discouraged), but instead it has an 
+Scala doesn't have `undefined` (it does have `null` but its use is discouraged), but instead it has an
 {% scaladoc Option %} trait for representing optional values. In Scala.js the `undefined` type exists to support
 interoperability with JS libraries, but even there it is recommended to use `Option` whenever possible.
 
@@ -667,21 +679,22 @@ function log(msg, context) {
   let s;
   if (context !== undefined)
     s = `[${context}] ${msg}`;
-  else 
-    s = msg;  
+  else
+    s = msg;
   console.log(s);
 };
 
 // produces: First message
-log("First message"); 
+log("First message");
 // produces: [debug] Second message
-log("Second message", "debug"); 
+log("Second message", "debug");
 {% endhighlight %}
 {% endcolumn %}
-        
+
 {% column 6 Scala %}
 {% highlight scala %}
-def log(msg: String, context: Option[String] = None) {
+def log(msg: String,
+    context: Option[String] = None): Unit = {
   val s = context match {
     case Some(c) => s"[$c] $msg"
     case None => msg
@@ -701,7 +714,7 @@ function another way giving us the same result.
 {% columns %}
 {% column 9 Scala %}
 {% highlight scala %}
-def log(msg: String, context: Option[String] = None) {
+def log(msg: String, context: Option[String] = None): Unit = {
   val s = context.map(c => s"[$c] $msg").getOrElse(msg)
   println(s)
 }
@@ -718,10 +731,10 @@ const data = [1, 2, 3, undefined, 5, undefined, 7];
 const res = data.filter((x) => x !== undefined);
 {% endhighlight %}
 {% endcolumn %}
-        
+
 {% column 6 Scala %}
 {% highlight scala %}
-val data = Array(Some(1), Some(2), Some(3), 
+val data = Array(Some(1), Some(2), Some(3),
   None, Some(5), None, Some(7))
 val res = data.filter(x => x.isDefined)
 {% endhighlight %}
@@ -729,4 +742,4 @@ val res = data.filter(x => x.isDefined)
 {% endcolumns %}
 
 `Option` provides many _collection like_ methods like `map`, `filter` and `flatMap`, which are discussed in the [next
-chapter](es6_to_scala_part2.html).
+chapter](es6-to-scala-part2.html).

@@ -11,7 +11,7 @@
     - name: Cats
       url: https://github.com/non/cats
       desc: Lightweight, modular, and extensible library for functional programming.
-      dep: '"org.spire-math" %%% "cats" % "0.2.0"'
+      dep: '"org.spire-math" %%% "cats" % "0.3.0"'
     - name: NICTA/rng
       url: https://github.com/japgolly/rng
       desc: Pure-functional random value generation.
@@ -51,11 +51,11 @@
     - name: Prickle
       url: https://github.com/benhutchison/prickle
       desc: Statically-typed pickling library with support for pickling object graphs containing shared objects and cycles
-      dep: '"com.github.benhutchison" %%% "prickle" % "1.1.9"'
+      dep: '"com.github.benhutchison" %%% "prickle" % "1.1.10"'
     - name: Pushka
       url: https://github.com/fomkin/pushka
       desc: Pure Scala pickler with annotations
-      dep: '"com.github.fomkin" %%% "pushka-json" % "0.3.0"'
+      dep: '"com.github.fomkin" %%% "pushka-json" % "0.3.1"'
     - name: Circe
       url: https://github.com/travisbrown/circe
       desc: Yet another JSON library for Scala (built with Cats and Shapeless)
@@ -93,7 +93,7 @@
     - name: jsext
       url: https://github.com/jducoeur/jsext
       desc: Utilities for developing facades and working with Futures
-      dep: '"org.querki" %%% "querki-jsext" % "0.5"'
+      dep: '"org.querki" %%% "querki-jsext" % "0.6"'
     - name: slogging
       url: https://github.com/jokade/slogging
       desc: A simple logging library with an API compatible to scala-logging (and slf4j)
@@ -101,4 +101,4 @@
     - name: FastParse
       url: http://lihaoyi.github.io/fastparse/
       desc: Fast to write, fast-running parser-combinators in Scala/Scala.js
-      dep: '"com.lihaoyi" %%% "fastparse" % "0.2.1"'
+      dep: '"com.lihaoyi" %%% "fastparse" % "0.3.1"'
