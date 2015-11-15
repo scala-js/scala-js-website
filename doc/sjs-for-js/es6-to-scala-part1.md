@@ -66,7 +66,7 @@ Scala defines several primitive types, of which most have corresponding types in
   <tbody>
     <tr><td>String</td><td>string</td><td></td></tr>
     <tr><td>Boolean</td><td>boolean</td><td></td></tr>
-    <tr><td>Char</td><td><i>N/A</i></td><td>16-bit Unicode code point</td></tr>
+    <tr><td>Char</td><td><i>N/A</i></td><td>UTF-16 code unit</td></tr>
     <tr><td>Byte</td><td>number</td><td>integer, range (-128, 127)</td></tr>
     <tr><td>Short</td><td>number</td><td>integer, range (-32768, 32767)</td></tr>
     <tr><td>Int</td><td>number</td><td>integer, range (-2147483648, 2147483647)</td></tr>
