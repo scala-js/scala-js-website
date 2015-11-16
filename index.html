@@ -204,9 +204,9 @@ for (var key in personMap) {
   [20, new Person("James Bond")]
 ]);
 const names = [];
-for (const [key, value] of personMap) {
+for (const [key, person] of personMap) {
   if (key > 15) {
-    names.push(`${key} = ${value}.firstName`);
+    names.push(`${key} = ${person.firstName}`);
   }
 }</code></pre>
         </div>
@@ -219,9 +219,9 @@ const personMap = new Map&lt;number, Person&gt;([
   [20, new Person("James Bond")]
 ]);
 const names = new Array&lt;string&gt;();
-for (const [key, value] of personMap) {
+for (const [key, person] of personMap) {
   if (key > 15) {
-    names.push(`${key} = ${value}.firstName`);
+    names.push(`${key} = ${person.firstName}`);
   }
 }</code></pre>
         </div>

@@ -5,9 +5,7 @@
 <script src="{{ '/assets/js/custom.js' | prepend: site.baseurl }}"></script>
 
 <script type="text/javascript">
-console.log("booh");
 $(".show-snippet-link").click(function(e) {
-  console.log("clicked");
   e.preventDefault();
   var language = $(this).data("language");
   $(".snippet").hide();
