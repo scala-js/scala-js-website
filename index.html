@@ -10,7 +10,7 @@ permalink: /
                 <img width="100" src="{{ '/assets/img/scala-js-logo.svg' | prepend: site.baseurl }}">
 
                 <div>
-                    <h2 style="margin-top: 10px;">Scala.js</h2><h4>A safer way to build complex, bug-free<br/> front-end web applications!</h4>
+                    <h2 style="margin-top: 10px;">Scala.js</h2><h4>A safer way to build bug-free<br/> front-end web applications!</h4>
                 </div>
                 <div>
                     <a class="btn btn-theme" href="{{ site.baseurl }}/tutorial/">Learn in 15 mins</a>
@@ -95,61 +95,70 @@ permalink: /
           </ul>
         </div>
         <div class="col-md-12">
+            <h5>Hello World!</h5>
+        </div>
+        <div class="col-md-6 snippet snippet-es5" style="display: none;">
+            <h6 class="code-block-header">JavaScript</h6>
+            <pre><code class="javascript">console.log("Hello World!");</code></pre>
+        </div>
+        <div class="col-md-6 snippet snippet-es6">
+            <h6 class="code-block-header">ECMAScript 6</h6>
+            <pre><code class="javascript">console.log("Hello World!");</code></pre>
+        </div>
+        <div class="col-md-6 snippet snippet-typescript" style="display: none;">
+            <h6 class="code-block-header">TypeScript</h6>
+            <pre><code class="typescript">console.log("Hello World!");</code></pre>
+        </div>
+        <div class="col-md-6">
+            <h6 class="code-block-header">Scala.js</h6>
+            <pre><code class="scala">println("Hello World!")</code></pre>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-12">
             <h5>Classes</h5>
         </div>
         <div class="col-md-6 snippet snippet-es5" style="display: none;">
             <h6 class="code-block-header">JavaScript</h6>
-            <pre><code class="javascript">var Person = function(firstName) {
+            <pre><code class="javascript">var Person = function(firstName, lastName) {
   this.firstName = firstName;
+  this.lastName = lastName;
 };
 
-Person.prototype.walk = function() {
-  console.log("I am walking!");
-};
-
-Person.prototype.sayHello = function(target) {
-  console.log("Hello " + target +
-      ", I'm " + this.firstName);
+Person.prototype.fullName = function() {
+  return this.firstName + " " + this.lastName;
 };</code></pre>
         </div>
         <div class="col-md-6 snippet snippet-es6">
             <h6 class="code-block-header">ECMAScript 6</h6>
             <pre><code class="javascript">class Person {
-  constructor(firstName) {
+  constructor(firstName, lastName) {
     this.firstName = firstName;
+    this.lastName = lastName;
   }
 
-  walk() {
-    console.log("I am walking!");
-  }
-
-  sayHello(target) {
-    console.log(`Hello ${target}, I'm ${this.firstName}`);
+  fullName() {
+    return `${this.firstName} ${this.lastName}`;
   }
 }</code></pre>
         </div>
         <div class="col-md-6 snippet snippet-typescript" style="display: none;">
             <h6 class="code-block-header">TypeScript</h6>
             <pre><code class="typescript">class Person {
-  constructor(public firstName: string) {
+  constructor(public firstName: string,
+      public lastName: string) {
   }
 
-  walk() {
-    console.log("I am walking!");
-  }
-
-  sayHello(target: string) {
-    console.log(`Hello ${target}, I'm ${this.firstName}`);
+  fullName() {
+    return `${this.firstName} ${this.lastName}`;
   }
 }</code></pre>
         </div>
         <div class="col-md-6">
             <h6 class="code-block-header">Scala.js</h6>
-            <pre><code class="scala">class Person(val firstName: String) {
-  def walk(): Unit = println("I am walking!")
-
-  def sayHello(target: String): Unit =
-    println(s"Hello $target, I'm $firstName")
+            <pre><code class="scala">class Person(val firstName: String, val lastName: String) {
+  def fullName(): String =
+    s"$firstName $lastName"
 }</code></pre>
         </div>
     </div>

@@ -12,10 +12,12 @@
     </div>
     <div class="navbar-collapse collapse navbar-right">
       <ul class="nav navbar-nav">
-        <li {% if page.url contains "/doc" %}class="active"{% endif %}><a href="{{"/doc" | prepend: site.baseurl }}">DOCUMENTATION</a></li>
-        <li {% if page.url contains "/tutorial" %}class="active"{% endif %}><a href="{{"/tutorial" | prepend: site.baseurl }}">TUTORIALS</a></li>
-        <li {% if page.url contains "/community" %}class="active"{% endif %}><a href="{{"/community" | prepend: site.baseurl }}">COMMUNITY</a></li>
-        <li {% if page.url contains "/news" %}class="active"{% endif %}><a href="{{"/news" | prepend: site.baseurl }}">NEWS</a></li>
+        <li {% if page.url contains "/doc" %}class="active"{% endif %}><a href="{{"/doc/" | prepend: site.baseurl }}">DOCUMENTATION</a></li>
+        <li {% if page.url contains "/tutorial" %}class="active"{% endif %}><a href="{{"/tutorial/" | prepend: site.baseurl }}">TUTORIALS</a></li>
+        <li {% if page.url contains "/community" %}class="active"{% endif %}><a href="{{"/community/" | prepend: site.baseurl }}">COMMUNITY</a></li>
+        <li {% if page.url contains "/news" %}class="active"{% endif %}><a href="{{"/news/" | prepend: site.baseurl }}">NEWS</a></li>
+        <li><a href="http://github.com/scala-js/scala-js"><img src="{{ BASE_PATH }}/assets/img/github-logo.png" alt="GitHub" height="16" width="16"></a></li>
+        <li><a href="http://twitter.com/scala_js"><img src="{{ BASE_PATH }}/assets/img/twitter-logo-white.png" alt="Scala.js on Twitter" height="16" width="20"></a></li>
       </ul>
     </div><!--/.nav-collapse -->
   </div>
