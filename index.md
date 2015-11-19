@@ -142,6 +142,7 @@ All these testing frameworks cross-compile on the JVM and JS.
 
 ### Miscellaneous
 
+*   [Each](https://github.com/ThoughtWorksInt/each): a macro library that converts native imperative syntax to scalaz's monadic expressions
 *   [Scala-Async](https://github.com/scala/async) (works out-of-box with Scala.js)
 *   Scalaxy [Loops](https://github.com/ochafik/Scalaxy/tree/master/Loops) and [Streams](https://github.com/ochafik/Scalaxy/tree/master/Streams) (work out-of-box with Scala.js)
 *   [jsext](https://github.com/jducoeur/jsext): utilities for developing facades and working with Futures
