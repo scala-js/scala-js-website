@@ -159,6 +159,7 @@ All these testing frameworks cross-compile on the JVM and JS.
 ## Tools
 
 *   [Scala.js workbench](https://github.com/lihaoyi/scala-js-workbench): sbt plugin for Scala.js projects for live-reloading in the browser ([example app](https://github.com/lihaoyi/workbench-example-app))
+*   [scalajs-benchmark](https://github.com/japgolly/scalajs-benchmark): Write benchmarks in Scala or JS, run in your browser. ([online demo](https://japgolly.github.io/scalajs-benchmark/))
 
 ## Miscellaneous
 
