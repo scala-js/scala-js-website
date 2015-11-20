@@ -10,7 +10,7 @@ more useful design patterns and features, to get you started quickly.
 
 ## Pattern matching
 
-In the Basics part we already saw simple examples of _pattern matching_ as a replacement for JavaScript switch
+In the Basics part we already saw simple examples of _pattern matching_ as a replacement for JavaScript's `switch`
 statement. However, it can be used for much more, for example checking the type of input.
 
 {% columns %}
@@ -257,7 +257,7 @@ convertToDate("10 Nov 2015") // exception
 {% endcolumns %}
 
 Here we use triple-quoted strings that allow us to write regex without escaping special characters. The string is
-converted into a {% scaladoc util.matching.Regex %} object with the `.r` method. Because regex extracts strings, we need
+converted into a {% scaladoc util.matching.Regex %} object with the `.r` method. Because regexes extract strings, we need
 to convert matched groups to integers ourselves.
 
 ## Implicits
@@ -289,17 +289,17 @@ val p = Person("James Bond", new java.util.Date)
 {% endcolumns %}
 
 When these implicit conversion functions are in lexical scope, you can use JS and Scala dates interchangeably. Outside
-the scope they are not visible and you must use correct types or provide conversion yourself.
+the scope they are not visible and you must use correct types or explicitly convert between each other.
 
 #### Implicit conversions for "monkey patching"
 
-Monkey patching -term became famous among Ruby developers and it has been adopted into JavaScript to describe
+The monkey patching term became famous among Ruby developers and it has been adopted into JavaScript to describe
 a way of extending existing classes with new methods. It has several pitfalls in dynamic languages and is generally
 not a recommended practice. Especially dangerous is to patch JavaScript's host objects like `String` or `DOM.Node`. This
 technique is, however, commonly used to provide support for new JavaScript functionality missing from older JS engines.
 The practice is known as _polyfilling_ or _shimming_.
 
-In Scala providing extension methods via implicits is _perfectly safe_ and even a _recommended_ practice. Scala
+In Scala providing extension methods via implicits is _perfectly safe_ and even a _recommended_ practice. The Scala
 standard library does it all the time. For example did you notice the `.r` or `.toInt` functions that were used on
 strings in the regex example? Both are extension methods coming from implicit classes.
 
@@ -312,7 +312,7 @@ class_.
 String.prototype.toDate = function() {
   return convertToDate(this);
 }
-"2015-10-09".toDate; // = {year:2015,month:10,day:9}
+"2015-10-09".toDate(); // = {year:2015,month:10,day:9}
 {% endhighlight %}
 {% endcolumn %}
 
@@ -331,8 +331,7 @@ introduces a conversion from `String` to a custom `StrToDate` class providing an
 _safe_ because they are lexically scoped, meaning the `StrToDate` is not available in other parts of the program unless
 explicitly imported. The `toDate` method is not added to the `String` class in any way, instead the compiler generates
 appropriate code to call it when required. Basically `"2010-10-09".toDate` is converted into `new
-StrToDate("2010-10-09").toDate` which is then inlined/optimized (due to the use of Value Class) to
-`convertToDate("2010-10-09")` at the call site.
+StrToDate("2010-10-09").toDate`.
 
 Scala IDEs are also smart enough to know what implicit extension methods are in scope and will show them to you next
 to the other methods.
@@ -367,7 +366,7 @@ implicit class NodeListSeq[T <: Node](nodes: DOMList[T]) extends IndexedSeq[T] {
 {% endcolumn %}
 {% endcolumns %}
 
-Defining just those three functions we now have access to all the usual collection functionality like `map`, `filter`,
+Defining just those three functions, we now have access to all the usual collection functionality like `map`, `filter`,
 `find`, `slice`, `foldLeft`, etc. This makes working with `NodeList`s a lot easier and safer. The implicit class makes
 use of Scala generics, providing implementation for all types that extend `Node`.
 
@@ -391,14 +390,14 @@ images.sortBy(i => -i.width).take(10).foreach { i =>
 ## Futures
 
 Writing asynchronous JavaScript code used to be painful due to the number of callbacks required to handle chained
-asynchronous calls. This is affectionately known as _callback hell_. Then came the various Promise libraries that
+asynchronous calls. This is affectionately known as _callback hell_. Then came the various `Promise` libraries that
 alleviated this issue a lot, but were not fully compatible with each other. ES6 standardizes the {% jsdoc Promise %}
 interface so that all implementations (ES6's own included) can happily coexist.
 
 In Scala a similar concept is the {% scaladoc concurrent.Future %}. On the JVM, futures can be used for both parallel
-and asynchronous processing, but under Scala.js only the latter is possible. Like the `Promise` a `Future` is a
+and asynchronous processing, but under Scala.js only the latter is possible. Like a JavaScript `Promise`, a `Future` is a
 placeholder object for a value that may not yet exist. Both `Promise` and `Future` can complete successfully, providing
-a value, or fail with an error/exception. Let's look at a typical use case of fetching data from server using Ajax.
+a value, or fail with an error/exception. Let's look at a typical use case of fetching data from server using AJAX.
 
 {% columns %}
 {% column 6 ES6 %}
@@ -430,30 +429,34 @@ Ajax.get("http://api.openweathermap.org/" +
 The JavaScript code above is using jQuery to provide similar helper for making Ajax calls returning promises as is
 available in the Scala.js DOM library.
 
-Comparison between Scala `Future` and JavaScript `Promise` methods.
+Here is a comparison between Scala's `Future` and JavaScript's `Promise` for the most commonly used methods.
 
 <table class="table table-bordered" markdown="1">
   <thead>
     <tr><th>{% scaladoc concurrent.Future %}</th><th>{% jsdoc Promise %}</th><th>Notes</th></tr>
   </thead>
   <tbody>
-    <tr><td><code>foreach(func)</code></td><td><code>then(func)</code></td><td>Does not return a new promise.</td></tr>
-    <tr><td><code>map(func)</code></td><td><code>then(func)</code></td><td>Return value of <code>func</code> is wrapped in a new promise.</td></tr>
-    <tr><td><code>flatMap(func)</code></td><td><code>then(func)</code></td><td><code>func</code> must return a promise.</td></tr>
-    <tr><td><code>recover(func)</code></td><td><code>catch(func)</code></td><td>Handle error. Return value of <code>func</code> is wrapped in a new promise.</td></tr>
-    <tr><td><code>recoverWith(func)</code></td><td><code>catch(func)</code></td><td>Handle error. <code>func</code> must return a promise.</td></tr>
-    <tr><td><code>onComplete(func)</code></td><td><code>then(func, err)</code></td><td>Callback for handling both success and failure cases.</td></tr>
-    <tr><td><code>onSuccess(func)</code></td><td><code>then(func)</code></td><td>Callback for handling only success cases.</td></tr>
-    <tr><td><code>onFailure(func)</code></td><td><code>catch(func)</code></td><td>Callback for handling only failure cases.</td></tr>
-    <tr><td><code>transform(func, err)</code></td><td><code>then(func, err)</code></td><td>Combines <code>map</code> and <code>recover</code> into a single function.</td></tr>
+    <tr><td><code>foreach(func)</code></td><td><code>then(func)</code></td><td>Executes <code>func</code> for its side-effects when the future completes.</td></tr>
+    <tr><td><code>map(func)</code></td><td><code>then(func)</code></td><td>The result of <code>func</code> is wrapped in a new future.</td></tr>
+    <tr><td><code>flatMap(func)</code></td><td><code>then(func)</code></td><td><code>func</code> must return a future.</td></tr>
+    <tr><td><code>recover(func)</code></td><td><code>catch(func)</code></td><td>Handles an error. The result of <code>func</code> is wrapped in a new future.</td></tr>
+    <tr><td><code>recoverWith(func)</code></td><td><code>catch(func)</code></td><td>Handles an error. <code>func</code> must return a future.</td></tr>
     <tr><td><code>filter(predicate)</code></td><td>N/A</td><td>Creates a new future by filtering the value of the current future with a predicate.</td></tr>
     <tr><td><code>zip(that)</code></td><td>N/A</td><td>Zips the values of <code>this</code> and <code>that</code> future, and creates a new future holding the tuple of their results.</td></tr>
     <tr><td><code>Future.successful(value)</code></td><td><code>Promise.resolve(value)</code></td><td>Returns a successful future containing <code>value</code></td></tr>
     <tr><td><code>Future.failed(exception)</code></td><td><code>Promise.reject(value)</code></td><td>Returns a failed future containing <code>exception</code></td></tr>
-    <tr><td><code>Future.sequence(iterable)</code></td><td><code>Promise.all(iterable)</code></td><td>Returns a future that completes when all of the promises in the iterable argument have completes.</td></tr>
-    <tr><td><code>Future.firstCompletedOf(iterable)</code></td><td><code>Promise.race(iterable)</code></td><td>Returns a future that completes as soon as one of the promises in the iterable completes.</td></tr>
+    <tr><td><code>Future.sequence(iterable)</code></td><td><code>Promise.all(iterable)</code></td><td>Returns a future that completes when all of the futures in the iterable argument have been completed.</td></tr>
+    <tr><td><code>Future.firstCompletedOf(iterable)</code></td><td><code>Promise.race(iterable)</code></td><td>Returns a future that completes as soon as one of the futures in the iterable completes.</td></tr>
   </tbody>
 </table>
+
+Note that Scala has different functions corresponding to JavaScript's `then`, mainly `map` and `flatMap`.
+`then` is not type-safe, because it will flatten promises "all the way down", even if that was not your intention.
+In contrast, `map` never flattens, and `flatMap` always flattens once, tracking the appropriate static result type.
+
+`foreach` is a slight variation of `map` that does not return a new future.
+It is typically used instead of `map` to communicate the intent that the callback
+is executed for its side-effects rather than its result value.
 
 #### Futures from callbacks
 
@@ -462,7 +465,6 @@ callbacks. To convert a callback into a `Future` in Scala you need to use a `Pro
 `Future`, Scala also has a `Promise` class which actually implements the `Future` trait.
 
 As an example, let's convert the `onload` event of an `img` tag into a `Future`.
-
 
 {% columns %}
 {% column 6 ES6 %}
@@ -510,7 +512,7 @@ onLoadFuture(img).foreach { url =>
 {% endcolumn %}
 {% endcolumns %}
 
-Because image might have already loaded when we create the promise, we must check for that separately and just return a
+Because the image might have already loaded when we create the promise, we must check for that separately and just return a
 completed future in that case.
 
 Next we'll add an `onloadF` extension method to the {% domdoc raw.HTMLImageElement %} class, to make it really easy to
@@ -532,7 +534,7 @@ img.onloadF.foreach { url =>
 {% endcolumns %}
 
 While we are playing with DOM images, let's create a future that completes once all the images on the page have
-completed loading. Here we'll take advantage of the `NodeListSeq` extension class to provide us with the `map` method
+finished loading. Here we'll take advantage of the `NodeListSeq` extension class to provide us with the `map` method
 on the {% domdoc raw.NodeList %} returned from {% domdoc querySelectorAll raw.Document@querySelectorAll(selectors:String):org.scalajs.dom.raw.NodeList %}.
 
 {% columns %}

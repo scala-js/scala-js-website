@@ -27,7 +27,7 @@ Scala provides _immutable_ and _mutable_ implementations for all these collectio
 <tr><td>{% scaladoc collection.immutable.Map %}</td><td>{% scaladoc collection.immutable.HashMap %}, {% scaladoc collection.immutable.TreeMap %}</td></tr>
 <tr><td>{% scaladoc collection.immutable.Set %}</td><td>{% scaladoc collection.immutable.HashSet %}, {% scaladoc collection.immutable.TreeSet %}</td></tr>
 <tr><th colspan="2"><h6>Common <i>mutable</i> collections</h6></th></tr>
-<tr><td>{% scaladoc collection.mutable.Seq %}</td><td>{% scaladoc collection.mutable.Buffer %}, {% scaladoc collection.mutable.LinkedList %}, {% scaladoc collection.mutable.Queue %}</td></tr>
+<tr><td>{% scaladoc collection.mutable.Seq %}</td><td>{% scaladoc collection.mutable.Buffer %}, {% scaladoc collection.mutable.ListBuffer %}, {% scaladoc collection.mutable.Queue %}, {% scaladoc collection.mutable.Stack %}</td></tr>
 <tr><td>{% scaladoc collection.mutable.Map %}</td><td>{% scaladoc collection.mutable.HashMap %}, {% scaladoc collection.mutable.LinkedHashMap %}</td></tr>
 <tr><td>{% scaladoc collection.mutable.Set %}</td><td>{% scaladoc collection.mutable.HashSet %}</td></tr>
 </table>
@@ -214,11 +214,13 @@ seq ++ Seq(6, 7) == Seq(1, 2, 3, 4, 5, 6, 7) // JS Array.concat()
 {% endcolumn %}
 {% endcolumns %}
 
-JavaScript {% jsdoc Array.reduce Array.reduce %} functionality is covered by separate {% scaladoc reduceLeft collection.Seq@reduceLeft[B>:A](op:(B,A)=>B):B %}
-and {% scaladoc foldLeft collection.Seq@foldLeft[B](z:B)(op:(B,A)=>B):B %} methods. The difference is that in `foldLeft`
-you provide an initial ("zero") value (which is optional parameter to `Array.reduce`) and in  `reduceLeft` you don't.
-Also note that in `foldLeft` the type of the accumulator can be something else, for example a tuple, but in `reduceLeft`
+The functionality offered by {% jsdoc Array.reduce Array.reduce %} in JavaScript
+is covered by two distinct methods in Scala: {% scaladoc reduceLeft collection.Seq@reduceLeft[B>:A](op:(B,A)=>B):B %}
+and {% scaladoc foldLeft collection.Seq@foldLeft[B](z:B)(op:(B,A)=>B):B %}. The difference is that in `foldLeft`
+you provide an initial ("zero") value (which is an optional parameter to `Array.reduce`) while in `reduceLeft` you don't.
+Also note that in `foldLeft`, the type of the accumulator can be something else, for example a tuple, but in `reduceLeft`
 it must always be a supertype of the value.
+Since `reduceLeft` cannot deal with an empty collection, it is rarely useful.
 
 {% columns %}
 {% column 6 ES6 %}
@@ -236,7 +238,7 @@ function sumProduct(s) {
 {% highlight scala %}
 def sumProduct(s: Seq[Int]): (Int, Int) = {
   // use a tuple accumulator to hold sum and product
-  s.foldLeft((0, 1)){ case ((sum, product), x) =>
+  s.foldLeft((0, 1)) { case ((sum, product), x) =>
     (sum + x, product * x)
   }
 }
@@ -249,8 +251,7 @@ def sumProduct(s: Seq[Int]): (Int, Int) = {
 
 A {% scaladoc collection.Map %} consists of pairs of keys and values. Both keys and values can be of any valid Scala type, unlike in JavaScript
 where an `Object` may only contain `string` keys (the new ES6 {% jsdoc Map %} allows using other types as keys, but supports only
-referential equality for comparing keys). As keys must be unique, a `Map` is a great way to store information you need
-to look up later.
+referential equality for comparing keys).
 
 JavaScript `Object` doesn't really have methods for using it as a map, although you can iterate over the keys
 with {% jsdoc Object.keys Object.keys %}. When using `Object` as a map, most developers use utility libraries like
@@ -281,7 +282,7 @@ val m2 = Map(data:_*)
 {% endcolumns %}
 
 In Scala when a function expects a variable number of parameters (like the `Map` constructor), you can destructure a
-sequence with the `seq:_*` syntax.
+sequence with the `seq:_*` syntax, which is the equivalent of ES6's *spread* operator `...seq`.
 
 Accessing `Map` contents can be done in many ways.
 
@@ -320,7 +321,7 @@ val person = (for {
 {% endcolumns %}
 
 In the previous example `m.get("first")` returns an `Option[String]` indicating whether the key is present in the map
-or not. By using for comprehension we can easily extract three separate values from the map and use them to build the
+or not. By using a for comprehension, we can easily extract three separate values from the map and use them to build the
 result. The result from `for {} yield` is also an `Option[String]` so we can use {% scaladoc getOrElse Option@getOrElse[B>:A](default:=>B):B %}
 to provide a default value.
 
@@ -413,19 +414,19 @@ The best score is found by first flattening the whole structure into a sequence 
 the {% scaladoc maxBy collection.Seq@maxBy[B](f:A=>B):A %} method to find the maximum score by looking at the second
 value in the tuple.
 
-Average is calculated simply by flattening all scores into a single sequence and then calculating its sum and divide by
-count.
+The average is calculated simply by flattening all scores into a single sequence and then calculating its average.
 
 ## Set
 
 A {% scaladoc collection.Set %} is like a `Map` without values, just the distinct keys. In JavaScript it's typical to
 emulate a Set by storing the values as keys into an `Object`. This of course means that the values must be converted to
 strings. In ES6 there is a new {% jsdoc Set %} type that works with all kinds of value types, but like with `Map`, it's
-based on reference equality making it less useful when dealing with complex value types.
+based on reference equality, making it less useful when dealing with complex value types.
 
-In Scala sets are quite often used when you need to have distinct values with no duplicates. Adding values to a set
-automatically guarantees that all duplicate values are eliminated. They are also useful when you just need to check if
-something exists, without storing its value. Set operations like {% scaladoc diff collection.Set@diff(that:scala.collection.GenSet[A]):This %},
+As their name implies, sets have no duplicate elements. Adding values to a set
+automatically guarantees that all duplicate values are eliminated.
+
+Set operations like {% scaladoc diff collection.Set@diff(that:scala.collection.GenSet[A]):This %},
 {% scaladoc intersect collection.Set@intersect(that:scala.collection.GenSet[A]):Repr %} and
 {% scaladoc union collection.Set@union(that:scala.collection.GenSet[A]):This %} allow you to build new sets out of other
 sets to check, for example, what has changed.
