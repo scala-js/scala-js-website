@@ -19,7 +19,7 @@ The [first commit](https://github.com/scala-js/scala-js/commit/9ad7627c2418e5d34
 ## Getting started
 
 If you are new to Scala.js, head over to
-[the tutorial]({{ BASE_PATH }}/doc/tutorial.html).
+[the tutorial]({{ BASE_PATH }}/tutorial/).
 
 ## Release notes
 

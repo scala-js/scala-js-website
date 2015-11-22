@@ -22,7 +22,7 @@ We also welcome Nicolas Stucki aka [@nicolasstucki](https://github.com/nicolasst
 ## Getting started
 
 If you are new to Scala.js, head over to
-[the tutorial]({{ BASE_PATH }}/doc/tutorial.html).
+[the tutorial]({{ BASE_PATH }}/tutorial/).
 
 ## Release notes
 
