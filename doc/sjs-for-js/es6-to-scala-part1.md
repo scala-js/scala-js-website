@@ -7,20 +7,27 @@ This is a short introduction to the Scala language for those familiar with JavaS
 to ES6 instead of earlier versions of JavaScript because ES6 contains many nice features and syntax changes that bring
 it closer to Scala.
 
-Best way to experiment with Scala is to use a Scala [REPL](https://lihaoyi.github.io/Ammonite/), or the worksheet
-functionality in [Scala
+The best way to experiment with Scala is to use a Scala [REPL](https://lihaoyi.github.io/Ammonite/), or the worksheet
+functionality in the [Scala
 IDE](https://github.com/scala-ide/scala-worksheet/wiki/Getting-Started) or [IntelliJ
 IDEA](https://confluence.jetbrains.com/display/IntelliJIDEA/Working+with+Scala+Worksheet).
 
 For more reading check out [Scala Exercises](http://scala-exercises.47deg.com/index.html), [Scala
 School](https://twitter.github.io/scala_school/) and official [Scala Tutorials](http://docs.scala-lang.org/tutorials/).
 
-## Scala language
+## The Scala language
 
 Scala is a modern multi-paradigm programming language designed to express common programming patterns in a concise,
 elegant, and type-safe way. It smoothly integrates features of _object-oriented_ and _functional languages_. Scala is a
 pure object-oriented language in the sense that every value is an object. It is also a functional language in the sense
-that every function is a value.
+that every function is a value and that immutability is favored over mutability.
+
+This combination of paradigms is not alien to JavaScript developers.
+JavaScript is also object-oriented, although primitive values are not considered as objects.
+It is at least partially functional as well, since functions are values and can be passed
+around to other functions (such as `Array.prototype.map`).
+However, although it is possible to write with an immutable mindset in JavaScript,
+the language does not *encourage* immutability.
 
 The biggest difference to JavaScript is that Scala is _statically typed_. This means that it is equipped with an
 expressive type system that enforces statically that abstractions are used in a safe and coherent manner, meaning the
@@ -57,7 +64,8 @@ both mutable and immutable variables must always be initialized when declared.
 
 ## Primitive types
 
-Scala defines several primitive types, of which most have corresponding types in JavaScript as well. See the table below.
+Scala defines several primitive types, of which most have corresponding types in JavaScript as well. 
+The following table presents the most commonly used ones (there are also `Byte`, `Short` and `Float`).
 
 <table class="table table-bordered">
   <thead>
@@ -66,13 +74,10 @@ Scala defines several primitive types, of which most have corresponding types in
   <tbody>
     <tr><td>String</td><td>string</td><td></td></tr>
     <tr><td>Boolean</td><td>boolean</td><td></td></tr>
-    <tr><td>Char</td><td><i>N/A</i></td><td>UTF-16 code unit</td></tr>
-    <tr><td>Byte</td><td>number</td><td>integer, range (-128, 127)</td></tr>
-    <tr><td>Short</td><td>number</td><td>integer, range (-32768, 32767)</td></tr>
     <tr><td>Int</td><td>number</td><td>integer, range (-2147483648, 2147483647)</td></tr>
-    <tr><td>Long</td><td><i>N/A</i></td><td>64-bit integer</td></tr>
-    <tr><td>Float</td><td>number</td><td>32-bit floating point</td></tr>
     <tr><td>Double</td><td>number</td><td>64-bit floating point, fully equivalent to JS number</td></tr>
+    <tr><td>Long</td><td><i>N/A</i></td><td>64-bit integer</td></tr>
+    <tr><td>Char</td><td><i>N/A</i></td><td>UTF-16 code unit</td></tr>
     <tr><td>Unit</td><td>undefined</td><td></td></tr>
     <tr><td>Null</td><td>null</td><td></td></tr>
   </tbody>
@@ -105,26 +110,28 @@ an appropriate function.
 {% columns %}
 {% column 9 Scala %}
 {% highlight scala %}
-val x: Int = 3.5 // ERROR!
-val y: Double = 3 // Ok!
-val f: Float = 3.0 // ERROR! 3.0f would be ok
+val x: Double = 3 // Ok!
+val y: Int = 3.5 // Compile error
 val z: Int = 3.5.toInt // Ok!
-val a: Byte = z // ERROR!
-val b: Byte = z.toByte // Ok!
+val a: Int = x // Compile error
+val b: Int = x.toInt // Ok!
 {% endhighlight %}
 {% endcolumn %}
 {% endcolumns %}
 
-Actually the numeric types `Int`, `Short`, `Byte` and `Float` also exist in JavaScript if you use [_typed
-arrays_](https://developer.mozilla.org/en/docs/Web/JavaScript/Typed_arrays). These are not commonly used in regular
-JavaScript code, but for some specific purposes, like WebGL, they are required.
-
 ## Functions
 
-Defining functions is quite similar in both languages. You just replace the `function` keyword with `def` and add types
-for function parameters and return type. In Scala you can omit the `return` keyword as the last expression in the
-function is automatically used as the return value. Return type is usually automatically inferred by the Scala compiler
-(when not using `return`), but it is good practice to define it to help catch potential type errors.
+Defining functions is quite similar in both languages.
+You just replace the `function` keyword with `def`, and add types for the
+parameters and the result type.
+Speaking of which, this is about the only place you will explicitly write types
+in Scala. The types of local values inside functions are usually inferred by the
+compiler.
+Actually, even the result type will usually be inferred too, but it is good
+practice to explicitly define it, to help catch potential type errors.
+
+Note that there is no need for a `return` keyword: the last expression in the
+function is automatically used as the return value.
 
 {% columns %}
 {% column 6 ES6 %}
@@ -172,7 +179,9 @@ val l = p.map(s => s.length)
 #### Default, named and rest parameters
 
 You can also define default values for parameters if they are not supplied when the function is called. For variable
-number of parameters, you can access those as a `Seq`. Named parameters work just as you would expect in Scala, whereas
+number of parameters, you can access those as a `Seq` (see the
+[collections part of this tour](es6-to-scala-part2.html) for more info).
+Named parameters work just as you would expect in Scala, whereas
 in ES6 you need to supply them with the object notation.
 
 {% columns %}
@@ -223,7 +232,7 @@ val v = vec(8, z = 42) // Vec(8, 0, 42)
 {% endcolumn %}
 {% endcolumns %}
 
-Again, Scala compiler can infer all the required types in the code above, including the parameters for the anonymous
+Again, the Scala compiler can infer all the required types in the code above, including the parameters for the anonymous
 function given to the `foldLeft` function.
 
 ## `if`, `while`, `for`, `match` control structures
@@ -311,7 +320,7 @@ findPairs(20, 31)
 
 The code above also serves as an example for _string interpolation_ (in Scala) and _template strings_ (in ES6). Both
 make it easier to construct strings using variables or function calls. In Scala you don't need to enclose the variable
-in {} if it's just a simple variable name. For more complex cases you'll need to use the `s"Length = ${data.length}"`
+in `{}` if it's just a simple variable name. For more complex cases you'll need to use the `s"Length = ${data.length}"`
 syntax.
 
 Finally the `match` construct provides _pattern matching_ capabilities in Scala. Pattern matching is a complex topic
@@ -370,7 +379,7 @@ also has:
 * `object`s for singletons
 * `trait`s for defining interfaces and mixins
 
-A simple class hierarchy can be achieved in both languages.
+Let us look at a simple class hierarchy in both languages.
 
 {% columns %}
 {% column 6 ES6 %}
@@ -436,17 +445,19 @@ val r = c.r // == 42
 {% endcolumn %}
 {% endcolumns %}
 
-Even though Scala has the concept of `this` it is not that often used in your own code.
+Note that `this` is typically omitted in Scala, since the compiler can tell that
+`x`, `y` and `r` are properties of the enclosing class (and not local variables).
 
 #### Case classes
 
-When reading Scala application code you will probably encounter more `case class`es than regular `class`es. This is due
-to their special features that make them so useful. First of all you don't need to use `new` keyword when instantiating
-them and all constructor parameters are automatically available as public fields. Case classes also have default
-implementations for `toString` and equality making them convenient to use as data objects.
+Case classes are a particular kind of class in Scala which have a lot of
+compiler-generated goodies. They are particularly suited for immutable data
+containers whose instances are equal if and only if their fields are pairwise
+equal. They also automatically receive a sensible `toString()` representation,
+and they can be instantiated without the `new` keyword.
 
-JavaScript doesn't quite have a similar construct, but whenever you would use the regular object notation, consider
-using a case class instead.
+JavaScript doesn't quite have a similar construct, but whenever you would use
+the regular object notation, consider using a case class instead.
 
 {% columns %}
 {% column 6 ES6 %}
@@ -466,7 +477,7 @@ val person = Person("James", "Bond")
 
 Case classes enforce type safety and prevent constructing invalid objects with missing fields.
 
-Scala compiler automatically generates a proper `equals` method for case classes, making comparing them trivial. In ES6
+The Scala compiler automatically generates a proper `equals` method for case classes, making comparing them trivial. In ES6
 you would typically go for a library like [lodash](https://lodash.com/docs#isEqual) to avoid writing the complex
 comparison code yourself.
 
@@ -500,7 +511,7 @@ if (o1 == o2) {
 {% endcolumn %}
 {% endcolumns %}
 
-Fields in case classes are immutable by default (unless you define them with `var` modifier) so you cannot make changes
+Fields in case classes are public and immutable by default (unless you define them with `var` modifier) so you cannot make changes
 to instances. Instead of modifying the instance you make a copy and modify one or more fields during the copy. Scala
 provides a suitable `copy` function for each case class automatically. In ES6 you can use `Object.assign` to achieve the
 same result.
@@ -532,9 +543,7 @@ Finally case classes can be used nicely in _pattern matching_, which is covered 
 
 An `object` is a special class with only a single instance: a singleton. JavaScript also has a singleton design pattern
 (or actually several) even though the language itself does not have direct support for the concept. Singletons are
-useful for putting stuff in a shared namespace without polluting the global scope. Scala singletons are lazy in the
-sense that they are initialized only when first accessed. In JavaScript you can achieve lazyness, but typically it's
-not done as it makes things complicated.
+useful for putting stuff in a shared namespace without polluting the global scope.
 
 {% columns %}
 {% column 6 ES6 %}
@@ -668,9 +677,12 @@ Scala doesn't have `undefined` (it does have `null` but its use is discouraged),
 {% scaladoc Option %} trait for representing optional values. In Scala.js the `undefined` type exists to support
 interoperability with JS libraries, but even there it is recommended to use `Option` whenever possible.
 
-`Option[A]` is a container for an optional value of type `A`. If the value of type `A` is present, the `Option[A]` is an
-instance of `Some[A]`, containing the present value of type `A`. If the value is absent, the `Option[A]` is the object
-`None`.
+`Option[A]` is a container for an optional value of type `A`
+(note that `Option[A]` is Scala's notation for *type parameters*, which most
+programming languages, including TypeScript, write as `Option<A>`).
+If the value of type `A` is present, the `Option[A]` is an instance of `Some[A]`,
+containing the present value of type `A`. If the value is absent, the `Option[A]`
+is the object `None`.
 
 {% columns %}
 {% column 6 ES6 %}
