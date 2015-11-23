@@ -38,7 +38,7 @@ Here you go:
 
 Use these Open Source projects to see how others have used Scala.js to build their applications.
 
-- [Querki](https://www.querki.net/help/#Learning-Querki), a cloud-based system for small-scale data management
+- [Querki](https://github.com/jducoeur/Querki), a cloud-based system for small-scale data management
 - [ICD](https://github.com/tmtsoftware/icd), for validating, storing, managing, searching and viewing APIs and ICDs (Interface Control Documents between TMT subsystems)
 - [Dashy](https://github.com/oomagnitude/dashy), extensible dashboard webapp written in scalajs
 - [Doctus](http://entelijan.net/art/doctus/), a library for the creation of visual art pieces, by
