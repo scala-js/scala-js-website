@@ -17,7 +17,7 @@ Yes, you can. There is nothing specific to Scala.js here.
 
 ### Where can I find an example of non trivial Scala.js project?
 
-Have a look at these projects [built with Scala.js](../#built_with_scalajs).
+Have a look at these projects [built with Scala.js](../community/#built_with_scalajs).
 
 ### Have you considered targeting [asm.js](http://asmjs.org/)? Would it help?
 
