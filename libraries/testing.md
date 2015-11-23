@@ -1,9 +1,9 @@
 ---
 layout: libraries
-title: Testing frameworks
+title: Testing
 ---
 
-## Scala.js compatible testing frameworks
+## Testing Scala.js code
 
 Several Scala testing frameworks have been updated to be compatible with Scala.js. To quickly start using one of these
 libraries, just click on the dependency clipboard button to get the relevant SBT dependency definition.

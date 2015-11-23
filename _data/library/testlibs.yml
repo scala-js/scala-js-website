@@ -1,4 +1,4 @@
-- topic: Testing frameworks
+- topic: Test frameworks
   libraries:
     - name: uTest
       url: https://github.com/lihaoyi/utest
@@ -8,18 +8,10 @@
       url: http://www.scalatest.org/
       desc: Extensive testing framework for Scala
       dep: '"org.scalatest" %%% "scalatest" % "3.0.0-M10" % "test"'
-    - name: Scalacheck
-      url: http://scalacheck.org/
-      desc: Property-based testing for Scala
-      dep: '"org.scalacheck" %%% "scalacheck" % "1.12.5" % "test"'
     - name: MiniTest
       url: https://github.com/monifu/minitest
       desc: A mini testing framework, cross-compiled for Scala and Scala.js
       dep: '"org.monifu" %%% "minitest" % "0.14" % "test"'
-    - name: Nyaya
-      url: https://github.com/japgolly/nyaya
-      desc: Property testing and related.
-      dep: ''
     - name: zcheck
       url: https://github.com/InTheNow/zcheck
       desc: A wrapper around scalacheck and scalaz's Speclite.
@@ -28,3 +20,14 @@
       url: https://github.com/greencatsoft/greenlight
       desc: BDD style testing framework for Scala and Scala.js.
       dep: '"com.greencatsoft" %%% "greenlight" % "0.2"'
+
+- topic: Property testing
+  libraries:
+    - name: Scalacheck
+      url: http://scalacheck.org/
+      desc: Property testing for Scala
+      dep: '"org.scalacheck" %%% "scalacheck" % "1.12.5" % "test"'
+    - name: Nyaya
+      url: https://github.com/japgolly/nyaya
+      desc: Property testing and assertion.
+      dep: ''
