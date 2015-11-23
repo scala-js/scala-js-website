@@ -67,12 +67,12 @@
       desc: An all-Scala.js HTML binding library
       dep: '"org.denigma" %%% "binding" % "0.8.0-M6"'
     - name: scalajs-angular
-      url: https://github.com/greencatsoft/scalajs-angular) with [TodoMvc example](https://github.com/greencatsoft/scalajs-angular-todomvc
-      desc: static types and complementary API for AngularJS
+      url: https://github.com/greencatsoft/scalajs-angular
+      desc: Static types and complementary API for AngularJS with [TodoMvc example](https://github.com/greencatsoft/scalajs-angular-todomvc)
       dep: '"com.greencatsoft" %%% "scalajs-angular" % "0.5"'
     - name: scalajs-angulate
       url: https://github.com/jokade/scalajs-angulate
-      desc: another binding to AngularJS with enhancements
+      desc: Another binding to AngularJS with enhancements
       dep: '"biz.enef" %%% "scalajs-angulate" % "0.2.2"'
     - name: scalajs-vue
       url: https://github.com/fancellu/scalajs-vue
