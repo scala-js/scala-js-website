@@ -1,17 +1,38 @@
 ---
 layout: default
+wrap_title: News
 ---
-{% include JB/setup %}
-{% include themes/twitter/post.html %}
 
-{% if site.safe %}
-<script>
-  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
-  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
-  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+{% include wrap.html %}
 
-  ga('create', 'UA-42008737-1', 'scala-js.org');
-  ga('send', 'pageview');
-</script>
-{% endif %}
+<div class="container mtb">
+    <div class="row">
+        <! -- SINGLE POST -->
+        <div class="col-md-12">
+            <! -- Blog Post -->
+            <a href="{{ page.url | prepend: site.baseurl }}"><h3 class="ctitle">{{ page.title }}</h3></a>
+
+            <p>
+                <span class="small">{{ page.date | date: "%b %-d, %Y" }}.</span>
+            </p>
+            {{ content }}
+            <div class="spacing"></div>
+            <nav>
+                <ul class="pager">
+                    {% if page.previous %}
+                    <li class="previous"><a href="{{ page.previous.url | prepend: site.baseurl }}"
+                                            title="{{ page.previous.title }}">&larr; Previous</a></li>
+                    {% else %}
+                    <li class="previous disabled"><a>&larr; Previous</a></li>
+                    {% endif %}
+                    {% if page.next %}
+                    <li class="next"><a href="{{ page.next.url | prepend: site.baseurl }}"
+                                        title="{{ page.next.title }}">Next &rarr;</a></li>
+                    {% else %}
+                    <li class="next disabled"><a>Next &rarr;</a>
+                        {% endif %}
+                </ul>
+            </nav>
+        </div>
+    </div>
+</div>

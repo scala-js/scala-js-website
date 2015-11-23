@@ -1,0 +1,20 @@
+<div class="row">
+    <div class="col-sm-12 col-md-9">
+        <div class="testimonials">
+            {% for item in site.data.testimonials %}
+            <div class="item">
+                <blockquote><p>{{ item.text }}</p></blockquote>
+                <div class="carousel-info">
+                    {% if item.img != nil && item.img != "" %}
+                    <img src="{{ item.img }}" class="pull-left">
+                    {% endif %}
+                    <div class="pull-left">
+                        <span class="testimonials-name">{{ item.author }}</span>
+                        <span class="testimonials-post">{{ item.position }}</span>
+                    </div>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+</div>

@@ -1,9 +1,8 @@
 ---
-layout: page
+layout: doc
 title: Semantics of Scala.js
 tagline: and how they differ from Scala
 ---
-{% include JB/setup %}
 
 In general, the semantics of the Scala.js language are the same as Scala on
 the JVM.
@@ -109,7 +108,7 @@ Every configurable undefined behavior has 3 possible modes:
 * `Compliant`: behaves as specified on a JVM
 * `Unchecked`: completely unchecked and undefined
 * `Fatal`: checked, but throws
-  [`UndefinedBehaviorError`s]({{ site.production_url }}/api/scalajs-library/{{ site.scalaJSVersion }}/#scala.scalajs.runtime.UndefinedBehaviorError)
+  [`UndefinedBehaviorError`s]({{ site.production_url }}/api/scalajs-library/{{ site.versions.scalaJS }}/#scala.scalajs.runtime.UndefinedBehaviorError)
   instead of the specified exception.
 
 By default, undefined behaviors are in `Fatal` mode for `fastOptJS` and in
@@ -142,7 +141,7 @@ Note that this will have (potentially major) performance impacts.
 
 The JavaScript interoperability feature is, in itself, a big semantic
 difference. However, its details are discussed in a
-[dedicated page](./js-interoperability.html).
+[dedicated page](./interoperability).
 
 ## Reflection
 

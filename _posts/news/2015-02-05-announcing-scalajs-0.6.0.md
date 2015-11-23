@@ -3,8 +3,9 @@ layout: post
 title: Announcing Scala.js 0.6.0
 category: news
 tags: [releases]
+permalink: /news/2015/02/05/announcing-scalajs-0.6.0/
 ---
-{% include JB/setup %}
+
 
 We are thrilled to announce the final release of Scala.js 0.6.0!
 
@@ -13,11 +14,12 @@ We believe it has reached maturity, and from now on, the language semantics as w
 
 Today is also the 2-year anniversary of Scala.js!
 The [first commit](https://github.com/scala-js/scala-js/commit/9ad7627c2418e5d345375705ca087a60e3aa2c22) was pushed on February 5, 2013.
+<!--more-->
 
 ## Getting started
 
 If you are new to Scala.js, head over to
-[the tutorial]({{ BASE_PATH }}/doc/tutorial.html).
+[the tutorial]({{ BASE_PATH }}/tutorial/).
 
 ## Release notes
 

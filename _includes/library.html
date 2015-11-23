@@ -1,0 +1,32 @@
+<table class="table">
+    <tbody>
+    {% for item in include.lib %}
+        <tr>
+            <td colspan="3"><h4>{{ item.topic }}</h4></td>
+        </tr>
+        {% if forloop.index == 1 %}
+        <tr>
+            <th>Name</th>
+            <th>Description</th>
+            <th>Dependency</th>
+        </tr>
+        {% endif %}
+        {% for library in item.libraries %}
+            <tr>
+                <td><a href="{{ library.url }}" target="library">{{ library.name }}</a></td>
+                <td>{{ library.desc | markdownify | remove: '<p>' | remove: '</p>'}}</td>
+                <td>
+                    {% if library.dep != nil and library.dep != "" %}
+                    <div class="div-clipboard">
+                    <button class="btn btn-default btn-xs btn-clipboard" data-clipboard-text='{{ library.dep }}'
+                            title='{{ library.dep }}'><img
+                        class="clippy" width="13" src="{{ "/assets/img/clippy.svg" | prepend: site.baseurl }}"></img></button>
+                    </div>
+                    {% endif %}
+                </td>
+            </tr>
+        {% endfor %}
+    {% endfor %}
+    </tbody>
+</table>
+<script>new Clipboard('.btn-clipboard');</script>

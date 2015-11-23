@@ -3,13 +3,15 @@ layout: post
 title: Announcing Scala.js 0.6.0-RC1
 category: news
 tags: [releases]
+permalink: /news/2015/01/12/announcing-scalajs-0.6.0-RC1/
 ---
-{% include JB/setup %}
+
 
 We are excited to announce the first release candidate of Scala.js 0.6.0, aka 0.6.0-RC1!
 Unless there are blocking issues with this RC, or issues requiring binary incompatible changes, this version will become 0.6.0 final.
 
 Scala.js 0.6.0-RC1 is not forward nor backward binary compatible with M1/M2/M3.
+<!--more-->
 
 To upgrade from 0.6.0-Mx, simply change the version number.
 If you're upgrading from M1/M2, you might need to address some compilation errors regarding the `js` package, but it should be straightforward.

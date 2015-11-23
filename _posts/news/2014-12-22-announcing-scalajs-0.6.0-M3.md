@@ -3,8 +3,9 @@ layout: post
 title: Announcing Scala.js 0.6.0-M3
 category: news
 tags: [releases]
+permalink: /news/2014/12/22/announcing-scalajs-0.6.0-M3/
 ---
-{% include JB/setup %}
+
 
 We are excited to announce the third milestone of Scala.js 0.6.0, aka 0.6.0-M3!
 This release is mostly about the (hopefully) last binary incompatible changes for the 0.6.x series.
@@ -12,6 +13,7 @@ It also substantially reworks the `scala.scalajs.js` package to simplify it (see
 
 Scala.js 0.6.0-M3 is not forward nor backward binary compatible with M1/M2.
 We expect that all subsequent milestones and RCs for 0.6.x will stay binary compatible with M3, though.
+<!--more-->
 
 To upgrade from 0.6.0-M1/M2, simply change the version number.
 You might need to address some compilation errors regarding the `js` package, but it should be straightforward.

@@ -3,11 +3,13 @@ layout: post
 title: Announcing Scala.js 0.6.0-RC2
 category: news
 tags: [releases]
+permalink: /news/2015/01/23/announcing-scalajs-0.6.0-RC2/
 ---
-{% include JB/setup %}
+
 
 We are excited to announce the second release candidate of Scala.js 0.6.0, aka 0.6.0-RC2!
 Unless there are blocking issues with this RC, or issues requiring binary incompatible changes, this version will become 0.6.0 final.
+<!--more-->
 
 Compared to 0.6.0-RC1, this is strictly a bug fix release.
 The following bugs have been fixed in this second RC:

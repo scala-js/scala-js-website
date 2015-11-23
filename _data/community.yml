@@ -1,0 +1,15 @@
+- text: Community
+  url: /community/
+- text: Libraries and skeletons
+  url: /community/libraries/
+  subitems:
+    - text: JavaScript libraries
+      url: /community/libraries/facades.html
+    - text: Scala libraries
+      url: /community/libraries/libs.html
+    - text: Testing frameworks
+      url: /community/libraries/testing.html
+    - text: Skeletons
+      url: /community/libraries/skeletons.html
+- text: Presentations and videos
+  url: /community/presentations.html

@@ -3,8 +3,9 @@ layout: post
 title: Announcing Scala.js 0.6.2
 category: news
 tags: [releases]
+permalink: /news/2015/03/16/announcing-scalajs-0.6.2/
 ---
-{% include JB/setup %}
+
 
 We are excited to announce the release of Scala.js 0.6.2!
 
@@ -12,11 +13,12 @@ This release mostly contains bug fixes, among which the lack of support of `java
 It also brings code size reduction and performance improvements to fastOpt code (although nothing changes in fullOpt).
 
 We are also happy to share that Scala.js is now part of [Scala's community build](https://github.com/scala/community-builds).
+<!--more-->
 
 ## Getting started
 
 If you are new to Scala.js, head over to
-[the tutorial]({{ BASE_PATH }}/doc/tutorial.html).
+[the tutorial]({{ BASE_PATH }}/tutorial/).
 
 ## Release notes
 

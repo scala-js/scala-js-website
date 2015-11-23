@@ -3,12 +3,14 @@ layout: post
 title: Announcing Scala.js 0.5.6
 category: news
 tags: [releases]
+permalink: /news/2014/11/19/announcing-scalajs-0.5.6/
 ---
-{% include JB/setup %}
+
 
 We are excited to announce the release of Scala.js 0.5.6!
 
 This is a backport release from the upcoming 0.6.x branch and contains various minor bug fixes and enhancements.
+<!--more-->
 
 To upgrade, change the version number in `project/plugins.sbt`, as usual. Further, you will need to upgrade to sbt >= 0.13.6 since this release of Scala.js is published against sbt 0.13.6.
 

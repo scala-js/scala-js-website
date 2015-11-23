@@ -3,8 +3,9 @@ layout: post
 title: Announcing Scala.js 0.5.0
 category: news
 tags: [releases]
+permalink: /news/2014/06/13/announcing-scalajs-0.5.0/
 ---
-{% include JB/setup %}
+
 
 We are very excited to announce the final release of Scala.js 0.5.0!
 This version is a major milestone towards the maturity of Scala.js, probably
@@ -12,8 +13,9 @@ the most important release since its very first prototype.
 
 Scala.js is a compiler from Scala to JavaScript. It allows you to write your
 entire web application in Scala and simply compile to JavaScript!
+<!--more-->
 
-*   [Tutorial]({{ BASE_PATH }}/doc/tutorial.html),
+*   [Tutorial]({{ BASE_PATH }}/tutorial/),
     for newcomers to Scala.js
 *   [Upgrading from Scala.js 0.4.x](./#upgrading)
 *   Try Scala.js right in your browser with
@@ -43,7 +45,7 @@ speed.
         JavaScript, because they are guaranteed to always be represented as
         primitive JavaScript values (`Char` and `Long` are still opaque to
         JavaScript, because they do not have a corresponding type in JavaScript).
-        See [the documentation on type correspondance]({{ BASE_PATH }}/doc/js-interoperability.html#type-correspondance)
+        See [the documentation on type correspondance]({{ BASE_PATH }}/doc/interoperability/types.html#type-correspondence)
         for more details.
     *   Introduced the type `js.UndefOr[+A]`
         ([API](http://www.scala-js.org/api/scalajs-library/0.5.0/#scala.scalajs.js.UndefOr)),
@@ -85,7 +87,7 @@ speed.
         point that calls the `main` method.
     *   To support this the best we could, we have dropped auto-discovery of
         objects defining a `def main(args: Array[String])` method.
-    *   [More information in the tutorial]({{ BASE_PATH }}/doc/tutorial.html#optimizing)
+    *   [More information in the tutorial]({{ BASE_PATH }}/tutorial/basic/#optimizing)
 
 ### Binary compatibility and dependency management
 
@@ -106,12 +108,12 @@ speed.
         [WebJars](http://www.webjars.org/), that will be resolved automatically.
     *   You can ask the sbt plugin to package all your JavaScript dependencies
         in a single `.js` file if you so wish, but this is not mandatory.
-    *   See the [tutorial]({{ BASE_PATH }}/doc/tutorial.html#using-jquery) for more information.
+    *   See the [tutorial]({{ BASE_PATH }}/tutorial/#using-jquery) for more information.
 
 ### Command line interface (CLI)
 
 *   Following a request by some of our users, we added a
-    [stand-alone distribution]({{ BASE_PATH }}/downloads.html) that allows to
+    [stand-alone distribution]({{ BASE_PATH }}/doc/internals/downloads.html) that allows to
     use Scala.js without sbt (but with Scala).
     *   `scalajsc` is a front-end to `scalac` setting up correctly the Scala.js
         compiler plugin and library on the classpath

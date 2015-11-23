@@ -3,12 +3,14 @@ layout: post
 title: Announcing Scala.js 0.5.5
 category: news
 tags: [releases]
+permalink: /news/2014/09/18/announcing-scalajs-0.5.5/
 ---
-{% include JB/setup %}
+
 
 We are excited to announce the release of Scala.js 0.5.5!
 
 This release contains various minor bug fixes and enhancements. It is the last anticipated release in the 0.5.x series and prepares the upcoming 0.6.x series by deprecating various obsolete features (see below for details).
+<!--more-->
 
 To upgrade, simply change the version number in `project/plugins.sbt`, as usual.
 

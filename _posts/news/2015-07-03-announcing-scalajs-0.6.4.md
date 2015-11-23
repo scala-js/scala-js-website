@@ -3,18 +3,20 @@ layout: post
 title: Announcing Scala.js 0.6.4
 category: news
 tags: [releases]
+permalink: /news/2015/07/03/announcing-scalajs-0.6.4/
 ---
-{% include JB/setup %}
+
 
 We are excited to announce the release of Scala.js 0.6.4!
 
 This release brings support for Scala 2.11.7 and 2.12.0-M1, as well as a significant part of the Java collections library in `java.util`, thanks to [@andreaTP](https://github.com/andreaTP) and [@nicolasstucki](https://github.com/nicolasstucki).
 It also fixes numerous bugs.
+<!--more-->
 
 ## Getting started
 
 If you are new to Scala.js, head over to
-[the tutorial]({{ BASE_PATH }}/doc/tutorial.html).
+[the tutorial]({{ BASE_PATH }}/tutorial/).
 
 ## Release notes
 

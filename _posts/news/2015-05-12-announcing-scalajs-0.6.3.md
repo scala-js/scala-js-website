@@ -3,8 +3,9 @@ layout: post
 title: Announcing Scala.js 0.6.3
 category: news
 tags: [releases]
+permalink: /news/2015/05/12/announcing-scalajs-0.6.3/
 ---
-{% include JB/setup %}
+
 
 We are excited to announce the release of Scala.js 0.6.3!
 
@@ -16,11 +17,12 @@ Besides the usual bag of bug fixes, there are three highlights:
 * *Experimental* output modes to target ECMAScript 6, as well as [Strong Mode](https://developers.google.com/v8/experiments).
 
 We also welcome Nicolas Stucki aka [@nicolasstucki](https://github.com/nicolasstucki) to the core team at EPFL.
+<!--more-->
 
 ## Getting started
 
 If you are new to Scala.js, head over to
-[the tutorial]({{ BASE_PATH }}/doc/tutorial.html).
+[the tutorial]({{ BASE_PATH }}/tutorial/).
 
 ## Release notes
 

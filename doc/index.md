@@ -1,211 +1,29 @@
 ---
-layout: page
-title: Documentation
+layout: doc
+title: Introduction
 ---
-{% include JB/setup %}
 
-## Get started
+The bullets on the right link to various facets of the documentation.
 
-Get started with Scala.js by following our [tutorial](./tutorial.html) or by forking off our
-[barebone skeleton](https://github.com/sjrd/scala-js-example-app).
+If you are coming from a JavaScript background, we've got
+[a special tour for you](sjs-for-js/), which will teach you the basics of
+Scala.js with respect to JavaScript.
 
-## Reference
+# Installation
 
-* [Differences between the semantics of Scala and Scala.js](./semantics.html)
-* [JavaScript interoperability](./js-interoperability.html)
-  * [Call JavaScript APIs from Scala.js](./calling-javascript.html)
-  * [Export Scala.js APIs to JavaScript](./export-to-javascript.html)
-* [SBT plugin](./sbt-plugin.html)
-  * [Setup](./sbt/setup.html)
-  * [Compiling, Running, Linking, Optimizing](./sbt/run.html)
-  * [Depending on Libraries](./sbt/depending.html)
-  * [JavaScript Environments](./sbt/js-envs.html)
-  * [Cross-Building](./sbt/cross-building.html)
+All you need to get started is 
 
-## Talks about Scala.js internals
+* A recent version of Java JDK [(download)](http://www.oracle.com/technetwork/java/javase/downloads/jdk8-downloads-2133151.html)
+* SBT [(download)](http://www.scala-sbt.org/0.13/tutorial/Setup.html)
 
-* [Semantics](https://www.parleys.com/tutorial/scala-js-semantics-how-support-performance-javascript-interop) at ScalaDays 2015 Amsterdam by Sébastien Doeraene
-* [Compilation Pipeline](https://www.youtube.com/watch?v=nRswfBJL0dQ) at Scala By the Bay 2015 by Tobias Schlatter
-* [Optimizations](https://www.youtube.com/watch?v=IvB1APFZK5Q) at VM Meetup 2015 by Sébastien Doeraene
+# Tutorials
 
-## <a name="api"></a> API
+Check out one of the [tutorials](../tutorial/) to continue your journey!
 
-Generated Scaladocs are available here:
+You may also find the [presentation videos](../community/presentations.html)
+a nice way to get started with Scala.js!
 
-### Scala.js
+# Get help
 
-#### Scala.js 0.6.5
-* [0.6.5 scalajs-library]({{ site.production_url }}/api/scalajs-library/0.6.5/#scala.scalajs.js.package)
-* [0.6.5 scalajs-test-interface]({{ site.production_url }}/api/scalajs-test-interface/0.6.5/)
-* [0.6.5 scalajs-stubs]({{ site.production_url }}/api/scalajs-stubs/0.6.5/)
-* [0.6.5 scalajs-ir]({{ site.production_url }}/api/scalajs-ir/0.6.5/#org.scalajs.core.ir.package)
-* [0.6.5 scalajs-tools]({{ site.production_url }}/api/scalajs-tools/0.6.5/#org.scalajs.core.tools.package) ([Scala.js version]({{ site.production_url }}/api/scalajs-tools-js/0.6.5/#org.scalajs.core.tools.package))
-* [0.6.5 scalajs-js-envs]({{ site.production_url }}/api/scalajs-js-envs/0.6.5/#org.scalajs.jsenv.package)
-* [0.6.5 scalajs-test-adapter]({{ site.production_url }}/api/scalajs-sbt-test-adapter/0.6.5/#org.scalajs.testadapter.package)
-* [0.6.5 sbt-scalajs]({{ site.production_url }}/api/sbt-scalajs/0.6.5/#org.scalajs.sbtplugin.package)
-
-#### Scala.js 0.6.4
-* [0.6.4 scalajs-library]({{ site.production_url }}/api/scalajs-library/0.6.4/#scala.scalajs.js.package)
-* [0.6.4 scalajs-test-interface]({{ site.production_url }}/api/scalajs-test-interface/0.6.4/)
-* [0.6.4 scalajs-stubs]({{ site.production_url }}/api/scalajs-stubs/0.6.4/)
-* [0.6.4 scalajs-ir]({{ site.production_url }}/api/scalajs-ir/0.6.4/#org.scalajs.core.ir.package)
-* [0.6.4 scalajs-tools]({{ site.production_url }}/api/scalajs-tools/0.6.4/#org.scalajs.core.tools.package) ([Scala.js version]({{ site.production_url }}/api/scalajs-tools-js/0.6.4/#org.scalajs.core.tools.package))
-* [0.6.4 scalajs-js-envs]({{ site.production_url }}/api/scalajs-js-envs/0.6.4/#org.scalajs.jsenv.package)
-* [0.6.4 scalajs-test-adapter]({{ site.production_url }}/api/scalajs-sbt-test-adapter/0.6.4/#org.scalajs.testadapter.package)
-* [0.6.4 sbt-scalajs]({{ site.production_url }}/api/sbt-scalajs/0.6.4/#org.scalajs.sbtplugin.package)
-
-#### Scala.js 0.6.3
-* [0.6.3 scalajs-library]({{ site.production_url }}/api/scalajs-library/0.6.3/#scala.scalajs.js.package)
-* [0.6.3 scalajs-test-interface]({{ site.production_url }}/api/scalajs-test-interface/0.6.3/)
-* [0.6.3 scalajs-stubs]({{ site.production_url }}/api/scalajs-stubs/0.6.3/)
-* [0.6.3 scalajs-ir]({{ site.production_url }}/api/scalajs-ir/0.6.3/#org.scalajs.core.ir.package)
-* [0.6.3 scalajs-tools]({{ site.production_url }}/api/scalajs-tools/0.6.3/#org.scalajs.core.tools.package) ([Scala.js version]({{ site.production_url }}/api/scalajs-tools-js/0.6.3/#org.scalajs.core.tools.package))
-* [0.6.3 scalajs-js-envs]({{ site.production_url }}/api/scalajs-js-envs/0.6.3/#org.scalajs.jsenv.package)
-* [0.6.3 scalajs-test-adapter]({{ site.production_url }}/api/scalajs-sbt-test-adapter/0.6.3/#org.scalajs.testadapter.package)
-* [0.6.3 sbt-scalajs]({{ site.production_url }}/api/sbt-scalajs/0.6.3/#org.scalajs.sbtplugin.package)
-
-#### Scala.js 0.6.2
-* [0.6.2 scalajs-library]({{ site.production_url }}/api/scalajs-library/0.6.2/#scala.scalajs.js.package)
-* [0.6.2 scalajs-test-interface]({{ site.production_url }}/api/scalajs-test-interface/0.6.2/)
-* [0.6.2 scalajs-stubs]({{ site.production_url }}/api/scalajs-stubs/0.6.2/)
-* [0.6.2 scalajs-ir]({{ site.production_url }}/api/scalajs-ir/0.6.2/#org.scalajs.core.ir.package)
-* [0.6.2 scalajs-tools]({{ site.production_url }}/api/scalajs-tools/0.6.2/#org.scalajs.core.tools.package) ([Scala.js version]({{ site.production_url }}/api/scalajs-tools-js/0.6.2/#org.scalajs.core.tools.package))
-* [0.6.2 scalajs-js-envs]({{ site.production_url }}/api/scalajs-js-envs/0.6.2/#org.scalajs.jsenv.package)
-* [0.6.2 scalajs-test-adapter]({{ site.production_url }}/api/scalajs-sbt-test-adapter/0.6.2/#org.scalajs.testadapter.package)
-* [0.6.2 sbt-scalajs]({{ site.production_url }}/api/sbt-scalajs/0.6.2/#org.scalajs.sbtplugin.package)
-
-#### Scala.js 0.6.1
-* [0.6.1 scalajs-library]({{ site.production_url }}/api/scalajs-library/0.6.1/#scala.scalajs.js.package)
-* [0.6.1 scalajs-test-interface]({{ site.production_url }}/api/scalajs-test-interface/0.6.1/)
-* [0.6.1 scalajs-stubs]({{ site.production_url }}/api/scalajs-stubs/0.6.1/)
-* [0.6.1 scalajs-ir]({{ site.production_url }}/api/scalajs-ir/0.6.1/#org.scalajs.core.ir.package)
-* [0.6.1 scalajs-tools]({{ site.production_url }}/api/scalajs-tools/0.6.1/#org.scalajs.core.tools.package) ([Scala.js version]({{ site.production_url }}/api/scalajs-tools-js/0.6.1/#org.scalajs.core.tools.package))
-* [0.6.1 scalajs-js-envs]({{ site.production_url }}/api/scalajs-js-envs/0.6.1/#org.scalajs.jsenv.package)
-* [0.6.1 scalajs-test-adapter]({{ site.production_url }}/api/scalajs-sbt-test-adapter/0.6.1/#org.scalajs.testadapter.package)
-* [0.6.1 sbt-scalajs]({{ site.production_url }}/api/sbt-scalajs/0.6.1/#org.scalajs.sbtplugin.package)
-
-#### Scala.js 0.6.0
-* [0.6.0 scalajs-library]({{ site.production_url }}/api/scalajs-library/0.6.0/#scala.scalajs.js.package)
-* [0.6.0 scalajs-test-interface]({{ site.production_url }}/api/scalajs-test-interface/0.6.0/)
-* [0.6.0 scalajs-stubs]({{ site.production_url }}/api/scalajs-stubs/0.6.0/)
-* [0.6.0 scalajs-ir]({{ site.production_url }}/api/scalajs-ir/0.6.0/#org.scalajs.core.ir.package)
-* [0.6.0 scalajs-tools]({{ site.production_url }}/api/scalajs-tools/0.6.0/#org.scalajs.core.tools.package) ([Scala.js version]({{ site.production_url }}/api/scalajs-tools-js/0.6.0/#org.scalajs.core.tools.package))
-* [0.6.0 scalajs-js-envs]({{ site.production_url }}/api/scalajs-js-envs/0.6.0/#org.scalajs.jsenv.package)
-* [0.6.0 scalajs-test-adapter]({{ site.production_url }}/api/scalajs-sbt-test-adapter/0.6.0/#org.scalajs.testadapter.package)
-* [0.6.0 sbt-scalajs]({{ site.production_url }}/api/sbt-scalajs/0.6.0/#org.scalajs.sbtplugin.package)
-
-#### Scala.js 0.6.0-RC2
-* [0.6.0-RC2 scalajs-library]({{ site.production_url }}/api/scalajs-library/0.6.0-RC2/#scala.scalajs.js.package)
-* [0.6.6-RC2 scalajs-test-interface]({{ site.production_url }}/api/scalajs-test-interface/0.6.0-RC2/)
-* [0.6.0-RC2 scalajs-stubs]({{ site.production_url }}/api/scalajs-stubs/0.6.0-RC2/)
-* [0.6.0-RC2 scalajs-ir]({{ site.production_url }}/api/scalajs-ir/0.6.0-RC2/#org.scalajs.core.ir.package)
-* [0.6.0-RC2 scalajs-tools]({{ site.production_url }}/api/scalajs-tools/0.6.0-RC2/#org.scalajs.core.tools.package) ([Scala.js version]({{ site.production_url }}/api/scalajs-tools-js/0.6.0-RC2/#org.scalajs.core.tools.package))
-* [0.6.0-RC2 scalajs-js-envs]({{ site.production_url }}/api/scalajs-js-envs/0.6.0-RC2/#org.scalajs.jsenv.package)
-* [0.6.0-RC2 scalajs-test-adapter]({{ site.production_url }}/api/scalajs-sbt-test-adapter/0.6.0-RC2/#org.scalajs.testadapter.package)
-* [0.6.0-RC2 sbt-scalajs]({{ site.production_url }}/api/sbt-scalajs/0.6.0-RC2/#org.scalajs.sbtplugin.package)
-
-#### Scala.js 0.6.0-RC1
-* [0.6.0-RC1 scalajs-library]({{ site.production_url }}/api/scalajs-library/0.6.0-RC1/#scala.scalajs.js.package)
-* [0.6.6-RC1 scalajs-test-interface]({{ site.production_url }}/api/scalajs-test-interface/0.6.0-RC1/)
-* [0.6.0-RC1 scalajs-stubs]({{ site.production_url }}/api/scalajs-stubs/0.6.0-RC1/)
-* [0.6.0-RC1 scalajs-ir]({{ site.production_url }}/api/scalajs-ir/0.6.0-RC1/#org.scalajs.core.ir.package)
-* [0.6.0-RC1 scalajs-tools]({{ site.production_url }}/api/scalajs-tools/0.6.0-RC1/#org.scalajs.core.tools.package) ([Scala.js version]({{ site.production_url }}/api/scalajs-tools-js/0.6.0-RC1/#org.scalajs.core.tools.package))
-* [0.6.0-RC1 scalajs-js-envs]({{ site.production_url }}/api/scalajs-js-envs/0.6.0-RC1/#org.scalajs.jsenv.package)
-* [0.6.0-RC1 scalajs-test-adapter]({{ site.production_url }}/api/scalajs-sbt-test-adapter/0.6.0-RC1/#org.scalajs.testadapter.package)
-* [0.6.0-RC1 sbt-scalajs]({{ site.production_url }}/api/sbt-scalajs/0.6.0-RC1/#org.scalajs.sbtplugin.package)
-
-#### Scala.js 0.6.0-M3
-* [0.6.0-M3 scalajs-library]({{ site.production_url }}/api/scalajs-library/0.6.0-M3/#scala.scalajs.js.package)
-* [0.6.6-M3 scalajs-test-interface]({{ site.production_url }}/api/scalajs-test-interface/0.6.0-M3/)
-* [0.6.0-M3 scalajs-stubs]({{ site.production_url }}/api/scalajs-stubs/0.6.0-M3/)
-* [0.6.0-M3 scalajs-ir]({{ site.production_url }}/api/scalajs-ir/0.6.0-M3/#org.scalajs.core.ir.package)
-* [0.6.0-M3 scalajs-tools]({{ site.production_url }}/api/scalajs-tools/0.6.0-M3/#org.scalajs.core.tools.package) ([Scala.js version]({{ site.production_url }}/api/scalajs-tools-js/0.6.0-M3/#org.scalajs.core.tools.package))
-* [0.6.0-M3 scalajs-js-envs]({{ site.production_url }}/api/scalajs-js-envs/0.6.0-M3/#org.scalajs.jsenv.package)
-* [0.6.0-M3 scalajs-test-adapter]({{ site.production_url }}/api/scalajs-test-adapter/0.6.0-M3/#org.scalajs.testadapter.package)
-* [0.6.0-M3 sbt-scalajs]({{ site.production_url }}/api/sbt-scalajs/0.6.0-M3/#org.scalajs.sbtplugin.package)
-
-#### Scala.js 0.6.0-M2
-* [0.6.0-M2 scalajs-library]({{ site.production_url }}/api/scalajs-library/0.6.0-M2/#scala.scalajs.js.package)
-* [0.6.6-M2 scalajs-test-interface]({{ site.production_url }}/api/scalajs-test-interface/0.6.0-M2/)
-* [0.6.0-M2 scalajs-stubs]({{ site.production_url }}/api/scalajs-stubs/0.6.0-M2/)
-* [0.6.0-M2 scalajs-ir]({{ site.production_url }}/api/scalajs-ir/0.6.0-M2/#org.scalajs.core.ir.package)
-* [0.6.0-M2 scalajs-tools]({{ site.production_url }}/api/scalajs-tools/0.6.0-M2/#org.scalajs.core.tools.package) ([Scala.js version]({{ site.production_url }}/api/scalajs-tools-js/0.6.0-M2/#org.scalajs.core.tools.package))
-* [0.6.0-M2 scalajs-js-envs]({{ site.production_url }}/api/scalajs-js-envs/0.6.0-M2/#org.scalajs.jsenv.package)
-* [0.6.0-M2 scalajs-test-adapter]({{ site.production_url }}/api/scalajs-test-adapter/0.6.0-M2/#org.scalajs.testadapter.package)
-* [0.6.0-M2 sbt-scalajs]({{ site.production_url }}/api/sbt-scalajs/0.6.0-M2/#org.scalajs.sbtplugin.package)
-
-#### Scala.js 0.6.0-M1
-* [0.6.0-M1 scalajs-library]({{ site.production_url }}/api/scalajs-library/0.6.0-M1/#scala.scalajs.js.package)
-* [0.6.6-M1 scalajs-test-interface]({{ site.production_url }}/api/scalajs-test-interface/0.6.0-M1/)
-* [0.6.0-M1 scalajs-stubs]({{ site.production_url }}/api/scalajs-stubs/0.6.0-M1/)
-* [0.6.0-M1 scalajs-ir]({{ site.production_url }}/api/scalajs-ir/0.6.0-M1/#org.scalajs.core.ir.package)
-* [0.6.0-M1 scalajs-tools]({{ site.production_url }}/api/scalajs-tools/0.6.0-M1/#org.scalajs.core.tools.package) ([Scala.js version]({{ site.production_url }}/api/scalajs-tools-js/0.6.0-M1/#org.scalajs.core.tools.package))
-* [0.6.0-M1 scalajs-js-envs]({{ site.production_url }}/api/scalajs-js-envs/0.6.0-M1/#org.scalajs.jsenv.package)
-* [0.6.0-M1 scalajs-test-adapter]({{ site.production_url }}/api/scalajs-test-adapter/0.6.0-M1/#org.scalajs.testadapter.package)
-
-#### Scala.js 0.5.6
-* [0.5.6 scalajs-library]({{ site.production_url }}/api/scalajs-library/0.5.6/#scala.scalajs.js.package)
-* [0.5.6 scalajs-tools]({{ site.production_url }}/api/scalajs-tools/0.5.6/) ([Scala.js version]({{ site.production_url }}/api/scalajs-tools/0.5.6/))
-* [0.5.6 scalajs-test-bridge]({{ site.production_url }}/api/scalajs-test-bridge/0.5.6/)
-* [0.5.6 scalajs-jasmine-test-framework]({{ site.production_url }}/api/scalajs-jasmine-test-framework/0.5.6/)
-
-#### Scala.js 0.5.5
-* [0.5.5 scalajs-library]({{ site.production_url }}/api/scalajs-library/0.5.5/#scala.scalajs.js.package)
-* [0.5.5 scalajs-tools]({{ site.production_url }}/api/scalajs-tools/0.5.5/) ([Scala.js version]({{ site.production_url }}/api/scalajs-tools/0.5.5/))
-* [0.5.5 scalajs-test-bridge]({{ site.production_url }}/api/scalajs-test-bridge/0.5.5/)
-* [0.5.5 scalajs-jasmine-test-framework]({{ site.production_url }}/api/scalajs-jasmine-test-framework/0.5.5/)
-
-#### Scala.js 0.5.4
-* [0.5.4 scalajs-library]({{ site.production_url }}/api/scalajs-library/0.5.4/#scala.scalajs.js.package)
-* [0.5.4 scalajs-tools]({{ site.production_url }}/api/scalajs-tools/0.5.4/) ([Scala.js version]({{ site.production_url }}/api/scalajs-tools/0.5.4/))
-* [0.5.4 scalajs-test-bridge]({{ site.production_url }}/api/scalajs-test-bridge/0.5.4/)
-* [0.5.4 scalajs-jasmine-test-framework]({{ site.production_url }}/api/scalajs-jasmine-test-framework/0.5.4/)
-
-#### Scala.js 0.5.3
-* [0.5.3 scalajs-library]({{ site.production_url }}/api/scalajs-library/0.5.3/#scala.scalajs.js.package)
-* [0.5.3 scalajs-tools]({{ site.production_url }}/api/scalajs-tools/0.5.3/)
-* [0.5.3 scalajs-test-bridge]({{ site.production_url }}/api/scalajs-test-bridge/0.5.3/)
-* [0.5.3 scalajs-jasmine-test-framework]({{ site.production_url }}/api/scalajs-jasmine-test-framework/0.5.3/)
-
-#### Scala.js 0.5.2
-* [0.5.2 scalajs-library]({{ site.production_url }}/api/scalajs-library/0.5.2/#scala.scalajs.js.package)
-* [0.5.2 scalajs-tools]({{ site.production_url }}/api/scalajs-tools/0.5.2/)
-* [0.5.2 scalajs-test-bridge]({{ site.production_url }}/api/scalajs-test-bridge/0.5.2/)
-* [0.5.2 scalajs-jasmine-test-framework]({{ site.production_url }}/api/scalajs-jasmine-test-framework/0.5.2/)
-
-#### Scala.js 0.5.1
-* [0.5.1 scalajs-library]({{ site.production_url }}/api/scalajs-library/0.5.1/#scala.scalajs.js.package)
-* [0.5.1 scalajs-tools]({{ site.production_url }}/api/scalajs-tools/0.5.1/)
-* [0.5.1 scalajs-test-bridge]({{ site.production_url }}/api/scalajs-test-bridge/0.5.1/)
-* [0.5.1 scalajs-jasmine-test-framework]({{ site.production_url }}/api/scalajs-jasmine-test-framework/0.5.1/)
-
-#### Scala.js 0.5.0
-* [0.5.0 scalajs-library]({{ site.production_url }}/api/scalajs-library/0.5.0/#scala.scalajs.js.package)
-* [0.5.0 scalajs-tools]({{ site.production_url }}/api/scalajs-tools/0.5.0/)
-* [0.5.0 scalajs-test-bridge]({{ site.production_url }}/api/scalajs-test-bridge/0.5.0/)
-* [0.5.0 scalajs-jasmine-test-framework]({{ site.production_url }}/api/scalajs-jasmine-test-framework/0.5.0/)
-
-#### Scala.js 0.4.4
-* [0.4.4 scalajs-library]({{ site.production_url }}/api/scalajs-library/0.4.4/#scala.scalajs.js.package)
-* [0.4.4 scalajs-tools]({{ site.production_url }}/api/scalajs-tools/0.4.4/)
-* [0.4.4 scalajs-jasmine-test-framework]({{ site.production_url }}/api/scalajs-jasmine-test-framework/0.4.4/)
-
-### JavaScript APIs
-
-#### DOM API
-* [0.8.x scalajs-dom]({{ site.production_url }}/api/scalajs-dom/0.8/#org.scalajs.dom.package)
-* [0.7.x scalajs-dom]({{ site.production_url }}/api/scalajs-dom/0.7/#org.scalajs.dom.package)
-* [0.6 scalajs-dom]({{ site.production_url }}/api/scalajs-dom/0.6/#org.scalajs.dom.package)
-
-#### jQuery API
-* [0.8.x scalajs-jquery]({{ site.production_url }}/api/scalajs-jquery/0.8/#org.scalajs.jquery.package)
-* [0.7.x scalajs-jquery]({{ site.production_url }}/api/scalajs-jquery/0.8/#org.scalajs.jquery.package)
-* [0.6 scalajs-jquery]({{ site.production_url }}/api/scalajs-jquery/0.6/#org.scalajs.jquery.package)
-
-## FAQ
-
-[Frequently Asked Questions](./faq.html) about Scala.js
-
-## Internal documentation
-
-[Documentation about the internals of Scala.js](./internals/)
+If you don't find what you're looking for, contact
+[the community](../community/) and ask for help.

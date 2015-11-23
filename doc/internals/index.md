@@ -1,7 +1,10 @@
 ---
-layout: page
+layout: doc
 title: Scala.js internals
 ---
-{% include JB/setup %}
 
-* [Compilation and optimization pipeline](./compile-opt-pipeline.html)
+Internal stuff about Scala.js.
+
+* [Performance](./performance.html)
+* [Standalone distribution](./downloads.html)
+* [Version history](./version-history.html)

@@ -1,0 +1,98 @@
+- topic: Common JS libraries
+  libraries:
+    - name: scala-js-dom
+      url: https://github.com/scala-js/scala-js-dom
+      desc: Static types for the DOM API, plus a few extensions
+      dep: '"org.scala-js" %%% "scalajs-dom" % "0.8.2"'
+    - name: scalajs-jquery
+      url: https://github.com/scala-js/scala-js-jquery
+      desc: Static types for jQuery
+      dep: '"be.doeraene" %%% "scalajs-jquery" % "0.8.1"'
+    - name: jquery-facade
+      url: https://github.com/jducoeur/jquery-facade
+      desc: Alternate static types for jQuery -- less complete, more strongly typed
+      dep: '"org.querki" %%% "jquery-facade" % "0.8"'
+    - name: scalajs-pouchdb
+      url: https://github.com/chandu0101/scalajs-facades/tree/master/core/src/main/scala/chandu0101/scalajs/facades/pouchdb
+      desc: Static types for PouchDB
+      dep: ''
+    - name: bootstrap-datepicker-facade
+      url: https://github.com/jducoeur/bootstrap-datepicker-scalajs
+      desc: Static types for [bootstrap-datepicker](https://github.com/eternicode/bootstrap-datepicker)
+      dep: '"org.querki" %%% "bootstrap-datepicker-facade" % "0.3"'
+    - name: scalajs-google-maps
+      url: https://github.com/coreyauger/scalajs-google-maps
+      desc: Static types for google maps v3
+      dep: '"io.surfkit" %%% "scalajs-google-maps" % "0.1-SNAPSHOT"'
+    - name: scalajs-createjs
+      url: https://github.com/scalawarrior/scalajs-createjs
+      desc: Static types for [CreateJS](http://createjs.com/)
+      dep: '"com.scalawarrior" %%% "scalajs-createjs" % "0.0.1-SNAPSHOT"'
+    - name: scalajs-ace
+      url: https://github.com/scalawarrior/scalajs-ace
+      desc: Static types for [Ace](http://ace.c9.io/)
+      dep: '"com.scalawarrior" %%% "scalajs-ace" % "0.0.1-SNAPSHOT"'
+    - name: threejs-facade
+      url: https://github.com/antonkulaga/threejs-facade
+      desc: Static types for [Three.js 3D library](https://threejs.org)
+      dep: '"org.denigma" %%% "threejs-facade" % "0.0.71-0.1.5"'
+    - name: codemirror-facade
+      url: https://github.com/antonkulaga/codemirror-facade
+      desc: Static types for [Codemirror code editor](http://codemirror.net)
+      dep: '"org.denigma" %%% "codemirror-facade" % "5.4-0.5"'
+    - name: selectize-facade
+      url: https://github.com/antonkulaga/selectize-facade
+      desc: Static types for [Selectize](http://brianreavis.github.io/selectize.js/)
+      dep: '"org.scalajs" %%% "selectize-facade" % "0.12.1-0.2.1"'
+    - name: scala-js-d3
+      url: https://github.com/spaced/scala-js-d3
+      desc: Static types for [D3.js](http://d3js.org)
+      dep: '"org.singlespaced" %%% "scalajs-d3" % "0.1.1"'
+    - name: scaladget
+      url: https://github.com/mathieuleclaire/scaladget
+      desc: Static types for [D3.js](http://d3js.org), [Ace](http://ace.c9.io), [Tooltipster](http://iamceege.github.io/tooltipster/),  [Bootstrap.js](http://getbootstrap.com/) (and an API for the latter)
+      dep: '"fr.iscpif" %%% "scaladget" % "0.7.0"'
+    - name: Paths.scala.js
+      url: https://github.com/andreaferretti/paths-scala-js
+      desc: A library to generate SVG charts and shapes (wrapper over [Paths.js](https://github.com/andreaferretti/paths-js))
+      dep: '"eu.unicredit" %%% "paths-scala-js" % "0.3.2"'
+- topic: UI frameworks
+  libraries:
+    - name: scalajs-react
+      url: https://github.com/japgolly/scalajs-react
+      desc: Type-safe and Scala-friendly library over Facebook's [React](http://facebook.github.io/react/).
+      dep: '"com.github.japgolly.scalajs-react" %%% "core" % "0.10.0"'
+    - name: scala-js-binding
+      url: https://github.com/antonkulaga/scala-js-binding
+      desc: An all-Scala.js HTML binding library
+      dep: '"org.denigma" %%% "binding" % "0.8.0-M6"'
+    - name: scalajs-angular
+      url: https://github.com/greencatsoft/scalajs-angular) with [TodoMvc example](https://github.com/greencatsoft/scalajs-angular-todomvc
+      desc: static types and complementary API for AngularJS
+      dep: '"com.greencatsoft" %%% "scalajs-angular" % "0.5"'
+    - name: scalajs-angulate
+      url: https://github.com/jokade/scalajs-angulate
+      desc: another binding to AngularJS with enhancements
+      dep: '"biz.enef" %%% "scalajs-angulate" % "0.2.2"'
+    - name: scalajs-vue
+      url: https://github.com/fancellu/scalajs-vue
+      desc: Scala.js bindings for [Vue.js](http://vuejs.org/) and an example application
+      dep: ''
+    - name: scalajs-ractive
+      url: https://github.com/fancellu/scalajs-ractive
+      desc: Scala.js bindings for [Ractive.js](http://www.ractivejs.org/) and an example application
+      dep: ''
+- topic: Other libraries
+  libraries:
+    - name: scala-js-vaadin-components
+      url: https://github.com/hezamu/scala-js-vaadin-components
+      desc: Static types for [Vaadin Components](http://vaadin.com/components)
+      dep: '"org.vaadin.addons" %%% "scala-js-vaadin-components" % "0.1.0-SNAPSHOT"'
+    - name: scala-js-chrome
+      url: https://github.com/lucidd/scala-js-chrome
+      desc: Static types for Chrome [App](https://developer.chrome.com/apps/api_index) and [Extension](https://developer.chrome.com/extensions/api_index) APIs
+      dep: ''
+    - name: scalajs-velocity
+      url: https://github.com/fancellu/scalajs-velocity
+      desc: Scala.js bindings for [Velocity.js](http://julian.com/research/velocity/) animation library and example applications
+      dep: ''

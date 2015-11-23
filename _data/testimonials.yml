@@ -1,0 +1,24 @@
+- text: Coming from JS/Coffee/TypeScript, I think Scala.js is an absolute game changer for us. And as more and more
+    Scala libraries get ported over to Scala.js, I believe this is just the start.
+  author: Binh Nguyen
+  position: Director of Engineering / Anduin Transactions, Inc.
+  img: https://media.licdn.com/mpr/mpr/shrinknp_400_400/p/5/005/064/3f4/29ff61f.jpg
+- text: The Scala.js experience was great! Thanks to the compiler and better IDE support, I was immensely more productive
+    writing Scala for the browser than I am with plain JS and, say, Angular.
+  author: Clint Gilbert
+  position: Harvard Medical School
+  img: https://media.licdn.com/mpr/mpr/shrinknp_400_400/AAEAAQAAAAAAAAP1AAAAJGIxNjg5YjRhLWIxM2ItNGY0ZC05OTc4LWU3MGEwYmZkMDkwNg.jpg
+- text: Being able to leverage our existing build and test infrastructure for Scala.js has been a great productivity and
+    reliability boost compared to bringing in an entirely different stack such as TypeScript. We have a number of
+    computation libraries that have been ported to a shared module and can be used on both the front-end and the backend,
+    which in and of themselves have made investment worthwhile.
+  author: Erik LaBianca
+  position: Seventh Sense
+  img: https://media.licdn.com/mpr/mpr/shrinknp_400_400/p/2/000/220/0f3/212e7e9.jpg
+- text: Scala's type safety is essential to manage the complexity of these business rules. Scala.js gives us Scala's
+    technical advantages and let us make a pleasingly responsive interface for our users.
+  author: Gabriel Bezerra
+  position:
+  img:
+
+

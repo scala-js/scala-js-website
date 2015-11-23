@@ -1,0 +1,104 @@
+- topic: Common Scala libraries
+  libraries:
+    - name: Scalaz
+      url: https://github.com/japgolly/scalaz
+      desc: Library for functional programming.
+      dep: '"com.github.japgolly.fork.scalaz" %%% "scalaz-core" % "7.1.2"'
+    - name: Shapeless
+      url: https://github.com/milessabin/shapeless
+      desc: Generic programming for Scala.
+      dep: '"com.chuusai" %%% "shapeless" % "2.2.5"'
+    - name: Cats
+      url: https://github.com/non/cats
+      desc: Lightweight, modular, and extensible library for functional programming.
+      dep: '"org.spire-math" %%% "cats" % "0.3.0"'
+    - name: NICTA/rng
+      url: https://github.com/japgolly/rng
+      desc: Pure-functional random value generation.
+      dep: '"com.github.japgolly.fork.nicta" %%% "rng" % "1.3.0-2"'
+    - name: Monocle
+      url: https://github.com/japgolly/Monocle
+      desc: Optics library strongly inspired by Haskell [Lens](https://github.com/ekmett/lens).
+      dep: '"com.github.japgolly.fork.monocle" %%% "monocle-core" % "1.1.1"'
+    - name: Akka (Scala.js port)
+      url: https://github.com/unicredit/akka.js
+      desc: Toolkit and runtime for building concurrent, distributed applications
+      dep: ''
+- topic: Web libraries/frameworks
+  libraries:
+    - name: Scalatags
+      url: https://github.com/lihaoyi/scalatags
+      desc: HTML templating library/DSL that works on both Scala/JVM and Scala.js
+      dep: '"com.lihaoyi" %%% "scalatags" % "0.5.3"'
+    - name: Widok
+      url: https://widok.github.io/
+      desc: Reactive web framework for the JVM and Scala.js
+      dep: '"io.github.widok" %%% "widok" % "0.2.2"'
+    - name: ScalaJS Binding
+      url: https://github.com/antonkulaga/scala-js-binding
+      desc: Scala.js HTML binding library
+      dep: '"org.denigma" %%% "binding" % "0.8.0-M6"'
+- topic: Serialization/pickling libraries
+  libraries:
+    - name: uPickle
+      url: https://github.com/lihaoyi/upickle
+      desc: Statically-typed pickling (via typeclasses/macros) for both Scala and Scala.js
+      dep: '"com.lihaoyi" %%% "upickle" % "0.3.6"'
+    - name: BooPickle
+      url: https://github.com/ochrons/boopickle
+      desc: Highly efficient binary serialization for both Scala and Scala.js
+      dep: '"me.chrons" %%% "boopickle" % "1.1.0"'
+    - name: Prickle
+      url: https://github.com/benhutchison/prickle
+      desc: Statically-typed pickling library with support for pickling object graphs containing shared objects and cycles
+      dep: '"com.github.benhutchison" %%% "prickle" % "1.1.10"'
+    - name: Pushka
+      url: https://github.com/fomkin/pushka
+      desc: Pure Scala pickler with annotations
+      dep: '"com.github.fomkin" %%% "pushka-json" % "0.3.1"'
+    - name: Circe
+      url: https://github.com/travisbrown/circe
+      desc: Yet another JSON library for Scala (built with Cats and Shapeless)
+      dep: '"io.circe" %%% "circe-core" % "0.2.0", "io.circe" %%% "circe-parse" % "0.2.0", "io.circe" %%% "circe-generic" % "0.2.0"'
+    - name: Scala.js Pickling
+      url: https://github.com/scala-js/scala-js-pickling
+      desc: Pickling library based on explicit registration of picklers
+      dep: '"be.doeraene" %%% "scalajs-pickling" % "0.4.0"'
+- topic: Client-server communication
+  libraries:
+    - name: autowire
+      url: https://github.com/lihaoyi/autowire
+      desc: Cross-compiling statically-typed Ajax calls and RPCs
+      dep: '"com.lihaoyi" %%% "autowire" % "0.2.5"'
+- topic: FRP/reactive extensions
+  libraries:
+    - name: Scala.Rx
+      url: https://github.com/lihaoyi/scala.rx
+      desc: Change-propagation/FRP library
+      dep: '"com.lihaoyi" %%% "scalarx" % "0.2.8"'
+    - name: Monifu
+      url: https://github.com/alexandru/monifu
+      desc: Reactive extensions (Rx) with back-pressure, atomic references and other multi-threading primitives
+      dep: '"org.monifu" %%% "monifu" % "1.0-RC3"'
+- topic: Miscellaneous
+  libraries:
+    - name: Scala-Async
+      url: https://github.com/scala/async
+      desc: (works out-of-box with Scala.js)
+      dep: '"org.scala-lang.modules" %% "scala-async" % "0.9.5"'
+    - name: Scalaxy Streams
+      url: https://github.com/nativelibs4java/scalaxy-streams
+      desc: 'Make your Scala collections faster!'
+      dep: '"com.nativelibs4java" %% "scalaxy-streams" % "0.3.4" % "provided"'
+    - name: jsext
+      url: https://github.com/jducoeur/jsext
+      desc: Utilities for developing facades and working with Futures
+      dep: '"org.querki" %%% "querki-jsext" % "0.6"'
+    - name: slogging
+      url: https://github.com/jokade/slogging
+      desc: A simple logging library with an API compatible to scala-logging (and slf4j)
+      dep: '"biz.enef" %%% "slogging" % "0.3"'
+    - name: FastParse
+      url: http://lihaoyi.github.io/fastparse/
+      desc: Fast to write, fast-running parser-combinators in Scala/Scala.js
+      dep: '"com.lihaoyi" %%% "fastparse" % "0.3.1"'

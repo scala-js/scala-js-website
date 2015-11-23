@@ -1,8 +1,7 @@
 ---
-layout: page
-title: Frequently Asked Questions
+layout: doc
+title: Frequently asked questions
 ---
-{% include JB/setup %}
 
 ### How to structure a .sbt build to cross-compile with Scala and Scala.js?
 
@@ -10,7 +9,7 @@ The best way to do this is to have two sbt projects, with two different base
 directories that share a common source directory. This is easily done with the
 `sourceDirectory` or the `unmanagedSourceDirectories` setting of sbt.
 
-Please follow our [cross-building guide](./sbt/cross-building.html) for details.
+Please follow our [cross-building guide](./project/cross-build.html) for details.
 
 ### Can I use macros with Scala.js? What about compiler plugins?
 
