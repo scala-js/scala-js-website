@@ -16,7 +16,7 @@ It also brings the entire `java.nio.Buffer`s API, with interoperability with the
 ## Getting started
 
 If you are new to Scala.js, head over to
-[the tutorial]({{ BASE_PATH }}/doc/tutorial.html).
+[the tutorial]({{ BASE_PATH }}/tutorial/).
 
 ## Release notes
 

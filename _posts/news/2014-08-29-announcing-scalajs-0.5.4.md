@@ -36,23 +36,23 @@ For changes introduced in 0.5.0, how to upgrade, getting started etc. have a loo
 
 A few improvements have been made to `@JSExport`-related features, to export Scala.js APIs to JavaScript:
 
-* [Export methods with named arguments]({{ BASE_PATH }}/doc/export-to-javascript.html#JSExportNamed)
-* [Automatically export all public members of a class/object]({{ BASE_PATH }}/doc/export-to-javascript.html#JSExportAll)
-* [Export fields declared as constructor parameters]({{ BASE_PATH }}/doc/export-to-javascript.html#constructor-params)
+* [Export methods with named arguments]({{ BASE_PATH }}/doc/interoperability/export-to-javascript.html#JSExportNamed)
+* [Automatically export all public members of a class/object]({{ BASE_PATH }}/doc/interoperability/export-to-javascript.html#JSExportAll)
+* [Export fields declared as constructor parameters]({{ BASE_PATH }}/doc/interoperability/export-to-javascript.html#constructor-params)
 
 ### PhantomJS
 
 The interface to the PhantomJS interpreter has been enhanced with two features:
 
-* [Passing command-line arguments to PhantomJS]({{ BASE_PATH }}/doc/sbt/js-envs.html#phantomjs-arguments)
-* [Configuring PhantomJS not to terminate automatically when the `main()` method returns]({{ BASE_PATH }}/doc/sbt/js-envs.html#phantomjs-no-auto-terminate)
+* [Passing command-line arguments to PhantomJS]({{ BASE_PATH }}/doc/project/js-environments.html#phantomjs-arguments)
+* [Configuring PhantomJS not to terminate automatically when the `main()` method returns]({{ BASE_PATH }}/doc/project/js-environments.html#phantomjs-no-auto-terminate)
 * You can use `java.lang.System.exit(exitCode)` to explicitly terminate the PhantomJS environment
 
 ### Conversions
 
 The new object [JSConverters](http://www.scala-js.org/api/scalajs-library/0.5.4/#scala.scalajs.js.JSConverters$) provides extension methods to convert between JavaScript collections and Scala collections (maps, sequences and option).
 
-[More information in the documentation]({{ BASE_PATH }}/doc/js-interoperability.html)
+[More information in the documentation]({{ BASE_PATH }}/doc/interoperability/types.html)
 
 ### Source maps for fullOptJS
 
@@ -72,7 +72,7 @@ It is now able to determine whether it is used inside a Scala.js project or a Sc
 In the latter, it will be equivalent to `%%`.
 This allows to use `%%%` consistently for cross-compiling projects.
 
-[More information in the documentation]({{ BASE_PATH }}/doc/sbt/depending.html)
+[More information in the documentation]({{ BASE_PATH }}/doc/project/dependencies.html)
 
 ### Auto-detect whether the DOM is required
 

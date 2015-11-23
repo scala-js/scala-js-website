@@ -21,7 +21,7 @@ It brings significant advances to interoperability with JavaScript:
 ## Getting started
 
 If you are new to Scala.js, head over to
-[the tutorial]({{ BASE_PATH }}/doc/tutorial.html).
+[the tutorial]({{ BASE_PATH }}/tutorial/).
 
 ## Release notes
 
@@ -94,7 +94,7 @@ The class itself is not automatically visible; if you want it to be, you can `@J
 You can also use [`js.constructorOf[C]`]({{ site.production_url }}/api/scalajs-library/0.6.5/#scala.scalajs.js.package@constructorOf[T<:scala.scalajs.js.Any]:scala.scalajs.js.Dynamic) to obtain the JS constructor function and pass it to a JavaScript library.
 
 Scala.js-defined JS classes have JavaScript semantics instead of Scala semantics.
-You can read more about that in [the documentation]({{ BASE_PATH }}/doc/sjs-defined-js-classes.html).
+You can read more about that in [the documentation]({{ BASE_PATH }}/doc/interoperability/sjs-defined-js-classes.html).
 Most importantly, that means overloading dispatch is done at run-time instead of compile-time.
 
 You can also declare Scala.js-defined JS `object`s as singletons, just like `object`s in Scala.

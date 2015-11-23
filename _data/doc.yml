@@ -35,6 +35,9 @@
       url: /doc/interoperability/sjs-defined-js-classes.html
 - text: Scala.js API
   url: /doc/api.html
+  subitems:
+    - text: APIs of previous versions
+      url: /doc/all-api.html
 - text: Semantics of Scala.js
   url: /doc/semantics.html
 - text: Internals
