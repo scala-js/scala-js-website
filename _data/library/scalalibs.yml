@@ -4,6 +4,10 @@
       url: https://github.com/japgolly/scalaz
       desc: Library for functional programming.
       dep: '"com.github.japgolly.fork.scalaz" %%% "scalaz-core" % "7.1.2"'
+    - name: Each
+      url: https://github.com/ThoughtWorksInc/each
+      desc: A macro library that converts native imperative syntax to scalaz's monadic expressions.
+      dep: '"com.thoughtworks.each" %%% "each" % "0.4.2"'
     - name: Shapeless
       url: https://github.com/milessabin/shapeless
       desc: Generic programming for Scala.
