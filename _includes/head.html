@@ -6,7 +6,7 @@
     <meta name="author" content="">
     <link rel="shortcut icon" href="{{ "/assets/img/scala-js-logo-32.png" | prepend: site.baseurl }}">
 
-    <title>{{ site.title }}{% if page.title %} - {{ page.title }}{% endif %}</title>
+    <title>{% if page.title %} {{ page.title }} - {% endif %}{{ site.title }}</title>
 
     {% include ogp.html %}
     <!-- Bootstrap core CSS -->

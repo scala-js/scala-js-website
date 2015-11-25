@@ -1,16 +1,24 @@
 {% capture header %}
 
 {% if page.title %}
-<meta property="og:type" content="article" />
 <meta property="og:title" content="{{ page.title }}" />
+{% else %}
+<meta property="og:title" content="Scala.js" />
+{% endif %}
+
+{% if page.category == "news" %}
+<meta property="og:type" content="article" />
 {% else %}
 <meta property="og:type" content="website" />
 {% endif %}
 
-{% include meta.html property="og:site_name" content=site.title %}
+{% if page.description %}
+<meta property="og:description" content="{{ page.description }}" />
+{% else %}
+<meta property="og:description" content="{{ site.description }}" />
+{% endif %}
 
-{% capture page_url %}{{ page.url | replace:'/index.html','/' | prepend: site.url }}{% endcapture %}
-{% include meta.html property="og:url" content=page_url %}
+{% include meta.html property="og:site_name" content=site.title %}
 
 {% capture image_url %}{{ site.url | append: '/assets/img/scala-js-logo-256.png'}}{% endcapture %}
 {% include meta.html content=image_url property="og:image" %}
