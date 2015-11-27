@@ -16,4 +16,8 @@ redirect 301 /doc/sbt/ {{ BASE_PATH }}/doc/project/
 
 redirect 301 /downloads.html {{ BASE_PATH }}/doc/internals/downloads.html
 
-RewriteRule ^/community/libraries/(.*)$ /libraries/$1 [R=301,NC,L]
+redirect 301 /community/libraries/facades.html /libraries/facades.html
+redirect 301 /community/libraries/libs.html /libraries/libs.html
+redirect 301 /community/libraries/skeletons.html /libraries/skeletons.html
+redirect 301 /community/libraries/testing.html /libraries/testing.html
+redirect 301 /community/libraries/ /libraries/
