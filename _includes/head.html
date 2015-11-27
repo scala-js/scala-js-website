@@ -9,14 +9,9 @@
     <title>{% if page.title %} {{ page.title }} - {% endif %}{{ site.title }}</title>
 
     {% include ogp.html %}
-    <!-- Bootstrap core CSS -->
-    <link href="{{ "/assets/css/bootstrap.css" | prepend: site.baseurl }}" rel="stylesheet">
-    <link href="{{ "/assets/css/highlight.css" | prepend: site.baseurl }}" type="text/css" rel="stylesheet" media="screen,projection"/>
 
-    <!-- Custom styles for this template -->
-    <link href="{{ "/assets/css/style.css" | prepend: site.baseurl }}" rel="stylesheet">
-    <link href="{{ "/assets/css/font-awesome.min.css" | prepend: site.baseurl }}" rel="stylesheet">
-    <script src="https://cdn.rawgit.com/zenorocha/clipboard.js/master/dist/clipboard.min.js"></script>
+    {% css bundle %}
+
     <!--[if lt IE 9]>
       <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
       <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
