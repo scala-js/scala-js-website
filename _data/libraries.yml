@@ -1,0 +1,10 @@
+- text: Libraries
+  url: /libraries/
+- text: JavaScript libraries
+  url: /libraries/facades.html
+- text: Scala libraries
+  url: /libraries/libs.html
+- text: Testing frameworks
+  url: /libraries/testing.html
+- text: Skeletons
+  url: /libraries/skeletons.html
