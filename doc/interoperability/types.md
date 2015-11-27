@@ -321,5 +321,27 @@ or as
 js.Dynamic.literal("foo" -> 42, "bar" -> "foobar")
 {% endhighlight %}
 
+### Literal object construction using an Scala object interface
+Sometimes for a nicer interface, literal objects can be implimented using 
+a trait interface. 
+The above JavaScript code can be implemented using following code:
+
+{% highlight scala %}
+trait MyObject extends js.Object {
+  val foo: Int = js.native
+  val bar: String = js.native
+}
+{% endhighlight %}
+
+A Scala object should be added for typesafe creation, it would help the readability 
+of the code by removing lots of `js.Dynamic.literal` all over the code. 
+
+{% highlight scala %}
+object MyObject {
+  def apply(foo: Int, bar: String): MyObject = 
+    js.Dynamic.literal(foo = foo, bar = bar).asInstanceOf[MyObject]  
+}
+{% endhighlight %}
+
 Alternatively, you can use anonymous classes extending `js.Object` or a
 [Scala.js-defined JS trait](./sjs-defined-js-classes.html).
