@@ -1,7 +1,7 @@
 ### GENERAL SETTINGS ###
 
 # Gems
-gems: [jekyll-paginate]
+gems: [jekyll-paginate, jekyll-assets, sass]
 
 # Site settings
 title: Scala.js
@@ -13,6 +13,16 @@ url: "http://scala-js.org"
 exclude: ["*.iml"]
 production_url : http://www.scala-js.org
 
+assets:
+  prefix: "/assets"
+  gzip: [ text/css, application/javascript ]
+  digest: true
+  sources:
+    - _assets/css
+    - _assets/images
+    - _assets/fonts
+    - _assets/js
+
 # News
 paginate: 6
 paginate_path: "/news/page:num"
@@ -20,11 +30,22 @@ excerpt_separator: "<!--more-->"
 
 # Build settings
 markdown: kramdown
-permalink: /:categories/:title
+defaults:
+  -
+   scope:
+     type: pages
+   values:
+     permalink: /:path/:basename:output_ext
+  -
+   scope:
+     type: posts
+   values:
+     permalink: /:categories/:title
+
 excerpt_separator: <!--more--> #use this in posts to define how long the excerpt of the post (that is shown on the Blog page) is
 
 colors:  #in hex code if not noted else
-  primary: "#0077bd " #"#F70031"
+  primary: "#0077bd" #"#F70031"
   primary_rgb: "0,179,254" #"247,0,49" #rgb of the primary. Needed in some places for the transparency effect.  
   secondary: "#384452" #"#33004D"
   active: "#a44"

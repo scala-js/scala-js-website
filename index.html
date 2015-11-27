@@ -17,17 +17,17 @@ permalink: /
                 </div>
             </div>
         </div>
-        <!-- /row -->
+        
     </div>
-    <!-- /container -->
-</div><!-- /headerwrap -->
+    
+</div>
 
 <div id="service">
     <div class="container">
         <div class="row centered">
             <div class="col-md-4">
                 <div class="center-align">
-                    <i class="fa fa-check-square"></i>
+                    <i aria-hidden="true" class="fa fa-check-square"></i>
                     <h4>Correctness</h4>
                 </div>
                 Strong typing guarantees your code is free of silly mistakes; no more
@@ -38,7 +38,7 @@ permalink: /
             </div>
             <div class="col-md-4">
                 <div class="center-align">
-                    <i class="fa fa-rocket"></i>
+                    <i aria-hidden="true" class="fa fa-rocket"></i>
                     <h4>Performance</h4>
                 </div>
                 Scala.js optimizes your Scala code into
@@ -48,7 +48,7 @@ permalink: /
             </div>
             <div class="col-md-4">
                 <div class="center-align">
-                    <i class="fa fa-cogs"></i>
+                    <i aria-hidden="true" class="fa fa-cogs"></i>
                     <h4>Interoperability</h4>
                 </div>
                 Scala.js <a href="{{ site.baseurl }}/community/libraries/facades.html">loves JavaScript libraries</a>,
@@ -59,8 +59,7 @@ permalink: /
             </div>
         </div>
     </div>
-    <! --/container -->
-</div><! --/service -->
+</div>
 
 <div class="container mtb">
     <div class="row">
@@ -240,7 +239,7 @@ for (const [key, person] of personMap) {
   20 -> new Person("James Bond")
 )
 val names = for {
-  (key, person) <- personMap
+  (key, person) &lt;- personMap
   if key > 15
 } yield s"$key = ${person.firstName}"</code></pre>
         </div>
@@ -369,4 +368,3 @@ val names = for {
         </div>
     </div>
 </div>
-<! --/container -->

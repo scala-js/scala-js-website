@@ -1,7 +1,7 @@
 language: ruby
 rvm: 2.2.3
 install:
-  - gem install jekyll jekyll-paginate
+  - gem install -N jekyll jekyll-paginate jekyll-assets sass
 script:
   - jekyll build
 after_success:
