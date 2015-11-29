@@ -42,6 +42,10 @@
       url: https://github.com/antonkulaga/scala-js-binding
       desc: Scala.js HTML binding library
       dep: '"org.denigma" %%% "binding" % "0.8.0-M6"'
+    - name: ScalaCSS
+      url: https://github.com/japgolly/scalacss/
+      desc: 'ScalaCSS aims to bring type-safety and clarity to: creating CSS, using CSS, maintaining CSS and correctness of CSS'
+      dep: '"com.github.japgolly.scalacss" %% "core" % "0.3.1"'
 - topic: Serialization/pickling libraries
   libraries:
     - name: uPickle
@@ -84,6 +88,10 @@
       url: https://github.com/alexandru/monifu
       desc: Reactive extensions (Rx) with back-pressure, atomic references and other multi-threading primitives
       dep: '"org.monifu" %%% "monifu" % "1.0-RC3"'
+    - name: MetaRx
+      url: https://github.com/MetaStack-pl/MetaRx
+      desc: Reactive data structures for Scala and Scala.js
+      dep: '"pl.metastack" %%% "metarx" % "0.1.3"'
 - topic: Miscellaneous
   libraries:
     - name: Scala-Async

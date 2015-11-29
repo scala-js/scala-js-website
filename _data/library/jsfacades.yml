@@ -12,6 +12,10 @@
       url: https://github.com/jducoeur/jquery-facade
       desc: Alternate static types for jQuery -- less complete, more strongly typed
       dep: '"org.querki" %%% "jquery-facade" % "0.8"'
+    - name: jstree-facade
+      url: https://github.com/jducoeur/jstree-facade
+      desc: A Scala.js facade for the jsTree jQuery library
+      dep: '"org.querki" %%% "jstree-facade" % "0.1"'
     - name: scalajs-pouchdb
       url: https://github.com/chandu0101/scalajs-facades/tree/master/core/src/main/scala/chandu0101/scalajs/facades/pouchdb
       desc: Static types for PouchDB
@@ -56,6 +60,10 @@
       url: https://github.com/andreaferretti/paths-scala-js
       desc: A library to generate SVG charts and shapes (wrapper over [Paths.js](https://github.com/andreaferretti/paths-js))
       dep: '"eu.unicredit" %%% "paths-scala-js" % "0.3.2"'
+    - name: YouTube embedded player
+      url: https://github.com/coreyauger/scala-js-youtube
+      desc: Type safe and Scala friendly library for the embedded YouTube player API
+      dep: ''
 - topic: UI frameworks
   libraries:
     - name: scalajs-react
@@ -95,4 +103,8 @@
     - name: scalajs-velocity
       url: https://github.com/fancellu/scalajs-velocity
       desc: Scala.js bindings for [Velocity.js](http://julian.com/research/velocity/) animation library and example applications
+      dep: ''
+    - name: QRCodeDecoder
+      url: https://github.com/mkotsbak/scalajs-qcode-decoder
+      desc: Scala.Js wrapper for [QRCodeDecoder JS library](http://cirocosta.github.io/qcode-decoder) for decoding QR codes.
       dep: ''

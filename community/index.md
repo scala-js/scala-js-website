@@ -50,7 +50,7 @@ Use these Open Source projects to see how others have used Scala.js to build the
 - [Ray-Tracer](http://lihaoyi.github.io/workbench-example-app/raytracer.html), a ray-tracer written in Scala.js by Li Haoyi
 - [TodoMVC](http://lihaoyi.github.io/workbench-example-app/todo.html), an implementation of the [TodoMVC example application](http://todomvc.com/) using Scala.js, Scalatags, Scala.Rx and scala-js-dom, by Li Haoyi
 - [Port of the Dart benchmark harness](https://github.com/sjrd/scalajs-benchmarks)
-
+- [2048 Game in Scala](https://github.com/fijolekProjects/scalajs-react-2048), 2048 game clone made using scalajs-react in just 350 lines of Scala and 250 lines of CSS.
 ## Testimonials
 
 {% include testimonials.html %}
