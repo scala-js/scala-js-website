@@ -114,3 +114,7 @@
       url: http://lihaoyi.github.io/fastparse/
       desc: Fast to write, fast-running parser-combinators in Scala/Scala.js
       dep: '"com.lihaoyi" %%% "fastparse" % "0.3.1"'
+    - name: Nyaya
+      url: https://github.com/japgolly/nyaya
+      desc: Random data generation.
+      dep: ''
