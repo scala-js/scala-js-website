@@ -182,6 +182,7 @@ a:focus {
   color: $primary-color;
 }
 
+.navbar-default .navbar-nav > li > a:hover, .navbar-default .navbar-nav > li > a:focus,
 .navbar-default .navbar-nav > .active > a, .navbar-default .navbar-nav > .active > a:hover, .navbar-default .navbar-nav > .active > a:focus {
   color: $primary-color;
   background-color: transparent;
@@ -272,7 +273,7 @@ a:focus {
 
 .hline-w {
   border-bottom: 2px solid #ffffff;
-  margin-bottom: 25px;
+  margin-bottom: 12px;
 }
 
 #headerwrap {
@@ -438,13 +439,11 @@ a:focus {
 }
 
 #footerwrap i {
-  font-size: 30px;
-  color: $footer-content;
-  padding-right: 25px;
+  padding-left: 5px;
 }
 
-#footerwrap i:hover {
-  color: $primary-color;
+#footerwrap a:hover {
+  color: $primary-color !important;
 }
 
 #blue {
@@ -714,4 +713,33 @@ a[name]:before {
   opacity: 0.7;
   margin-top: 10px;
   margin-bottom: 10px !important;
+}
+
+#search-view {
+  position: relative;
+}
+
+#search-box {
+  display: none;
+  width: 300px;
+  height: 420px;
+  position: absolute;
+  padding: 10px 10px;
+  top: 50px;
+  left: auto;
+  right: 30px;
+  background: white;
+  z-index: 100;
+  box-shadow: 0px 10px 31px -15px rgba(0,0,0,1);
+}
+
+@media (max-width: 767px) {
+  #search-box {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    right: auto;
+  }
 }

@@ -1,7 +1,7 @@
 ### GENERAL SETTINGS ###
 
 # Gems
-gems: [jekyll-paginate, jekyll-assets, sass]
+gems: [jekyll-paginate, jekyll-assets, sass, execjs, uglifier]
 
 # Site settings
 title: Scala.js
@@ -15,7 +15,6 @@ production_url : http://www.scala-js.org
 
 assets:
   prefix: "/assets"
-  gzip: [ text/css, application/javascript ]
   digest: true
   sources:
     - _assets/css

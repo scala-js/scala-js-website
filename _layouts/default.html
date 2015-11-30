@@ -3,10 +3,16 @@
 {% include head.html %}
 <body>
 {% include nav.html %}
-<div id="wrap">
-<div id="main">
-{{ content }}
+<div id="search-view" class="container">
+    <div id="search-box">
+            <input type="text" class="form-control" placeholder="Search" id="search-term">
+        <div id="search-results" class="container"></div>
+    </div>
 </div>
+<div id="wrap">
+    <div id="main">
+        {{ content }}
+    </div>
 </div>
 {% include footer.html %}
 {% include js.html %}
