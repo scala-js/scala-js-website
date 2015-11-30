@@ -192,12 +192,12 @@ val names = persons.map(_.firstName)</code></pre>
         <div class="col-md-6 snippet snippet-es5" style="display: none;">
             <h6 class="code-block-header">JavaScript</h6>
             <pre><code class="javascript">var personMap = {
-  "10": new Person("Roger Moore"),
-  "20": new Person("James Bond")
+  "10": new Person("Roger", "Moore"),
+  "20": new Person("James", "Bond")
 };
 var names = [];
 for (var key in personMap) {
-  if (Object.prototype.hasOwnProperty.call(names, key)) {
+  if (Object.prototype.hasOwnProperty.call(personMap, key)) {
     if (parseInt(key) > 15) {
       names.push(key + " = " + personMap[key].firstName);
     }
@@ -207,8 +207,8 @@ for (var key in personMap) {
         <div class="col-md-6 snippet snippet-es6">
             <h6 class="code-block-header">ECMAScript 6</h6>
             <pre><code class="javascript">const personMap = new Map([
-  [10, new Person("Roger Moore")],
-  [20, new Person("James Bond")]
+  [10, new Person("Roger", "Moore")],
+  [20, new Person("James", "Bond")]
 ]);
 const names = [];
 for (const [key, person] of personMap) {
@@ -222,8 +222,8 @@ for (const [key, person] of personMap) {
             <pre><code class="typescript">/// &lt;reference path="dts/typescript/lib.es6.d.ts" /&gt;
 
 const personMap = new Map&lt;number, Person&gt;([
-  [10, new Person("Roger Moore")],
-  [20, new Person("James Bond")]
+  [10, new Person("Roger", "Moore")],
+  [20, new Person("James", "Bond")]
 ]);
 const names = new Array&lt;string&gt;();
 for (const [key, person] of personMap) {
@@ -235,8 +235,8 @@ for (const [key, person] of personMap) {
         <div class="col-md-6">
             <h6 class="code-block-header">Scala.js</h6>
             <pre><code class="scala">val personMap = Map(
-  10 -> new Person("Roger Moore"),
-  20 -> new Person("James Bond")
+  10 -> new Person("Roger", "Moore"),
+  20 -> new Person("James", "Bond")
 )
 val names = for {
   (key, person) &lt;- personMap
