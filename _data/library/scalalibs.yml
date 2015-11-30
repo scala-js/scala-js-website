@@ -45,7 +45,11 @@
     - name: ScalaCSS
       url: https://github.com/japgolly/scalacss/
       desc: 'ScalaCSS aims to bring type-safety and clarity to: creating CSS, using CSS, maintaining CSS and correctness of CSS'
-      dep: '"com.github.japgolly.scalacss" %% "core" % "0.3.1"'
+      dep: '"com.github.japgolly.scalacss" %%% "core" % "0.3.1"'
+    - name: Diode
+      url: https://github.com/ochrons/diode
+      desc: 'Diode is a Scala/Scala.js library for managing immutable application state with unidirectional data flow.'
+      dep: '"me.chrons" %%% "diode" % "0.1.0"'
 - topic: Serialization/pickling libraries
   libraries:
     - name: uPickle
