@@ -47,16 +47,11 @@ For more options of the PhantomJS environment, see
 
 ## <a name="node-on-ubuntu"></a> Node.js on Ubuntu
 
-On Ubuntu, the Node.js command from the [nodejs package](http://packages.ubuntu.com/utopic/nodejs) is called `nodejs` instead of `node` (when installed through the package manager). This will make the Node.js environment fail (since it simply calls `node`).
+The easiest way to handle Node.js versions and installations on Ubuntu (and in Linux systems in general) is to use [nvm](https://github.com/creationix/nvm). All instructions are included.
 
-You have two options to solve this:
+Then run `nvm` to install the version of Node.js that you want:
 
-1. Install [nodejs-legacy](http://packages.ubuntu.com/utopic/nodejs-legacy) which will add an alias called `node`
-2. Explicitly tell the Node.js environment the name of the command:
-
-{% highlight scala %}
-postLinkJSEnv := NodeJSEnv(executable = "nodejs").value
-{% endhighlight %}
+    nvm install 5.0
 
 For more options of the Node.js environment, see
 [the ScalaDoc of `NodeJSEnv`]({{ site.production_url }}/api/sbt-scalajs/{{ site.versions.scalaJS }}/#org.scalajs.sbtplugin.ScalaJSPlugin$$AutoImport$).
