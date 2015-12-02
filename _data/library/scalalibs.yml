@@ -16,10 +16,6 @@
       url: https://github.com/non/cats
       desc: Lightweight, modular, and extensible library for functional programming.
       dep: '"org.spire-math" %%% "cats" % "0.3.0"'
-    - name: NICTA/rng
-      url: https://github.com/japgolly/rng
-      desc: Pure-functional random value generation.
-      dep: '"com.github.japgolly.fork.nicta" %%% "rng" % "1.3.0-2"'
     - name: Monocle
       url: https://github.com/japgolly/Monocle
       desc: Optics library strongly inspired by Haskell [Lens](https://github.com/ekmett/lens).
@@ -98,9 +94,13 @@
       dep: '"pl.metastack" %%% "metarx" % "0.1.3"'
 - topic: Miscellaneous
   libraries:
+    - name: NICTA/rng
+      url: https://github.com/japgolly/rng
+      desc: Pure-functional random value generation.
+      dep: '"com.github.japgolly.fork.nicta" %%% "rng" % "1.3.0-2"'
     - name: Scala-Async
       url: https://github.com/scala/async
-      desc: (works out-of-box with Scala.js)
+      desc: An asynchronous programming facility for Scala/Scala.js.
       dep: '"org.scala-lang.modules" %% "scala-async" % "0.9.5"'
     - name: Scalaxy Streams
       url: https://github.com/nativelibs4java/scalaxy-streams
@@ -121,4 +121,12 @@
     - name: Nyaya
       url: https://github.com/japgolly/nyaya
       desc: Random data generation.
+      dep: '"com.github.japgolly.nyaya" %%% "nyaya-gen" % "0.6.0"'
+    - name: Workbench
+      url: https://github.com/lihaoyi/scala-js-workbench
+      desc: SBT plugin for Scala.JS live-reloading in the browser. (<a href="https://github.com/lihaoyi/workbench-example-app">example app</a>)
       dep: ''
+    - name: scalajs-benchmark
+      url: https://github.com/japgolly/scalajs-benchmark
+      desc: Write benchmarks in Scala or JS, run in your browser. (<a href="https://japgolly.github.io/scalajs-benchmark/">online demo</a>)
+      dep: '"com.github.japgolly.scalajs-benchmark" %%% "benchmark" % "0.2.0"'
