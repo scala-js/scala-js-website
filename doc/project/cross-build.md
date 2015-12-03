@@ -90,3 +90,15 @@ lazy val foo = crossProject.in(file(".")).
     libraryDependencies += "com.lihaoyi" %%% "scalatags" % "0.4.3"
   )
 {% endhighlight %}
+
+## Exporting shared classes to JavaScript
+
+When working with shared classes, you may want to export some of them to JavaScript.
+This is done with annotations as explained in [Export Scala.js APIs to JavaScript](../interoperability/export-to-javascript.html).
+
+These annotations are part of the Scala.js library which is not available on the Scala JVM project.
+In order for the annotated classes to compile on the JVM project, you should add the scalajs-stubs library to your JVM dependencies as "provided" (used only during compilation and not included at runtime):
+
+	libraryDependencies += "org.scala-js" %% "scalajs-stubs" % scalaJSVersion % "provided"
+
+[scalajs-stubs]({{ site.production_url }}/api/scalajs-stubs/latest/) is a tiny JVM (only) library containing Scala.js export annotations.
