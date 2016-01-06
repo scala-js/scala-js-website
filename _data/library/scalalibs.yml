@@ -24,8 +24,16 @@
       url: https://github.com/unicredit/akka.js
       desc: Toolkit and runtime for building concurrent, distributed applications
       dep: ''
+    - name: Binding.scala/core
+      url: https://github.com/ThoughtWorksInc/Binding.scala
+      desc: Reactive data-binding for both Scala.js and JVM
+      dep: 'libraryDependencies += "com.thoughtworks.binding" %%% "core" % "1.0.5"'
 - topic: Web libraries/frameworks
   libraries:
+    - name: Binding.scala/dom
+      url: https://github.com/ThoughtWorksInc/Binding.scala
+      desc: Reactive web framework for Scala.js
+      dep: 'libraryDependencies += "com.thoughtworks.binding" %%% "dom" % "1.0.5"'
     - name: Scalatags
       url: https://github.com/lihaoyi/scalatags
       desc: HTML templating library/DSL that works on both Scala/JVM and Scala.js
