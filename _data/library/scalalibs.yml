@@ -26,6 +26,10 @@
       dep: ''
 - topic: Web libraries/frameworks
   libraries:
+    - name: Binding.scala/dom
+      url: https://github.com/ThoughtWorksInc/Binding.scala
+      desc: Reactive web framework for Scala.js
+      dep: 'libraryDependencies += "com.thoughtworks.binding" %%% "dom" % "1.0.5"'
     - name: Scalatags
       url: https://github.com/lihaoyi/scalatags
       desc: HTML templating library/DSL that works on both Scala/JVM and Scala.js
@@ -92,6 +96,10 @@
       url: https://github.com/MetaStack-pl/MetaRx
       desc: Reactive data structures for Scala and Scala.js
       dep: '"pl.metastack" %%% "metarx" % "0.1.3"'
+    - name: Binding.scala/core
+      url: https://github.com/ThoughtWorksInc/Binding.scala
+      desc: Reactive data-binding for both Scala.js and JVM
+      dep: 'libraryDependencies += "com.thoughtworks.binding" %%% "core" % "1.0.5"'
 - topic: Miscellaneous
   libraries:
     - name: NICTA/rng
