@@ -64,6 +64,10 @@
       url: https://github.com/coreyauger/scala-js-youtube
       desc: Type safe and Scala friendly library for the embedded YouTube player API
       dep: ''
+    - name: scala-js-momentjs
+      url: https://github.com/widok/scala-js-momentjs
+      desc: '[Moment.js](http://momentjs.com/) facade'
+      dep: '"io.github.widok" %%% "scala-js-momentjs" % "0.1.4"'
 - topic: UI frameworks
   libraries:
     - name: scalajs-react
