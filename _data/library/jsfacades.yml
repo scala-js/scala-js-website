@@ -68,6 +68,10 @@
       url: https://github.com/widok/scala-js-momentjs
       desc: '[Moment.js](http://momentjs.com/) facade'
       dep: '"io.github.widok" %%% "scala-js-momentjs" % "0.1.4"'
+    - name: scalajs-highcharts
+      url: https://github.com/Karasiq/scalajs-highcharts
+      desc: Static types for [Highcharts](http://www.highcharts.com/)
+      dep: '"com.github.karasiq" %%% "scalajs-highcharts" % "1.0.8"'
 - topic: UI frameworks
   libraries:
     - name: scalajs-react
