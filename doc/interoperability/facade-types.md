@@ -236,19 +236,6 @@ object DOMGlobalScope extends js.GlobalScope {
 }
 {% endhighlight %}
 
-Note that this rule applies to package objects as well. It is often sensible
-to use package objects for this purpose, e.g.,
-
-{% highlight scala %}
-package org.scalajs
-
-package object dom extends js.GlobalScope {
-  val document: HTMLDocument = js.native
-
-  def alert(message: String): Unit = js.native
-}
-{% endhighlight %}
-
 ## Monkey patching
 
 In JavaScript, monkey patching is a common pattern, where some top-level
