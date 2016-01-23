@@ -27,6 +27,7 @@ assets:
 paginate: 6
 paginate_path: "/news/page:num"
 excerpt_separator: "<!--more-->"
+future: true
 
 # Build settings
 markdown: kramdown
@@ -57,7 +58,7 @@ colors:  #in hex code if not noted else
   
 ### VERSIONS ###
 versions:
-  scalaJS: 0.6.5
+  scalaJS: 0.6.6
   scalaJSBinary: 0.6
   scalaJSDOM: 0.8.2
 

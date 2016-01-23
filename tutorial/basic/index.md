@@ -33,13 +33,13 @@ enablePlugins(ScalaJSPlugin)
 
 name := "Scala.js Tutorial"
 
-scalaVersion := "2.11.5" // or any other Scala version >= 2.10.2
+scalaVersion := "2.11.7" // or any other Scala version >= 2.10.2
 {% endhighlight %}
 
 Last, we need a `project/build.properties` to specify the sbt version (>= 0.13.7):
 
 {% highlight scala %}
-sbt.version=0.13.7
+sbt.version=0.13.9
 {% endhighlight %}
 
 That is all we need to configure the build.
@@ -71,15 +71,14 @@ As you expect, this will simply print "HelloWorld" when run. To run this, simply
     Hello world!
     [success] (...)
 
-**Troubleshooting**: Should you experience errors with the `PermGen` size of the JVM at this point, you can increase it. Refer, for example, to [this StackOverflow question](http://stackoverflow.com/questions/8331135/transient-outofmemoryerror-when-compiling-scala-classes).
+**Troubleshooting on JDK <= 7**: Should you experience errors with the `PermGen` size of the JVM at this point, you can increase it. Refer, for example, to [this StackOverflow question](http://stackoverflow.com/questions/8331135/transient-outofmemoryerror-when-compiling-scala-classes).
 
 Congratulations! You have successfully compiled and run your first Scala.js application. The code is actually run by a JavaScript interpreter. If you do not believe this (it happens to us occasionally), you can use the `last` command in sbt:
 
     > last
     (...)
     [info] Running tutorial.webapp.TutorialApp
-    [debug] with JSEnv of type class org.scalajs.jsenv.rhino.RhinoJSEnv
-    [debug] with classpath of type class org.scalajs.core.tools.classpath.IRClasspath
+    [debug] with JSEnv RhinoJSEnv
     [success] (...)
 
 So your code has actually been executed by the [Rhino](https://developer.mozilla.org/en-US/docs/Mozilla/Projects/Rhino) JavaScript interpreter.
@@ -91,10 +90,10 @@ But it is *terribly* slow.
 In general, you do not want to use it for your day-to-day development.
 
 [Node.js](http://nodejs.org/) is a much more performant JavaScript engine.
-To run your code with Node.js, you need to install it, and enable
-`FastOptStage` in sbt using this command:
+To run your code with Node.js, you need to install it, and disable Rhino in sbt
+using this command:
 
-    > set scalaJSStage in Global := FastOptStage
+    > set scalaJSUseRhino in Global := false
     > run
     [info] Fast optimizing C:\Users\Sepi\Documents\Projets\scalajs-tutorial\target\scala-2.11\scala-js-tutorial-fastopt.js
     [info] Running tutorial.webapp.TutorialApp
@@ -106,18 +105,18 @@ The `last` command now shows that this was run with Node.js:
     > last
     (...)
     [info] Running tutorial.webapp.TutorialApp
-    [debug] with JSEnv of type class org.scalajs.jsenv.nodejs.NodeJSEnv
-    [debug] with classpath of type class org.scalajs.core.tools.classpath.LinkedClasspath
+    [debug] with JSEnv ExternalJSEnv for Node.js
+    [debug] Starting process: node
     [success] (...)
 
-The stage needs to be set once per sbt session.
+Disabling Rhino must be done once per sbt session.
 Alternatively, you can include the setting directly in your `build.sbt`, or,
 in order not to disturb your teammates, in a separate `.sbt` file (say,
 `local.sbt`):
 
-    scalaJSStage in Global := FastOptStage
+    scalaJSUseRhino in Global := false
 
-This will enable the fastOpt stage by default when launching sbt.
+This will enable Node.js by default when launching sbt.
 
 **Source maps in Node.js**: To get your stack traces resolved on Node.js, you will have to install the `source-map-support` package.
 
@@ -140,7 +139,7 @@ To generate a single JavaScript file using sbt, just use the `fastOptJS` task:
 
 This will perform some fast optimizations and generate the `target/scala-2.11/scala-js-tutorial-fastopt.js` file containing the JavaScript code.
 
-(It is possible that the `[info]` does not appear, if you have just run the program in fastOpt mode.)
+(It is possible that the `[info]` does not appear, if you have just run the program with Node.js.)
 
 ### Create the HTML Page
 
@@ -184,7 +183,7 @@ That's what the DOM API is for.
 To use the DOM, it is best to use the statically typed Scala.js DOM library. To add it to your sbt project, add the following line to your `build.sbt`:
 
 {% highlight scala %}
-libraryDependencies += "org.scala-js" %%% "scalajs-dom" % "0.8.0"
+libraryDependencies += "org.scala-js" %%% "scalajs-dom" % "0.8.2"
 {% endhighlight %}
 
 sbt-savvy folks will notice the `%%%` instead of the usual `%%`. It means we are using a Scala.js library and not a
@@ -209,7 +208,7 @@ import org.scalajs.dom
 import dom.document
 {% endhighlight %}
 
-`dom` is the root of the JavaScript DOM and corresponds to the global scope of Script (aka the `window` object).
+`dom` is the root of the JavaScript DOM and corresponds to the global scope of JavaScript (aka the `window` object).
 We additionally import `document` (which corresponds to `document` in JavaScript) for convenience.
 
 We now create a method that allows us to append a `<p>` tag with a given text to a given node:
@@ -278,7 +277,8 @@ Since we now have a method that is callable from JavaScript, all we have to do i
 `onclick` attribute (make sure to add the button *before* the `<script>` tags):
 
 {% highlight html %}
-<button id="click-me-button" type="button" onclick="tutorial.webapp.TutorialApp().addClickedMessage()">Click me!</button>
+<button id="click-me-button" type="button"
+    onclick="tutorial.webapp.TutorialApp().addClickedMessage()">Click me!</button>
 {% endhighlight %}
 
 Reload your HTML page (remember, sbt compiles your code automatically) and try to click the button. It should add a new
@@ -296,7 +296,7 @@ Just like for the DOM, there is a typed library for jQuery available in Scala.js
 `libraryDependencies += ..` line in your `build.sbt` by:
 
 {% highlight scala %}
-libraryDependencies += "be.doeraene" %%% "scalajs-jquery" % "0.8.0"
+libraryDependencies += "be.doeraene" %%% "scalajs-jquery" % "0.8.1"
 {% endhighlight %}
 
 Since we won't be using the DOM directly, we don't need the old library anymore. Note that the jQuery library internally
@@ -416,7 +416,7 @@ to your `build.sbt`:
 jsDependencies += RuntimeDOM
 {% endhighlight %}
 
-If you use the fastOpt stage, this will switch to running your code with [PhantomJS](http://phantomjs.org/) instead of
+If you disabled Rhino, this will switch to running your code with [PhantomJS](http://phantomjs.org/) instead of
 Node.js, which you need to install. Otherwise, in Rhino, a fake DOM is automatically made available.
 
 After reloading, you can invoke `run` successfully:
@@ -552,13 +552,17 @@ uses the advanced optimizations of the [Google Closure Compiler](http://develope
 full optimizations, simply use the `fullOptJS` task:
 
     > fullOptJS
-    [info] Optimizing (...)/scala-js-tutorial/target/scala-2.11/scala-js-tutorial-opt.js
+    [info] Full optimizing (...)/scala-js-tutorial/target/scala-2.11/scala-js-tutorial-opt.js
     [info] Closure: 0 error(s), 0 warning(s)
     [success] (...)
 
 Note that this can take a while on a larger project (tens of seconds), which is why we typically don't use `fullOptJS`
-during development, but `fastOptJS` instead. If you have used the `FastOptStage` before, there is a corresponding
-`FullOptStage` to run code after full optimization.
+during development, but `fastOptJS` instead. If you want to `run` and `test` the full-optimized version from sbt,
+you need to change the *stage* using the following sbt setting:
+
+    > set scalaJSStage in Global := FullOptStage
+
+(by default, the stage is `FastOptStage`)
 
 ### Automatically Creating a Launcher
 
