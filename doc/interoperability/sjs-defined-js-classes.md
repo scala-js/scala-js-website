@@ -40,10 +40,6 @@ Scala.js-defined JS types have the following restrictions:
 * Declaring a method with `@JSBracketSelect` or `@JSBracketCall` is illegal.
 * Mixing fields, pairs of getter/setter, and/or methods with the same name is illegal. (For example `def foo: Int` and `def foo(x: Int): Int` cannot both exist in the same class.)
 
-There is also one implementation restriction, which will be lifted in a future version:
-
-* A Scala.js-defined JS class cannot have secondary constructors, and its primary constructor cannot have default parameters nor repeated parameters (varargs).
-
 
 ## Semantics
 
@@ -275,3 +271,29 @@ It can be a native JS class or a Scala.js-defined JS class.
 The method returns the JavaScript constructor function (aka the class value) for `C`.
 
 This can be useful to give to JavaScript libraries expecting constructor functions rather than instances of the classes.
+
+### `js.ConstructorTag[C]`
+
+[`js.ConstructorTag[C]`]({{ site.production_url }}/api/scalajs-library/latest/#scala.scalajs.js.ConstructorTag) is to [`js.constructorOf[C]`]({{ site.production_url }}/api/scalajs-library/latest/#scala.scalajs.js.package@constructorOf[T<:scala.scalajs.js.Any]:scala.scalajs.js.Dynamic) as `ClassTag[C]` is to `classOf[C]`, i.e., you can use an `implicit` parameter of type `js.ConstructorTag[C]` to implicitly get a `js.constructorOf[C]`.
+For example:
+
+{% highlight scala %}
+def instantiate[C <: js.Any : js.ConstructorTag]: C =
+  js.Dynamic.newInstance(js.constructorTag[C].constructor)().asInstanceOf[C]
+  
+val newEmptyJSArray = instantiate[js.Array[Int]]
+{% endhighlight %}
+
+Implicit expansion will desugar the above code into:
+
+{% highlight scala %}
+def instantiate[C <: js.Any](implicit tag: js.ConstructorTag[C]): C =
+  js.Dynamic.newInstance(tag.constructor)().asInstanceOf[C]
+  
+val newEmptyJSArray = instantiate[js.Array[Int]](
+    new js.ConstructorTag[C](js.constructorOf[js.Array[Int]]))
+{% endhighlight %}
+
+although you cannot write the desugared version in user code because the constructor of `js.ConstructorTag` is private.
+
+This feature is particularly useful for Scala.js libraries wrapping JavaScript frameworks expecting to receive JavaScript constructors as parameters.

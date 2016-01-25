@@ -3,17 +3,14 @@ layout: doc
 title: JavaScript Environments
 ---
 
-In order to decide how to run JavaScript code, the Scala.js sbt plugin uses the following two setting keys:
-
-- `preLinkJSEnv`: the JavaScript Environment (i.e. virtual machine) used to run unlinked `.sjsir` files (defaults to Rhino)
-- `postLinkJSEnv`: the JavaScript Environment used to run linked JavaScript (defaults to Node.js if DOM is not required, otherwise PhantomJS)
-
-You may change these environments at your discretion. However, note that running Rhino on linked JavaScript and Node.js or PhantomJS on unlinked JavaScript is unlikely to work or at least slow.
+In order to decide how to run JavaScript code, the Scala.js sbt plugin uses the setting key `jsEnv`.
+If it is not set, Scala.js uses Rhino if `scalaJSUseRhino` is `true`, and to Node.js or PhantomJS otherwise (depending on whether the DOM is required).
+You can use `jsEnv` to override this default, or to provide finer-grained configuration, as shown in this section.
 
 For example, to switch to PhantomJS, you can set:
 
 {% highlight scala %}
-postLinkJSEnv := PhantomJSEnv().value
+jsEnv := PhantomJSEnv().value
 {% endhighlight %}
 
 We'd like to stress here again, that you need to separately install Node.js and PhantomJS if you would like to use these environments.
@@ -25,7 +22,7 @@ This may not be what you want, if for example you register time-outs or use WebS
 You can disable this behavior with the following setting:
 
 {% highlight scala %}
-postLinkJSEnv := PhantomJSEnv(autoExit = false).value
+jsEnv := PhantomJSEnv(autoExit = false).value
 {% endhighlight %}
 
 You can terminate the interpreter from your Scala code with
@@ -39,7 +36,7 @@ System.exit(0)
 You can pass command-line arguments to the PhantomJS interpreter like this:
 
 {% highlight scala %}
-postLinkJSEnv := PhantomJSEnv(args = Seq("arg1", "arg2")).value
+jsEnv := PhantomJSEnv(args = Seq("arg1", "arg2")).value
 {% endhighlight %}
 
 For more options of the PhantomJS environment, see

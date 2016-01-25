@@ -18,42 +18,33 @@ You now can run your application already by using the `run` task:
 This will detect and run classes that extend
 [`js.JSApp`]({{ site.production_url }}/api/scalajs-library/{{ site.versions.scalaJS }}/#scala.scalajs.js.JSApp), while optionally prompting the user to choose a class if multiple such classes exist (fails with multiple classes if `persistLauncher := true`, see section below for details).
 
-To run the `.sjsir` files, we invoke the Rhino JavaScript interpreter with a special scope that lazily reads and loads required `.sjsir` files on the fly (much like Java class loading).
+By default, to run the `.sjsir` files, we invoke the Rhino JavaScript interpreter with a special scope that lazily reads and loads required `.sjsir` files on the fly (much like Java class loading).
 Note that by default, this environment doesn't have a DOM.
 If you need it set `jsDependencies += RuntimeDOM` in your settings.
 
-## Fast-Optimize
+## Running with Node.js or PhantomJS
+
+Since Rhino is very slow and limited, we recommend to use [Node.js](http://nodejs.org/) or [PhantomJS](http://phantomjs.org/) instead of Rhino.
+You can disable Rhino with the following sbt setting:
+
+    scalaJSUseRhino in Global := false
+
+which you can put in your `build.sbt`, or in a separate `.sbt` file, e.g.,
+`local.sbt`, which is not checked in your version control.
+
+If `RuntimeDOM` is required, `run` (and `test`) will use PhantomJS.
+Otherwise, it will use Node.js.
+*You need to install these separately* and make them available on the execution path (i.e. as shell commands `node` and `phantomjs`).
+
+The section on [JavaScript environments](./js-environments.html) explains more on the topic, including finer-grained configuration.
+
+## Produce one JavaScript file
 
 To produce a proper JavaScript file from your code, you need to call the linker:
 
     sbt> fastOptJS
 
 This will perform fast Scala.js-specific optimizations and write the resulting code to a single JavaScript file. You can now use this JavaScript file in your HTML page or in whatever way you like. The resulting file in the target folder will have the suffix `-fastopt.js`.
-
-If you want to run this code, you can do so by enabling the fastOpt stage with
-
-    sbt> set scalaJSStage in Global := FastOptStage
-    sbt> run
-
-This will invoke an external JavaScript interpreter and pass the generated file to it.
-Depending on your `requiresDOM` setting (which is derived from the presence of `RuntimeDOM` in your `jsDependencies`), it will either invoke [Node.js](http://nodejs.org/) or [PhantomJS](http://phantomjs.org/).
-*You need to install these separately* and make them available on the execution path (i.e. as shell commands `node` and `phantomjs`).
-
-Note that running in the `fastOptStage` is often faster than running just after compilation because:
-
-a. As their name implies, fast optimizations are *really* fast (starting from the second run in an sbt session),
-b. External virtual machines are much faster than Rhino, and
-c. The code is, well, optimized, so faster itself.
-
-We recommend you to operate in the `fastOpt` stage in your development cycle.
-You can enable it by default with the following sbt setting:
-
-{% highlight scala %}
-scalaJSStage in Global := FastOptStage
-{% endhighlight %}
-
-which you can put in your `build.sbt`, or in a separate `.sbt` file, e.g.,
-`local.sbt`, which is not checked in your version control.
 
 ### Disabling the optimizations
 
