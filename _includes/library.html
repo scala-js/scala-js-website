@@ -29,4 +29,6 @@
     {% endfor %}
     </tbody>
 </table>
-<script>new Clipboard('.btn-clipboard');</script>
+<script>
+onloadFunctions.push(function() {new Clipboard('.btn-clipboard')});
+</script>

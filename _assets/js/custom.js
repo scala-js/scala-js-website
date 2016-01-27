@@ -10,3 +10,7 @@
 })();
 
 hljs.initHighlightingOnLoad();
+
+$(document).ready(function () {
+  onloadFunctions.forEach(function(f) { f() });
+});
