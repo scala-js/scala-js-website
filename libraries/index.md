@@ -17,3 +17,10 @@ Make sure your code starts correct and stays correct.
 ### [Project Skeletons](skeletons.html)
 Get started quickly.
 
+### Add a Scala.js badge on your library site
+
+Show your true colors by adding a Scala.js badge on your site! Select the lowest Scala.js version your library is compatible with.
+
+{% include badge-generator.html %}
+
+<small markdown="1">Badge images generated with <a href="https://shields.io">shields.io</a></small>

@@ -1,6 +1,6 @@
 <form class="form-horizontal" id="shield-form">
   <div class="form-group">
-    <label for="version" class="col-sm-2 control-label">Version</label>
+    <label for="version-sel" class="col-sm-2 control-label">Version</label>
     <div class="col-sm-4">
       <select class="form-control" id="version-sel">
         {% for item in site.data.library.versions reversed %}
@@ -10,7 +10,7 @@
     </div>
   </div>
   <div class="form-group">
-    <label for="style" class="col-sm-2 control-label">Style</label>
+    <label for="style-sel" class="col-sm-2 control-label">Style</label>
     <div class="col-sm-4">
       <select class="form-control" id="style-sel">
         <option>Markdown</option>
@@ -19,7 +19,7 @@
     </div>
   </div>
   <div class="form-group">
-    <label for="style" class="col-sm-2 control-label">Preview</label>
+    <label class="col-sm-2 control-label">Preview</label>
     <div class="col-sm-4">
       <img id="shield" src="">
     </div>
@@ -27,12 +27,13 @@
   <div class="form-group">
     <label for="shieldCode" class="col-sm-2 control-label">Code</label>
     <div class="col-sm-9">
-      <input type="text" id="shieldCode" class="form-control" rows="1" style="font-family:monospace;font-size:0.8em;"></input>
+      <input type="text" id="shieldCode" class="form-control" style="font-family:monospace;font-size:0.8em;">
     </div>
     <div class="col-sm-1">
       <div class="div-clipboard">
       <button id="shieldCodeBtn" class="btn btn-default btn-xs btn-clipboard" data-clipboard-text='' title='Copy to clipboard'><img
-          class="clippy" width="13" src="{{ "/assets/img/clippy.svg" | prepend: site.baseurl }}"></img></button>
+          class="clippy" width="13" src="{{ "/assets/img/clippy.svg" | prepend: site.baseurl }}">
+      </button>
       </div>
     </div>
   </div>
@@ -43,8 +44,8 @@ onloadFunctions.push(function() {
     var version = $("#version-sel").val();
     var style = $("#style-sel").val();
     $("#shield").attr("src", "/assets/badges/scalajs-"+version+".svg");
-    var code = style == "Markdown" ? "[![Scala.js](http://scala-js.org/assets/badges/scalajs-"+version+".svg)](http://scala-js.org)" :
-      '<img src="http://scala-js.org/assets/badges/scalajs-'+version+'.svg">';
+    var code = style == "Markdown" ? "[![Scala.js](https://www.scala-js.org/assets/badges/scalajs-"+version+".svg)](https://www.scala-js.org)" :
+      '<img src="https://www.scala-js.org/assets/badges/scalajs-'+version+'.svg">';
     $("#shieldCode").val(code);
     $("#shieldCodeBtn").attr("data-clipboard-text", code);
   }
