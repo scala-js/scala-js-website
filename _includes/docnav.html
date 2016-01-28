@@ -11,7 +11,7 @@
             {% endif %}
         </a>
     </li>
-    {% if item.subitems and navurl contains item.url %}
+    {% if item.subitems %}
       {% include docnav.html nav=item.subitems %}
     {% endif %}
     {% endfor %}
