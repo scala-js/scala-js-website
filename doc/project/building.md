@@ -75,5 +75,7 @@ You can run your code and tests in fullOpt stage with the following command:
 ## Writing Launcher Code
 
 If you want the code which is used to run the main class to be written to a file, you can set `persistLauncher := true`.
-Note that this will require your main class to be either unique or explicitly set (`mainClass := Some(<name>)`).
+Note that this will require your main class to be either unique or explicitly set (`mainClass in Compile := Some(<name>)`).
+If you explicitly set `mainClass`, note that it needs to be set on a per-configuration basis (i.e. the part `in Compile` is essential, otherwise the setting will be ignored). For further information see the Stack Overflow entry ['How to set mainClass in ScalaJS build.sbt?'](http://stackoverflow.com/questions/34965072/how-to-set-mainclass-in-scalajs-build-sbt) (specific to Scala.js) and the Stack Overflow entry ['How to set main class in build?'](http://stackoverflow.com/questions/6467423/how-to-set-main-class-in-build) (not specific to Scala.js).
+
 The resulting file in the target folder will have the suffix `-launcher.js`.
