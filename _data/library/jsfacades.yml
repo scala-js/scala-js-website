@@ -3,11 +3,11 @@
     - name: scala-js-dom
       url: https://github.com/scala-js/scala-js-dom
       desc: Static types for the DOM API, plus a few extensions
-      dep: '"org.scala-js" %%% "scalajs-dom" % "0.8.2"'
+      dep: '"org.scala-js" %%% "scalajs-dom" % "0.9.0"'
     - name: scalajs-jquery
       url: https://github.com/scala-js/scala-js-jquery
       desc: Static types for jQuery
-      dep: '"be.doeraene" %%% "scalajs-jquery" % "0.8.1"'
+      dep: '"be.doeraene" %%% "scalajs-jquery" % "0.9.0"'
     - name: jquery-facade
       url: https://github.com/jducoeur/jquery-facade
       desc: Alternate static types for jQuery -- less complete, more strongly typed
