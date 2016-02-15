@@ -183,7 +183,7 @@ That's what the DOM API is for.
 To use the DOM, it is best to use the statically typed Scala.js DOM library. To add it to your sbt project, add the following line to your `build.sbt`:
 
 {% highlight scala %}
-libraryDependencies += "org.scala-js" %%% "scalajs-dom" % "0.8.2"
+libraryDependencies += "org.scala-js" %%% "scalajs-dom" % "0.9.0"
 {% endhighlight %}
 
 sbt-savvy folks will notice the `%%%` instead of the usual `%%`. It means we are using a Scala.js library and not a
@@ -296,7 +296,7 @@ Just like for the DOM, there is a typed library for jQuery available in Scala.js
 `libraryDependencies += ..` line in your `build.sbt` by:
 
 {% highlight scala %}
-libraryDependencies += "be.doeraene" %%% "scalajs-jquery" % "0.8.1"
+libraryDependencies += "be.doeraene" %%% "scalajs-jquery" % "0.9.0"
 {% endhighlight %}
 
 Since we won't be using the DOM directly, we don't need the old library anymore. Note that the jQuery library internally
@@ -347,6 +347,8 @@ In your `build.sbt`, set:
 
 {% highlight scala %}
 skip in packageJSDependencies := false
+jsDependencies +=
+  "org.webjars" % "jquery" % "2.1.4" / "2.1.4/jquery.js"
 {% endhighlight %}
 
 After reloading and rerunning `fastOptJS`, this will create `scala-js-tutorial-jsdeps.js` containing all JavaScript
@@ -408,9 +410,9 @@ issue. Remember the task `run`? If you try to invoke it now, you will see someth
     [error] (compile:run) Exception while running JS code: ReferenceError: "window" is not defined. (/home/ts/.ivy2/cache/org.webjars/jquery/jars/jquery-1.10.2.jar#META-INF/resources/webjars/jquery/1.10.2/jquery.js#14)
     [error] (...)
 
-What basically happens here is that jQuery (yes, it is included automatically) tries to access the `window` object of
-the DOM, which doesn't exist by default in the Rhino and Node.js runners. To make the DOM available, add the following
-to your `build.sbt`:
+What basically happens here is that jQuery (which is automatically included because of `jsDependencies`) tries to
+access the `window` object of the DOM, which doesn't exist by default in the Rhino and Node.js runners. To make the
+DOM available, add the following to your `build.sbt`:
 
 {% highlight scala %}
 jsDependencies += RuntimeDOM
@@ -436,7 +438,6 @@ For uTest, these are:
 
 {% highlight scala %}
 libraryDependencies += "com.lihaoyi" %%% "utest" % "0.3.0" % "test"
-
 testFrameworks += new TestFramework("utest.runner.Framework")
 {% endhighlight %}
 
