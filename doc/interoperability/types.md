@@ -322,7 +322,7 @@ js.Dynamic.literal("foo" -> 42, "bar" -> "foobar")
 {% endhighlight %}
 
 ### Literal object construction using an Scala object interface
-Sometimes for a nicer interface, literal objects can be implimented using 
+Sometimes for a nicer interface, literal objects can be implemented using
 a trait interface. 
 The above JavaScript code can be implemented using following code:
 
