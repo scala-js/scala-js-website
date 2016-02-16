@@ -21,6 +21,10 @@ Get started quickly.
 
 Show your true colors by adding a Scala.js badge on your site! Select the lowest Scala.js version your library is compatible with.
 
+If you don't find your version of Scala.js, that's probably because it is forward-compatible with its predecessor,
+in which case you should take the latest available version older than your version of Scala.js.
+For example, for Scala.js 0.6.7, use the 0.6.6+ badge.
+
 {% include badge-generator.html %}
 
 <small markdown="1">Badge images generated with <a href="https://shields.io">shields.io</a></small>
