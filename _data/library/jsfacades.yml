@@ -20,6 +20,10 @@
       url: https://github.com/chandu0101/scalajs-facades/tree/master/core/src/main/scala/chandu0101/scalajs/facades/pouchdb
       desc: Static types for PouchDB
       dep: ''
+    - name: scalajs-bootstrap
+      url: https://github.com/Karasiq/scalajs-bootstrap
+      desc: Reactive [Bootstrap](https://getbootstrap.com/) components
+      dep: '"com.github.karasiq" %%% "scalajs-bootstrap" % "1.0.2"'
     - name: bootstrap-datepicker-facade
       url: https://github.com/jducoeur/bootstrap-datepicker-scalajs
       desc: Static types for [bootstrap-datepicker](https://github.com/eternicode/bootstrap-datepicker)
