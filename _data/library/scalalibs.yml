@@ -24,6 +24,10 @@
       url: https://github.com/unicredit/akka.js
       desc: Toolkit and runtime for building concurrent, distributed applications
       dep: ''
+    - name: scalajs-java-time
+      url: https://github.com/scala-js/scala-js-java-time
+      desc: Port of the java.time API of JDK8 for Scala.js
+      dep: '"org.scala-js" %%% "scalajs-java-time" % "0.1.0"'
 - topic: Web libraries/frameworks
   libraries:
     - name: Binding.scala/dom
