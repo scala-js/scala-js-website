@@ -113,7 +113,7 @@ def `val`(v: String): this.type = js.native
 {% endhighlight %}
 
 However, it becomes annoying very quickly. An often better solution is to use
-the `scala.js.annotation.JSName` annotation to specify the JavaScript name to
+the `scala.scalajs.js.annotation.JSName` annotation to specify the JavaScript name to
 use, which can be different from the Scala name:
 
 {% highlight scala %}
@@ -129,7 +129,7 @@ the same `@JSName`.
 
 ## Scala methods representing bracket access (`obj[x]`)
 
-The annotation `scala.js.annotation.JSBracketAccess` can be used on methods to
+The annotation `scala.scalajs.js.annotation.JSBracketAccess` can be used on methods to
 mark them as representing bracket access on an object. The target method must
 either have one parameter and a non-Unit result type (in which case it
 represents read access) or two parameters and a Unit result type (in which case
@@ -161,7 +161,7 @@ in the global scope.
 
 If it is impractical or inconvenient to declare the Scala class with the
 same name as the JavaScript class (e.g., because it is defined in a namespace,
-like `THREE.Scene`), the annotation `scala.js.annotation.JSName` can be used
+like `THREE.Scene`), the annotation `scala.scalajs.js.annotation.JSName` can be used
 to specify the JavaScript name:
 
 {% highlight scala %}
