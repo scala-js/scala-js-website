@@ -22,6 +22,8 @@
       url: /doc/project/js-environments.html
     - text: Cross-building
       url: /doc/project/cross-build.html
+    - text: Testing
+      url: /doc/project/testing.html  
 - text: JavaScript interoperability
   url: /doc/interoperability/
   subitems:

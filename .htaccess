@@ -1,5 +1,11 @@
 ---
 ---
+
+{% comment %}
+Update this file if you have an entry that you are moving around.
+Don't update this file if you are adding a new entry.
+{% endcomment %}
+
 redirect 301 /doc/tutorial.html {{ BASE_PATH }}/tutorial/basic/
 
 redirect 301 /doc/calling-javascript.html {{ BASE_PATH }}/doc/interoperability/facade-types.html
