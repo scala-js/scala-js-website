@@ -10,7 +10,7 @@ more useful design patterns and features, to get you started quickly.
 
 ## Pattern matching
 
-In the Basics part we already saw simple examples of _pattern matching_ as a replacement for JavaScript's `switch`
+In the Basics part we already saw simple examples of *pattern matching* as a replacement for JavaScript's `switch`
 statement. However, it can be used for much more, for example checking the type of input.
 
 {% columns %}
@@ -51,8 +51,8 @@ def printType(o: Any): Unit = {
 {% endcolumn %}
 {% endcolumns %}
 
-Pattern matching uses something called _partial functions_ which means it can be used in place of regular functions, for
-example in a call to `filter` or `map`. You can also add a _guard clause_ in the form of an `if`, to limit the match. If
+Pattern matching uses something called *partial functions* which means it can be used in place of regular functions, for
+example in a call to `filter` or `map`. You can also add a *guard clause* in the form of an `if`, to limit the match. If
 you need to match to a variable, use backticks to indicate that.
 
 {% columns %}
@@ -260,10 +260,224 @@ Here we use triple-quoted strings that allow us to write regex without escaping 
 converted into a {% scaladoc util.matching.Regex %} object with the `.r` method. Because regexes extract strings, we need
 to convert matched groups to integers ourselves.
 
+## Functions revisited
+
+We covered the basic use functions in [Part 1](es6-to-scala-part1.html), but Scala, being a functional programming
+language, provides much more when it comes to functions. Let's explore some of the more advanced features and how they
+compare to JavaScript.
+
+#### Higher-order functions
+
+Scala, as JavaScript, allows the definition of higher-order functions. These are functions that take other functions as
+parameters, or whose result is a function. Higher-order functions should be familiar to JavaScript developers, because
+they often appear in form of functions that take callbacks as parameters.
+
+Typically higher-order functions are used to pass specific functionality to a general function, like in the case of
+`Array.prototype.filter` in ES6 or `Seq.filter` in Scala. We can use this to build a function to calculate a minimum and
+maximum from a sequence of values, using a function to extract the target value.
+
+{% columns %}
+{% column 6 ES6 %}
+{% highlight javascript %}
+function minmaxBy(arr, f) {
+  return arr.reduce(
+    ([min, max], e) => {
+      const v = f(e);
+      return [Math.min(min, v), Math.max(max, v)]
+    }, 
+    [Number.MAX_VALUE, Number.MIN_VALUE]
+  )
+}
+const [youngest, oldest] = minmaxBy(persons, e => e.age);
+{% endhighlight %}
+{% endcolumn %}
+
+{% column 6 Scala %}
+{% highlight scala %}
+def minmaxBy[T](seq: Seq[T], f: T => Int): (Int, Int) = {
+  seq.foldLeft((Int.MaxValue, Int.MinValue)) {
+    case ((min, max), e) =>
+      val v = f(e)
+      (math.min(min, v), math.max(max, v))
+  }
+}
+val (youngest, oldest) = minmaxBy[Person](persons, _.age)
+{% endhighlight %}
+{% endcolumn %}
+{% endcolumns %}
+
+#### Call-by-Name
+
+In some cases you want to *defer* the evaluation of a parameter value until when it's actually used in the function. For
+this purpose Scala offers *call-by-name* parameters. This can be useful when dealing with an expensive computation that
+is only optionally used by the function. In JavaScript the closest thing to this is to wrap a value in an anonymous
+function with no arguments and pass *that* as a parameter, but that's more verbose and error-prone. You need to remember
+to both wrap the value and call the function.
+
+{% columns %}
+{% column 6 ES6 %}
+{% highlight javascript %}
+function compute(value, cPos, cNeg) {
+  if (value >= 0)
+    return cPos();
+  else
+    return cNeg();
+}
+
+compute(x, () => expCalc(), () => expCalc2());
+{% endhighlight %}
+{% endcolumn %}
+
+{% column 6 Scala %}
+{% highlight scala %}
+def compute(value: Int, cPos: => Int, cNeg: => Int) = {
+  if (value >= 0)
+    cPos
+  else
+    cNeg
+}
+
+compute(x, expCalc, expCalc2)
+{% endhighlight %}
+{% endcolumn %}
+{% endcolumns %}
+
+#### Recursive functions
+
+Recursive functions can be very expressive, but they may also cause spurious stack overflows if the recursion gets too
+deep. Scala automatically optimizes recursive functions that are *tail recursive*, allowing you to use them without
+fear of overflowing the stack. To make sure your function is actually tail recursive, use the `@tailrec` annotation,
+which will cause the Scala compiler to report an error if your function is not tail recursive.
+
+Before ES6, JavaScript did not support tail call optimization, nor optimizing tail recursive functions. If you use a
+smart ES6 transpiler, it can actually convert a tail recursive function into a `while` loop, but there are no checks
+available to help you to verify the validity of tail recursion.
+
+{% columns %}
+{% column 6 ES6 %}
+{% highlight javascript %}
+function fib(n) {
+  function fibIter(n, next, prev) {
+    if (n === 0) {
+      return prev;
+    } else {
+      return fibIter(n - 1, next + prev, next);
+    }
+  };
+  return fibIter(n, 1, 0);
+}
+{% endhighlight %}
+{% endcolumn %}
+
+{% column 6 Scala %}
+{% highlight scala %}
+def fib(n: Int): Int = {
+  @tailrec 
+  def fibIter(n: Int, next: Int, prev: Int): Int = {
+    if (n == 0)
+      prev
+    else
+      fibIter(n - 1, next + prev, next)
+  }
+  fibIter(n, 1, 0)
+}
+{% endhighlight %}
+{% endcolumn %}
+{% endcolumns %}
+
+
+#### Partially applied functions
+
+In Scala you can call a function with only some of its arguments and get back a function taking those missing arguments.
+You do this by using `_` in place of the actual parameter. In JavaScript you can achieve the same by using the
+`Function.prototype.bind` function (although it limits you to providing parameters from left to right). For example we
+can define a function to create HTML tags by wrapping content within start and end tags.
+
+{% columns %}
+{% column 6 ES6 %}
+{% highlight javascript %}
+function tag(name, content) {
+  return `<${name}>${content}</${name}>` 
+}
+
+const div = tag.bind(null, "div");
+const p = tag.bind(null, "p");
+const html = div(p("test")); // <div><p>test</p></div>
+{% endhighlight %}
+{% endcolumn %}
+
+{% column 6 Scala %}
+{% highlight scala %}
+def tag(name: String, content: String) = {
+  s"<$name>$content</$name>"
+}
+
+val div = tag("div", _: String)
+val p = tag("p", _: String)
+val html = div(p("test")) // <div><p>test</p></div>
+{% endhighlight %}
+{% endcolumn %}
+{% endcolumns %}
+
+#### Multiple parameter lists
+
+Scala allows a function to be defined with multiple parameter lists. In Scala this is quite common as it provides some
+powerful secondary benefits besides the usual currying functionality. JavaScript does not directly support multiple
+parameter lists in its syntax, but you can emulate it by returning a chain of functions, or by using libraries like
+[lodash](https://lodash.com/docs#curry) that do it for you.
+
+Let's use currying to define the `tag` function from previous example.
+
+{% columns %}
+{% column 6 ES6 %}
+{% highlight javascript %}
+function tag(name) {
+  return (content) => `<${name}>${content}</${name}>`; 
+}
+
+const div = tag("div");
+const p = tag("p");
+const html = div(p("test")); // <div><p>test</p></div>
+{% endhighlight %}
+{% endcolumn %}
+
+{% column 6 Scala %}
+{% highlight scala %}
+def tag(name: String)(content: String): String = {
+  s"<$name>$content</$name>"
+}
+
+val div = tag("div") _
+val p = tag("p") _
+val html = div(p("test")) // <div><p>test</p></div>
+{% endhighlight %}
+{% endcolumn %}
+{% endcolumns %}
+
+Multiple parameter lists also helps with *type inference*, meaning we don't need to tell the compiler the types
+explicitly. For example we can rewrite the `minmaxBy` function as curried, which allows us to leave the `Person` type
+out when calling it, as it is automatically inferred from the first parameter. This is why methods like `foldLeft` are
+defined with multiple parameter lists.
+
+{% columns %}
+{% column 9 Scala %}
+{% highlight scala %}
+def minmaxBy[T](seq: Seq[T])(f: T => Int): (Int, Int) = {
+  seq.foldLeft((Int.MaxValue, Int.MinValue)) {
+    case ((min, max), e) =>
+      val v = f(e)
+      (math.min(min, v), math.max(max, v))
+  }
+}
+val (youngest, oldest) = minmaxBy(persons, _.age)
+{% endhighlight %}
+{% endcolumn %}
+{% endcolumns %}
+
 ## Implicits
 
 Being type safe is great in Scala, but sometimes the type system can be a bit prohibitive when you want to do something
-else, like add methods to existing classes. To allow you to do this in a type safe manner, Scala provides _implicits_.
+else, like add methods to existing classes. To allow you to do this in a type safe manner, Scala provides *implicits*.
 You can think of implicits as something that's available in the scope when you need it, and the compiler can
 automatically provide it. For example we can provide a function to automatically convert a JavaScript {% jsdoc Date %}
 into a Scala/Java `Date`.
@@ -297,14 +511,14 @@ The monkey patching term became famous among Ruby developers and it has been ado
 a way of extending existing classes with new methods. It has several pitfalls in dynamic languages and is generally
 not a recommended practice. Especially dangerous is to patch JavaScript's host objects like `String` or `DOM.Node`. This
 technique is, however, commonly used to provide support for new JavaScript functionality missing from older JS engines.
-The practice is known as _polyfilling_ or _shimming_.
+The practice is known as *polyfilling* or *shimming*.
 
-In Scala providing extension methods via implicits is _perfectly safe_ and even a _recommended_ practice. The Scala
+In Scala providing extension methods via implicits is *perfectly safe* and even a *recommended* practice. The Scala
 standard library does it all the time. For example did you notice the `.r` or `.toInt` functions that were used on
 strings in the regex example? Both are extension methods coming from implicit classes.
 
-Let's use the `convertToDate` we defined before and add a `toDate` extension method to `String` by defining an _implicit
-class_.
+Let's use the `convertToDate` we defined before and add a `toDate` extension method to `String` by defining an *implicit
+class*.
 
 {% columns %}
 {% column 6 ES6 %}
@@ -328,7 +542,7 @@ implicit class StrToDate(val s: String) {
 
 Note that the JavaScript version modifies the global `String` class (dangerous!), whereas the Scala version only
 introduces a conversion from `String` to a custom `StrToDate` class providing an additional method. Implicit classes are
-_safe_ because they are lexically scoped, meaning the `StrToDate` is not available in other parts of the program unless
+*safe* because they are lexically scoped, meaning the `StrToDate` is not available in other parts of the program unless
 explicitly imported. The `toDate` method is not added to the `String` class in any way, instead the compiler generates
 appropriate code to call it when required. Basically `"2010-10-09".toDate` is converted into `new
 StrToDate("2010-10-09").toDate`.
@@ -390,7 +604,7 @@ images.sortBy(i => -i.width).take(10).foreach { i =>
 ## Futures
 
 Writing asynchronous JavaScript code used to be painful due to the number of callbacks required to handle chained
-asynchronous calls. This is affectionately known as _callback hell_. Then came the various `Promise` libraries that
+asynchronous calls. This is affectionately known as *callback hell*. Then came the various `Promise` libraries that
 alleviated this issue a lot, but were not fully compatible with each other. ES6 standardizes the {% jsdoc Promise %}
 interface so that all implementations (ES6's own included) can happily coexist.
 
