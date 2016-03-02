@@ -1,9 +1,9 @@
 - topic: Common Scala libraries
   libraries:
     - name: Scalaz
-      url: https://github.com/japgolly/scalaz
+      url: https://github.com/scalaz/scalaz
       desc: Library for functional programming.
-      dep: '"com.github.japgolly.fork.scalaz" %%% "scalaz-core" % "7.1.2"'
+      dep: '"org.scalaz" %%% "scalaz-core" % "7.2.1"'
     - name: Each
       url: https://github.com/ThoughtWorksInc/each
       desc: A macro library that converts native imperative syntax to scalaz's monadic expressions.
