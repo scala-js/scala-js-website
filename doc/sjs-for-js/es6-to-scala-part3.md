@@ -469,7 +469,7 @@ def minmaxBy[T](seq: Seq[T])(f: T => Int): (Int, Int) = {
       (math.min(min, v), math.max(max, v))
   }
 }
-val (youngest, oldest) = minmaxBy(persons, _.age)
+val (youngest, oldest) = minmaxBy(persons)(_.age)
 {% endhighlight %}
 {% endcolumn %}
 {% endcolumns %}
