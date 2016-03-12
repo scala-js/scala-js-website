@@ -9,9 +9,9 @@ description: "Build robust front-end web applications in Scala with Scala.js"
 analytics: #Google analytics code in the format XX-nnnnnnnn-n
 # baseurl: ""
 baseurl: ""
-url: "http://scala-js.org"
+url: "https://www.scala-js.org"
 exclude: ["*.iml"]
-production_url : http://www.scala-js.org
+production_url: "https://www.scala-js.org"
 
 assets:
   prefix: "/assets"
