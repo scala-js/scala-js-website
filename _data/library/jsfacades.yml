@@ -55,7 +55,7 @@
     - name: scala-js-d3
       url: https://github.com/spaced/scala-js-d3
       desc: Static types for [D3.js](http://d3js.org)
-      dep: '"org.singlespaced" %%% "scalajs-d3" % "0.1.1"'
+      dep: '"org.singlespaced" %%% "scalajs-d3" % "0.3.1"'
     - name: scaladget
       url: https://github.com/mathieuleclaire/scaladget
       desc: Static types for [D3.js](http://d3js.org), [Ace](http://ace.c9.io), [Tooltipster](http://iamceege.github.io/tooltipster/),  [Bootstrap.js](http://getbootstrap.com/) (and an API for the latter)
