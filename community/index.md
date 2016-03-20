@@ -52,6 +52,7 @@ Use these Open Source projects to see how others have used Scala.js to build the
 - [Port of the Dart benchmark harness](https://github.com/sjrd/scalajs-benchmarks)
 - [2048 Game in Scala](https://github.com/fijolekProjects/scalajs-react-2048), 2048 game clone made using scalajs-react in just 350 lines of Scala and 250 lines of CSS.
 - [swimstats.org](http://www.swimstats.org/) ([source](https://github.com/andywag/swim_web)): Display/plot amateur swim results and times, by Andy Wagner
+- [ScalaKata](http://scalakata.com) ([source](https://github.com/MasseGuillaume/ScalaKata2): Scala Interactive Playground
 
 ## Testimonials
 
