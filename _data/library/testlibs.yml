@@ -31,3 +31,7 @@
       url: https://github.com/japgolly/nyaya
       desc: Property testing and assertion.
       dep: ''
+    - name: Scalaprops
+      url: https://github.com/scalaprops/scalaprops
+      desc: Property based testing library for Scala
+      dep: '"com.github.scalaprops" %%% "scalaprops" % "0.3.0" % "test"'
