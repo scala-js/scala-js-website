@@ -80,6 +80,10 @@
       url: https://github.com/scala-js/scala-js-pickling
       desc: Pickling library based on explicit registration of picklers
       dep: '"be.doeraene" %%% "scalajs-pickling" % "0.4.0"'
+    - name: Msgpack4z
+      url: https://github.com/msgpack4z/msgpack4z-core
+      desc: Functional msgpack serializer/deserializer for Scala
+      dep: '"com.github.xuwei-k" %%% "msgpack4z-core" % "0.3.2"'
 - topic: Client-server communication
   libraries:
     - name: autowire
