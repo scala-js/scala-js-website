@@ -84,6 +84,10 @@
       url: https://github.com/msgpack4z/msgpack4z-core
       desc: Functional msgpack serializer/deserializer for Scala
       dep: '"com.github.xuwei-k" %%% "msgpack4z-core" % "0.3.2"'
+    - name: Scodec MessagePack
+      url: https://github.com/pocketberserker/scodec-msgpack
+      desc: Yet another MessagePack implementation for Scala
+      dep: '"com.github.pocketberserker" %%% "scodec-msgpack" % "0.5.0"'
 - topic: Client-server communication
   libraries:
     - name: autowire
