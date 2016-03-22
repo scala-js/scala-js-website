@@ -12,8 +12,11 @@ browser, together with a collection of sample applications developed using it
 ### [SPA tutorial with Scala.js and React](https://github.com/ochrons/scalajs-spa-tutorial)
 Simple Single Page Application tutorial built upon scalajs-react, Play and Bootstrap.
 
-### [Play! application with Scala.js](https://github.com/vmunier/play-with-scalajs-example)
-Example application showing how you can integrate Play with Scala.js.
+### [Play application with Scala.js](https://github.com/vmunier/play-with-scalajs-example)
+Example application showing how you can integrate [Play](https://www.playframework.com/) with Scala.js.
+
+### [Play application with Scala.js and Workbench](https://github.com/aholland/play-scalajs-workbench-example)
+Example setup which, using the [Workbench plugin](https://github.com/lihaoyi/workbench), prevents any change made to client code from causing a compile error on the [Play](https://www.playframework.com/) server, which could otherwise slow down client development. 
 
 ### [Node.js module with Scala.js](https://github.com/rockymadden/scala-node-example)
 Proof of concept to determine if Scala.js could be leveraged to make a Node.js module.
