@@ -1,4 +1,10 @@
-- topic: Common Scala libraries
+- topic: JDK extensions
+  libraries:
+    - name: scalajs-java-time
+      url: https://github.com/scala-js/scala-js-java-time
+      desc: Port of the java.time API of JDK8 for Scala.js
+      dep: '"org.scala-js" %%% "scalajs-java-time" % "0.1.0"'
+- topic: Functional programming
   libraries:
     - name: Scalaz
       url: https://github.com/scalaz/scalaz
@@ -20,14 +26,6 @@
       url: https://github.com/japgolly/Monocle
       desc: Optics library strongly inspired by Haskell [Lens](https://github.com/ekmett/lens).
       dep: '"com.github.japgolly.fork.monocle" %%% "monocle-core" % "1.1.1"'
-    - name: Akka (Scala.js port)
-      url: https://github.com/unicredit/akka.js
-      desc: Toolkit and runtime for building concurrent, distributed applications
-      dep: ''
-    - name: scalajs-java-time
-      url: https://github.com/scala-js/scala-js-java-time
-      desc: Port of the java.time API of JDK8 for Scala.js
-      dep: '"org.scala-js" %%% "scalajs-java-time" % "0.1.0"'
 - topic: Web libraries/frameworks
   libraries:
     - name: Binding.scala/dom
@@ -142,6 +140,12 @@
       url: https://github.com/japgolly/nyaya
       desc: Random data generation.
       dep: '"com.github.japgolly.nyaya" %%% "nyaya-gen" % "0.6.0"'
+    - name: Akka (Scala.js port)
+      url: https://github.com/unicredit/akka.js
+      desc: Toolkit and runtime for building concurrent, distributed applications
+      dep: ''
+- topic: Tools
+  libraries:
     - name: Workbench
       url: https://github.com/lihaoyi/scala-js-workbench
       desc: SBT plugin for Scala.JS live-reloading in the browser. (<a href="https://github.com/lihaoyi/workbench-example-app">example app</a>)
