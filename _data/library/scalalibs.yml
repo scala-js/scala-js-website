@@ -148,6 +148,10 @@
       url: https://github.com/japgolly/nyaya
       desc: Random data generation.
       dep: '"com.github.japgolly.nyaya" %%% "nyaya-gen" % "0.6.0"'
+    - name: cryptotpyrc
+      url: https://github.com/lightserver/cryptotpyrc
+      desc: Scala.js & JVM cross compiled RSA / Crypto library.
+      dep: '"pl.setblack" %%% "cryptotpyrc" % "0.4"'
     - name: Akka (Scala.js port)
       url: https://github.com/unicredit/akka.js
       desc: Toolkit and runtime for building concurrent, distributed applications
