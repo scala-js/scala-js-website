@@ -78,6 +78,10 @@
       url: https://github.com/travisbrown/circe
       desc: Yet another JSON library for Scala (built with Cats and Shapeless)
       dep: '"io.circe" %%% "circe-core" % "0.2.0", "io.circe" %%% "circe-parse" % "0.2.0", "io.circe" %%% "circe-generic" % "0.2.0"'
+    - name: Jello
+      url: http://github.com/uniformlyrandom/jello
+      desc: Scala.js & JVM JSON serialization framework without thrills
+      dep: '"com.uniformlyrandom" %%% "jello" % "0.3.0"'
     - name: Scala.js Pickling
       url: https://github.com/scala-js/scala-js-pickling
       desc: Pickling library based on explicit registration of picklers
