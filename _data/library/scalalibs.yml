@@ -26,6 +26,10 @@
       url: https://github.com/japgolly/Monocle
       desc: Optics library strongly inspired by Haskell [Lens](https://github.com/ekmett/lens).
       dep: '"com.github.japgolly.fork.monocle" %%% "monocle-core" % "1.1.1"'
+    - name: Quicklens
+      url: https://github.com/adamw/quicklens
+      desc: Modify deeply nested fields in case classes.
+      dep: '"com.softwaremill.quicklens" %%% "quicklens" % "1.4.6"'
 - topic: Web libraries/frameworks
   libraries:
     - name: Binding.scala/dom
