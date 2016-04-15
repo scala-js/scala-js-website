@@ -32,6 +32,10 @@
       dep: '"com.softwaremill.quicklens" %%% "quicklens" % "1.4.6"'
 - topic: Web libraries/frameworks
   libraries:
+    - name: Udash
+      url: http://udash.io/
+      desc: A Scala(.js) framework for building beautiful and maintainable Web Applications
+      dep: '"io.udash" %%% "udash-core-frontend" % "0.1.1"'
     - name: Binding.scala/dom
       url: https://github.com/ThoughtWorksInc/Binding.scala
       desc: Reactive web framework for Scala.js
@@ -100,6 +104,9 @@
       url: https://github.com/lihaoyi/autowire
       desc: Cross-compiling statically-typed Ajax calls and RPCs
       dep: '"com.lihaoyi" %%% "autowire" % "0.2.5"'
+    - name: Udash RPC
+      url: http://guide.udash.io/#/rpc
+      desc: Cross-compiling strongly typed client-server communication system for the Udash framework
 - topic: FRP/reactive extensions
   libraries:
     - name: Scala.Rx
