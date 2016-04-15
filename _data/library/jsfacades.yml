@@ -12,6 +12,10 @@
       url: https://github.com/jducoeur/jquery-facade
       desc: Alternate static types for jQuery -- less complete, more strongly typed
       dep: '"org.querki" %%% "jquery-facade" % "0.8"'
+    - name: udash-jquery
+      url: https://github.com/UdashFramework/scala-js-jquery
+      desc: Alternate strongly typed facade for jQuery
+      dep: '"io.udash" %%% "udash-jquery" % "1.0.0-rc.2"'
     - name: jstree-facade
       url: https://github.com/jducoeur/jstree-facade
       desc: A Scala.js facade for the jsTree jQuery library
