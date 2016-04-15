@@ -108,6 +108,10 @@
       dep: ''
 - topic: Other libraries
   libraries:
+    - name: scalajs-videojs
+      url: https://github.com/Karasiq/scalajs-videojs
+      desc: Bindings for [Video.js](https://github.com/videojs/video.js)
+      dep: '"com.github.karasiq" %%% "scalajs-videojs" % "1.0.2"'
     - name: scala-js-vaadin-components
       url: https://github.com/hezamu/scala-js-vaadin-components
       desc: Static types for [Vaadin Components](http://vaadin.com/components)
