@@ -158,6 +158,10 @@
       dep: ''
 - topic: Tools
   libraries:
+    - name: sbt-scala-js-map
+      url: https://github.com/ThoughtWorksInc/sbt-scala-js-map
+      desc: A Sbt plugin that configures source mapping for Scala.js projects hosted on Github
+      dep: 'addSbtPlugin("com.thoughtworks.sbt-scala-js-map" % "sbt-scala-js-map" % "latest.release")'
     - name: Workbench
       url: https://github.com/lihaoyi/scala-js-workbench
       desc: SBT plugin for Scala.JS live-reloading in the browser. (<a href="https://github.com/lihaoyi/workbench-example-app">example app</a>)
