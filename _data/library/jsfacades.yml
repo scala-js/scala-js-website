@@ -112,6 +112,10 @@
       url: https://github.com/Karasiq/scalajs-videojs
       desc: Bindings for [Video.js](https://github.com/videojs/video.js)
       dep: '"com.github.karasiq" %%% "scalajs-videojs" % "1.0.2"'
+    - name: scalajs-marked
+      url: https://github.com/Karasiq/scalajs-marked
+      desc: Bindings for [Marked](https://github.com/chjj/marked), [Highlight.js](https://highlightjs.org/) and [Tab Override](https://github.com/wjbryant/taboverride)
+      dep: '"com.github.karasiq" %%% "scalajs-marked" % "1.0.1"'
     - name: scala-js-vaadin-components
       url: https://github.com/hezamu/scala-js-vaadin-components
       desc: Static types for [Vaadin Components](http://vaadin.com/components)
