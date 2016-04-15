@@ -170,3 +170,9 @@
       url: https://github.com/japgolly/scalajs-benchmark
       desc: Write benchmarks in Scala or JS, run in your browser. (<a href="https://japgolly.github.io/scalajs-benchmark/">online demo</a>)
       dep: '"com.github.japgolly.scalajs-benchmark" %%% "benchmark" % "0.2.0"'
+    - name: enableIf.scala
+      url: https://github.com/ThoughtWorksInc/enableIf.scala
+      desc: 'A library that switches Scala code at compile-time, like `#if` in C/C++ — Edit'
+      dep: |
+        addCompilerPlugin("org.scalamacros" % "paradise" % "2.1.0" cross CrossVersion.full)
+        libraryDependencies += "com.thoughtworks.enableIf" %% "enableif" % "latest.release"
