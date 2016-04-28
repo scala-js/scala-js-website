@@ -5,6 +5,7 @@ title: Version history
 
 ## Version history of Scala.js
 
+- [0.6.9](/news/2016/04/30/announcing-scalajs-0.6.9/)
 - [0.6.8](/news/2016/03/18/announcing-scalajs-0.6.8/)
 - [0.6.7](/news/2016/02/12/announcing-scalajs-0.6.7/)
 - [0.6.6](/news/2016/01/25/announcing-scalajs-0.6.6/)
