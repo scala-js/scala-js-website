@@ -60,6 +60,10 @@
       url: https://github.com/ochrons/diode
       desc: 'Diode is a Scala/Scala.js library for managing immutable application state with unidirectional data flow.'
       dep: '"me.chrons" %%% "diode" % "0.1.0"'
+    - name: Sri
+      url: https://github.com/chandu0101/sri
+      desc: 'Sri (Scala React interface) is a scalajs library to build truly native cross platform (mobile (ios and android) and web) applications.'
+      dep: '"com.github.chandu0101.sri" %%% "web" % "0.4.0"'
 - topic: Serialization/pickling libraries
   libraries:
     - name: uPickle
