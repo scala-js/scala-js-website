@@ -14,6 +14,7 @@ title: Scala.js API
 * [scalajs-ir]({{ site.production_url }}/api/scalajs-ir/latest/#org.scalajs.core.ir.package)
 * [scalajs-tools]({{ site.production_url }}/api/scalajs-tools/latest/#org.scalajs.core.tools.package) ([Scala.js version]({{ site.production_url }}/api/scalajs-tools-js/latest/#org.scalajs.core.tools.package))
 * [scalajs-js-envs]({{ site.production_url }}/api/scalajs-js-envs/latest/#org.scalajs.jsenv.package)
+* [scalajs-js-envs-test-kit]({{ site.production_url }}/api/scalajs-js-envs-test-kit/latest/#org.scalajs.jsenv.test.package)
 * [scalajs-test-adapter]({{ site.production_url }}/api/scalajs-sbt-test-adapter/latest/#org.scalajs.testadapter.package)
 
 ### Previous versions
