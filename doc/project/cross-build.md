@@ -33,6 +33,8 @@ This is an example how your `build.sbt` could look like:
 {% highlight scala %}
 name := "Foo root project"
 
+scalaVersion in ThisBuild := "2.11.8"
+
 lazy val root = project.in(file(".")).
   aggregate(fooJS, fooJVM).
   settings(
@@ -43,8 +45,7 @@ lazy val root = project.in(file(".")).
 lazy val foo = crossProject.in(file(".")).
   settings(
     name := "foo",
-    version := "0.1-SNAPSHOT",
-    scalaVersion := "2.11.5"
+    version := "0.1-SNAPSHOT"
   ).
   jvmSettings(
     // Add JVM-specific settings here
