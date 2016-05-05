@@ -20,6 +20,10 @@
       url: https://github.com/greencatsoft/greenlight
       desc: BDD style testing framework for Scala and Scala.js.
       dep: '"com.greencatsoft" %%% "greenlight" % "0.2"'
+    - name: Scala Test-State
+      url: https://github.com/japgolly/test-state
+      desc: Library to test stateful stuff statelessly, and reasonably.
+      dep: '"com.github.japgolly.test-state" %%% "core" % "2.0.0" % "test"'
 
 - topic: Property testing
   libraries:
