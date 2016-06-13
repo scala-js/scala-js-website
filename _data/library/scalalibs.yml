@@ -40,10 +40,10 @@
       url: https://github.com/ThoughtWorksInc/Binding.scala
       desc: Reactive web framework for Scala.js
       dep: 'libraryDependencies += "com.thoughtworks.binding" %%% "dom" % "1.0.5"'
-    - name: Scalatags
-      url: https://github.com/lihaoyi/scalatags
+    - name: ScalaTags
+      url: http://www.lihaoyi.com/scalatags/
       desc: HTML templating library/DSL that works on both Scala/JVM and Scala.js
-      dep: '"com.lihaoyi" %%% "scalatags" % "0.5.3"'
+      dep: '"com.lihaoyi" %%% "scalatags" % "0.5.5"'
     - name: MetaWeb
       url: https://github.com/metastack-pl/metaweb
       desc: Functional low-level web framework for Scala and Scala.js
