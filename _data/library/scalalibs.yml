@@ -159,6 +159,10 @@
       url: https://github.com/jokade/slogging
       desc: A simple logging library with an API compatible to scala-logging (and slf4j)
       dep: '"biz.enef" %%% "slogging" % "0.3"'
+    - name: scribe
+      url: https://github.com/outr/scribe
+      desc: Logging framework for Scala and Scala.js
+      dep: '"com.outr.scribe" %%% "scribe" % "1.2.3"'
     - name: FastParse
       url: http://lihaoyi.github.io/fastparse/
       desc: Fast to write, fast-running parser-combinators in Scala/Scala.js
