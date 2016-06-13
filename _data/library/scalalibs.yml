@@ -40,10 +40,14 @@
       url: https://github.com/ThoughtWorksInc/Binding.scala
       desc: Reactive web framework for Scala.js
       dep: 'libraryDependencies += "com.thoughtworks.binding" %%% "dom" % "1.0.5"'
-    - name: Scalatags
-      url: https://github.com/lihaoyi/scalatags
+    - name: ScalaTags
+      url: http://www.lihaoyi.com/scalatags/
       desc: HTML templating library/DSL that works on both Scala/JVM and Scala.js
-      dep: '"com.lihaoyi" %%% "scalatags" % "0.5.3"'
+      dep: '"com.lihaoyi" %%% "scalatags" % "0.5.5"'
+    - name: MetaWeb
+      url: https://github.com/metastack-pl/metaweb
+      desc: Functional low-level web framework for Scala and Scala.js
+      dep: '"pl.metastack" %%% "metaweb" % "0.2.0"'
     - name: Widok
       url: https://widok.github.io/
       desc: Reactive web framework for the JVM and Scala.js
@@ -121,14 +125,14 @@
       url: https://github.com/lihaoyi/scala.rx
       desc: Change-propagation/FRP library
       dep: '"com.lihaoyi" %%% "scalarx" % "0.2.8"'
-    - name: Monifu
-      url: https://github.com/alexandru/monifu
+    - name: Monix
+      url: https://github.com/monixio/monix
       desc: Reactive extensions (Rx) with back-pressure, atomic references and other multi-threading primitives
-      dep: '"org.monifu" %%% "monifu" % "1.0-RC3"'
+      dep: '"io.monix" %%% "monix" % "2.0-RC5"'
     - name: MetaRx
       url: https://github.com/MetaStack-pl/MetaRx
       desc: Reactive data structures for Scala and Scala.js
-      dep: '"pl.metastack" %%% "metarx" % "0.1.3"'
+      dep: '"pl.metastack" %%% "metarx" % "0.1.7"'
     - name: Binding.scala/core
       url: https://github.com/ThoughtWorksInc/Binding.scala
       desc: Reactive data-binding for both Scala.js and JVM
@@ -155,6 +159,10 @@
       url: https://github.com/jokade/slogging
       desc: A simple logging library with an API compatible to scala-logging (and slf4j)
       dep: '"biz.enef" %%% "slogging" % "0.3"'
+    - name: scribe
+      url: https://github.com/outr/scribe
+      desc: Logging framework for Scala and Scala.js
+      dep: '"com.outr.scribe" %%% "scribe" % "1.2.3"'
     - name: FastParse
       url: http://lihaoyi.github.io/fastparse/
       desc: Fast to write, fast-running parser-combinators in Scala/Scala.js
