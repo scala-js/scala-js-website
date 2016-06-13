@@ -125,10 +125,10 @@
       url: https://github.com/lihaoyi/scala.rx
       desc: Change-propagation/FRP library
       dep: '"com.lihaoyi" %%% "scalarx" % "0.2.8"'
-    - name: Monifu
-      url: https://github.com/alexandru/monifu
+    - name: Monix
+      url: https://github.com/monixio/monix
       desc: Reactive extensions (Rx) with back-pressure, atomic references and other multi-threading primitives
-      dep: '"org.monifu" %%% "monifu" % "1.0-RC3"'
+      dep: '"io.monix" %% "monix" % "2.0-RC5"'
     - name: MetaRx
       url: https://github.com/MetaStack-pl/MetaRx
       desc: Reactive data structures for Scala and Scala.js
