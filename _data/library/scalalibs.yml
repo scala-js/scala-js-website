@@ -128,7 +128,7 @@
     - name: Monix
       url: https://github.com/monixio/monix
       desc: Reactive extensions (Rx) with back-pressure, atomic references and other multi-threading primitives
-      dep: '"io.monix" %% "monix" % "2.0-RC5"'
+      dep: '"io.monix" %%% "monix" % "2.0-RC5"'
     - name: MetaRx
       url: https://github.com/MetaStack-pl/MetaRx
       desc: Reactive data structures for Scala and Scala.js
