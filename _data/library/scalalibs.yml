@@ -132,7 +132,7 @@
     - name: MetaRx
       url: https://github.com/MetaStack-pl/MetaRx
       desc: Reactive data structures for Scala and Scala.js
-      dep: '"pl.metastack" %%% "metarx" % "0.1.3"'
+      dep: '"pl.metastack" %%% "metarx" % "0.1.7"'
     - name: Binding.scala/core
       url: https://github.com/ThoughtWorksInc/Binding.scala
       desc: Reactive data-binding for both Scala.js and JVM
