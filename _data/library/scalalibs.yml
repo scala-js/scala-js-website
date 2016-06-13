@@ -44,6 +44,10 @@
       url: https://github.com/lihaoyi/scalatags
       desc: HTML templating library/DSL that works on both Scala/JVM and Scala.js
       dep: '"com.lihaoyi" %%% "scalatags" % "0.5.3"'
+    - name: MetaWeb
+      url: https://github.com/metastack-pl/metaweb
+      desc: Functional low-level web framework for Scala and Scala.js
+      dep: '"pl.metastack" %%% "metaweb" % "0.2.0"'
     - name: Widok
       url: https://widok.github.io/
       desc: Reactive web framework for the JVM and Scala.js
