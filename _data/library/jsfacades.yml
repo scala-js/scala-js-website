@@ -10,8 +10,8 @@
       dep: '"be.doeraene" %%% "scalajs-jquery" % "0.9.0"'
     - name: jquery-facade
       url: https://github.com/jducoeur/jquery-facade
-      desc: Alternate static types for jQuery -- less complete, more strongly typed
-      dep: '"org.querki" %%% "jquery-facade" % "0.8"'
+      desc: Alternate, more strongly-typed static types for jQuery
+      dep: '"org.querki" %%% "jquery-facade" % "1.0-RC6"'
     - name: udash-jquery
       url: https://github.com/UdashFramework/scala-js-jquery
       desc: Alternate strongly typed facade for jQuery
@@ -19,7 +19,7 @@
     - name: jstree-facade
       url: https://github.com/jducoeur/jstree-facade
       desc: A Scala.js facade for the jsTree jQuery library
-      dep: '"org.querki" %%% "jstree-facade" % "0.1"'
+      dep: '"org.querki" %%% "jstree-facade" % "0.4"'
     - name: scalajs-pouchdb
       url: https://github.com/chandu0101/scalajs-facades/tree/master/core/src/main/scala/chandu0101/scalajs/facades/pouchdb
       desc: Static types for PouchDB
@@ -31,7 +31,7 @@
     - name: bootstrap-datepicker-facade
       url: https://github.com/jducoeur/bootstrap-datepicker-scalajs
       desc: Static types for [bootstrap-datepicker](https://github.com/eternicode/bootstrap-datepicker)
-      dep: '"org.querki" %%% "bootstrap-datepicker-facade" % "0.3"'
+      dep: '"org.querki" %%% "bootstrap-datepicker-facade" % "0.7"'
     - name: scalajs-google-maps
       url: https://github.com/coreyauger/scalajs-google-maps
       desc: Static types for google maps v3
