@@ -154,7 +154,11 @@
     - name: jsext
       url: https://github.com/jducoeur/jsext
       desc: Utilities for developing facades and working with Futures
-      dep: '"org.querki" %%% "querki-jsext" % "0.6"'
+      dep: '"org.querki" %%% "querki-jsext" % "0.7"'
+    - name: shocon
+      url: https://github.com/jducoeur/shocon
+      desc: A partial pure-Scala, cross-compiled implementation of the HOCON configuration language
+      dep: '"org.querki" %%% "shocon" % "0.3"'
     - name: slogging
       url: https://github.com/jokade/slogging
       desc: A simple logging library with an API compatible to scala-logging (and slf4j)
