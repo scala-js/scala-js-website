@@ -50,6 +50,6 @@
     - text: Standalone distribution
       url: /doc/internals/downloads.html
     - text: Version history
-      url: /doc/internals/history.html
+      url: /doc/internals/version-history.html
 - text: FAQ
   url: /doc/faq.html
