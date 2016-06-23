@@ -82,6 +82,10 @@
       url: https://github.com/benhutchison/prickle
       desc: Statically-typed pickling library with support for pickling object graphs containing shared objects and cycles
       dep: '"com.github.benhutchison" %%% "prickle" % "1.1.10"'
+    - name: scala-json
+      url: https://github.com/MediaMath/scala-json
+      desc: JSON pickling, advanced compile-time marshaling, full-feature DSL and more for Scala and Scala.js
+      dep: '"com.mediamath" %%% "scala-json" % "1.0"'
     - name: Pushka
       url: https://github.com/fomkin/pushka
       desc: Pure Scala pickler with annotations
