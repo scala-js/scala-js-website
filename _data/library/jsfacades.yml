@@ -84,6 +84,10 @@
       url: https://github.com/coreyauger/scala-js-webrtc
       desc: Easy to use and extend WebRTC wrappers
       dep: ''
+    - name: scalajs-jsjoda
+      url: https://github.com/zoepepper/scalajs-jsjoda
+      desc: '[js-joda](http://js-joda.github.io/js-joda/) facade with drop-in replacement for [java.time](https://docs.oracle.com/javase/8/docs/api/java/time/package-summary.html) API'
+      dep: 'Seq("com.zoepepper" %%% "scalajs-jsjoda" % "1.0.1", "com.zoepepper" %%% "scalajs-jsjoda-as-java-time" % "1.0.1")'
 - topic: UI frameworks
   libraries:
     - name: scalajs-react
