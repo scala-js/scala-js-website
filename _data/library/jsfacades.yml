@@ -84,6 +84,10 @@
       url: https://github.com/coreyauger/scala-js-webrtc
       desc: Easy to use and extend WebRTC wrappers
       dep: ''
+    - name: scalajs-jsjoda
+      url: https://github.com/zoepepper/scalajs-jsjoda
+      desc: 'Static types for [js-joda](http://js-joda.github.io/js-joda/)'
+      dep: '"com.zoepepper" %%% "scalajs-jsjoda" % "1.0.1"'
 - topic: UI frameworks
   libraries:
     - name: scalajs-react
