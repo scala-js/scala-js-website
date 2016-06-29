@@ -23,9 +23,9 @@
       desc: Generic programming for Scala.
       dep: '"com.chuusai" %%% "shapeless" % "2.2.5"'
     - name: Cats
-      url: https://github.com/non/cats
+      url: https://github.com/typelevel/cats
       desc: Lightweight, modular, and extensible library for functional programming.
-      dep: '"org.spire-math" %%% "cats" % "0.3.0"'
+      dep: '"org.typelevel" %%% "cats" % "0.6.0"'
     - name: Monocle
       url: https://github.com/japgolly/Monocle
       desc: Optics library strongly inspired by Haskell [Lens](https://github.com/ekmett/lens).
