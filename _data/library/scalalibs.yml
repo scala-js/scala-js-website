@@ -8,6 +8,10 @@
       url: https://github.com/zoepepper/scalajs-jsjoda
       desc: Implementation of JDK8's [java.time API](https://docs.oracle.com/javase/8/docs/api/java/time/package-summary.html) in Scala.js by wrapping [js-joda](http://js-joda.github.io/js-joda/) classes
       dep: '"com.zoepepper" %%% "scalajs-jsjoda-as-java-time" % "1.0.3"'
+    - name: scala-java-locales
+      url: https://github.com/cquiroz/scala-java-locales
+      desc: Implementation of JDK8's [java.util.Locale API](https://docs.oracle.com/javase/8/docs/api/java/util/Locale.html) and parts of [java.text API](https://docs.oracle.com/javase/8/docs/api/java/text/package-summary.html) compatible with Scala.js
+      dep: '"com.github.cquiroz" %%% "scala-java-locales" % "0.2.0+29"'
 - topic: Functional programming
   libraries:
     - name: Scalaz
