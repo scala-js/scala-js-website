@@ -4,6 +4,14 @@
       url: https://github.com/scala-js/scala-js-java-time
       desc: Port of the [java.time API](https://docs.oracle.com/javase/8/docs/api/java/time/package-summary.html) of JDK8 for Scala.js
       dep: '"org.scala-js" %%% "scalajs-java-time" % "0.1.0"'
+    - name: scala-java-time
+      url: https://github.com/soc/scala-java-time
+      desc: Platform-independent implementation of [java.time](https://docs.oracle.com/javase/8/docs/api/java/time/package-summary.html)
+      dep: '"io.github.soc" %%% "scala-java-time" % "2.0.0-M1"'
+    - name: scala-java-locales
+      url: https://github.com/cquiroz/scala-java-locales
+      desc: Platform-independent implementation of Java's locale and formatting APIs
+      dep: '"com.github.cquiroz" %%% "scala-java-locales" % "0.2.0+29"'
     - name: scalajs-jsjoda-as-java-time
       url: https://github.com/zoepepper/scalajs-jsjoda
       desc: Implementation of JDK8's [java.time API](https://docs.oracle.com/javase/8/docs/api/java/time/package-summary.html) in Scala.js by wrapping [js-joda](http://js-joda.github.io/js-joda/) classes
