@@ -12,6 +12,10 @@
       url: https://github.com/cquiroz/scala-java-locales
       desc: Implementation of JDK8's [java.util.Locale API](https://docs.oracle.com/javase/8/docs/api/java/util/Locale.html) and parts of [java.text API](https://docs.oracle.com/javase/8/docs/api/java/text/package-summary.html) compatible with Scala.js
       dep: '"com.github.cquiroz" %%% "scala-java-locales" % "0.2.0+29"'
+    - name: scalajs-java-logging
+      url: https://github.com/scala-js/scala-js-java-logging
+      desc: Port of the [java.util.logging API](https://docs.oracle.com/javase/8/docs/api/java/util/logging/package-summary.html) of JDK 8 for Scala.js
+      dep: '"org.scala-js" %%% "scalajs-java-logging" % "0.1.0"'
 - topic: Functional programming
   libraries:
     - name: Scalaz
