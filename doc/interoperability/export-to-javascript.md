@@ -208,7 +208,11 @@ gives:
 Hint to recognize this error: the methods are named `$js$exported$meth$`
 followed by the JavaScript export name.
 
-### <a name="JSExportNamed"></a> Exporting for call with named parameters
+### <a name="JSExportNamed"></a> Exporting for call with named parameters (deprecated)
+
+**Note:** Since Scala.js 0.6.11, `@JSExportNamed` is deprecated, and will be removed in the next major version.
+Refer to [the Scaladoc]({{ site.production_url }}/api/scalajs-library/latest/#scala.scalajs.js.annotation.JSExportNamed) for migration tips.
+
 It is customary in Scala to call methods with named parameters if this eases understanding of the code or if many arguments with default values are present:
 
 {% highlight scala %}
