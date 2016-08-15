@@ -132,10 +132,10 @@
       url: https://github.com/lihaoyi/autowire
       desc: Cross-compiling statically-typed Ajax calls and RPCs
       dep: '"com.lihaoyi" %%% "autowire" % "0.2.5"'
-    - name: Scala Http Client
-      url: https://github.com/hmil/scala-http-client
+    - name: RösHTTP
+      url: https://github.com/hmil/RosHTTP
       desc: 'A cross-platform HTTP client implementation for the browser, Node.js and the JVM.'
-      dep: '"fr.hmil" %%% "scala-http-client" % "0.2.0"'
+      dep: '"fr.hmil" %%% "roshttp" % "1.0.1"'
     - name: Udash RPC
       url: http://guide.udash.io/#/rpc
       desc: Cross-compiling strongly typed client-server communication system for the Udash framework
