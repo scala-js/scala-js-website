@@ -126,6 +126,10 @@
       url: https://github.com/pocketberserker/scodec-msgpack
       desc: Yet another MessagePack implementation for Scala
       dep: '"com.github.pocketberserker" %%% "scodec-msgpack" % "0.5.0"'
+    - name: ScalaPB
+      url: http://trueaccord.github.io/ScalaPB
+      desc: 'Generates case classes, serializers and deserializers for Protocol Buffers'
+      dep: '"com.trueaccord.scalapb" %%% "scalapb-runtime" % "0.5.18"'
 - topic: Client-server communication
   libraries:
     - name: autowire
@@ -179,6 +183,10 @@
       url: https://github.com/jducoeur/shocon
       desc: A partial pure-Scala, cross-compiled implementation of the HOCON configuration language
       dep: '"org.querki" %%% "shocon" % "0.3"'
+    - name: SHocon
+      url: https://github.com/unicredit/shocon
+      desc: Simple pure-scala Typesafe HOCON implementation using FastParse
+      dep: '"eu.unicredit" %%% "shocon" % "0.1.1"'
     - name: slogging
       url: https://github.com/jokade/slogging
       desc: A simple logging library with an API compatible to scala-logging (and slf4j)
@@ -199,10 +207,18 @@
       url: https://github.com/lightserver/cryptotpyrc
       desc: Scala.js & JVM cross compiled RSA / Crypto library.
       dep: '"pl.setblack" %%% "cryptotpyrc" % "0.4"'
-    - name: Akka (Scala.js port)
+    - name: Akka
       url: https://github.com/unicredit/akka.js
-      desc: Toolkit and runtime for building concurrent, distributed applications
-      dep: ''
+      desc: 'Toolkit and runtime for building concurrent, distributed applications. Crosscompiled from Typesafe Akka sources'
+      dep: '"eu.unicredit" %%% "akkajsactor" % "0.2.0"'
+    - name: AkkaStream
+      url: https://github.com/unicredit/akka.js
+      desc: 'Streaming programming on top of Akka. Crosscompiled from Typesafe Akka Stream sources'
+      dep: '"eu.unicredit" %%% "akkajsactorstream" % "0.2.0"'
+    - name: cron4s
+      url: https://github.com/alonsodomin/cron4s
+      desc: 'CRON expression parser supporting multiple data-time libraries in the JVM and in the browser'
+      dep: '"com.github.alonsodomin.cron4s" %%% "cron4s" % "0.1.0"'
 - topic: Tools
   libraries:
     - name: sbt-scala-js-map
