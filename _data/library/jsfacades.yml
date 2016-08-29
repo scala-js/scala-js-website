@@ -40,6 +40,10 @@
       url: https://github.com/scalawarrior/scalajs-createjs
       desc: Static types for [CreateJS](http://createjs.com/)
       dep: '"com.scalawarrior" %%% "scalajs-createjs" % "0.0.1-SNAPSHOT"'
+    - name: RxScala.js
+      url: https://github.com/LukaJCB/rxscala-js
+      desc: Idiomatic Scala Wrapper for [RxJS](https://github.com/ReactiveX/rxjs)
+      dep: '"com.github.lukajcb" %%% "rxscala-js" % "0.3.2"'
     - name: scalajs-ace
       url: https://github.com/scalawarrior/scalajs-ace
       desc: Static types for [Ace](http://ace.c9.io/)
