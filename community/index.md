@@ -48,7 +48,9 @@ Use these Open Source projects to see how others have used Scala.js to build the
 - [Play and Scala.js Showcase](https://github.com/hussachai/play-scalajs-showcase), by Hussachai Puripunpinyo
 - [Papa-Carlo Incremental Parser Demo](http://lakhin.com/projects/papa-carlo/demo/), by Eliah-Lakhin
 - [Ray-Tracer](http://lihaoyi.github.io/workbench-example-app/raytracer.html), a ray-tracer written in Scala.js by Li Haoyi
-- [TodoMVC](http://lihaoyi.github.io/workbench-example-app/todo.html), an implementation of the [TodoMVC example application](http://todomvc.com/) using Scala.js, Scalatags, Scala.Rx and scala-js-dom, by Li Haoyi
+- [TodoMVC example applications](http://todomvc.com/)
+  - [Scala.Rx • TodoMVC](http://lihaoyi.github.io/workbench-example-app/todo.html), an implementation using Scala.js, Scalatags, Scala.Rx and scala-js-dom, by Li Haoyi
+  - [Binding.scala • TodoMVC](http://todomvc.com/examples/binding-scala/), an implementation using Scala.js, Binding.scala and upickle, by Yang Bo
 - [Port of the Dart benchmark harness](https://github.com/sjrd/scalajs-benchmarks)
 - [2048 Game in Scala](https://github.com/fijolekProjects/scalajs-react-2048), 2048 game clone made using scalajs-react in just 350 lines of Scala and 250 lines of CSS.
 - [swimstats.org](http://www.swimstats.org/) ([source](https://github.com/andywag/swim_web)): Display/plot amateur swim results and times, by Andy Wagner
