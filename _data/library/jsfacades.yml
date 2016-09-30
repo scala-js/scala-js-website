@@ -148,3 +148,7 @@
       url: https://github.com/mkotsbak/scalajs-qcode-decoder
       desc: Scala.Js wrapper for [QRCodeDecoder JS library](http://cirocosta.github.io/qcode-decoder) for decoding QR codes.
       dep: ''
+    - name: Paper-Scala-js
+      url: https://github.com/yoeluk/paper-scala-js
+      desc: A Scala.js binding for [Paper.js](http://paperjs.org) - The Swiss Army Knife of Vector Graphics Scripting.
+      dep: '"com.github.yoeluk" %%% "paper-scala-js" % "0.5-SNAPSHOT"'
