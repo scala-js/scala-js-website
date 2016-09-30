@@ -84,6 +84,10 @@
       url: https://github.com/Karasiq/scalajs-highcharts
       desc: Static types for [Highcharts](http://www.highcharts.com/)
       dep: '"com.github.karasiq" %%% "scalajs-highcharts" % "1.0.8"'
+    - name: scalajs-chart
+      url: https://github.com/coreyauger/scalajs-chart
+      desc: Type-safe and Scala-friendly library over [Chart.js](http://www.chartjs.org)
+      dep: '"io.surfkit" %%% "scalajs-chart" % "0.1-SNAPSHOT"'
     - name: scala-js-webrtc
       url: https://github.com/coreyauger/scala-js-webrtc
       desc: Easy to use and extend WebRTC wrappers
