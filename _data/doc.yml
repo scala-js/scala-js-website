@@ -18,6 +18,8 @@
       url: /doc/project/building.html
     - text: Dependencies
       url: /doc/project/dependencies.html
+    - text: Emitting modules
+      url: /doc/project/module.html
     - text: JavaScript Environments
       url: /doc/project/js-environments.html
     - text: Cross-building

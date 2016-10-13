@@ -223,18 +223,122 @@ Inner classes and objects will be looked up as fields of the enclosing JS object
 
 Besides object-like top-level definitions, JavaScript also defines variables
 and functions in the global scope. Scala does not have top-level variables and
-functions. Instead, in Scala.js, top-level objects inheriting directly or
-indirectly from `js.GlobalScope` (which itself extends `js.Object`) are
-considered to represent the global scope.
+functions. Instead, in Scala.js, top-level objects annotated with
+`@JSGlobalScope` are considered to represent the global scope.
 
 {% highlight scala %}
+import js.annotation._
+
 @js.native
-object DOMGlobalScope extends js.GlobalScope {
+@JSGlobalScope
+object DOMGlobalScope extends js.Object {
   val document: HTMLDocument = js.native
 
   def alert(message: String): Unit = js.native
 }
 {% endhighlight %}
+
+Prior to 0.6.13, `extends js.GlobalScope` was used instead of `@JSGlobalScope`.
+`js.GlobalScope` is now deprecated.
+
+## <a name="import"></a> Imports from other JavaScript modules
+
+**Important:** Importing from JavaScript modules requires that you [emit a module for the Scala.js code](../project/module.html).
+
+The previous sections on native classes and objects all load things from the JavaScript global scope (through zero or more property accesses from there).
+In modern JavaScript ecosystems, we often want to load things from other *modules*.
+This is what `@JSImport` is designed for.
+You can annotate an `@js.native` class or object with `@JSImport` to signify that it is defined in a module.
+For example, in the following snippet:
+
+{% highlight scala %}
+@js.native
+@JSImport("bar.js", "Foo")
+class Foobaz(val x: Int) extends js.Object
+
+val f = new Foobaz(5)
+{% endhighlight %}
+
+the annotation specifies that `Foobaz` is a native JS class defined in the module `"bar.js"`, and exported under the name `"Foo"`.
+Semantically, `@JSImport` corresponds to an [ECMAScript 2015 import](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/import), and the above code is therefore equivalent to this JavaScript code:
+
+{% highlight javascript %}
+import { Foo as Foobaz } from "bar.js";
+var f = new Foobaz(5);
+{% endhighlight %}
+
+In CommonJS terms, this would be:
+
+{% highlight javascript %}
+var bar = require("bar.js");
+var f = new bar.Foo(5);
+{% endhighlight %}
+
+The first argument to `@JSImport` is the name of the JavaScript module you wish to import.
+The second argument denotes what member of the module you are importing.
+It can be one of the following:
+
+* A string indicating the name of member.
+  The string can be a `.`-separated chain of selections (e.g., `"Foo.Babar"`).
+* The constant `JSImport.Default`, to select the *default* export of the JavaScript module.
+  This corresponds to `import Foobaz from "bar.js"`.
+* The constant `JSImport.Namespace`, to select the module itself (with its exports as fields).
+  This corresponds to `import * as Foobaz from "bar.js"`.
+
+The latter is particularly useful if you want to import members of the modules that are neither classes nor objects (for example, functions):
+
+{% highlight scala %}
+@js.native
+@JSImport("bar.js", JSImport.Namespace)
+object Bar {
+  def exportedFunction(x: Int): Int = js.native
+}
+
+val y = Bar.exportedFunction(5)
+{% endhighlight %}
+
+In CommonJS terms, this would be:
+
+{% highlight javascript %}
+var bar = require("bar.js");
+var y = bar.exportedFunction(5);
+{% endhighlight %}
+
+If the previous example had used `JSImport.Default` instead of `JSImport.Namespace`, the *current* translation into CommonJS terms would be the following:
+
+{% highlight javascript %}
+function moduleDefault(m) {
+  return (m && (typeof m === "object") && "default" in m) ? m["default"] : m;
+}
+
+var bar = require("bar.js");
+var y = moduleDefault(bar).exportedFunction(5);
+{% endhighlight %}
+
+This is subject to change in future versions of Scala.js, to better reflect the evolution of specifications in ECMAScript itself, and its implementations.
+
+**Important:** `@JSImport` is completely incompatible with [`jsDependencies`](./dependencies.html).
+You should use a separate mechanism to manage your JavaScript dependencies.
+Scala.js does not provide any facility to do so, at the moment.
+
+### Default import or namespace import?
+
+The *default* export accessible with `JSImport.Default`, specified in terms of ECMAScript 2015 modules, is somewhat underspecified when it comes to CommonJS, at the moment.
+This is because it is not entirely clear yet what default exports are supposed to be with respect to "legacy" module systems (such as CommonJS).
+It seems that the intention is that a legacy module (such as a CommonJS) would appear to an ECMAScript 2015 module as exporting a single member: the default export.
+For a CommonJS module, the value of the default export would be the value of `exports`.
+This intention is not clearly specified anywhere, though, and existing definitions are known to slightly conflict on the matter (e.g., what Rollup.js does compared to what Node.js would do in the future).
+There seems to be an emergent behavior that members of a legacy module (e.g., fields of the `exports` object) will also be exposed as if they were top-level exports, so that they can be imported as `import { Foo } from "bar.js"`.
+
+What does it all mean to you?
+How to choose between `Namespace`, `Default` and named imports?
+At present, we recommend to follow these rules of thumb:
+
+1. Does the documentation of the module specify how to import it with ECMAScript 2015 syntax?
+   If yes, translate the ES syntax into `@JSImport` as specified above.
+2. Otherwise, is the `exports` value of a legacy module *not* an object (e.g., it is a class or a function)?
+   If yes, use a *default* import with `JSImport.Default`.
+3. Otherwise, use a named import with a string or a namespace import with `JSImport.Namespace`.
 
 ## Monkey patching
 

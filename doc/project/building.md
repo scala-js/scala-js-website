@@ -9,34 +9,7 @@ To compile, simply use the `compile` task:
 
 This will generate `.sjsir` and `.class` files for each class in your project (just like for Scala JVM). The `.class` files are used by the Scala.js compiler for symbol lookup during separate compilation. **Do not use these `.class` files to run your project on a JVM.** See the section below about cross-compilation.
 
-The `.sjsir` files are a binary representation of (extended) JavaScript code which can be linked to actual JavaScript code as will be explained shortly.
-
-You now can run your application already by using the `run` task:
-
-    sbt> run
-
-This will detect and run classes that extend
-[`js.JSApp`]({{ site.production_url }}/api/scalajs-library/{{ site.versions.scalaJS }}/#scala.scalajs.js.JSApp), while optionally prompting the user to choose a class if multiple such classes exist (fails with multiple classes if `persistLauncher := true`, see section below for details).
-
-By default, to run the `.sjsir` files, we invoke the Rhino JavaScript interpreter with a special scope that lazily reads and loads required `.sjsir` files on the fly (much like Java class loading).
-Note that by default, this environment doesn't have a DOM.
-If you need it set `jsDependencies += RuntimeDOM` in your settings.
-
-## Running with Node.js or PhantomJS
-
-Since Rhino is very slow and limited, we recommend to use [Node.js](http://nodejs.org/) or [PhantomJS](http://phantomjs.org/) instead of Rhino.
-You can disable Rhino with the following sbt setting:
-
-    scalaJSUseRhino in Global := false
-
-which you can put in your `build.sbt`, or in a separate `.sbt` file, e.g.,
-`local.sbt`, which is not checked in your version control.
-
-If `RuntimeDOM` is required, `run` (and `test`) will use PhantomJS.
-Otherwise, it will use Node.js.
-*You need to install these separately* and make them available on the execution path (i.e. as shell commands `node` and `phantomjs`).
-
-The section on [JavaScript environments](./js-environments.html) explains more on the topic, including finer-grained configuration.
+The `.sjsir` files are an internal representation which can be linked to actual JavaScript code as will be explained shortly.
 
 ## Produce one JavaScript file
 
@@ -45,6 +18,21 @@ To produce a proper JavaScript file from your code, you need to call the linker:
     sbt> fastOptJS
 
 This will perform fast Scala.js-specific optimizations and write the resulting code to a single JavaScript file. You can now use this JavaScript file in your HTML page or in whatever way you like. The resulting file in the target folder will have the suffix `-fastopt.js`.
+
+## Running in the console
+
+You can run your application by using the `run` task:
+
+    sbt> run
+
+This will detect and run classes that extend
+[`js.JSApp`]({{ site.production_url }}/api/scalajs-library/{{ site.versions.scalaJS }}/#scala.scalajs.js.JSApp), while optionally prompting the user to choose a class if multiple such classes exist (fails with multiple classes if `persistLauncher := true`, see section below for details).
+
+By default, this command uses [Node.js](http://nodejs.org/), which you need to install separately, to run the produced JavaScript code.
+If your application or one of its libraries requires a DOM (which can be specified with `jsDependencies += RuntimeDOM`), you will also need to install [`jsdom`](https://github.com/tmpvar/jsdom) with `npm install jsdom`.
+
+There are alternative JavaScript interpreters that are available.
+See [JavaScript environments](./js-environments.html) for more details.
 
 ### Disabling the optimizations
 

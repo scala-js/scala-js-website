@@ -4,16 +4,16 @@ title: JavaScript Environments
 ---
 
 In order to decide how to run JavaScript code, the Scala.js sbt plugin uses the setting key `jsEnv`.
-If it is not set, Scala.js uses Rhino if `scalaJSUseRhino` is `true`, and to Node.js or PhantomJS otherwise (depending on whether the DOM is required).
-You can use `jsEnv` to override this default, or to provide finer-grained configuration, as shown in this section.
+By default, `jsEnv` is set to use [Node.js](http://nodejs.org/), which you need to install separately.
+If your application or one of its libraries requires a DOM (which can be specified with `jsDependencies += RuntimeDOM`), you will also need to install [`jsdom`](https://github.com/tmpvar/jsdom) with `npm install jsdom`.
 
-For example, to switch to PhantomJS, you can set:
+## Alternative JavaScript environments
 
-{% highlight scala %}
-jsEnv := PhantomJSEnv().value
-{% endhighlight %}
+There are several alternative JavaScript environments that you can use:
 
-We'd like to stress here again, that you need to separately install Node.js and PhantomJS if you would like to use these environments.
+* [Selenium](http://docs.seleniumhq.org/), provided by a separate project [scalajs-env-selenium](https://github.com/scala-js/scala-js-env-selenium)
+* [PhantomJS](http://phantomjs.org/), with `jsEnv := PhantomJSEnv().value` (PhantomJS needs to be installed separately)
+* Rhino (deprecated), with `scalaJSUseRhino in Global := true`
 
 ## <a name="phantomjs-no-auto-terminate"></a> Disabling auto-termination of PhantomJS
 
