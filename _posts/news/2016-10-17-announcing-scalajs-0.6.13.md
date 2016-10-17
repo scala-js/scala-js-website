@@ -117,7 +117,7 @@ Let us see an example first:
 import scala.scalajs.js
 import js.annotation._
 
-// ES6:      import Foo from "bar.js"
+// ES6:      import { Foo } from "bar.js"
 // CommonJS: var Foo = require("bar.js").Foo;
 @js.native
 @JSImport("bar.js", "Foo")
