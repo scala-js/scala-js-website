@@ -128,6 +128,24 @@ methods must be exported explicitly as shown in the next section.
 As is the case for top-level objects, classes can be exported under custom
 names, including namespaced ones, by giving an explicit name to `@JSExport`.
 
+## Exports with modules
+
+When [emitting a module for Scala.js code](../project/module.html), top-level exports are not sent to the JavaScript global scope.
+Instead, they are genuinely exported from the module.
+In that case, a top-level `@JSExport` annotation has the semantics of an [ECMAScript 2015 export](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/export).
+For example:
+
+{% highlight scala %}
+@JSExport("Bar")
+class Foo(val x: Int)
+{% endhighlight %}
+
+is semantically equivalent to this JavaScript export:
+
+{% highlight javascript %}
+export { Foo as Bar };
+{% endhighlight %}
+
 ## Exporting methods
 
 Similarly to objects, methods of Scala classes, traits and objects can be

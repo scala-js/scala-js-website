@@ -26,7 +26,7 @@ Note that you can also use `%%%` in a Scala/JVM project, in which case it will b
 Thanks to [WebJars](http://www.webjars.org/), you can easily fetch a JavaScript library like so:
 
 {% highlight scala %}
-libraryDependencies += "org.webjars" % "jquery" % "1.10.2"
+libraryDependencies += "org.webjars" % "jquery" % "2.1.4"
 {% endhighlight %}
 
 This will fetch the required JAR containing jQuery. However, it will not include it once you run your JavaScript code, since there is no class-loading process for JavaScript.
@@ -34,10 +34,10 @@ This will fetch the required JAR containing jQuery. However, it will not include
 The Scala.js sbt plugin has `jsDependencies` for this purpose. You can write:
 
 {% highlight scala %}
-jsDependencies += "org.webjars" % "jquery" % "1.10.2" / "jquery.js"
+jsDependencies += "org.webjars" % "jquery" % "2.1.4" / "2.1.4/jquery.js"
 {% endhighlight %}
 
-This will make your project depend on the respective WebJar and include a file named `jquery.js` in the said WebJar when your project is run or tested. We are trying to make the semantics of "include" to be as close as possible to writing:
+This will make your project depend on the respective WebJar and include a file named `**/2.1.4/jquery.js` in the said WebJar when your project is run or tested. We are trying to make the semantics of "include" to be as close as possible to writing:
 
 {% highlight html %}
 <script type="text/javascript" src="..."></script>
@@ -52,7 +52,7 @@ Note: This will **not** dump the JavaScript libraries in the file containing you
 You may scope `jsDependencies` on a given configuration, just like for normal `libraryDependencies`:
 
 {% highlight scala %}
-jsDependencies += "org.webjars" % "jquery" % "1.10.2" / "jquery.js" % "test"
+jsDependencies += "org.webjars" % "jquery" % "2.1.4" / "jquery.js" % "test"
 {% endhighlight %}
 
 ### CommonJS name
@@ -64,6 +64,14 @@ This is the purpose of the `commonJSName` directive, to be used like this:
 {% highlight scala %}
 jsDependencies += "org.webjars" % "mustachejs" % "0.8.2" / "mustache.js" commonJSName "Mustache"
 {% endhighlight %}
+
+which essentially translates to a prelude
+
+{% highlight javascript %}
+var Mustache = require("mustache.js");
+{% endhighlight %}
+
+when running with Node.js from sbt (with `run`, `test`, etc.).
 
 ### Dependency Ordering
 

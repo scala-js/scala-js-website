@@ -9,6 +9,8 @@ This step-by-step tutorial where we start with the setup of a Scala.js sbt proje
 
 To go through this tutorial, you will need to [download & install sbt](http://www.scala-sbt.org/0.13/tutorial/Setup.html) (>= 0.13.0). Note that no prior sbt knowledge (only a working installation) is required to follow the tutorial.
 
+You will also need to [download & install Node.js](https://nodejs.org/en/download/).
+
 ## <a name="setup"></a> Step 1: Setup
 
 First create a new folder where your sbt project will go.
@@ -33,13 +35,13 @@ enablePlugins(ScalaJSPlugin)
 
 name := "Scala.js Tutorial"
 
-scalaVersion := "2.11.7" // or any other Scala version >= 2.10.2
+scalaVersion := "2.11.8" // or any other Scala version >= 2.10.2
 {% endhighlight %}
 
 Last, we need a `project/build.properties` to specify the sbt version (>= 0.13.7):
 
 {% highlight scala %}
-sbt.version=0.13.9
+sbt.version=0.13.12
 {% endhighlight %}
 
 That is all we need to configure the build.
@@ -67,40 +69,12 @@ As you expect, this will simply print "HelloWorld" when run. To run this, simply
     $ sbt
     > run
     [info] Compiling 1 Scala source to (...)/scala-js-tutorial/target/scala-2.11/classes...
+    [info] Fast optimizing (...)/scalajs-tutorial/target/scala-2.11/scala-js-tutorial-fastopt.js
     [info] Running tutorial.webapp.TutorialApp
     Hello world!
     [success] (...)
-
-**Troubleshooting on JDK <= 7**: Should you experience errors with the `PermGen` size of the JVM at this point, you can increase it. Refer, for example, to [this StackOverflow question](http://stackoverflow.com/questions/8331135/transient-outofmemoryerror-when-compiling-scala-classes).
 
 Congratulations! You have successfully compiled and run your first Scala.js application. The code is actually run by a JavaScript interpreter. If you do not believe this (it happens to us occasionally), you can use the `last` command in sbt:
-
-    > last
-    (...)
-    [info] Running tutorial.webapp.TutorialApp
-    [debug] with JSEnv RhinoJSEnv
-    [success] (...)
-
-So your code has actually been executed by the [Rhino](https://developer.mozilla.org/en-US/docs/Mozilla/Projects/Rhino) JavaScript interpreter.
-
-### Run with Node.js (optional, but recommended)
-
-Rhino is cool because it runs out of the box, without having to install anything.
-But it is *terribly* slow.
-In general, you do not want to use it for your day-to-day development.
-
-[Node.js](http://nodejs.org/) is a much more performant JavaScript engine.
-To run your code with Node.js, you need to install it, and disable Rhino in sbt
-using this command:
-
-    > set scalaJSUseRhino in Global := false
-    > run
-    [info] Fast optimizing C:\Users\Sepi\Documents\Projets\scalajs-tutorial\target\scala-2.11\scala-js-tutorial-fastopt.js
-    [info] Running tutorial.webapp.TutorialApp
-    Hello world!
-    [success] (...)
-
-The `last` command now shows that this was run with Node.js:
 
     > last
     (...)
@@ -109,14 +83,7 @@ The `last` command now shows that this was run with Node.js:
     [debug] Starting process: node
     [success] (...)
 
-Disabling Rhino must be done once per sbt session.
-Alternatively, you can include the setting directly in your `build.sbt`, or,
-in order not to disturb your teammates, in a separate `.sbt` file (say,
-`local.sbt`):
-
-    scalaJSUseRhino in Global := false
-
-This will enable Node.js by default when launching sbt.
+So your code has actually been executed by Node.js.
 
 **Source maps in Node.js**: To get your stack traces resolved on Node.js, you will have to install the `source-map-support` package.
 
@@ -139,7 +106,7 @@ To generate a single JavaScript file using sbt, just use the `fastOptJS` task:
 
 This will perform some fast optimizations and generate the `target/scala-2.11/scala-js-tutorial-fastopt.js` file containing the JavaScript code.
 
-(It is possible that the `[info]` does not appear, if you have just run the program with Node.js.)
+(It is possible that the `[info]` does not appear, if you have just run the program and not made any change to it.)
 
 ### Create the HTML Page
 
@@ -183,7 +150,7 @@ That's what the DOM API is for.
 To use the DOM, it is best to use the statically typed Scala.js DOM library. To add it to your sbt project, add the following line to your `build.sbt`:
 
 {% highlight scala %}
-libraryDependencies += "org.scala-js" %%% "scalajs-dom" % "0.9.0"
+libraryDependencies += "org.scala-js" %%% "scalajs-dom" % "0.9.1"
 {% endhighlight %}
 
 sbt-savvy folks will notice the `%%%` instead of the usual `%%`. It means we are using a Scala.js library and not a
@@ -404,22 +371,26 @@ issue. Remember the task `run`? If you try to invoke it now, you will see someth
 
     > run
     [info] Running tutorial.webapp.TutorialApp
-    org.mozilla.javascript.EcmaError: ReferenceError: "window" is not defined. (/home/ts/.ivy2/cache/org.webjars/jquery/jars/jquery-1.10.2.jar#META-INF/resources/webjars/jquery/1.10.2/jquery.js#14)
-    (...)
+    [error] TypeError: (0 , $m_Lorg_scalajs_jquery_package$(...).jQuery$1) is not a function
+    [error]     at $c_Ltutorial_webapp_TutorialApp$.main__V (.../scalajs-tutorial/src/main/scala/tutorial/webapp/TutorialApp.scala:9:12)
+    [error]     at $c_Ltutorial_webapp_TutorialApp$.$$js$exported$meth$main__O (https:/raw.githubusercontent.com/scala-js/scala-js/v0.6.13/library/src/main/scala/scala/scalajs/js/JSApp.scala:18:4)
+    [error]     at $c_Ltutorial_webapp_TutorialApp$.main (.../scalajs-tutorial/src/main/scala/tutorial/webapp/TutorialApp.scala:7:8)
+    [error]     ...
     [trace] Stack trace suppressed: run last compile:run for the full output.
-    [error] (compile:run) Exception while running JS code: ReferenceError: "window" is not defined. (/home/ts/.ivy2/cache/org.webjars/jquery/jars/jquery-1.10.2.jar#META-INF/resources/webjars/jquery/1.10.2/jquery.js#14)
-    [error] (...)
+    [error] (compile:run) org.scalajs.jsenv.ExternalJSEnv$NonZeroExitException: Node.js exited with code 1
+    [error] Total time: 1 s, completed Oct 13, 2016 3:06:00 PM
 
-What basically happens here is that jQuery (which is automatically included because of `jsDependencies`) tries to
-access the `window` object of the DOM, which doesn't exist by default in the Rhino and Node.js runners. To make the
-DOM available, add the following to your `build.sbt`:
+What basically happens here is that jQuery (which is automatically included because of `jsDependencies`) cannot properly load, because there is no DOM available in Node.js.
+To make the DOM available, add the following to your `build.sbt`:
 
 {% highlight scala %}
 jsDependencies += RuntimeDOM
 {% endhighlight %}
 
-If you disabled Rhino, this will switch to running your code with [PhantomJS](http://phantomjs.org/) instead of
-Node.js, which you need to install. Otherwise, in Rhino, a fake DOM is automatically made available.
+This will use the [`jsdom`](https://github.com/tmpvar/jsdom) library to simulate a DOM in Node.js.
+Note that you need to install it separately using
+
+    $ npm install jsdom
 
 After reloading, you can invoke `run` successfully:
 
@@ -427,8 +398,11 @@ After reloading, you can invoke `run` successfully:
     [info] Running tutorial.webapp.TutorialApp
     [success] (...)
 
-Just like other library dependencies, this setting applies transitively: if you depend on a library that depends on the
+Just like other library dependencies, `jsDependencies += RuntimeDOM` applies transitively: if you depend on a library that depends on the
 DOM, then you depend on the DOM as well.
+
+Alternatively to Node.js with jsdom, you can use [PhantomJS](http://phantomjs.org/) or even [Selenium](http://docs.seleniumhq.org/).
+You can find more information about this in the [documentation about JavaScript environments]({{ BASE_PATH }}/doc/project/js-environments.html).
 
 ### Adding uTest
 
@@ -437,7 +411,7 @@ It typically boils down to two sbt settings in the `build.sbt` file.
 For uTest, these are:
 
 {% highlight scala %}
-libraryDependencies += "com.lihaoyi" %%% "utest" % "0.3.0" % "test"
+libraryDependencies += "com.lihaoyi" %%% "utest" % "0.4.3" % "test"
 testFrameworks += new TestFramework("utest.runner.Framework")
 {% endhighlight %}
 
@@ -470,12 +444,13 @@ To run this test, simply invoke the `test` task:
 
     > test
     [info] Compiling 1 Scala source to (...)/scalajs-tutorial/target/scala-2.11/test-classes...
-    [info] 1/2     tutorial.webapp.TutorialTest.HelloWorld		Success
-    [info] 2/2     tutorial.webapp.TutorialTest		Success
+    [info] Fast optimizing (...)/scalajs-tutorial/target/scala-2.11/scala-js-tutorial-test-fastopt.js
+    [info] ------------------Starting Suite tutorial.webapp.TutorialTest------------------
+    [info] tutorial.webapp.TutorialTest.HelloWorld          Success
+    [info] tutorial.webapp.TutorialTest             Success
     [info] -----------------------------------Results-----------------------------------
-    [info] tutorial.webapp.TutorialTest		Success
-    [info]     HelloWorld		Success
-    [info] Failures:
+    [info] tutorial.webapp.TutorialTest             Success
+    [info]     HelloWorld           Success
     [info]
     [info] Tests: 2
     [info] Passed: 2
@@ -483,7 +458,7 @@ To run this test, simply invoke the `test` task:
     [success] (...)
 
 We have successfully created a simple test.
-Just like `run`, the `test` task uses Rhino by default, or Node.js/PhantomJS in fastOpt stage.
+Just like `run`, the `test` task uses Node.js to execute your tests.
 
 ### A more complex test
 
@@ -526,14 +501,15 @@ You can now call the `test` task again:
 
     > test
     [info] Compiling 1 Scala source to (...)/scalajs-tutorial/target/scala-2.11/test-classes...
-    [info] 1/3     tutorial.webapp.TutorialTest.HelloWorld		Success
-    [info] 2/3     tutorial.webapp.TutorialTest.ButtonClick		Success
-    [info] 3/3     tutorial.webapp.TutorialTest		Success
+    [info] Fast optimizing (...)/scalajs-tutorial/target/scala-2.11/scala-js-tutorial-test-fastopt.js
+    [info] ------------------Starting Suite tutorial.webapp.TutorialTest------------------
+    [info] tutorial.webapp.TutorialTest.HelloWorld          Success
+    [info] tutorial.webapp.TutorialTest.ButtonClick         Success
+    [info] tutorial.webapp.TutorialTest             Success
     [info] -----------------------------------Results-----------------------------------
-    [info] tutorial.webapp.TutorialTest		Success
-    [info]     HelloWorld		Success
-    [info]     ButtonClick		Success
-    [info] Failures:
+    [info] tutorial.webapp.TutorialTest             Success
+    [info]     HelloWorld           Success
+    [info]     ButtonClick          Success
     [info]
     [info] Tests: 3
     [info] Passed: 3
@@ -573,13 +549,10 @@ need to repeat this in the HTML file. If you add the following setting to your `
 `scala-js-tutorial-launcher.js` file which calls the main method:
 
 {% highlight scala %}
-persistLauncher in Compile := true
-
-persistLauncher in Test := false
+persistLauncher := true
 {% endhighlight %}
 
-We set `persistLauncher` to false for testing, since we do not have an application to run. In our HTML page, we can now
-include this file instead of the manual launcher:
+In our HTML page, we can now include this file instead of the manual launcher:
 
 {% highlight html %}
 <!-- Run JSApp -->
@@ -615,7 +588,3 @@ We can now create our final production HTML file `scalajs-tutorial.html` which i
 
 This completes the Scala.js tutorial. Refer to our [documentation page](../../doc/index.html) for deeper insights into various
 aspects of Scala.js.
-
-
-
-
