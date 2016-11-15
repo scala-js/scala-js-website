@@ -27,6 +27,7 @@ xhr.onload = (e) => {
     $("#tweets").html(parseTweets(r));
   }
 };
+xhr.send();
 {% endhighlight %}
 {% endcolumn %}
 
@@ -44,6 +45,7 @@ xhr.onload = { (e: Event) =>
     $("#tweets").html(parseTweets(r))
   }
 }
+xhr.send()
 {% endhighlight %}
 {% endcolumn %}
 {% endcolumns %}
