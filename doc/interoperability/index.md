@@ -26,7 +26,7 @@ xhr.onload = (e) => {
     var r = JSON.parse(xhr.responseText);
     $("#tweets").html(parseTweets(r));
   }
-}
+};
 {% endhighlight %}
 {% endcolumn %}
 
