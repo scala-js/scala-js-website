@@ -35,13 +35,13 @@ enablePlugins(ScalaJSPlugin)
 
 name := "Scala.js Tutorial"
 
-scalaVersion := "2.11.8" // or any other Scala version >= 2.10.2
+scalaVersion := "2.12.0" // or any other Scala version >= 2.10.2
 {% endhighlight %}
 
 Last, we need a `project/build.properties` to specify the sbt version (>= 0.13.7):
 
 {% highlight scala %}
-sbt.version=0.13.12
+sbt.version=0.13.13
 {% endhighlight %}
 
 That is all we need to configure the build.
@@ -68,8 +68,8 @@ As you expect, this will simply print "HelloWorld" when run. To run this, simply
 
     $ sbt
     > run
-    [info] Compiling 1 Scala source to (...)/scala-js-tutorial/target/scala-2.11/classes...
-    [info] Fast optimizing (...)/scalajs-tutorial/target/scala-2.11/scala-js-tutorial-fastopt.js
+    [info] Compiling 1 Scala source to (...)/scala-js-tutorial/target/scala-2.12/classes...
+    [info] Fast optimizing (...)/scalajs-tutorial/target/scala-2.12/scala-js-tutorial-fastopt.js
     [info] Running tutorial.webapp.TutorialApp
     Hello world!
     [success] (...)
@@ -101,10 +101,10 @@ Now that we have a simple JavaScript application, we would like to use it in an 
 To generate a single JavaScript file using sbt, just use the `fastOptJS` task:
 
     > fastOptJS
-    [info] Fast optimizing (...)/scala-js-tutorial/target/scala-2.11/scala-js-tutorial-fastopt.js
+    [info] Fast optimizing (...)/scala-js-tutorial/target/scala-2.12/scala-js-tutorial-fastopt.js
     [success] (...)
 
-This will perform some fast optimizations and generate the `target/scala-2.11/scala-js-tutorial-fastopt.js` file containing the JavaScript code.
+This will perform some fast optimizations and generate the `target/scala-2.12/scala-js-tutorial-fastopt.js` file containing the JavaScript code.
 
 (It is possible that the `[info]` does not appear, if you have just run the program and not made any change to it.)
 
@@ -121,7 +121,7 @@ To load and launch the created JavaScript, you will need an HTML file. Create th
   </head>
   <body>
     <!-- Include Scala.js compiled code -->
-    <script type="text/javascript" src="./target/scala-2.11/scala-js-tutorial-fastopt.js"></script>
+    <script type="text/javascript" src="./target/scala-2.12/scala-js-tutorial-fastopt.js"></script>
     <!-- Run tutorial.webapp.TutorialApp -->
     <script type="text/javascript">
       tutorial.webapp.TutorialApp().main();
@@ -130,7 +130,7 @@ To load and launch the created JavaScript, you will need an HTML file. Create th
 </html>
 {% endhighlight %}
 
-The first script tag simply includes the generated code (attention, you might need to adapt the Scala version from `2.11` to `2.10` here if you are using Scala 2.10.x instead of 2.11.x).
+The first script tag simply includes the generated code (attention, you might need to adapt the Scala version from `2.12` to `2.10` or `2.11` here if you are using Scala 2.10.x or Scala 2.11.x instead of 2.12.x).
 
 In the second script tag, we first get the `TutorialApp` object. Note the `()`: `TutorialApp` is a function in JavaScript, since potential object initialization code needs to be run upon the first access to the object. We then simply call the `main` method on the `TutorialApp` object.
 
@@ -202,8 +202,8 @@ def main(): Unit = {
 To rebuild the JavaScript, simply invoke `fastOptJS` again:
 
     > fastOptJS
-    [info] Compiling 1 Scala source to (...)/scala-js-tutorial/target/scala-2.11/classes...
-    [info] Fast optimizing (...)/scala-js-tutorial/target/scala-2.11/scala-js-tutorial-fastopt.js
+    [info] Compiling 1 Scala source to (...)/scala-js-tutorial/target/scala-2.12/classes...
+    [info] Fast optimizing (...)/scala-js-tutorial/target/scala-2.12/scala-js-tutorial-fastopt.js
     [success] (...)
 
 As you can see from the log, sbt automatically detects that the sources must be recompiled before fast optimizing.
@@ -263,7 +263,7 @@ Just like for the DOM, there is a typed library for jQuery available in Scala.js
 `libraryDependencies += ..` line in your `build.sbt` by:
 
 {% highlight scala %}
-libraryDependencies += "be.doeraene" %%% "scalajs-jquery" % "0.9.0"
+libraryDependencies += "be.doeraene" %%% "scalajs-jquery" % "0.9.1"
 {% endhighlight %}
 
 Since we won't be using the DOM directly, we don't need the old library anymore. Note that the jQuery library internally
@@ -324,7 +324,7 @@ JavaScript libraries anymore:
 
 {% highlight html %}
 <!-- Include JavaScript dependencies -->
-<script type="text/javascript" src="./target/scala-2.11/scala-js-tutorial-jsdeps.js"></script>
+<script type="text/javascript" src="./target/scala-2.12/scala-js-tutorial-jsdeps.js"></script>
 {% endhighlight %}
 
 ### Setup UI in Scala.js
@@ -411,7 +411,7 @@ It typically boils down to two sbt settings in the `build.sbt` file.
 For uTest, these are:
 
 {% highlight scala %}
-libraryDependencies += "com.lihaoyi" %%% "utest" % "0.4.3" % "test"
+libraryDependencies += "com.lihaoyi" %%% "utest" % "0.4.4" % "test"
 testFrameworks += new TestFramework("utest.runner.Framework")
 {% endhighlight %}
 
@@ -443,8 +443,8 @@ after the UI has been set up.
 To run this test, simply invoke the `test` task:
 
     > test
-    [info] Compiling 1 Scala source to (...)/scalajs-tutorial/target/scala-2.11/test-classes...
-    [info] Fast optimizing (...)/scalajs-tutorial/target/scala-2.11/scala-js-tutorial-test-fastopt.js
+    [info] Compiling 1 Scala source to (...)/scalajs-tutorial/target/scala-2.12/test-classes...
+    [info] Fast optimizing (...)/scalajs-tutorial/target/scala-2.12/scala-js-tutorial-test-fastopt.js
     [info] ------------------Starting Suite tutorial.webapp.TutorialTest------------------
     [info] tutorial.webapp.TutorialTest.HelloWorld          Success
     [info] tutorial.webapp.TutorialTest             Success
@@ -500,8 +500,8 @@ of messages has increased.
 You can now call the `test` task again:
 
     > test
-    [info] Compiling 1 Scala source to (...)/scalajs-tutorial/target/scala-2.11/test-classes...
-    [info] Fast optimizing (...)/scalajs-tutorial/target/scala-2.11/scala-js-tutorial-test-fastopt.js
+    [info] Compiling 1 Scala source to (...)/scalajs-tutorial/target/scala-2.12/test-classes...
+    [info] Fast optimizing (...)/scalajs-tutorial/target/scala-2.12/scala-js-tutorial-test-fastopt.js
     [info] ------------------Starting Suite tutorial.webapp.TutorialTest------------------
     [info] tutorial.webapp.TutorialTest.HelloWorld          Success
     [info] tutorial.webapp.TutorialTest.ButtonClick         Success
@@ -529,7 +529,7 @@ uses the advanced optimizations of the [Google Closure Compiler](http://develope
 full optimizations, simply use the `fullOptJS` task:
 
     > fullOptJS
-    [info] Full optimizing (...)/scala-js-tutorial/target/scala-2.11/scala-js-tutorial-opt.js
+    [info] Full optimizing (...)/scala-js-tutorial/target/scala-2.12/scala-js-tutorial-opt.js
     [info] Closure: 0 error(s), 0 warning(s)
     [success] (...)
 
@@ -556,7 +556,7 @@ In our HTML page, we can now include this file instead of the manual launcher:
 
 {% highlight html %}
 <!-- Run JSApp -->
-<script type="text/javascript" src="./target/scala-2.11/scala-js-tutorial-launcher.js"></script>
+<script type="text/javascript" src="./target/scala-2.12/scala-js-tutorial-launcher.js"></script>
 {% endhighlight %}
 
 If we rename our `JSApp` object, we need not change our HTML at all anymore. Note that the launcher generation only
@@ -577,11 +577,11 @@ We can now create our final production HTML file `scalajs-tutorial.html` which i
   </head>
   <body>
     <!-- Include JavaScript dependencies -->
-    <script type="text/javascript" src="./target/scala-2.11/scala-js-tutorial-jsdeps.js"></script>
+    <script type="text/javascript" src="./target/scala-2.12/scala-js-tutorial-jsdeps.js"></script>
     <!-- Include Scala.js compiled code -->
-    <script type="text/javascript" src="./target/scala-2.11/scala-js-tutorial-opt.js"></script>
+    <script type="text/javascript" src="./target/scala-2.12/scala-js-tutorial-opt.js"></script>
     <!-- Run main object -->
-    <script type="text/javascript" src="./target/scala-2.11/scala-js-tutorial-launcher.js"></script>
+    <script type="text/javascript" src="./target/scala-2.12/scala-js-tutorial-launcher.js"></script>
   </body>
 </html>
 {% endhighlight %}
