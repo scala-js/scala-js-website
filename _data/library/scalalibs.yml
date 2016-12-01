@@ -107,9 +107,9 @@
       desc: Pure Scala pickler with annotations
       dep: '"com.github.fomkin" %%% "pushka-json" % "0.3.1"'
     - name: Circe
-      url: https://github.com/travisbrown/circe
+      url: https://github.com/circe/circe
       desc: Yet another JSON library for Scala (built with Cats and Shapeless)
-      dep: '"io.circe" %%% "circe-core" % "0.2.0", "io.circe" %%% "circe-parse" % "0.2.0", "io.circe" %%% "circe-generic" % "0.2.0"'
+      dep: '"io.circe" %%% "circe-core" % "0.6.1", "io.circe" %%% "circe-parser" % "0.6.1", "io.circe" %%% "circe-generic" % "0.6.1"'
     - name: Jello
       url: http://github.com/uniformlyrandom/jello
       desc: Scala.js & JVM JSON serialization framework without thrills
