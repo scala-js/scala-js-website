@@ -269,6 +269,27 @@ Not specifying `x` in this case will fail at runtime (since it does not have a d
 
 Just like `@JSExport`, `@JSExportNamed` takes the name of the exported method as an optional argument.
 
+## Exporting top-level methods
+
+While an `@JSExport`ed method inside an `@JSExport`ed object allows JavaScript code to call a "static" method,
+it does not feel like a top-level function from JavaScript's point of view.
+`@JSExportTopLevel` allows to export a method of a top-level object as a truly top-level function:
+
+{% highlight scala %}
+object A {
+  @JSExportTopLevel("foo")
+  def foo(x: Int): Int = x + 1
+}
+{% endhighlight %}
+
+can be called from JavaScript as:
+
+{% highlight javascript %}
+const y = foo(5);
+{% endhighlight %}
+
+Note that `@JSExportTopLevel` requires an explicit name under which to export the function.
+
 ## Exporting properties
 
 `val`s, `var`s and `def`s without parentheses, as well as `def`s whose name
