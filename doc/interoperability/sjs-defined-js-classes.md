@@ -34,7 +34,7 @@ Scala.js-defined JS types have the following restrictions:
 * Private methods cannot be overloaded.
 * Qualified private members, i.e., `private[EnclosingScope]`, must be `final`.
 * Scala.js-defined JS classes, traits and objects cannot directly extend native JS traits (it is allowed to extend a native JS class).
-* Scala.js-defined JS traits cannot declare concrete term members, i.e., they must all be abstract.
+* Scala.js-defined JS traits cannot declare concrete term members (i.e., they must all be abstract) unless their right-hand-side is exactly `= js.undefined`.
 * Scala.js-defined JS classes and objects must extend a JS class, for example `js.Object` (they cannot directly extend `AnyRef with js.Any`).
 * Declaring a method named `apply` without `@JSName` is illegal.
 * Declaring a method with `@JSBracketSelect` or `@JSBracketCall` is illegal.
@@ -148,20 +148,60 @@ Native JS traits can only be extended by native JS classes, objects and traits.
 In other words, a Scala.js-defined JS class/trait/object cannot extend a native JS trait.
 They can only extend Scala.js-defined JS traits.
 
-At the moment, Scala.js-defined JS traits cannot declare any concrete term members, i.e., all its `val`s, `var`s and `def`s must be abstract.
-So it is not possible to *mix in* traits into Scala.js-defined JS classes.
-You can only implement interfaces.
+Term members (`val`s, `var`s and `def`s) in Scala.js-defined JS traits must:
+
+* either be abstract,
+* or have `= js.undefined` as right-hand-side (and not be a `def` with `()`).
 
 {% highlight scala %}
 @ScalaJSDefined
 trait Bar extends js.Object {
   val x: Int
   val y: Int = 5 // illegal
+  val z: js.UndefOr[Int] = js.undefined
   
   def foo(x: Int): Int
   def bar(x: Int): Int = x + 1 // illegal
+  def foobar(x: Int): js.UndefOr[Int] = js.undefined // illegal
+  def babar: js.UndefOr[Int] = js.undefined
 }
 {% endhighlight %}
+
+Unless overridden in a class or objects, concrete `val`s, `var`s and `def`s declared
+in a JavaScript trait (necessarily with `= js.undefined`) are *not* exposed to JavaScript at all.
+For example, implementing (the legal parts of) `Bar` in a subclass:
+
+{% highlight scala %}
+@ScalaJSDefined
+class Babar extends Bar {
+  val x: Int = 42
+
+  def foo(x: Int): Int = x + 1
+
+  override def babar: js.UndefOr[Int] = 3
+}
+{% endhighlight %}
+
+has the same semantics as the following ECMAScript 2015 class:
+
+{% highlight javascript %}
+class Babar extends global.Object { // `extends Bar` disappears
+  constructor() {
+    super();
+    this.x = 42;
+  }
+  foo(x) {
+    return x + 1;
+  }
+  get babar() {
+    return 3;
+  }
+}
+{% endhighlight %}
+
+Note that `z` is not defined at all, not even as `this.z = undefined`.
+The distinction is rarely relevant, because `babar.z` will return `undefined` in JavaScript
+and in Scala.js if `babar` does not have a field `z`.
 
 
 ### Anonymous classes
@@ -181,6 +221,50 @@ val pos = new Position {
   val x = 5
   val y = 10
 }
+{% endhighlight %}
+
+#### Use case: configuration objects
+
+For configuration objects that have fields with default values, concrete members with `= js.undefined` can be used in the trait.
+For example:
+
+{% highlight scala %}
+@ScalaJSDefined
+trait JQueryAjaxSettings extends js.Object {
+  val data: js.UndefOr[js.Object | String | js.Array[Any]] = js.undefined
+  val contentType: js.UndefOr[Boolean | String] = js.undefined
+  val crossDomain: js.UndefOr[Boolean] = js.undefined
+  val success: js.UndefOr[js.Function3[Any, String, JQueryXHR, _]] = js.undefined
+  ...
+}
+{% endhighlight %}
+
+When calling `ajax()`, we can now give an anonymous object that overrides only the `val`s we care about:
+
+{% highlight scala %}
+jQuery.ajax(someURL, new JQueryAjaxSettings {
+  override val crossDomain: js.UndefOr[Boolean] = true
+  override val success: js.UndefOr[js.Function3[Any, String, JQueryXHR, _]] = {
+    js.defined { (data: Any, textStatus: String, xhr: JQueryXHR) =>
+      println("Status: " + textStatus)
+    }
+  }
+})
+{% endhighlight %}
+
+Note that for functions, we use `js.defined { ... }` to drive Scala's type inference.
+Otherwise, it needs to apply two implicit conversions, which is not allowed.
+
+The explicit types are quite annoying, but they are only necessary in Scala 2.10 and 2.11.
+If you use Scala 2.12, you can omit all the type annotations (but keep `js.defined`), thanks to improved type inference for `val`s and SAM conversions:
+
+{% highlight scala %}
+jQuery.ajax(someURL, new JQueryAjaxSettings {
+  override val crossDomain = true
+  override val success = js.defined { (data, textStatus, xhr) =>
+    println("Status: " + textStatus)
+  }
+})
 {% endhighlight %}
 
 #### Caveat with reflective calls
