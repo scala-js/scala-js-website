@@ -84,7 +84,7 @@ otherwise.
 
 The JVM is a very well specified environment, which even specifies how some
 bugs are reported as exceptions.
-Some examples are:
+Currently known exhaustive list of exceptions are:
 
 * `NullPointerException`
 * `ArrayIndexOutOfBoundsException` and `StringIndexOutOfBoundsException`
