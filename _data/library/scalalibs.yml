@@ -143,6 +143,10 @@
     - name: Udash RPC
       url: http://guide.udash.io/#/rpc
       desc: Cross-compiling strongly typed client-server communication system for the Udash framework
+    - name: endpoints
+      url: https://github.com/julienrf/endpoints/
+      desc: Scala library to define HTTP-based communication protocols
+      dep: '"org.julienrf" %%% "endpoints-algebra" % "0.1"'
 - topic: FRP/reactive extensions
   libraries:
     - name: Scala.Rx
