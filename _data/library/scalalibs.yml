@@ -84,6 +84,10 @@
       url: https://github.com/chandu0101/sri
       desc: 'Sri (Scala React interface) is a scalajs library to build truly native cross platform (mobile (ios and android) and web) applications.'
       dep: '"com.github.chandu0101.sri" %%% "web" % "0.4.0"'
+    - name: OutWatch
+      url: https://outwatch.github.io/
+      desc: 'A functional & reactive UI framework based on Rx'
+      dep: '"io.github.outwatch" %%% "outwatch" % "0.6.0"'
 - topic: Serialization/pickling libraries
   libraries:
     - name: uPickle
