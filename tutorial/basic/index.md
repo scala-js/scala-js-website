@@ -541,6 +541,18 @@ you need to change the *stage* using the following sbt setting:
 
 (by default, the stage is `FastOptStage`)
 
+### Compression
+
+If you serve your Scala.js application from a web server, you should additionally
+gzip the resulting `.js` files. This step might reduce the size of your application down
+to 20% of its original size.
+
+The setup depends on your server stack. A common option is to use
+[sbt-web](https://github.com/sbt/sbt-web),
+[sbt-web-scalajs](https://github.com/vmunier/sbt-web-scalajs) and
+[sbt-gzip](https://github.com/sbt/sbt-gzip)
+if you have a Play or Akka-http server.
+
 ### Automatically Creating a Launcher
 
 Before creating another HTML file which includes the fully optimized JavaScript, we are going to introduce another
