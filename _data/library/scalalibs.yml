@@ -39,9 +39,9 @@
       desc: Lightweight, modular, and extensible library for functional programming.
       dep: '"org.typelevel" %%% "cats" % "0.6.0"'
     - name: Monocle
-      url: https://github.com/japgolly/Monocle
+      url: https://github.com/julien-truffaut/Monocle
       desc: Optics library strongly inspired by Haskell [Lens](https://github.com/ekmett/lens).
-      dep: '"com.github.japgolly.fork.monocle" %%% "monocle-core" % "1.1.1"'
+      dep: '"com.github.julien-truffaut" %%% "monocle-core" % "1.3.2"'
     - name: Quicklens
       url: https://github.com/adamw/quicklens
       desc: Modify deeply nested fields in case classes.
