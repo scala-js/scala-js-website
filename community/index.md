@@ -56,6 +56,7 @@ Use these Open Source projects to see how others have used Scala.js to build the
 - [swimstats.org](http://www.swimstats.org/) ([source](https://github.com/andywag/swim_web)): Display/plot amateur swim results and times, by Andy Wagner
 - [ScalaKata](http://scalakata.com) ([source](https://github.com/MasseGuillaume/ScalaKata2)): Scala Interactive Playground
 - [CodeCraft](http://www.codecraftgame.org/) ([source](https://github.com/cswinter/CodeCraftGame)): Real-time strategy programming game for Scala/JavaScript using OpenGL/WebGL
+- [Checkers](http://kschuetz.github.io/checkers/) ([source](https://github.com/kschuetz/checkers)): Checkers game rendered in web browser using SVG (about 10000 lines of Scala.js)
 
 ## Testimonials
 
