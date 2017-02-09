@@ -230,7 +230,7 @@
     - name: squants
       url: https://github.com/typelevel/squants
       desc: 'API for Quantities, Units of Measure and Dimensional Analysis'
-      dep: '"org.typelevel" %%% "squants" % "1.0.0'
+      dep: '"org.typelevel" %%% "squants" % "1.0.0"'
 - topic: Tools
   libraries:
     - name: sbt-scala-js-map
