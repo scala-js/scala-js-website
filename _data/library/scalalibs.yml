@@ -3,7 +3,7 @@
     - name: scalajs-java-time
       url: https://github.com/scala-js/scala-js-java-time
       desc: Port of the [java.time API](https://docs.oracle.com/javase/8/docs/api/java/time/package-summary.html) of JDK8 for Scala.js
-      dep: '"org.scala-js" %%% "scalajs-java-time" % "0.1.0"'
+      dep: '"org.scala-js" %%% "scalajs-java-time" % "0.2.0"'
     - name: scalajs-jsjoda-as-java-time
       url: https://github.com/zoepepper/scalajs-jsjoda
       desc: Implementation of JDK8's [java.time API](https://docs.oracle.com/javase/8/docs/api/java/time/package-summary.html) in Scala.js by wrapping [js-joda](http://js-joda.github.io/js-joda/) classes
@@ -11,7 +11,7 @@
     - name: scala-java-time
       url: https://github.com/cquiroz/scala-java-time
       desc: Platform-independent implementation of [java.time](https://docs.oracle.com/javase/8/docs/api/java/time/package-summary.html)
-      dep: '"io.github.cquiroz" %%% "scala-java-time" % "2.0.0-M6"'
+      dep: '"io.github.cquiroz" %%% "scala-java-time" % "2.0.0-M7"'
     - name: scala-java-locales
       url: https://github.com/cquiroz/scala-java-locales
       desc: Implementation of JDK8's [java.util.Locale API](https://docs.oracle.com/javase/8/docs/api/java/util/Locale.html) and parts of [java.text API](https://docs.oracle.com/javase/8/docs/api/java/text/package-summary.html)
@@ -25,41 +25,41 @@
     - name: Scalaz
       url: https://github.com/scalaz/scalaz
       desc: Library for functional programming.
-      dep: '"org.scalaz" %%% "scalaz-core" % "7.2.1"'
+      dep: '"org.scalaz" %%% "scalaz-core" % "7.2.8"'
     - name: Each
       url: https://github.com/ThoughtWorksInc/each
       desc: A macro library that converts native imperative syntax to scalaz's monadic expressions.
-      dep: '"com.thoughtworks.each" %%% "each" % "0.4.2"'
+      dep: '"com.thoughtworks.each" %%% "each" % "3.1.1"'
     - name: Shapeless
       url: https://github.com/milessabin/shapeless
       desc: Generic programming for Scala.
-      dep: '"com.chuusai" %%% "shapeless" % "2.2.5"'
+      dep: '"com.chuusai" %%% "shapeless" % "2.3.2"'
     - name: Cats
       url: https://github.com/typelevel/cats
       desc: Lightweight, modular, and extensible library for functional programming.
-      dep: '"org.typelevel" %%% "cats" % "0.6.0"'
+      dep: '"org.typelevel" %%% "cats" % "0.9.0"'
     - name: Monocle
       url: https://github.com/julien-truffaut/Monocle
       desc: Optics library strongly inspired by Haskell [Lens](https://github.com/ekmett/lens).
-      dep: '"com.github.julien-truffaut" %%% "monocle-core" % "1.3.2"'
+      dep: '"com.github.julien-truffaut" %%% "monocle-core" % "1.4.0"'
     - name: Quicklens
       url: https://github.com/adamw/quicklens
       desc: Modify deeply nested fields in case classes.
-      dep: '"com.softwaremill.quicklens" %%% "quicklens" % "1.4.6"'
+      dep: '"com.softwaremill.quicklens" %%% "quicklens" % "1.4.8"'
 - topic: Web libraries/frameworks
   libraries:
     - name: Udash
       url: http://udash.io/
       desc: A Scala(.js) framework for building beautiful and maintainable Web Applications
-      dep: '"io.udash" %%% "udash-core-frontend" % "0.1.1"'
+      dep: '"io.udash" %%% "udash-core-frontend" % "0.4.0"'
     - name: Binding.scala/dom
       url: https://github.com/ThoughtWorksInc/Binding.scala
       desc: Reactive web framework for Scala.js
-      dep: 'libraryDependencies += "com.thoughtworks.binding" %%% "dom" % "1.0.5"'
+      dep: 'libraryDependencies += "com.thoughtworks.binding" %%% "dom" % "10.0.2"'
     - name: ScalaTags
       url: http://www.lihaoyi.com/scalatags/
       desc: HTML templating library/DSL that works on both Scala/JVM and Scala.js
-      dep: '"com.lihaoyi" %%% "scalatags" % "0.5.5"'
+      dep: '"com.lihaoyi" %%% "scalatags" % "0.6.3"'
     - name: MetaWeb
       url: https://github.com/metastack-pl/metaweb
       desc: Functional low-level web framework for Scala and Scala.js
@@ -67,7 +67,7 @@
     - name: Widok
       url: https://widok.github.io/
       desc: Reactive web framework for the JVM and Scala.js
-      dep: '"io.github.widok" %%% "widok" % "0.2.2"'
+      dep: '"io.github.widok" %%% "widok" % "0.2.4"'
     - name: ScalaJS Binding
       url: https://github.com/antonkulaga/scala-js-binding
       desc: Scala.js HTML binding library
@@ -75,33 +75,33 @@
     - name: ScalaCSS
       url: https://github.com/japgolly/scalacss/
       desc: 'ScalaCSS aims to bring type-safety and clarity to: creating CSS, using CSS, maintaining CSS and correctness of CSS'
-      dep: '"com.github.japgolly.scalacss" %%% "core" % "0.3.1"'
+      dep: '"com.github.japgolly.scalacss" %%% "core" % "0.5.1"'
     - name: Diode
       url: https://github.com/ochrons/diode
       desc: 'Diode is a Scala/Scala.js library for managing immutable application state with unidirectional data flow.'
-      dep: '"me.chrons" %%% "diode" % "0.1.0"'
+      dep: '"me.chrons" %%% "diode" % "1.1.0"'
     - name: Sri
       url: https://github.com/chandu0101/sri
       desc: 'Sri (Scala React interface) is a scalajs library to build truly native cross platform (mobile (ios and android) and web) applications.'
-      dep: '"com.github.chandu0101.sri" %%% "web" % "0.4.0"'
+      dep: '"com.github.chandu0101.sri" %%% "web" % "0.5.0"'
     - name: OutWatch
       url: https://outwatch.github.io/
       desc: 'A functional & reactive UI framework based on Rx'
-      dep: '"io.github.outwatch" %%% "outwatch" % "0.6.0"'
+      dep: '"io.github.outwatch" %%% "outwatch" % "0.7.1"'
 - topic: Serialization/pickling libraries
   libraries:
     - name: uPickle
       url: https://github.com/lihaoyi/upickle
       desc: Statically-typed pickling (via typeclasses/macros) for both Scala and Scala.js
-      dep: '"com.lihaoyi" %%% "upickle" % "0.3.6"'
+      dep: '"com.lihaoyi" %%% "upickle" % "0.4.4"'
     - name: BooPickle
       url: https://github.com/ochrons/boopickle
       desc: Highly efficient binary serialization for both Scala and Scala.js
-      dep: '"me.chrons" %%% "boopickle" % "1.1.0"'
+      dep: '"me.chrons" %%% "boopickle" % "1.2.5"'
     - name: Prickle
       url: https://github.com/benhutchison/prickle
       desc: Statically-typed pickling library with support for pickling object graphs containing shared objects and cycles
-      dep: '"com.github.benhutchison" %%% "prickle" % "1.1.10"'
+      dep: '"com.github.benhutchison" %%% "prickle" % "1.1.14"'
     - name: scala-json
       url: https://github.com/MediaMath/scala-json
       desc: JSON pickling, advanced compile-time marshaling, full-feature DSL and more for Scala and Scala.js
@@ -109,11 +109,11 @@
     - name: Pushka
       url: https://github.com/fomkin/pushka
       desc: Pure Scala pickler with annotations
-      dep: '"com.github.fomkin" %%% "pushka-json" % "0.3.1"'
+      dep: '"com.github.fomkin" %%% "pushka-json" % "0.8.0"'
     - name: Circe
       url: https://github.com/circe/circe
       desc: Yet another JSON library for Scala (built with Cats and Shapeless)
-      dep: '"io.circe" %%% "circe-core" % "0.6.1", "io.circe" %%% "circe-parser" % "0.6.1", "io.circe" %%% "circe-generic" % "0.6.1"'
+      dep: '"io.circe" %%% "circe-core" % "0.7.0", "io.circe" %%% "circe-parser" % "0.7.0", "io.circe" %%% "circe-generic" % "0.7.0"'
     - name: Jello
       url: http://github.com/uniformlyrandom/jello
       desc: Scala.js & JVM JSON serialization framework without thrills
@@ -125,25 +125,25 @@
     - name: Msgpack4z
       url: https://github.com/msgpack4z/msgpack4z-core
       desc: Functional msgpack serializer/deserializer for Scala
-      dep: '"com.github.xuwei-k" %%% "msgpack4z-core" % "0.3.2"'
+      dep: '"com.github.xuwei-k" %%% "msgpack4z-core" % "0.3.5"'
     - name: Scodec MessagePack
       url: https://github.com/pocketberserker/scodec-msgpack
       desc: Yet another MessagePack implementation for Scala
-      dep: '"com.github.pocketberserker" %%% "scodec-msgpack" % "0.5.0"'
+      dep: '"com.github.pocketberserker" %%% "scodec-msgpack" % "0.6.0"'
     - name: ScalaPB
       url: http://trueaccord.github.io/ScalaPB
       desc: 'Generates case classes, serializers and deserializers for Protocol Buffers'
-      dep: '"com.trueaccord.scalapb" %%% "scalapb-runtime" % "0.5.18"'
+      dep: '"com.trueaccord.scalapb" %%% "scalapb-runtime" % "0.5.47"'
 - topic: Client-server communication
   libraries:
     - name: autowire
       url: https://github.com/lihaoyi/autowire
       desc: Cross-compiling statically-typed Ajax calls and RPCs
-      dep: '"com.lihaoyi" %%% "autowire" % "0.2.5"'
+      dep: '"com.lihaoyi" %%% "autowire" % "0.2.6"'
     - name: RösHTTP
       url: https://github.com/hmil/RosHTTP
       desc: 'A cross-platform HTTP client implementation for the browser, Node.js and the JVM.'
-      dep: '"fr.hmil" %%% "roshttp" % "1.0.1"'
+      dep: '"fr.hmil" %%% "roshttp" % "2.0.1"'
     - name: Udash RPC
       url: http://guide.udash.io/#/rpc
       desc: Cross-compiling strongly typed client-server communication system for the Udash framework
@@ -156,11 +156,11 @@
     - name: Scala.Rx
       url: https://github.com/lihaoyi/scala.rx
       desc: Change-propagation/FRP library
-      dep: '"com.lihaoyi" %%% "scalarx" % "0.2.8"'
+      dep: '"com.lihaoyi" %%% "scalarx" % "0.3.2"'
     - name: Monix
       url: https://monix.io/
       desc: Library for composing asynchronous, lawful, event-based programs, with Observables, Task, Coeval and low-level primitives
-      dep: '"io.monix" %%% "monix" % "2.0-RC7"'
+      dep: '"io.monix" %%% "monix" % "2.2.1"'
     - name: MetaRx
       url: https://github.com/MetaStack-pl/MetaRx
       desc: Reactive data structures for Scala and Scala.js
@@ -168,7 +168,7 @@
     - name: Binding.scala/core
       url: https://github.com/ThoughtWorksInc/Binding.scala
       desc: Reactive data-binding for both Scala.js and JVM
-      dep: 'libraryDependencies += "com.thoughtworks.binding" %%% "core" % "1.0.5"'
+      dep: 'libraryDependencies += "com.thoughtworks.binding" %%% "core" % "7.0.3"'
 - topic: Miscellaneous
   libraries:
     - name: NICTA/rng
@@ -178,7 +178,7 @@
     - name: Scala-Async
       url: https://github.com/scala/async
       desc: An asynchronous programming facility for Scala/Scala.js.
-      dep: '"org.scala-lang.modules" %% "scala-async" % "0.9.5"'
+      dep: '"org.scala-lang.modules" %% "scala-async" % "0.9.6"'
     - name: Scalaxy Streams
       url: https://github.com/nativelibs4java/scalaxy-streams
       desc: 'Make your Scala collections faster!'
@@ -186,7 +186,7 @@
     - name: jsext
       url: https://github.com/jducoeur/jsext
       desc: Utilities for developing facades and working with Futures
-      dep: '"org.querki" %%% "querki-jsext" % "0.7"'
+      dep: '"org.querki" %%% "querki-jsext" % "0.8"'
     - name: shocon
       url: https://github.com/jducoeur/shocon
       desc: A partial pure-Scala, cross-compiled implementation of the HOCON configuration language
@@ -194,23 +194,23 @@
     - name: SHocon
       url: https://github.com/unicredit/shocon
       desc: Simple pure-scala Typesafe HOCON implementation using FastParse
-      dep: '"eu.unicredit" %%% "shocon" % "0.1.1"'
+      dep: '"eu.unicredit" %%% "shocon" % "0.1.7"'
     - name: slogging
       url: https://github.com/jokade/slogging
       desc: A simple logging library with an API compatible to scala-logging (and slf4j)
-      dep: '"biz.enef" %%% "slogging" % "0.3"'
+      dep: '"biz.enef" %%% "slogging" % "0.5.2"'
     - name: scribe
       url: https://github.com/outr/scribe
       desc: Logging framework for Scala and Scala.js
-      dep: '"com.outr.scribe" %%% "scribe" % "1.2.3"'
+      dep: '"com.outr.scribe" %%% "scribe" % "1.2.5"'
     - name: FastParse
       url: http://lihaoyi.github.io/fastparse/
       desc: Fast to write, fast-running parser-combinators in Scala/Scala.js
-      dep: '"com.lihaoyi" %%% "fastparse" % "0.3.1"'
+      dep: '"com.lihaoyi" %%% "fastparse" % "0.4.2"'
     - name: Nyaya
       url: https://github.com/japgolly/nyaya
       desc: Random data generation.
-      dep: '"com.github.japgolly.nyaya" %%% "nyaya-gen" % "0.6.0"'
+      dep: '"com.github.japgolly.nyaya" %%% "nyaya-gen" % "0.8.1"'
     - name: cryptotpyrc
       url: https://github.com/lightserver/cryptotpyrc
       desc: Scala.js & JVM cross compiled RSA / Crypto library.
@@ -218,19 +218,19 @@
     - name: Akka
       url: https://github.com/unicredit/akka.js
       desc: 'Toolkit and runtime for building concurrent, distributed applications. Crosscompiled from Typesafe Akka sources'
-      dep: '"eu.unicredit" %%% "akkajsactor" % "0.2.0"'
+      dep: '"eu.unicredit" %%% "akkajsactor" % "0.2.4.14"'
     - name: AkkaStream
       url: https://github.com/unicredit/akka.js
       desc: 'Streaming programming on top of Akka. Crosscompiled from Typesafe Akka Stream sources'
-      dep: '"eu.unicredit" %%% "akkajsactorstream" % "0.2.0"'
+      dep: '"eu.unicredit" %%% "akkajsactorstream" % "0.2.4.14"'
     - name: cron4s
       url: https://github.com/alonsodomin/cron4s
       desc: 'CRON expression parser supporting multiple data-time libraries in the JVM and in the browser'
-      dep: '"com.github.alonsodomin.cron4s" %%% "cron4s" % "0.1.0"'
+      dep: '"com.github.alonsodomin.cron4s" %%% "cron4s" % "0.3.0"'
     - name: squants
       url: https://github.com/typelevel/squants
       desc: 'API for Quantities, Units of Measure and Dimensional Analysis'
-      dep: '"org.typelevel" %%% "squants" % "1.0.0"'
+      dep: '"org.typelevel" %%% "squants" % "1.1.0"'
 - topic: Tools
   libraries:
     - name: sbt-scala-js-map
@@ -244,7 +244,7 @@
     - name: scalajs-benchmark
       url: https://github.com/japgolly/scalajs-benchmark
       desc: Write benchmarks in Scala or JS, run in your browser. (<a href="https://japgolly.github.io/scalajs-benchmark/">online demo</a>)
-      dep: '"com.github.japgolly.scalajs-benchmark" %%% "benchmark" % "0.2.0"'
+      dep: '"com.github.japgolly.scalajs-benchmark" %%% "benchmark" % "0.2.4"'
     - name: enableIf.scala
       url: https://github.com/ThoughtWorksInc/enableIf.scala
       desc: 'A library that switches Scala code at compile-time, like `#if` in C/C++'
