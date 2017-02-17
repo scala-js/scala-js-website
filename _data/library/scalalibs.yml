@@ -7,7 +7,7 @@
     - name: scalajs-jsjoda-as-java-time
       url: https://github.com/zoepepper/scalajs-jsjoda
       desc: Implementation of JDK8's [java.time API](https://docs.oracle.com/javase/8/docs/api/java/time/package-summary.html) in Scala.js by wrapping [js-joda](http://js-joda.github.io/js-joda/) classes
-      dep: '"com.zoepepper" %%% "scalajs-jsjoda-as-java-time" % "1.0.6"'
+      dep: '"com.zoepepper" %%% "scalajs-jsjoda-as-java-time" % "1.0.7"'
     - name: scala-java-time
       url: https://github.com/cquiroz/scala-java-time
       desc: Platform-independent implementation of [java.time](https://docs.oracle.com/javase/8/docs/api/java/time/package-summary.html)
