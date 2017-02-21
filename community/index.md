@@ -38,7 +38,6 @@ Here you go:
 
 Use these open source projects to see how others have used Scala.js to build their applications.
 
-- [Example app with Docker and Postgres](https://gitlab.com/bullbytes/scala-js-example), a minimal but complete web application showing how to use Scala.js including server and database. The app is dockerized.
 - [Querki](https://github.com/jducoeur/Querki), a cloud-based system for small-scale data management
 - [ICD](https://github.com/tmtsoftware/icd), for validating, storing, managing, searching and viewing APIs and ICDs (Interface Control Documents between TMT subsystems)
 - [Dashy](https://github.com/oomagnitude/dashy), extensible dashboard webapp written in scalajs
