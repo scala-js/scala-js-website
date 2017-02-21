@@ -4,11 +4,11 @@ title: Community
 ---
 
 Scala.js has a very active and friendly community supporting newcomers as well as seasoned Scala.js developers. To solve
-your issues, please use following resources.
+your issues, please use the following resources.
 
-### [Stackoverflow](http://stackoverflow.com/questions/tagged/scala.js)
+### [Stack Overflow](http://stackoverflow.com/questions/tagged/scala.js)
 
-Many developers have probably faced the same issues are you have, so there might be an answer on Stackoverflow just
+Many developers have probably faced the same issues you have, so there might be an answer on Stack Overflow just
 waiting to be read.
 
 ### [Gitter chat room](https://gitter.im/scala-js/scala-js)
@@ -22,7 +22,7 @@ This is the place for general discussion, ideas, announcements of your libraries
 
 ## Built with Scala.js
 
-Want to get a peek at some Web applications that have been built with Scala.js?
+Want to get a peek at some web applications that have been built with Scala.js?
 Here you go:
 
 - [Seventh Sense](https://7thsense.io), predictive analytics for sales and marketing. Scala.js+react components used inside legacy angular application.
@@ -36,7 +36,7 @@ Here you go:
 
 ## Open Source Scala.js projects
 
-Use these Open Source projects to see how others have used Scala.js to build their applications.
+Use these open source projects to see how others have used Scala.js to build their applications.
 
 - [Querki](https://github.com/jducoeur/Querki), a cloud-based system for small-scale data management
 - [ICD](https://github.com/tmtsoftware/icd), for validating, storing, managing, searching and viewing APIs and ICDs (Interface Control Documents between TMT subsystems)

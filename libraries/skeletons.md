@@ -5,6 +5,10 @@ title: Project Skeletons
 
 These application skeletons get you started in no time!
 
+
+### [Example app with Docker and backend](https://gitlab.com/bullbytes/scala-js-example)
+A minimal but complete web application showing how to use Scala.js together with a server (Akka HTTP) and a database (Postgres). The app is dockerized and easy to set up.
+
 ### [workbench-example-app](https://github.com/lihaoyi/workbench-example-app)
 Skeleton application using [Scala.js workbench](https://github.com/lihaoyi/scala-js-workbench) for live-reloading in the
 browser, together with a collection of sample applications developed using it
