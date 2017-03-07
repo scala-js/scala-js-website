@@ -60,6 +60,10 @@
       url: http://www.lihaoyi.com/scalatags/
       desc: HTML templating library/DSL that works on both Scala/JVM and Scala.js
       dep: '"com.lihaoyi" %%% "scalatags" % "0.6.3"'
+    - name: statictags
+      url: https://github.com/shogowada/statictags
+      desc: Write HTML in both Scala JVM & JS. Extend tags and attributes with ease!
+      dep: '"io.github.shogowada" %%% "statictags" % "2.1.1"'
     - name: MetaWeb
       url: https://github.com/metastack-pl/metaweb
       desc: Functional low-level web framework for Scala and Scala.js
@@ -151,6 +155,10 @@
       url: https://github.com/julienrf/endpoints/
       desc: Scala library to define HTTP-based communication protocols
       dep: '"org.julienrf" %%% "endpoints-algebra" % "0.1"'
+    - name: scala-json-rpc
+      url: https://github.com/shogowada/scala-json-rpc
+      desc: Let your servers and clients communicate over function calls! A JSON-RPC 2.0 library for both Scala JVM & JS
+      dep: '"io.github.shogowada" %%% "scala-json-rpc" % "0.3.0"'
 - topic: FRP/reactive extensions
   libraries:
     - name: Scala.Rx

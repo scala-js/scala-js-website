@@ -102,6 +102,10 @@
       url: https://github.com/japgolly/scalajs-react
       desc: Type-safe and Scala-friendly library over Facebook's [React](http://facebook.github.io/react/).
       dep: '"com.github.japgolly.scalajs-react" %%% "core" % "0.10.0"'
+    - name: scalajs-reactjs
+      url: https://github.com/shogowada/scalajs-reactjs
+      desc: Develop React applications in Scala using familiar APIs close to the original React's APIs
+      dep: '"io.github.shogowada" %%% "scalajs-reactjs" % "0.4.3"'
     - name: scala-js-binding
       url: https://github.com/antonkulaga/scala-js-binding
       desc: An all-Scala.js HTML binding library
