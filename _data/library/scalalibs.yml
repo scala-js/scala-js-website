@@ -62,7 +62,7 @@
       dep: '"com.lihaoyi" %%% "scalatags" % "0.6.3"'
     - name: statictags
       url: https://github.com/shogowada/statictags
-      desc: Write HTML in both Scala JVM & JS
+      desc: Write HTML in both Scala JVM & JS. Extend tags and attributes with ease!
       dep: '"io.github.shogowada" %%% "statictags" % "2.1.1"'
     - name: MetaWeb
       url: https://github.com/metastack-pl/metaweb
@@ -157,7 +157,7 @@
       dep: '"org.julienrf" %%% "endpoints-algebra" % "0.1"'
     - name: scala-json-rpc
       url: https://github.com/shogowada/scala-json-rpc
-      desc: JSON-RPC 2.0 library for both Scala JVM & JS&#58; Make communication between your server and client as easy as making function calls!
+      desc: Let your servers and clients communicate over function calls! A JSON-RPC 2.0 library for both Scala JVM & JS
       dep: '"io.github.shogowada" %%% "scala-json-rpc" % "0.3.0"'
 - topic: FRP/reactive extensions
   libraries:
