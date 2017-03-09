@@ -33,6 +33,7 @@ Here you go:
 - [NetLogo Web](http://netlogoweb.org/launch), an agent-based simulation language. (only the NetLogo-to-JavaScript compiler is
   written in Scala, not the front end)
 - [MiniJava compiler](http://oxnrtr.de/mj) which originally targeted amd64, but received an AST interpreter to run in the browser.
+- [Fluent Code Explorer](http://www.fluentcode.com/), an online tool that helps you search, understand and collaborate on a large codebase.
 
 ## Open Source Scala.js projects
 
