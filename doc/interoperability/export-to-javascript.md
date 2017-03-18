@@ -5,92 +5,58 @@ title: Export Scala.js APIs to JavaScript
 
 By default, Scala.js classes, objects, methods and properties are not available
 to JavaScript. Entities that have to be accessed from JavaScript must be
-annotated explicitly as *exported*. The `@JSExport` annotation is the main way
-to do this.
+annotated explicitly as *exported*, using `@JSExportTopLevel` and `@JSExport`.
 
 ## A simple example
 
 {% highlight scala %}
 package example
 
-import scala.scalajs.js
-import js.annotation.JSExport
+import scala.scalajs.js.annotation._
 
-@JSExport
+@JSExportTopLevel("HelloWorld")
 object HelloWorld {
   @JSExport
-  def main(): Unit = {
+  def sayHello(): Unit = {
     println("Hello world!")
   }
 }
 {% endhighlight %}
 
-This allows to call the `main()` method of `HelloWorld` like this in JavaScript:
+This allows to call the `sayHello()` method of `HelloWorld` like this in
+JavaScript:
 
 {% highlight javascript %}
-HelloWorld().main();
+HelloWorld.sayHello();
 {% endhighlight %}
 
-Note the `()` when accessing the object, `HelloWorld` is a function.
+The `@JSExportTopLevel` on `HelloWorld` exports the object `HelloWorld` itself
+in the JavaScript global scope. It is however not sufficient to allow JavaScrit
+to call *methods* of `HelloWorld`. This is why we also have to export the
+method `sayHello()` with `@JSExport`.
 
-You have probably already used an `@JSExport` without knowing it
-through the `JSApp` trait in the `Main` class of the bootstrapping
-skeleton (or any other template of Scala.js application). In fact, any
-Scala.js application must export at least a class or an object and a
-method in order to be invokable at all.
-
-Most of the time, however, it is sufficient to just extend the `JSApp`
-trait:
-
-{% highlight scala %}
-package example
-
-import scala.scalajs.js
-import js.annotation.JSExport
-
-object HelloWorld extends js.JSApp {
-  def main(): Unit = {
-    println("Hello world!")
-  }
-}
-{% endhighlight %}
-
-And call like this (see documentation about
-`@JSExportDescendentObjects` below for internal workings):
-
-{% highlight javascript %}
-example.HelloWorld().main();
-{% endhighlight %}
+In general, things that should be exported on the top-level, such as top-level
+objects and classes, are exported with `@JSExportTopLevel`, while things that
+should be exported as *properties* or *methods* in JavaScrit are exported with
+`@JSExport`.
 
 ## Exporting top-level objects
 
-Put on a top-level object, the `@JSExport` annotation exports a zero-argument
-function returning that object in JavaScript's global scope. By default, the
-function has the same name as the object in Scala (unqualified).
+Put on a top-level object, the `@JSExportTopLevel` annotation exports that
+object to the JavaScript global scope. The name under which it is to be exported
+must be specified as an argument to `@JSExportTopLevel`.
 
 {% highlight scala %}
-@JSExport
+@JSExportTopLevel("HelloWorld")
 object HelloWorld {
   ...
 }
 {% endhighlight %}
 
-exports the `HelloWorld()` function in JavaScript.
+exports the `HelloWorld` object in JavaScript.
 
-`@JSExport` takes an optional string parameter to specify a non-default name
-for JavaScript. For example,
-
-{% highlight scala %}
-@JSExport("MainObject")
-object HelloWorld {
-  ...
-}
-{% endhighlight %}
-
-exports the `HelloWorld` object under the function `MainObject()` in JavaScript.
-
-The name can contain dots, in which case the exported function is namespaced
-in JavaScript.
+The name can contain dots, in which case the exported object is namespaced in
+JavaScript.
 
 {% highlight scala %}
 @JSExport("myapp.foo.MainObject")
@@ -99,16 +65,20 @@ object HelloWorld {
 }
 {% endhighlight %}
 
-will be accessible in JavaScript using `myapp.foo.MainObject()`.
+will be accessible in JavaScript using `myapp.foo.MainObject`.
+
+**Pre 0.6.15 note**: Before Scala.js 0.6.15, objects were exported as 0-argument
+functions using `@JSExport`, rather than directly with `@JSExportTopLevel`. This
+is deprecated.
 
 ## Exporting classes
 
-The `@JSExport` annotation can also be used to export Scala.js classes to
-JavaScript (but not traits), or, to be more precise, their constructors. This
+The `@JSExportTopLevel` annotation can also be used to export Scala.js classes
+to JavaScript (but not traits), or, to be more precise, their constructors. This
 allows JavaScript code to create instances of the class.
 
 {% highlight scala %}
-@JSExport
+@JSExportTopLevel("Foo")
 class Foo(val x: Int) {
   override def toString(): String = s"Foo($x)"
 }
@@ -125,18 +95,22 @@ will log the string `"Foo(3)"` to the console. This particular example works
 because it calls `toString()`, which is always exported to JavaScript. Other
 methods must be exported explicitly as shown in the next section.
 
-As is the case for top-level objects, classes can be exported under custom
-names, including namespaced ones, by giving an explicit name to `@JSExport`.
+As is the case for top-level objects, classes can be exported under a namespace,
+by using dots in the argument to `@JSExportTopLevel`.
+
+**Pre 0.6.15 note**: Before Scala.js 0.6.15, classes were exported using
+`@JSExport` instead of `@JSExportTopLevel`, with the same meaning. This is
+deprecated.
 
 ## Exports with modules
 
 When [emitting a module for Scala.js code](../project/module.html), top-level exports are not sent to the JavaScript global scope.
 Instead, they are genuinely exported from the module.
-In that case, a top-level `@JSExport` annotation has the semantics of an [ECMAScript 2015 export](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/export).
+In that case, an `@JSExportTopLevel` annotation has the semantics of an [ECMAScript 2015 export](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/export).
 For example:
 
 {% highlight scala %}
-@JSExport("Bar")
+@JSExportTopLevel("Bar")
 class Foo(val x: Int)
 {% endhighlight %}
 
@@ -149,7 +123,8 @@ export { Foo as Bar };
 ## Exporting methods
 
 Similarly to objects, methods of Scala classes, traits and objects can be
-exported with `@JSExport`, with or without an explicit name.
+exported with `@JSExport`. Unlike for `@JSExportTopLevel`, the name argument is
+optional for `@JSExport`, and defaults to the Scala name of the method.
 
 {% highlight scala %}
 class Foo(val x: Int) {
@@ -271,9 +246,10 @@ Just like `@JSExport`, `@JSExportNamed` takes the name of the exported method as
 
 ## Exporting top-level methods
 
-While an `@JSExport`ed method inside an `@JSExport`ed object allows JavaScript code to call a "static" method,
+While an `@JSExport`ed method inside an `@JSExportTopLevel` object allows JavaScript code to call a "static" method,
 it does not feel like a top-level function from JavaScript's point of view.
-`@JSExportTopLevel` allows to export a method of a top-level object as a truly top-level function:
+`@JSExportTopLevel` can also be used directory on a method of a top-level
+object, which exports the method as a truly top-level function:
 
 {% highlight scala %}
 object A {
@@ -287,8 +263,6 @@ can be called from JavaScript as:
 {% highlight javascript %}
 const y = foo(5);
 {% endhighlight %}
-
-Note that `@JSExportTopLevel` requires an explicit name under which to export the function.
 
 ## Exporting properties
 
@@ -359,34 +333,33 @@ case class Point(
     @(JSExport @field) y: Double)
 {% endhighlight %}
 
-## Automatically exporting descendent objects
-Sometimes it is desirable to automatically export all descendent
-objects of a given trait or class. You can use the
-`@JSExportDescendentObjects` annotation. It will cause all descendent
-objects to be exported to their fully qualified name.
+## Export fields to the top level
 
-This feature is especially useful in conjunction with exported
-abstract methods and is used by the test libraries of Scala.js and the
-`scala.scalajs.js.JSApp` trait. The following is just an example, how
-the feature can be used:
+Similarly to methods, fields (`val`s and `var`s) of top-level objects can be
+exported as top-level variables using `@JSExportTopLevel`:
 
 {% highlight scala %}
-package foo.test
+object Foo {
+  @JSExportTopLevel("bar")
+  val bar = 42
 
-@JSExportDescendentObjects
-trait Test {
-  @JSExport
-  def test(param: String): Unit
-}
-
-// automatically exported as foo.test.Test1
-object Test1 extends Test {
-  // exported through inheritance
-  def test(param: String) = {
-    println(param)
-  }
+  @JSExportTopLevel("foobar")
+  var foobar = "hello"
 }
 {% endhighlight %}
+
+exports `bar` and `foobar` to the top-level, so that they can be used from
+JavaScript as
+
+{% highlight javascript %}
+console.log(bar);    // 42
+console.log(foobar); // "hello"
+{% endhighlight %}
+
+Note that for `var`s, the JavaScript binding is *read-only*, i.e., JavaScript
+code cannot assign a new value to an exported `var`. However, if Scala.js code
+sets `Foo.foobar`, the new value will be visible from JavaScript. This is
+consistent with exporting a `let` binding in ECMAScript 2015 modules.
 
 ## <a name="JSExportAll"></a> Automatically export all members
 Instead of writing `@JSExport` on every member of a class or object, you may use the `@JSExportAll` annotation. It is equivalent to adding `@JSExport` on every public (term) member directly declared in the class/object:
@@ -428,3 +401,42 @@ class B(val a: Int) extends A {
   def sum(x: Int, y: Int): Int = x + y
 }
 {% endhighlight %}
+
+## Deprecated: Automatically exporting descendent objects or classes
+
+**Pre 0.6.15 note**: Before Scala.js 0.6.15, this deprecated feature used to be
+often used to "reflectively" instantiate classes and load objects. This use case
+has been replaced by the
+[`scala.scalajs.reflect.Reflect`]({{ site.production_url }}/api/scalajs-library/latest/#scala.scalajs.reflect.Reflect$)
+API.
+
+When applied to a class or trait, `@JSExportDescendentObjects` causes all
+objects extending it to be automatically exported as 0-arg functions, under
+their fully qualified name. For example:
+
+{% highlight scala %}
+package foo.test
+
+@JSExportDescendentObjects
+trait Test {
+  @JSExport
+  def test(param: String): Unit
+}
+
+// automatically exported as foo.test.Test1
+object Test1 extends Test {
+  // exported through inheritance
+  def test(param: String): Unit = {
+    println(param)
+  }
+}
+{% endhighlight %}
+
+can be used from JavaScript as:
+
+{% highlight javascript %}
+foo.test.Test1().test("hello"); // note the () in Test1()
+{% endhighlight %}
+
+Similarly, `@JSExportDescendentClasses` causes all non-abstract classes
+the annotated class or trait to be exported under their fully qualified name.
