@@ -34,8 +34,10 @@ We also setup basic project settings and enable this plugin in the sbt build fil
 enablePlugins(ScalaJSPlugin)
 
 name := "Scala.js Tutorial"
+scalaVersion := "2.12.1" // or any other Scala version >= 2.10.2
 
-scalaVersion := "2.12.0" // or any other Scala version >= 2.10.2
+// This is an application with a main method
+scalaJSUseMainModuleInitializer := true
 {% endhighlight %}
 
 Last, we need a `project/build.properties` to specify the sbt version (>= 0.13.7):
@@ -94,7 +96,7 @@ So your code has actually been executed by Node.js.
 Now that we have a simple JavaScript application, we would like to use it in an HTML page. To do this, we need two steps:
 
 1. Generate a single JavaScript file out of our compiled code
-2. Create an HTML page which includes that file and calls the application
+2. Create an HTML page which includes that file
 
 ### Generate JavaScript
 
@@ -122,21 +124,13 @@ To load and launch the created JavaScript, you will need an HTML file. Create th
   <body>
     <!-- Include Scala.js compiled code -->
     <script type="text/javascript" src="./target/scala-2.12/scala-js-tutorial-fastopt.js"></script>
-    <!-- Run tutorial.webapp.TutorialApp -->
-    <script type="text/javascript">
-      tutorial.webapp.TutorialApp().main();
-    </script>
   </body>
 </html>
 {% endhighlight %}
 
-The first script tag simply includes the generated code (attention, you might need to adapt the Scala version from `2.12` to `2.10` or `2.11` here if you are using Scala 2.10.x or Scala 2.11.x instead of 2.12.x).
+The script tag simply includes the generated code (attention, you might need to adapt the Scala version from `2.12` to `2.10` or `2.11` here if you are using Scala 2.10.x or Scala 2.11.x instead of 2.12.x).
 
-In the second script tag, we first get the `TutorialApp` object. Note the `()`: `TutorialApp` is a function in JavaScript, since potential object initialization code needs to be run upon the first access to the object. We then simply call the `main` method on the `TutorialApp` object.
-
-Since `TutorialApp` extends `JSApp`, the object itself and its `main` method are automatically made available to
-JavaScript. This is not true in general. Continue reading this tutorial or have a look at the [Export Scala.js API to
-JavaScript](../../doc/interoperability/export-to-javascript.html) guide for details.
+Since `TutorialApp` extends `js.JSApp`, and we have set `scalaJSUseMainModuleInitializer := true` in the build, the `TutorialApp.main()` method is automatically called at the end of the `-fastopt.js` file.
 
 If you now open the newly created HTML page in your favorite browser, you will see ... nothing. The `println` in the `main` method goes right to the JavaScript console, which is not shown by default in a browser. However, if you open the JavaScript console (e.g. in Chrome: right click -> Inspect Element -> Console) you can see the HelloWorld message.
 
@@ -225,16 +219,17 @@ This step shows how you can add a button and react to events on it by still just
 We start by adding a method to `TutorialApp` which will be called when the button is clicked:
 
 {% highlight scala %}
-@JSExport
+@JSExportTopLevel("addClickedMessage")
 def addClickedMessage(): Unit = {
   appendPar(document.body, "You clicked the button!")
 }
 {% endhighlight %}
 
-You will notice the `@JSExport` annotation. It tells the Scala.js compiler to make that method callable from JavaScript. We must also import this annotation:
+You will notice the `@JSExportTopLevel` annotation.
+It tells the Scala.js compiler to make that method callable as top-level function from JavaScript. We must also import this annotation:
 
 {% highlight scala %}
-import scala.scalajs.js.annotation.JSExport
+import scala.scalajs.js.annotation.JSExportTopLevel
 {% endhighlight %}
 
 To find out more about how to call Scala.js methods from JavaScript, have a look at the [Export Scala.js API to
@@ -244,8 +239,9 @@ Since we now have a method that is callable from JavaScript, all we have to do i
 `onclick` attribute (make sure to add the button *before* the `<script>` tags):
 
 {% highlight html %}
-<button id="click-me-button" type="button"
-    onclick="tutorial.webapp.TutorialApp().addClickedMessage()">Click me!</button>
+<button id="click-me-button" type="button" onclick="addClickedMessage()">
+  Click me!
+</button>
 {% endhighlight %}
 
 Reload your HTML page (remember, sbt compiles your code automatically) and try to click the button. It should add a new
@@ -335,19 +331,18 @@ into this function.
 
 {% highlight scala %}
 def setupUI(): Unit = {
-  jQuery("#click-me-button").click(addClickedMessage _)
+  jQuery("#click-me-button").click(() => addClickedMessage())
   jQuery("body").append("<p>Hello World</p>")
 }
 {% endhighlight %}
 
-Since we do not call `addClickedMessage` from plain JavaScript anymore, we can remove the `@JSExport` annotation (and
-the corresponding import).
+Since we do not call `addClickedMessage` from plain JavaScript anymore, we can remove the `@JSExportTopLevel` annotation (and the corresponding import).
 
 Finally, we add a last call to `jQuery` in the main method, in order to execute `setupUI`, once the DOM is loaded:
 
 {% highlight scala %}
 def main(): Unit = {
-  jQuery(setupUI _)
+  jQuery(() => setupUI())
 }
 {% endhighlight %}
 
@@ -541,44 +536,7 @@ you need to change the *stage* using the following sbt setting:
 
 (by default, the stage is `FastOptStage`)
 
-### Compression
-
-If you serve your Scala.js application from a web server, you should additionally
-gzip the resulting `.js` files. This step might reduce the size of your application down
-to 20% of its original size.
-
-The setup depends on your server stack. A common option is to use
-[sbt-web](https://github.com/sbt/sbt-web),
-[sbt-web-scalajs](https://github.com/vmunier/sbt-web-scalajs) and
-[sbt-gzip](https://github.com/sbt/sbt-gzip)
-if you have a Play or Akka-http server.
-
-### Automatically Creating a Launcher
-
-Before creating another HTML file which includes the fully optimized JavaScript, we are going to introduce another
-feature of the sbt plugin. Since the sbt plugin is able to detect the `JSApp` object of the application, there is no
-need to repeat this in the HTML file. If you add the following setting to your `build.sbt`, sbt will create a
-`scala-js-tutorial-launcher.js` file which calls the main method:
-
-{% highlight scala %}
-persistLauncher := true
-{% endhighlight %}
-
-In our HTML page, we can now include this file instead of the manual launcher:
-
-{% highlight html %}
-<!-- Run JSApp -->
-<script type="text/javascript" src="./target/scala-2.12/scala-js-tutorial-launcher.js"></script>
-{% endhighlight %}
-
-If we rename our `JSApp` object, we need not change our HTML at all anymore. Note that the launcher generation only
-works if you have a single `JSApp` object. If you happen to have multiple `JSApp` objects but still would like to
-generate a launcher, you can set the `JSApp` object explicitly. Have a look at the [Compiling, Running, Linking,
-Optimizing](../../doc/project/building.html) guide for more details.
-
-### Putting it all Together
-
-We can now create our final production HTML file `scalajs-tutorial.html` which includes the fully optimized code:
+We also need to create our final production HTML file `scalajs-tutorial.html` which includes the fully optimized code:
 
 {% highlight html %}
 <!DOCTYPE html>
@@ -592,11 +550,21 @@ We can now create our final production HTML file `scalajs-tutorial.html` which i
     <script type="text/javascript" src="./target/scala-2.12/scala-js-tutorial-jsdeps.js"></script>
     <!-- Include Scala.js compiled code -->
     <script type="text/javascript" src="./target/scala-2.12/scala-js-tutorial-opt.js"></script>
-    <!-- Run main object -->
-    <script type="text/javascript" src="./target/scala-2.12/scala-js-tutorial-launcher.js"></script>
   </body>
 </html>
 {% endhighlight %}
+
+### Compression
+
+If you serve your Scala.js application from a web server, you should additionally
+gzip the resulting `.js` files. This step might reduce the size of your application down
+to 20% of its original size.
+
+The setup depends on your server stack. A common option is to use
+[sbt-web](https://github.com/sbt/sbt-web),
+[sbt-web-scalajs](https://github.com/vmunier/sbt-web-scalajs) and
+[sbt-gzip](https://github.com/sbt/sbt-gzip)
+if you have a Play or Akka-http server.
 
 This completes the Scala.js tutorial. Refer to our [documentation page](../../doc/index.html) for deeper insights into various
 aspects of Scala.js.
