@@ -428,3 +428,7 @@ class B(val a: Int) extends A {
   def sum(x: Int, y: Int): Int = x + y
 }
 {% endhighlight %}
+
+## Export annotations and dead code elimination
+
+Export annotations are the entry point for dead code elimination. As a result, one has to be careful about the types exposed with annotations to prevent accidentally exporting more code than indented. In particular, exposing a type such as `Option` or `List` has the surprising result of bringing in most of the standard library to the final binary. Library authors are also encouraged to limit their use export annotations to functions returning subtypes of `js.Any`, as doing otherwise will impact the size of binaries generated for all the library users.
