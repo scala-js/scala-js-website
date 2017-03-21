@@ -151,16 +151,21 @@ The class hierarchy for these standard types is as follows:
      |   +- js.RegExp
      |   +- js.Array[A]
      |   +- js.Function
-     |       +- js.Function0[+R]
-     |       +- js.Function1[-T1, +R]
-     |       +- ...
-     |       +- js.Function22[-T1, ..., -T22, +R]
-     |       +- js.ThisFunction
-     |           +- js.ThisFunction0[-T0, +R]
-     |           +- js.ThisFunction1[-T0, -T1, +R]
-     |           +- ...
-     |           +- js.ThisFunction21[-T0, ..., -T21, +R]
+     |   |   +- js.Function0[+R]
+     |   |   +- js.Function1[-T1, +R]
+     |   |   +- ...
+     |   |   +- js.Function22[-T1, ..., -T22, +R]
+     |   |   +- js.ThisFunction
+     |   |       +- js.ThisFunction0[-T0, +R]
+     |   |       +- js.ThisFunction1[-T0, -T1, +R]
+     |   |       +- ...
+     |   |       +- js.ThisFunction21[-T0, ..., -T21, +R]
+     |   +- js.Iterable[+A]
+     |   +- js.Iterator[+A]
+     |   +- js.Promise[+A]
+     |   +- js.Thenable[+A]
      +- js.Dictionary[A]
+     +- js.Symbol
 
 Note that most of these types are similar to standard Scala types. For example,
 `js.Array[A]` is similar to `scala.Array[A]`, and `js.FunctionN` is similar to

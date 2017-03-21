@@ -159,7 +159,7 @@ trait Bar extends js.Object {
   val x: Int
   val y: Int = 5 // illegal
   val z: js.UndefOr[Int] = js.undefined
-  
+
   def foo(x: Int): Int
   def bar(x: Int): Int = x + 1 // illegal
   def foobar(x: Int): js.UndefOr[Int] = js.undefined // illegal
@@ -202,6 +202,89 @@ class Babar extends global.Object { // `extends Bar` disappears
 Note that `z` is not defined at all, not even as `this.z = undefined`.
 The distinction is rarely relevant, because `babar.z` will return `undefined` in JavaScript
 and in Scala.js if `babar` does not have a field `z`.
+
+
+### Static members
+
+When defining a Scala.js-defined JS class (not a trait nor an object), it is also possible to define static members.
+Static members must be defined in the companion object of the class, and annotated with `@JSExportStatic`.
+For example:
+
+{% highlight scala %}
+@ScalaJSDefined
+class Foo extends js.Object
+
+object Foo {
+  @JSExportStatic
+  val x: Int = 5
+
+  @JSExportStatic
+  var y: String = "hello"
+
+  @JSExportStatic
+  def z: Int = 42
+  @JSExportStatic
+  def z_=(v: Int): Unit = println("z = " + v)
+
+  @JSExportStatic
+  def foo(x: Int): Int = x + 1
+}
+{% endhighlight %}
+
+defines a JavaScript class `Foo` with a variety of static members.
+It can be understood as if defined in JavaScript as:
+
+{% highlight javascript %}
+class Foo extends global.Object {
+  static get z() {
+    return 42;
+  }
+  static set z(v) {
+    console.log("z = " + v);
+  }
+  static foo(x) {
+    return x + 1;
+  }
+}
+Foo.x = 5;
+Foo.y = "hello";
+{% endhighlight %}
+
+Note that JavaScript doesn't have any declarative syntax for static fields, hence the two imperative assignments at the end.
+
+#### Restrictions
+
+* The companion object must be a Scala object, i.e., it cannot extend `js.Any`.
+* `lazy val`s cannot be marked with `@JSExportStatic`
+* Static *fields* (`val`s and `var`s) must be defined before any other (non-static) field, as well as before any constructor statement.
+
+As an example of the last bullet, the following snippet is illegal:
+
+{% highlight scala %}
+@ScalaJSDefined
+class Foo extends js.Object
+
+object Foo {
+  val x: Int = 5
+
+  @JSExportStatic
+  val y: String = "hello" // illegal, defined after `x` which is non-static
+}
+{% endhighlight %}
+
+and so is the following:
+
+{% highlight scala %}
+@ScalaJSDefined
+class Foo extends js.Object
+
+object Foo {
+  println("Initializing Foo")
+
+  @JSExportStatic
+  val y: String = "hello" // illegal, defined after the `println` statement
+}
+{% endhighlight %}
 
 
 ### Anonymous classes
@@ -364,7 +447,7 @@ For example:
 {% highlight scala %}
 def instantiate[C <: js.Any : js.ConstructorTag]: C =
   js.Dynamic.newInstance(js.constructorTag[C].constructor)().asInstanceOf[C]
-  
+
 val newEmptyJSArray = instantiate[js.Array[Int]]
 {% endhighlight %}
 
@@ -373,7 +456,7 @@ Implicit expansion will desugar the above code into:
 {% highlight scala %}
 def instantiate[C <: js.Any](implicit tag: js.ConstructorTag[C]): C =
   js.Dynamic.newInstance(tag.constructor)().asInstanceOf[C]
-  
+
 val newEmptyJSArray = instantiate[js.Array[Int]](
     new js.ConstructorTag[C](js.constructorOf[js.Array[Int]]))
 {% endhighlight %}

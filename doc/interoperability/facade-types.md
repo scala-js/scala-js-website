@@ -127,6 +127,22 @@ If necessary, several overloads of a method with the same name can have differen
 `@JSName`'s. Conversely, several methods with different names in Scala can have
 the same `@JSName`.
 
+## Members with a JavaScript `symbol` "name"
+
+`@JSName` can also be given a reference to a `js.Symbol` instead of a constant
+string. This is used for JavaScript members whose "name" is actually a `symbol`.
+For example, JavaScript iterable objects must declare a method whose name is the
+symbol `Symbol.iterator`:
+
+{% highlight scala %}
+@JSName(js.Symbol.iterator)
+def iterator(): js.Iterator[Int] = js.native
+{% endhighlight %}
+
+The argument to `@JSName` must be a reference to a static, stable field. In
+practice, this means a `val` in top-level `object`. `js.Symbol.iterator` is such
+a `val`, declared in the top-level object `js.Symbol`.
+
 ## Scala methods representing bracket access (`obj[x]`)
 
 The annotation `scala.scalajs.js.annotation.JSBracketAccess` can be used on methods to
@@ -155,18 +171,34 @@ directly or indirectly, from `js.Any` (like traits, usually from `js.Object`).
 The main difference compared to traits is that classes have constructors, hence
 they also provide instantiation of objects with the `new` keyword.
 
-The call `new js.RegExp("[ab]*")` will map to the obvious in JavaScript, i.e.,
+Unlike traits, classes actually exist in the JavaScript world, often as
+top-level, global variables. They must therefore be annotated with the
+`@JSGlobal` annotation. For example:
+
+{% highlight scala %}
+@js.native
+@JSGlobal
+class RegExp(pattern: String) extends js.Object {
+  ...
+}
+{% endhighlight %}
+
+**Pre 0.6.15 note**: Before Scala.js 0.6.15, the `@JSGlobal` annotation did not
+exist, so you will find old code that does not yet use it to annotate native JS
+classes.
+
+The call `new RegExp("[ab]*")` will map to the obvious in JavaScript, i.e.,
 `new RegExp("[ab]*")`, meaning that the identifier `RegExp` will be looked up
 in the global scope.
 
 If it is impractical or inconvenient to declare the Scala class with the
 same name as the JavaScript class (e.g., because it is defined in a namespace,
-like `THREE.Scene`), the annotation `scala.scalajs.js.annotation.JSName` can be used
+like `THREE.Scene`), a constant string can be given as parameter to `@JGlobal`
 to specify the JavaScript name:
 
 {% highlight scala %}
-@JSName("THREE.Scene")
 @js.native
+@JSGlobal("THREE.Scene")
 class Scene extends js.Object
 {% endhighlight %}
 
@@ -192,9 +224,12 @@ For example, the `JSON` object provides methods for parsing and emitting JSON
 strings.
 These can be declared in Scala.js with `object`'s inheriting directly or
 indirectly from `js.Any` (again, often `js.Object`).
+As is the case with classes, they must be annotated with `@js.native` and
+`@JSGlobal`.
 
 {% highlight scala %}
 @js.native
+@JSGlobal
 object JSON extends js.Object {
   def parse(text: String): js.Any = js.native
 
@@ -206,11 +241,12 @@ An call like `JSON.parse(text)` will map in JavaScript to the obvious, i.e.,
 `JSON.parse(text)`, meaning that the identifier `JSON` will be looked up in the
 global scope.
 
-Similarly to classes, the JavaScript name can be specified with `@JSName`, e.g.,
+Similarly to classes, the JavaScript name can be specified as an explicit
+argument to `@JSGlobal`, e.g.,
 
 {% highlight scala %}
-@JSName("jQuery")
 @js.native
+@JSGlobal("jQuery")
 object JQuery extends js.Object {
   def apply(x: String): JQuery = js.native
 }
@@ -248,7 +284,7 @@ Prior to 0.6.13, `extends js.GlobalScope` was used instead of `@JSGlobalScope`.
 The previous sections on native classes and objects all load things from the JavaScript global scope (through zero or more property accesses from there).
 In modern JavaScript ecosystems, we often want to load things from other *modules*.
 This is what `@JSImport` is designed for.
-You can annotate an `@js.native` class or object with `@JSImport` to signify that it is defined in a module.
+You can annotate an `@js.native` class or object with `@JSImport` instead of `@JSGlobal` to signify that it is defined in a module.
 For example, in the following snippet:
 
 {% highlight scala %}
