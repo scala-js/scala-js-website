@@ -95,13 +95,13 @@ Here is a how-to:
 * Make sure you use sbt 0.13.13 or later (in `project/build.properties`)
 * Add the following sbt plugin to `project/plugins.sbt`:
 
-    addSbtPlugin("ch.epfl.scala" % "sbt-scalafix" % "0.3.2")
+      addSbtPlugin("ch.epfl.scala" % "sbt-scalafix" % "0.3.2")
 
 * Create a file `.scalafix.conf` at the root of your project, and fill it with:
 
-    rewrites = ["https://gist.githubusercontent.com/sjrd/ef8bb7c52be1451b3a3b9bab6a187549/raw/0b1d451d266bce20921bbff3a74722610d604509/ScalaJSRewrites.scala"]
-    imports.organize = false
-    imports.removeUnused = false
+      rewrites = ["https://gist.githubusercontent.com/sjrd/ef8bb7c52be1451b3a3b9bab6a187549/raw/0b1d451d266bce20921bbff3a74722610d604509/ScalaJSRewrites.scala"]
+      imports.organize = false
+      imports.removeUnused = false
 
 The first line specifies that we want to apply the `@JSGlobal` rewrite available [in this gist](https://gist.github.com/sjrd/ef8bb7c52be1451b3a3b9bab6a187549), written by @olafurpg.
 
