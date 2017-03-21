@@ -239,6 +239,10 @@
       url: https://github.com/typelevel/squants
       desc: 'API for Quantities, Units of Measure and Dimensional Analysis'
       dep: '"org.typelevel" %%% "squants" % "1.1.0"'
+    - name: wvlet-log
+      url: https://github.com/wvlet/log
+      desc: 'A logging library with colors and source code locations'
+      dep: '"org.wvlet" %%% "wvlet-log" % "1.2"'
 - topic: Tools
   libraries:
     - name: sbt-scala-js-map
