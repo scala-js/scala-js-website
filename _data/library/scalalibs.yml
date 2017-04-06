@@ -177,6 +177,16 @@
       url: https://github.com/ThoughtWorksInc/Binding.scala
       desc: Reactive data-binding for both Scala.js and JVM
       dep: 'libraryDependencies += "com.thoughtworks.binding" %%% "core" % "7.0.3"'
+- topic: Dependency Injection
+  libraries:
+    - name: Airframe
+      url: https://github.com/wvlet/airframe
+      desc: Guice-like run-time dependency injection library tailored to Scala traits
+      dep: '"org.wvlet" %%% "airframe" % "0.12"'
+    - name: MacWire
+      url: https://github.com/adamw/macwire
+      desc: Compile-time dependency injection library
+      dep: '"com.softwaremill.macwire" %% "macros" % "2.3.0"'
 - topic: Miscellaneous
   libraries:
     - name: NICTA/rng
