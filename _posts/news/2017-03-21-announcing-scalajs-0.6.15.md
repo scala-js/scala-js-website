@@ -217,7 +217,7 @@ For this use case (and similar ones), read further below about the introduction 
 **Are you maintaining a testing framework?**
 If you use our `TestUtils.newInstance` and/or `TestUtils.loadModule` methods to perform reflective instantiation of `@JSExportDescendent...` things, all you need to do is:
 
-* replace `@JSExportDescendentClasses` and/or `@JSExportDescendentObjects` by `@scala.scalajs.reflect.annotation.EnableReflectiveInstantion`
+* replace `@JSExportDescendentClasses` and/or `@JSExportDescendentObjects` by `@scala.scalajs.reflect.annotation.EnableReflectiveInstantiation`
 * use the new overload of `TestUtils.newInstance`, which uses an explicit list of formal parameters (`TestUtils.loadModule` stays as it was)
 
 You can also temporarily disable the deprecation warnings with the following sbt setting:
@@ -365,7 +365,7 @@ In this release, we have added an official, principled API to do so.
 The new API is more reliable and powerful, especially for classes inside objects, as well as classes with overloaded constructors.
 
 Reflective instantiation is still not enabled by default for all classes in the world (as that would completely inhibit dead code elimination).
-Used on a trait, class or object, the annotation `@EnableReflectiveInstantion` enables reflective instantiation for all the non-abstract classes and all the objects inheriting from the annotated entity.
+Used on a trait, class or object, the annotation `@EnableReflectiveInstantiation` enables reflective instantiation for all the non-abstract classes and all the objects inheriting from the annotated entity.
 Afterwards, it is possible to use the API in [`scala.scalajs.reflect.Reflect`]({{ site.production_url }}/api/scalajs-library/latest/#scala.scalajs.reflect.Reflect$) to instantiate those classes and/or load those objects.
 
 For example:
@@ -373,16 +373,16 @@ For example:
 {% highlight scala %}
 package foo
 
-import scala.scalajs.reflect.annotation.EnableReflectiveInstantion
+import scala.scalajs.reflect.annotation.EnableReflectiveInstantiation
 import scala.scalajs.reflect.Reflect
 
-@EnableReflectiveInstantion
+@EnableReflectiveInstantiation
 trait WithReflInstantiation
 
 class Foobar extends WithReflInstantiation
 
 object Foo {
-  def doSomeReflInstantion(): WithReflInstantiation = {
+  def doSomeReflInstantiation(): WithReflInstantiation = {
     val className = "foo.Foobar"
     val instantiatableClass = Reflect.lookupInstantiatableClass(className).get
     val instance = instantiatableClass.newInstance()
