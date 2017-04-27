@@ -164,3 +164,7 @@
       url: https://github.com/yoeluk/paper-scala-js
       desc: A Scala.js binding for [Paper.js](http://paperjs.org) - The Swiss Army Knife of Vector Graphics Scripting.
       dep: '"com.github.yoeluk" %%% "paper-scala-js" % "0.5-SNAPSHOT"'
+    - name: Definitely Scala
+      url: https://definitelyscala.com/
+      desc: A set of typescript-based facades over a wide variety of js libraries.
+      dep: ''
