@@ -34,16 +34,16 @@ We also setup basic project settings and enable this plugin in the sbt build fil
 enablePlugins(ScalaJSPlugin)
 
 name := "Scala.js Tutorial"
-scalaVersion := "2.12.1" // or any other Scala version >= 2.10.2
+scalaVersion := "2.12.2" // or any other Scala version >= 2.10.2
 
 // This is an application with a main method
 scalaJSUseMainModuleInitializer := true
 {% endhighlight %}
 
-Last, we need a `project/build.properties` to specify the sbt version (>= 0.13.7):
+Last, we need a `project/build.properties` to specify the sbt version (>= 0.13.13):
 
 {% highlight scala %}
-sbt.version=0.13.13
+sbt.version=0.13.15
 {% endhighlight %}
 
 That is all we need to configure the build.
