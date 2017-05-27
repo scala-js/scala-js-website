@@ -12,6 +12,8 @@ relevant SBT dependency definition.
 
 {% include library.html lib=site.data.library.jsfacades %}
 
+[DefinitelyScala.com](https://definitelyscala.com/) has more open source Scala.js facades for some of your favorite JavaScript libraries, derived from DefinitelyTyped's TypeScript definitions.
+
 If you didn't find a facade for the library you'd like to use, it's quite easy to do one yourself. Check out the
 [facade documentation](../doc/interoperability/facade-types.html) and the
 [TypeScript conversion tool](https://github.com/sjrd/scala-js-ts-importer).
