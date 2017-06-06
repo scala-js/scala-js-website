@@ -177,6 +177,10 @@
       url: https://github.com/ThoughtWorksInc/Binding.scala
       desc: Reactive data-binding for both Scala.js and JVM
       dep: 'libraryDependencies += "com.thoughtworks.binding" %%% "core" % "7.0.3"'
+    - name: fs2
+      url: https://github.com/functional-streams-for-scala/fs2
+      desc: 'Functional streaming'
+      dep: '"co.fs2" %%% "fs2-core" % "0.9.5"'
 - topic: Dependency Injection
   libraries:
     - name: Airframe
