@@ -57,10 +57,8 @@ For starters, we add a very simple `TutorialApp` in the `tutorial.webapp` packag
 {% highlight scala %}
 package tutorial.webapp
 
-import scala.scalajs.js.JSApp
-
-object TutorialApp extends JSApp {
-  def main(): Unit = {
+object TutorialApp {
+  def main(args: Array[String]): Unit = {
     println("Hello world!")
   }
 }
@@ -130,7 +128,7 @@ To load and launch the created JavaScript, you will need an HTML file. Create th
 
 The script tag simply includes the generated code (attention, you might need to adapt the Scala version from `2.12` to `2.10` or `2.11` here if you are using Scala 2.10.x or Scala 2.11.x instead of 2.12.x).
 
-Since `TutorialApp` extends `js.JSApp`, and we have set `scalaJSUseMainModuleInitializer := true` in the build, the `TutorialApp.main()` method is automatically called at the end of the `-fastopt.js` file.
+Since we have set `scalaJSUseMainModuleInitializer := true` in the build, the `TutorialApp.main(args: Array[String])` method is automatically called at the end of the `-fastopt.js` file (with an empty array as argument).
 
 If you now open the newly created HTML page in your favorite browser, you will see ... nothing. The `println` in the `main` method goes right to the JavaScript console, which is not shown by default in a browser. However, if you open the JavaScript console (e.g. in Chrome: right click -> Inspect Element -> Console) you can see the HelloWorld message.
 
@@ -186,7 +184,7 @@ def appendPar(targetNode: dom.Node, text: String): Unit = {
 Replace the call to `println` with a call to `appendPar` in the `main` method:
 
 {% highlight scala %}
-def main(): Unit = {
+def main(args: Array[String]): Unit = {
   appendPar(document.body, "Hello World")
 }
 {% endhighlight %}
@@ -255,7 +253,7 @@ usages of the DOM API with jQuery.
 
 ### Depending on jQuery
 
-Just like for the DOM, there is a typed library for jQuery available in Scala.js. Replace the 
+Just like for the DOM, there is a typed library for jQuery available in Scala.js. Replace the
 `libraryDependencies += ..` line in your `build.sbt` by:
 
 {% highlight scala %}
@@ -341,7 +339,7 @@ Since we do not call `addClickedMessage` from plain JavaScript anymore, we can r
 Finally, we add a last call to `jQuery` in the main method, in order to execute `setupUI`, once the DOM is loaded:
 
 {% highlight scala %}
-def main(): Unit = {
+def main(args: Array[String]): Unit = {
   jQuery(() => setupUI())
 }
 {% endhighlight %}
@@ -367,9 +365,7 @@ issue. Remember the task `run`? If you try to invoke it now, you will see someth
     > run
     [info] Running tutorial.webapp.TutorialApp
     [error] TypeError: (0 , $m_Lorg_scalajs_jquery_package$(...).jQuery$1) is not a function
-    [error]     at $c_Ltutorial_webapp_TutorialApp$.main__V (.../scalajs-tutorial/src/main/scala/tutorial/webapp/TutorialApp.scala:9:12)
-    [error]     at $c_Ltutorial_webapp_TutorialApp$.$$js$exported$meth$main__O (https:/raw.githubusercontent.com/scala-js/scala-js/v0.6.13/library/src/main/scala/scala/scalajs/js/JSApp.scala:18:4)
-    [error]     at $c_Ltutorial_webapp_TutorialApp$.main (.../scalajs-tutorial/src/main/scala/tutorial/webapp/TutorialApp.scala:7:8)
+    [error]     at $c_Ltutorial_webapp_TutorialApp$.main__AT__V (.../TutorialApp.scala:9:11)
     [error]     ...
     [trace] Stack trace suppressed: run last compile:run for the full output.
     [error] (compile:run) org.scalajs.jsenv.ExternalJSEnv$NonZeroExitException: Node.js exited with code 1
