@@ -22,13 +22,11 @@ This will perform fast Scala.js-specific optimizations and write the resulting c
 ## Actually *do* something
 
 By default, Scala.js produces "libraries", that do not actually *do* anything when their `-fastopt.js` file is loaded.
-To make it do something, you need a main `js.JSApp` object:
+To make it do something, you need a top-level object with a `main` method:
 
 {% highlight scala %}
-import scala.scalajs.js
-
-object Main extends js.JSApp {
-  def main(): Unit = {
+object Main {
+  def main(args: Array[String]): Unit = {
     println("Hello world!")
   }
 }
@@ -40,11 +38,15 @@ as well as the following sbt setting, which, to put it simply, turns your Scala.
 scalaJSUseMainModuleInitializer := true
 {% endhighlight %}
 
-sbt will automatically detect the object that extends [`js.JSApp`]({{ site.production_url }}/api/scalajs-library/latest/#scala.scalajs.js.JSApp) (which must be unique), and use it as the main method of the application.
+Just like in a JVM project, sbt will automatically detect the object with a `main(Array[String]): Unit` method, and use it as the main method of the application.
 Now, the .js file produced by `fastOptJS` will print `"Hello world!"`.
 
-Note that this will require that there is a *unique* object that extends `js.JSApp` or that the one to use be explicitly set with `mainClass in Compile := Some(<name>)`.
+Note that this will require that there is a *unique* such object or that the one to use be explicitly set with `mainClass in Compile := Some(<name>)`.
 If you explicitly set `mainClass`, note that it needs to be set on a per-configuration basis (i.e. the part `in Compile` is essential, otherwise the setting will be ignored). For further information see the Stack Overflow entry ['How to set mainClass in ScalaJS build.sbt?'](http://stackoverflow.com/questions/34965072/how-to-set-mainclass-in-scalajs-build-sbt) (specific to Scala.js) and the Stack Overflow entry ['How to set main class in build?'](http://stackoverflow.com/questions/6467423/how-to-set-main-class-in-build) (not specific to Scala.js).
+
+**Note for Scala.js 0.6.17 and earlier:** in Scala.js 0.6.17 and earlier, the main object was required to extend the special trait [`js.JSApp`](https://www.scala-js.org/api/scalajs-library/0.6.18/#scala.scalajs.js.JSApp).
+Since 0.6.18, any object with a standard `main` method will be recognized.
+`js.JSApp` is not recommended for new code.
 
 ## Running in the console
 
