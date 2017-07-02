@@ -25,7 +25,7 @@ If exact single precision operations are important to your application, you can
 enable strict-floats semantics in Scala.js, with the following sbt setting:
 
 {% highlight scala %}
-scalaJSSemantics ~= { _.withStrictFloats(true) }
+scalaJSLinkerConfig ~= { _.withSemantics(_.withStrictFloats(true)) }
 {% endhighlight %}
 
 Note that this can have a major impact on performance of your application on
@@ -131,8 +131,8 @@ JVM semantics, you can do so with an sbt setting.
 For example, this setting enables compliant `asInstanceOf`s:
 
 {% highlight scala %}
-scalaJSSemantics ~= { _.withAsInstanceOfs(
-  org.scalajs.core.tools.sem.CheckedBehavior.Compliant) }
+scalaJSLinkerConfig ~= { _.withSemantics(_.withAsInstanceOfs(
+  org.scalajs.core.tools.sem.CheckedBehavior.Compliant)) }
 {% endhighlight %}
 
 Note that this will have (potentially major) performance impacts.
