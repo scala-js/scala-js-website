@@ -32,10 +32,6 @@ In native JS types, all concrete definitions must have `= js.native` as body.
 Any other body will be handled as if it were `= js.native`, and a warning will be emitted.
 (In Scala.js 1.0.0, this will become an error.)
 
-**0.5.x note**: In Scala.js 0.5.x, `= js.native` did not exist either. The recommended
-best practice was to put `???` as body, but this was not enforced by the
-compiler. This has been changed to improve intuition and remove warts.
-
 Here is an example giving types to a small portion of the API of `Window`
 objects in browsers.
 

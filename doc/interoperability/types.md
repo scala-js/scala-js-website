@@ -176,11 +176,6 @@ all the fields and methods available in the JavaScript API.
 The collection types feature the standard Scala collection API instead, so that
 they can be used idiomatically in Scala code.
 
-**0.5.x note**: In Scala.js 0.5.x, `js.Array[A]` and `js.Dictionary[A]` did not
-really have the collection API. The methods defined in JavaScript took
-precedence. This was changed in 0.6.x to avoid pitfalls when confusing the
-APIs, avoiding common JavaScript warts, and improving performance.
-
 ## Function types
 
 ### `js.Function` and its subtypes
