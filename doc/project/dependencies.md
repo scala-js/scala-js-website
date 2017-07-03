@@ -23,6 +23,10 @@ Note that you can also use `%%%` in a Scala/JVM project, in which case it will b
 
 ## Depending on JavaScript libraries
 
+**Scala.js 1.x note:** since Scala.js 1.x, this functionality is not part of the core Scala.js sbt plugin.
+Instead, it is provided by [sbt-jsdependencies](https://github.com/scala-js/jsdependencies).
+You will need to add `addSbtPlugin("org.scala-js" % "sbt-jsdependencies" % "1.0.0-M1")` to `project/plugins.sbt`, as well as `enablePlugins(JSDependenciesPlugin)` to your Scala.js projects.
+
 Thanks to [WebJars](http://www.webjars.org/), you can easily fetch a JavaScript library like so:
 
 {% highlight scala %}

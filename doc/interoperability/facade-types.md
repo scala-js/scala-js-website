@@ -12,25 +12,25 @@ Facade types are zero-overhead typed APIs for JavaScript libraries. They are
 similar in spirit to
 [TypeScript type definitions](http://www.typescriptlang.org/Handbook#modules-working-with-other-javascript-libraries).
 
-## Defining JavaScript interfaces with traits
+## Defining JavaScript interfaces with native JS traits
 
 Most JavaScript APIs work with interfaces that are defined structurally. In
 Scala.js, the corresponding concept are traits. To mark a trait as being a
 representative of a JavaScript API, it must inherit directly or indirectly
 from {% scalajsdoc js.Any js.Any %} (usually from `js.Object`).
 
-JS traits can contain `val`, `var` and `def` definitions, and the latter can
-be overloaded.
+JS traits can be native or not.
+The present page describes native JS traits, which must be annotated with `@js.native`.
+There are also non-native JS traits (aka Scala.js-defined JS traits), documented in [the Scala.js-defined JS types guide](./sjs-defined-js-classes.html).
+The latter have more restrictions, but can be *implemented* from Scala.js code.
+Native JS traits as described here should only be used for interfaces that are exclusively implemented by the JavaScript library--not for interfaces/contracts meant to be implemented by the user of said library.
 
-By default, types extending `js.Any` are native JS types.
-There also exist [Scala.js-defined JS types](./sjs-defined-js-classes.html).
-Native JS types should be annotated with `@js.native` for forward source compatibility with Scala.js 1.0.0.
-
-**Pre 0.6.5 note**: Before Scala.js 0.6.5, the `@js.native` annotation did not exist, so you will find old code that does not yet use it to annotate native JS types.
+**Scala.js 0.6.x:** In Scala.js 0.6.x, unless using the `-P:scalajs:sjsDefinedByDefault` compiler option, the annotation `@js.native` is assumed by default, with a deprecation warning.
+You might still find old code that does not yet use it to annotate native JS types.
 
 In native JS types, all concrete definitions must have `= js.native` as body.
 Any other body will be handled as if it were `= js.native`, and a warning will be emitted.
-(In Scala.js 1.0.0, this will become an error.)
+(In Scala.js 1.x, this is an error.)
 
 Here is an example giving types to a small portion of the API of `Window`
 objects in browsers.
@@ -72,7 +72,7 @@ However, the actual value is irrelevant and never used. Instead, the parameter
 is omitted entirely (or set to `undefined`). The value is only indicative, as
 implicit documentation.
 
-Fields, parameters, or result types that can have different, unrelated types, can be accurately typed with the 
+Fields, parameters, or result types that can have different, unrelated types, can be accurately typed with the
 [pseudo-union type `A | B`]({{ site.production_url }}/api/scalajs-library/{{ site.versions.scalaJS }}/#scala.scalajs.js.$bar).
 
 Methods can be overloaded. This is useful to type accurately some APIs that
@@ -273,11 +273,13 @@ object DOMGlobalScope extends js.Object {
 Prior to 0.6.13, `extends js.GlobalScope` was used instead of `@JSGlobalScope`.
 `js.GlobalScope` is now deprecated.
 
+**Scala.js 1.x:** Also read [access to the JavaScript global scope](./global-scope.html).
+
 ## <a name="import"></a> Imports from other JavaScript modules
 
 **Important:** Importing from JavaScript modules requires that you [emit a module for the Scala.js code](../project/module.html).
 
-The previous sections on native classes and objects all load things from the JavaScript global scope (through zero or more property accesses from there).
+The previous sections on native classes and objects all refer to *global variables*, i.e., variables declared in the JavaScript global scope.
 In modern JavaScript ecosystems, we often want to load things from other *modules*.
 This is what `@JSImport` is designed for.
 You can annotate an `@js.native` class or object with `@JSImport` instead of `@JSGlobal` to signify that it is defined in a module.
@@ -455,12 +457,11 @@ reflective call can therefore not be generated.
 
 # Calling JavaScript from Scala.js with dynamic types
 
-Because JavaScript is dynamically typed, it is not often practical, sometimes
-impossible, to give sensible type definitions for JavaScript APIs.
+Sometimes, it is more convenient to manipulate JavaScript values in a dynamically typed way.
+Although it is not recommended to do so for APIs that are used repetitively, Scala.js lets you call JavaScript in a dynamically typed fashion if you want to.
+The basic entry point is to grab a dynamically typed reference to the global scope, with `js.Dynamic.global`, which is of type `js.Dynamic`.
 
-Scala.js lets you call JavaScript in a dynamically typed fashion if you
-want to. The basic entry point is to grab a dynamically typed reference to the
-global scope, with `js.Dynamic.global`, which is of type `js.Dynamic`.
+**Scala.js 1.x:** In Scala.js 1.x, `js.Dynamic.global` is a [global scope object](./global-scope.html) instead of an actual value of type `js.Dynamic`.
 
 You can read and write any field of a `js.Dynamic`, as well as call any method
 with any number of arguments. All input types are assumed to be of type
