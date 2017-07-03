@@ -5,6 +5,10 @@ title: Basic tutorial
 
 This step-by-step tutorial where we start with the setup of a Scala.js sbt project and end up having some user interaction and unit testing. The code created in this tutorial is available with one commit per step in the [scalajs-tutorial](https://github.com/scala-js/scalajs-tutorial) repository on GitHub.
 
+**Note for Scala.js 1.x users:** The present tutorial is targeted at the latest stable version of Scala.js, i.e., {{ site.versions.scalaJS }}.
+Some details may vary if you try to follow along with Scala.js {{ site.versions.scalaJSDev }}.
+Please consult relevant pages of the documentation for any discrepancies.
+
 ## <a name="prerequisites"></a> Step 0: Prerequisites
 
 To go through this tutorial, you will need to [download & install sbt](http://www.scala-sbt.org/0.13/tutorial/Setup.html) (>= 0.13.0). Note that no prior sbt knowledge (only a working installation) is required to follow the tutorial.

@@ -176,11 +176,6 @@ all the fields and methods available in the JavaScript API.
 The collection types feature the standard Scala collection API instead, so that
 they can be used idiomatically in Scala code.
 
-**0.5.x note**: In Scala.js 0.5.x, `js.Array[A]` and `js.Dictionary[A]` did not
-really have the collection API. The methods defined in JavaScript took
-precedence. This was changed in 0.6.x to avoid pitfalls when confusing the
-APIs, avoiding common JavaScript warts, and improving performance.
-
 ## Function types
 
 ### `js.Function` and its subtypes
@@ -284,8 +279,11 @@ Because JavaScript is dynamically typed, it is not often practical, sometimes
 impossible, to give sensible type definitions for JavaScript APIs.
 
 Scala.js lets you call JavaScript in a dynamically typed fashion if you
-want to. The basic entry point is to grab a dynamically typed reference to the
-global scope, with `js.Dynamic.global`, which is of type `js.Dynamic`.
+want to. The basic entry point is `js.Dynamic.global`, which is a dynamically
+typed view of the JavaScript global scope. You can select any global variable
+of JavaScript as a a member of `js.Dynamic.global`, e.g.,
+`js.Dynamic.global.Math`, which will be typed as a
+[`js.Dynamic`]({{ site.production_url }}/api/scalajs-library/latest/#scala.scalajs.js.Dynamic).
 
 You can read and write any field of a `js.Dynamic`, as well as call any method
 with any number of arguments, and you always receive back a `js.Dynamic`.
