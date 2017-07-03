@@ -96,6 +96,14 @@
       url: https://github.com/zoepepper/scalajs-jsjoda
       desc: 'Static types for [js-joda](http://js-joda.github.io/js-joda/)'
       dep: '"com.zoepepper" %%% "scalajs-jsjoda" % "1.1.1"'
+    - name: scalajs-io/nodejs
+      url: https://github.com/scalajs-io/nodejs
+      desc: 'A complete facade for node.js' 
+      dep: '"io.scalajs" %%% "nodejs" % "0.4.0-pre4"'
+    - name: scala-js-pdf
+      url:  https://github.com/coreyauger/scala-js-pdf
+      desc: 'Faced over pdf.js'
+      dep: ''
 - topic: UI frameworks
   libraries:
     - name: scalajs-react
@@ -156,3 +164,7 @@
       url: https://github.com/yoeluk/paper-scala-js
       desc: A Scala.js binding for [Paper.js](http://paperjs.org) - The Swiss Army Knife of Vector Graphics Scripting.
       dep: '"com.github.yoeluk" %%% "paper-scala-js" % "0.5-SNAPSHOT"'
+    - name: Definitely Scala
+      url: https://definitelyscala.com/
+      desc: A set of typescript-based facades over a wide variety of js libraries.
+      dep: ''
