@@ -71,12 +71,11 @@ However, this is not recommended anymore.
 If, for some reason (for example, to make stepping through the code with a debugger more predictable), you want to disable the optimizations, you can do so with the following sbt setting:
 
 {% highlight scala %}
-scalaJSOptimizerOptions ~= { _.withDisableOptimizer(true) }
+scalaJSLinkerConfig ~= { _.withOptimizer(false) }
 {% endhighlight %}
 
-`scalaJSOptimizerOptions` contains various other options controlling the optimizer.
-See [the ScalaDoc]({{ site.production_url }}/api/sbt-scalajs/{{ site.versions.scalaJS }}/#org.scalajs.sbtplugin.OptimizerOptions)
-for details.
+`scalaJSLinkerConfig` contains various other options controlling the Scala.js linker.
+See [the Scaladoc of `StandardLinker.Config`]({{ site.production_url }}/api/scalajs-tools/{{ site.versions.scalaJS }}/#org.scalajs.core.tools.linker.StandardLinker$$Config) for details.
 
 ## Full-Optimize
 
