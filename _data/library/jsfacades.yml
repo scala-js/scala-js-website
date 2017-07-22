@@ -117,7 +117,7 @@
     - name: scalajs-angulate
       url: https://github.com/jokade/scalajs-angulate
       desc: Another binding to AngularJS with enhancements
-      dep: '"biz.enef" %%% "scalajs-angulate" % "0.2.2"'
+      dep: '"biz.enef" %%% "scalajs-angulate" % "latest.version"'
     - name: scalajs-vue
       url: https://github.com/fancellu/scalajs-vue
       desc: Scala.js bindings for [Vue.js](http://vuejs.org/) and an example application
@@ -126,6 +126,10 @@
       url: https://github.com/fancellu/scalajs-ractive
       desc: Scala.js bindings for [Ractive.js](http://www.ractivejs.org/) and an example application
       dep: ''
+    - name: angulate2
+      url: https://github.com/jokade/angulate2
+      desc: Plugin and bindings for [Angular 2+](http://angular.io) development with Scala.js.
+      dep: 'addSbtPlugin("de.surfice" % "angulate2" % "latest.version")'
 - topic: Other libraries
   libraries:
     - name: scalajs-videojs
