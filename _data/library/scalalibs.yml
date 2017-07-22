@@ -273,3 +273,7 @@
       dep: |
         addCompilerPlugin("org.scalamacros" % "paradise" % "2.1.0" cross CrossVersion.full)
         libraryDependencies += "com.thoughtworks.enableIf" %% "enableif" % "latest.release"
+    - name: sbt-node
+      url: https://github.com/jokade/sbt-node
+      desc: A Sbt plugin for integration with npm / node.js based build tools.
+      dep: 'addSbtPlugin("de.surfice" % "sbt-node" % "0.0.2")'
