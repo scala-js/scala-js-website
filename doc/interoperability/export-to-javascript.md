@@ -59,7 +59,7 @@ The name can contain dots, in which case the exported object is namespaced in
 JavaScript.
 
 {% highlight scala %}
-@JSExport("myapp.foo.MainObject")
+@JSExportTopLevel("myapp.foo.MainObject")
 object HelloWorld {
   ...
 }
