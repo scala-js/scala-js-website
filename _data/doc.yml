@@ -33,6 +33,8 @@
       url: /doc/interoperability/types.html
     - text: Write facade types for JS APIs
       url: /doc/interoperability/facade-types.html
+    - text: Access to the JavaScript global scope (1.x only)
+      url: /doc/interoperability/global-scope.html
     - text: Export Scala.js APIs
       url: /doc/interoperability/export-to-javascript.html
     - text: Write JavaScript classes in Scala.js

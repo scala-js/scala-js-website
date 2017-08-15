@@ -46,17 +46,19 @@ excerpt_separator: <!--more--> #use this in posts to define how long the excerpt
 
 colors:  #in hex code if not noted else
   primary: "#0077bd" #"#F70031"
-  primary_rgb: "0,179,254" #"247,0,49" #rgb of the primary. Needed in some places for the transparency effect.  
+  primary_rgb: "0,179,254" #"247,0,49" #rgb of the primary. Needed in some places for the transparency effect.
   secondary: "#384452" #"#33004D"
   active: "#a44"
   link: "#428bca"
   link_hover: "#01b2fe"
   footer_heading: "#ffffff"
   footer_content: "#bfc9d3"
-  
-  
+
+
 ### VERSIONS ###
 versions:
-  scalaJS: 0.6.16
+  scalaJS: 0.6.19
   scalaJSBinary: 0.6
-  scalaJSDOM: 0.9.1
+  scalaJSDev: 1.0.0-M1
+  scalaJSDevBinary: 1.0.0-M1
+  scalaJSDOM: 0.9.3

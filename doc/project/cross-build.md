@@ -13,6 +13,8 @@ for examples and documentation.
 
 We give a simple example of how such a project, we call it `foo`, could look. You can find this project on [GitHub](https://github.com/scala-js/scalajs-cross-compile-example).
 
+**Scala.js 1.x:** Scala.js 1.x uses [sbt-crossproject](https://github.com/scala-native/sbt-crossproject), which is entirely backward source compatible with the API described here.
+
 ## Directory Structure
 
     <project root>

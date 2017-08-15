@@ -58,6 +58,8 @@ Use these open source projects to see how others have used Scala.js to build the
 - [ScalaKata](http://scalakata.com) ([source](https://github.com/MasseGuillaume/ScalaKata2)): Scala Interactive Playground
 - [CodeCraft](http://www.codecraftgame.org/) ([source](https://github.com/cswinter/CodeCraftGame)): Real-time strategy programming game for Scala/JavaScript using OpenGL/WebGL
 - [Checkers](http://kschuetz.github.io/checkers/) ([source](https://github.com/kschuetz/checkers)): Checkers game rendered in web browser using SVG (about 10000 lines of Scala.js)
+- [Scastie](https://scastie.scala-lang.org) ([source](https://github.com/scalacenter/scastie)): An interactive playground for Scala, which can run any Scala program with any library in your browser
+- [Scalafiddle-editor](https://scalafiddle.io) ([source](https://github.com/scalafiddle/scalafiddle-editor)): An online playground for creating, sharing and embedding Scala fiddles (little Scala programs that run directly in your browser).
 
 ## Testimonials
 

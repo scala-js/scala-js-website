@@ -29,7 +29,19 @@
     - name: Each
       url: https://github.com/ThoughtWorksInc/each
       desc: A macro library that converts native imperative syntax to scalaz's monadic expressions.
-      dep: '"com.thoughtworks.each" %%% "each" % "3.1.1"'
+      dep: '"com.thoughtworks.each" %%% "each" % "3.3.1"'
+    - name: future.scala
+      url: https://github.com/ThoughtWorksInc/future.scala
+      desc: Stack-safe asynchronous programming in pure functional flavor.
+      dep: '"com.thoughtworks.future" %%% "future" % "1.0.1"'
+    - name: tryt.scala
+      url: https://github.com/ThoughtWorksInc/tryt.scala
+      desc: Monad transformers for exception handling.
+      dep: '"com.thoughtworks.tryt" %%% "covariant" % "2.0.3", "com.thoughtworks.tryt" %%% "invariant" % "2.0.3"'
+    - name: RAII.scala
+      url: https://github.com/ThoughtWorksInc/RAII.scala
+      desc: A collection of utilities to manage native resources in Scalaz.
+      dep: '"com.thoughtworks.raii" %%% "asynchronous" % "2.0.0"'
     - name: Shapeless
       url: https://github.com/milessabin/shapeless
       desc: Generic programming for Scala.
@@ -273,3 +285,7 @@
       dep: |
         addCompilerPlugin("org.scalamacros" % "paradise" % "2.1.0" cross CrossVersion.full)
         libraryDependencies += "com.thoughtworks.enableIf" %% "enableif" % "latest.release"
+    - name: sbt-node
+      url: https://github.com/jokade/sbt-node
+      desc: A Sbt plugin for integration with npm / node.js based build tools.
+      dep: 'addSbtPlugin("de.surfice" % "sbt-node" % "0.0.2")'

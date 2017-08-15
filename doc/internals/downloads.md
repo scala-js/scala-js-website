@@ -7,6 +7,38 @@ We strongly recommend using the SBT plugin, as shown in the [bootstrapping skele
 
 The CLI distribution requires `scala` and `scalac` (of the right major version) to be on the execution path. Unpack it wherever you like and add the `bin/` folder to your execution path.
 
+#### Scala.js 0.6.19
+* [0.6.19, Scala 2.12 (tgz, 16MB)]({{ site.production_url }}/files/scalajs_2.12-0.6.19.tgz)
+* [0.6.19, Scala 2.12 (zip, 16MB)]({{ site.production_url }}/files/scalajs_2.12-0.6.19.zip)
+* [0.6.19, Scala 2.11 (tgz, 28MB)]({{ site.production_url }}/files/scalajs_2.11-0.6.19.tgz)
+* [0.6.19, Scala 2.11 (zip, 29MB)]({{ site.production_url }}/files/scalajs_2.11-0.6.19.zip)
+* [0.6.19, Scala 2.10 (tgz, 23MB)]({{ site.production_url }}/files/scalajs_2.10-0.6.19.tgz)
+* [0.6.19, Scala 2.10 (zip, 23MB)]({{ site.production_url }}/files/scalajs_2.10-0.6.19.zip)
+
+#### Scala.js 1.0.0-M1
+* [1.0.0-M1, Scala 2.12 (tgz, 15MB)]({{ site.production_url }}/files/scalajs_2.12-1.0.0-M1.tgz)
+* [1.0.0-M1, Scala 2.12 (zip, 15MB)]({{ site.production_url }}/files/scalajs_2.12-1.0.0-M1.zip)
+* [1.0.0-M1, Scala 2.11 (tgz, 28MB)]({{ site.production_url }}/files/scalajs_2.11-1.0.0-M1.tgz)
+* [1.0.0-M1, Scala 2.11 (zip, 28MB)]({{ site.production_url }}/files/scalajs_2.11-1.0.0-M1.zip)
+* [1.0.0-M1, Scala 2.10 (tgz, 22MB)]({{ site.production_url }}/files/scalajs_2.10-1.0.0-M1.tgz)
+* [1.0.0-M1, Scala 2.10 (zip, 22MB)]({{ site.production_url }}/files/scalajs_2.10-1.0.0-M1.zip)
+
+#### Scala.js 0.6.18
+* [0.6.18, Scala 2.12 (tgz, 16MB)]({{ site.production_url }}/files/scalajs_2.12-0.6.18.tgz)
+* [0.6.18, Scala 2.12 (zip, 16MB)]({{ site.production_url }}/files/scalajs_2.12-0.6.18.zip)
+* [0.6.18, Scala 2.11 (tgz, 28MB)]({{ site.production_url }}/files/scalajs_2.11-0.6.18.tgz)
+* [0.6.18, Scala 2.11 (zip, 28MB)]({{ site.production_url }}/files/scalajs_2.11-0.6.18.zip)
+* [0.6.18, Scala 2.10 (tgz, 23MB)]({{ site.production_url }}/files/scalajs_2.10-0.6.18.tgz)
+* [0.6.18, Scala 2.10 (zip, 23MB)]({{ site.production_url }}/files/scalajs_2.10-0.6.18.zip)
+
+#### Scala.js 0.6.17
+* [0.6.17, Scala 2.12 (tgz, 17MB)]({{ site.production_url }}/files/scalajs_2.12-0.6.17.tgz)
+* [0.6.17, Scala 2.12 (zip, 17MB)]({{ site.production_url }}/files/scalajs_2.12-0.6.17.zip)
+* [0.6.17, Scala 2.11 (tgz, 29MB)]({{ site.production_url }}/files/scalajs_2.11-0.6.17.tgz)
+* [0.6.17, Scala 2.11 (zip, 29MB)]({{ site.production_url }}/files/scalajs_2.11-0.6.17.zip)
+* [0.6.17, Scala 2.10 (tgz, 23MB)]({{ site.production_url }}/files/scalajs_2.10-0.6.17.tgz)
+* [0.6.17, Scala 2.10 (zip, 23MB)]({{ site.production_url }}/files/scalajs_2.10-0.6.17.zip)
+
 #### Scala.js 0.6.16
 * [0.6.16, Scala 2.12 (tgz, 16MB)]({{ site.production_url }}/files/scalajs_2.12-0.6.16.tgz)
 * [0.6.16, Scala 2.12 (zip, 16MB)]({{ site.production_url }}/files/scalajs_2.12-0.6.16.zip)

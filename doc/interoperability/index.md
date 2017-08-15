@@ -54,5 +54,6 @@ The following sections explain all the details:
 
 * [JavaScript types as seen from Scala.js](types.html)
 * [Write facade types for JavaScript APIs](facade-types.html)
+* [Access to the JavaScript global scope (1.x only)](global-scope.html)
 * [Export Scala.js APIs to JavaScript](export-to-javascript.html)
 * [Write JavaScript classes in Scala.js](sjs-defined-js-classes.html)

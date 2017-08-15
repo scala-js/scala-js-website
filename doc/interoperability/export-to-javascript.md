@@ -69,7 +69,7 @@ will be accessible in JavaScript using `myapp.foo.MainObject`.
 
 **Pre 0.6.15 note**: Before Scala.js 0.6.15, objects were exported as 0-argument
 functions using `@JSExport`, rather than directly with `@JSExportTopLevel`. This
-is deprecated.
+is deprecated in 0.6.x, and not supported anymore in Scala.js 1.x.
 
 ## Exporting classes
 
@@ -100,7 +100,7 @@ by using dots in the argument to `@JSExportTopLevel`.
 
 **Pre 0.6.15 note**: Before Scala.js 0.6.15, classes were exported using
 `@JSExport` instead of `@JSExportTopLevel`, with the same meaning. This is
-deprecated.
+deprecated in 0.6.x, and not supported anymore in Scala.js 1.x.
 
 ## Exports with modules
 
@@ -203,8 +203,8 @@ followed by the JavaScript export name.
 
 ### <a name="JSExportNamed"></a> Exporting for call with named parameters (deprecated)
 
-**Note:** Since Scala.js 0.6.11, `@JSExportNamed` is deprecated, and will be removed in the next major version.
-Refer to [the Scaladoc]({{ site.production_url }}/api/scalajs-library/latest/#scala.scalajs.js.annotation.JSExportNamed) for migration tips.
+**Note:** Since Scala.js 0.6.11, `@JSExportNamed` is deprecated, and is not supported anymore in Scala.js 1.x.
+Refer to [the Scaladoc]({{ site.production_url }}/api/scalajs-library/0.6.18/#scala.scalajs.js.annotation.JSExportNamed) for migration tips.
 
 It is customary in Scala to call methods with named parameters if this eases understanding of the code or if many arguments with default values are present:
 
@@ -409,6 +409,7 @@ often used to "reflectively" instantiate classes and load objects. This use case
 has been replaced by the
 [`scala.scalajs.reflect.Reflect`]({{ site.production_url }}/api/scalajs-library/latest/#scala.scalajs.reflect.Reflect$)
 API.
+This feature is not supported anymore in Scala.js 1.x.
 
 When applied to a class or trait, `@JSExportDescendentObjects` causes all
 objects extending it to be automatically exported as 0-arg functions, under

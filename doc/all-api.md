@@ -5,6 +5,55 @@ title: All previous versions of the Scala.js API
 
 ## All previous versions of the API
 
+### Scala.js 0.6.19
+* [0.6.19 scalajs-library]({{ site.production_url }}/api/scalajs-library/0.6.19/#scala.scalajs.js.package)
+* [0.6.19 scalajs-test-interface]({{ site.production_url }}/api/scalajs-test-interface/0.6.19/)
+* [0.6.19 scalajs-stubs]({{ site.production_url }}/api/scalajs-stubs/0.6.19/)
+* [0.6.19 scalajs-ir]({{ site.production_url }}/api/scalajs-ir/0.6.19/#org.scalajs.core.ir.package)
+* [0.6.19 scalajs-tools]({{ site.production_url }}/api/scalajs-tools/0.6.19/#org.scalajs.core.tools.package) ([Scala.js version]({{ site.production_url }}/api/scalajs-tools-js/0.6.19/#org.scalajs.core.tools.package))
+* [0.6.19 scalajs-js-envs]({{ site.production_url }}/api/scalajs-js-envs/0.6.19/#org.scalajs.jsenv.package)
+* [0.6.19 scalajs-js-envs-test-kit]({{ site.production_url }}/api/scalajs-js-envs-test-kit/0.6.19/#org.scalajs.jsenv.test.package)
+* [0.6.19 scalajs-test-adapter]({{ site.production_url }}/api/scalajs-sbt-test-adapter/0.6.19/#org.scalajs.testadapter.package)
+* [0.6.19 sbt-scalajs]({{ site.production_url }}/api/sbt-scalajs/0.6.19/#org.scalajs.sbtplugin.package)
+
+### Scala.js 1.0.0-M1
+* [1.0.0-M1 scalajs-library]({{ site.production_url }}/api/scalajs-library/1.0.0-M1/scala/scalajs/js/index.html)
+* [1.0.0-M1 scalajs-test-interface]({{ site.production_url }}/api/scalajs-test-interface/1.0.0-M1/)
+* [1.0.0-M1 scalajs-stubs]({{ site.production_url }}/api/scalajs-stubs/1.0.0-M1/)
+* [1.0.0-M1 scalajs-ir]({{ site.production_url }}/api/scalajs-ir/1.0.0-M1/org/scalajs/core/ir/index.html)
+* [1.0.0-M1 scalajs-tools]({{ site.production_url }}/api/scalajs-tools/1.0.0-M1/org/scalajs/core/tools/index.html) ([Scala.js version]({{ site.production_url }}/api/scalajs-tools-js/1.0.0-M1/org/scalajs/core/tools/index.html))
+* [1.0.0-M1 scalajs-js-envs]({{ site.production_url }}/api/scalajs-js-envs/1.0.0-M1/org/scalajs/jsenv/index.html)
+* [1.0.0-M1 scalajs-env-nodejs]({{ site.production_url }}/api/scalajs-env-nodejs/1.0.0-M1/org/scalajs/jsenv/nodejs/index.html)
+* [1.0.0-M1 scalajs-env-jsdom-nodejs]({{ site.production_url }}/api/scalajs-env-jsdom-nodejs/1.0.0-M1/org/scalajs/jsenv/jsdomnodejs/index.html)
+* [1.0.0-M1 scalajs-env-phantomjs]({{ site.production_url }}/api/scalajs-env-phantomjs/1.0.0-M1/org/scalajs/jsenv/phantomjs/index.html)
+* [1.0.0-M1 scalajs-js-envs-test-kit]({{ site.production_url }}/api/scalajs-js-envs-test-kit/1.0.0-M1/org/scalajs/jsenv/test/index.html)
+* [1.0.0-M1 scalajs-test-adapter]({{ site.production_url }}/api/scalajs-sbt-test-adapter/1.0.0-M1/org/scalajs/testadapter/index.html)
+* [1.0.0-M1 sbt-scalajs]({{ site.production_url }}/api/sbt-scalajs/1.0.0-M1/#org.scalajs.sbtplugin.package)
+* [1.0.0-M1 sbt-scalajs-env-phantomjs]({{ site.production_url }}/api/sbt-scalajs-env-phantomjs/1.0.0-M1/#org.scalajs.jsenv.phantomjs.sbtplugin.package)
+* [1.0.0-M1 sbt-jsdependencies]({{ site.production_url }}/api/sbt-jsdependencies/1.0.0-M1/#org.scalajs.jsdependencies.sbtplugin.package)
+
+### Scala.js 0.6.18
+* [0.6.18 scalajs-library]({{ site.production_url }}/api/scalajs-library/0.6.18/#scala.scalajs.js.package)
+* [0.6.18 scalajs-test-interface]({{ site.production_url }}/api/scalajs-test-interface/0.6.18/)
+* [0.6.18 scalajs-stubs]({{ site.production_url }}/api/scalajs-stubs/0.6.18/)
+* [0.6.18 scalajs-ir]({{ site.production_url }}/api/scalajs-ir/0.6.18/#org.scalajs.core.ir.package)
+* [0.6.18 scalajs-tools]({{ site.production_url }}/api/scalajs-tools/0.6.18/#org.scalajs.core.tools.package) ([Scala.js version]({{ site.production_url }}/api/scalajs-tools-js/0.6.18/#org.scalajs.core.tools.package))
+* [0.6.18 scalajs-js-envs]({{ site.production_url }}/api/scalajs-js-envs/0.6.18/#org.scalajs.jsenv.package)
+* [0.6.18 scalajs-js-envs-test-kit]({{ site.production_url }}/api/scalajs-js-envs-test-kit/0.6.18/#org.scalajs.jsenv.test.package)
+* [0.6.18 scalajs-test-adapter]({{ site.production_url }}/api/scalajs-sbt-test-adapter/0.6.18/#org.scalajs.testadapter.package)
+* [0.6.18 sbt-scalajs]({{ site.production_url }}/api/sbt-scalajs/0.6.18/#org.scalajs.sbtplugin.package)
+
+### Scala.js 0.6.17
+* [0.6.17 scalajs-library]({{ site.production_url }}/api/scalajs-library/0.6.17/#scala.scalajs.js.package)
+* [0.6.17 scalajs-test-interface]({{ site.production_url }}/api/scalajs-test-interface/0.6.17/)
+* [0.6.17 scalajs-stubs]({{ site.production_url }}/api/scalajs-stubs/0.6.17/)
+* [0.6.17 scalajs-ir]({{ site.production_url }}/api/scalajs-ir/0.6.17/#org.scalajs.core.ir.package)
+* [0.6.17 scalajs-tools]({{ site.production_url }}/api/scalajs-tools/0.6.17/#org.scalajs.core.tools.package) ([Scala.js version]({{ site.production_url }}/api/scalajs-tools-js/0.6.17/#org.scalajs.core.tools.package))
+* [0.6.17 scalajs-js-envs]({{ site.production_url }}/api/scalajs-js-envs/0.6.17/#org.scalajs.jsenv.package)
+* [0.6.17 scalajs-js-envs-test-kit]({{ site.production_url }}/api/scalajs-js-envs-test-kit/0.6.17/#org.scalajs.jsenv.test.package)
+* [0.6.17 scalajs-test-adapter]({{ site.production_url }}/api/scalajs-sbt-test-adapter/0.6.17/#org.scalajs.testadapter.package)
+* [0.6.17 sbt-scalajs]({{ site.production_url }}/api/sbt-scalajs/0.6.17/#org.scalajs.sbtplugin.package)
+
 ### Scala.js 0.6.16
 * [0.6.16 scalajs-library]({{ site.production_url }}/api/scalajs-library/0.6.16/#scala.scalajs.js.package)
 * [0.6.16 scalajs-test-interface]({{ site.production_url }}/api/scalajs-test-interface/0.6.16/)
