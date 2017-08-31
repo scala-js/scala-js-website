@@ -46,6 +46,7 @@ libraryDependencies += "org.scala-js" %% "scalajs-env-jsdom-nodejs" % "1.0.0-M1"
 {% endhighlight %}
 
 **Scala.js 0.6.x:** This environment is selected by default if your application or one of its libraries declares a dependency on the DOM, with `jsDependencies += RuntimeDOM`.
+Note that this is deprecated, so you should use `jsEnv := ...` anyway.
 
 ## PhantomJS
 

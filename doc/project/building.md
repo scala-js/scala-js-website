@@ -44,9 +44,10 @@ Now, the .js file produced by `fastOptJS` will print `"Hello world!"`.
 Note that this will require that there is a *unique* such object or that the one to use be explicitly set with `mainClass in Compile := Some(<name>)`.
 If you explicitly set `mainClass`, note that it needs to be set on a per-configuration basis (i.e. the part `in Compile` is essential, otherwise the setting will be ignored). For further information see the Stack Overflow entry ['How to set mainClass in ScalaJS build.sbt?'](http://stackoverflow.com/questions/34965072/how-to-set-mainclass-in-scalajs-build-sbt) (specific to Scala.js) and the Stack Overflow entry ['How to set main class in build?'](http://stackoverflow.com/questions/6467423/how-to-set-main-class-in-build) (not specific to Scala.js).
 
-**Note for Scala.js 0.6.17 and earlier:** in Scala.js 0.6.17 and earlier, the main object was required to extend the special trait [`js.JSApp`]({{ site.production_url }}/api/scalajs-library/0.6.18/#scala.scalajs.js.JSApp).
+**Note for Scala.js 0.6.17 and earlier:** in Scala.js 0.6.17 and earlier, the main object was required to extend the special trait [`js.JSApp`]({{ site.production_url }}/api/scalajs-library/0.6.20/#scala.scalajs.js.JSApp).
 Since 0.6.18, any object with a standard `main` method will be recognized.
-`js.JSApp` is not recommended for new code.
+`js.JSApp` is now deprecated.
+See [the Scaladoc of `js.JSApp`]({{ site.production_url }}/api/scalajs-library/0.6.20/#scala.scalajs.js.JSApp) for migration tips.
 
 ## Running in the console
 
@@ -58,7 +59,7 @@ This will run the `-fastopt.js` file right inside of your sbt console.
 By default, the file is run with [Node.js](http://nodejs.org/), which you need to install separately.
 
 **Scala.js 0.6.x only:** If your application or one of its libraries requires a DOM (which can be specified with `jsDependencies += RuntimeDOM`), you will also need to install [`jsdom`](https://github.com/tmpvar/jsdom) with `npm install jsdom`.
-`jsDependencies += RuntimeDOM` is not recommended for new code, and should be replaced by `jsEnv := new org.scalajs.jsenv.jsdomnodejs.JSDOMNodeJSEnv()`.
+`jsDependencies += RuntimeDOM` is now deprecated, and should be replaced by `jsEnv := new org.scalajs.jsenv.jsdomnodejs.JSDOMNodeJSEnv()`.
 
 There are alternative JavaScript interpreters that are available.
 See [JavaScript environments](./js-environments.html) for more details.
