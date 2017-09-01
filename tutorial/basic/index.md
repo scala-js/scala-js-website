@@ -44,10 +44,10 @@ scalaVersion := "2.12.2" // or any other Scala version >= 2.10.2
 scalaJSUseMainModuleInitializer := true
 {% endhighlight %}
 
-Last, we need a `project/build.properties` to specify the sbt version (>= 0.13.13):
+Last, we need a `project/build.properties` to specify the sbt version (>= 0.13.16):
 
 {% highlight scala %}
-sbt.version=0.13.15
+sbt.version=0.13.16
 {% endhighlight %}
 
 That is all we need to configure the build.
@@ -379,7 +379,7 @@ What basically happens here is that jQuery (which is automatically included beca
 To make the DOM available, add the following to your `build.sbt`:
 
 {% highlight scala %}
-jsDependencies += RuntimeDOM
+jsEnv := new org.scalajs.jsenv.jsdomnodejs.JSDOMNodeJSEnv()
 {% endhighlight %}
 
 This will use the [`jsdom`](https://github.com/tmpvar/jsdom) library to simulate a DOM in Node.js.
@@ -392,9 +392,6 @@ After reloading, you can invoke `run` successfully:
     > run
     [info] Running tutorial.webapp.TutorialApp
     [success] (...)
-
-Just like other library dependencies, `jsDependencies += RuntimeDOM` applies transitively: if you depend on a library that depends on the
-DOM, then you depend on the DOM as well.
 
 Alternatively to Node.js with jsdom, you can use [PhantomJS](http://phantomjs.org/) or even [Selenium](http://docs.seleniumhq.org/).
 You can find more information about this in the [documentation about JavaScript environments]({{ BASE_PATH }}/doc/project/js-environments.html).

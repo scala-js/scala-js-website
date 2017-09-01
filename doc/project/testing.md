@@ -4,7 +4,7 @@ title: Testing
 ---
 
 In this section we will discuss how to test Scala.js code managed as [Full cross project](./cross-build.html). All names
-for example subproject name such as `fooJVM` are taken from 
+for example subproject name such as `fooJVM` are taken from
 [cross compile example](https://github.com/scala-js/scalajs-cross-compile-example).
 
 ## Directory Structure
@@ -30,28 +30,39 @@ parts, so when calling `sbt> test` will effectively run both `fooJVM/test` and `
 
 ## Integration testing
 
-Configuring a regular non-Scala.js sbt project to have `it:test` is a well described task, see 
-[documentation](http://www.scala-sbt.org/0.13/docs/Testing.html#Integration+Tests) for more details.
-In a `CrossProject` it won't work out-of-the-box because of 2 reasons. First reason is that by default Scala JVM and
-Scala.js `it` configurations won't be aware of `shared/src/it/scala` folder. Second is that Scala.js `it` configuration
-by default does not contain `ScalaJSClassLoader` definition required for running Scala.js tests. To fix that you need to
-add the following settings to the crossProject definition along with `IntegrationTest` settings:
+Configuring a regular non-Scala.js sbt project to have `it:test` is
+[documented in sbt](http://www.scala-sbt.org/0.13/docs/Testing.html#Integration+Tests).
+For a Scala.js project, you will also need to install the Scala.js-specific settings and tasks to the `it` configuration, as follows:
+
+{% highlight scala %}
+lazy val myProject = project.in(file(".")).
+  enablePlugins(ScalaJSPlugin).
+  // add the `it` configuration
+  configs(IntegrationTest).
+  // add `it` tasks
+  settings(Defaults.itSettings: _*).
+  // add Scala.js-specific settings and tasks to the `it` configuration
+  settings(inConfig(IntegrationTest)(ScalaJSPlugin.testConfigSettings): _*).
+  ...
+{% endhighlight %}
+
+For a `crossProject`, you also need to setup the `shared/src/it/scala` source directory.
+The complete setup is as follows:
 
 {% highlight scala %}
 lazy val cross = crossProject.in(file(".")).
-  ...
-  // adding the `it` configuration
+  // add the `it` configuration
   configs(IntegrationTest).
-  // adding `it` tasks
-  settings(Defaults.itSettings:_*).
-  // add `shared` folder to `jvm` source directories
-  jvmSettings(unmanagedSourceDirectories in IntegrationTest ++=
-    CrossType.Full.sharedSrcDir(baseDirectory.value, "it").toSeq).
-  // add `shared` folder to `js` source directories
-  jsSettings(unmanagedSourceDirectories in IntegrationTest ++=
-    CrossType.Full.sharedSrcDir(baseDirectory.value, "it").toSeq).
-  // adding ScalaJSClassLoader to `js` configuration
-  jsSettings(inConfig(IntegrationTest)(ScalaJSPluginInternal.scalaJSTestSettings):_*) 
+  // add `it` tasks
+  settings(Defaults.itSettings: _*).
+  // add Scala.js-specific settings and tasks to the `it` configuration
+  jsSettings(inConfig(IntegrationTest)(ScalaJSPlugin.testConfigSettings): _*).
+  // add the `shared` folder to source directories
+  settings(
+    unmanagedSourceDirectories in IntegrationTest ++=
+      CrossType.Full.sharedSrcDir(baseDirectory.value, "it").toSeq
+  ).
+  ...
 {% endhighlight %}
 
 Now you can put tests in `{shared|jvm|js}/src/it/scala` and they will run when you call `sbt> it:test`. Similarly to
