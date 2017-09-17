@@ -31,13 +31,13 @@ HelloWorld.sayHello();
 {% endhighlight %}
 
 The `@JSExportTopLevel` on `HelloWorld` exports the object `HelloWorld` itself
-in the JavaScript global scope. It is however not sufficient to allow JavaScrit
+in the JavaScript global scope. It is however not sufficient to allow JavaScript
 to call *methods* of `HelloWorld`. This is why we also have to export the
 method `sayHello()` with `@JSExport`.
 
 In general, things that should be exported on the top-level, such as top-level
 objects and classes, are exported with `@JSExportTopLevel`, while things that
-should be exported as *properties* or *methods* in JavaScrit are exported with
+should be exported as *properties* or *methods* in JavaScript are exported with
 `@JSExport`.
 
 ## Exporting top-level objects
