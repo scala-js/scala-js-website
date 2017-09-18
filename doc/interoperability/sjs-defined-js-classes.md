@@ -14,7 +14,7 @@ Since Scala.js 0.6.17, you can opt-in for the new semantics of 1.x where `@Scala
 In an sbt build, this is done with
 
 {% highlight scala %}
-scalacOptions += "-P:scalajs-sjsDefinedByDefault"
+scalacOptions += "-P:scalajs:sjsDefinedByDefault"
 {% endhighlight %}
 
 The present documentation assumes that you are using this option (or Scala.js 1.x).
