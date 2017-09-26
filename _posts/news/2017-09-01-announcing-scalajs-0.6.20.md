@@ -60,6 +60,9 @@ scalacOptions += "-P:scalajs:sjsDefinedByDefault"
 {% endhighlight %}
 
 and remove the `@ScalaJSDefined` annotations everywhere in your codebase.
+
+This will prepare your migration for [Scala.js 1.X](http://www.scala-js.org/news/2017/07/03/announcing-scalajs-1.0.0-M1/#non-native-js-classes-by-default-previously-known-as-scalajs-defined).
+
 The semantics of your codebase will be unchanged.
 
 ### `js.JSApp`
