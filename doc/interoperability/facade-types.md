@@ -10,7 +10,7 @@ direction of interoperability.
 
 Facade types are zero-overhead typed APIs for JavaScript libraries. They are
 similar in spirit to
-[TypeScript type definitions](http://www.typescriptlang.org/Handbook#modules-working-with-other-javascript-libraries).
+[TypeScript type definitions](http://www.typescriptlang.org/docs/handbook/modules.html#working-with-other-javascript-libraries).
 
 ## Defining JavaScript interfaces with native JS traits
 
