@@ -96,6 +96,10 @@
       url: https://github.com/zoepepper/scalajs-jsjoda
       desc: 'Static types for [js-joda](http://js-joda.github.io/js-joda/)'
       dep: '"com.zoepepper" %%% "scalajs-jsjoda" % "1.1.1"'
+    - name: scala-js-plotlyjs
+      url: https://github.com/DefinitelyScala/scala-js-plotlyjs
+      desc: '[Plotly.js](https://plot.ly/javascript/) facade. [Demo](https://github.com/mathieuleclaire/scala-js-plotlyjs-demo)'
+      dep: '"com.definitelyscala" %%% "scala-js-plotlyjs" % "1.1.3"'
 - topic: UI frameworks
   libraries:
     - name: scalajs-react
@@ -117,7 +121,11 @@
     - name: scalajs-angulate
       url: https://github.com/jokade/scalajs-angulate
       desc: Another binding to AngularJS with enhancements
-      dep: '"biz.enef" %%% "scalajs-angulate" % "0.2.2"'
+      dep: '"biz.enef" %%% "scalajs-angulate" % "0.2.4"'
+    - name: angulate2
+      url: https://github.com/jokade/angulate2
+      desc: Plugin and bindings for [Angular 2+](http://angular.io) development with Scala.js.
+      dep: 'addSbtPlugin("de.surfice" % "angulate2" % "0.1.0")'
     - name: scalajs-vue
       url: https://github.com/fancellu/scalajs-vue
       desc: Scala.js bindings for [Vue.js](http://vuejs.org/) and an example application
