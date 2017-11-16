@@ -28,7 +28,7 @@ Here you go:
 - [Seventh Sense](https://7thsense.io), predictive analytics for sales and marketing. Scala.js+react components used inside legacy angular application.
 - [Querki](https://www.querki.net/help/#Learning-Querki), a cloud-based system for small-scale data management
 - [MF Metabolic Analyzer](https://www.metabolicanalyzer.com) is a system to help physicians interpret and draw conclusions from cardiopulmonary exercise tests.
-- [Insightware](https://insightware.com/), a next-generation A/B testing tool. All of the dashboard is built with Scaja.js.
+- [OhMyCoin](http://ohmyco.in/charts/), real-time charts for cryptocurrency markets. All of the frontend is built with Scaja.js and scalajs-react.
 - [Stofftante](https://www.stofftante.ch), web store for fabrics
 - [NetLogo Web](http://netlogoweb.org/launch), an agent-based simulation language. (only the NetLogo-to-JavaScript compiler is
   written in Scala, not the front end)
