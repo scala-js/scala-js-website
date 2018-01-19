@@ -582,7 +582,7 @@ implicit class NodeListSeq[T <: Node](nodes: DOMList[T]) extends IndexedSeq[T] {
 
 Defining just those three functions, we now have access to all the usual collection functionality like `map`, `filter`,
 `find`, `slice`, `foldLeft`, etc. This makes working with `NodeList`s a lot easier and safer. The implicit class makes
-use of Scala generics, providing implementation for all types that extend `Node`.
+use of Scala generics, providing implementation for all types that extend `Node`. Note that `NodeListSeq` [is available](https://github.com/scala-js/scala-js-dom/blob/28503dc40b75ac7ec77777e85424c5a96e0cf797/src/main/scala/org/scalajs/dom/ext/package.scala#L9-L10) as `PimpedNodeList` in the `scala-js-dom` library; just `import org.scalajs.dom.ext._` to use it.
 
 {% columns %}
 {% column 12 Scala %}
