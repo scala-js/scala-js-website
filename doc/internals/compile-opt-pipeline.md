@@ -47,7 +47,7 @@ Maven repositories.
 This step completely supports separate compilation and incremental compilation,
 just like the regular Scala compiler.
 
-## Fast Optimzing
+## Fast Optimizing
 
 The size of the JavaScript files produced by blindly concatenating .sjsir files are huge.
 They are always bigger than 20 MB because they include the full Scala standard
