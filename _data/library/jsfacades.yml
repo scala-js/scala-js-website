@@ -95,7 +95,7 @@
     - name: scalajs-jsjoda
       url: https://github.com/zoepepper/scalajs-jsjoda
       desc: 'Static types for [js-joda](http://js-joda.github.io/js-joda/)'
-      dep: '"com.zoepepper" %%% "scalajs-jsjoda" % "1.1.1"'
+      dep: '"com.zoepepper" %%% "scalajs-jsjoda" % "1.1.2"'
 - topic: UI frameworks
   libraries:
     - name: scalajs-react
