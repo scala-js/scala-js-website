@@ -5,6 +5,24 @@ title: All previous versions of the Scala.js API
 
 ## All previous versions of the API
 
+### Scala.js 1.0.0-M3
+* [1.0.0-M3 scalajs-library]({{ site.production_url }}/api/scalajs-library/1.0.0-M3/scala/scalajs/js/index.html)
+* [1.0.0-M3 scalajs-test-interface]({{ site.production_url }}/api/scalajs-test-interface/1.0.0-M3/)
+* [1.0.0-M3 scalajs-stubs]({{ site.production_url }}/api/scalajs-stubs/1.0.0-M3/)
+* [1.0.0-M3 scalajs-ir]({{ site.production_url }}/api/scalajs-ir/1.0.0-M3/org/scalajs/ir/index.html)
+* [1.0.0-M3 scalajs-io]({{ site.production_url }}/api/scalajs-io/1.0.0-M3/org/scalajs/io/index.html) ([Scala.js version]({{ site.production_url }}/api/scalajs-io-js/1.0.0-M3/org/scalajs/io/index.html))
+* [1.0.0-M3 scalajs-logging]({{ site.production_url }}/api/scalajs-logging/1.0.0-M3/org/scalajs/logging/index.html)
+* [1.0.0-M3 scalajs-linker]({{ site.production_url }}/api/scalajs-linker/1.0.0-M3/org/scalajs/linker/index.html) ([Scala.js version]({{ site.production_url }}/api/scalajs-linker-js/1.0.0-M3/org/scalajs/linker/index.html))
+* [1.0.0-M3 scalajs-js-envs]({{ site.production_url }}/api/scalajs-js-envs/1.0.0-M3/org/scalajs/jsenv/index.html)
+* [1.0.0-M3 scalajs-env-nodejs]({{ site.production_url }}/api/scalajs-env-nodejs/1.0.0-M3/org/scalajs/jsenv/nodejs/index.html)
+* [1.0.0-M3 scalajs-env-jsdom-nodejs]({{ site.production_url }}/api/scalajs-env-jsdom-nodejs/1.0.0-M3/org/scalajs/jsenv/jsdomnodejs/index.html)
+* [1.0.0-M3 scalajs-env-phantomjs]({{ site.production_url }}/api/scalajs-env-phantomjs/1.0.0-M3/org/scalajs/jsenv/phantomjs/index.html)
+* [1.0.0-M3 scalajs-js-envs-test-kit]({{ site.production_url }}/api/scalajs-js-envs-test-kit/1.0.0-M3/org/scalajs/jsenv/test/index.html)
+* [1.0.0-M3 scalajs-test-adapter]({{ site.production_url }}/api/scalajs-sbt-test-adapter/1.0.0-M3/org/scalajs/testadapter/index.html)
+* [1.0.0-M3 sbt-scalajs]({{ site.production_url }}/api/sbt-scalajs/1.0.0-M3/#org.scalajs.sbtplugin.package)
+* [1.0.0-M3 sbt-scalajs-env-phantomjs]({{ site.production_url }}/api/sbt-scalajs-env-phantomjs/1.0.0-M3/#org.scalajs.jsenv.phantomjs.sbtplugin.package)
+* [1.0.0-M3 sbt-jsdependencies]({{ site.production_url }}/api/sbt-jsdependencies/1.0.0-M3/#org.scalajs.jsdependencies.sbtplugin.package)
+
 ### Scala.js 0.6.22
 * [0.6.22 scalajs-library]({{ site.production_url }}/api/scalajs-library/0.6.22/#scala.scalajs.js.package)
 * [0.6.22 scalajs-test-interface]({{ site.production_url }}/api/scalajs-test-interface/0.6.22/)
