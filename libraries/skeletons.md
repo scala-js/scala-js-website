@@ -32,3 +32,7 @@ D3.js lib.
 
 ### [Udash Generator](http://guide.udash.io/#/bootstrapping/generators)
 Project generator for the Udash framework - creates a customized, complete and runnable Udash based application.
+
+### [Develop WeChat application with Scala.js](https://github.com/kaiwu/weui-scalajs)
+The project implements [WeUI demo](https://github.com/Tencent/weui-wxss/) entirely with Scala.js and sbt-less,
+showing that Scala.js is a solid development platform for [WeChat mini-programs aka WeApp](https://en.wikipedia.org/wiki/WeChat).
