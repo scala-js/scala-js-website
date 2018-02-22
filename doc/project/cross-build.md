@@ -60,6 +60,8 @@ lazy val fooJVM = foo.jvm
 lazy val fooJS = foo.js
 {% endhighlight %}
 
+Note that `enablePlugins(ScalaJSPlugin)` **must not** be included when using `crossProject`.
+
 You now have separate projects to compile towards Scala.js and Scala JVM. Note the same name given to both projects, this allows them to be published with corresponding artifact names:
 
 - `foo_2.11-0.1-SNAPSHOT.jar`
