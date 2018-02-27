@@ -150,6 +150,10 @@
       url: http://trueaccord.github.io/ScalaPB
       desc: 'Generates case classes, serializers and deserializers for Protocol Buffers'
       dep: '"com.trueaccord.scalapb" %%% "scalapb-runtime" % "0.5.47"'
+    - name: kantan.csv
+      url: https://nrinaudo.github.io/kantan.csv/
+      desc: 'CSV handling library for Scala'
+      dep: '"com.nrinaudo" %%% "kantan.csv" % "0.4.0"'
 - topic: Client-server communication
   libraries:
     - name: autowire
