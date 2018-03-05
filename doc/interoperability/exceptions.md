@@ -1,6 +1,6 @@
 ---
 layout: doc
-title: JavaScript types
+title: Handling Exceptions 
 ---
 
 Scala.js can both throw and catch exceptions as you normally would in scala. Scala.js also supports exceptions originating in or being caught by JS.
