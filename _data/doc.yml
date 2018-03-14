@@ -39,6 +39,8 @@
       url: /doc/interoperability/export-to-javascript.html
     - text: Write JavaScript classes in Scala.js
       url: /doc/interoperability/sjs-defined-js-classes.html
+    - text: Working with Exceptions
+      url: /doc/interoperability/exceptions.html
 - text: Scala.js API
   url: /doc/api.html
   subitems:
