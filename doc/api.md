@@ -25,6 +25,7 @@ title: Scala.js API
 
 ### DOM API
 
+* [0.9.5 scalajs-dom]({{ site.production_url }}/api/scalajs-dom/0.9.5/#org.scalajs.dom.package)
 * [0.9.0 scalajs-dom]({{ site.production_url }}/api/scalajs-dom/0.9.0/#org.scalajs.dom.package)
 * [0.8.x scalajs-dom]({{ site.production_url }}/api/scalajs-dom/0.8/#org.scalajs.dom.package)
 * [0.7.x scalajs-dom]({{ site.production_url }}/api/scalajs-dom/0.7/#org.scalajs.dom.package)
