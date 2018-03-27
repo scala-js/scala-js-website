@@ -48,6 +48,10 @@
       url: https://github.com/scalawarrior/scalajs-ace
       desc: Static types for [Ace](http://ace.c9.io/)
       dep: '"com.scalawarrior" %%% "scalajs-ace" % "0.0.1-SNAPSHOT"'
+    - name: scaladget ace
+      url: https://github.com/mathieuleclaire/scaladget
+      desc: Static types for [Ace](http://ace.c9.io).
+      dep: '"fr.iscpif.scaladget" %%% "ace" % "1.0.1"'
     - name: threejs-facade
       url: https://github.com/antonkulaga/threejs-facade
       desc: Static types for [Three.js 3D library](https://threejs.org)
@@ -64,21 +68,17 @@
       url: https://github.com/spaced/scala-js-d3
       desc: Static types for [D3.js](http://d3js.org)
       dep: '"org.singlespaced" %%% "scalajs-d3" % "0.3.4"'
-    - name: scaladget
-      url: https://github.com/mathieuleclaire/scaladget
-      desc: Static types for [Ace](http://ace.c9.io).
-      dep: '"fr.iscpif.scaladget" %%% "ace" % "1.0.1"'
-    - name: scaladget
+    - name: scaladget bootstrapslider
       url: https://github.com/mathieuleclaire/scaladget
       desc: Static types for [Bootstrap-slider](http://seiyria.com/bootstrap-slider/)
       dep: '"fr.iscpif.scaladget" %%% "bootstrapslider" % "1.0.1"'
-    - name: scaladget
+    - name: scaladget bootstrapnative
       url: https://github.com/mathieuleclaire/scaladget
       desc: Static types for [Bootstrap-native.js](https://thednp.github.io/bootstrap.native/) and [Sortable.js](http://rubaxa.github.io/Sortable/)
       dep: '"fr.iscpif.scaladget" %%% "bootstrapnative" % "1.0.1"'
-    - name: scaladget
+    - name: scaladget lunr
       url: https://github.com/mathieuleclaire/scaladget
-      desc: Static types for[Lunr](https://lunrjs.com/)
+      desc: Static types for [Lunr](https://lunrjs.com/)
       dep: '"fr.iscpif.scaladget" %%% "lunr" % "1.0.1"'
     - name: Paths.scala.js
       url: https://github.com/andreaferretti/paths-scala-js
