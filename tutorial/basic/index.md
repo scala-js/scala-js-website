@@ -146,7 +146,7 @@ That's what the DOM API is for.
 To use the DOM, it is best to use the statically typed Scala.js DOM library. To add it to your sbt project, add the following line to your `build.sbt`:
 
 {% highlight scala %}
-libraryDependencies += "org.scala-js" %%% "scalajs-dom" % "0.9.1"
+libraryDependencies += "org.scala-js" %%% "scalajs-dom" % "0.9.5"
 {% endhighlight %}
 
 sbt-savvy folks will notice the `%%%` instead of the usual `%%`. It means we are using a Scala.js library and not a
@@ -257,15 +257,12 @@ usages of the DOM API with jQuery.
 
 ### Depending on jQuery
 
-Just like for the DOM, there is a typed library for jQuery available in Scala.js. Replace the
-`libraryDependencies += ..` line in your `build.sbt` by:
+Just like for the DOM, there is a typed library for jQuery available in Scala.js: [jquery-facade](https://github.com/jducoeur/jquery-facade).
+Add the following line in your `build.sbt` by:
 
 {% highlight scala %}
-libraryDependencies += "be.doeraene" %%% "scalajs-jquery" % "0.9.1"
+libraryDependencies += "org.querki" %%% "jquery-facade" % "1.2"
 {% endhighlight %}
-
-Since we won't be using the DOM directly, we don't need the old library anymore. Note that the jQuery library internally
-depends on the DOM, but we don't have to care about this. sbt takes care of it automatically.
 
 Don't forget to reload the sbt configuration now:
 
@@ -280,18 +277,22 @@ Again, make sure to update your IDE project files if you are using a plugin.
 In `TutorialApp.scala`, remove the imports for the DOM, and add the import for jQuery:
 
 {% highlight scala %}
-import org.scalajs.jquery.jQuery
+import org.querki.jquery._
 {% endhighlight %}
 
-This allows you to easily access the `jQuery` object (usually referred to as `$` in JavaScript) in your code.
+This allows you to easily access the `$` main object of jQuery in your code.
 
 We can now remove `appendPar` and replace all calls to it by the simple:
 
 {% highlight scala %}
-jQuery("body").append("<p>[message]</p>")
+$("body").append("<p>[message]</p>")
 {% endhighlight %}
 
-Where `[message]` is the string originally passed to `appendPar`.
+Where `[message]` is the string originally passed to `appendPar`, for example:
+
+{% highlight scala %}
+$("body").append("<p>Hello World</p>")
+{% endhighlight %}
 
 If you try to reload your webpage now, it will not work (typically a `TypeError` would be reported in the console). The
 problem is that we haven't included the jQuery library itself, which is a plain JavaScript library.
@@ -301,7 +302,7 @@ problem is that we haven't included the jQuery library itself, which is a plain 
 An option is to include `jquery.js` from an external source, such as [jsDelivr](http://www.jsdelivr.com/).
 
 {% highlight html %}
-<script type="text/javascript" src="http://cdn.jsdelivr.net/jquery/2.1.1/jquery.js"></script>
+<script type="text/javascript" src="http://cdn.jsdelivr.net/jquery/2.2.1/jquery.js"></script>
 {% endhighlight %}
 
 This can easily become very cumbersome, if you depend on multiple libraries. The Scala.js sbt plugin provides a
@@ -313,7 +314,7 @@ In your `build.sbt`, set:
 {% highlight scala %}
 skip in packageJSDependencies := false
 jsDependencies +=
-  "org.webjars" % "jquery" % "2.1.4" / "2.1.4/jquery.js"
+  "org.webjars" % "jquery" % "2.2.1" / "jquery.js" minified "jquery.min.js"
 {% endhighlight %}
 
 After reloading and rerunning `fastOptJS`, this will create `scala-js-tutorial-jsdeps.js` containing all JavaScript
@@ -333,8 +334,8 @@ into this function.
 
 {% highlight scala %}
 def setupUI(): Unit = {
-  jQuery("#click-me-button").click(() => addClickedMessage())
-  jQuery("body").append("<p>Hello World</p>")
+  $("body").append("<p>Hello World</p>")
+  $("#click-me-button").click(() => addClickedMessage())
 }
 {% endhighlight %}
 
@@ -344,12 +345,12 @@ Finally, we add a last call to `jQuery` in the main method, in order to execute 
 
 {% highlight scala %}
 def main(args: Array[String]): Unit = {
-  jQuery(() => setupUI())
+  $(() => setupUI())
 }
 {% endhighlight %}
 
 Again, since we are not calling `setupUI` directly from plain JavaScript, we do not need to export it (even though
-jQuery will call it).
+jQuery will call it through that callback).
 
 We now have an application whose UI is completely setup from within Scala.js. The next step will show how we can test
 this application.
@@ -403,7 +404,7 @@ It typically boils down to two sbt settings in the `build.sbt` file.
 For uTest, these are:
 
 {% highlight scala %}
-libraryDependencies += "com.lihaoyi" %%% "utest" % "0.4.4" % "test"
+libraryDependencies += "com.lihaoyi" %%% "utest" % "0.6.3" % "test"
 testFrameworks += new TestFramework("utest.runner.Framework")
 {% endhighlight %}
 
@@ -414,16 +415,16 @@ package tutorial.webapp
 
 import utest._
 
-import org.scalajs.jquery.jQuery
+import org.querki.jquery._
 
 object TutorialTest extends TestSuite {
 
   // Initialize App
   TutorialApp.setupUI()
 
-  def tests = TestSuite {
-    'HelloWorld {
-      assert(jQuery("p:contains('Hello World')").length == 1)
+  def tests = Tests {
+    'HelloWorld - {
+      assert($("p:contains('Hello World')").length == 1)
     }
   }
 }
@@ -437,17 +438,10 @@ To run this test, simply invoke the `test` task:
     > test
     [info] Compiling 1 Scala source to (...)/scalajs-tutorial/target/scala-2.12/test-classes...
     [info] Fast optimizing (...)/scalajs-tutorial/target/scala-2.12/scala-js-tutorial-test-fastopt.js
-    [info] ------------------Starting Suite tutorial.webapp.TutorialTest------------------
-    [info] tutorial.webapp.TutorialTest.HelloWorld          Success
-    [info] tutorial.webapp.TutorialTest             Success
-    [info] -----------------------------------Results-----------------------------------
-    [info] tutorial.webapp.TutorialTest             Success
-    [info]     HelloWorld           Success
-    [info]
-    [info] Tests: 2
-    [info] Passed: 2
-    [info] Failed: 0
-    [success] (...)
+    -------------------------------- Running Tests --------------------------------
+    + tutorial.webapp.TutorialTest.HelloWorld 2ms
+    Tests: 1, Passed: 1, Failed: 0
+    [success] Total time: 14 s, completed 16-mars-2018 20:04:28
 
 We have successfully created a simple test.
 Just like `run`, the `test` task uses Node.js to execute your tests.
@@ -459,9 +453,9 @@ exist when testing, since the tests start with an empty DOM tree. To solve this,
 method and remove it from the HTML:
 
 {% highlight scala %}
-jQuery("""<button type="button">Click me!</button>""")
-  .click(addClickedMessage _)
-  .appendTo(jQuery("body"))
+$("""<button type="button">Click me!</button>""")
+  .click(() => addClickedMessage())
+  .appendTo($("body"))
 {% endhighlight %}
 
 This brings another unexpected advantage: We don't need to give it an ID anymore but can directly use the jQuery object
@@ -470,11 +464,11 @@ to install the on-click handler.
 We now define the `ButtonClick` test just below the `HelloWorld` test:
 
 {% highlight scala %}
-'ButtonClick {
+'ButtonClick - {
   def messageCount =
-    jQuery("p:contains('You clicked the button!')").length
+    $("p:contains('You clicked the button!')").length
 
-  val button = jQuery("button:contains('Click me!')")
+  val button = $("button:contains('Click me!')")
   assert(button.length == 1)
   assert(messageCount == 0)
 
@@ -494,19 +488,11 @@ You can now call the `test` task again:
     > test
     [info] Compiling 1 Scala source to (...)/scalajs-tutorial/target/scala-2.12/test-classes...
     [info] Fast optimizing (...)/scalajs-tutorial/target/scala-2.12/scala-js-tutorial-test-fastopt.js
-    [info] ------------------Starting Suite tutorial.webapp.TutorialTest------------------
-    [info] tutorial.webapp.TutorialTest.HelloWorld          Success
-    [info] tutorial.webapp.TutorialTest.ButtonClick         Success
-    [info] tutorial.webapp.TutorialTest             Success
-    [info] -----------------------------------Results-----------------------------------
-    [info] tutorial.webapp.TutorialTest             Success
-    [info]     HelloWorld           Success
-    [info]     ButtonClick          Success
-    [info]
-    [info] Tests: 3
-    [info] Passed: 3
-    [info] Failed: 0
-    [success] (...)
+    -------------------------------- Running Tests --------------------------------
+    + tutorial.webapp.TutorialTest.HelloWorld 3ms
+    + tutorial.webapp.TutorialTest.ButtonClick 6ms
+    Tests: 2, Passed: 2, Failed: 0
+    [success] Total time: 15 s, completed 16-mars-2018 20:07:33
 
 This completes the testing part of this tutorial.
 
