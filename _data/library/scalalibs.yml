@@ -269,6 +269,12 @@
       url: https://github.com/wvlet/log
       desc: 'A logging library with colors and source code locations'
       dep: '"org.wvlet" %%% "wvlet-log" % "1.2"'
+    - name: EvilPlot
+      url: https://github.com/cibotech/evilplot
+      desc: Combinator-based 2D plotting library for easily building composable and extensible data visualizations
+      dep: |
+        resolvers += Resolver.bintrayRepo("cibotech", "public")
+        libraryDependencies += "com.cibo" %%% "evilplot" % "0.2.1"
 - topic: Tools
   libraries:
     - name: sbt-scala-js-map
