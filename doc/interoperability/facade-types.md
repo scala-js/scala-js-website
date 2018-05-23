@@ -324,7 +324,7 @@ The latter is particularly useful if you want to import members of the modules t
 {% highlight scala %}
 @js.native
 @JSImport("bar.js", JSImport.Namespace)
-object Bar {
+object Bar extends js.Object {
   def exportedFunction(x: Int): Int = js.native
 }
 
