@@ -57,7 +57,7 @@ colors:  #in hex code if not noted else
 
 ### VERSIONS ###
 versions:
-  scalaJS: 0.6.23
+  scalaJS: 0.6.24
   scalaJSBinary: 0.6
   scalaJSDev: 1.0.0-M3
   scalaJSDevBinary: 1.0.0-M3
