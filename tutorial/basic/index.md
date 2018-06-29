@@ -44,7 +44,7 @@ scalaVersion := "2.12.6" // or any other Scala version >= 2.10.2
 scalaJSUseMainModuleInitializer := true
 {% endhighlight %}
 
-Last, we need a `project/build.properties` to specify the sbt version (>= 0.13.16):
+Last, we need a `project/build.properties` to specify the sbt version (>= 0.13.17):
 
 {% highlight scala %}
 sbt.version=0.13.17
