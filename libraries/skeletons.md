@@ -32,3 +32,6 @@ D3.js lib.
 
 ### [Udash Generator](http://guide.udash.io/#/bootstrapping/generators)
 Project generator for the Udash framework - creates a customized, complete and runnable Udash based application.
+
+### [Scala Google Spreadsheets](https://github.com/sherpal/Scala-Google-Spreadsheets)
+Allows to create [Google custom functions](https://developers.google.com/apps-script/guides/sheets/functions) in [Google SpreadSheets](https://www.google.com/intl/en_UK/sheets/about/) with Scala.
