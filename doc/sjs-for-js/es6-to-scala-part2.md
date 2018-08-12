@@ -384,7 +384,7 @@ def addScore(player: String, score: Int): Unit = {
 }
 
 def bestScore: (String, Int) = {
-  val all = scores.flatMap {
+  val all = scores.toList.flatMap {
     case (player, pScores) =>
       pScores.map(s => (player, s))
   }
