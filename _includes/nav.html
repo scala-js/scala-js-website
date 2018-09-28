@@ -12,7 +12,6 @@
     <div class="navbar-collapse collapse navbar-right">
       <ul class="nav navbar-nav">
         <li {% if page.url contains "/doc" %}class="active"{% endif %}><a href="{{"/doc/" | prepend: site.baseurl }}">DOCUMENTATION</a></li>
-        <li {% if page.url contains "/tutorial" %}class="active"{% endif %}><a href="{{"/tutorial/" | prepend: site.baseurl }}">TUTORIALS</a></li>
         <li {% if page.url contains "/libraries" %}class="active"{% endif %}><a href="{{"/libraries/" | prepend: site.baseurl }}">LIBRARIES</a></li>
         <li {% if page.url contains "/community" %}class="active"{% endif %}><a href="{{"/community/" | prepend: site.baseurl }}">COMMUNITY</a></li>
         <li {% if page.url contains "/news" %}class="active"{% endif %}><a href="{{"/news/" | prepend: site.baseurl }}">NEWS</a></li>

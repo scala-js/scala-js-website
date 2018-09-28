@@ -2,6 +2,11 @@
   url: /doc/
 #- text: Quick Start
 #  url: /doc/quick-start.html
+- text: Tutorials
+  url: /doc/tutorial/
+  subitems:
+    - text: Basic tutorial
+      url: /doc/tutorial/basic/
 - text: Scala.js for JavaScript developers
   url: /doc/sjs-for-js/
   subitems:

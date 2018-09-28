@@ -1,5 +1,5 @@
 ---
-layout: tutorial
+layout: doc
 title: Basic tutorial
 ---
 

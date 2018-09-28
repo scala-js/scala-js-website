@@ -6,7 +6,11 @@ Update this file if you have an entry that you are moving around.
 Don't update this file if you are adding a new entry.
 {% endcomment %}
 
-redirect 301 /doc/tutorial.html {{ BASE_PATH }}/tutorial/basic/
+redirect 301 /doc/tutorial.html {{ BASE_PATH }}/doc/tutorial/basic/
+redirect 301 /tutorial/basic/ {{ BASE_PATH }}/doc/tutorial/basic/
+redirect 301 /tutorial/ {{ BASE_PATH }}/doc/tutorial/
+redirect 410 /tutorial/boost/
+redirect 410 /tutorial/firstapp/
 
 redirect 301 /doc/calling-javascript.html {{ BASE_PATH }}/doc/interoperability/facade-types.html
 redirect 301 /doc/export-to-javascript.html {{ BASE_PATH }}/doc/interoperability/export-to-javascript.html
