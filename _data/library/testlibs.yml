@@ -1,5 +1,9 @@
 - topic: Test frameworks
   libraries:
+    - name: JUnit
+      url: https://junit.org/junit4/
+      desc: A programmer-friendly Java testing framework
+      dep: 'enablePlugins(ScalaJSJUnitPlugin)'
     - name: uTest
       url: https://github.com/lihaoyi/utest
       desc: Simple testing framework with good Scala.js support
