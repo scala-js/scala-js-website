@@ -104,6 +104,10 @@
       url: https://outwatch.github.io/
       desc: 'A functional & reactive UI framework based on Rx'
       dep: '"io.github.outwatch" %%% "outwatch" % "0.7.1"'
+    - name: Slinky
+      url: https://slinky.shadaj.me/
+      desc: 'Write Scala.js React apps just like you would in ES6'
+      dep: '"me.shadaj" %%% "slinky-core" % "0.5.1", "me.shadaj" %%% "slinky-web" % "0.5.1"'
 - topic: Serialization/pickling libraries
   libraries:
     - name: uPickle
