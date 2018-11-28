@@ -55,8 +55,16 @@ object HelloWorld {
 
 exports the `HelloWorld` object in JavaScript.
 
-The name can contain dots, in which case the exported object is namespaced in
-JavaScript.
+**Pre 0.6.15 note**: Before Scala.js 0.6.15, objects were exported as 0-argument
+functions using `@JSExport`, rather than directly with `@JSExportTopLevel`. This
+is deprecated in 0.6.x, and not supported anymore in Scala.js 1.x.
+
+### Exporting under a namespace (deprecated)
+
+**Note:** Deprecated since Scala.js 0.6.26, and not supported anymore in Scala.js 1.x.
+
+The export name can contain dots, in which case the exported object is namespaced in JavaScript.
+For example,
 
 {% highlight scala %}
 @JSExportTopLevel("myapp.foo.MainObject")
@@ -66,10 +74,6 @@ object HelloWorld {
 {% endhighlight %}
 
 will be accessible in JavaScript using `myapp.foo.MainObject`.
-
-**Pre 0.6.15 note**: Before Scala.js 0.6.15, objects were exported as 0-argument
-functions using `@JSExport`, rather than directly with `@JSExportTopLevel`. This
-is deprecated in 0.6.x, and not supported anymore in Scala.js 1.x.
 
 ## Exporting classes
 
@@ -94,9 +98,6 @@ console.log(foo.toString());
 will log the string `"Foo(3)"` to the console. This particular example works
 because it calls `toString()`, which is always exported to JavaScript. Other
 methods must be exported explicitly as shown in the next section.
-
-As is the case for top-level objects, classes can be exported under a namespace,
-by using dots in the argument to `@JSExportTopLevel`.
 
 **Pre 0.6.15 note**: Before Scala.js 0.6.15, classes were exported using
 `@JSExport` instead of `@JSExportTopLevel`, with the same meaning. This is
