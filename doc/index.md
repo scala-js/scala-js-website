@@ -18,7 +18,7 @@ All you need to get started is
 
 # Tutorials
 
-Check out one of the [tutorials](../tutorial/) to continue your journey!
+Check out one of the [tutorials](tutorial/) to continue your journey!
 
 You may also find the [presentation videos](../community/presentations.html)
 a nice way to get started with Scala.js!
