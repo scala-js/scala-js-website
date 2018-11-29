@@ -81,14 +81,6 @@ The CLI distribution requires `scala` and `scalac` (of the right major version) 
 * [0.6.21, Scala 2.10 (tgz, 23MB)]({{ site.production_url }}/files/scalajs_2.10-0.6.21.tgz)
 * [0.6.21, Scala 2.10 (zip, 23MB)]({{ site.production_url }}/files/scalajs_2.10-0.6.21.zip)
 
-#### Scala.js 0.6.21
-* [0.6.21, Scala 2.12 (tgz, 18MB)]({{ site.production_url }}/files/scalajs_2.12-0.6.21.tgz)
-* [0.6.21, Scala 2.12 (zip, 18MB)]({{ site.production_url }}/files/scalajs_2.12-0.6.21.zip)
-* [0.6.21, Scala 2.11 (tgz, 29MB)]({{ site.production_url }}/files/scalajs_2.11-0.6.21.tgz)
-* [0.6.21, Scala 2.11 (zip, 29MB)]({{ site.production_url }}/files/scalajs_2.11-0.6.21.zip)
-* [0.6.21, Scala 2.10 (tgz, 23MB)]({{ site.production_url }}/files/scalajs_2.10-0.6.21.tgz)
-* [0.6.21, Scala 2.10 (zip, 23MB)]({{ site.production_url }}/files/scalajs_2.10-0.6.21.zip)
-
 #### Scala.js 0.6.20
 * [0.6.20, Scala 2.12 (tgz, 17MB)]({{ site.production_url }}/files/scalajs_2.12-0.6.20.tgz)
 * [0.6.20, Scala 2.12 (zip, 17MB)]({{ site.production_url }}/files/scalajs_2.12-0.6.20.zip)
