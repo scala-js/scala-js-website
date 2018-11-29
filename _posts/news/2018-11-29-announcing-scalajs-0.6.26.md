@@ -176,4 +176,4 @@ Among others, the following bugs have been fixed in 0.6.26:
 * [#3280](https://github.com/scala-js/scala-js/issues/3280) Matcher.groupCount behaviour inconsistent between JS and JVM
 * [#3492](https://github.com/scala-js/scala-js/issues/3492) Double underscore `__` should not be forbidden in top-level exports
 
-You can find the full list [on GitHub](https://github.com/scala-js/scala-js/issues?q=is%3Aissue+milestone%3Av0.6.25+is%3Aclosed).
+You can find the full list [on GitHub](https://github.com/scala-js/scala-js/issues?q=is%3Aissue+milestone%3Av0.6.26+is%3Aclosed).
