@@ -6,9 +6,14 @@ title: Emitting a JavaScript module
 By default, the `-fastopt.js` and `-fullopt.js` files produced by Scala.js are top-level *scripts*, and their `@JSExport`ed stuff are sent to the global scope.
 With modern JavaScript toolchains, we typically write *modules* instead, which import and export things from other modules.
 You can configure Scala.js to emit a JavaScript module instead of a top-level script.
-Currently, only the CommonJS module format is supported, with the following sbt setting:
+
+Two kinds of modules are supported: CommonJS modules (traditional module system of Node.js) and ECMAScript modules.
+They are enabled with the following sbt settings:
 
 {% highlight scala %}
+// ECMAScript
+scalaJSLinkerConfig ~= { _.withModuleKind(ModuleKind.ESModule) }
+// CommonJS
 scalaJSLinkerConfig ~= { _.withModuleKind(ModuleKind.CommonJSModule) }
 {% endhighlight %}
 
@@ -37,7 +42,26 @@ class Foobaz(x: String) extends js.Object {
 }
 {% endhighlight %}
 
-Once compiled under `ModuleKind.CommonJSModule`, the resulting module would be equivalent to the following JavaScript module:
+Once compiled under `ModuleKind.ESModule`, the resulting module would be equivalent to the following JavaScript module:
+
+{% highlight javascript %}
+import { Foo as JSFoo } from "bar.js";
+
+class Foobaz {
+  constructor(x) {
+    this.x = x;
+    this.inner = new JSFoo(x.length);
+  }
+
+  method(y) {
+    return this.x + y;
+  }
+}
+
+export { Foobaz as Babar };
+{% endhighlight %}
+
+With `ModuleKind.CommonJSModule`, it would instead be equivalent to:
 
 {% highlight javascript %}
 var bar = require("bar.js");
