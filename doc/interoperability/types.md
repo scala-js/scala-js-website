@@ -4,8 +4,8 @@ title: JavaScript types
 ---
 
 Understanding how different types are mapped between Scala.js and JavaScript is crucial for correct interoperability.
-Some types map quite directly (like `String`) where others require some conversions. 
- 
+Some types map quite directly (like `String`) where others require some conversions.
+
 ## <a name="type-correspondence"></a> Type Correspondence
 
 Some Scala types are directly mapped to corresponding underlying JavaScript types. These correspondences can be used
@@ -260,7 +260,7 @@ works in the other direction, i.e., if calling the `apply` method of a
 function as its `this`. For example, the following snippet:
 
 {% highlight scala %}
-val f: js.ThisFunction1[js.Object, js.Number, js.Number] = ???
+val f: js.ThisFunction1[js.Object, Int, Int] = ???
 val o = new js.Object
 val x = f(o, 4)
 {% endhighlight %}
@@ -326,7 +326,7 @@ js.Dynamic.literal("foo" -> 42, "bar" -> "foobar")
 
 ### Literal object construction using an Scala object interface
 Sometimes for a nicer interface, literal objects can be implemented using
-a trait interface. 
+a trait interface.
 The above JavaScript code can be implemented using following code:
 
 {% highlight scala %}
@@ -336,13 +336,13 @@ trait MyObject extends js.Object {
 }
 {% endhighlight %}
 
-A Scala object should be added for typesafe creation, it would help the readability 
-of the code by removing lots of `js.Dynamic.literal` all over the code. 
+A Scala object should be added for typesafe creation, it would help the readability
+of the code by removing lots of `js.Dynamic.literal` all over the code.
 
 {% highlight scala %}
 object MyObject {
-  def apply(foo: Int, bar: String): MyObject = 
-    js.Dynamic.literal(foo = foo, bar = bar).asInstanceOf[MyObject]  
+  def apply(foo: Int, bar: String): MyObject =
+    js.Dynamic.literal(foo = foo, bar = bar).asInstanceOf[MyObject]
 }
 {% endhighlight %}
 
