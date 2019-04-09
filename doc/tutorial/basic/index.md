@@ -150,7 +150,7 @@ libraryDependencies += "org.scala-js" %%% "scalajs-dom" % "0.9.6"
 {% endhighlight %}
 
 sbt-savvy folks will notice the `%%%` instead of the usual `%%`. It means we are using a Scala.js library and not a
-normal Scala library. Have a look at the [Dependencies](../../doc/project/dependencies.html) guide for details. Don't forget
+normal Scala library. Have a look at the [Dependencies](../../project/dependencies.html) guide for details. Don't forget
 to reload the build file if sbt is still running:
 
     > reload
@@ -235,7 +235,7 @@ import scala.scalajs.js.annotation.JSExportTopLevel
 {% endhighlight %}
 
 To find out more about how to call Scala.js methods from JavaScript, have a look at the [Export Scala.js API to
-JavaScript](../../doc/interoperability/export-to-javascript.html) guide.
+JavaScript](../../interoperability/export-to-javascript.html) guide.
 
 Since we now have a method that is callable from JavaScript, all we have to do is add a button to our HTML and set its
 `onclick` attribute (make sure to add the button *before* the `<script>` tags):
@@ -359,7 +359,7 @@ this application.
 
 In this section we will show how such an application can be tested using [uTest](http://github.com/lihaoyi/utest), a
 tiny testing framework which compiles to both Scala.js and Scala JVM. As a note aside, this framework is also a good
-choice to test libraries that cross compile. See our [cross compilation guide](../../doc/project/cross-build.html) for
+choice to test libraries that cross compile. See our [cross compilation guide](../../project/cross-build.html) for
 details.
 
 ### Supporting the DOM
@@ -549,5 +549,5 @@ The setup depends on your server stack. A common option is to use
 [sbt-gzip](https://github.com/sbt/sbt-gzip)
 if you have a Play or Akka-http server.
 
-This completes the Scala.js tutorial. Refer to our [documentation page](../../doc/index.html) for deeper insights into various
+This completes the Scala.js tutorial. Refer to our [documentation page](../../index.html) for deeper insights into various
 aspects of Scala.js.
