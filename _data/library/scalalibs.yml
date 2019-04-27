@@ -76,6 +76,10 @@
       url: https://github.com/shogowada/statictags
       desc: Write HTML in both Scala JVM & JS. Extend tags and attributes with ease!
       dep: '"io.github.shogowada" %%% "statictags" % "2.1.1"'
+    - name: Scala DOM Types
+      url: https://github.com/raquo/scala-dom-types
+      desc: 'Scala types for your library to represent HTML tags, attributes, properties and CSS styles'
+      dep: '"com.raquo" %%% "domtypes" % "0.9.4"'
     - name: MetaWeb
       url: https://github.com/metastack-pl/metaweb
       desc: Functional low-level web framework for Scala and Scala.js
@@ -108,6 +112,10 @@
       url: https://slinky.shadaj.me/
       desc: 'Write Scala.js React apps just like you would in ES6'
       dep: '"me.shadaj" %%% "slinky-core" % "0.5.1", "me.shadaj" %%% "slinky-web" % "0.5.1"'
+    - name: Laminar
+      url: https://github.com/raquo/Laminar
+      desc: 'Simple, expressive, and safe UI library for Scala.js'
+      dep: '"com.raquo" %%% "laminar" % "0.7"'
 - topic: Serialization/pickling libraries
   libraries:
     - name: uPickle
@@ -197,6 +205,10 @@
       url: https://github.com/ThoughtWorksInc/Binding.scala
       desc: Reactive data-binding for both Scala.js and JVM
       dep: 'libraryDependencies += "com.thoughtworks.binding" %%% "core" % "7.0.3"'
+    - name: Airstream
+      url: https://github.com/raquo/Airstream
+      desc: 'State propagation and event streams with mandatory ownership and no glitches'
+      dep: '"com.raquo" %%% "airstream" % "0.7"'
 - topic: Dependency Injection
   libraries:
     - name: Airframe
