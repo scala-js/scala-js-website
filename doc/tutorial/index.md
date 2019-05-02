@@ -11,5 +11,5 @@ of tutorials from simple to complete web app, to get you started right away!
 * [SPA tutorial](https://github.com/ochrons/scalajs-spa-tutorial) for writing a
   Single-Page-Application using React
 
-Additionally, take a look at the available [Project Skeletons](../libraries/skeletons.html) to start with
+Additionally, take a look at the available [Project Skeletons](../../libraries/skeletons.html) to start with
 a pre-existing template.
