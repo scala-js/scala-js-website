@@ -233,7 +233,7 @@ object JSON extends js.Object {
 }
 {% endhighlight %}
 
-An call like `JSON.parse(text)` will map in JavaScript to the obvious, i.e.,
+A call like `JSON.parse(text)` will map in JavaScript to the obvious, i.e.,
 `JSON.parse(text)`, meaning that the identifier `JSON` will be looked up in the
 global scope.
 
