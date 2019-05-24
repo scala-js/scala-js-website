@@ -38,7 +38,7 @@ We also setup basic project settings and enable this plugin in the sbt build fil
 enablePlugins(ScalaJSPlugin)
 
 name := "Scala.js Tutorial"
-scalaVersion := "2.12.6" // or any other Scala version >= 2.10.2
+scalaVersion := "2.12.8" // or any other Scala version >= 2.10.2
 
 // This is an application with a main method
 scalaJSUseMainModuleInitializer := true
@@ -47,7 +47,7 @@ scalaJSUseMainModuleInitializer := true
 Last, we need a `project/build.properties` to specify the sbt version (>= 0.13.17):
 
 {% highlight scala %}
-sbt.version=0.13.17
+sbt.version=1.2.8
 {% endhighlight %}
 
 That is all we need to configure the build.
@@ -146,7 +146,7 @@ That's what the DOM API is for.
 To use the DOM, it is best to use the statically typed Scala.js DOM library. To add it to your sbt project, add the following line to your `build.sbt`:
 
 {% highlight scala %}
-libraryDependencies += "org.scala-js" %%% "scalajs-dom" % "0.9.6"
+libraryDependencies += "org.scala-js" %%% "scalajs-dom" % "0.9.7"
 {% endhighlight %}
 
 sbt-savvy folks will notice the `%%%` instead of the usual `%%`. It means we are using a Scala.js library and not a
