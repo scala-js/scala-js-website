@@ -81,7 +81,7 @@ const r = parse("JB/007", '/');
 
 {% column 6 Scala %}
 {% highlight scala %}
-def parse(str: String, magicKey: Char): String = {
+def parse(str: String, magicKey: Char): Seq[String] = {
   str.map {
     case c if c == magicKey =>
       "magic"
