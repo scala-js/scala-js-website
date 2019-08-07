@@ -25,6 +25,9 @@ Example setup which, using the [Workbench plugin](https://github.com/lihaoyi/wor
 ### [Node.js module with Scala.js](https://github.com/rockymadden/scala-node-example)
 Proof of concept to determine if Scala.js could be leveraged to make a Node.js module.
 
+### [npm scalajs-starter](https://github.com/konradst/scalajs-starter)
+ScalaJS Node.js skeleton app / library handled with ```npm start```, ```build```, ```test```, ```clean``` commands.
+
 ### [scalaWUI](https://github.com/mathieuleclaire/scalaWUI)
 A ready to work Client/Server application built with [scalatra](http://scalatra.org/),
 [scala.rx](https://github.com/lihaoyi/scala.rx), [autowire](https://github.com/lihaoyi/autowire). An example using the
