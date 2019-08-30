@@ -74,3 +74,14 @@ for example `sbt> fooJS/it:test`.
 A list of testing frameworks compatible with Scala.js can be found [here](../../libraries/testing.html).
 
 Note: Don't forget to mark a test framework SBT dependency as `test,it` if you have both unit and integration tests.
+
+## Testing over `fullOptJS`-generated files
+
+By default, tests runs over `fastOptJS`-built JS files since their build time are shorter than `fullOptJS`.
+
+If you want to run tests over `fullOptJS`-build JS files, run `set scalaJSStage in Global := FullOptStage` before test.
+Or you can set it in a project settings in sbt file.
+
+```scala
+scalaJSStage in Test := FullOptStage
+```
