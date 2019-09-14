@@ -30,7 +30,9 @@
     - text: Cross-building
       url: /doc/project/cross-build.html
     - text: Testing
-      url: /doc/project/testing.html  
+      url: /doc/project/testing.html
+    - text: Linking errors
+      url: /doc/project/linking-errors.html
 - text: JavaScript interoperability
   url: /doc/interoperability/
   subitems:
