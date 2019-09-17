@@ -374,6 +374,27 @@ At present, we recommend to follow these rules of thumb:
    If yes, use a *default* import with `JSImport.Default`.
 3. Otherwise, use a named import with a string or a namespace import with `JSImport.Namespace`.
 
+## Dynamic import
+
+ECMAScript 2020's [dynamic import](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/import#Dynamic_Imports) is exposed in Scala.js as the method `js.import[A <: js.Any](moduleName)`, which returns a `js.Promise[A]`.
+The parameter `A` should be a JS trait describing the API of the module, and be given explicitly.
+Since `import` is a keyword in Scala, it must be called with backticks:
+
+{% highlight scala %}
+import scala.scalajs.js
+
+trait FooAPI extends js.Any {
+  def bar(x: Int): Int
+}
+
+val moduleName = "foo.js"
+val promise = js.`import`[FooAPI](moduleName)
+val future = promise.toFuture
+for (module <- future) {
+  println(module.bar(5))
+}
+{% endhighlight %}
+
 ## Monkey patching
 
 In JavaScript, monkey patching is a common pattern, where some top-level
