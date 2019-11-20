@@ -7,6 +7,18 @@ We strongly recommend using the SBT plugin, as shown in the [bootstrapping skele
 
 The CLI distribution requires `scala` and `scalac` (of the right major version) to be on the execution path. Unpack it wherever you like and add the `bin/` folder to your execution path.
 
+#### Scala.js 0.6.31
+* [0.6.31, Scala 2.13 (tgz, 22MB)]({{ site.production_url }}/files/scalajs_2.13-0.6.31.tgz)
+* [0.6.31, Scala 2.13 (zip, 22MB)]({{ site.production_url }}/files/scalajs_2.13-0.6.31.zip)
+* [0.6.31, Scala 2.12 (tgz, 29MB)]({{ site.production_url }}/files/scalajs_2.12-0.6.31.tgz)
+* [0.6.31, Scala 2.12 (zip, 29MB)]({{ site.production_url }}/files/scalajs_2.12-0.6.31.zip)
+* [0.6.31, Scala 2.11 (tgz, 36MB)]({{ site.production_url }}/files/scalajs_2.11-0.6.31.tgz)
+* [0.6.31, Scala 2.11 (zip, 36MB)]({{ site.production_url }}/files/scalajs_2.11-0.6.31.zip)
+* [0.6.31, Scala 2.10 (tgz, 30MB)]({{ site.production_url }}/files/scalajs_2.10-0.6.31.tgz)
+* [0.6.31, Scala 2.10 (zip, 30MB)]({{ site.production_url }}/files/scalajs_2.10-0.6.31.zip)
+
+Scala.js 0.6.30 was [severely broken](https://github.com/scala-js/scala-js/issues/3865) and is therefore not listed here.
+
 #### Scala.js 0.6.29
 * [0.6.29, Scala 2.12 (tgz, 27MB)]({{ site.production_url }}/files/scalajs_2.12-0.6.29.tgz)
 * [0.6.29, Scala 2.12 (zip, 27MB)]({{ site.production_url }}/files/scalajs_2.12-0.6.29.zip)
