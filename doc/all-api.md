@@ -5,6 +5,19 @@ title: All previous versions of the Scala.js API
 
 ## All previous versions of the API
 
+### Scala.js 0.6.31
+* [0.6.31 scalajs-library]({{ site.production_url }}/api/scalajs-library/0.6.31/#scala.scalajs.js.package)
+* [0.6.31 scalajs-test-interface]({{ site.production_url }}/api/scalajs-test-interface/0.6.31/)
+* [0.6.31 scalajs-stubs]({{ site.production_url }}/api/scalajs-stubs/0.6.31/)
+* [0.6.31 scalajs-ir]({{ site.production_url }}/api/scalajs-ir/0.6.31/#org.scalajs.core.ir.package)
+* [0.6.31 scalajs-tools]({{ site.production_url }}/api/scalajs-tools/0.6.31/#org.scalajs.core.tools.package) ([Scala.js version]({{ site.production_url }}/api/scalajs-tools-js/0.6.31/#org.scalajs.core.tools.package))
+* [0.6.31 scalajs-js-envs]({{ site.production_url }}/api/scalajs-js-envs/0.6.31/#org.scalajs.jsenv.package)
+* [0.6.31 scalajs-js-envs-test-kit]({{ site.production_url }}/api/scalajs-js-envs-test-kit/0.6.31/#org.scalajs.jsenv.test.package)
+* [0.6.31 scalajs-test-adapter]({{ site.production_url }}/api/scalajs-sbt-test-adapter/0.6.31/#org.scalajs.testadapter.package)
+* [0.6.31 sbt-scalajs]({{ site.production_url }}/api/sbt-scalajs/0.6.31/#org.scalajs.sbtplugin.package)
+
+Scala.js 0.6.30 was [severely broken](https://github.com/scala-js/scala-js/issues/3865) and is therefore not listed here.
+
 ### Scala.js 0.6.29
 * [0.6.29 scalajs-library]({{ site.production_url }}/api/scalajs-library/0.6.29/#scala.scalajs.js.package)
 * [0.6.29 scalajs-test-interface]({{ site.production_url }}/api/scalajs-test-interface/0.6.29/)
