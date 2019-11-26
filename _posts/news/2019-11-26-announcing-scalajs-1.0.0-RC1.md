@@ -113,8 +113,6 @@ scalaVersion := "2.10.x" // for any x
 {% endhighlight %}
 
 anymore.
-Note that you can still use the sbt plugin with sbt 0.13.17+, even though it runs itself on 2.10.x.
-Only the Scala.js code itself (not the build) cannot use Scala 2.10.x.
 
 In addition, building Scala.js code on top of JDK 6 or 7 is not supported anymore either.
 
