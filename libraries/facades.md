@@ -15,7 +15,7 @@ Consult the readmes of relevant projects to see whether they support milestones 
 
 {% include library.html lib=site.data.library.jsfacades %}
 
-[DefinitelyScala.com](https://definitelyscala.com/) has more open source Scala.js facades for some of your favorite JavaScript libraries, derived from DefinitelyTyped's TypeScript definitions.
+[DefinitelyScala.com](https://definitelyscala.com/) and [ScalablyTyped](https://github.com/oyvindberg/ScalablyTyped) have more open source Scala.js facades for some of your favorite JavaScript libraries, derived from DefinitelyTyped's TypeScript definitions.
 
 If you didn't find a facade for the library you'd like to use, it's quite easy to do one yourself. Check out the
 [facade documentation](../doc/interoperability/facade-types.html) and the
@@ -23,10 +23,6 @@ If you didn't find a facade for the library you'd like to use, it's quite easy t
 You can also skip whole facade-business and just
 [call JavaScript APIs dynamically](../doc/interoperability/facade-types.html#calling-javascript-from-scalajs-with-dynamic-types),
 without type-checking, the same way you do it when programming in JavaScript itself.
-
--------
-
-[ScalablyTyped](https://github.com/oyvindberg/ScalablyTyped) has Javascript ecosystem for Scala.js facades, derived facades from DefinitelyTyped's TypeScript definitions.
 
 -------
 
