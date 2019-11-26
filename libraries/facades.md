@@ -26,6 +26,10 @@ without type-checking, the same way you do it when programming in JavaScript its
 
 -------
 
+[ScalablyTyped](https://github.com/oyvindberg/ScalablyTyped) has Javascript ecosystem for Scala.js facades, derived facades from DefinitelyTyped's TypeScript definitions.
+
+-------
+
 <small markdown="1">Additions and corrections to this section may be reported through
 [GitHub issues](https://github.com/scala-js/scala-js-website/issues). Please include Name, Url, Description and
 Dependency</small>
