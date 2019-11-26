@@ -67,7 +67,7 @@ In addition, if you use some of the components that have been moved to separate 
 
 If you use `scalajs-stubs`:
 
-* Change its version number to `"1.0.0-RC1"` (irrespective of the version of Scala.js itself, and hence of the `scalaJSVersion` constant)
+* Change its version number to `"1.0.0"` (irrespective of the version of Scala.js itself, and hence of the `scalaJSVersion` constant)
 
 If you use `jsDependencies` (or rely on the `jsDependencies` of your transitive dependencies):
 
