@@ -79,3 +79,29 @@ class Foobaz {
 
 exports.Babar = Foobaz;
 {% endhighlight %}
+
+## ES modules and Node.js
+
+Support for ECMAScript modules is [still experimental in Node.js](https://nodejs.org/api/esm.html).
+To run and test a Scala.js application or library using ES modules with Node.js, you will need the following additional settings:
+
+{% highlight scala %}
+jsEnv := {
+  new org.scalajs.jsenv.NodeJSEnv(
+      org.scalajs.jsenv.NODEJSEnv.Config()
+        .withArguments(List("--experimental-modules"))
+  )
+}
+
+artifactPath in (proj, Compile, fastOptJS) :=
+  (crossTarget in (proj, Compile)).value / "myproject.mjs"
+
+artifactPath in (proj, Test, fastOptJS) :=
+  (crossTarget in (proj, Test)).value / "myproject-test.mjs"
+{% endhighlight %}
+
+The first setting is required to enable the support of ES modules in Node.js.
+The other two make sure that the JavaScript produced have the extension `.mjs`, which is required for Node.js to interpret them as ES modules.
+
+The support for running and testing ES modules with Node.js is *experimental*, as the support of ES modules by Node.js is itself experimental.
+Things could change in future versions of Node.js and/or Scala.js.
