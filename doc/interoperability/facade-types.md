@@ -355,6 +355,73 @@ This is subject to change in future versions of Scala.js, to better reflect the 
 You should use a separate mechanism to manage your JavaScript dependencies.
 Scala.js does not provide any facility to do so, at the moment.
 
+### Translating ES imports to Scala.js `@JSImport`
+
+When the documentation of a library specifies how to write ES `import`s to use it, use the following table to translate those into Scala.js `@JSImport`s:
+
+{% columns %}
+{% column 6 Scala.js %}
+{% highlight scala %}
+@JSExportTopLevel("foo")
+object Bar
+{% endhighlight %}
+{% endcolumn %}
+
+{% column 6 ECMAScript %}
+{% highlight javascript %}
+export { Bar as foo }
+{% endhighlight %}
+{% endcolumn %}
+{% endcolumns %}
+
+{% columns %}
+{% column 6 Scala.js %}
+{% highlight scala %}
+@js.native
+@JSImport("mod.js", "foo")
+object Bar extends js.Object
+{% endhighlight %}
+{% endcolumn %}
+
+{% column 6 ECMAScript %}
+{% highlight javascript %}
+import { foo as Bar } from "mod.js"
+{% endhighlight %}
+{% endcolumn %}
+{% endcolumns %}
+
+{% columns %}
+{% column 6 Scala.js %}
+{% highlight scala %}
+@js.native
+@JSImport("mod.js", JSImport.Namespace)
+object Bar extends js.Object
+{% endhighlight %}
+{% endcolumn %}
+
+{% column 6 ECMAScript %}
+{% highlight javascript %}
+import * as Bar from "mod.js"
+{% endhighlight %}
+{% endcolumn %}
+{% endcolumns %}
+
+{% columns %}
+{% column 6 Scala.js %}
+{% highlight scala %}
+@js.native
+@JSImport("mod.js", JSImport.Default)
+object Bar extends js.Object
+{% endhighlight %}
+{% endcolumn %}
+
+{% column 6 ECMAScript %}
+{% highlight javascript %}
+import Bar from "mod.js"
+{% endhighlight %}
+{% endcolumn %}
+{% endcolumns %}
+
 ### Default import or namespace import?
 
 The *default* export accessible with `JSImport.Default`, specified in terms of ECMAScript 2015 modules, is somewhat underspecified when it comes to CommonJS, at the moment.
