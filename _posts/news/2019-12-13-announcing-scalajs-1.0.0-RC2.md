@@ -1,27 +1,33 @@
 ---
 layout: post
-title: Announcing Scala.js 1.0.0-RC1
+title: Announcing Scala.js 1.0.0-RC2
 category: news
 tags: [releases]
-permalink: /news/2019/11/26/announcing-scalajs-1.0.0-RC1/
+permalink: /news/2019/12/13/announcing-scalajs-1.0.0-RC2/
 ---
 
 
-**There is a newer release candidate: [1.0.0-RC2](/news/2019/12/13/announcing-scalajs-1.0.0-RC2/).**
+We are thrilled to announce the release of Scala.js 1.0.0-RC2!
 
-We are thrilled to announce the release of Scala.js 1.0.0-RC1!
-
-This release candidate is intended for testing purposes by as many users as possible, and as a synchronization point with library authors so that they can start upgrading in preparation for the final release.
+This release candidate is intended for testing purposes by as many users as possible, and as a synchronization point with library authors so that they can upgrade in preparation for the final release.
 If no critical issue is found until the end of January 2020, this RC will become the final release.
 
 **We encourage all users who are able to do so to test their projects with this RC, and report any issue as soon as possible.**
 
-As the change in "major" version number witnesses, this release is *not* binary compatible with 0.6.x, nor with the previous milestones of the 1.x series.
+As the change in major version number witnesses, this release is *not* binary compatible with 0.6.x, nor with the previous milestones and RCs of the 1.x series.
 Libraries need to be recompiled and republished using this RC to be compatible.
 Moreover, this release is not entirely source compatible with 0.6.x either.
 
 These release notes contain cumulative changes with respect to 0.6.31.
-Compared to 1.0.0-M8, the following changes are noteworthy:
+Compared to 1.0.0-RC1, this release candidate contains the following changes:
+
+* Fix the handling of versions of Scala.js to correctly work post-v1.0.0
+* Remove a few `@deprecated` methods that were forgotten in 1.0.0-RC1
+* Internal IR contract change: use IR static methods as the contract to call main methods and static methods in JDK APIs
+* Fix [#3888](https://github.com/scala-js/scala-js/issues/3888): linking error with a nested object named `class`
+* Add tests
+
+As a reminder, 1.0.0-RC1 already contained the following noteworthy changes compared to 1.0.0-M8:
 
 * Drop support for sbt 0.13.x
 * Drop support for Scala 2.11.{0-11} (2.11.12 is supported)
@@ -29,19 +35,14 @@ Compared to 1.0.0-M8, the following changes are noteworthy:
 * Small tweaks in the JSEnv API
 * The Scala.js linker is now loaded by reflection into the sbt plugin, which solves issues with binary incompatible transitive dependencies such as Guava.
 
-We would also like to remind readers of the following important change that happened in 1.0.0-M5 and 1.0.0-M7, respectively:
-
-* Drop compatibility with sbt-crossproject v0.4.x and earlier (v0.5.0 or later is required)
-* With the default module kind `NoModule`, top-level exports are now exposed to JavaScript as top-level `var`s, rather than assigned as properties of the global object
-
 <!--more-->
 
 Please report any issues [on GitHub](https://github.com/scala-js/scala-js/issues).
 
 ## Preparations before upgrading from 0.6.x
 
-Before upgrading to 1.0.0-RC1, **we strongly recommend that you upgrade to Scala.js 0.6.31 or later**, and address all deprecation warnings.
-Since Scala.js 1.0.0-RC1 removes support for all the deprecated features in 0.6.x, it is easier to see the deprecation messages guiding you to the proper replacements.
+Before upgrading to 1.0.0-RC2, **we strongly recommend that you upgrade to Scala.js 0.6.31 or later**, and address all deprecation warnings.
+Since Scala.js 1.0.0-RC2 removes support for all the deprecated features in 0.6.x, it is easier to see the deprecation messages guiding you to the proper replacements.
 
 In particular, make sure that you explicitly use [`sbt-crossproject`](https://github.com/portable-scala/sbt-crossproject#migration-from-scalajs-default-crossproject) instead of the default `crossProject` implementation.
 The old `crossProject` is deprecated in 0.6.31, but it is easy to overlook deprecations in the build itself.
@@ -57,12 +58,12 @@ Additionally to the explicitly deprecated things, make sure to use `scalaJSLinke
 
 Finally, if you are still using sbt 0.13.x, you will have to upgrade to sbt 1.2.1 or later (as of this writing, the latest release is 1.3.4).
 
-## Upgrade to 1.0.0-RC1 from 0.6.31 or later
+## Upgrade to 1.0.0-RC2 from 0.6.31 or later
 
 As a first approximation, all you need to do is to update the version number in `project/plugins.sbt`:
 
 {% highlight scala %}
-addSbtPlugin("org.scala-js" % "sbt-scalajs" % "1.0.0-RC1")
+addSbtPlugin("org.scala-js" % "sbt-scalajs" % "1.0.0-RC2")
 {% endhighlight %}
 
 In addition, if you use some of the components that have been moved to separate repositories, you will need to add some more dependencies in `project/plugins.sbt`:
@@ -73,17 +74,17 @@ If you use `scalajs-stubs`:
 
 If you use `jsDependencies` (or rely on the `jsDependencies` of your transitive dependencies):
 
-* Add `addSbtPlugin("org.scala-js" % "sbt-jsdependencies" % "1.0.0-RC1")` in `project/plugins.sbt`
+* Add `addSbtPlugin("org.scala-js" % "sbt-jsdependencies" % "1.0.0-RC2")` in `project/plugins.sbt`
 * Add `.enablePlugins(JSDependenciesPlugin)` to Scala.js `project`s
 * Add `.jsConfigure(_.enablePlugins(JSDependenciesPlugin))` to `crossProject`s
 
 If you use the Node.js with jsdom environment:
 
-* Add `libraryDependencies += "org.scala-js" %% "scalajs-env-jsdom-nodejs" % "1.0.0-RC1"` in `project/plugins.sbt`
+* Add `libraryDependencies += "org.scala-js" %% "scalajs-env-jsdom-nodejs" % "1.0.0-RC2"` in `project/plugins.sbt`
 
 If you use the PhantomJS environment:
 
-* Add `addSbtPlugin("org.scala-js" % "sbt-scalajs-env-phantomjs" % "1.0.0-RC1")` in `project/plugins.sbt`
+* Add `addSbtPlugin("org.scala-js" % "sbt-scalajs-env-phantomjs" % "1.0.0-RC2")` in `project/plugins.sbt`
 
 Finally, if your build has
 
@@ -93,7 +94,7 @@ scalacOptions += "-P:scalajs:sjsDefinedByDefault"
 
 you will need to remove it (Scala.js 1.x always behaves as if `sjsDefinedByDefault` were present).
 
-This should get your build up to speed to Scala.js 1.0.0-RC1.
+This should get your build up to speed to Scala.js 1.0.0-RC2.
 From there, you should be able to test whether things go smoothly, or whether you are affected by the breaking changes detailed below.
 
 ## Breaking changes
@@ -102,28 +103,23 @@ This section discusses the backward incompatible changes, which might affect you
 
 ### sbt 0.13.x is not supported anymore
 
-You will not be able to use Scala.js 1.0.0-RC1 with sbt 0.13.x.
+You will not be able to use Scala.js 1.0.0-RC2 with sbt 0.13.x.
 You will have to upgrade to sbt 1.2.1 or later.
 As of this writing, the latest version is 1.3.4.
 
-### Scala 2.10.x is not supported anymore, nor building on JDK 6 and 7
+### Scala 2.10.x, 2.11.{0-11} and 2.12.0 are not supported anymore
 
-The title says it all: you cannot use Scala.js with
+The title says it all: you cannot use Scala.js anymore with any of:
 
 {% highlight scala %}
 scalaVersion := "2.10.x" // for any x
+scalaVersion := "2.11.x" // for 0 <= x <= 11
+scalaVersion := "2.12.0"
 {% endhighlight %}
 
-anymore.
-
-In addition, building Scala.js code on top of JDK 6 or 7 is not supported anymore either.
-
-Finally, a severe regression in Scala 2.12.0 upstream, affecting `js.UndefOr`, forced us to drop support for Scala 2.12.0 (see [#3024](https://github.com/scala-js/scala-js/issues/3024)).
-Scala 2.12.1+ is supported.
-
-### Scala 2.11.{0-11} are not supported anymore
-
-Only 2.11.12 is still supported in the 2.11.x series.
+* Scala 2.10.x is not supported at all,
+* Only 2.11.12 is still supported in the 2.11.x series, and
+* 2.12.1 and following are supported in the 2.12.x series, but not 2.12.0.
 
 ### Access to the global scope instead of the global object
 
@@ -224,7 +220,7 @@ Now that ES 2015 has been supported by major JS engines for a while, it was time
 The ES 2015 output has several advantages over the older ES 5.1 strict mode output:
 
 * `Throwable`s, by virtue of properly extending JavaScript's `Error`, have an `[[ErrorData]]` internal slot, and therefore receive proper debugging info in JS engines, allowing better display of stack traces and error messages in interactive debuggers.
-* Static fields and methods in JS classes are properly inherited. See https://github.com/scala-js/scala-js/issues/2771.
+* Static fields and methods in JS classes are properly inherited. See [#2771](https://github.com/scala-js/scala-js/issues/2771).
 * The generated code is shorter.
 
 To revert to emitting ES 5.1 strict mode code, use the following sbt setting:
@@ -272,7 +268,7 @@ The `Option`-like API is of course preserved.
 We do not expect this to cause any significant issue, but it may impact type inference in subtle ways that can cause compile errors for previously valid code.
 You may have to adjust some uses of `js.UndefOr` due to these changes.
 
-### `x eq y` now matches more closely matches the JVM behavior
+### `x eq y` now more closely matches the JVM behavior
 
 In Scala.js 0.6.x, `x eq y` always corresponds to JavaScript's `x === y`.
 This is almost always correct, but causes issues when comparing `+0.0` with `-0.0` or `NaN` with itself.
@@ -353,7 +349,7 @@ Additionally, the linker API has been refactored to be fully asynchronous in nat
 
 ## Enhancements
 
-There are very few enhancements in Scala.js 1.0.0-RC1.
+There are very few enhancements in Scala.js 1.0.0-RC2.
 Scala.js 1.0.0 is focused on simplifying Scala.js, not on adding new features.
 Nevertheless, here are a few enhancements.
 
@@ -472,7 +468,18 @@ Amongst others, the following bugs have been fixed since 0.6.31:
 * [#2382](https://github.com/scala-js/scala-js/issues/2382) Name clash for `$outer` pointers of two different nesting levels (fixed for Scala 2.10 and 2.11; 2.12 did not suffer from the bug in 0.6.x)
 * [#3085](https://github.com/scala-js/scala-js/issues/3085) Linking error after the optimizer for `someInt.toDouble.compareTo(double)`
 
-See the full list of issues [fixed in 1.0.0-M1](https://github.com/scala-js/scala-js/issues?q=is%3Aissue+milestone%3Av1.0.0-M1+is%3Aclosed), [in 1.0.0-M2](https://github.com/scala-js/scala-js/issues?q=is%3Aissue+milestone%3Av1.0.0-M2+is%3Aclosed), [in 1.0.0-M3](https://github.com/scala-js/scala-js/issues?q=is%3Aissue+milestone%3Av1.0.0-M3+is%3Aclosed), [in 1.0.0-M4](https://github.com/scala-js/scala-js/issues?q=is%3Aissue+milestone%3Av1.0.0-M4+is%3Aclosed), [in 1.0.0-M5](https://github.com/scala-js/scala-js/issues?q=is%3Aissue+milestone%3Av1.0.0-M5+is%3Aclosed), [in 1.0.0-M6](https://github.com/scala-js/scala-js/issues?q=is%3Aissue+milestone%3Av1.0.0-M6+is%3Aclosed), [in 1.0.0-M7](https://github.com/scala-js/scala-js/issues?q=is%3Aissue+milestone%3Av1.0.0-M7+is%3Aclosed), [in 1.0.0-M8](https://github.com/scala-js/scala-js/issues?q=is%3Aissue+milestone%3Av1.0.0-M8+is%3Aclosed) and [in 1.0.0-RC1](https://github.com/scala-js/scala-js/issues?q=is%3Aissue+milestone%3Av1.0.0-RC1+is%3Aclosed) on GitHub.
+See the full list of issues fixed in each of the milestones and release candidates of 1.0.0 on GitHub:
+
+* [1.0.0-M1](https://github.com/scala-js/scala-js/issues?q=is%3Aissue+milestone%3Av1.0.0-M1+is%3Aclosed)
+* [1.0.0-M2](https://github.com/scala-js/scala-js/issues?q=is%3Aissue+milestone%3Av1.0.0-M2+is%3Aclosed)
+* [1.0.0-M3](https://github.com/scala-js/scala-js/issues?q=is%3Aissue+milestone%3Av1.0.0-M3+is%3Aclosed)
+* [1.0.0-M4](https://github.com/scala-js/scala-js/issues?q=is%3Aissue+milestone%3Av1.0.0-M4+is%3Aclosed)
+* [1.0.0-M5](https://github.com/scala-js/scala-js/issues?q=is%3Aissue+milestone%3Av1.0.0-M5+is%3Aclosed)
+* [1.0.0-M6](https://github.com/scala-js/scala-js/issues?q=is%3Aissue+milestone%3Av1.0.0-M6+is%3Aclosed)
+* [1.0.0-M7](https://github.com/scala-js/scala-js/issues?q=is%3Aissue+milestone%3Av1.0.0-M7+is%3Aclosed)
+* [1.0.0-M8](https://github.com/scala-js/scala-js/issues?q=is%3Aissue+milestone%3Av1.0.0-M8+is%3Aclosed)
+* [1.0.0-RC1](https://github.com/scala-js/scala-js/issues?q=is%3Aissue+milestone%3Av1.0.0-RC1+is%3Aclosed)
+* [1.0.0-RC2](https://github.com/scala-js/scala-js/issues?q=is%3Aissue+milestone%3Av1.0.0-RC2+is%3Aclosed)
 
 ## Cross-building for Scala.js 0.6.x and 1.x
 
@@ -494,10 +501,10 @@ addSbtPlugin("org.scala-js" % "sbt-scalajs" % scalaJSVersion)
 You can then launch
 
 {% highlight bash %}
-$ SCALAJS_VERSION=1.0.0-RC1 sbt
+$ SCALAJS_VERSION=1.0.0-RC2 sbt
 {% endhighlight %}
 
-from your command line to start up your build with Scala.js 1.0.0-RC1.
+from your command line to start up your build with Scala.js 1.0.0-RC2.
 
 ### Extra dependencies for JS environments
 
@@ -507,13 +514,13 @@ You can further build on the above `val scalaJSVersion` to dynamically add depen
 // For Node.js with jsdom
 libraryDependencies ++= {
   if (scalaJSVersion.startsWith("0.6.")) Nil
-  else Seq("org.scala-js" %% "scalajs-env-jsdom-nodejs" % "1.0.0-RC1")
+  else Seq("org.scala-js" %% "scalajs-env-jsdom-nodejs" % "1.0.0-RC2")
 }
 
 // For PhantomJS
 {
   if (scalaJSVersion.startsWith("0.6.")) Nil
-  else Seq(addSbtPlugin("org.scala-js" % "sbt-scalajs-env-phantomjs" % "1.0.0-RC1"))
+  else Seq(addSbtPlugin("org.scala-js" % "sbt-scalajs-env-phantomjs" % "1.0.0-RC2"))
 }
 {% endhighlight %}
 
@@ -527,7 +534,7 @@ Similarly, you can conditionally depend on `jsDependencies` as follows:
 // For jsDependencies
 {
   if (scalaJSVersion.startsWith("0.6.")) Nil
-  else Seq(addSbtPlugin("org.scala-js" % "sbt-jsdependencies" % "1.0.0-RC1"))
+  else Seq(addSbtPlugin("org.scala-js" % "sbt-jsdependencies" % "1.0.0-RC2"))
 }
 {% endhighlight %}
 
