@@ -24,6 +24,10 @@
       url: https://github.com/japgolly/test-state
       desc: Library to test stateful stuff statelessly, and reasonably.
       dep: '"com.github.japgolly.test-state" %%% "core" % "2.0.0" % "test"'
+    - name: AirSpec
+      url: https://wvlet.org/airframe/docs/airspec
+      desc: Scala-friendly testing framework, compiled for Scala and Scala.js
+      dep: '"org.wvlet.airframe" %%% "airspec" % "19.12.3" % "test"'
 
 - topic: Property testing
   libraries:
