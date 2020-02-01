@@ -13,6 +13,9 @@ A minimal but complete web application showing how to use Scala.js together with
 Skeleton application using [Scala.js workbench](https://github.com/lihaoyi/scala-js-workbench) for live-reloading in the
 browser, together with a collection of sample applications developed using it
 
+### [Play | Scala.js | React - web application skeleton](https://github.com/Filemon279/play-scalajs-universal)
+It is made with Scala.js & [Play Framework](https://www.playframework.com/). Application is [dockerized](https://www.docker.com/), made with [React](https://github.com/japgolly/scalajs-react) components and has authentication system. Client - Server RPC API is based on [autowire](https://github.com/lihaoyi/autowire). This application is meant to be used as a start to create Scala.js & Play based web applications.
+
 ### [SPA tutorial with Scala.js and React](https://github.com/ochrons/scalajs-spa-tutorial)
 Simple Single Page Application tutorial built upon scalajs-react, Play and Bootstrap.
 
