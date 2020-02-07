@@ -6,12 +6,12 @@ title: Basic tutorial
 This step-by-step tutorial where we start with the setup of a Scala.js sbt project and end up having some user interaction and unit testing. The code created in this tutorial is available with one commit per step in the [scalajs-tutorial](https://github.com/scala-js/scalajs-tutorial) repository on GitHub.
 
 **Note for Scala.js 1.x users:** The present tutorial is targeted at the latest stable version of Scala.js, i.e., {{ site.versions.scalaJS }}.
-Some details may vary if you try to follow along with Scala.js {{ site.versions.scalaJSDev }}.
+Some details may vary if you try to follow along with Scala.js 1.x.
 Please consult relevant pages of the documentation for any discrepancies.
 
 ## <a name="prerequisites"></a> Step 0: Prerequisites
 
-To go through this tutorial, you will need to [download & install sbt](http://www.scala-sbt.org/0.13/tutorial/Setup.html) (>= 0.13.0). Note that no prior sbt knowledge (only a working installation) is required to follow the tutorial.
+To go through this tutorial, you will need to [download & install sbt](https://www.scala-sbt.org/1.x/docs/Setup.html). Note that no prior sbt knowledge (only a working installation) is required to follow the tutorial.
 
 You will also need to [download & install Node.js](https://nodejs.org/en/download/).
 
@@ -38,21 +38,22 @@ We also setup basic project settings and enable this plugin in the sbt build fil
 enablePlugins(ScalaJSPlugin)
 
 name := "Scala.js Tutorial"
-scalaVersion := "2.12.8" // or any other Scala version >= 2.10.2
+scalaVersion := "2.13.1" // or any other Scala version >= 2.10.2
 
 // This is an application with a main method
 scalaJSUseMainModuleInitializer := true
 {% endhighlight %}
 
-Last, we need a `project/build.properties` to specify the sbt version (>= 0.13.17):
+Last, we need a `project/build.properties` to specify the sbt version (you can find the latest version [here](https://www.scala-sbt.org/download.html)):
 
 {% highlight scala %}
-sbt.version=1.2.8
+sbt.version=1.3.7
 {% endhighlight %}
 
 That is all we need to configure the build.
 
-If at this point you prefer to use Eclipse or IDEA as your IDE, you may use [sbteclipse](https://github.com/typesafehub/sbteclipse/wiki/Using-sbteclipse) to generate an Eclipse project, or import the sbt build from IDEA. Note that for compiling and running your application, you will still need to use sbt from the command line.
+If at this point you prefer to use an IDE, you can import the build into [VS Code with Metals](https://scalameta.org/metals/) (or any other editor supported by Metals) or IntelliJ IDEA (see "Installation" [here](https://docs.scala-lang.org/getting-started/intellij-track/getting-started-with-scala-in-intellij.html)).
+Note that for compiling and running your application, you will still need to use sbt from the command line.
 
 ### HelloWorld application
 
@@ -71,27 +72,19 @@ object TutorialApp {
 As you expect, this will simply print "HelloWorld" when run. To run this, simply launch `sbt` and invoke the `run` task:
 
     $ sbt
-    > run
-    [info] Compiling 1 Scala source to (...)/scala-js-tutorial/target/scala-2.12/classes...
-    [info] Fast optimizing (...)/scalajs-tutorial/target/scala-2.12/scala-js-tutorial-fastopt.js
+    sbt:Scala.js Tutorial> run
+    [info] Compiling 1 Scala source to (...)/scala-js-tutorial/target/scala-2.13/classes ...
+    [info] Fast optimizing (...)/scala-js-tutorial/target/scala-2.13/scala-js-tutorial-fastopt.js
     [info] Running tutorial.webapp.TutorialApp
     Hello world!
     [success] (...)
 
-Congratulations! You have successfully compiled and run your first Scala.js application. The code is actually run by a JavaScript interpreter. If you do not believe this (it happens to us occasionally), you can use the `last` command in sbt:
-
-    > last
-    (...)
-    [info] Running tutorial.webapp.TutorialApp
-    [debug] with JSEnv ExternalJSEnv for Node.js
-    [debug] Starting process: node
-    [success] (...)
-
-So your code has actually been executed by Node.js.
+Congratulations! You have successfully compiled and run your first Scala.js application.
+The code is actually run by a JavaScript interpreter, namely Node.
 
 **Source maps in Node.js**: To get your stack traces resolved on Node.js, you will have to install the `source-map-support` package.
 
-    npm install source-map-support
+    $ npm install source-map-support
 
 ## <a name="integrating-html"></a> Step 2: Integrating with HTML
 
@@ -105,10 +98,10 @@ Now that we have a simple JavaScript application, we would like to use it in an 
 To generate a single JavaScript file using sbt, just use the `fastOptJS` task:
 
     > fastOptJS
-    [info] Fast optimizing (...)/scala-js-tutorial/target/scala-2.12/scala-js-tutorial-fastopt.js
+    [info] Fast optimizing (...)/scala-js-tutorial/target/scala-2.13/scala-js-tutorial-fastopt.js
     [success] (...)
 
-This will perform some fast optimizations and generate the `target/scala-2.12/scala-js-tutorial-fastopt.js` file containing the JavaScript code.
+This will perform some fast optimizations and generate the `target/scala-2.13/scala-js-tutorial-fastopt.js` file containing the JavaScript code.
 
 (It is possible that the `[info]` does not appear, if you have just run the program and not made any change to it.)
 
@@ -125,12 +118,12 @@ To load and launch the created JavaScript, you will need an HTML file. Create th
   </head>
   <body>
     <!-- Include Scala.js compiled code -->
-    <script type="text/javascript" src="./target/scala-2.12/scala-js-tutorial-fastopt.js"></script>
+    <script type="text/javascript" src="./target/scala-2.13/scala-js-tutorial-fastopt.js"></script>
   </body>
 </html>
 {% endhighlight %}
 
-The script tag simply includes the generated code (attention, you might need to adapt the Scala version from `2.12` to `2.10` or `2.11` here if you are using Scala 2.10.x or Scala 2.11.x instead of 2.12.x).
+The script tag simply includes the generated code (attention, you might need to adapt the Scala version from `2.13` to `2.12` (or even `2.10` or `2.11`) here if you are using an older version of Scala).
 
 Since we have set `scalaJSUseMainModuleInitializer := true` in the build, the `TutorialApp.main(args: Array[String])` method is automatically called at the end of the `-fastopt.js` file (with an empty array as argument).
 
@@ -146,19 +139,22 @@ That's what the DOM API is for.
 To use the DOM, it is best to use the statically typed Scala.js DOM library. To add it to your sbt project, add the following line to your `build.sbt`:
 
 {% highlight scala %}
-libraryDependencies += "org.scala-js" %%% "scalajs-dom" % "0.9.7"
+libraryDependencies += "org.scala-js" %%% "scalajs-dom" % "{{ site.versions.scalaJSDOM }}"
 {% endhighlight %}
 
 sbt-savvy folks will notice the `%%%` instead of the usual `%%`. It means we are using a Scala.js library and not a
 normal Scala library. Have a look at the [Dependencies](../../project/dependencies.html) guide for details. Don't forget
 to reload the build file if sbt is still running:
 
-    > reload
-    [info] Loading global plugins from (...)
+    sbt:Scala.js Tutorial> reload
+    [info] Loading settings for project global-plugins from plugins.sbt ...
+    [info] Loading global plugins from (...)/.sbt/1.0/plugins
+    [info] Loading settings for project scalajs-tutorial-build from plugins.sbt ...
     [info] Loading project definition from (...)/scala-js-tutorial/project
-    [info] Set current project to Scala.js Tutorial (in build (...)/scala-js-tutorial/)
+    [info] Loading settings for project scala-js-tutorial from build.sbt ...
+    [info] Set current project to Scala.js Tutorial (in build file:(...)/scala-js-tutorial/)
 
-If you are using an IDE plugin, you will also have to regenerate the project files for autocompletion to work.
+If you are using an IDE plugin, you will also have to reimport the build for autocompletion to work.
 
 ### Using the DOM Library
 
@@ -168,7 +164,7 @@ First of all, we import a couple of things:
 
 {% highlight scala %}
 import org.scalajs.dom
-import dom.document
+import org.scalajs.dom.document
 {% endhighlight %}
 
 `dom` is the root of the JavaScript DOM and corresponds to the global scope of JavaScript (aka the `window` object).
@@ -197,9 +193,9 @@ def main(args: Array[String]): Unit = {
 
 To rebuild the JavaScript, simply invoke `fastOptJS` again:
 
-    > fastOptJS
-    [info] Compiling 1 Scala source to (...)/scala-js-tutorial/target/scala-2.12/classes...
-    [info] Fast optimizing (...)/scala-js-tutorial/target/scala-2.12/scala-js-tutorial-fastopt.js
+    sbt:Scala.js Tutorial> fastOptJS
+    [info] Compiling 1 Scala source to (...)/scala-js-tutorial/target/scala-2.13/classes ...
+    [info] Fast optimizing (...)/scala-js-tutorial/target/scala-2.13/scala-js-tutorial-fastopt.js
     [success] (...)
 
 As you can see from the log, sbt automatically detects that the sources must be recompiled before fast optimizing.
@@ -208,9 +204,10 @@ You can now reload the HTML in your browser and you should see a nice "Hello Wor
 
 Re-typing `fastOptJS` each time you change your source file is cumbersome. Luckily sbt is able to watch your files and recompile as needed:
 
-    > ~fastOptJS
+    sbt:Scala.js Tutorial> ~fastOptJS
     [success] (...)
-    1. Waiting for source changes... (press enter to interrupt)
+    [info] 1. Monitoring source files for scalajs-tutorial/fastOptJS...
+    [info]    Press <enter> to interrupt or '?' for more options.
 
 From this point in the tutorial we assume you have an sbt with this command running, so we don't need to bother with rebuilding each time.
 
@@ -257,11 +254,11 @@ usages of the DOM API with jQuery.
 
 ### Depending on jQuery
 
-Just like for the DOM, there is a typed library for jQuery available in Scala.js: [jquery-facade](https://github.com/jducoeur/jquery-facade).
+Just like for the DOM, there is a typed library for jQuery available in Scala.js: [scalajs-jquery](https://github.com/sjrd/scala-js-jquery) (there is [a livelier fork](https://github.com/exoego/scala-js-jquery) which you may prefer if it already supports the version of Scala you are using).
 Add the following line in your `build.sbt` by:
 
 {% highlight scala %}
-libraryDependencies += "org.querki" %%% "jquery-facade" % "1.2"
+libraryDependencies += "be.doeraene" %%% "scalajs-jquery" % "0.9.6"
 {% endhighlight %}
 
 Don't forget to reload the sbt configuration now:
@@ -277,21 +274,21 @@ Again, make sure to update your IDE project files if you are using a plugin.
 In `TutorialApp.scala`, remove the imports for the DOM, and add the import for jQuery:
 
 {% highlight scala %}
-import org.querki.jquery._
+import org.scalajs.jquery._
 {% endhighlight %}
 
-This allows you to easily access the `$` main object of jQuery in your code.
+This allows you to easily access the `jQuery` main object of jQuery in your code (also known as `$`).
 
 We can now remove `appendPar` and replace all calls to it by the simple:
 
 {% highlight scala %}
-$("body").append("<p>[message]</p>")
+jQuery("body").append("<p>[message]</p>")
 {% endhighlight %}
 
 Where `[message]` is the string originally passed to `appendPar`, for example:
 
 {% highlight scala %}
-$("body").append("<p>Hello World</p>")
+jQuery("body").append("<p>Hello World</p>")
 {% endhighlight %}
 
 If you try to reload your webpage now, it will not work (typically a `TypeError` would be reported in the console). The
@@ -323,7 +320,7 @@ JavaScript libraries anymore:
 
 {% highlight html %}
 <!-- Include JavaScript dependencies -->
-<script type="text/javascript" src="./target/scala-2.12/scala-js-tutorial-jsdeps.js"></script>
+<script type="text/javascript" src="./target/scala-2.13/scala-js-tutorial-jsdeps.js"></script>
 {% endhighlight %}
 
 ### Setup UI in Scala.js
@@ -334,8 +331,8 @@ into this function.
 
 {% highlight scala %}
 def setupUI(): Unit = {
-  $("body").append("<p>Hello World</p>")
-  $("#click-me-button").click(() => addClickedMessage())
+  jQuery("body").append("<p>Hello World</p>")
+  jQuery("#click-me-button").click(() => addClickedMessage())
 }
 {% endhighlight %}
 
@@ -345,7 +342,7 @@ Finally, we add a last call to `jQuery` in the main method, in order to execute 
 
 {% highlight scala %}
 def main(args: Array[String]): Unit = {
-  $(() => setupUI())
+  jQuery(() => setupUI())
 }
 {% endhighlight %}
 
@@ -404,7 +401,7 @@ It typically boils down to two sbt settings in the `build.sbt` file.
 For uTest, these are:
 
 {% highlight scala %}
-libraryDependencies += "com.lihaoyi" %%% "utest" % "0.6.3" % "test"
+libraryDependencies += "com.lihaoyi" %%% "utest" % "0.7.4" % "test"
 testFrameworks += new TestFramework("utest.runner.Framework")
 {% endhighlight %}
 
@@ -415,7 +412,7 @@ package tutorial.webapp
 
 import utest._
 
-import org.querki.jquery._
+import org.scalajs.jquery._
 
 object TutorialTest extends TestSuite {
 
@@ -423,8 +420,8 @@ object TutorialTest extends TestSuite {
   TutorialApp.setupUI()
 
   def tests = Tests {
-    'HelloWorld - {
-      assert($("p:contains('Hello World')").length == 1)
+    test("HelloWorld") {
+      assert(jQuery("p:contains('Hello World')").length == 1)
     }
   }
 }
@@ -436,8 +433,8 @@ after the UI has been set up.
 To run this test, simply invoke the `test` task:
 
     > test
-    [info] Compiling 1 Scala source to (...)/scalajs-tutorial/target/scala-2.12/test-classes...
-    [info] Fast optimizing (...)/scalajs-tutorial/target/scala-2.12/scala-js-tutorial-test-fastopt.js
+    [info] Compiling 1 Scala source to (...)/scalajs-tutorial/target/scala-2.13/test-classes...
+    [info] Fast optimizing (...)/scalajs-tutorial/target/scala-2.13/scala-js-tutorial-test-fastopt.js
     -------------------------------- Running Tests --------------------------------
     + tutorial.webapp.TutorialTest.HelloWorld 2ms
     Tests: 1, Passed: 1, Failed: 0
@@ -453,9 +450,9 @@ exist when testing, since the tests start with an empty DOM tree. To solve this,
 method and remove it from the HTML:
 
 {% highlight scala %}
-$("""<button type="button">Click me!</button>""")
+jQuery("""<button type="button">Click me!</button>""")
   .click(() => addClickedMessage())
-  .appendTo($("body"))
+  .appendTo(jQuery("body"))
 {% endhighlight %}
 
 This brings another unexpected advantage: We don't need to give it an ID anymore but can directly use the jQuery object
@@ -464,11 +461,11 @@ to install the on-click handler.
 We now define the `ButtonClick` test just below the `HelloWorld` test:
 
 {% highlight scala %}
-'ButtonClick - {
+test("ButtonClick") {
   def messageCount =
-    $("p:contains('You clicked the button!')").length
+    jQuery("p:contains('You clicked the button!')").length
 
-  val button = $("button:contains('Click me!')")
+  val button = jQuery("button:contains('Click me!')")
   assert(button.length == 1)
   assert(messageCount == 0)
 
@@ -486,8 +483,8 @@ of messages has increased.
 You can now call the `test` task again:
 
     > test
-    [info] Compiling 1 Scala source to (...)/scalajs-tutorial/target/scala-2.12/test-classes...
-    [info] Fast optimizing (...)/scalajs-tutorial/target/scala-2.12/scala-js-tutorial-test-fastopt.js
+    [info] Compiling 1 Scala source to (...)/scalajs-tutorial/target/scala-2.13/test-classes...
+    [info] Fast optimizing (...)/scalajs-tutorial/target/scala-2.13/scala-js-tutorial-test-fastopt.js
     -------------------------------- Running Tests --------------------------------
     + tutorial.webapp.TutorialTest.HelloWorld 3ms
     + tutorial.webapp.TutorialTest.ButtonClick 6ms
@@ -530,9 +527,9 @@ We also need to create our final production HTML file `scalajs-tutorial.html` wh
   </head>
   <body>
     <!-- Include JavaScript dependencies -->
-    <script type="text/javascript" src="./target/scala-2.12/scala-js-tutorial-jsdeps.js"></script>
+    <script type="text/javascript" src="./target/scala-2.13/scala-js-tutorial-jsdeps.js"></script>
     <!-- Include Scala.js compiled code -->
-    <script type="text/javascript" src="./target/scala-2.12/scala-js-tutorial-opt.js"></script>
+    <script type="text/javascript" src="./target/scala-2.13/scala-js-tutorial-opt.js"></script>
   </body>
 </html>
 {% endhighlight %}
