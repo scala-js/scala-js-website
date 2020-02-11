@@ -7,6 +7,8 @@
   subitems:
     - text: Basic tutorial
       url: /doc/tutorial/basic/
+    - text: Basic tutorial (0.6.x)
+      url: /doc/tutorial/basic/0.6.x.html
 - text: Scala.js for JavaScript developers
   url: /doc/sjs-for-js/
   subitems:

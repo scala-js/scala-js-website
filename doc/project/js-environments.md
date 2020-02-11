@@ -42,7 +42,7 @@ You will need to `npm install jsdom` for the above environment to work.
 **Scala.js 1.x:** The above setting requires the following line in your `project/plugins.sbt`:
 
 {% highlight scala %}
-libraryDependencies += "org.scala-js" %% "scalajs-env-jsdom-nodejs" % "1.0.0-M1"
+libraryDependencies += "org.scala-js" %% "scalajs-env-jsdom-nodejs" % "1.0.0"
 {% endhighlight %}
 
 **Scala.js 0.6.x:** This environment is selected by default if your application or one of its libraries declares a dependency on the DOM, with `jsDependencies += RuntimeDOM`.
@@ -60,10 +60,12 @@ jsEnv := PhantomJSEnv().value
 **Scala.js 1.x:** The above setting requires the following line in your `project/plugins.sbt`:
 
 {% highlight scala %}
-addSbtPlugin("org.scala-js" % "sbt-scalajs-env-phantomjs" % "1.0.0-M1")
+addSbtPlugin("org.scala-js" % "sbt-scalajs-env-phantomjs" % "1.0.0")
 {% endhighlight %}
 
 ### <a name="phantomjs-no-auto-terminate"></a> Disabling auto-termination of PhantomJS
+
+**Scala.js 0.6.x only**
 
 By default, the PhantomJS interpreter terminates itself as soon as the `main()` method returns.
 This may not be what you want, if for example you register time-outs or use WebSockets.
@@ -88,7 +90,7 @@ jsEnv := PhantomJSEnv(args = Seq("arg1", "arg2")).value
 {% endhighlight %}
 
 For more options of the PhantomJS environment, see
-[the Scaladoc of `PhantomJSEnv`]({{ site.production_url }}/api/sbt-scalajs/{{ site.versions.scalaJS }}/#org.scalajs.sbtplugin.ScalaJSPlugin$$AutoImport$).
+[the Scaladoc of `PhantomJSEnv`]({{ site.production_url }}/api/sbt-scalajs-env-phantomjs/1.0.0/org/scalajs/jsenv/phantomjs/sbtplugin/PhantomJSEnvPlugin$$autoImport$.html).
 
 ## Selenium
 

@@ -21,11 +21,15 @@ Some Scala.js core libraries (such as the Scala.js library itself) do not need t
 
 Note that you can also use `%%%` in a Scala/JVM project, in which case it will be the same as `%%`. This allows you to use the same `libraryDependencies` settings when cross compiling Scala/JVM and Scala.js.
 
-## Depending on JavaScript libraries
+## Deprecated: Depending on JavaScript libraries
+
+The `jsDependencies` mechanism should be considered deprecated.
+Use [scalajs-bundler](https://scalacenter.github.io/scalajs-bundler/) instead.
 
 **Scala.js 1.x note:** since Scala.js 1.x, this functionality is not part of the core Scala.js sbt plugin.
 Instead, it is provided by [sbt-jsdependencies](https://github.com/scala-js/jsdependencies).
-You will need to add `addSbtPlugin("org.scala-js" % "sbt-jsdependencies" % "1.0.0-M1")` to `project/plugins.sbt`, as well as `enablePlugins(JSDependenciesPlugin)` to your Scala.js projects.
+
+The rest of this section applies to Scala.js 0.6.x only.
 
 Thanks to [WebJars](http://www.webjars.org/), you can easily fetch a JavaScript library like so:
 
