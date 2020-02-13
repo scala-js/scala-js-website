@@ -16,7 +16,7 @@ We show here some results from June 2018.
 More details can be found in Section 4.5 of the Ph.D. thesis [Cross-Platform Language Design](https://infoscience.epfl.ch/record/256862) by S. Doeraene.
 
 In the following graphs, all bars represent execution time (lower is better) normalized against running on the JVM.
-If a benchmarks shows an execution time of 2, it means it executed 2x slower in Scala.js than on the JVM.
+If a benchmark shows an execution time of 2, it means it executed 2x slower in Scala.js than on the JVM.
 
 ### In devevelopment mode (fastOpt)
 
@@ -36,14 +36,12 @@ In the first set of benchmarks below, we see a general trend.
 GCC tends to improve the run-time performance a bit, but not nearly as much as our own optimizer.
 The combination of both is mostly equivalent to just our own optimizer, but the benefits of GCC are mostly about code size.
 
-<div data-benchmarks="bounce brainfuck cd deltablue kmeans nbody permute richards tracer"
-  data-configs="es5.1 prod no-opt no-gcc Node.js;es5.1 prod no-opt yes-gcc Node.js;es5.1 prod yes-opt no-gcc Node.js;es5.1 prod yes-opt yes-gcc Node.js"
-  data-confignames="No optimizer, no GCC;No optimizer, with GCC;With optimizer, no GCC;With optimizer and GCC"></div>
+The only exception is `gcbench`, where our own optimizer does nothing on its own, although GCC significantly improves the performance on its own.
+The combination of both optimizers still yields the best performance.
 
-The following 4 benchmarks deviate from the general trend.
 In all cases, when both optimizers are enabled, the Scala.js benchmarks run between 0.9x and 3x slower than the JVM.
 
-<div data-benchmarks="gcbench json list mandelbrot"
+<div data-benchmarks="bounce brainfuck cd deltablue gcbench json kmeans list mandelbrot nbody permute richards tracer"
   data-configs="es5.1 prod no-opt no-gcc Node.js;es5.1 prod no-opt yes-gcc Node.js;es5.1 prod yes-opt no-gcc Node.js;es5.1 prod yes-opt yes-gcc Node.js"
   data-confignames="No optimizer, no GCC;No optimizer, with GCC;With optimizer, no GCC;With optimizer and GCC"></div>
 
@@ -51,10 +49,12 @@ In all cases, when both optimizers are enabled, the Scala.js benchmarks run betw
 
 For three benchmarks, we also have the hand-written JavaScript code, coming from the JavaScript Octane benchmark suite.
 We compare Scala.js' production mode against the hand-written JavaScript code below.
+In the following graph, all execution times are normalized against the hand-written JavaScript code, instead of the JVM.
+
 In the worst case, `deltablue`, fully optimized Scala.js is 1.27x slower than hand-written JavaScript.
 In the best case, `tracer`, Scala.js executes in 0.67x the time of hand-written JavaScript, i.e., 33% faster.
 
 <div data-benchmarks="deltablue richards tracer"
   data-configs="es5.1 prod no-opt no-gcc Node.js;es5.1 prod no-opt yes-gcc Node.js;es5.1 prod yes-opt no-gcc Node.js;es5.1 prod yes-opt yes-gcc Node.js;js Node.js"
   data-confignames="No optimizer, no GCC;No optimizer, with GCC;With optimizer, no GCC;With optimizer and GCC;Hand-written JavaScript"
-  data-y-axis-max="5.0"></div>
+  data-normalize-against="js Node.js" data-y-axis-title="Normalized execution time wrt. hand-written JS"></div>

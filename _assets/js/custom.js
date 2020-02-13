@@ -157,10 +157,17 @@ onloadFunctions.push(function setupBenchmarkCharts() {
   }
 
   function setupBenchmarkGraph(container, benchmarks, configs, configNames) {
+    var normalizeAgainst = container.dataset.normalizeAgainst;
     var series = [];
     for (var i = 0; i < configs.length; i++) {
       var config = configs[i], name = configNames[i];
-      var data = benchmarks.map(function(b) { return Data[b][config]; });
+      var data = benchmarks.map(function(b) {
+        var origData = Data[b][config];
+        if (normalizeAgainst)
+          return origData / Data[b][normalizeAgainst];
+        else
+          return origData;
+      });
       series.push({ name: name, data: data });
     }
 
@@ -185,7 +192,7 @@ onloadFunctions.push(function setupBenchmarkCharts() {
         min: 0.0,
         max: container.dataset.yAxisMax,
         title: {
-          text: "Normalized execution time wrt. JVM",
+          text: container.dataset.yAxisTitle || "Normalized execution time wrt. JVM",
           align: "high",
         },
         labels: {
