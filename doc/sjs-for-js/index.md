@@ -8,7 +8,7 @@ Below you can see the same functionality implemented in JavaScript ES6 and Scala
 {% columns %}
 {% column 6 ES6 %}
 {% highlight javascript %}
-var xhr = new XMLHttpRequest();
+const xhr = new XMLHttpRequest();
 
 xhr.open("GET",
   "https://api.twitter.com/1.1/search/" +
@@ -16,7 +16,7 @@ xhr.open("GET",
 );
 xhr.onload = (e) => {
   if (xhr.status === 200) {
-    var r = JSON.parse(xhr.responseText);
+    const r = JSON.parse(xhr.responseText);
     $("#tweets").html(parseTweets(r));
   }
 };
