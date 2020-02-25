@@ -5,6 +5,19 @@ title: All previous versions of the Scala.js API
 
 ## All previous versions of the API
 
+### Scala.js 1.0.0
+* [1.0.0 scalajs-library]({{ site.production_url }}/api/scalajs-library/1.0.0/scala/scalajs/js/index.html)
+* [1.0.0 scalajs-test-interface]({{ site.production_url }}/api/scalajs-test-interface/1.0.0/)
+* [1.0.0 scalajs-ir]({{ site.production_url }}/api/scalajs-ir/1.0.0/org/scalajs/ir/index.html)
+* [1.0.0 scalajs-logging]({{ site.production_url }}/api/scalajs-logging/1.0.0/org/scalajs/logging/index.html)
+* [1.0.0 scalajs-linker-interface]({{ site.production_url }}/api/scalajs-linker-interface/1.0.0/org/scalajs/linker/interface/index.html) ([Scala.js version]({{ site.production_url }}/api/scalajs-linker-interface-js/1.0.0/org/scalajs/linker/interface/index.html))
+* [1.0.0 scalajs-linker]({{ site.production_url }}/api/scalajs-linker/1.0.0/org/scalajs/linker/index.html) ([Scala.js version]({{ site.production_url }}/api/scalajs-linker-js/1.0.0/org/scalajs/linker/index.html))
+* [1.0.0 scalajs-js-envs]({{ site.production_url }}/api/scalajs-js-envs/1.0.0/org/scalajs/jsenv/index.html)
+* [1.0.0 scalajs-env-nodejs]({{ site.production_url }}/api/scalajs-env-nodejs/1.0.0/org/scalajs/jsenv/nodejs/index.html)
+* [1.0.0 scalajs-js-envs-test-kit]({{ site.production_url }}/api/scalajs-js-envs-test-kit/1.0.0/org/scalajs/jsenv/test/index.html)
+* [1.0.0 scalajs-test-adapter]({{ site.production_url }}/api/scalajs-sbt-test-adapter/1.0.0/org/scalajs/testadapter/index.html)
+* [1.0.0 sbt-scalajs]({{ site.production_url }}/api/sbt-scalajs/1.0.0/#org.scalajs.sbtplugin.package)
+
 ### Scala.js 0.6.32
 * [0.6.32 scalajs-library]({{ site.production_url }}/api/scalajs-library/0.6.32/#scala.scalajs.js.package)
 * [0.6.32 scalajs-test-interface]({{ site.production_url }}/api/scalajs-test-interface/0.6.32/)
