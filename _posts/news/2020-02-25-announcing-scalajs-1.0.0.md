@@ -21,6 +21,7 @@ Scala.js 1.0.0 is the culmination of our efforts to simplify, specify, and futur
 As the change in major version number witnesses, this release is *not* binary compatible with 0.6.x, nor with the previous milestones and RCs of the 1.x series.
 Libraries need to be recompiled and republished using Scala.js 1.0.0 to be compatible.
 Several libraries at the core of the Scala/Scala.js ecosystem have already been published and are available for Scala.js 1.0.0.
+Here is [a list of libraries known to support Scala.js 1.x](https://gist.github.com/sjrd/5f251c355dd9540b42765b0837db63b6).
 
 Moreover, this release is not entirely source compatible with 0.6.x either (see [Breaking Changes](#breaking-changes) below).
 
