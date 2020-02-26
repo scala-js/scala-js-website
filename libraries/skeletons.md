@@ -28,6 +28,9 @@ Example setup which, using the [Workbench plugin](https://github.com/lihaoyi/wor
 ### [Node.js module with Scala.js](https://github.com/rockymadden/scala-node-example)
 Proof of concept to determine if Scala.js could be leveraged to make a Node.js module.
 
+### [AWS Lambda with Scala.js](https://github.com/bgahagan/scalajs-lambda.g8)
+A skeleton to build an AWS Lambda handler using Scala.js 1.0. Uses sbt-scalajs-bundler to manage npm dependencies and sbt-native-packager to package lambda for deployment.
+
 ### [npm scalajs-starter](https://github.com/konradst/scalajs-starter)
 Scala.js Node.js skeleton app / library handled with ```npm start```, ```build```, ```test```, ```clean``` commands.
 
