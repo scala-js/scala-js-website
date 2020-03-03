@@ -80,7 +80,7 @@ scalaJSLinkerConfig ~= { _.withOptimizer(false) }
 {% endhighlight %}
 
 `scalaJSLinkerConfig` contains various other options controlling the Scala.js linker.
-See [the Scaladoc of `StandardLinker.Config`]({{ site.production_url }}/api/scalajs-tools/{{ site.versions.scalaJS }}/#org.scalajs.core.tools.linker.StandardLinker$$Config) for details.
+See [the Scaladoc of `StandardLinker.Config`]({{ site.production_url }}/api/scalajs-linker-interface/{{ site.versions.scalaJS }}/org/scalajs/linker/interface/StandardConfig.html) for details.
 
 ## Full-Optimize
 
