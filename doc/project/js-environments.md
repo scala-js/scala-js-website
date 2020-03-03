@@ -90,7 +90,7 @@ jsEnv := PhantomJSEnv(args = Seq("arg1", "arg2")).value
 {% endhighlight %}
 
 For more options of the PhantomJS environment, see
-[the Scaladoc of `PhantomJSEnv`]({{ site.production_url }}/api/sbt-scalajs-env-phantomjs/{{ site.versions.scalaJS }}/org/scalajs/jsenv/phantomjs/sbtplugin/PhantomJSEnvPlugin$$autoImport$.html).
+[the Scaladoc of `PhantomJSEnv`]({{ site.production_url }}/api/sbt-scalajs-env-phantomjs/1.0.0/org/scalajs/jsenv/phantomjs/sbtplugin/PhantomJSEnvPlugin$$autoImport$.html).
 
 ## Selenium
 
