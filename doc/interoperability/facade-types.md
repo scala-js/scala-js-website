@@ -73,7 +73,7 @@ is omitted entirely (or set to `undefined`). The value is only indicative, as
 implicit documentation.
 
 Fields, parameters, or result types that can have different, unrelated types, can be accurately typed with the
-[pseudo-union type `A | B`]({{ site.production_url }}/api/scalajs-library/{{ site.versions.scalaJS }}/#scala.scalajs.js.$bar).
+[pseudo-union type `A | B`]({{ site.production_url }}/api/scalajs-library/{{ site.versions.scalaJS }}/scala/scalajs/js/$bar.html).
 
 Methods can be overloaded. This is useful to type accurately some APIs that
 behave differently depending on the number or types of arguments.
@@ -607,5 +607,5 @@ When using `js.Dynamic`, you are very close to writing raw JavaScript within
 Scala.js, with all the warts of the language coming to haunt you.
 However, to get the full extent of JavaScriptish code, you can import the
 implicit conversions in
-[js.DynamicImplicts]({{ site.production_url }}/api/scalajs-library/{{ site.versions.scalaJS }}/#scala.scalajs.js.DynamicImplicits$).
+[js.DynamicImplicts]({{ site.production_url }}/api/scalajs-library/{{ site.versions.scalaJS }}/scala/scalajs/js/DynamicImplicits$.html).
 Use at your own risk!

@@ -26,7 +26,7 @@ Then run `nvm` to install the version of Node.js that you want:
     nvm install 5.0
 
 For more options of the Node.js environment, see
-[the Scaladoc of `NodeJSEnv`]({{ site.production_url }}/api/scalajs-js-envs/{{ site.versions.scalaJS }}/#org.scalajs.jsenv.nodejs.NodeJSEnv).
+[the Scaladoc of `NodeJSEnv`]({{ site.production_url }}/api/scalajs-env-nodejs/{{ site.versions.scalaJS }}/org/scalajs/jsenv/nodejs/NodeJSEnv.html).
 
 ## Node.js with JSDOM
 

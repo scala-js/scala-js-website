@@ -445,7 +445,7 @@ With run-time overload resolution, however, the type tests are executed again, a
 
 ### `js.constructorOf[C]`
 
-To obtain the JavaScript constructor function of a JS class (native or not) without instantiating it nor exporting it, you can use [`js.constructorOf[C]`]({{ site.production_url }}/api/scalajs-library/latest/#scala.scalajs.js.package@constructorOf[T<:scala.scalajs.js.Any]:scala.scalajs.js.Dynamic), whose signature is:
+To obtain the JavaScript constructor function of a JS class (native or not) without instantiating it nor exporting it, you can use [`js.constructorOf[C]`]({{ site.production_url }}/api/scalajs-library/{{ site.versions.scalaJS }}/scala/scalajs/js/index.html#constructorOf[T<:scala.scalajs.js.Any]:scala.scalajs.js.Dynamic), whose signature is:
 
 {% highlight scala %}
 package object js {
@@ -460,7 +460,7 @@ This can be useful to give to JavaScript libraries expecting constructor functio
 
 ### `js.ConstructorTag[C]`
 
-[`js.ConstructorTag[C]`]({{ site.production_url }}/api/scalajs-library/latest/#scala.scalajs.js.ConstructorTag) is to [`js.constructorOf[C]`]({{ site.production_url }}/api/scalajs-library/latest/#scala.scalajs.js.package@constructorOf[T<:scala.scalajs.js.Any]:scala.scalajs.js.Dynamic) as `ClassTag[C]` is to `classOf[C]`, i.e., you can use an `implicit` parameter of type `js.ConstructorTag[C]` to implicitly get a `js.constructorOf[C]`.
+[`js.ConstructorTag[C]`]({{ site.production_url }}/api/scalajs-library/{{ site.versions.scalaJS }}/scala/scalajs/js/ConstructorTag.html) is to [`js.constructorOf[C]`]({{ site.production_url }}/api/scalajs-library/{{ site.versions.scalaJS }}/scala/scalajs/js/index.html#constructorOf[T<:scala.scalajs.js.Any]:scala.scalajs.js.Dynamic) as `ClassTag[C]` is to `classOf[C]`, i.e., you can use an `implicit` parameter of type `js.ConstructorTag[C]` to implicitly get a `js.constructorOf[C]`.
 For example:
 
 {% highlight scala %}

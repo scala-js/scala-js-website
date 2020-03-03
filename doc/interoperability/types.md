@@ -140,7 +140,7 @@ Primitive JavaScript types (`number`, `boolean`, `string`, `null` and
 [above](#type-correspondence).
 
 For other pre-defined JavaScript types, such as arrays and functions, the package `scala.scalajs.js`
-([ScalaDoc]({{ site.production_url }}/api/scalajs-library/{{ site.versions.scalaJS }}/#scala.scalajs.js.package))
+([ScalaDoc]({{ site.production_url }}/api/scalajs-library/{{ site.versions.scalaJS }}/scala/scalajs/js/index.html))
 provides dedicated definitions.
 
 The class hierarchy for these standard types is as follows:
@@ -283,7 +283,7 @@ want to. The basic entry point is `js.Dynamic.global`, which is a dynamically
 typed view of the JavaScript global scope. You can select any global variable
 of JavaScript as a a member of `js.Dynamic.global`, e.g.,
 `js.Dynamic.global.Math`, which will be typed as a
-[`js.Dynamic`]({{ site.production_url }}/api/scalajs-library/latest/#scala.scalajs.js.Dynamic).
+[`js.Dynamic`]({{ site.production_url }}/api/scalajs-library/{{ site.versions.scalaJS }}/scala/scalajs/js/Dynamic.html).
 
 You can read and write any field of a `js.Dynamic`, as well as call any method
 with any number of arguments, and you always receive back a `js.Dynamic`.
