@@ -114,6 +114,14 @@
       url: https://github.com/shogowada/scalajs-reactjs
       desc: 'Develop React applications in Scala with APIs close to the original: react, react-router, and react-redux facade'
       dep: '"io.github.shogowada" %%% "scalajs-reactjs" % "0.4.3"'
+    - name: scommons-react
+      url: https://github.com/scommons/scommons-react
+      desc: Scala.js facades for core [React.js](https://reactjs.org/) APIs, Hooks, Components and testing, uses [scalajs-reactjs](https://github.com/shogowada/scalajs-reactjs)
+      dep: '"org.scommons.react" %%% "scommons-react-core" % "0.2.0"'
+    - name: scommons-react-native
+      url: https://github.com/scommons/scommons-react-native
+      desc: Scala.js facades for core [react-native](https://reactnative.dev/docs/getting-started) APIs, Components and testing, uses [scommons-react](https://github.com/scommons/scommons-react)
+      dep: '"org.scommons.react-native" %%% "scommons-react-native-core" % "0.2.0"'
     - name: scala-js-binding
       url: https://github.com/antonkulaga/scala-js-binding
       desc: An all-Scala.js HTML binding library
