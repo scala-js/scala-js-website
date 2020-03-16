@@ -15,7 +15,7 @@ title: All previous versions of the Scala.js API
 * [1.0.1 scalajs-js-envs]({{ site.production_url }}/api/scalajs-js-envs/1.0.1/org/scalajs/jsenv/index.html)
 * [1.0.1 scalajs-env-nodejs]({{ site.production_url }}/api/scalajs-env-nodejs/1.0.1/org/scalajs/jsenv/nodejs/index.html)
 * [1.0.1 scalajs-js-envs-test-kit]({{ site.production_url }}/api/scalajs-js-envs-test-kit/1.0.1/org/scalajs/jsenv/test/index.html)
-* [1.0.1 scalajs-test-adapter]({{ site.production_url }}/api/scalajs-sbt-test-adapter/1.0.1/org/scalajs/testadapter/index.html)
+* [1.0.1 scalajs-test-adapter]({{ site.production_url }}/api/scalajs-sbt-test-adapter/1.0.1/org/scalajs/testing/adapter/index.html)
 * [1.0.1 sbt-scalajs]({{ site.production_url }}/api/sbt-scalajs/1.0.1/#org.scalajs.sbtplugin.package)
 
 ### Scala.js 1.0.0
@@ -28,7 +28,7 @@ title: All previous versions of the Scala.js API
 * [1.0.0 scalajs-js-envs]({{ site.production_url }}/api/scalajs-js-envs/1.0.0/org/scalajs/jsenv/index.html)
 * [1.0.0 scalajs-env-nodejs]({{ site.production_url }}/api/scalajs-env-nodejs/1.0.0/org/scalajs/jsenv/nodejs/index.html)
 * [1.0.0 scalajs-js-envs-test-kit]({{ site.production_url }}/api/scalajs-js-envs-test-kit/1.0.0/org/scalajs/jsenv/test/index.html)
-* [1.0.0 scalajs-test-adapter]({{ site.production_url }}/api/scalajs-sbt-test-adapter/1.0.0/org/scalajs/testadapter/index.html)
+* [1.0.0 scalajs-test-adapter]({{ site.production_url }}/api/scalajs-sbt-test-adapter/1.0.0/org/scalajs/testing/adapter/index.html)
 * [1.0.0 sbt-scalajs]({{ site.production_url }}/api/sbt-scalajs/1.0.0/#org.scalajs.sbtplugin.package)
 
 ### Scala.js 0.6.32
