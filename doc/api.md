@@ -16,7 +16,7 @@ title: Scala.js API
 * [scalajs-js-envs]({{ site.production_url }}/api/scalajs-js-envs/latest/org/scalajs/jsenv/index.html)
 * [scalajs-env-nodejs]({{ site.production_url }}/api/scalajs-env-nodejs/latest/org/scalajs/jsenv/nodejs/index.html)
 * [scalajs-js-envs-test-kit]({{ site.production_url }}/api/scalajs-js-envs-test-kit/latest/org/scalajs/jsenv/test/index.html)
-* [scalajs-test-adapter]({{ site.production_url }}/api/scalajs-sbt-test-adapter/latest/org/scalajs/testadapter/index.html)
+* [scalajs-test-adapter]({{ site.production_url }}/api/scalajs-sbt-test-adapter/latest/org/scalajs/testing/adapter/index.html)
 * [sbt-scalajs]({{ site.production_url }}/api/sbt-scalajs/latest/#org.scalajs.sbtplugin.package)
 
 ### Previous versions
