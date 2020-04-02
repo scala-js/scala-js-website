@@ -10,8 +10,7 @@ However, a few differences exist, which we mention here.
 
 ## Primitive data types
 
-All primitive data types work exactly as on the JVM, with the following three
-exceptions.
+All nine primitive data types of Scala, i.e., `Boolean`, `Char`, `Byte`, `Short`, `Int`, `Long`, `Float`, `Double` and `Unit`, work exactly as on the JVM, with the following four exceptions.
 
 ### Floats can behave as Doubles by default
 
@@ -79,6 +78,21 @@ if strict-floats are enabled, or
     Byte <:< Short <:< Int <:< Float =:= Double
 
 otherwise.
+
+### `getClass()`
+
+In Scala/JVM as well as Scala.js, when assigning a primitive value to an `Any` (or a generic type), and asking for its `getClass()`, Scala returns the *boxed class* of the value's type, rather than the primitive value.
+For example, `(true: Any).getClass()` returns `classOf[java.lang.Boolean]`, not `classOf[scala.Boolean]`.
+
+In Scala.js, for numeric types, and for the same reason that instance tests are based on values, the result will be the *smallest* boxed class that can store the value.
+Hence, `(5: Any).getClass()` will return `classOf[java.lang.Byte]`, while `(50000: Any).getClass()` will return `classOf[java.lang.Integer]`.
+
+**Scala.js 1.x only:**
+Moreover, for `()` (unit), the result will be `classOf[java.lang.Void]` instead of `classOf[scala.runtime.BoxedUnit]` like the JVM.
+`scala.runtime.BoxedUnit` is an implementation detail of Scala on the JVM, which Scala.js does not emulate.
+Instead, it uses the more sensible `java.lang.Void`, as `Void` is the boxed class corresponding to the `void` primitive type, which is `scala.Unit`.
+This means that while `java.lang.Void` is not instantiable on the JVM, in Scala.js it has a singleton instance, namely `()`.
+This also manifests itself in `Array[Unit]` which is effectively `Array[java.lang.Void]` at run-time, instead of `Array[scala.runtime.BoxedUnit]`.
 
 ## Undefined behaviors
 
