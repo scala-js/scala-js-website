@@ -145,6 +145,11 @@ JVM semantics, you can do so with an sbt setting.
 For example, this setting enables compliant `asInstanceOf`s:
 
 {% highlight scala %}
+// Scala.js 1.x
+scalaJSLinkerConfig ~= { _.withSemantics(_.withAsInstanceOfs(
+  org.scalajs.linker.interface.CheckedBehavior.Compliant)) }
+
+// Scala.js 0.6.x
 scalaJSLinkerConfig ~= { _.withSemantics(_.withAsInstanceOfs(
   org.scalajs.core.tools.sem.CheckedBehavior.Compliant)) }
 {% endhighlight %}
