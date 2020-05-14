@@ -107,7 +107,7 @@
     - name: scala-js-plotlyjs
       url: https://github.com/openmole/scala-js-plotlyjs
       desc: Scala-js facade for plotly-js
-      dep:
+      dep: '"org.openmole" %%% "scala-js-plotlyjs" % "1.5.1"'
 - topic: UI frameworks
   libraries:
     - name: scalajs-react
