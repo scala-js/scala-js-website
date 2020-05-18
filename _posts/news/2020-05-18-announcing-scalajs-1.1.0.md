@@ -29,7 +29,7 @@ Bug reports can be filed [on GitHub](https://github.com/scala-js/scala-js/issues
 
 ## Release notes
 
-If upgrading from Scala.js 0.6.x, make sure to read [the release notes of Scala.js 1.0.0`]({{ BASE_PATH }}/news/2020/02/25/announcing-scalajs-1.0.0/) first, as it contains a host of important information, including breaking changes.
+If upgrading from Scala.js 0.6.x, make sure to read [the release notes of Scala.js 1.0.0]({{ BASE_PATH }}/news/2020/02/25/announcing-scalajs-1.0.0/) first, as it contains a host of important information, including breaking changes.
 
 This is a **minor** release:
 
