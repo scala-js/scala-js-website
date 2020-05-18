@@ -253,10 +253,28 @@ Inner classes and objects will be looked up as fields of the enclosing JS object
 
 ## Variables and functions in the global scope
 
-Besides object-like top-level definitions, JavaScript also defines variables
-and functions in the global scope. Scala does not have top-level variables and
-functions. Instead, in Scala.js, top-level objects annotated with
-`@JSGlobalScope` are considered to represent the global scope.
+Besides object-like top-level definitions, JavaScript also defines variables and functions in the global scope.
+Scala does not have top-level variables and functions, but we can define `val`s and `def`s in top-level `object`s instead.
+For example, we can define the `document` variable and the `alert` function as follows.
+
+**Requires Scala.js 1.1.0 or later**
+
+{% highlight scala %}
+import js.annotation._
+
+object DOMGlobals {
+  @js.native
+  @JSGlobal("document")
+  val document: HTMLDocument = js.native
+
+  @js.native
+  @JSGlobal("alert")
+  def alert(message: String): Unit = js.native
+}
+{% endhighlight %}
+
+An alternative, more practical if there are a lot of variables and functions to declare, and also available in earlier versions, is to use a top-level object annotated with `@JSGlobalScope`.
+Such objects are considered to represent the global scope.
 
 {% highlight scala %}
 import js.annotation._
@@ -282,7 +300,7 @@ Prior to 0.6.13, `extends js.GlobalScope` was used instead of `@JSGlobalScope`.
 The previous sections on native classes and objects all refer to *global variables*, i.e., variables declared in the JavaScript global scope.
 In modern JavaScript ecosystems, we often want to load things from other *modules*.
 This is what `@JSImport` is designed for.
-You can annotate an `@js.native` class or object with `@JSImport` instead of `@JSGlobal` to signify that it is defined in a module.
+You can annotate an `@js.native` class, object, val or def with `@JSImport` instead of `@JSGlobal` to signify that it is defined in a module.
 For example, in the following snippet:
 
 {% highlight scala %}
@@ -319,7 +337,7 @@ It can be one of the following:
 * The constant `JSImport.Namespace`, to select the module itself (with its exports as fields).
   This corresponds to `import * as Foobaz from "bar.js"`.
 
-The latter is particularly useful if you want to import members of the modules that are neither classes nor objects (for example, functions):
+Before Scala.js 1.1.0, the latter was particularly useful to import members of the modules that are neither classes nor objects (for example, functions):
 
 {% highlight scala %}
 @js.native
@@ -351,9 +369,21 @@ var y = moduleDefault(bar).exportedFunction(5);
 
 This is subject to change in future versions of Scala.js, to better reflect the evolution of specifications in ECMAScript itself, and its implementations.
 
+Starting with Scala.js 1.1.0, the above example would probably be written as follows instead:
+
+{% highlight scala %}
+object Bar {
+  @js.native
+  @JSImport("bar.js", "exportedFunction")
+  def exportedFunction(x: Int): Int = js.native
+}
+
+val y = Bar.exportedFunction(5)
+{% endhighlight %}
+
 **Important:** `@JSImport` is completely incompatible with [`jsDependencies`](./dependencies.html).
 You should use a separate mechanism to manage your JavaScript dependencies.
-Scala.js does not provide any facility to do so, at the moment.
+The sbt plugin [scalajs-bundler](https://scalacenter.github.io/scalajs-bundler/) provides one such mechanism.
 
 ### Translating ES imports to Scala.js `@JSImport`
 
