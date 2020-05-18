@@ -39,7 +39,7 @@ The Google Closure Compiler used internally by Scala.js for `fullOptJS` has been
 
 ## Bug fixes
 
-Among others, the following bugs have been fixed in 0.6.32:
+Among others, the following bugs have been fixed in 1.0.1:
 
 * [#3950](https://github.com/scala-js/scala-js/issues/3950) Static forwarders are not generated for static nested objects
 * [#3984](https://github.com/scala-js/scala-js/issues/3984) `(-0.0).getClass()` returns `classOf[Integer]` instead of `classOf[Float]`
