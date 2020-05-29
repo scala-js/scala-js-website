@@ -103,6 +103,7 @@ Currently known exhaustive list of exceptions are:
 * `NullPointerException`
 * `ArrayIndexOutOfBoundsException` and `StringIndexOutOfBoundsException`
 * `ClassCastException`
+* `ArrayStoreException`
 * `StackOverflowError` and other `VirtualMachineError`s
 
 Because Scala.js does not receive VM support to detect such erroneous
