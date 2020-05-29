@@ -103,7 +103,6 @@ Currently known exhaustive list of exceptions are:
 * `NullPointerException`
 * `ArrayIndexOutOfBoundsException` and `StringIndexOutOfBoundsException`
 * `ClassCastException`
-* `ArithmeticException` (such as integer division by 0)
 * `StackOverflowError` and other `VirtualMachineError`s
 
 Because Scala.js does not receive VM support to detect such erroneous
@@ -111,6 +110,10 @@ conditions, checking them is typically too expensive.
 
 Therefore, all of these are considered
 [undefined behavior](http://en.wikipedia.org/wiki/Undefined_behavior).
+
+**Scala.js 0.6.x only:**
+In Scala.js 0.6.x, `ArithmeticException`s, such as integer division by 0, are also considered undefined behavior.
+This is not the case in Scala.js 1.x anymore, where they are reliably thrown.
 
 Some of these, however, can be configured to be compliant with the JVM
 specification using sbt settings.
