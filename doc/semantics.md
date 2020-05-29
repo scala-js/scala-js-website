@@ -103,7 +103,7 @@ Currently known exhaustive list of exceptions are:
 * `NullPointerException`
 * `ArrayIndexOutOfBoundsException` and `StringIndexOutOfBoundsException`
 * `ClassCastException`
-* `ArithmeticException` (such as integer division by 0)
+* `ArrayStoreException`
 * `StackOverflowError` and other `VirtualMachineError`s
 
 Because Scala.js does not receive VM support to detect such erroneous
@@ -112,18 +112,20 @@ conditions, checking them is typically too expensive.
 Therefore, all of these are considered
 [undefined behavior](http://en.wikipedia.org/wiki/Undefined_behavior).
 
+**Scala.js 0.6.x only:**
+In Scala.js 0.6.x, `ArithmeticException`s, such as integer division by 0, are also considered undefined behavior.
+This is not the case in Scala.js 1.x anymore, where they are reliably thrown.
+
 Some of these, however, can be configured to be compliant with the JVM
 specification using sbt settings.
-Currently, only `ClassCastException`s (thrown by invalid `asInstanceOf` calls)
+Currently, only `ClassCastException`s (thrown by invalid `asInstanceOf` calls) and `ArrayIndexOutOfBoundsException`s (thrown by array indexing)
 are configurable, but the list will probably expand in future versions.
 
 Every configurable undefined behavior has 3 possible modes:
 
 * `Compliant`: behaves as specified on a JVM
 * `Unchecked`: completely unchecked and undefined
-* `Fatal`: checked, but throws
-  [`UndefinedBehaviorError`s]({{ site.production_url }}/api/scalajs-library/{{ site.versions.scalaJS }}/#scala.scalajs.runtime.UndefinedBehaviorError)
-  instead of the specified exception.
+* `Fatal`: checked, but throws `UndefinedBehaviorError`s instead of the specified exception
 
 By default, undefined behaviors are in `Fatal` mode for `fastOptJS` and in
 `Unchecked` mode for `fullOptJS`.
