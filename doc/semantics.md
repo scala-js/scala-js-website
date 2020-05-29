@@ -118,7 +118,7 @@ This is not the case in Scala.js 1.x anymore, where they are reliably thrown.
 
 Some of these, however, can be configured to be compliant with the JVM
 specification using sbt settings.
-Currently, only `ClassCastException`s (thrown by invalid `asInstanceOf` calls)
+Currently, only `ClassCastException`s (thrown by invalid `asInstanceOf` calls) and `ArrayIndexOutOfBoundsException`s (thrown by array indexing)
 are configurable, but the list will probably expand in future versions.
 
 Every configurable undefined behavior has 3 possible modes:
