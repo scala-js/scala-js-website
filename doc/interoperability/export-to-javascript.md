@@ -319,19 +319,18 @@ disambiguate, the methods in the error messages will be prefixed by
 `$js$exported$prop$`.
 
 ### <a name="constructor-params"></a> Export fields directly declared in constructors
-If you want to export fields that are directly declared in a class constructor, you'll have to use the `@field` meta annotation to avoid annotating the constructor arguments (exporting an argument is nonsensical and will fail):
+
+You can export fields directly declared in constructors by annotating the constructor argument:
 
 {% highlight scala %}
-import scala.annotation.meta.field
-
 class Point(
-    @(JSExport @field) val x: Double,
-    @(JSExport @field) val y: Double)
+    @JSExport val x: Double,
+    @JSExport val y: Double)
 
 // Also applies to case classes
 case class Point(
-    @(JSExport @field) x: Double,
-    @(JSExport @field) y: Double)
+    @JSExport x: Double,
+    @JSExport y: Double)
 {% endhighlight %}
 
 ## Export fields to the top level
