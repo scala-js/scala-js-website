@@ -40,7 +40,7 @@ Until 0.6.12 (and since 0.6.6), the defaults were:
 The new defaults are the following:
 
 * Node.js by default
-* Node.js + [`jsdom`](https://github.com/tmpvar/jsdom) with `jsDependencies += RuntimeDOM`
+* Node.js + [`jsdom`](https://github.com/jsdom/jsdom) with `jsDependencies += RuntimeDOM`
 
 Note that Node.js and jsdom need to be installed separately on your system.
 
