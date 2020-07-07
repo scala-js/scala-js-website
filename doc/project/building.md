@@ -58,7 +58,7 @@ You can run a Scala.js application (that has `scalaJSUseMainModuleInitializer` s
 This will run the `-fastopt.js` file right inside of your sbt console.
 By default, the file is run with [Node.js](http://nodejs.org/), which you need to install separately.
 
-**Scala.js 0.6.x only:** If your application or one of its libraries requires a DOM (which can be specified with `jsDependencies += RuntimeDOM`), you will also need to install [`jsdom`](https://github.com/tmpvar/jsdom) with `npm install jsdom`.
+**Scala.js 0.6.x only:** If your application or one of its libraries requires a DOM (which can be specified with `jsDependencies += RuntimeDOM`), you will also need to install [`jsdom`](https://github.com/jsdom/jsdom) with `npm install jsdom`.
 `jsDependencies += RuntimeDOM` is now deprecated, and should be replaced by `jsEnv := new org.scalajs.jsenv.jsdomnodejs.JSDOMNodeJSEnv()`.
 
 There are alternative JavaScript interpreters that are available.

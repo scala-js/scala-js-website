@@ -30,7 +30,7 @@ For more options of the Node.js environment, see
 
 ## Node.js with JSDOM
 
-This environment uses [jsdom](https://github.com/tmpvar/jsdom) to provide a headless browser environment on top of Node.js.
+This environment uses [jsdom](https://github.com/jsdom/jsdom) to provide a headless browser environment on top of Node.js.
 You can enable it with the following sbt setting:
 
 {% highlight scala %}
