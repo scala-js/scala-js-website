@@ -291,6 +291,10 @@
       dep: |
         resolvers += Resolver.bintrayRepo("cibotech", "public")
         libraryDependencies += "com.cibo" %%% "evilplot" % "0.2.1"
+    - name: sconfig
+      url: https://github.com/ekrich/sconfig
+      desc: 'Scala port of the lightbend/config HOCON Java library'
+      dep: '"org.ekrich" %%% "sconfig" % "1.3.0"'
 - topic: Tools
   libraries:
     - name: sbt-scala-js-map
