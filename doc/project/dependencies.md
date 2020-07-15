@@ -30,6 +30,7 @@ Use [scalajs-bundler](https://scalacenter.github.io/scalajs-bundler/) instead.
 Instead, it is provided by [sbt-jsdependencies](https://github.com/scala-js/jsdependencies).
 
 The rest of this section applies to Scala.js 0.6.x only.
+[Scala.js 0.6.x has reached End of Life.]({{ BASE_PATH }}/doc/internals/scalajs-0.6.x-eol.html)
 
 Thanks to [WebJars](http://www.webjars.org/), you can easily fetch a JavaScript library like so:
 
