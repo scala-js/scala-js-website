@@ -7,8 +7,6 @@
   subitems:
     - text: Basic tutorial
       url: /doc/tutorial/basic/
-    - text: Basic tutorial (0.6.x)
-      url: /doc/tutorial/basic/0.6.x.html
 - text: Scala.js for JavaScript developers
   url: /doc/sjs-for-js/
   subitems:
@@ -42,7 +40,7 @@
       url: /doc/interoperability/types.html
     - text: Write facade types for JS APIs
       url: /doc/interoperability/facade-types.html
-    - text: Access to the JavaScript global scope (1.x only)
+    - text: Access to the JavaScript global scope
       url: /doc/interoperability/global-scope.html
     - text: Export Scala.js APIs
       url: /doc/interoperability/export-to-javascript.html
@@ -66,3 +64,5 @@
       url: /doc/internals/downloads.html
     - text: Version history
       url: /doc/internals/version-history.html
+    - text: Scala.js 0.6.x EOL
+      url: /doc/internals/scalajs-0.6.x-eol.html
