@@ -111,6 +111,12 @@ object LogoPage {
 
 ## Miscellaneous
 
+### fastOptJS/fullOptJS invalidates when linker config changes
+
+Previously, changing the linker config would not automatically trigger re-linking.
+A manual `clean` (or removing the `.js` file) was required.
+The sbt plugin now automatically detects changes to the linker config and invalidates the generated file if necessary.
+
 ### Upgrade to GCC v20200315
 
 The Google Closure Compiler used internally by Scala.js for `fullOptJS` has been upgraded to v20200315.
