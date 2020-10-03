@@ -245,7 +245,7 @@ As a stop-gap measure, we point to the source code.
 {% endcomment %}
 
 The global variable `global` can of course be read with `js.Dynamic.global.global` (the double `global` is intended).
-The global `this` can be read with [`js.special.globalThis`](https://github.com/scala-js/scala-js/blob/v1.0.0-M1/library/src/main/scala/scala/scalajs/js/special/package.scala#L40-L70).
+The global `this` can be read with [`js.special.fileLevelThis`](https://github.com/scala-js/scala-js/blob/v1.0.0/library/src/main/scala/scala/scalajs/js/special/package.scala#L138-L170).
 Together, these can be used to correctly detect the global scope in most environments:
 
 {% highlight scala %}
@@ -256,7 +256,7 @@ val globalObject: js.Dynamic = {
     g.global
   } else {
     // In all other well-known environment, we can use the global `this`
-    js.special.globalThis.asInstanceOf[js.Dynamic]
+    js.special.fileLevelThis.asInstanceOf[js.Dynamic]
   }
 }
 {% endhighlight %}
