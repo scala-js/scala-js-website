@@ -113,9 +113,9 @@
       desc: 'Write Scala.js React apps just like you would in ES6'
       dep: '"me.shadaj" %%% "slinky-core" % "0.5.1", "me.shadaj" %%% "slinky-web" % "0.5.1"'
     - name: Laminar
-      url: https://github.com/raquo/Laminar
+      url: https://laminar.dev
       desc: 'Simple, expressive, and safe UI library for Scala.js'
-      dep: '"com.raquo" %%% "laminar" % "0.7"'
+      dep: '"com.raquo" %%% "laminar" % "0.11.0"'
 - topic: Serialization/pickling libraries
   libraries:
     - name: uPickle
