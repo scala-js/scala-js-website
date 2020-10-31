@@ -104,6 +104,10 @@
       url: https://github.com/zoepepper/scalajs-jsjoda
       desc: 'Static types for [js-joda](http://js-joda.github.io/js-joda/)'
       dep: '"com.zoepepper" %%% "scalajs-jsjoda" % "1.1.2"'
+    - name: plotly-scala
+      url: https://github.com/alexarchambault/plotly-scala
+      desc: Scala bindings for plotly.js, including scala-js support
+      dep: '"org.plotly-scala" %%% "plotly-render" % "0.8.0"'
     - name: scala-js-plotlyjs
       url: https://github.com/openmole/scala-js-plotlyjs
       desc: Scala-js facade for plotly-js
