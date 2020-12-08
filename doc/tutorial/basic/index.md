@@ -74,7 +74,7 @@ As you expect, this will simply print "HelloWorld" when run. To run this, simply
     $ sbt
     sbt:Scala.js Tutorial> run
     [info] Compiling 1 Scala source to (...)/scalajs-tutorial/target/scala-2.13/classes ...
-    [info] Fast optimizing (...)/scalajs-tutorial/target/scala-2.13/scala-js-tutorial-fastopt.js
+    [info] Fast optimizing (...)/scalajs-tutorial/target/scala-2.13/scala-js-tutorial-fastopt
     [info] Running tutorial.webapp.TutorialApp. Hit any key to interrupt.
     Hello world!
     [success] (...)
@@ -95,13 +95,13 @@ Now that we have a simple JavaScript application, we would like to use it in an 
 
 ### Generate JavaScript
 
-To generate a single JavaScript file using sbt, just use the `fastOptJS` task:
+To generate JavaScript using sbt, use the `fastLinkJS` task:
 
-    > fastOptJS
-    [info] Fast optimizing (...)/scalajs-tutorial/target/scala-2.13/scala-js-tutorial-fastopt.js
+    > fastLinkJS
+    [info] Fast optimizing (...)/scalajs-tutorial/target/scala-2.13/scala-js-tutorial-fastopt
     [success] (...)
 
-This will perform some fast optimizations and generate the `target/scala-2.13/scala-js-tutorial-fastopt.js` file containing the JavaScript code.
+This will perform some fast optimizations and generate the `target/scala-2.13/scala-js-tutorial-fastopt/main.js` file containing the JavaScript code.
 
 (It is possible that the `[info]` does not appear, if you have just run the program and not made any change to it.)
 
@@ -118,7 +118,7 @@ To load and launch the created JavaScript, you will need an HTML file. Create th
   </head>
   <body>
     <!-- Include Scala.js compiled code -->
-    <script type="text/javascript" src="./target/scala-2.13/scala-js-tutorial-fastopt.js"></script>
+    <script type="text/javascript" src="./target/scala-2.13/scala-js-tutorial-fastopt/main.js"></script>
   </body>
 </html>
 {% endhighlight %}
@@ -192,20 +192,20 @@ def main(args: Array[String]): Unit = {
 
 To rebuild the JavaScript, simply invoke `fastOptJS` again:
 
-    sbt:Scala.js Tutorial> fastOptJS
+    sbt:Scala.js Tutorial> fastLinkJS
     [info] Compiling 1 Scala source to (...)/scalajs-tutorial/target/scala-2.13/classes ...
-    [info] Fast optimizing (...)/scalajs-tutorial/target/scala-2.13/scala-js-tutorial-fastopt.js
+    [info] Fast optimizing (...)/scalajs-tutorial/target/scala-2.13/scala-js-tutorial-fastopt
     [success] (...)
 
 As you can see from the log, sbt automatically detects that the sources must be recompiled before fast optimizing.
 
 You can now reload the HTML in your browser and you should see a nice "Hello World" message.
 
-Re-typing `fastOptJS` each time you change your source file is cumbersome. Luckily sbt is able to watch your files and recompile as needed:
+Re-typing `fastLinkJS` each time you change your source file is cumbersome. Luckily sbt is able to watch your files and recompile as needed:
 
-    sbt:Scala.js Tutorial> ~fastOptJS
+    sbt:Scala.js Tutorial> ~fastLinkJS
     [success] (...)
-    [info] 1. Monitoring source files for scalajs-tutorial/fastOptJS...
+    [info] 1. Monitoring source files for scalajs-tutorial/fastLinkJS...
     [info]    Press <enter> to interrupt or '?' for more options.
 
 From this point in the tutorial we assume you have an sbt with this command running, so we don't need to bother with rebuilding each time.
@@ -307,7 +307,7 @@ issue. Remember the task `run`? If you try to invoke it now, you will see someth
 
     sbt:Scala.js Tutorial> run
     [info] Running tutorial.webapp.TutorialApp. Hit any key to interrupt.
-    (...)/scalajs-tutorial/target/scala-2.13/scala-js-tutorial-fastopt.js:819
+    (...)/scalajs-tutorial/target/scala-2.13/scala-js-tutorial-fastopt/main.js:819
         $thiz.Lorg_scalajs_dom_package$__f_window = window;
                                                     ^
 
@@ -398,7 +398,7 @@ To run this test, simply invoke the `test` task:
 
     > test
     [info] Compiling 1 Scala source to (...)/scalajs-tutorial/target/scala-2.13/test-classes...
-    [info] Fast optimizing (...)/scalajs-tutorial/target/scala-2.13/scala-js-tutorial-test-fastopt.js
+    [info] Fast optimizing (...)/scalajs-tutorial/target/scala-2.13/scala-js-tutorial-test-fastopt
     -------------------------------- Running Tests --------------------------------
     + tutorial.webapp.TutorialTest.HelloWorld 2ms
     Tests: 1, Passed: 1, Failed: 0
@@ -435,7 +435,7 @@ You can now call the `test` task again:
 
     > test
     [info] Compiling 1 Scala source to (...)/scalajs-tutorial/target/scala-2.13/test-classes...
-    [info] Fast optimizing (...)/scalajs-tutorial/target/scala-2.13/scala-js-tutorial-test-fastopt.js
+    [info] Fast optimizing (...)/scalajs-tutorial/target/scala-2.13/scala-js-tutorial-test-fastopt
     -------------------------------- Running Tests --------------------------------
     + tutorial.webapp.TutorialTest.HelloWorld 3ms
     + tutorial.webapp.TutorialTest.ButtonClick 6ms
@@ -452,15 +452,15 @@ Here we show a couple of things you might want to do when you promote your appli
 
 Size is critical for JavaScript code on the web. To compress the compiled code even further, the Scala.js sbt plugin
 uses the advanced optimizations of the [Google Closure Compiler](http://developers.google.com/closure/compiler/). To run
-full optimizations, simply use the `fullOptJS` task:
+full optimizations, simply use the `fullLinkJS` task:
 
-    > fullOptJS
-    [info] Full optimizing (...)/scalajs-tutorial/target/scala-2.13/scala-js-tutorial-opt.js
+    > fullLinkJS
+    [info] Full optimizing (...)/scalajs-tutorial/target/scala-2.13/scala-js-tutorial-opt
     [info] Closure: 0 error(s), 0 warning(s)
     [success] (...)
 
-Note that this can take a while on a larger project (tens of seconds), which is why we typically don't use `fullOptJS`
-during development, but `fastOptJS` instead. If you want to `run` and `test` the full-optimized version from sbt,
+Note that this can take a while on a larger project (tens of seconds), which is why we typically don't use `fullLinkJS`
+during development, but `fastLinkJS` instead. If you want to `run` and `test` the full-optimized version from sbt,
 you need to change the *stage* using the following sbt setting:
 
     > set scalaJSStage in Global := FullOptStage
@@ -478,7 +478,7 @@ We also need to create our final production HTML file `scalajs-tutorial.html` wh
   </head>
   <body>
     <!-- Include Scala.js compiled code -->
-    <script type="text/javascript" src="./target/scala-2.13/scala-js-tutorial-opt.js"></script>
+    <script type="text/javascript" src="./target/scala-2.13/scala-js-tutorial-opt/main.js"></script>
   </body>
 </html>
 {% endhighlight %}
