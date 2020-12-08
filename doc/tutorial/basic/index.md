@@ -3,8 +3,6 @@ layout: doc
 title: Basic tutorial
 ---
 
-**This page applies only to Scala.js 1.x. If you need 0.6.x, [go the older tutorial for Scala.js 0.6.x](./0.6.x.html).**
-
 This is a step-by-step tutorial where we start with the setup of a Scala.js sbt project and end up having some user interaction and unit testing. The code created in this tutorial is available with one commit per step in the [scalajs-tutorial](https://github.com/scala-js/scalajs-tutorial) repository on GitHub.
 
 ## <a name="prerequisites"></a> Step 0: Prerequisites
