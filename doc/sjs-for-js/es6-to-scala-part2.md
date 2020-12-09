@@ -250,7 +250,7 @@ def sumProduct(s: Seq[Int]): (Int, Int) = {
 ## Map
 
 A {% scaladoc collection.Map %} consists of pairs of keys and values. Both keys and values can be of any valid Scala type, unlike in JavaScript
-where an `Object` may only contain `string` keys (the new ES6 {% jsdoc Map %} allows using other types as keys, but supports only
+where an `Object` may only contain `string` or `symbol` keys (the new ES6 {% jsdoc Map %} allows using other types as keys, but supports only
 referential equality for comparing keys).
 
 JavaScript `Object` doesn't really have methods for using it as a map, although you can iterate over the keys
