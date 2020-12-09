@@ -17,9 +17,6 @@ scalaJSLinkerConfig ~= { _.withModuleKind(ModuleKind.ESModule) }
 scalaJSLinkerConfig ~= { _.withModuleKind(ModuleKind.CommonJSModule) }
 {% endhighlight %}
 
-**Important:** Using this setting is incompatible with the (deprecated) setting `persistLauncher := true`.
-It is also basically incompatible with `jsDependencies`; use [scalajs-bundler](https://scalacenter.github.io/scalajs-bundler/) instead.
-
 When emitting a module, `@JSExportTopLevel`s are really *exported* from the Scala.js module.
 Moreover, you can use top-level `@JSImport` to [import native JavaScript stuff](../interoperability/facade-types.html#import) from other JavaScript module.
 
@@ -33,7 +30,6 @@ import scala.scalajs.js.annotation._
 @JSImport("bar.js", "Foo")
 class JSFoo(val x: Int) extends js.Object
 
-// @ScalaJSDefined // required for Scala.js 0.6.x, unless using -P:scalajs:sjsDefinedByDefault
 @JSExportTopLevel("Babar")
 class Foobaz(x: String) extends js.Object {
   val inner = new JSFoo(x.length)

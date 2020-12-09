@@ -112,10 +112,6 @@ conditions, checking them is typically too expensive.
 Therefore, all of these are considered
 [undefined behavior](http://en.wikipedia.org/wiki/Undefined_behavior).
 
-**Scala.js 0.6.x only:**
-In Scala.js 0.6.x, `ArithmeticException`s, such as integer division by 0, are also considered undefined behavior.
-This is not the case in Scala.js 1.x anymore, where they are reliably thrown.
-
 Some of these, however, can be configured to be compliant with the JVM
 specification using sbt settings.
 Currently, only `ClassCastException`s (thrown by invalid `asInstanceOf` calls) and `ArrayIndexOutOfBoundsException`s (thrown by array indexing)
@@ -147,13 +143,8 @@ JVM semantics, you can do so with an sbt setting.
 For example, this setting enables compliant `asInstanceOf`s:
 
 {% highlight scala %}
-// Scala.js 1.x
 scalaJSLinkerConfig ~= { _.withSemantics(_.withAsInstanceOfs(
   org.scalajs.linker.interface.CheckedBehavior.Compliant)) }
-
-// Scala.js 0.6.x
-scalaJSLinkerConfig ~= { _.withSemantics(_.withAsInstanceOfs(
-  org.scalajs.core.tools.sem.CheckedBehavior.Compliant)) }
 {% endhighlight %}
 
 Note that this will have (potentially major) performance impacts.

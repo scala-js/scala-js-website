@@ -25,12 +25,7 @@ There are also non-native JS traits (aka Scala.js-defined JS traits), documented
 The latter have more restrictions, but can be *implemented* from Scala.js code.
 Native JS traits as described here should only be used for interfaces that are exclusively implemented by the JavaScript library--not for interfaces/contracts meant to be implemented by the user of said library.
 
-**Scala.js 0.6.x:** In Scala.js 0.6.x, unless using the `-P:scalajs:sjsDefinedByDefault` compiler option, the annotation `@js.native` is assumed by default, with a deprecation warning.
-You might still find old code that does not yet use it to annotate native JS types.
-
 In native JS types, all concrete definitions must have `= js.native` as body.
-Any other body will be handled as if it were `= js.native`, and a warning will be emitted.
-(In Scala.js 1.x, this is an error.)
 
 Here is an example giving types to a small portion of the API of `Window`
 objects in browsers.
@@ -179,10 +174,6 @@ class RegExp(pattern: String) extends js.Object {
 }
 {% endhighlight %}
 
-**Pre 0.6.15 note**: Before Scala.js 0.6.15, the `@JSGlobal` annotation did not
-exist, so you will find old code that does not yet use it to annotate native JS
-classes.
-
 The call `new RegExp("[ab]*")` will map to the obvious in JavaScript, i.e.,
 `new RegExp("[ab]*")`, meaning that the identifier `RegExp` will be looked up
 in the global scope.
@@ -288,10 +279,7 @@ object DOMGlobalScope extends js.Object {
 }
 {% endhighlight %}
 
-Prior to 0.6.13, `extends js.GlobalScope` was used instead of `@JSGlobalScope`.
-`js.GlobalScope` is now deprecated.
-
-**Scala.js 1.x:** Also read [access to the JavaScript global scope](./global-scope.html).
+Also read [access to the JavaScript global scope](./global-scope.html).
 
 ## <a name="import"></a> Imports from other JavaScript modules
 
@@ -577,9 +565,7 @@ reflective call can therefore not be generated.
 
 Sometimes, it is more convenient to manipulate JavaScript values in a dynamically typed way.
 Although it is not recommended to do so for APIs that are used repetitively, Scala.js lets you call JavaScript in a dynamically typed fashion if you want to.
-The basic entry point is to grab a dynamically typed reference to the global scope, with `js.Dynamic.global`, which is of type `js.Dynamic`.
-
-**Scala.js 1.x:** In Scala.js 1.x, `js.Dynamic.global` is a [global scope object](./global-scope.html) instead of an actual value of type `js.Dynamic`.
+The basic entry point is to grab a dynamically typed reference to the [global scope](./global-scope.html), with `js.Dynamic.global`, which is of type `js.Dynamic`.
 
 You can read and write any field of a `js.Dynamic`, as well as call any method
 with any number of arguments. All input types are assumed to be of type
