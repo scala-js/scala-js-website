@@ -18,3 +18,5 @@ Please upgrade to Scala.js 1.x as soon as possible.
 See [the release notes of Scala.js 1.0.0]({{ BASE_PATH }}/news/2020/02/25/announcing-scalajs-1.0.0/) for important migration information.
 
 There are no plans to offer paid support for Scala.js 0.6.x.
+
+The last version of this website with 0.6.x documentation is at [9799280](https://github.com/scala-js/scala-js-website/tree/9799280483e3a21bb519e624b7fdb16e6a6af9c9).
