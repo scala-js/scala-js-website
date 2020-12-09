@@ -37,11 +37,6 @@ Just like in a JVM project, sbt will automatically detect the object with a `mai
 Note that this will require that there is a *unique* such object or that the one to use be explicitly set with `mainClass in Compile := Some(<name>)`.
 If you explicitly set `mainClass`, note that it needs to be set on a per-configuration basis (i.e. the part `in Compile` is essential, otherwise the setting will be ignored). For further information see the Stack Overflow entry ['How to set mainClass in ScalaJS build.sbt?'](http://stackoverflow.com/questions/34965072/how-to-set-mainclass-in-scalajs-build-sbt) (specific to Scala.js) and the Stack Overflow entry ['How to set main class in build?'](http://stackoverflow.com/questions/6467423/how-to-set-main-class-in-build) (not specific to Scala.js).
 
-**Note for Scala.js 0.6.17 and earlier:** in Scala.js 0.6.17 and earlier, the main object was required to extend the special trait [`js.JSApp`]({{ site.production_url }}/api/scalajs-library/0.6.20/#scala.scalajs.js.JSApp).
-Since 0.6.18, any object with a standard `main` method will be recognized.
-`js.JSApp` is now deprecated.
-See [the Scaladoc of `js.JSApp`]({{ site.production_url }}/api/scalajs-library/0.6.20/#scala.scalajs.js.JSApp) for migration tips.
-
 ## Produce JavaScript code
 
 To produce JavaScript code from your Scala code, you need to call the linker:
@@ -66,18 +61,8 @@ You can run a Scala.js application (that has `scalaJSUseMainModuleInitializer` s
 This will run the `main.js` file right inside of your sbt console.
 By default, the file is run with [Node.js](https://nodejs.org/), which you need to install separately.
 
-**Scala.js 0.6.x only:** If your application or one of its libraries requires a DOM (which can be specified with `jsDependencies += RuntimeDOM`), you will also need to install [`jsdom`](https://github.com/jsdom/jsdom) with `npm install jsdom`.
-`jsDependencies += RuntimeDOM` is now deprecated, and should be replaced by `jsEnv := new org.scalajs.jsenv.jsdomnodejs.JSDOMNodeJSEnv()`.
-
 There are alternative JavaScript interpreters that are available.
 See [JavaScript environments](./js-environments.html) for more details.
-
-### Deprecated: Run without `scalaJSUseMainModuleInitializer`
-
-**Scala.js 0.6.x only**
-
-It is still possible to `run` a Scala.js application that does not have `scalaJSUseMainModuleInitializer := true`.
-However, this is not recommended anymore.
 
 ## Disabling the optimizations
 
@@ -106,18 +91,3 @@ You can run your code and tests in fullOpt stage with the following command:
 
 **Note for Scala.js 1.2.x and earlier:** in Scala.js 1.2.x and earlier, we used `fullOptJS` instead of `fullLinkJS`, which always produces a single file with the suffix `-opt.js`.
 `scalaJSStage` works the same way in Scala.js 1.2.x and in later versions.
-
-## Deprecated: Writing Launcher Code
-
-**Scala.js 0.6.x only**
-
-For applications that do not use `scalaJSUseMainModuleInitializer := true`, it is possible to generate a small .js file that calls the `main` method, known as a "launcher" file.
-This is done with the following sbt setting:
-
-{% highlight scala %}
-persistLauncher := true
-{% endhighlight %}
-
-The resulting file in the target folder will have the suffix `-launcher.js`.
-
-This feature is deprecated: applications should migrate to using `scalaJSUseMainModuleInitializer`.

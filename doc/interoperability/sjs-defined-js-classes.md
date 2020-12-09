@@ -6,20 +6,6 @@ title: Non-native JS types (aka Scala.js-defined JS types)
 A non-native JS type, aka Scala.js-defined JS type, is a JavaScript type implemented in Scala.js code.
 This is in contrast to native JS types, described in [the facade types reference](./facade-types.html), which represent APIs implemented in JavaScript code.
 
-## About `@ScalaJSDefined`
-
-In Scala.js 0.6.x, the `@ScalaJSDefined` is necessary to declare a non-native JS type, also called a Scala.js-defined JS type.
-Starting from Scala.js 1.x however, the annotation is not necessary anymore.
-Since Scala.js 0.6.17, you can opt-in for the new semantics of 1.x where `@ScalaJSDefined` is not necessary, by giving the option `-P:scalajs:sjsDefinedByDefault` to scalac.
-In an sbt build, this is done with
-
-{% highlight scala %}
-scalacOptions += "-P:scalajs:sjsDefinedByDefault"
-{% endhighlight %}
-
-The present documentation assumes that you are using this option (or Scala.js 1.x).
-Code snippets mention the necessary `@ScalaJSDefined` in comments as a reference for older versions.
-
 ## Defining a non-native JS type
 
 Any class, trait or object that inherits from `js.Any` is a JS type.
@@ -36,7 +22,7 @@ class Foo extends js.Object {
 }
 {% endhighlight %}
 
-Such classes are called *non-native JS classes*, and are also known as Scala.js-defined JS classes (especially in 0.6.x).
+Such classes are called *non-native JS classes*, and were previously known as Scala.js-defined JS classes.
 All their members are automatically visible from JavaScript code.
 The class itself (its constructor function) is not visible by default, but can be exported with `@JSExportTopLevel`.
 Moreover, they can extend JavaScript classes (native or not), and, if exported, be extended by JavaScript classes.
@@ -323,8 +309,6 @@ val pos = new Position {
   val y = 10
 }
 {% endhighlight %}
-
-Note that anonymous classes extending `js.Any` are always non-native, even in 0.6.x without `-P:scalajs:sjsDefinedByDefault` nor `@ScalaJSDefined`.
 
 #### Use case: configuration objects
 

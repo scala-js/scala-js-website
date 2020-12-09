@@ -38,9 +38,6 @@ addSbtPlugin("org.portable-scala" % "sbt-scalajs-crossproject" % "1.0.0")
 You can then use the `crossProject` builder in your `build.sbt` file:
 
 {% highlight scala %}
-// If using Scala.js 0.6.x, also add the following import:
-//import sbtcrossproject.CrossPlugin.autoImport.{crossProject, CrossType}
-
 ThisBuild / scalaVersion := "2.13.1"
 
 lazy val root = project.in(file(".")).

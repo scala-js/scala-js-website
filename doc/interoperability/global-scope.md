@@ -3,8 +3,6 @@ layout: doc
 title: Access to the JavaScript global scope in Scala.js
 ---
 
-**This page applies to Scala.js 1.x only.**
-
 Unlike Scala, JavaScript has a *global scope*, where global variables are defined.
 For example, one can define a variable `foo` at the top-level of a script:
 
@@ -212,7 +210,7 @@ if (!js.isUndefined(js.Dynamic.global.Promise)) {
 }
 {% endhighlight %}
 
-In Scala.js 1.x, accessing `js.Dynamic.global.Promise` will throw a `ReferenceError` if `Promise` is not defined, so this does not work anymore.
+In modern Scala.js, accessing `js.Dynamic.global.Promise` will throw a `ReferenceError` if `Promise` is not defined, so this does not work anymore.
 Instead, you must use `js.typeOf`:
 
 {% highlight scala %}
