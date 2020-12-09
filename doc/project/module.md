@@ -82,26 +82,35 @@ exports.Babar = Foobaz;
 
 ## ES modules and Node.js
 
-Support for ECMAScript modules is [still experimental in Node.js](https://nodejs.org/api/esm.html).
-To run and test a Scala.js application or library using ES modules with Node.js, you will need the following additional settings:
+Node.js needs explicit signaling that a module is an ECMAScript module (the default is CommonJS).
+
+There are two ways to achieve this:
+* Use the file extension `.mjs`.
+* Configure it in `package.json`.
+
+For details, see the [Node.js packages documentation](https://nodejs.org/api/packages.html#packages_determining_module_system).
+
+To set the extension used by Scala.js to `.mjs` use the following setting:
 
 {% highlight scala %}
-jsEnv := {
-  new org.scalajs.jsenv.NodeJSEnv(
-      org.scalajs.jsenv.NODEJSEnv.Config()
-        .withArguments(List("--experimental-modules"))
-  )
-}
+import org.scalajs.linker.interface.OutputPatterns
 
+scalaJSLinkerConfig ~= {
+  // Enable ECMAScript module output.
+  _.withModuleKind(ModuleKind.ESModule)
+  // Use .mjs extension.
+   .withOutputPatterns(OutputPatterns.fromJSFile(".mjs"))
+}
+{% endhighlight %}
+
+**Note for Scala.js 1.2.x and earlier:**
+
+`OutputPatterns` was introduced in Scala.js 1.3.0. In earlier versions, the following settings were necessary:
+
+{% highlight scala %}
 artifactPath in (proj, Compile, fastOptJS) :=
   (crossTarget in (proj, Compile)).value / "myproject.mjs"
 
 artifactPath in (proj, Test, fastOptJS) :=
   (crossTarget in (proj, Test)).value / "myproject-test.mjs"
 {% endhighlight %}
-
-The first setting is required to enable the support of ES modules in Node.js.
-The other two make sure that the JavaScript produced have the extension `.mjs`, which is required for Node.js to interpret them as ES modules.
-
-The support for running and testing ES modules with Node.js is *experimental*, as the support of ES modules by Node.js is itself experimental.
-Things could change in future versions of Node.js and/or Scala.js.

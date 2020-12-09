@@ -75,9 +75,9 @@ A list of testing frameworks compatible with Scala.js can be found [here](../../
 
 Note: Don't forget to mark a test framework SBT dependency as `test,it` if you have both unit and integration tests.
 
-## Testing over `fullOptJS`-generated files
+## Testing over `fullLinkJS`-generated files
 
-By default, tests runs over `fastOptJS`-built JS files since their build time are shorter than `fullOptJS`.
+By default, tests run over `fastLinkJS`-built (resp. `fastOptJS` up to Scala.js 1.2.x) JS files since their build time is shorter than `fullLinkJS` (resp. `fullLinkJS`).
 
-If you want to run tests over `fullOptJS`-build JS files for some reason, run `set scalaJSStage in Global := FullOptStage` before test.
+If you want to run tests over `fullLinkJS`-build JS files for some reason, run `set scalaJSStage in Global := FullOptStage` before test.
 This increases test time significantly, and omit checks for undefined behavior, so not recommended in default build settings. Instead, consider run test both in `FastOptStage` and `FullOptStage` in CI.

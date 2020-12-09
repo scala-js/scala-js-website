@@ -3,17 +3,17 @@ layout: doc
 title: Linking Errors
 ---
 
-When linking a Scala.js application, either directly through `fastOptJS`/`fullOptJS` or indirectly through `run` or `test`, Scala.js can sometimes report *linking errors*.
+When linking a Scala.js application, either directly through `fastLinkJS`/`fullLinkJS` (`fastOptJS`/`fullOptJS` up to Scala.js 1.2.x) or indirectly through `run` or `test`, Scala.js can sometimes report *linking errors*.
 They look like the following:
 
 ```
-[info] Fast optimizing .../helloworld/target/scala-2.12/helloworld-fastopt.js
+[info] Fast optimizing .../helloworld/target/scala-2.12/helloworld-fastopt
 [error] Referring to non-existent method scala.concurrent.impl.Promise$CompletionLatch.releaseShared(scala.Int)scala.Boolean
 [error]   called from scala.concurrent.impl.Promise$CompletionLatch.apply(scala.util.Try)scala.Unit
 [error]   called from scala.concurrent.impl.Promise$CompletionLatch.apply(java.lang.Object)java.lang.Object
 [error] ...
 [error] There were linking errors
-[error] (helloworld/compile:fastOptJS) There were linking errors
+[error] (helloworld/compile:fastLinkJS) There were linking errors
 [error] Total time: 2 s, completed Sep 13, 2019 1:30:39 PM
 ```
 
@@ -97,7 +97,7 @@ libraryDependencies += "io.suzaku" %%% "boopickle" % "1.3.1"
 ```
 
 ```
-[info] Fast optimizing .../helloworld/target/scala-2.12/helloworld-fastopt.js
+[info] Fast optimizing .../helloworld/target/scala-2.12/helloworld-fastopt
 [success] Total time: 3 s, completed Sep 13, 2019 1:44:25 PM
 ```
 

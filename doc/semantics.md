@@ -127,11 +127,11 @@ Every configurable undefined behavior has 3 possible modes:
 * `Unchecked`: completely unchecked and undefined
 * `Fatal`: checked, but throws `UndefinedBehaviorError`s instead of the specified exception
 
-By default, undefined behaviors are in `Fatal` mode for `fastOptJS` and in
-`Unchecked` mode for `fullOptJS`.
+By default, undefined behaviors are in `Fatal` mode for `fastLinkJS` and in
+`Unchecked` mode for `fullLinkJS` (`fastOptJS` / `fullOptJS` up to Scala.js 1.2.x).
 This is so that bugs can be detected more easily during development, with
 predictable exceptions and stack traces.
-In production code (`fullOptJS`), the checks are removed for maximum
+In production code (`fullLinkJS`), the checks are removed for maximum
 efficiency.
 
 `UndefinedBehaviorError`s are *fatal* in the sense that they are not matched by
@@ -139,8 +139,8 @@ efficiency.
 This makes sure that they always crash your program as early as possible, so
 that you can detect and fix the bug.
 It is *never* OK to catch an `UndefinedBehaviorError` (other than in a testing
-framework), since that means your program will behave differently in `fullOpt`
-stage than in `fastOpt`.
+framework), since that means your program will behave differently in `fullLinkJS`
+stage than in `fastLinkJS`.
 
 If you need a particular kind of exception to be thrown in compliance with the
 JVM semantics, you can do so with an sbt setting.
