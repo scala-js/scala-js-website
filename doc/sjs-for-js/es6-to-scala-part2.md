@@ -194,7 +194,7 @@ shown with examples in the code block below.
 {% highlight scala %}
 val seq = Seq(1, 2, 3, 4, 5)
 seq.isEmpty == false
-seq.contains(6) == false // JS Array.indexOf(6) == -1
+seq.contains(6) == false // JS Array.includes()
 seq.forall(x => x > 0) == true // JS Array.every()
 seq.exists(x => x % 3 == 0) == true // JS Array.some()
 seq.find(x => x > 3) == Some(4) // JS Array.find()
@@ -202,7 +202,7 @@ seq.head == 1
 seq.tail == Seq(2, 3, 4, 5)
 seq.last == 5
 seq.init == Seq(1, 2, 3, 4)
-seq.drop(2) == Seq(3, 4, 5)
+seq.drop(2) == Seq(3, 4, 5) // JS Array.slice()
 seq.dropRight(2) == Seq(1, 2, 3)
 seq.count(x => x < 3) == 2
 seq.groupBy(x => x % 2) == Map(1 -> Seq(1, 3, 5), 0 -> Seq(2, 4))
