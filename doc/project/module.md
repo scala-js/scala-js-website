@@ -229,7 +229,7 @@ scalaJSLinkerConfig ~= {
   // Enable ECMAScript module output.
   _.withModuleKind(ModuleKind.ESModule)
   // Use .mjs extension.
-   .withOutputPatterns(OutputPatterns.fromJSFile(".mjs"))
+   .withOutputPatterns(OutputPatterns.fromJSFile("%s.mjs"))
 }
 {% endhighlight %}
 
