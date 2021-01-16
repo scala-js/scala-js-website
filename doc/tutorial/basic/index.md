@@ -188,7 +188,7 @@ def main(args: Array[String]): Unit = {
 
 ### Rebuild the JavaScript
 
-To rebuild the JavaScript, simply invoke `fastOptJS` again:
+To rebuild the JavaScript, simply invoke `fastLinkJS` again:
 
     sbt:Scala.js Tutorial> fastLinkJS
     [info] Compiling 1 Scala source to (...)/scalajs-tutorial/target/scala-2.13/classes ...
