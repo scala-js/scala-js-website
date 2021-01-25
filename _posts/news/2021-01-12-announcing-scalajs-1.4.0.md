@@ -105,6 +105,8 @@ class MyApp {
 }
 {% endhighlight %}
 
+Addendum: This example is affected by [#4386](https://github.com/scala-js/scala-js/issues/4386), see the issue for a workaround.
+
 The `js.dynamicImport` method has the following signature:
 
 {% highlight scala %}
