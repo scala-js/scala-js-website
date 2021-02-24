@@ -20,7 +20,7 @@ title: Planning
 - front page icons for Correctness, Speed and Interoperability
 - Documentation landing page, more content
 
-## Doc content/struture plan
+## Doc content/structure plan
 
 - Quick start
 

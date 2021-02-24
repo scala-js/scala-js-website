@@ -88,7 +88,7 @@ Since they are SAM types, they can be created with anonymous functions, for exam
 val jsFun: js.Function1[Int, String] = arg => arg.toString()
 {% endhighlight %}
 
-The built-in JS function types can accomodate any function with a fixed number of parameters, up to 22.
+The built-in JS function types can accommodate any function with a fixed number of parameters, up to 22.
 However, they are not enough for more specialized use cases:
 
 * Function values with variadic arguments (varargs)

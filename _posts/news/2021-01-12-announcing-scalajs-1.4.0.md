@@ -47,7 +47,7 @@ As a reminder, libraries compiled with 0.6.x cannot be used with Scala.js 1.x; t
 ### `java.lang.Class.isAssignableFrom`
 
 [`java.lang.Class.isAssignableFrom` had some serious issues](https://github.com/scala-js/scala-js/issues/4328), which we fixed in Scala.js 1.4.0.
-It now completly follows its specification on the JVM.
+It now completely follows its specification on the JVM.
 However, it is possible that some code was relying on the broken behavior, which was, in some cases, closer to how `isInstance` and `isInstanceOf` works on Scala.js.
 
 In particular, the following idiom, which we have seen before, is now broken more often than before:
