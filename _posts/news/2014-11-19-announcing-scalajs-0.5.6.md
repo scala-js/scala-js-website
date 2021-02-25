@@ -28,7 +28,7 @@ For changes introduced in 0.5.0, how to upgrade, getting started etc. have a loo
 
 In Scala.js 0.6.x, putting `@JSExport` on a class or an object will export it to its fully qualified name, rather than its simple name. To ease the transition to 0.6.x, Scala.js 0.5.6 will warn if an `@JSExport` annotation without explicit name is put on a top level object or class. Otherwise, such code would silently break when migrating to 0.6.x.
 
-To silence the warning, simply specify the desired name explicilty.
+To silence the warning, simply specify the desired name explicitly.
 
 #### @JSExportDescendentClasses
 
