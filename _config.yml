@@ -10,8 +10,15 @@ analytics: #Google analytics code in the format XX-nnnnnnnn-n
 # baseurl: ""
 baseurl: ""
 url: "https://www.scala-js.org"
-exclude: ["*.iml"]
 production_url: "https://www.scala-js.org"
+
+exclude:
+  - "*.iml"
+  - Gemfile
+  - Gemfile.lock
+  - README.md
+  - Rakefile
+  - vendor
 
 assets:
   prefix: "/assets"
