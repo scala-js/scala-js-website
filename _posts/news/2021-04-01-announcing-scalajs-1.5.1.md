@@ -71,7 +71,7 @@ Methods with fixed or improved behavior:
 
 ## Bug fixes
 
-Among others, the following bugs have been fixed in 1.5.0:
+Among others, the following bugs have been fixed in 1.5.1:
 
 * [#4434](https://github.com/scala-js/scala-js/issues/4434) `java.lang.Class.getSimpleName()` returns bad results for local classes
 * [#4452](https://github.com/scala-js/scala-js/issues/4452) Overloading in JS classes incorrectly forwards vararg parameters
