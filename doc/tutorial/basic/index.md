@@ -210,7 +210,7 @@ From this point in the tutorial we assume you have an sbt with this command runn
 
 ## <a name="js-export"></a> Step 4: Reacting on User Input
 
-This step shows how you can add a button and react to events on it by still just using the DOM (we will use jQuery in the next step). We want to add a button that adds another `<p>` tag to the body when it is clicked.
+This step shows how you can add a button and react to events on it by still just using the DOM. We want to add a button that adds another `<p>` tag to the body when it is clicked.
 
 We start by adding a method to `TutorialApp` which will be called when the button is clicked:
 
