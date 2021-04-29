@@ -334,7 +334,8 @@ and the following to your `build.sbt`:
 jsEnv := new org.scalajs.jsenv.jsdomnodejs.JSDOMNodeJSEnv()
 {% endhighlight %}
 
-This will use the [`jsdom`](https://github.com/jsdom/jsdom) library to simulate a DOM in Node.js. You need to install it separately.
+This will use the [`jsdom`](https://github.com/jsdom/jsdom) library to simulate a DOM in Node.js.
+You need to install it separately.
 Best is to install this locally for this project. Therefore, initialise a `package.json` using the default values:
 
     $ npm init -y
