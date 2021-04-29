@@ -335,7 +335,13 @@ jsEnv := new org.scalajs.jsenv.jsdomnodejs.JSDOMNodeJSEnv()
 {% endhighlight %}
 
 This will use the [`jsdom`](https://github.com/jsdom/jsdom) library to simulate a DOM in Node.js.
-Note that you need to install it separately using
+You need to install it separately.
+It is usually best to install it locally for this project.
+You can initialize a private `package.json` as follows:
+
+    $ npm init private
+
+Then you can install jsdom:
 
     $ npm install jsdom
 
