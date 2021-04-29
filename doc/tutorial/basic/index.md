@@ -339,7 +339,7 @@ You need to install it separately.
 It is usually best to install it locally for this project.
 You can initialize a private `package.json` as follows:
 
-    $ npm init -y
+    $ npm init private
 
 Then you can install jsdom:
 
