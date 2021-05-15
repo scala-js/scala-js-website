@@ -36,7 +36,7 @@ We also setup basic project settings and enable this plugin in the sbt build fil
 enablePlugins(ScalaJSPlugin)
 
 name := "Scala.js Tutorial"
-scalaVersion := "3.0.0" // or any other Scala version >= 2.11.12
+scalaVersion := "2.13.1" // or any other Scala version >= 2.11.12
 
 // This is an application with a main method
 scalaJSUseMainModuleInitializer := true
@@ -45,7 +45,7 @@ scalaJSUseMainModuleInitializer := true
 Last, we need a `project/build.properties` to specify the sbt version (you can find the latest version [here](https://www.scala-sbt.org/download.html)):
 
 {% highlight scala %}
-sbt.version=1.5.0
+sbt.version=1.3.7
 {% endhighlight %}
 
 That is all we need to configure the build.
@@ -71,8 +71,8 @@ As you expect, this will simply print "HelloWorld" when run. To run this, simply
 
     $ sbt
     sbt:Scala.js Tutorial> run
-    [info] compiling 1 Scala source to (...)/scalajs-tutorial/target/scala-3.0.0/classes ...
-    [info] Fast optimizing (...)/scalajs-tutorial/target/scala-3.0.0/scala-js-tutorial-fastopt
+    [info] Compiling 1 Scala source to (...)/scalajs-tutorial/target/scala-2.13/classes ...
+    [info] Fast optimizing (...)/scalajs-tutorial/target/scala-2.13/scala-js-tutorial-fastopt
     [info] Running tutorial.webapp.TutorialApp. Hit any key to interrupt.
     Hello world!
     [success] (...)
@@ -95,12 +95,11 @@ Now that we have a simple JavaScript application, we would like to use it in an 
 
 To generate JavaScript using sbt, use the `fastLinkJS` task:
 
-    sbt:Scala.js Tutorial> fastLinkJS
-    [info] compiling 1 Scala source to (...)/scalajs-tutorial/target/scala-3.0.0/classes ...
-    [info] Fast optimizing (...)/scalajs-tutorial/target/scala-3.0.0/scala-js-tutorial-fastopt
+    > fastLinkJS
+    [info] Fast optimizing (...)/scalajs-tutorial/target/scala-2.13/scala-js-tutorial-fastopt
     [success] (...)
 
-This will perform some fast optimizations and generate the `target/scala-3.0.0/scala-js-tutorial-fastopt/main.js` file containing the JavaScript code.
+This will perform some fast optimizations and generate the `target/scala-2.13/scala-js-tutorial-fastopt/main.js` file containing the JavaScript code.
 
 (It is possible that the `[info]` does not appear, if you have just run the program and not made any change to it.)
 
@@ -117,12 +116,12 @@ To load and launch the created JavaScript, you will need an HTML file. Create th
   </head>
   <body>
     <!-- Include Scala.js compiled code -->
-    <script type="text/javascript" src="./target/scala-3.0.0/scala-js-tutorial-fastopt/main.js"></script>
+    <script type="text/javascript" src="./target/scala-2.13/scala-js-tutorial-fastopt/main.js"></script>
   </body>
 </html>
 {% endhighlight %}
 
-The script tag simply includes the generated code (attention, you might need to adapt the Scala version from `3.0.0` to `2.13` (or even `2.12` or `2.11`) here if you are using an older version of Scala).
+The script tag simply includes the generated code (attention, you might need to adapt the Scala version from `2.13` to `2.12` (or even `2.10` or `2.11`) here if you are using an older version of Scala).
 
 Since we have set `scalaJSUseMainModuleInitializer := true` in the build, the `TutorialApp.main(args: Array[String])` method is automatically called at the end of the `-fastopt.js` file (with an empty array as argument).
 
@@ -138,21 +137,20 @@ That's what the DOM API is for.
 To use the DOM, it is best to use the statically typed Scala.js DOM library. To add it to your sbt project, add the following line to your `build.sbt`:
 
 {% highlight scala %}
-libraryDependencies += ("org.scala-js" %%% "scalajs-dom" % "{{ site.versions.scalaJSDOM }}")
-  .cross(CrossVersion.for3Use2_13)
+libraryDependencies += "org.scala-js" %%% "scalajs-dom" % "{{ site.versions.scalaJSDOM }}"
 {% endhighlight %}
-
-Since Scala.js DOM library version `{{ site.versions.scalaJSDOM }}` is not yet compiled for `Scala 3.0` as we can see on the [Scala.js DOM library's repository](https://mvnrepository.com/artifact/org.scala-js/scalajs-dom). We need to add `.cross(CrossVersion.for3Use2_13)`, this tells the compiler to look for a library compiled with `Scala 2.13`.
 
 sbt-savvy folks will notice the `%%%` instead of the usual `%%`. It means we are using a Scala.js library and not a
 normal Scala library. Have a look at the [Dependencies](../../project/dependencies.html) guide for details. Don't forget
 to reload the build file if sbt is still running:
 
     sbt:Scala.js Tutorial> reload
-    [info] welcome to sbt 1.5.0 (...)
-    [info] loading project definition from (...)/scalajs-tutorial/project
-    [info] loading settings for project scalajs-tutorial from build.sbt ...
-    [info] set current project to Scala.js Tutorial (in build file:(...)/scalajs-tutorial/)
+    [info] Loading settings for project global-plugins from plugins.sbt ...
+    [info] Loading global plugins from (...)/.sbt/1.0/plugins
+    [info] Loading settings for project scalajs-tutorial-build from plugins.sbt ...
+    [info] Loading project definition from (...)/scalajs-tutorial/project
+    [info] Loading settings for project scala-js-tutorial from build.sbt ...
+    [info] Set current project to Scala.js Tutorial (in build file:(...)/scalajs-tutorial/)
 
 If you are using an IDE plugin, you will also have to reimport the build for autocompletion to work.
 
@@ -193,8 +191,8 @@ def main(args: Array[String]): Unit = {
 To rebuild the JavaScript, simply invoke `fastLinkJS` again:
 
     sbt:Scala.js Tutorial> fastLinkJS
-    [info] compiling 1 Scala source to (...)/scalajs-tutorial/target/scala-3.0.0/classes ...
-    [info] Fast optimizing (...)/scalajs-tutorial/target/scala-3.0.0/scala-js-tutorial-fastopt
+    [info] Compiling 1 Scala source to (...)/scalajs-tutorial/target/scala-2.13/classes ...
+    [info] Fast optimizing (...)/scalajs-tutorial/target/scala-2.13/scala-js-tutorial-fastopt
     [success] (...)
 
 As you can see from the log, sbt automatically detects that the sources must be recompiled before fast optimizing.
@@ -306,17 +304,18 @@ Before we start writing tests which we will be able to run through the sbt conso
 issue. Remember the task `run`? If you try to invoke it now, you will see something like this:
 
     sbt:Scala.js Tutorial> run
-    (...)/scalajs-tutorial/target/scala-3.0.0/scala-js-tutorial-fastopt/main.js:890
-    $thiz.Lorg_scalajs_dom_package$__f_window = window;
-                                                ^
+    [info] Running tutorial.webapp.TutorialApp. Hit any key to interrupt.
+    (...)/scalajs-tutorial/target/scala-2.13/scala-js-tutorial-fastopt/main.js:819
+        $thiz.Lorg_scalajs_dom_package$__f_window = window;
+                                                    ^
 
     ReferenceError: window is not defined
-    at $p_Lorg_scalajs_dom_package$__window$lzycompute__Lorg_scalajs_dom_raw_Window ((...)/scalajs-tutorial/target/scala-3.0.0/
-    ...
-    at $c_Ltutorial_webapp_TutorialApp$.main__AT__V ((...)/scalajs-tutorial/target/scala-3.0.0/scala-js-tutorial-fastopt/file:(...)
-    ...
+        at $p_Lorg_scalajs_dom_package$__window$lzycompute__Lorg_scalajs_dom_raw_Window ((...)/org/scalajs/dom/package.scala:219:40)
+        ...
+        at $c_Ltutorial_webapp_TutorialApp$.main__AT__V ((...)/tutorial/webapp/TutorialApp.scala:8:5)
+        ...
     [error] org.scalajs.jsenv.ExternalJSRun$NonZeroExitException: exited with code 1
-    [error]   at org.scalajs.jsenv.ExternalJSRun$$anon$1.run(ExternalJSRun.scala:186)
+    [error]         at org.scalajs.jsenv.ExternalJSRun$$anon$1.run(ExternalJSRun.scala:186)
     [error] stack trace is suppressed; run last Compile / run for the full output
     [error] (Compile / run) org.scalajs.jsenv.ExternalJSRun$NonZeroExitException: exited with code 1
     [error] Total time: (...)
@@ -346,11 +345,11 @@ Then you can install jsdom:
 
     $ npm install jsdom
 
-After reloading (`reload`), you can invoke `run` successfully:
+After reloading, you can invoke `run` successfully:
 
     > run
     [info] Running tutorial.webapp.TutorialApp
-    [success] Total time: (...)
+    [success] (...)
 
 Alternatively to Node.js with jsdom, you can use [Selenium](http://docs.seleniumhq.org/).
 You can find more information about this in the [documentation about JavaScript environments]({{ BASE_PATH }}/doc/project/js-environments.html).
@@ -362,7 +361,7 @@ It typically boils down to two sbt settings in the `build.sbt` file.
 For uTest, these are:
 
 {% highlight scala %}
-libraryDependencies += "com.lihaoyi" %%% "utest" % "0.7.10" % "test"
+libraryDependencies += "com.lihaoyi" %%% "utest" % "0.7.4" % "test"
 testFrameworks += new TestFramework("utest.runner.Framework")
 {% endhighlight %}
 
@@ -401,13 +400,13 @@ import org.scalajs.dom.ext._
 
 To run this test, simply invoke the `test` task:
 
-    sbt:Scala.js Tutorial> test
-    [info] compiling 1 Scala source to (...)/scalajs-tutorial/target/scala-3.0.0/test-classes ...
-    [info] Fast optimizing (...)/scalajs-tutorial/target/scala-3.0.0/scala-js-tutorial-test-fastopt
+    > test
+    [info] Compiling 1 Scala source to (...)/scalajs-tutorial/target/scala-2.13/test-classes...
+    [info] Fast optimizing (...)/scalajs-tutorial/target/scala-2.13/scala-js-tutorial-test-fastopt
     -------------------------------- Running Tests --------------------------------
-    + tutorial.webapp.TutorialTest.HelloWorld 1ms
-    [info] Tests: 1, Passed: 1, Failed: 0
-    [success] Total time: (...)
+    + tutorial.webapp.TutorialTest.HelloWorld 2ms
+    Tests: 1, Passed: 1, Failed: 0
+    [success] Total time: 14 s, completed 16-mars-2018 20:04:28
 
 We have successfully created a simple test.
 Just like `run`, the `test` task uses Node.js to execute your tests.
@@ -438,14 +437,14 @@ of messages has increased.
 
 You can now call the `test` task again:
 
-    sbt:Scala.js Tutorial> test
-    [info] compiling 1 Scala source to (...)/scalajs-tutorial/target/scala-3.0.0/test-classes ...
-    [info] Fast optimizing (...)/scalajs-tutorial/target/scala-3.0.0/scala-js-tutorial-test-fastopt
+    > test
+    [info] Compiling 1 Scala source to (...)/scalajs-tutorial/target/scala-2.13/test-classes...
+    [info] Fast optimizing (...)/scalajs-tutorial/target/scala-2.13/scala-js-tutorial-test-fastopt
     -------------------------------- Running Tests --------------------------------
-    + tutorial.webapp.TutorialTest.HelloWorld 1ms
-    + tutorial.webapp.TutorialTest.ButtonClick 2ms
-    [info] Tests: 2, Passed: 2, Failed: 0
-    [success] Total time: (...)
+    + tutorial.webapp.TutorialTest.HelloWorld 3ms
+    + tutorial.webapp.TutorialTest.ButtonClick 6ms
+    Tests: 2, Passed: 2, Failed: 0
+    [success] Total time: 15 s, completed 16-mars-2018 20:07:33
 
 This completes the testing part of this tutorial.
 
@@ -459,10 +458,10 @@ Size is critical for JavaScript code on the web. To compress the compiled code e
 uses the advanced optimizations of the [Google Closure Compiler](http://developers.google.com/closure/compiler/). To run
 full optimizations, simply use the `fullLinkJS` task:
 
-    sbt:Scala.js Tutorial> fullLinkJS
-    [info] Full optimizing (...)/scalajs-tutorial/target/scala-3.0.0/scala-js-tutorial-opt
+    > fullLinkJS
+    [info] Full optimizing (...)/scalajs-tutorial/target/scala-2.13/scala-js-tutorial-opt
     [info] Closure: 0 error(s), 0 warning(s)
-    [success] Total time: (...)
+    [success] (...)
 
 Note that this can take a while on a larger project (tens of seconds), which is why we typically don't use `fullLinkJS`
 during development, but `fastLinkJS` instead. If you want to `run` and `test` the full-optimized version from sbt,
@@ -483,7 +482,7 @@ We also need to create our final production HTML file `scalajs-tutorial.html` wh
   </head>
   <body>
     <!-- Include Scala.js compiled code -->
-    <script type="text/javascript" src="./target/scala-3.0.0/scala-js-tutorial-opt/main.js"></script>
+    <script type="text/javascript" src="./target/scala-2.13/scala-js-tutorial-opt/main.js"></script>
   </body>
 </html>
 {% endhighlight %}

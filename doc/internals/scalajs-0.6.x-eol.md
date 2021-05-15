@@ -11,7 +11,7 @@ Scala.js 0.6.x being EOL means that:
 * The [0.6.x git branch](https://github.com/scala-js/scala-js/tree/0.6.x) is frozen.
 * Pull requests targeting the 0.6.x branch will be rejected.
 * Issues that can only be reproduced with Scala.js 0.6.x will be closed.
-* As long as Scala.js 0.6.33 works with newer versions of Scala 2.12.x and 2.13.x out of the box, we will publish its compiler plugins for those versions of Scala.
+* As long as Scala.js 0.6.33 works with newer versions of Scala 2.12.x, 2.13.x and 3.x out of the box, we will publish its compiler plugins for those versions of Scala.
   Once they stop working out of the box, support for newer versions of Scala will be dropped.
 
 Please upgrade to Scala.js 1.x as soon as possible.

@@ -36,7 +36,7 @@ Having the JVM version of a library on the classpath will allow *compilation* to
 For example, with the following setting:
 
 ```scala
-libraryDependencies += "io.suzaku" %% "boopickle" % "1.3.1"
+libraryDependencies += "io.suzaku" %% "boopickle" % "1.3.3"
 ```
 
 and the following code:
@@ -93,12 +93,12 @@ If the `Referring to non-existent` lines mention a library that you depend on, a
 Use `%%%` instead of `%%` when depending on other Scala.js librarys:
 
 ```scala
-libraryDependencies += "io.suzaku" %%% "boopickle" % "1.3.1"
+libraryDependencies += "io.suzaku" %%% "boopickle" % "1.3.3"
 ```
 
 ```
-[info] Fast optimizing .../helloworld/target/scala-2.12/helloworld-fastopt
-[success] Total time: 3 s, completed Sep 13, 2019 1:44:25 PM
+[info] Fast optimizing .../helloworld/target/scala-3.0.0/helloworld-fastopt
+[success] Total time: (...)
 ```
 
 
