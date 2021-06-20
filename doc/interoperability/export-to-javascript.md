@@ -182,7 +182,7 @@ followed by the JavaScript export name.
 
 While an `@JSExport`ed method inside an `@JSExportTopLevel` object allows JavaScript code to call a "static" method,
 it does not feel like a top-level function from JavaScript's point of view.
-`@JSExportTopLevel` can also be used directory on a method of a top-level
+`@JSExportTopLevel` can also be used directly on a method of a top-level
 object, which exports the method as a truly top-level function:
 
 {% highlight scala %}
