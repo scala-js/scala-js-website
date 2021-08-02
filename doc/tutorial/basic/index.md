@@ -9,7 +9,9 @@ This is a step-by-step tutorial where we start with the setup of a Scala.js sbt 
 
 To go through this tutorial, you will need to [download & install sbt](https://www.scala-sbt.org/1.x/docs/Setup.html). Note that no prior sbt knowledge (only a working installation) is required to follow the tutorial.
 
-You will also need to [download & install Node.js](https://nodejs.org/en/download/).
+You will also need to [download & install Node.js](https://nodejs.org/en/download/) and install ```jsdom``` with:
+
+    npm install jsdom
 
 To run the complete tutorial application, you will also need to install jsdom as explained [below](#supporting-the-dom).
 
