@@ -55,6 +55,9 @@
       url: /doc/all-api.html
 - text: Semantics of Scala.js
   url: /doc/semantics.html
+  subitems:
+    - text: Regular expressions
+      url: /doc/regular-expressions.html
 - text: Internals
   url: /doc/internals/
   subitems:

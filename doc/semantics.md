@@ -163,17 +163,8 @@ for any Scala.js object (not for objects that come from JavaScript interop).
 
 ## Regular expressions
 
-[JavaScript regular expressions](http://developer.mozilla.org/en/docs/Core_JavaScript_1.5_Guide:Regular_Expressions)
-are slightly different from
-[Java regular expressions](http://docs.oracle.com/javase/6/docs/api/java/util/regex/Pattern.html).
-The support for regular expressions in Scala.js is implemented on top of
-JavaScript regexes.
-
-This sometimes has an impact on functions in the Scala library that
-use regular expressions themselves. A list of known functions that are
-affected is given here:
-
-- `StringLike.split(x: Array[Char])` (see issue [#105](https://github.com/scala-js/scala-js/issues/105))
+Regular expressions, as provided by `java.util.regex.Pattern` and its derivatives like `scala.util.matching.Regex` and the `.r` method, are supported, although with some limitations.
+More details can be found [on the Regular expressions documentation page](./regular-expressions.html).
 
 ## Symbols
 
