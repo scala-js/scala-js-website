@@ -273,6 +273,21 @@ var o = new Object();
 var x = f.call(o, 4);
 {% endhighlight %}
 
+### JS functions with varargs
+
+In order to capture varargs from a JS function, create your own trait that
+extends `js.Function` or `js.ThisFunction`.
+
+{% highlight scala %}
+trait JsVarargsFn extends js.Function {
+  def apply(args: Any*): Unit
+}
+
+val f: JsVarargsFn = { args =>
+  println(s"This method was called with ${args.size} args.")
+}
+{% endhighlight %}
+
 ## Dynamically typed interface: `js.Dynamic`
 
 Because JavaScript is dynamically typed, it is not often practical, sometimes
