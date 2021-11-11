@@ -112,6 +112,12 @@
       url: https://laminar.dev
       desc: 'Simple, expressive, and safe UI library for Scala.js'
       dep: '"com.raquo" %%% "laminar" % "0.11.0"'
+    - name: Linden
+      url: https://linden.dongoteam.hu
+      desc: 'Functional reactive frontend framework'
+      dep: |
+        resolvers += "DongoTeam repository" at "https://public.repository.dongoteam.hu"
+        libraryDependencies += "org.dongoteam.linden" %%% "linden-package-flowers" % "<version>"
 - topic: Serialization/pickling libraries
   libraries:
     - name: uPickle
