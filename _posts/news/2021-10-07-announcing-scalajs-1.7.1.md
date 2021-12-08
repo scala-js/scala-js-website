@@ -3,7 +3,7 @@ layout: post
 title: Announcing Scala.js 1.7.1
 category: news
 tags: [releases]
-permalink: /news/2021-10-07/announcing-scalajs-1.7.1/
+permalink: /news/2021/10/07/announcing-scalajs-1.7.1/
 ---
 
 
