@@ -45,7 +45,11 @@
     - name: Cats
       url: https://github.com/typelevel/cats
       desc: Lightweight, modular, and extensible library for functional programming.
-      dep: '"org.typelevel" %%% "cats" % "0.9.0"'
+      dep: '"org.typelevel" %%% "cats" % "2.7.0"'
+    - name: Cats Effect
+      url: https://github.com/typelevel/cats-effect
+      desc: A pure, asynchronous runtime implementing the "IO" monad.
+      dep: '"org.typelevel" %%% "cats-effect" % "3.3.1"'
     - name: Monocle
       url: https://github.com/julien-truffaut/Monocle
       desc: Optics library strongly inspired by Haskell [Lens](https://github.com/ekmett/lens).
@@ -54,6 +58,10 @@
       url: https://github.com/adamw/quicklens
       desc: Modify deeply nested fields in case classes.
       dep: '"com.softwaremill.quicklens" %%% "quicklens" % "1.4.8"'
+    - name: fs2
+      url: https://github.com/typelevel/fs2
+      desc: Purely functional, effectful, and polymorphic stream processing and I/O.
+      dep: '"co.fs2" %%% "fs2-core" % "3.2.3"'
 - topic: Web libraries/frameworks
   libraries:
     - name: Udash
@@ -156,6 +164,10 @@
       url: https://github.com/msgpack4z/msgpack4z-core
       desc: Functional msgpack serializer/deserializer for Scala
       dep: '"com.github.xuwei-k" %%% "msgpack4z-core" % "0.3.5"'
+    - name: Scodec
+      url: https://github.com/scodec/scodec
+      desc: Combinator library for working with binary data.
+      dep: '"org.scodec" %%% "scodec-core" % "2.1.0"'
     - name: Scodec MessagePack
       url: https://github.com/pocketberserker/scodec-msgpack
       desc: Yet another MessagePack implementation for Scala
@@ -189,6 +201,22 @@
       url: https://github.com/shogowada/scala-json-rpc
       desc: Let your servers and clients communicate over function calls! A JSON-RPC 2.0 library for both Scala JVM & JS
       dep: '"io.github.shogowada" %%% "scala-json-rpc" % "0.3.0"'
+    - name: http4s
+      url: https://github.com/http4s/http4s
+      desc: A minimal, idiomatic Scala interface for typeful, functional, streaming HTTP.
+      dep: '"org.http4s" %%% "http4s-core" % "0.23.7"'
+    - name: http4s-dom
+      url: https://github.com/http4s/http4s-dom
+      desc: http4s, in a browser near you.
+      dep: '"org.http4s" %%% "http4s-dom" % "0.2.0"'
+    - name: feral
+      url: https://github.com/typelevel/feral
+      desc: A framework for writing serverless functions and deploying them to the cloud.
+      dep: '"org.typelevel" %%% "feral-lambda" % "0.1.0-M1"'
+    - name: natchez
+      url: https://github.com/tpolecat/natchez
+      desc: Functional, distributed tracing library.
+      dep: '"org.tpolecat" %%% "natchez-core" % "0.1.6"'
 - topic: FRP/reactive extensions
   libraries:
     - name: Scala.Rx
@@ -301,6 +329,10 @@
       url: https://github.com/catap/scala-blake3
       desc: 'Blake3 for scala'
       dep: '"ky.korins" %%% "blake3" % "1.2.0"'
+    - name: skunk
+      url: https://github.com/tpolecat/skunk
+      desc: A data access library for Scala + Postgres.
+      dep: '"org.tpolecat" %%% "skunk" % "0.2.3"'
 - topic: Tools
   libraries:
     - name: sbt-scala-js-map
