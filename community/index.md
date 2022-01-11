@@ -16,6 +16,11 @@ waiting to be read.
 For fastest answers, join our [Scala.js Gitter chat room](https://gitter.im/scala-js/scala-js) and ask your questions,
 or just chat with other Scala.js developers! There are currently over 500 users in the chat room.
 
+### [`#scala-js` on Discord](https://discord.com/invite/scala)
+
+The [official Scala discord](https://discord.com/invite/scala) has over 600 members.
+Join the `#scala-js` channel if you have any questions about Scala.JS!
+
 ### [Official mailing list](https://groups.google.com/forum/?fromgroups#!forum/scala-js)
 
 This is the place for general discussion, ideas, announcements of your libraries, etc.
