@@ -11,15 +11,10 @@ your issues, please use the following resources.
 Many developers have probably faced the same issues you have, so there might be an answer on Stack Overflow just
 waiting to be read.
 
-### [Gitter chat room](https://gitter.im/scala-js/scala-js)
-
-For fastest answers, join our [Scala.js Gitter chat room](https://gitter.im/scala-js/scala-js) and ask your questions,
-or just chat with other Scala.js developers! There are currently over 500 users in the chat room.
-
 ### [`#scala-js` on Discord](https://discord.com/invite/scala)
 
-The [official Scala discord](https://discord.com/invite/scala) has over 600 members.
-Join the `#scala-js` channel if you have any questions about Scala.JS!
+For fastest answers, join the `#scala-js` channel in the [official Scala discord](https://discord.com/invite/scala) and ask your questions,
+or just chat with other Scala.js developers!
 
 ### [Official mailing list](https://groups.google.com/forum/?fromgroups#!forum/scala-js)
 
