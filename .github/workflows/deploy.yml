@@ -11,7 +11,7 @@ jobs:
       - name: Set up Ruby
         uses: ruby/setup-ruby@v1
         with:
-          ruby-version: 2.4.4
+          ruby-version: 2.7.5
           bundler-cache: true # runs 'bundle install' and caches installed gems automatically
       - name: Build
         run: bundle exec jekyll build
