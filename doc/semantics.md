@@ -10,26 +10,7 @@ However, a few differences exist, which we mention here.
 
 ## Primitive data types
 
-All nine primitive data types of Scala, i.e., `Boolean`, `Char`, `Byte`, `Short`, `Int`, `Long`, `Float`, `Double` and `Unit`, work exactly as on the JVM, with the following four exceptions.
-
-### Floats can behave as Doubles by default
-
-Scala.js underspecifies the behavior of `Float`s by default.
-Any `Float` value can be stored as a `Double` instead, and any operation on
-`Float`s can be computed with double precision.
-The choice of whether or not to behave as such, when and where, is left to the
-implementation.
-
-If exact single precision operations are important to your application, you can
-enable strict-floats semantics in Scala.js, with the following sbt setting:
-
-{% highlight scala %}
-scalaJSLinkerConfig ~= { _.withSemantics(_.withStrictFloats(true)) }
-{% endhighlight %}
-
-Note that this can have a major impact on performance of your application on
-JS interpreters that do not support
-[the `Math.fround` function](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Math/fround).
+All nine primitive data types of Scala, i.e., `Boolean`, `Char`, `Byte`, `Short`, `Int`, `Long`, `Float`, `Double` and `Unit`, work exactly as on the JVM, with the following three exceptions.
 
 ### `toString` of `Float`, `Double` and `Unit`
 
@@ -58,26 +39,18 @@ type they were created with. The following are examples:
 - 1 matches `Byte`, `Short`, `Int`, `Float`, `Double`
 - 128 (`> Byte.MaxValue`) matches `Short`, `Int`, `Float`, `Double`
 - 32768 (`> Short.MaxValue`) matches `Int`, `Float`, `Double`
-- 2147483647 matches `Int`, `Double` if strict-floats are enabled
-  (because that number cannot be represented in a strict 32-bit `Float`),
-  otherwise `Int`, `Float` and `Double`
+- 2147483647 matches `Int` and `Double`, but not `Float`
+  (because that number cannot be represented in a 32-bit `Float`)
 - 2147483648 (`> Int.MaxValue`) matches `Float`, `Double`
 - 1.5 matches `Float`, `Double`
-- 1.4 matches `Double` only if strict-floats are enabled,
-  otherwise `Float` and `Double`
-  (unlike 1.5, the value 1.4 cannot be represented in a strict 32-bit `Float`)
+- 1.4 only matches `Double`
+  (unlike 1.5, the value 1.4 cannot be represented in a 32-bit `Float`)
 - `NaN`, `Infinity`, `-Infinity` and `-0.0` match `Float`, `Double`
 
 As a consequence, the following apparent subtyping relationships hold:
 
     Byte <:< Short <:<  Int  <:< Double
                    <:< Float <:<
-
-if strict-floats are enabled, or
-
-    Byte <:< Short <:< Int <:< Float =:= Double
-
-otherwise.
 
 ### `getClass()`
 
@@ -93,6 +66,25 @@ Moreover, for `()` (unit), the result will be `classOf[java.lang.Void]` instead 
 Instead, it uses the more sensible `java.lang.Void`, as `Void` is the boxed class corresponding to the `void` primitive type, which is `scala.Unit`.
 This means that while `java.lang.Void` is not instantiable on the JVM, in Scala.js it has a singleton instance, namely `()`.
 This also manifests itself in `Array[Unit]` which is effectively `Array[java.lang.Void]` at run-time, instead of `Array[scala.runtime.BoxedUnit]`.
+
+### Non-strict floats (deprecated; default until Scala.js 1.8.0)
+
+Until v1.8.0, Scala.js underspecified the behavior of `Float`s by default with so-called *non-strict floats*.
+
+Non-strict floats can still be enabled with the following sbt setting:
+
+{% highlight scala %}
+scalaJSLinkerConfig ~= { _.withSemantics(_.withStrictFloats(false)) }
+{% endhighlight %}
+
+Under non-strict floats, any `Float` value can be stored as a `Double` instead, and any operation on `Float`s can be computed with double precision.
+The choice of whether or not to behave as such, when and where, is left to the implementation.
+In addition, `x.isInstanceOf[Float]` will return `true` for any `number` values (not only the ones that fit in a 32-bit float).
+
+Non-strict floats are deprecated and will eventually be removed in a later major or minor version of Scala.js.
+
+Enabling non-strict floats may significantly improve the performance (up to 4x for `Float`-intensive applications) when targeting JS engines that do not support [the `Math.fround` function](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Math/fround), such as Internet Explorer (which implies emitting ES 5.1 code).
+If you are in that situation, we advise to use `Double`s instead of `Float`s as much as possible.
 
 ## Undefined behaviors
 
