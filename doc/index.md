@@ -13,8 +13,10 @@ Scala.js with respect to JavaScript.
 
 All you need to get started is 
 
-* A recent version of Java JDK [(download)](http://www.oracle.com/technetwork/java/javase/downloads/jdk8-downloads-2133151.html)
-* SBT [(download)](http://www.scala-sbt.org/0.13/tutorial/Setup.html)
+* A recent version of Java JDK [(download)](https://www.oracle.com/java/technologies/downloads/)
+* SBT [(download)](https://www.scala-sbt.org/1.x/docs/Setup.html)
+
+See the [Basic tutorial](tutorial/basic/) for details about installation and setup.
 
 # Tutorials
 
