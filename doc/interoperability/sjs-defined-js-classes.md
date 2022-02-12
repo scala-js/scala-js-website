@@ -342,8 +342,8 @@ jQuery.ajax(someURL, new JQueryAjaxSettings {
 Note that for functions, we use `js.defined { ... }` to drive Scala's type inference.
 Otherwise, it needs to apply two implicit conversions, which is not allowed.
 
-The explicit types are quite annoying, but they are only necessary in Scala 2.10 and 2.11.
-If you use Scala 2.12, you can omit all the type annotations (but keep `js.defined`), thanks to improved type inference for `val`s and SAM conversions:
+The explicit types are quite annoying, but they are only necessary in old versions of Scala.
+If you use Scala 2.12 or newer versions, you can omit all the type annotations (but keep `js.defined`), thanks to improved type inference for `val`s and SAM conversions:
 
 {% highlight scala %}
 jQuery.ajax(someURL, new JQueryAjaxSettings {
