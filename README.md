@@ -18,7 +18,7 @@ we will need to set up some Ruby tooling.
 First, install RVM (Ruby Version Manager): https://rvm.io/rvm/install
 Then run the following commands:
 ```bash
-$ rvm use 2.4.4 --install
+$ rvm use 2.7.5 --install
 
 # Set up Bundler, a Ruby package manager
 # It downloads dependencies specified in a Gemfile
