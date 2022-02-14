@@ -86,7 +86,7 @@ We have optimized our `fround` polyfill to the greatest extent possible, but ben
 If you really want to, you can switch back to non-strict float semantics with the following linker setting:
 
 {% highlight scala %}
-scalaJSLinkerConfig ~= { _.withSemantics(_.withStrictFloats(true)) }
+scalaJSLinkerConfig ~= { _.withSemantics(_.withStrictFloats(false)) }
 {% endhighlight scala %}
 
 This is however *deprecated*, and will eventually *cease to have any effect* in a later major or minor version of Scala.js.
