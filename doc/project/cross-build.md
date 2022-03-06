@@ -108,7 +108,7 @@ In order for the annotated classes to compile on the JVM project, you should add
 {% highlight scala %}
   .jvmSettings(
     ...
-    libraryDependencies += "org.scala-js" %% "scalajs-stubs" % "1.0.0" % "provided",
+    libraryDependencies += "org.scala-js" %% "scalajs-stubs" % "1.1.0" % "provided",
   )
 {% endhighlight %}
 
