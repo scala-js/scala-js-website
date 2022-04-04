@@ -92,7 +92,7 @@ The Scala.js linker can split a full Scala.js application automatically based on
 
 * Entry points (top-level exports and module initializers)
 * Dynamic import boundaries (calls to `js.dynamicImport`)
-* The split style (fewest modules or smallest modules)
+* The split style (fewest modules, smallest modules, or a combination thereof)
 
 ### Entry Points
 
@@ -224,7 +224,7 @@ import org.scalajs.linker.interface.ModuleSplitStyle
 scalaJSLinkerConfig ~= (_.withModuleSplitStyle(ModuleSplitStyle.SmallestModules))
 {% endhighlight %}
 
-There are currently two module split styles: `FewestModules` and `SmallestModules`.
+There are currently three module split styles: `FewestModules`, `SmallestModules` and `SmallModulesFor(packages)`.
 
 #### `FewestModules`
 
@@ -263,6 +263,21 @@ In the dynamic import example, this would generate:
 
 Generating many small modules can be useful if the output of Scala.js is further processed by downstream JavaScript bundling tools.
 In incremental builds, they will not need to reprocess the entire Scala.js-generated .js file, but instead only the small modules that have changed.
+
+#### `SmallModulesFor(packages: List[String])`
+
+Create modules that are as small as possible for the classes in the specified `packages` (and their subpackages).
+For all other classes, create as few modules as possible.
+This is a combination of the two other split styles.
+
+The typical usage pattern is to list the application's packages as argument.
+This way, often-changing classes receive independent, small modules, while the stable classes coming from libraries are bundled together as much as possible.
+For example, if your application code lives in `my.app`, you could configure your module split style as:
+
+{% highlight scala %}
+import org.scalajs.linker.interface.ModuleSplitStyle
+scalaJSLinkerConfig ~= (_.withModuleSplitStyle(ModuleSplitStyle.SmallModulesFor(List("my.app"))))
+{% endhighlight %}
 
 ### Splitting Granularity
 
