@@ -61,7 +61,7 @@ This means that code that was previously calling `java.util.UUID.randomUUID()` w
 To preserve binary compatibility, we introduce two variants of a library that provides `java.security.SecureRandom`:
 
 * [`scalajs-java-securerandom`](https://github.com/scala-js/scala-js-java-securerandom) provides a *correct*, cryptographically secure implementation of `java.security.SecureRandom`, but relies on the Node.js `crypto` module or the Web Crypto API `crypto.getRandomValues` to be available (e.g., in browsers).
-* [`scalajs-fake-insecure-securerandom`](https://github.com/scala-js/scala-js-fake-insecure-securerandom) is a fake, *insecure* implementation that works in any ECMAScript environment. The only reason this exists is to unblock migration from Scala.js 1.9.x and earlier, in situations that require `randomUUID()` and can accept that they will be insecure.
+* [`scalajs-fake-insecure-java-securerandom`](https://github.com/scala-js/scala-js-fake-insecure-java-securerandom) is a fake, *insecure* implementation that works in any ECMAScript environment. The only reason this exists is to unblock migration from Scala.js 1.9.x and earlier, in situations that require `randomUUID()` and can accept that they will be insecure.
 
 Due to the changes in the core library, you may encounter linking errors when upgrading to Scala.js 1.10.0, such as:
 
@@ -92,7 +92,7 @@ Find out if your environment provides a source of cryptographically secure pseud
 If it does, you may want to use it to shim `crypto.getRandomValues`, and/or send a pull request to [`scalajs-java-securerandom`](https://github.com/scala-js/scala-js-java-securerandom).
 Otherwise, replace calls to `randomUUID()` with another implementation, in a way that corresponds to your requirements in terms of security and collision likelihood.
 
-If you have **no other choice**, depend on `scalajs-fake-insecure-securerandom` instead.
+If you have **no other choice**, depend on `scalajs-fake-insecure-java-securerandom` instead.
 As its name implies, this is an *insecure* implementation, and you should get rid of this dependency as soon as possible.
 
 ## New module split style: `SmallModulesFor(packages)`
