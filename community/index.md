@@ -34,6 +34,7 @@ Here you go:
   written in Scala, not the front end)
 - [MiniJava compiler](http://oxnrtr.de/mj) which originally targeted amd64, but received an AST interpreter to run in the browser.
 - [Fluent Code Explorer](http://www.fluentcode.com/), an online tool that helps you search, understand and collaborate on a large codebase.
+- [FlowRun](https://flowrun.io/), a web app for creating and running flowcharts
 
 ## Open Source Scala.js projects
 
@@ -60,6 +61,7 @@ Use these open source projects to see how others have used Scala.js to build the
 - [Checkers](http://kschuetz.github.io/checkers/) ([source](https://github.com/kschuetz/checkers)): Checkers game rendered in web browser using SVG (about 10000 lines of Scala.js)
 - [Scastie](https://scastie.scala-lang.org) ([source](https://github.com/scalacenter/scastie)): An interactive playground for Scala, which can run any Scala program with any library in your browser
 - [Scalafiddle-editor](https://scalafiddle.io) ([source](https://github.com/scalafiddle/scalafiddle-editor)): An online playground for creating, sharing and embedding Scala fiddles (little Scala programs that run directly in your browser).
+- [FlowRun](https://github.com/sacode387/FlowRun): Editor and interpreter for the FlowRun flowcharts, written in Scala.js using Scala 3.
 
 ## Testimonials
 
