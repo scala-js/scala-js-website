@@ -110,7 +110,7 @@
       dep: '"com.github.chandu0101.sri" %%% "web" % "0.5.0"'
     - name: Outwatch
       url: https://outwatch.github.io/
-      desc: 'The Functional and Reactive Web-Frontend Library for ScalaJS'
+      desc: 'The Functional and Reactive Web-Frontend Library for Scala.js'
       dep: '"io.github.outwatch" %%% "outwatch" % "1.0.0-RC7"'
     - name: Slinky
       url: https://slinky.shadaj.me/
