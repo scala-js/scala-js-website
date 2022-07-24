@@ -36,7 +36,7 @@ We also setup basic project settings and enable this plugin in the sbt build fil
 enablePlugins(ScalaJSPlugin)
 
 name := "Scala.js Tutorial"
-scalaVersion := "2.13.1" // or any other Scala version >= 2.11.12
+scalaVersion := "2.13.1" // or any other Scala 2 version >= 2.11.12
 
 // This is an application with a main method
 scalaJSUseMainModuleInitializer := true
