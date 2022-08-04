@@ -3,7 +3,7 @@ layout: post
 title: Announcing Scala.js 1.5.1
 category: news
 tags: [releases]
-permalink: /news/2020/11/16/announcing-scalajs-1.5.1/
+permalink: /news/2021/04/01/announcing-scalajs-1.5.1/
 ---
 
 

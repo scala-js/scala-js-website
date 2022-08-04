@@ -32,4 +32,5 @@ redirect 301 /community/libraries/skeletons.html /libraries/skeletons.html
 redirect 301 /community/libraries/testing.html /libraries/testing.html
 redirect 301 /community/libraries/ /libraries/
 
+redirect 301 /news/2020/11/16/announcing-scalajs-1.5.1/ {{ BASE_PATH }}/news/2021/04/01/announcing-scalajs-1.5.1/
 redirect 301 /news/2021-10-07/announcing-scalajs-1.7.1/ {{ BASE_PATH }}/news/2021/10/07/announcing-scalajs-1.7.1/
