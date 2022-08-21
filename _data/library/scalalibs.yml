@@ -113,7 +113,7 @@
       desc: 'The Functional and Reactive Web-Frontend Library for Scala.js'
       dep: '"io.github.outwatch" %%% "outwatch" % "1.0.0-RC7"'
     - name: Slinky
-      url: https://slinky.shadaj.me/
+      url: https://slinky.dev/
       desc: 'Write Scala.js React apps just like you would in ES6'
       dep: '"me.shadaj" %%% "slinky-core" % "0.5.1", "me.shadaj" %%% "slinky-web" % "0.5.1"'
     - name: Laminar
