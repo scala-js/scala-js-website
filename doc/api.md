@@ -9,6 +9,7 @@ title: Scala.js API
 
 * [scalajs-library]({{ site.production_url }}/api/scalajs-library/latest/scala/scalajs/js/index.html)
 * [scalajs-test-interface]({{ site.production_url }}/api/scalajs-test-interface/latest/)
+* [scalajs-javalib-intf]({{ site.production_url }}/api/scalajs-javalib-intf/latest/)
 * [scalajs-ir]({{ site.production_url }}/api/scalajs-ir/latest/org/scalajs/ir/index.html)
 * [scalajs-linker-interface]({{ site.production_url }}/api/scalajs-linker-interface/latest/org/scalajs/linker/interface/index.html) ([Scala.js version]({{ site.production_url }}/api/scalajs-linker-interface-js/latest/org/scalajs/linker/interface/index.html))
 * [scalajs-linker]({{ site.production_url }}/api/scalajs-linker/latest/org/scalajs/linker/index.html) ([Scala.js version]({{ site.production_url }}/api/scalajs-linker-js/latest/org/scalajs/linker/index.html))
