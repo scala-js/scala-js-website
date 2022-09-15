@@ -90,13 +90,14 @@ If you are in that situation, we advise to use `Double`s instead of `Float`s as 
 
 The JVM is a very well specified environment, which even specifies how some
 bugs are reported as exceptions.
-Currently known exhaustive list of exceptions are:
+The relevant exceptions are:
 
 * `NullPointerException`
 * `ArrayIndexOutOfBoundsException` and `StringIndexOutOfBoundsException`
 * `ClassCastException`
 * `ArrayStoreException`
-* `StackOverflowError` and other `VirtualMachineError`s
+* `NegativeArraySizeException`
+* `StackOverflowError` and `OutOfMemoryError`
 
 Because Scala.js does not receive VM support to detect such erroneous
 conditions, checking them is typically too expensive.
@@ -104,10 +105,14 @@ conditions, checking them is typically too expensive.
 Therefore, all of these are considered
 [undefined behavior](http://en.wikipedia.org/wiki/Undefined_behavior).
 
-Some of these, however, can be configured to be compliant with the JVM
-specification using sbt settings.
-Currently, only `ClassCastException`s (thrown by invalid `asInstanceOf` calls) and `ArrayIndexOutOfBoundsException`s (thrown by array indexing)
-are configurable, but the list will probably expand in future versions.
+Some of these, however, can be configured to be compliant with the JVM specification using sbt settings.
+Currently, they are:
+
+* `ClassCastException` (thrown by invalid `asInstanceOf` calls)
+* `ArrayIndexOutOfBoundsException` (thrown by array indexing)
+* `StringIndexOutOfBoundsException` (thrown by string indexing)
+
+The list will probably expand in future versions.
 
 Every configurable undefined behavior has 3 possible modes:
 
