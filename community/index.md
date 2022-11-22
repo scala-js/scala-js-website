@@ -35,6 +35,7 @@ See which companies are using Scala.js:
 [![N-SIDE](../assets/img/adopters/n-side.png)](https://www.n-side.com)
 [![Radiantfleet](../assets/img/adopters/radiantfleet.png)](https://www.radiantfleet.com)
 [![Topos](../assets/img/adopters/topos.png)](https://topos.institute)
+[![Priceloop](../assets/img/adopters/priceloop.svg)](https://priceloop.ai)
 
 ## Built with Scala.js
 
