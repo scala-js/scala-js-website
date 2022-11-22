@@ -20,6 +20,22 @@ or just chat with other Scala.js developers!
 
 This is the place for general discussion, ideas, announcements of your libraries, etc.
 
+## Adopters
+
+See which companies are using Scala.js:
+
+[![Wiringbits](../assets/img/adopters/wiringbits.png)](https://wiringbits.net)
+[![Scalamandra](../assets/img/adopters/scalamandra.png)](https://scalamandra.com/)
+[![Carrot](../assets/img/adopters/carrot.png)](https://getcarrot.io)
+[![Ergo](../assets/img/adopters/ergo.png)](https://ergoplatform.org)
+[![Evolution](../assets/img/adopters/evolution.png)](https://www.evolution.com)
+[![Goodcover](../assets/img/adopters/goodcover.png)](https://www.goodcover.com)
+[![Learnraga](../assets/img/adopters/learnraga.png)](https://learnraga.com)
+[![Linguaforce](../assets/img/adopters/linguaforce.png)](https://www.linguaforce.com)
+[![N-SIDE](../assets/img/adopters/n-side.png)](https://www.n-side.com)
+[![Radiantfleet](../assets/img/adopters/radiantfleet.png)](https://www.radiantfleet.com)
+[![Topos](../assets/img/adopters/topos.png)](https://topos.institute)
+
 ## Built with Scala.js
 
 Want to get a peek at some web applications that have been built with Scala.js?
