@@ -12,9 +12,14 @@ If you prefer to navigate the end result for this tutorial directly, checkout [t
 
 ## Prerequisites
 
-Make sure to install [the prerequisites](./index.html) before continuing further.
+Make sure to install [the prerequisites](./index.html#prerequisites) before continuing further.
 
 ## Introducing Laminar
+
+[Laminar](https://laminar.dev/) is a Scala.js library to build UIs using Functional Reactive Programming (FRP).
+FRP is a hybrid model between imperative and functional programming.
+It is particularly well suited to developing UIs in Scala, as we can reason about relationships between immutable values while dealing with the changing nature of the UI.
+We will elaborate on this point later.
 
 To start off, we add a dependency on Laminar in our `build.sbt`:
 
@@ -35,7 +40,7 @@ sbt:livechart> ~fastLinkJS
 [...]
 {% endhighlight %}
 
-If it was already running, stop it and `reload` it for changes in `build.sbt` to take effect.
+If sbt was already running, run `reload` for the changes in `build.sbt` to take effect, then start the incremental compiler with `~fastLinkJS`.
 
 Additionally, start Vite's development server if it wasn't already running:
 
@@ -44,7 +49,7 @@ $ npm run dev
 [...]
 {% endhighlight %}
 
-We can now change the contents of `src/main/scala/livechart/LiveChart.scala` to use Laminar instead of raw DOM APIs.
+We can now change the contents of `src/main/scala/livechart/LiveChart.scala` to use Laminar instead of vanilla DOM APIs.
 
 At the top, we use the following import:
 
@@ -141,6 +146,11 @@ We then use it in two *bindings*:
 
 We do not need to explicitly set the `innerHTML` attribute of the button.
 That is taken care of by the `<--` binding.
+
+Unlike frameworks based on a virtual DOM, Laminar bindings directly target the DOM element to update.
+With a virtual DOM, when the value of `counter` changes, we would build an entirely new VDOM representation for the button (and perhaps its parents), and the framework would later diff it and identify which DOM `HTMLButtonElement` to update.
+In Laminar, however, the `<--` binding remembers the precise instance of `HTMLButtonElement` to update, and directly modifies its text.
+This is more efficient than going through the VDOM indirection.
 
 Beside `:=`, the two binding arrows `<--` and `-->` are the only symbolic operators that Laminar defines.
 `:=` is a static binding.

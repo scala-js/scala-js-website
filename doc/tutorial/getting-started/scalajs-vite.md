@@ -4,7 +4,8 @@ title: Getting Started with Scala.js and Vite
 ---
 
 In this first tutorial, we learn how to get started with Scala.js and [Vite](https://vitejs.dev/).
-We use Vite to provide live-reloading of the Scala.js application in the browser.
+We use Vite to provide live-reloading of the Scala.js application in the browser for development.
+We also configure it to build a minimal bundle for production.
 
 Going through this tutorial will make sure you understand the basic building blocks.
 If you prefer to skip this step and directly write Scala.js code, you may jump to [Getting Started with Scala.js and Laminar](./laminar-scalablytyped.html).
@@ -13,7 +14,7 @@ If you prefer to navigate the end result for this tutorial directly, checkout [t
 
 ## Prerequisites
 
-Make sure to install [the prerequisites](./index.html) before continuing further.
+Make sure to install [the prerequisites](./index.html#prerequisites) before continuing further.
 
 ## Vite template
 
@@ -21,7 +22,7 @@ We bootstrap our setup using the vanilla Vite template.
 Navigate to a directory where you store projects, and run the command
 
 {% highlight shell %}
-$ npm create vite@latest
+$ npm create vite@3.2.1
 {% endhighlight %}
 
 Choose a project name (we choose `livechart`).
@@ -29,9 +30,9 @@ Select the "Vanilla" framework and the "JavaScript" variant.
 Our output gives:
 
 {% highlight shell %}
-$ npm create vite@latest
+$ npm create vite@3.2.1
 Need to install the following packages:
-  create-vite@latest
+  create-vite@3.2.1
 Ok to proceed? (y)
 ✔ Project name: … livechart
 ✔ Select a framework: › Vanilla
@@ -156,9 +157,9 @@ import scala.scalajs.js.annotation.*
 
 import org.scalajs.dom
 
-// import javaScriptLogo from "/javascript.svg"
+// import javascriptLogo from "/javascript.svg"
 @js.native @JSImport("/javascript.svg", JSImport.Default)
-val javaScriptLogo: String = js.native
+val javascriptLogo: String = js.native
 
 @main
 def LiveChart(): Unit =
@@ -168,7 +169,7 @@ def LiveChart(): Unit =
         <img src="/vite.svg" class="logo" alt="Vite logo" />
       </a>
       <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript" target="_blank">
-        <img src="$javaScriptLogo" class="logo vanilla" alt="JavaScript logo" />
+        <img src="$javascriptLogo" class="logo vanilla" alt="JavaScript logo" />
       </a>
       <h1>Hello Scala.js!</h1>
       <div class="card">
@@ -197,6 +198,39 @@ end setupCounter
 
 Note that the above is not idiomatic Scala, but rather a direct translation of the Vite template code into Scala.js.
 We will see in the next tutorial how to use Laminar to write it more idiomatically.
+
+For the most part, the Scala.js version uses straightforward Scala syntax corresponding to the original JavaScript code.
+The definition of `javascriptLogo` deserves some explanation.
+
+We translated it from the JavaScript import
+
+{% highlight javascript %}
+import javascriptLogo from "/javascript.svg"
+{% endhighlight %}
+
+which is actually a shorthand for
+
+{% highlight javascript %}
+import { default as javascriptLogo } from "/javascript.svg"
+{% endhighlight %}
+
+Many bundlers, Vite included, treat `import`s with asset files such as `.svg` as pseudo-modules whose `default` import is the *file path* to the corresponding asset in the processed bundle.
+Further down, we use it as the value for the `src` attribute an `<img>` tag.
+Read more about this mechanism [in the Vite documentation on static asset handling](https://vitejs.dev/guide/assets.html).
+
+The translation in Scala.js reads as
+
+{% highlight scala %}
+@js.native @JSImport("/javascript.svg", JSImport.Default)
+val javascriptLogo: String = js.native
+{% endhighlight %}
+
+The `@js.native` annotation tells Scala.js that `javascriptLogo` is provided externally by JavaScript.
+The `@JSImport("/javascript.svg", JSImport.Default)` is the translation of the `default` import from the `/javascript.svg` pseudo-module.
+Since it represents a file path, we declare `javascriptLogo` as a `String`.
+
+The `= js.native` is a Scala.js idiosyncrasy: we need a concrete value to satisfy the Scala typechecker.
+In an ideal world, it would not be required.
 
 We can now build the Scala.js project by opening a new console, and entering sbt:
 
@@ -309,7 +343,7 @@ export default defineConfig({
 {% endhighlight %}
 
 While this may look scary, most of the complexity is concentrated into `printSbtTask`.
-That utility invokes a third-party process (sbt) in a platform-independent way (in particular, for Windows) and retries its `stdout` output.
+That utility invokes a third-party process (sbt) in a platform-independent way (in particular, for Windows) and retrieves its `stdout` output.
 Other than that, we are doing two things:
 
 1. Depending on `process.env.NODE_ENV`, we retrieve the output of the sbt task `fastLinkJSOutput` or `fullLinkJSOutput`.
