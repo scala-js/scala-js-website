@@ -36,6 +36,13 @@ See which companies are using Scala.js:
 [![Radiantfleet](../assets/img/adopters/radiantfleet.png)](https://www.radiantfleet.com)
 [![Topos](../assets/img/adopters/topos.png)](https://topos.institute)
 [![Priceloop](../assets/img/adopters/priceloop.svg)](https://priceloop.ai)
+[![Tie Kinetix](../assets/img/adopters/tiekinetix.png)](https://tiekinetix.com)
+[![Orbeon Forms](../assets/img/adopters/orbeon.png)](https://www.orbeon.com)
+[![Alvin Alexander](../assets/img/adopters/alvinalexander.png)](https://alvinalexander.com/)
+[![Mibex Software](../assets/img/adopters/mibexsoftware.png)](https://www.mibexsoftware.com/)
+[![cloudfarms](../assets/img/adopters/cloudfarms.png)](https://en.cloudfarms.com/)
+[![Atala PRISM](../assets/img/adopters/atalaprism.png)](https://atalaprism.io/)
+[![Kidslog](../assets/img/adopters/kidslog.png)](https://kidslog.jp/)
 
 ## Built with Scala.js
 
