@@ -43,6 +43,7 @@ See which companies are using Scala.js:
 [![cloudfarms](../assets/img/adopters/cloudfarms.png)](https://en.cloudfarms.com/)
 [![Atala PRISM](../assets/img/adopters/atalaprism.png)](https://atalaprism.io/)
 [![Kidslog](../assets/img/adopters/kidslog.png)](https://kidslog.jp/)
+[![Treasure Data](../assets/img/adopters/td.png)](https://www.treasuredata.com/)
 
 ## Built with Scala.js
 
@@ -86,6 +87,7 @@ Use these open source projects to see how others have used Scala.js to build the
 - [Scastie](https://scastie.scala-lang.org) ([source](https://github.com/scalacenter/scastie)): An interactive playground for Scala, which can run any Scala program with any library in your browser
 - [Scalafiddle-editor](https://scalafiddle.io) ([source](https://github.com/scalafiddle/scalafiddle-editor)): An online playground for creating, sharing and embedding Scala fiddles (little Scala programs that run directly in your browser).
 - [FlowRun](https://github.com/sacode387/FlowRun): Editor and interpreter for the FlowRun flowcharts, written in Scala.js using Scala 3.
+- [Airframe Rx/RPC](https://wvlet.org/airframe/) Airframe enables pure-Scala development of frontend (Scala.js) and backend (Scala JVM) applications with [RPC](https://wvlet.org/airframe/docs/airframe-rpc) and [reactive interface (Rx)](https://wvlet.org/airframe/docs/airframe-rx). Presentation: [Unifying Frontend and Backend Development with Scala (ScalaCon 2021)](https://speakerdeck.com/xerial/unifying-frontend-and-backend-development-with-scala-scala-con-2021)
 
 ## Testimonials
 
