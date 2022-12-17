@@ -34,3 +34,4 @@ redirect 301 /community/libraries/ /libraries/
 
 redirect 301 /news/2020/11/16/announcing-scalajs-1.5.1/ {{ BASE_PATH }}/news/2021/04/01/announcing-scalajs-1.5.1/
 redirect 301 /news/2021-10-07/announcing-scalajs-1.7.1/ {{ BASE_PATH }}/news/2021/10/07/announcing-scalajs-1.7.1/
+redirect 301 /news/2022/09/15/announcing-scalajs-1.12.0/ {{ BASE_PATH }}/news/2022/11/23/announcing-scalajs-1.12.0/

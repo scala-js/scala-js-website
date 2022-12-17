@@ -3,7 +3,7 @@ layout: post
 title: Announcing Scala.js 1.12.0
 category: news
 tags: [releases]
-permalink: /news/2022/09/15/announcing-scalajs-1.12.0/
+permalink: /news/2022/11/23/announcing-scalajs-1.12.0/
 ---
 
 
