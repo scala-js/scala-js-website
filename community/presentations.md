@@ -8,6 +8,9 @@ title: Presentation and videos
 * [Hands-on Scala.js](http://vimeo.com/111978847) at Pacific North-West Scala 2014, by Li Haoyi
 * [Cross-Platform Development in Scala.js](https://www.youtube.com/watch?v=Ksoi6AG9nbA) at Scala by
   the Bay 2014, by Li Haoyi
+* [Stockholm Syndrome Escape Velocity](https://www.youtube.com/watch?v=kLZr87CGY-U) at Functional Scala 2022, by Kit Langton
+* [A Practical Skeleton for Your Next Scala/Scala.js Web Application](https://www.youtube.com/watch?v=lrG5sYiJ5-I) at ScalaCon 2022, by Alexis Hernandez
+* [Scala.js As A Simple Entry Point To Get People Into Scala](https://www.youtube.com/watch?v=9ePQwMA_g_w) at Functional Scala 2022, by Alexis Hernandez
 
 ### For JavaScript developers
 
