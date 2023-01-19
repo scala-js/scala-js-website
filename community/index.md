@@ -88,6 +88,14 @@ Use these open source projects to see how others have used Scala.js to build the
 - [Scalafiddle-editor](https://scalafiddle.io) ([source](https://github.com/scalafiddle/scalafiddle-editor)): An online playground for creating, sharing and embedding Scala fiddles (little Scala programs that run directly in your browser).
 - [FlowRun](https://github.com/sacode387/FlowRun): Editor and interpreter for the FlowRun flowcharts, written in Scala.js using Scala 3.
 - [Airframe Rx/RPC](https://wvlet.org/airframe/) Airframe enables pure-Scala development of frontend (Scala.js) and backend (Scala JVM) applications with [RPC](https://wvlet.org/airframe/docs/airframe-rpc) and [reactive interface (Rx)](https://wvlet.org/airframe/docs/airframe-rx). Presentation: [Unifying Frontend and Backend Development with Scala (ScalaCon 2021)](https://speakerdeck.com/xerial/unifying-frontend-and-backend-development-with-scala-scala-con-2021)
+- [Cazadescuentos](https://github.com/wiringbits/cazadescuentos) is a set of Scala.js applications sharing a common core, includes a browser extension for Chrome/Firefox and a Progressive Web Application. These applications allows to track prices from online stores.
+- [Chrome for Scala.js](https://github.com/AlexITC/scala-js-chrome) is an sbt plugin for developing Chrome/Firefox extensions using Scala.js
+- [Chrome scalajs template](https://github.com/AlexITC/chrome-scalajs-template/) is a template for developing Chrome/Firefox extensions using Scala.js
+- [Scala.js games](https://github.com/wiringbits/scala-js-games) have simple games ported to Scala.js (using Scala 3).
+- [sjs-material-ui-facade](https://github.com/wiringbits/sjs-material-ui-facade) is a ScalablyTyped facade generated for https://v3.material-ui.com to avoid huge compile times while using it from Slinky.
+- [st-material-ui-demo-slinky](https://github.com/wiringbits/st-material-ui-demo-slinky) is a demo for using mui5 ScalablyTyped facades with Slinky.
+- [Wiringbits WebApp template](https://github.com/wiringbits/scala-webapp-template/) is a template for developing fullstack web applications with Scala and Scala.js
+
 
 ## Testimonials
 
