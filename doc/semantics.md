@@ -90,29 +90,26 @@ If you are in that situation, we advise to use `Double`s instead of `Float`s as 
 
 The JVM is a very well specified environment, which even specifies how some
 bugs are reported as exceptions.
-The relevant exceptions are:
 
-* `NullPointerException`
-* `ArrayIndexOutOfBoundsException` and `StringIndexOutOfBoundsException`
-* `ClassCastException`
-* `ArrayStoreException`
-* `NegativeArraySizeException`
-* `StackOverflowError` and `OutOfMemoryError`
+There are two groups of relevant exceptions:
+
+* Exceptions thrown on unsatisfied preconditions of core language features:
+  * `NullPointerException`
+  * `ArrayIndexOutOfBoundsException` and `StringIndexOutOfBoundsException`
+  * `ClassCastException`
+  * `ArrayStoreException`
+  * `NegativeArraySizeException`
+* System errors:
+  * `StackOverflowError` and `OutOfMemoryError`
 
 Because Scala.js does not receive VM support to detect such erroneous
 conditions, checking them is typically too expensive.
 
-Therefore, all of these are considered
+Therefore, conditions that would throw one of these exceptions are considered
 [undefined behavior](http://en.wikipedia.org/wiki/Undefined_behavior).
 
-Some of these, however, can be configured to be compliant with the JVM specification using sbt settings.
-Currently, they are:
-
-* `ClassCastException` (thrown by invalid `asInstanceOf` calls)
-* `ArrayIndexOutOfBoundsException` (thrown by array indexing)
-* `StringIndexOutOfBoundsException` (thrown by string indexing)
-
-The list will probably expand in future versions.
+However, the first group can be configured to be compliant with the JVM specification using sbt settings.
+System errors are not handled by Scala.js, which inherits their behavior from the host JavaScript engine.
 
 Every configurable undefined behavior has 3 possible modes:
 
