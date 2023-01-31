@@ -413,4 +413,4 @@ Our setup features the following properties:
 * Development mode with live reloading: changing Scala source files automatically triggers recompilation and browser refresh.
 * Production mode, wired to automatically take the `fullLinkJS` output of Scala.js, and producing a unique `.js` file.
 
-In our [next tutorial about Laminar and ScalablyTyped](./laminar-scalablytyped.html), we will learn how to write UIs in idiomatic Scala code, and how to integrate third-party libraries.
+In our [next tutorial about Laminar](./laminar.html), we will learn how to write UIs in idiomatic Scala code.

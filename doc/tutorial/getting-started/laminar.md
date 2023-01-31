@@ -1,14 +1,16 @@
 ---
 layout: doc
-title: Getting Started with Laminar and ScalablyTyped
+title: Getting Started with Laminar
 ---
 
-In this second tutorial, we learn how to develop UIs in Scala.js with [Laminar](https://laminar.dev/) and how to integrate JavaScript libraries with [ScalablyTyped](https://scalablytyped.org/).
+In this second tutorial, we learn how to develop UIs in Scala.js with [Laminar](https://laminar.dev/).
 
 We start here with the project setup developed in the previous tutorial about [Setting up Scala.js with Vite](./scalajs-vite.html).
 To follow along this tutorial, either use the result of the previous tutorial, or checkout [the scalajs-vite-end-state branch](https://github.com/sjrd/scalajs-sbt-vite-laminar-chartjs-example/tree/scalajs-vite-end-state) of the accompanying repo.
 
-If you prefer to navigate the end result for this tutorial directly, checkout [the laminar-scalablytyped-end-state branch](https://github.com/sjrd/scalajs-sbt-vite-laminar-chartjs-example/tree/laminar-scalablytyped-end-state) instead.
+If you prefer to navigate the end result for this tutorial directly, checkout [the laminar-end-state branch](https://github.com/sjrd/scalajs-sbt-vite-laminar-chartjs-example/tree/laminar-end-state) instead.
+
+[See the final result in action and fiddle with the code in Scribble](https://scribble.ninja/u/sjrd/ddueiaxghmbmbnbpzggmkwwmpigc)
 
 ## Prerequisites
 
@@ -199,34 +201,39 @@ Unlike imperative programming, when we change the value behind a `Var` that was 
 This ensures that *relationships* between `Var`s and `Signal`s are maintained at all times.
 Thanks to these properties, we can reason about our program in a very similar way that we do when using only immutable values, as is the case in functional programming.
 
-## Chart data in Laminar - the Model
+## Data Model
 
 We can now start developing our live chart application in earnest.
 The first thing we need is a *model* for the data that we want to edit and render.
-We will focus on a bar chart with string labels and numeric values.
+We will focus on "shopping list" items with string labels, decimal prices and integer counts.
+Each item also offers a `fullPrice` accessor, for convenience.
 Therefore, an immutable model of our data can look like the following:
 
 {% highlight scala %}
+import scala.util.Random
+
 final class DataItemID
 
-case class DataItem(id: DataItemID, label: String, value: Double)
+case class DataItem(id: DataItemID, label: String, price: Double, count: Int):
+  def fullPrice: Double = price * count
 
 object DataItem:
-  def apply(): DataItem = DataItem(DataItemID(), "?", Math.random())
+  def apply(): DataItem =
+    DataItem(DataItemID(), "?", Random.nextDouble(), Random.nextInt(5) + 1)
 end DataItem
 
 type DataList = List[DataItem]
 {% endhighlight %}
 
-In addition to a `label` and a `value`, we include an `id: DataItemID` in our `DataItem` class.
-The ID will serve to uniquely identify rows of our table even if they happen to have the same label and value.
+In addition to the expected fields `label`, `price` and `count`, we include an `id: DataItemID` in our `DataItem` class.
+The ID will serve to uniquely identify rows of our table even if they happen to have the same content.
 Think about a delete button on each row: if we click it, we would like the corresponding row to be removed, not another one with the same content.
 
 Since we want our chart to be editable, we will need to change the table data over time.
 For that purpose, we put the entire `DataList` in a `Var`, as follows:
 
 {% highlight scala %}
-val dataVar: Var[DataList] = Var(List(DataItem(DataItemID(), "one", 1.0)))
+val dataVar: Var[DataList] = Var(List(DataItem(DataItemID(), "one", 1.0, 1)))
 val dataSignal = dataVar.signal
 {% endhighlight %}
 
@@ -240,9 +247,9 @@ def removeDataItem(id: DataItemID): Unit =
   dataVar.update(data => data.filter(_.id != id))
 {% endhighlight %}
 
-## Chart data in Laminar - Rendering as a table
+## Rendering as a table
 
-Before rendering our data in a real chart, let us focus on rendering the *table* view of that data.
+For this article in the series, we focus on Laminar itself, and therefore on rendering the *table* view of out data.
 
 {% highlight scala %}
 def appElement(): Element =
@@ -254,20 +261,27 @@ end appElement
 
 def renderDataTable(): Element =
   table(
-    thead(tr(th("Label"), th("Value"), th("Action"))),
+    thead(tr(th("Label"), th("Price"), th("Count"), th("Full price"), th("Action"))),
     tbody(
       children <-- dataSignal.map(data => data.map { item =>
         renderDataItem(item.id, item)
       }),
     ),
-    tfoot(tr(td(button("+", onClick --> (_ => addDataItem(DataItem())))))),
+    tfoot(tr(
+      td(button("➕", onClick --> (_ => addDataItem(DataItem())))),
+      td(),
+      td(),
+      td(child.text <-- dataSignal.map(data => "%.2f".format(data.map(_.fullPrice).sum))),
+    )),
   )
 end renderDataTable
 
 def renderDataItem(id: DataItemID, item: DataItem): Element =
   tr(
     td(item.label),
-    td(item.value),
+    td(item.price),
+    td(item.count),
+    td("%.2f".format(item.fullPrice)),
     td(button("🗑️", onClick --> (_ => removeDataItem(id)))),
   )
 end renderDataItem
@@ -275,12 +289,19 @@ end renderDataItem
 
 Let us pick apart the above.
 First, the bottommost function, `renderDataItem`, takes one `DataItem` and renders a table row (`tr`) for that item.
-The row contains the `label` and the `value` as text, and a Remove `button`.
+The row contains text cells for the `label`, `price`, `count` and `fullPrice`.
+It also contains a Remove `button`.
 Recall from our initial example with a `counter` that `onClick --> (event => action)` performs the given `action` on every click event.
 Since we do not care about the properties of the event, we use `_` instead.
 The action is to call `removeDataItem(id)`, which will schedule an update to the root `dataVar`, filtering out the data item with the given `id`.
 
-Similarly, in `renderDataTable`, the footer of the table contains a `button` whose action is to add a new random data item to the chart data.
+Similarly, in `renderDataTable`, the footer of the table contains a ➕ `button` whose action is to add a new random data item to the chart data.
+
+In the fourth column of the footer, we insert the total price for the shopping list.
+We use the `dataSignal.map` method to derive a time-varying string out of the data model.
+It maps a `Signal[List[DataItem]]` into a `Signal[String]`.
+Given `data: List[DataItem]`, we compute the total price as the `sum` of the `fullPrice` of each item: `data.map(_.fullPrice).sum`.
+We format it with 2 decimal digits using `"%.2f".format(...)`.
 
 In the `tbody` element, we have to render a row for every item in the chart data list.
 The list `dataSignal` is a time-varying `Signal[List[DataItem]]`.
@@ -307,7 +328,7 @@ tbody(
 
 As the value in the `Signal[List[Element]]` changes over time, so will the list of actual DOM children of the `tbody` node.
 
-[See it in action and fiddle with the code in Scribble](https://scribble.ninja/u/sjrd/dihfmcxjlbvlayinfcvwyiirvgb)
+[See it in action and fiddle with the code in Scribble](https://scribble.ninja/u/sjrd/dbniuhlnktuvkdchyfusgqtdprgz)
 
 ## Splitting
 
@@ -357,16 +378,22 @@ This is why we now pass `itemSignal` to `renderDataItem`, which we amend to acce
 +  def renderDataItem(id: DataItemID, itemSignal: Signal[DataItem]): Element =
      tr(
 -      td(item.label),
--      td(item.value),
+-      td(item.price),
+-      td(item.count),
+-      td("%.2f".format(item.fullPrice)),
 +      td(child.text <-- itemSignal.map(_.label)),
-+      td(child.text <-- itemSignal.map(_.value)),
++      td(child.text <-- itemSignal.map(_.price)),
++      td(child.text <-- itemSignal.map(_.count)),
++      td(
++        child.text <-- itemSignal.map(item => "%.2f".format(item.fullPrice))
++      ),
        td(button("🗑️", onClick --> (_ => removeDataItem(id)))),
      )
    end renderDataItem
 {% endhighlight %}
 
-We cannot directly read `item.label` or `item.value` anymore.
-Instead, we use `map` to get time-varying views of the label and value, which we bind to the text of the `td` elements using `child.text <--`.
+We cannot directly read `item.label` or `item.fullPrice` anymore.
+Instead, we use `map` to get time-varying views of the properties, which we bind to the text of the `td` elements using `child.text <--`.
 You may recall that we had done something very similar in our initial `counter` example:
 
 {% highlight scala %}
@@ -380,239 +407,32 @@ You may recall that we had done something very similar in our initial `counter` 
 
 We now have optimal reuse of `tr` elements based on the `id` of the input `DataItem`s.
 
-[See it in action and fiddle with the code in Scribble](https://scribble.ninja/u/sjrd/cwhugissosbhkucvskpwbqedrntp)
-
-## The actual chart
-
-We had promised a bar chart, but all we have so far is a DOM `table`.
-It is time to introduce [Chart.js](https://www.chartjs.org/), a JavaScript library that draws beautiful charts.
-In order to get static types and bindings for Chart.js, we use [ScalablyTyped](https://scalablytyped.org/).
-ScalablyTyped can read TypeScript type definition files and produce corresponding [Scala.js facade types](/doc/interoperability/facade-types.html).
-
-### Build setup
-
-We set up our new dependencies as follows.
-
-In `project/plugins.sbt`, we add a dependency on ScalablyTyped:
-
-{% highlight scala %}
-addSbtPlugin("org.scalablytyped.converter" % "sbt-converter" % "1.0.0-beta40")
-{% endhighlight %}
-
-In `package.json`, we add dependencies on Chart.js, its TypeScript type definitions, and on the TypeScript compiler, which is required by ScalablyTyped:
-
-{% highlight diff %}
-+  "dependencies": {
-+    "chart.js": "2.9.4"
-+  },
-   "devDependencies": {
--    "vite": "^3.2.3"
-+    "vite": "^3.2.3",
-+    "typescript": "4.6.2",
-+    "@types/chart.js": "2.9.29"
-   }
-{% endhighlight %}
-
-Finally, in `build.sbt`, we configure ScalablyTyped on our project:
-
-{% highlight diff %}
- lazy val livechart = project.in(file("."))
-   .enablePlugins(ScalaJSPlugin) // Enable the Scala.js plugin in this project
-+  .enablePlugins(ScalablyTypedConverterExternalNpmPlugin)
-   .settings(
-     scalaVersion := "3.2.1",
-     [...]
-     // Depend on Laminar
-     libraryDependencies += "com.raquo" %%% "laminar" % "0.14.2",
-+
-+    // Tell ScalablyTyped that we manage `npm install` ourselves
-+    externalNpm := baseDirectory.value,
-   )
-{% endhighlight %}
-
-For these changes to take effect, we have to perform the following steps:
-
-1. Stop sbt and Vite, if they are running
-1. Run `npm install` to install the new npm dependencies
-1. Restart sbt and the `~fastLinkJS` task (this will take a while the first time, as ScalablyTyped performs its magic)
-1. Restart `npm run dev`
-1. Possibly re-import the project in your IDE of choice
-
-### Implementing the chart
-
-We can now render our chart.
-First, we define the Chart.js configuration that we will use:
-
-{% highlight scala %}
-  val chartConfig =
-    import typings.chartJs.mod.*
-    new ChartConfiguration {
-      `type` = ChartType.bar
-      data = new ChartData {
-        datasets = js.Array(new ChartDataSets {
-          label = "Value"
-          borderWidth = 1
-        })
-      }
-      options = new ChartOptions {
-        scales = new ChartScales {
-          yAxes = js.Array(new CommonAxe {
-            ticks = new TickOptions {
-              beginAtZero = true
-            }
-          })
-        }
-      }
-    }
-  end chartConfig
-{% endhighlight %}
-
-At the top, we import the facade types for Chart.js generated by ScalablyTyped:
-
-{% highlight scala %}
-import typings.chartJs.mod.*
-{% endhighlight %}
-
-This gives us access to types like `ChartConfiguration` and `ChartType`.
-
-Inside the `ChartConfiguration`, we provide a number of Chart.js-related options to make our chart look the way we want:
-
-* the type of chart as a bar chart: `type = ChartType.bar`,
-* a unique dataset with the label `"Value"`, and
-* the `y` axis' start value as `0`.
-
-All of these configuration options are type-checked, using the static types provided by ScalablyTyped.
-If written in JavaScript, the above configuration would read as:
-
-{% highlight javascript %}
-{
-  type: "bar",
-  data: {
-    datasets: [{
-      label: "Value",
-      borderWidth: 1
-    }]
-  },
-  options: {
-    scales: {
-      yAxes: [{
-        ticks: {
-          beginAtZero: true
-        }
-      }]
-    }
-  }
-}
-{% endhighlight %}
-
-We now amend our `appElement()` method to also call a new `renderDataChart()` function:
-
-{% highlight diff %}
-  def appElement(): Element =
-     div(
-       h1("Live Chart"),
-       renderDataTable(),
-+      renderDataChart(),
-     )
-   end appElement
-{% endhighlight %}
-
-The implementation of `renderDataChart()` is rather large.
-We show it in its entirety first, then we will pick it apart.
-
-{% highlight scala %}
-  def renderDataChart(): Element =
-    import scala.scalajs.js.JSConverters.*
-    import typings.chartJs.mod.*
-
-    var optChart: Option[Chart] = None
-
-    canvas(
-      // Regular properties of the canvas
-      width := "100%",
-      height := "200px",
-
-      // onMountUnmount callback to bridge the Laminar world and the Chart.js world
-      onMountUnmountCallback(
-        // on mount, create the `Chart` instance and store it in optChart
-        mount = { nodeCtx =>
-          val domCanvas: dom.HTMLCanvasElement = nodeCtx.thisNode.ref
-          val chart = Chart.apply.newInstance2(domCanvas, chartConfig)
-          optChart = Some(chart)
-        },
-        // on unmount, destroy the `Chart` instance
-        unmount = { thisNode =>
-          for (chart <- optChart)
-            chart.destroy()
-          optChart = None
-        }
-      ),
-
-      // Bridge the FRP world of dataSignal to the imperative world of the `chart.data`
-      dataSignal --> { data =>
-        for (chart <- optChart) {
-          chart.data.labels = data.map(_.label).toJSArray
-          chart.data.datasets.get(0).data = data.map(_.value).toJSArray
-          chart.update()
-        }
-      },
-    )
-  end renderDataChart
-{% endhighlight %}
-
-We create a Laminar `canvas()` element.
-We give it a `width` and `height` using Laminar's `:=`, as we did before.
-
-For its actual content, we want Chart.js to take over.
-For that, we have to create an instance of `Chart` referencing the DOM `HTMLCanvasElement`.
-In order to bridge the world of Laminar `Element`s and Chart.js, we use `onMountUnmountCallback`.
-
-That function takes one callback executed when the element is attached to a DOM tree, and one when it is removed.
-When the element is mounted, we want to create the instance of `Chart`.
-When it is unmounted, we want to call the `destroy()` method of Chart.js to release its resources.
-
-The `mount` callback receives a `nodeCtx`, which, among other things, gives us a handle to the underlying `HTMLCanvasElement`.
-We name it `domCanvas`, and use it together with the `chartConfig` defined above to create an instance of Chart.js' `Chart` class:
-
-{% highlight scala %}
-val domCanvas: dom.HTMLCanvasElement = nodeCtx.thisNode.ref
-val chart = Chart.apply.newInstance2(domCanvas, chartConfig)
-{% endhighlight %}
-
-We store the resulting `chart` instance in a local `var optChart: Option[Chart]`.
-We will use it later to update the `chart`'s imperative data model when our FRP `dataSignal` changes.
-
-In order to achieve that, we use a `dataSignal -->` binder.
-Once the `canvas` gets mounted, every time the value of `dataSignal` changes, the callback is executed.
-
-{% highlight scala %}
-dataSignal --> { data =>
-  for (chart <- optChart) {
-    chart.data.labels = data.map(_.label).toJSArray
-    chart.data.datasets.get(0).data = data.map(_.value).toJSArray
-    chart.update()
-  }
-},
-{% endhighlight %}
-
-In the callback, we get access to the `chart: Chart` instance and update its data model.
-This `-->` binder allows to bridge the FRP world of `dataSignal` with the imperative world of Chart.js.
-
-Note that we put the `-->` binder as an argument to the Laminar `canvas` element.
-This may seem suspicious, as neither `dataSignal` nor the callback have any direct relationship to the DOM canvas element.
-We do this to tie the lifetime of the binder to the lifetime of the `canvas` element.
-When the latter gets unmounted, we release the binder connection, possibly allowing resources to be reclaimed.
-
-In general, every binder must be *owned* by a Laminar element.
-It only gets *activated* when that element is mounted.
-This prevents memory leaks.
-
-Our application now properly renders the data model as a chart.
-When we add or remove data items, the chart is automatically updated, thanks to the connection established by the `dataSignal -->` binder.
+[See it in action and fiddle with the code in Scribble](https://scribble.ninja/u/sjrd/ddxiuvwasiuitxshbdmmlldzhfn)
 
 ## Editing labels
 
-The last touch to our application is to allow direct editing of the `label` and `value` of data items.
+So far, we do not have any way to actually edit individual items.
+Let us start by editing labels.
+
+In order to be able to actually notice any change to our model, let us first add an additional *list* view summarizing the shopping list:
+
+```diff
+   def appElement(): Element =
+     div(
+       h1("Live Chart"),
+       renderDataTable(),
++      renderDataList(),
+     )
+   end appElement
++
++  def renderDataList(): Element =
++    ul(
++      children <-- dataSignal.split(_.id) { (id, initial, itemSignal) =>
++        li(child.text <-- itemSignal.map(item => s"${item.count} ${item.label}"))
++      }
++    )
++  end renderDataList
+```
 
 Recall our earlier function generating a table row for a `Signal[DataItem]`:
 
@@ -620,7 +440,11 @@ Recall our earlier function generating a table row for a `Signal[DataItem]`:
   def renderDataItem(id: DataItemID, itemSignal: Signal[DataItem]): Element =
     tr(
       td(child.text <-- itemSignal.map(_.label)),
-      td(child.text <-- itemSignal.map(_.value)),
+      td(child.text <-- itemSignal.map(_.price)),
+      td(child.text <-- itemSignal.map(_.count)),
+      td(
+        child.text <-- itemSignal.map(item => "%.2f".format(item.fullPrice))
+      ),
       td(button("🗑️", onClick --> (_ => removeDataItem(id)))),
     )
   end renderDataItem
@@ -631,8 +455,6 @@ Its value should at all times reflect the time-varying value within `itemSignal.
 Conversely, if we change the value from the UI, the data model should be updated accordingly.
 
 {% highlight scala %}
-  def renderDataItem(id: DataItemID, itemSignal: Signal[DataItem]): Element =
-    tr(
       td(
         input(
           typ := "text",
@@ -646,10 +468,6 @@ Conversely, if we change the value from the UI, the data model should be updated
           },
         )
       ),
-      td(child.text <-- itemSignal.map(_.value)),
-      td(button("🗑️", onClick --> (_ => removeDataItem(id)))),
-    )
-  end renderDataItem
 {% endhighlight %}
 
 Similarly to `child.text <-- itemSignal.map(_.label)`, we now use `value <--`.
@@ -658,8 +476,8 @@ In the other direction, we use `onInput.mapToValue -->` to execute a callback ev
 Within the callback, we schedule an update to our `dataVar`.
 
 With these changes, we can already edit the labels of our data items.
-Once again, as the chart directly feeds from the `dataVar`, any changes there are automatically reflected.
-We do not have to touch the chart rendering method.
+As the list view of `renderDataList()` directly feeds from the `dataVar`, any changes there are automatically reflected.
+We do not have to touch the list rendering method.
 
 We can improve our code a bit through a few refactorings.
 
@@ -684,7 +502,7 @@ Laminar provides a dedicated method on `Var` for that:
 Now, we can see another pattern emerging, not related to Laminar, but to our own model.
 We change a single `DataItem` in our model by `map`ping over the `data` list and transforming a single element based on its `id`.
 We can refactor this pattern as a separate method.
-We make that method generic in the type of value, as we will reuse it later for the `Double` values of data items.
+We make that method generic in the type of value, as we will reuse it later for the `Double` prices of data items.
 
 {% highlight scala %}
   def renderDataItem(id: DataItemID, itemSignal: Signal[DataItem]): Element =
@@ -748,10 +566,11 @@ It takes data model values as arguments, and returns a Laminar element manipulat
 This is what many UI frameworks call a *component*.
 In Laminar, components are nothing but methods manipulating time-varying data and returning Laminar elements.
 
-## Editing values
+## Editing prices and counts
 
-To finish our application, we must be able to edit *values* as well as labels.
-We start with a "component" method building an `Input` that manipulates `Double` values.
+To finish our application, we should also be able to edit *prices* and *counts*.
+
+For the prices, we start with a "component" method building an `Input` that manipulates `Double` values.
 
 {% highlight scala %}
   def inputForDouble(valueSignal: Signal[Double],
@@ -779,7 +598,32 @@ We leave it to the reader to understand the details of this method.
 We point out that we use an intermediate, local `Var[String]` to hold the actual text of the `input` element.
 We then write separate transformations to link that `Var[String]` to the string representation of the `Double` signal and updater.
 
-Finally, we update our `renderDataItem` method to use our new double input:
+For the counts, we want a component that manipulates `Int` values.
+For those, we would like a more *controlled* input.
+Instead of letting the user enter any string in the input, and only remember the last valid `Double` value, we now want to only allow valid `Int` values in the first place.
+This is the role of the `controlled` method of Laminar.
+As an approximation of its behavior, itt wraps a UI-from-data binder `<--` and a UI-to-data binder `-->` in a way that forces the UI to adhere to some filters.
+
+{% highlight scala %}
+  def inputForInt(valueSignal: Signal[Int],
+      valueUpdater: Observer[Int]): Input =
+    input(
+      typ := "text",
+      controlled(
+        value <-- valueSignal.map(_.toString),
+        onInput.mapToValue.map(_.toIntOption).collect {
+          case Some(newCount) => newCount
+        } --> valueUpdater,
+      ),
+    )
+  end inputForInt
+{% endhighlight %}
+
+We use `collect` in the `-->` binder to filter out strings that do not correctly parse as `Int` values.
+`controlled` then takes care of enforcing that those values are rejected at the UI level as well.
+More details about `controlled` can be found [in the Laminar documentation](https://laminar.dev/documentation#controlled-inputs).
+
+Finally, we update our `renderDataItem` method to use our new double and int inputs:
 
 {% highlight scala %}
   def renderDataItem(id: DataItemID, itemSignal: Signal[DataItem]): Element =
@@ -794,20 +638,33 @@ Finally, we update our `renderDataItem` method to use our new double input:
       ),
       td(
         inputForDouble(
-          itemSignal.map(_.value),
-          makeDataItemUpdater(id, { (item, newValue) =>
-            item.copy(value = newValue)
+          itemSignal.map(_.price),
+          makeDataItemUpdater(id, { (item, newPrice) =>
+            item.copy(price = newPrice)
           })
         )
+      ),
+      td(
+        inputForInt(
+          itemSignal.map(_.count),
+          makeDataItemUpdater(id, { (item, newCount) =>
+            item.copy(count = newCount)
+          })
+        )
+      ),
+      td(
+        child.text <-- itemSignal.map(item => "%.2f".format(item.fullPrice))
       ),
       td(button("🗑️", onClick --> (_ => removeDataItem(id)))),
     )
   end renderDataItem
 {% endhighlight %}
 
+[See it in action and fiddle with the code in Scribble](https://scribble.ninja/u/sjrd/ddueiaxghmbmbnbpzggmkwwmpigc)
+
 ## Conclusion
 
-That concludes our tutorial on Laminar and ScalablyTyped.
+That concludes our tutorial on Laminar.
 
 We saw how to use Laminar for UI development in Scala.js.
 We discovered the Functional Reactive Programming (FRP) model used by Laminar.
@@ -815,4 +672,4 @@ This model is particularly suited to UI development in Scala.
 With its time-varying values, it offers a balance between the changing world of UIs and the reasoning about immutable data that we favor in Scala.
 We mentioned how to define "components" in Laminar as mere methods manipulating `Signal`s and `Observer`s.
 
-Finally, we saw how to integrate JavaScript libraries in a Scala.js application, using ScalablyTyped.
+In our [next tutorial about ScalablyTyped](./scalablytyped.html), we will learn how to integrate third-party JavaScript libraries.

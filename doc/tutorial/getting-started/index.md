@@ -1,6 +1,6 @@
 ---
 layout: doc
-title: Getting Started with Scala.js, Vite, Laminar and ScalablyTyped
+title: Getting Started Tutorial Series
 ---
 
 This series of tutorials teaches you how to use Scala.js together with modern development tools.
@@ -8,8 +8,9 @@ This series of tutorials teaches you how to use Scala.js together with modern de
 1. [Scala.js and Vite](./scalajs-vite.html):
   * Set up a hello world project ready for live reloading in the browser.
   * Generate minimized production assets.
-2. [Laminar and ScalablyTyped](./laminar-scalablytyped.html):
-  * Build UIs with Laminar using Function Reactive Programming (FRP), a hybrid model between imperative and functional programming particularly well suited for UI development in Scala.
+2. [Laminar](./laminar.html):
+  * Build UIs with Laminar using Functional Reactive Programming (FRP), a hybrid model between imperative and functional programming particularly well suited for UI development in Scala.
+3. [ScalablyTyped](./scalablytyped.html):
   * Integrate JavaScript libraries using ScalablyTyped.
 
 If you have time, reading and applying them in order will give you more in-depth knowledge about the development environment.
@@ -17,7 +18,7 @@ If you have time, reading and applying them in order will give you more in-depth
 If you are in a hurry, you can skip the ones you are not interested in.
 Each tutorial starts with a link to a repo that you can clone to get off the ground.
 
-In any case, make sure that you have the Prerequisites listed below covered.
+In any case, make sure that you have the prerequisites listed below covered.
 
 ## Prerequisites
 
