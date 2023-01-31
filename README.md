@@ -12,6 +12,35 @@ The key to contributing is being able to edit and
 preview your content. [Your pull requests are welcome](https://github.com/scala-js/scala-js-website/compare)!
 
 ## Set up
+
+### With Docker
+
+You need to have [Docker Engine](https://docs.docker.com/engine/) and [Docker Compose](https://docs.docker.com/compose/) installed on your machine.
+Under Mac OS (Intel or Apple silicon), instead of installing [Docker Desktop](https://docs.docker.com/desktop/) you can also use [HomeBrew](https://brew.sh/) with [Colima](https://github.com/abiosoft/colima): `brew install colima docker docker-compose`.
+UID and GID environment variables are needed to avoid docker from writing files as root in your directory.
+
+```
+env UID="$(id -u)" GID="$(id -g)" docker-compose up
+```
+
+On Linux you may have to prefix that command with `sudo`, depending on your Docker setup.
+
+The generated site is available at `http://localhost:4000`.
+
+When the website dependencies change (the content of the `Gemfile`), you have to re-build the Docker image:
+
+```
+env UID="$(id -u)" GID="$(id -g)" docker-compose up --build
+```
+
+If you have problems with the Docker image or want to force the rebuild of the Docker image:
+
+```
+env UID="$(id -u)" GID="$(id -g)" docker-compose build --no-cache
+```
+
+### Manually with Ruby tooling
+
 As this website is built with [Jekyll](http://jekyllrb.com/),
 we will need to set up some Ruby tooling.
 
@@ -22,7 +51,7 @@ $ rvm use 2.7.5 --install
 
 # Set up Bundler, a Ruby package manager
 # It downloads dependencies specified in a Gemfile
-# but into a local path unlike gem 
+# but into a local path unlike gem
 $ gem install bundler
  # and if this fails, try installing libffi first (distro-specific):
  # sudo apt install libffi-dev
@@ -34,8 +63,9 @@ $ bundle install
 $ bundle exec jekyll build
 ```
 
-## Editing live
-This is what you would do after initial installation:
+#### Editing live
+
+This is what you would do after the initial installation:
 ```bash
 $ bundle exec jekyll serve --watch
 ```
