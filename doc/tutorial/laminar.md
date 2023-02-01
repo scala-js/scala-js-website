@@ -1,6 +1,6 @@
 ---
 layout: doc
-title: Getting Started with Laminar
+title: Build UIs with Laminar
 ---
 
 In this second tutorial, we learn how to develop UIs in Scala.js with [Laminar](https://laminar.dev/).

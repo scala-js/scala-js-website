@@ -1,6 +1,6 @@
 ---
 layout: doc
-title: Getting Started with ScalablyTyped
+title: Integrate JavaScript libraries with ScalablyTyped
 ---
 
 In this third tutorial, we learn how to integrate JavaScript libraries with [ScalablyTyped](https://scalablytyped.org/).
