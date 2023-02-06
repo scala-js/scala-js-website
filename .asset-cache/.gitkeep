@@ -1,0 +1,3 @@
+This directory is required for the docker volume hackery (see Dockerfile) to work.
+
+https://stackoverflow.com/questions/37883895/can-i-have-a-writable-docker-volume-mounted-under-a-read-only-volume
