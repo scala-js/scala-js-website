@@ -22,7 +22,7 @@ We bootstrap our setup using the vanilla Vite template.
 Navigate to a directory where you store projects, and run the command
 
 {% highlight shell %}
-$ npm create vite@3.2.1
+$ npm create vite@4.1.0
 {% endhighlight %}
 
 Choose a project name (we choose `livechart`).
@@ -30,9 +30,9 @@ Select the "Vanilla" framework and the "JavaScript" variant.
 Our output gives:
 
 {% highlight shell %}
-$ npm create vite@3.2.1
+$ npm create vite@4.1.0
 Need to install the following packages:
-  create-vite@3.2.1
+  create-vite@4.1.0
 Ok to proceed? (y)
 ✔ Project name: … livechart
 ✔ Select a framework: › Vanilla
@@ -55,10 +55,11 @@ $ npm install
 [...]
 $ npm run dev
 
-  VITE v3.2.3  ready in 135 ms
+  VITE v4.1.4  ready in 156 ms
 
-  ➜  Local:   http://127.0.0.1:5173/
+  ➜  Local:   http://localhost:5173/
   ➜  Network: use --host to expose
+  ➜  press h to show help
 {% endhighlight %}
 
 Open the provided URL to see the running JavaScript-based hello world.
@@ -67,7 +68,7 @@ Open the provided URL to see the running JavaScript-based hello world.
 
 In the generated folder, we find the following relevant files:
 
-* `index.html`: the main web page; it contains a `<script type=module src="main.js">` referencing the main JavaScript entry point.
+* `index.html`: the main web page; it contains a `<script type=module src="/main.js">` referencing the main JavaScript entry point.
 * `main.js`: the main JavaScript entry point; it sets up some DOM elements, and sets up a counter for a button.
 * `counter.js`: it implements a counter functionality for a button.
 * `package.json`: the config file for `npm`, the JavaScript package manager and build orchestrator.
@@ -109,7 +110,7 @@ sbt.version=1.8.0
 * `project/plugins.sbt`: declare sbt plugins; in this case, only sbt-scalajs
 
 {% highlight scala %}
-addSbtPlugin("org.scala-js" % "sbt-scalajs" % "1.12.0")
+addSbtPlugin("org.scala-js" % "sbt-scalajs" % "1.13.0")
 {% endhighlight %}
 
 At the root of our `livechart/` project, we add one file: `build.sbt`.
@@ -122,7 +123,7 @@ import org.scalajs.linker.interface.ModuleSplitStyle
 lazy val livechart = project.in(file("."))
   .enablePlugins(ScalaJSPlugin) // Enable the Scala.js plugin in this project
   .settings(
-    scalaVersion := "3.2.1",
+    scalaVersion := "3.2.2",
 
     // Tell Scala.js that this is an application with a main method
     scalaJSUseMainModuleInitializer := true,
@@ -143,7 +144,7 @@ lazy val livechart = project.in(file("."))
     /* Depend on the scalajs-dom library.
      * It provides static types for the browser DOM APIs.
      */
-    libraryDependencies += "org.scala-js" %%% "scalajs-dom" % "2.2.0",
+    libraryDependencies += "org.scala-js" %%% "scalajs-dom" % "2.4.0",
   )
 {% endhighlight %}
 
@@ -244,14 +245,33 @@ The `fastLinkJS` task produces the `.js` outputs from the Scala.js command.
 The `~` prefix instructs sbt to re-run that task every time a source file changes.
 
 There is one thing left to change: replace the hand-written JavaScript code with our Scala.js application.
-Open the file `main.js`, remove almost everything to leave only the following two lines:
+We use the `@scala-js/vite-plugin-scalajs` plugin to link Vite and Scala.js with minimal configuration.
+We install it in the dev-dependencies with:
+
+{% highlight shell %}
+$ npm install -D @scala-js/vite-plugin-scalajs@1.0.0
+{% endhighlight %}
+
+and instruct Vite to use it with the following configuration in a new file `vite.config.js`:
+
+{% highlight javascript %}
+import { defineConfig } from "vite";
+import scalaJSPlugin from "@scala-js/vite-plugin-scalajs";
+
+export default defineConfig({
+  plugins: [scalaJSPlugin()],
+});
+{% endhighlight %}
+
+Finally, open the file `main.js`, remove almost everything to leave only the following two lines:
 
 {% highlight javascript %}
 import './style.css'
-import './target/scala-3.2.1/livechart-fastopt/main.js'
+import 'scalajs:main.js'
 {% endhighlight %}
 
-If you had not stopped the `npm run dev` process with Vite, Vite will immediately pick up the changes and refresh the browser with our updated "Hello Scala.js!" message.
+You may have to stop and restart the `npm run dev` process, so that Vite picks up the newly created configuration file.
+Vite will refresh the browser with our updated "Hello Scala.js!" message.
 
 ## Live changes with Scala.js
 
@@ -288,129 +308,50 @@ This ensures that the development cycle remains as short as possible.
 ## Production build
 
 The `fastLinkJS` task of sbt and the `npm run dev` task of Vite are optimized for incremental development.
-For production, we want to perform more optimizations on the Scala.js side with `fullLinkJS`, and bundle minimized files with `npm run build`.
-
-For that to work well, we need to conditionally wire the output of `fastLinkJS` (resp. `fullLinkJS`) to the input of Vite when it is in development mode (resp. production mode).
-This requires some configuration in Vite.
-
-We create the file `vite.config.js` at the root of our project, with the following content:
-
-{% highlight javascript %}
-import { spawnSync } from "child_process";
-import { defineConfig } from "vite";
-
-// Detect whether Vite runs in development or production mode
-function isDev() {
-  return process.env.NODE_ENV !== "production";
-}
-
-// Utility to invoke a given sbt task and fetch its output
-function printSbtTask(task) {
-  const args = ["--error", "--batch", `print ${task}`];
-  const options = {
-    stdio: [
-      "pipe", // StdIn
-      "pipe", // StdOut
-      "inherit", // StdErr
-    ],
-  };
-  const result = process.platform === 'win32'
-    ? spawnSync("sbt.bat", args.map(x => `"${x}"`), {shell: true, ...options})
-    : spawnSync("sbt", args, options);
-
-  if (result.error)
-    throw result.error;
-  if (result.status !== 0)
-    throw new Error(`sbt process failed with exit code ${result.status}`);
-  return result.stdout.toString('utf8').trim();
-}
-
-// Get the output of fastLinkJS or fullLinkJS depending on isDev()
-const scalaJSOutputTask = isDev() ? "fastLinkJSOutput" : "fullLinkJSOutput";
-const scalaJSOutput = printSbtTask(scalaJSOutputTask);
-
-// Tell Vite to replace references to `@scalaJSOutput` by the path computed above
-export default defineConfig({
-  resolve: {
-    alias: [
-      {
-        find: "@scalaJSOutput",
-        replacement: scalaJSOutput,
-      },
-    ],
-  },
-});
-{% endhighlight %}
-
-While this may look scary, most of the complexity is concentrated into `printSbtTask`.
-That utility invokes a third-party process (sbt) in a platform-independent way (in particular, for Windows) and retrieves its `stdout` output.
-Other than that, we are doing two things:
-
-1. Depending on `process.env.NODE_ENV`, we retrieve the output of the sbt task `fastLinkJSOutput` or `fullLinkJSOutput`.
-   These tasks return the output directory of `fastLinkJS` and `fullLinkJS`, respectively.
-2. We tell Vite to replace references to `@scalaJSOutput` by the retrieved path.
-
-We then amend the top-level `main.js` file to use that new `@scalaJSOutput` variable:
-
-{% highlight javascript %}
-import './style.css'
-import '@scalaJSOutput/main.js'
-{% endhighlight %}
-
-If the `npm run dev` process is still running, Vite will automatically pick up the new configuration and restart its server.
-
-Now, nothing visible has changed, since we still render the development mode.
-To build to the production version of our website, we stop Vite with `Ctrl+C` and launch the following instead:
+For production, we want to perform more optimizations on the Scala.js side and bundle minimized files with `npm run build`.
+We stop Vite with `Ctrl+C` and launch the following instead:
 
 {% highlight shell %}
 $ npm run build
 
-> livechart2@0.0.0 build
+> livechart@0.0.0 build
 > vite build
 
-vite v3.2.3 building for production...
+vite v4.1.4 building for production...
+[info] welcome to sbt 1.8.0 (Temurin Java 1.8.0_362)
+[...]
+[info] Full optimizing .../livechart/target/scala-3.2.2/livechart-opt
+.../livechart/target/scala-3.2.2/livechart-opt
 ✓ 11 modules transformed.
-dist/assets/javascript.8dac5379.svg   0.97 KiB
-dist/index.html                       0.44 KiB
-dist/assets/index.d0964974.css        1.19 KiB / gzip: 0.62 KiB
-dist/assets/index.b5e141cb.js         28.67 KiB / gzip: 6.95 KiB
+dist/index.html                       0.45 kB
+dist/assets/javascript-8dac5379.svg   1.00 kB
+dist/assets/index-48a8825f.css        1.24 kB │ gzip: 0.65 kB
+dist/assets/index-3c83baa6.js        28.84 kB │ gzip: 6.97 kB
 {% endhighlight %}
 
 Since the built website uses an ECMAScript module, we need to serve it through an HTTP server to visualize it.
-We use the npm application `http-server` for that purpose, as we can run it without any additional dependency:
+We can use Vite's `preview` mode for that purpose, as we can run it without any additional dependency:
 
 {% highlight shell %}
-$ cd dist
-$ npx http-server
-Starting up http-server, serving ./
+$ npm run preview
 
-http-server version: 14.1.1
+> livechart@0.0.0 preview
+> vite preview
 
-http-server settings:
-CORS: disabled
-Cache: 3600 seconds
-Connection Timeout: 120 seconds
-Directory Listings: visible
-AutoIndex: visible
-Serve GZIP Files: false
-Serve Brotli Files: false
-Default File Extension: none
-
-Available on:
-  http://127.0.0.1:8080
-Hit CTRL-C to stop the server
+  ➜  Local:   http://localhost:4173/
+  ➜  Network: use --host to expose
 {% endhighlight %}
 
 Navigate to the mentioned URL to see your website.
 
 ## Conclusion
 
-In this tutorial, we saw how to configure Scala.js with Vite from the ground up.
+In this tutorial, we saw how to configure Scala.js with Vite from the ground up using `@scala-js/vite-plugin-scalajs`.
 We used sbt as our build tool, but the same effect can be achieved with any other Scala build tool, such as [Mill](https://com-lihaoyi.github.io/mill/) or [scala-cli](https://scala-cli.virtuslab.org/).
 
 Our setup features the following properties:
 
 * Development mode with live reloading: changing Scala source files automatically triggers recompilation and browser refresh.
-* Production mode, wired to automatically take the `fullLinkJS` output of Scala.js, and producing a unique `.js` file.
+* Production mode, wired to automatically take the fully optimized output of Scala.js, and producing a unique `.js` file.
 
 In our [next tutorial about Laminar](./laminar.html), we will learn how to write UIs in idiomatic Scala code.

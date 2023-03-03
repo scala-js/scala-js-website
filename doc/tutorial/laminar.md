@@ -26,7 +26,7 @@ We will elaborate on this point later.
 To start off, we add a dependency on Laminar in our `build.sbt`:
 
 {% highlight diff %}
-     libraryDependencies += "org.scala-js" %%% "scalajs-dom" % "2.2.0",
+     libraryDependencies += "org.scala-js" %%% "scalajs-dom" % "2.4.0",
 +
 +    // Depend on Laminar
 +    libraryDependencies += "com.raquo" %%% "laminar" % "0.14.2",

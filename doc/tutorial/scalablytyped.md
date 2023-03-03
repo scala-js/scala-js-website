@@ -38,6 +38,7 @@ In `package.json`, we add dependencies on Chart.js, its TypeScript type definiti
 +    "chart.js": "2.9.4"
 +  },
    "devDependencies": {
+     "@scala-js/vite-plugin-scalajs": "1.0.0",
 -    "vite": "^3.2.3"
 +    "vite": "^3.2.3",
 +    "typescript": "4.6.2",
