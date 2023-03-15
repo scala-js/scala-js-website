@@ -142,11 +142,12 @@ We declare `counter` as a `Var[Int]` initialized with `0`.
 We then use it in two *bindings*:
 
 * In `child.text <-- counter`, we declare a text child of the button whose content will always reflect the value of `counter`.
+  Together with the first (immutable) text child `"count is "`, it initially forms the text `"count is 0"`.
   As the value of `counter` changes over time, so does the text in the button.
 * In `counter.update(c => c + 1)`, we schedule an update of the value of `counter`, to be increased by 1.
   We schedule that as a result of the `onClick -->` event of the button.
 
-We do not need to explicitly set the `innerHTML` attribute of the button.
+We do not need to explicitly set the `innerText` attribute of the button.
 That is taken care of by the `<--` binding.
 
 Unlike frameworks based on a virtual DOM, Laminar bindings directly target the DOM element to update.
@@ -230,61 +231,156 @@ The ID will serve to uniquely identify rows of our table even if they happen to 
 Think about a delete button on each row: if we click it, we would like the corresponding row to be removed, not another one with the same content.
 
 Since we want our chart to be editable, we will need to change the table data over time.
-For that purpose, we put the entire `DataList` in a `Var`, as follows:
+For that purpose, we put the entire `DataList` in a `Var`, which we encapsulate in a `Model` class, as follows:
 
 {% highlight scala %}
-val dataVar: Var[DataList] = Var(List(DataItem(DataItemID(), "one", 1.0, 1)))
-val dataSignal = dataVar.signal
+final class Model:
+  val dataVar: Var[DataList] = Var(List(DataItem(DataItemID(), "one", 1.0, 1)))
+  val dataSignal = dataVar.signal
+end Model
 {% endhighlight %}
 
 We also define two functions that will add a new random item, and remove a specific item (given its ID):
 
 {% highlight scala %}
-def addDataItem(item: DataItem): Unit =
-  dataVar.update(data => data :+ item)
+final class Model:
+  ...
 
-def removeDataItem(id: DataItemID): Unit =
-  dataVar.update(data => data.filter(_.id != id))
+  def addDataItem(item: DataItem): Unit =
+    dataVar.update(data => data :+ item)
+
+  def removeDataItem(id: DataItemID): Unit =
+    dataVar.update(data => data.filter(_.id != id))
+end Model
+{% endhighlight %}
+
+## Testing
+
+This is a good time to introduce some unit tests to our application.
+We want to make sure that some of the model operations, like `DataItem.fullPrice` or `Model.addDataItem`, work as expected.
+
+We first add the following dependency on [MUnit](https://scalameta.org/munit/), a Scala testing framework, in our `build.sbt`:
+
+{% highlight diff %}
+     // Depend on Laminar
+     libraryDependencies += "com.raquo" %%% "laminar" % "0.14.2",
++
++    // Testing framework
++    libraryDependencies += "org.scalameta" %%% "munit" % "0.7.29" % Test,
+   )
+{% endhighlight %}
+
+After re-importing the project in the IDE (which should be prompted), we create a new file `src/test/scala/livechart/ModelTest.scala`.
+We write an elementary test for `DataItem.fullPrice` as follows:
+
+{% highlight scala %}
+package livechart
+
+class ModelTest extends munit.FunSuite:
+  test("fullPrice") {
+    val item = DataItem(DataItemID(), "test", 0.5, 5)
+    assert(item.fullPrice == 2.5)
+  }
+end ModelTest
+{% endhighlight %}
+
+We can run our test from the `sbt` prompt with the `test` command:
+
+{% highlight none %}
+sbt:livechart> test
+livechart.ModelTest:
+  + fullPrice 0.00s
+[info] Passed: Total 1, Failed 0, Errors 0, Passed 1
+[success] Total time: 0 s, completed
+{% endhighlight %}
+
+In order to test `addDataItem` and `removeDataItem`, we need to read the current value of `dataSignal`.
+For testing purposes, the most straightforward way to do so is to use the `now()` method.
+In the application code, we would prefer using `map()` and other combinators, as we will see later, but `now()` is good for tests.
+
+{% highlight scala %}
+  test("addDataItem") {
+    val model = new Model
+
+    val item = DataItem(DataItemID(), "test", 0.5, 2)
+    model.addDataItem(item)
+
+    val afterItems = model.dataSignal.now()
+    assert(afterItems.size == 2)
+    assert(afterItems.last == item)
+  }
+
+  test("removeDataItem") {
+    val model = new Model
+
+    model.addDataItem(DataItem(DataItemID(), "test", 0.5, 2))
+
+    val beforeItems = model.dataSignal.now()
+    assert(beforeItems.size == 2)
+
+    model.removeDataItem(beforeItems.head.id)
+
+    val afterItems = model.dataSignal.now()
+    assert(afterItems.size == 1)
+    assert(afterItems == beforeItems.tail)
+  }
+{% endhighlight %}
+
+Running the tests now yields
+
+{% highlight none %}
+sbt:livechart> test
+livechart.ModelTest:
+  + fullPrice 0.00s
+  + addDataItem 0.00s
+  + removeDataItem 0.00s
+[info] Passed: Total 3, Failed 0, Errors 0, Passed 3
+[success] Total time: 0 s, completed
 {% endhighlight %}
 
 ## Rendering as a table
 
-For this article in the series, we focus on Laminar itself, and therefore on rendering the *table* view of out data.
+For this article in the series, we focus on Laminar itself, and therefore on rendering the *table* view of our data.
 
 {% highlight scala %}
-def appElement(): Element =
-  div(
-    h1("Live Chart"),
-    renderDataTable(),
-  )
-end appElement
+object Main:
+  val model = new Model
+  import model.*
 
-def renderDataTable(): Element =
-  table(
-    thead(tr(th("Label"), th("Price"), th("Count"), th("Full price"), th("Action"))),
-    tbody(
-      children <-- dataSignal.map(data => data.map { item =>
-        renderDataItem(item.id, item)
-      }),
-    ),
-    tfoot(tr(
-      td(button("➕", onClick --> (_ => addDataItem(DataItem())))),
-      td(),
-      td(),
-      td(child.text <-- dataSignal.map(data => "%.2f".format(data.map(_.fullPrice).sum))),
-    )),
-  )
-end renderDataTable
+  def appElement(): Element =
+    div(
+      h1("Live Chart"),
+      renderDataTable(),
+    )
+  end appElement
 
-def renderDataItem(id: DataItemID, item: DataItem): Element =
-  tr(
-    td(item.label),
-    td(item.price),
-    td(item.count),
-    td("%.2f".format(item.fullPrice)),
-    td(button("🗑️", onClick --> (_ => removeDataItem(id)))),
-  )
-end renderDataItem
+  def renderDataTable(): Element =
+    table(
+      thead(tr(th("Label"), th("Price"), th("Count"), th("Full price"), th("Action"))),
+      tbody(
+        children <-- dataSignal.map(data => data.map { item =>
+          renderDataItem(item.id, item)
+        }),
+      ),
+      tfoot(tr(
+        td(button("➕", onClick --> (_ => addDataItem(DataItem())))),
+        td(),
+        td(),
+        td(child.text <-- dataSignal.map(data => "%.2f".format(data.map(_.fullPrice).sum))),
+      )),
+    )
+  end renderDataTable
+
+  def renderDataItem(id: DataItemID, item: DataItem): Element =
+    tr(
+      td(item.label),
+      td(item.price),
+      td(item.count),
+      td("%.2f".format(item.fullPrice)),
+      td(button("🗑️", onClick --> (_ => removeDataItem(id)))),
+    )
+  end renderDataItem
+end Main
 {% endhighlight %}
 
 Let us pick apart the above.
@@ -566,7 +662,7 @@ It takes data model values as arguments, and returns a Laminar element manipulat
 This is what many UI frameworks call a *component*.
 In Laminar, components are nothing but methods manipulating time-varying data and returning Laminar elements.
 
-## Editing prices and counts
+## Editing prices
 
 To finish our application, we should also be able to edit *prices* and *counts*.
 
@@ -594,9 +690,20 @@ For the prices, we start with a "component" method building an `Input` that mani
 It is more complicated than the one for `String`s because of the need for parsing and formatting.
 This complexity perhaps better highlights the benefit of encapsulating it in a dedicated method (or component).
 
-We leave it to the reader to understand the details of this method.
+We leave it to the reader to understand the details of the transformations.
 We point out that we use an intermediate, local `Var[String]` to hold the actual text of the `input` element.
 We then write separate transformations to link that `Var[String]` to the string representation of the `Double` signal and updater.
+
+Note that we put the `<--` and `-->` binders connecting `strValue` with `valueSignal` and `valueUpdater` as arguments to the Laminar `input` element.
+This may seem suspicious, as none of them nor their callbacks have any direct relationship to the DOM `input` element.
+We do this to tie the lifetime of the binders to the lifetime of the `input` element.
+When the latter gets unmounted, we release the binder connections, possibly allowing resources to be reclaimed.
+
+In general, every binder must be *owned* by a Laminar element.
+It only gets *activated* when that element is mounted.
+This prevents memory leaks.
+
+## Editing counts
 
 For the counts, we want a component that manipulates `Int` values.
 For those, we would like a more *controlled* input.

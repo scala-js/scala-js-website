@@ -104,7 +104,7 @@ In the subdirectory `livechart/project/`, we add two files: `build.properties` a
 * `project/build.properties`: set the version of sbt
 
 {% highlight plaintext %}
-sbt.version=1.8.0
+sbt.version=1.8.2
 {% endhighlight %}
 
 * `project/plugins.sbt`: declare sbt plugins; in this case, only sbt-scalajs
@@ -352,6 +352,6 @@ We used sbt as our build tool, but the same effect can be achieved with any othe
 Our setup features the following properties:
 
 * Development mode with live reloading: changing Scala source files automatically triggers recompilation and browser refresh.
-* Production mode, wired to automatically take the fully optimized output of Scala.js, and producing a unique `.js` file.
+* Production mode taking the fully optimized output of Scala.js and producing a unique `.js` file.
 
 In our [next tutorial about Laminar](./laminar.html), we will learn how to write UIs in idiomatic Scala code.

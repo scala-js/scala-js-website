@@ -25,25 +25,19 @@ ScalablyTyped can read TypeScript type definition files and produce correspondin
 
 We set up our new dependencies as follows.
 
+First, we install some npm packages: Chart.js as a regular dependency (with `-S`), and its TypeScript type definitions along with the TypeScript compiler---required by ScalablyTyped---as development dependencies (with `-D`):
+
+{% highlight shell %}
+$ npm install -S chart.js@2.9.4
+...
+$ npm install -D @types/chart.js@2.9.29 typescript@4.9.5
+...
+{% endhighlight %}
+
 In `project/plugins.sbt`, we add a dependency on ScalablyTyped:
 
 {% highlight scala %}
-addSbtPlugin("org.scalablytyped.converter" % "sbt-converter" % "1.0.0-beta40")
-{% endhighlight %}
-
-In `package.json`, we add dependencies on Chart.js, its TypeScript type definitions, and on the TypeScript compiler, which is required by ScalablyTyped:
-
-{% highlight diff %}
-+  "dependencies": {
-+    "chart.js": "2.9.4"
-+  },
-   "devDependencies": {
-     "@scala-js/vite-plugin-scalajs": "1.0.0",
--    "vite": "^3.2.3"
-+    "vite": "^3.2.3",
-+    "typescript": "4.6.2",
-+    "@types/chart.js": "2.9.29"
-   }
+addSbtPlugin("org.scalablytyped.converter" % "sbt-converter" % "1.0.0-beta41")
 {% endhighlight %}
 
 Finally, in `build.sbt`, we configure ScalablyTyped on our project:
@@ -53,10 +47,10 @@ Finally, in `build.sbt`, we configure ScalablyTyped on our project:
    .enablePlugins(ScalaJSPlugin) // Enable the Scala.js plugin in this project
 +  .enablePlugins(ScalablyTypedConverterExternalNpmPlugin)
    .settings(
-     scalaVersion := "3.2.1",
+     scalaVersion := "3.2.2",
      [...]
-     // Depend on Laminar
-     libraryDependencies += "com.raquo" %%% "laminar" % "0.14.2",
+     // Testing framework
+     libraryDependencies += "org.scalameta" %%% "munit" % "0.7.29" % Test,
 +
 +    // Tell ScalablyTyped that we manage `npm install` ourselves
 +    externalNpm := baseDirectory.value,
@@ -65,10 +59,8 @@ Finally, in `build.sbt`, we configure ScalablyTyped on our project:
 
 For these changes to take effect, we have to perform the following steps:
 
-1. Stop sbt and Vite, if they are running
-1. Run `npm install` to install the new npm dependencies
 1. Restart sbt and the `~fastLinkJS` task (this will take a while the first time, as ScalablyTyped performs its magic)
-1. Restart `npm run dev`
+1. Restart `npm run dev` if it was running
 1. Possibly re-import the project in your IDE of choice
 
 ## Chart configuration
@@ -240,6 +232,7 @@ We store the resulting `chart` instance in a local `var optChart: Option[Chart]`
 We will use it later to update the `chart`'s imperative data model when our FRP `dataSignal` changes.
 
 In order to achieve that, we use a `dataSignal -->` binder.
+We give it as an argument to the Laminar `canvas` element to tie the binder to the canvas lifetime, as you may [recall from the Laminar tutorial](laminar.html#editing-prices).
 Once the `canvas` gets mounted, every time the value of `dataSignal` changes, the callback is executed.
 
 {% highlight scala %}
@@ -255,15 +248,6 @@ dataSignal --> { data =>
 
 In the callback, we get access to the `chart: Chart` instance and update its data model.
 This `-->` binder allows to bridge the FRP world of `dataSignal` with the imperative world of Chart.js.
-
-Note that we put the `-->` binder as an argument to the Laminar `canvas` element.
-This may seem suspicious, as neither `dataSignal` nor the callback have any direct relationship to the DOM canvas element.
-We do this to tie the lifetime of the binder to the lifetime of the `canvas` element.
-When the latter gets unmounted, we release the binder connection, possibly allowing resources to be reclaimed.
-
-In general, every binder must be *owned* by a Laminar element.
-It only gets *activated* when that element is mounted.
-This prevents memory leaks.
 
 Our application now properly renders the data model as a chart.
 When we add or remove data items, the chart is automatically updated, thanks to the connection established by the `dataSignal -->` binder.
