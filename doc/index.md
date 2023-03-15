@@ -9,10 +9,10 @@ Follow our [Getting Started Tutorials](tutorial/).
 
 # Installation / Download
 
-One does not install or download Scala.js.
-It is automatically handled by build tools.
+To install Scala and Node.js, follow the [Prerequisites](tutorial/#prerequisites) section of the Getting Started Tutorials.
 
-If in doubt, follow the [Prerequisites](tutorial/#prerequisites) section of the Getting Started Tutorials.
+Scala.js itself is managed by your Scala build tool of choice.
+You can follow [the Getting Started instructions](tutorial/scalajs-vite.html#introducing-scalajs) to enable it.
 
 # Other resources
 

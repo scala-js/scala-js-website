@@ -4,6 +4,14 @@ title: Tutorials
 ---
 
 This series of tutorials teaches you how to use Scala.js together with modern development tools.
+They can be followed independently of each other.
+
+If you have time, reading and applying them in order will give you more in-depth knowledge about the development environment.
+
+If you are in a hurry, you can skip the ones you are not interested in.
+Each tutorial starts with a link to a repo that you can clone to get off the ground.
+
+In any case, make sure that you have the prerequisites listed below covered.
 
 1. [Scala.js and Vite](./scalajs-vite.html):
   * Set up a hello world project ready for live reloading in the browser.
@@ -12,13 +20,6 @@ This series of tutorials teaches you how to use Scala.js together with modern de
   * Build UIs with Laminar using Functional Reactive Programming (FRP), a hybrid model between imperative and functional programming particularly well suited for UI development in Scala.
 3. [ScalablyTyped](./scalablytyped.html):
   * Integrate JavaScript libraries using ScalablyTyped.
-
-If you have time, reading and applying them in order will give you more in-depth knowledge about the development environment.
-
-If you are in a hurry, you can skip the ones you are not interested in.
-Each tutorial starts with a link to a repo that you can clone to get off the ground.
-
-In any case, make sure that you have the prerequisites listed below covered.
 
 ## Prerequisites
 
