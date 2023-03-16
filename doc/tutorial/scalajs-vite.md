@@ -270,6 +270,8 @@ import './style.css'
 import 'scalajs:main.js'
 {% endhighlight %}
 
+When we `import` a URI starting with `scalajs:`, `vite-plugin-scalajs` resolves it to point to the output directory of Scala.js' `fastLinkJS` task.
+
 You may have to stop and restart the `npm run dev` process, so that Vite picks up the newly created configuration file.
 Vite will refresh the browser with our updated "Hello Scala.js!" message.
 
