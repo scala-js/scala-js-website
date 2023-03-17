@@ -53,12 +53,9 @@ Here you go:
 - [Seventh Sense](https://7thsense.io), predictive analytics for sales and marketing. Scala.js+react components used inside legacy angular application.
 - [Querki](https://www.querki.net/help/#Learning-Querki), a cloud-based system for small-scale data management
 - [MF Metabolic Analyzer](https://www.metabolicanalyzer.com) is a system to help physicians interpret and draw conclusions from cardiopulmonary exercise tests.
-- [OhMyCoin](http://ohmyco.in/charts/), real-time charts for cryptocurrency markets. All of the frontend is built with Scaja.js and scalajs-react.
-- [Stofftante](https://www.stofftante.ch), web store for fabrics
 - [NetLogo Web](http://netlogoweb.org/launch), an agent-based simulation language. (only the NetLogo-to-JavaScript compiler is
   written in Scala, not the front end)
 - [MiniJava compiler](http://oxnrtr.de/mj) which originally targeted amd64, but received an AST interpreter to run in the browser.
-- [Fluent Code Explorer](http://www.fluentcode.com/), an online tool that helps you search, understand and collaborate on a large codebase.
 - [FlowRun](https://flowrun.io/), a web app for creating and running flowcharts
 
 ## Open Source Scala.js projects
