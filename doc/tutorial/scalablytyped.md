@@ -175,7 +175,7 @@ We show it in its entirety first, then we will pick it apart.
 
     var optChart: Option[Chart] = None
 
-    canvas(
+    canvasTag(
       // Regular properties of the canvas
       width := "100%",
       height := "200px",
@@ -209,7 +209,7 @@ We show it in its entirety first, then we will pick it apart.
   end renderDataChart
 {% endhighlight %}
 
-We create a Laminar `canvas()` element.
+We create a Laminar `canvasTag()` element.
 We give it a `width` and `height` using Laminar's `:=`, as we did before.
 
 For its actual content, we want Chart.js to take over.
@@ -232,8 +232,8 @@ We store the resulting `chart` instance in a local `var optChart: Option[Chart]`
 We will use it later to update the `chart`'s imperative data model when our FRP `dataSignal` changes.
 
 In order to achieve that, we use a `dataSignal -->` binder.
-We give it as an argument to the Laminar `canvas` element to tie the binder to the canvas lifetime, as you may [recall from the Laminar tutorial](laminar.html#editing-prices).
-Once the `canvas` gets mounted, every time the value of `dataSignal` changes, the callback is executed.
+We give it as an argument to the Laminar `canvasTag` element to tie the binder to the canvas lifetime, as you may [recall from the Laminar tutorial](laminar.html#editing-prices).
+Once the canvas gets mounted, every time the value of `dataSignal` changes, the callback is executed.
 
 {% highlight scala %}
 dataSignal --> { data =>

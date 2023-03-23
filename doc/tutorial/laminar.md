@@ -29,7 +29,7 @@ To start off, we add a dependency on Laminar in our `build.sbt`:
      libraryDependencies += "org.scala-js" %%% "scalajs-dom" % "2.4.0",
 +
 +    // Depend on Laminar
-+    libraryDependencies += "com.raquo" %%% "laminar" % "0.14.2",
++    libraryDependencies += "com.raquo" %%% "laminar" % "15.0.1",
    )
 {% endhighlight %}
 
@@ -263,7 +263,7 @@ We first add the following dependency on [MUnit](https://scalameta.org/munit/), 
 
 {% highlight diff %}
      // Depend on Laminar
-     libraryDependencies += "com.raquo" %%% "laminar" % "0.14.2",
+     libraryDependencies += "com.raquo" %%% "laminar" % "15.0.1",
 +
 +    // Testing framework
 +    libraryDependencies += "org.scalameta" %%% "munit" % "0.7.29" % Test,
