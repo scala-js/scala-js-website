@@ -1,12 +1,14 @@
-- text: Introduction
+- text: Documentation
   url: /doc/
-#- text: Quick Start
-#  url: /doc/quick-start.html
 - text: Tutorials
   url: /doc/tutorial/
   subitems:
-    - text: Basic tutorial
-      url: /doc/tutorial/basic/
+    - text: Getting Started with Scala.js and Vite
+      url: /doc/tutorial/scalajs-vite.html
+    - text: Build UIs with Laminar
+      url: /doc/tutorial/laminar.html
+    - text: Integrate JavaScript libraries with ScalablyTyped
+      url: /doc/tutorial/scalablytyped.html
 - text: Scala.js for JavaScript developers
   url: /doc/sjs-for-js/
   subitems:

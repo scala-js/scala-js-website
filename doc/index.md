@@ -1,29 +1,24 @@
 ---
 layout: doc
-title: Introduction
+title: Documentation
 ---
 
-The bullets on the right link to various facets of the documentation.
+# Getting Started
 
-If you are coming from a JavaScript background, we've got
-[a special tour for you](sjs-for-js/), which will teach you the basics of
-Scala.js with respect to JavaScript.
+Follow our [Getting Started Tutorials](tutorial/).
 
-# Installation
+# Installation / Download
 
-All you need to get started is 
+To install Scala and Node.js, follow the [Prerequisites](tutorial/#prerequisites) section of the Getting Started Tutorials.
 
-* A recent version of Java JDK [(download)](https://www.oracle.com/java/technologies/downloads/)
-* SBT [(download)](https://www.scala-sbt.org/1.x/docs/Setup.html)
+Scala.js itself is managed by your Scala build tool of choice.
+You can follow [the Getting Started instructions](tutorial/scalajs-vite.html#introducing-scalajs) to enable it.
 
-See the [Basic tutorial](tutorial/basic/) for details about installation and setup.
+# Other resources
 
-# Tutorials
-
-Check out one of the [tutorials](tutorial/) to continue your journey!
-
-You may also find the [presentation videos](../community/presentations.html)
-a nice way to get started with Scala.js!
+* [Presentation videos](../community/presentations.html)
+* [Tour of Scala.js for JavaScript developers](sjs-for-js/)
+* More in the column on the right of this page
 
 # Get help
 
