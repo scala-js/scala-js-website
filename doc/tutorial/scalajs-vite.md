@@ -10,7 +10,7 @@ We also configure it to build a minimal bundle for production.
 Going through this tutorial will make sure you understand the basic building blocks.
 If you prefer to skip this step and directly write Scala.js code, you may jump to [Getting Started with Scala.js and Laminar](./laminar-scalablytyped.html).
 
-If you prefer to navigate the end result for this tutorial directly, checkout [the scalajs-vite-end-state branch](https://github.com/sjrd/scalajs-sbt-vite-laminar-chartjs-example/tree/scalajs-vite-end-state) instead of creating everything from scratch.
+If you prefer to look at the end result for this tutorial directly, checkout [the scalajs-vite-end-state branch](https://github.com/sjrd/scalajs-sbt-vite-laminar-chartjs-example/tree/scalajs-vite-end-state) instead of creating everything from scratch.
 
 ## Prerequisites
 
@@ -110,7 +110,7 @@ sbt.version=1.8.2
 * `project/plugins.sbt`: declare sbt plugins; in this case, only sbt-scalajs
 
 {% highlight scala %}
-addSbtPlugin("org.scala-js" % "sbt-scalajs" % "1.13.0")
+addSbtPlugin("org.scala-js" % "sbt-scalajs" % "{{ site.versions.scalaJS }}")
 {% endhighlight %}
 
 At the root of our `livechart/` project, we add one file: `build.sbt`.
@@ -144,7 +144,7 @@ lazy val livechart = project.in(file("."))
     /* Depend on the scalajs-dom library.
      * It provides static types for the browser DOM APIs.
      */
-    libraryDependencies += "org.scala-js" %%% "scalajs-dom" % "2.4.0",
+    libraryDependencies += "org.scala-js" %%% "scalajs-dom" % "{{ site.versions.scalaJSDOM }}",
   )
 {% endhighlight %}
 

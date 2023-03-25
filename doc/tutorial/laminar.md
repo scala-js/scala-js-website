@@ -8,7 +8,7 @@ In this second tutorial, we learn how to develop UIs in Scala.js with [Laminar](
 We start here with the project setup developed in the previous tutorial about [Setting up Scala.js with Vite](./scalajs-vite.html).
 To follow along this tutorial, either use the result of the previous tutorial, or checkout [the scalajs-vite-end-state branch](https://github.com/sjrd/scalajs-sbt-vite-laminar-chartjs-example/tree/scalajs-vite-end-state) of the accompanying repo.
 
-If you prefer to navigate the end result for this tutorial directly, checkout [the laminar-end-state branch](https://github.com/sjrd/scalajs-sbt-vite-laminar-chartjs-example/tree/laminar-end-state) instead.
+If you prefer to look at the end result for this tutorial directly, checkout [the laminar-end-state branch](https://github.com/sjrd/scalajs-sbt-vite-laminar-chartjs-example/tree/laminar-end-state) instead.
 
 [See the final result in action and fiddle with the code in Scribble](https://scribble.ninja/u/sjrd/ddueiaxghmbmbnbpzggmkwwmpigc)
 
@@ -270,7 +270,7 @@ We first add the following dependency on [MUnit](https://scalameta.org/munit/), 
    )
 {% endhighlight %}
 
-After re-importing the project in the IDE (which should be prompted), we create a new file `src/test/scala/livechart/ModelTest.scala`.
+After re-importing the project in the IDE, we create a new file `src/test/scala/livechart/ModelTest.scala`.
 We write an elementary test for `DataItem.fullPrice` as follows:
 
 {% highlight scala %}

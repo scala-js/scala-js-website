@@ -8,7 +8,7 @@ In this third tutorial, we learn how to integrate JavaScript libraries with [Sca
 We start here with the project developed in the previous tutorial about [UI development with Laminar](./laminar.html).
 To follow along this tutorial, either use the result of the previous tutorial, or checkout [the laminar-end-state branch](https://github.com/sjrd/scalajs-sbt-vite-laminar-chartjs-example/tree/laminar-end-state) of the accompanying repo.
 
-If you prefer to navigate the end result for this tutorial directly, checkout [the scalablytyped-end-state branch](https://github.com/sjrd/scalajs-sbt-vite-laminar-chartjs-example/tree/scalablytyped-end-state) instead.
+If you prefer to look at the end result for this tutorial directly, checkout [the scalablytyped-end-state branch](https://github.com/sjrd/scalajs-sbt-vite-laminar-chartjs-example/tree/scalablytyped-end-state) instead.
 
 There are no playgrounds in [Scribble](https://scribble.ninja/) for this tutorial because it does not support ScalablyTyped.
 You will need a local project to follow along.
