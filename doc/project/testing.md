@@ -77,7 +77,7 @@ Note: Don't forget to mark a test framework SBT dependency as `test,it` if you h
 
 ## Testing over `fullLinkJS`-generated files
 
-By default, tests run over `fastLinkJS`-built (resp. `fastOptJS` up to Scala.js 1.2.x) JS files since their build time is shorter than `fullLinkJS` (resp. `fullLinkJS`).
+By default, tests run over `fastLinkJS`-built (resp. `fastOptJS` up to Scala.js 1.2.x) JS files since their build time is shorter than `fullLinkJS` (resp. `fullOptJS`).
 
 If you want to run tests over `fullLinkJS`-build JS files for some reason, run `set scalaJSStage in Global := FullOptStage` before test.
 This increases test time significantly, and omit checks for undefined behavior, so not recommended in default build settings. Instead, consider run test both in `FastOptStage` and `FullOptStage` in CI.
