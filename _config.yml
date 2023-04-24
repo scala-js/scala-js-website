@@ -5,7 +5,7 @@ plugins: [jekyll-paginate, jekyll-assets, sass, execjs, uglifier]
 
 # Site settings
 title: Scala.js
-description: "Build robust front-end web applications in Scala with Scala.js"
+description: "Harness the Scala and JavaScript ecosystems to develop robust apps for browsers, serverless, and Node.js."
 analytics: #Google analytics code in the format XX-nnnnnnnn-n
 # baseurl: ""
 baseurl: ""
