@@ -45,6 +45,7 @@ See which companies are using Scala.js:
 [![Kidslog](../assets/img/adopters/kidslog.png)](https://kidslog.jp/)
 [![Treasure Data](../assets/img/adopters/td.png)](https://www.treasuredata.com/)
 [![Hivemind Technologies](../assets/img/adopters/hivemindtechnologies.png)](https://hivemindtechnologies.com)
+[![HeartAI](../assets/img/adopters/heartai.png)](https://heartai.net)
 
 ## Built with Scala.js
 
