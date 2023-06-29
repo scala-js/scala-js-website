@@ -19,6 +19,8 @@ scalaJSLinkerConfig ~= { _.withModuleKind(ModuleKind.ESModule) }
 scalaJSLinkerConfig ~= { _.withModuleKind(ModuleKind.CommonJSModule) }
 {% endhighlight %}
 
+Note: when using ECMAScript modules, fullopt file [optimization](../internals/performance.html) is limited, because Google Closure Compiler cannot be used with them.
+
 When emitting a module, `@JSExportTopLevel`s are really *exported* from the Scala.js module.
 Moreover, you can use top-level `@JSImport` to [import native JavaScript stuff](../interoperability/facade-types.html#import) from other JavaScript module.
 
