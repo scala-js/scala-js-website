@@ -21,6 +21,7 @@ title: Presentation and videos
 
 ### Scala.js user stories
 
+* [Scala from B to F - (B)ackend developer on (F)rontend](https://youtu.be/9aILJI_cLgo) at Scalar Conference 2023, by Filip Michalski
 * [Towards Browser and Server Utopia with Scala.JS: an example using CRDTs](https://www.parleys.com/tutorial/towards-browser-server-utopia-scala-js-example-using-crdts)
   at Scala Days Amsterdam 2015, by Richard Dallaway
 * [React to Scala-JS](https://www.youtube.com/watch?v=t7dJ1Dxc6mQ) at Voxxed Days Belgrade 2015, by
