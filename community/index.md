@@ -47,6 +47,12 @@ See which companies are using Scala.js:
 [![Hivemind Technologies](../assets/img/adopters/hivemindtechnologies.png)](https://hivemindtechnologies.com)
 [![HeartAI](../assets/img/adopters/heartai.png)](https://heartai.net)
 
+## Supporters
+
+The Scala.js core team uses the [YourKit Java Profiler](https://www.yourkit.com/java/profiler/) graciously provided by YourKit.
+
+[![YourKit](../assets/img/supporters/yourkit.png)](https://www.yourkit.com/)
+
 ## Built with Scala.js
 
 Want to get a peek at some web applications that have been built with Scala.js?
