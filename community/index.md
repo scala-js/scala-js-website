@@ -46,6 +46,7 @@ See which companies are using Scala.js:
 [![Treasure Data](../assets/img/adopters/td.png)](https://www.treasuredata.com/)
 [![Hivemind Technologies](../assets/img/adopters/hivemindtechnologies.png)](https://hivemindtechnologies.com)
 [![HeartAI](../assets/img/adopters/heartai.png)](https://heartai.net)
+[![ITVX](../assets/img/adopters/itvx.png)](https://itvx.com)
 
 ## Supporters
 
