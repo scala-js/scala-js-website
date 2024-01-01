@@ -30,7 +30,7 @@ If upgrading from Scala.js 0.6.x, make sure to read [the release notes of Scala.
 
 This is a **minor** release:
 
-* It is backward binary compatible with all earlier versions in the 1.x series: libraries compiled with 1.0.x through 1.13.x can be used with 1.15.0 without change.
+* It is backward binary compatible with all earlier versions in the 1.x series: libraries compiled with 1.0.x through 1.14.x can be used with 1.15.0 without change.
 * Despite being a minor release, 1.15.0 is forward binary compatible with 1.13.x or later. It is *not* forward binary compatible with 1.12.x. Libraries compiled with 1.15.0 can be used with 1.13.x or later but not with 1.12.x or earlier.
 * It is *not* entirely backward source compatible: it is not guaranteed that a codebase will compile *as is* when upgrading from 1.13.x (in particular in the presence of `-Xfatal-warnings`).
 
