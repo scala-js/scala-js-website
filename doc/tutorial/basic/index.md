@@ -351,7 +351,7 @@ After reloading, you can invoke `run` successfully:
     [info] Running tutorial.webapp.TutorialApp
     [success] (...)
 
-Alternatively to Node.js with jsdom, you can use [Selenium](http://docs.seleniumhq.org/).
+Alternatively to Node.js with jsdom, you can use [Selenium](http://docs.seleniumhq.org/) or [Playwright](https://github.com/gmkumar2005/scala-js-env-playwright)
 You can find more information about this in the [documentation about JavaScript environments]({{ BASE_PATH }}/doc/project/js-environments.html).
 
 ### Adding uTest

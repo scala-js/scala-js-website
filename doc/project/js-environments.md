@@ -69,6 +69,51 @@ jsEnv := PhantomJSEnv(args = Seq("arg1", "arg2")).value
 For more options of the PhantomJS environment, see
 [the Scaladoc of `PhantomJSEnv`]({{ site.production_url }}/api/sbt-scalajs-env-phantomjs/1.0.0/org/scalajs/jsenv/phantomjs/sbtplugin/PhantomJSEnvPlugin$$autoImport$.html).
 
+## Playwright 
+[Playwright](https://playwright.dev/) is a comprehensive testing library, enabling automation of Chromium, Firefox, and WebKit browsers. It supports multiple platforms and languages, including Mobile Web, making it an optimal choice for testing JavaScript in real browser environments. 
+
+[`scala-js-env-playwright`](https://github.com/gmkumar2005/scala-js-env-playwright) is an independent project that offers jsEnv and employs Playwright for JavaScript execution.
+
+The playwright based `jsEnv` can be enabled by adding following settings in build.sbt 
+```scala
+jsEnv := new PWEnv(
+      browserName = "chrome",
+      headless = true,
+      showLogs = true
+    )
+```
+Addtionally it requires following line in `project/plugins.sbt`:
+```scala
+// For Scala.js 1.x
+libraryDependencies += "io.github.gmkumar2005" %% "scala-js-env-playwright" % "0.1.8"
+```
+
+The `browserName` parameter accepts `chrome` , `chromium` , `firefox`, and `webkit` as possible options. Please be aware that webkit support is currently in an experimental stage.
+
+### In browser debugging
+To maintain the browser window open post-execution, simply incorporate the `withKeepAlive`  option into the environment.
+
+```scala
+lazy val pwenvConfig = Def.setting {
+  jsenv.playwright.PWEnv
+    .Config()
+    .withKeepAlive(true)
+}
+
+jsEnv := new jsenv.playwright.PWEnv(
+  browserName = "chrome",
+  headless = true,
+  showLogs = true,
+  pwenvConfig.value,
+)
+
+``` 
+### Headless Usage
+Running in headless mode is crucial for operations within Docker containers and build servers. By default, `scala-js-env-playwright` operates in headless mode. However, for debugging purposes, you can set headless to `false`.
+
+## Details
+For more options of the plawwright environment see the github project [PlayWright-jsEnv](https://github.com/gmkumar2005/scala-js-env-playwright)
+
 ## Selenium
 
 [Selenium](http://docs.seleniumhq.org/) provides a programmatic interface to real browsers.
