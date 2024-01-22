@@ -70,19 +70,21 @@ For more options of the PhantomJS environment, see
 [the Scaladoc of `PhantomJSEnv`]({{ site.production_url }}/api/sbt-scalajs-env-phantomjs/1.0.0/org/scalajs/jsenv/phantomjs/sbtplugin/PhantomJSEnvPlugin$$autoImport$.html).
 
 ## Playwright 
-[Playwright](https://playwright.dev/) is a comprehensive testing library, enabling automation of Chromium, Firefox, and WebKit browsers. It supports multiple platforms and languages, including Mobile Web, making it an optimal choice for testing JavaScript in real browser environments. 
+[Playwright](https://playwright.dev/) is a comprehensive testing library, enabling automation of Chromium, Firefox, and WebKit browsers. 
 
-[`scala-js-env-playwright`](https://github.com/gmkumar2005/scala-js-env-playwright) is an independent project that offers jsEnv and employs Playwright for JavaScript execution.
+It supports multiple platforms and languages, including Mobile Web, making it an optimal choice for testing JavaScript in real browser environments. 
 
-The playwright based `jsEnv` can be enabled by adding following settings in build.sbt 
+[`scala-js-env-playwright`](https://github.com/gmkumar2005/scala-js-env-playwright) is an independent project that offers a `JSEnv` that uses Playwright for JavaScript execution.
+
+The playwright-based `jsEnv` can be enabled by adding the following settings in `build.sbt` 
 ```scala
 jsEnv := new PWEnv(
-      browserName = "chrome",
-      headless = true,
-      showLogs = true
+        browserName = "chrome",
+        headless = true,
+        showLogs = true
     )
 ```
-Addtionally it requires following line in `project/plugins.sbt`:
+Addtionally it requires the following line in `project/plugins.sbt`:
 ```scala
 // For Scala.js 1.x
 libraryDependencies += "io.github.gmkumar2005" %% "scala-js-env-playwright" % "0.1.8"
