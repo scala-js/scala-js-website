@@ -87,30 +87,26 @@ jsEnv := new PWEnv(
 Addtionally it requires the following line in `project/plugins.sbt`:
 ```scala
 // For Scala.js 1.x
-libraryDependencies += "io.github.gmkumar2005" %% "scala-js-env-playwright" % "0.1.8"
+libraryDependencies += "io.github.gmkumar2005" %% "scala-js-env-playwright" % "0.1.11"
 ```
-
 The `browserName` parameter accepts `chrome` , `chromium` , `firefox`, and `webkit` as possible options. 
-
 Please be aware that webkit support is currently in an experimental stage.
+It is fully tested on macOS and your mileage may vary on other platforms.
 
 ### In browser debugging
-To maintain the browser window open post-execution, add the `withKeepAlive`  option into the environment.
+`keepAlive` is a work in progress. It is not fully functional yet.
+As a workaround introducing delay in the test cases may help to keep the browser alive.
 
+
+### Debugging
+Additional debug information can be enabled by setting `debug` to `true`. 
+It will also print the version of the browser which is used.
 ```scala
-lazy val pwenvConfig = Def.setting {
-  jsenv.playwright.PWEnv
-    .Config()
-    .withKeepAlive(true)
-}
-
-jsEnv := new jsenv.playwright.PWEnv(
-  browserName = "chrome",
-  headless = true,
-  showLogs = true,
-  pwenvConfig.value,
-)
-
+jsEnv := new PWEnv(
+        browserName = "chrome",
+        headless = true,
+        debug = true
+    )
 ``` 
 ### Headless Usage
 Running in headless mode is crucial for operations within Docker containers and build servers. 
@@ -118,8 +114,8 @@ Running in headless mode is crucial for operations within Docker containers and 
 By default, `scala-js-env-playwright` operates in headless mode.
 However, for debugging purposes, you can set headless to `false`.
 
-## Details
-For more options of the plawwright environment see the github project [PlayWright-jsEnv](https://github.com/gmkumar2005/scala-js-env-playwright)
+### Details
+For more options of the playWright environment see the github project [PlayWright-jsEnv](https://github.com/gmkumar2005/scala-js-env-playwright)
 
 ## Selenium
 
