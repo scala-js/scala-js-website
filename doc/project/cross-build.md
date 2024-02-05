@@ -32,7 +32,7 @@ First, you need to add `sbt-scalajs-crossproject` in your `project/plugins.sbt` 
 
 {% highlight scala %}
 addSbtPlugin("org.scala-js" % "sbt-scalajs" % "{{ site.versions.scalaJS }}")
-addSbtPlugin("org.portable-scala" % "sbt-scalajs-crossproject" % "1.0.0")
+addSbtPlugin("org.portable-scala" % "sbt-scalajs-crossproject" % "1.2.0")
 {% endhighlight %}
 
 You can then use the `crossProject` builder in your `build.sbt` file:
