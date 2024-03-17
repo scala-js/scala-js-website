@@ -7,7 +7,7 @@ This is a step-by-step tutorial where we start with the setup of a Scala.js sbt 
 
 ## <a name="prerequisites"></a> Step 0: Prerequisites
 
-To go through this tutorial, you will need to [download & install sbt](https://www.scala-sbt.org/1.x/docs/Setup.html). Note that no prior sbt knowledge (only a working installation) is required to follow the tutorial.
+To go through this tutorial, you will need to have installed a Java Development Kit (JDK) and [download & install sbt](https://www.scala-sbt.org/1.x/docs/Setup.html). Note that no prior sbt knowledge (only a working installation) is required to follow the tutorial.
 
 You will also need to [download & install Node.js](https://nodejs.org/en/download/).
 
