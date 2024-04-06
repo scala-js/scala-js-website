@@ -52,6 +52,28 @@ As a consequence, the following apparent subtyping relationships hold:
     Byte <:< Short <:<  Int  <:< Double
                    <:< Float <:<
 
+#### Implications for formatting negative values in hexadecimal
+
+Because there is no runtime difference between `Byte` `Short` and `Int`s (for sufficiently low values),
+`java.util.Formatter` (and hence all formatting strings) assume `Int` to determine the padding when formatting negative hexadecimal values.
+
+This leads to the following difference in format output:
+
+{% highlight scala %}
+val b: Byte = -38.toByte
+"%x".format(b)
+// JVM: "da"
+// Scala.js: "ffffffda"
+{% endhighlight %}
+
+To achieve portable code, convert the value to an unsigned int first:
+
+{% highlight scala %}
+val b: Byte = -38.toByte
+"%x".format(b & 0xff)
+// "da" on both platforms
+{% endhighlight %}
+
 ### `getClass()`
 
 In Scala/JVM as well as Scala.js, when assigning a primitive value to an `Any` (or a generic type), and asking for its `getClass()`, Scala returns the *boxed class* of the value's type, rather than the primitive value.
