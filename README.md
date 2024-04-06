@@ -19,7 +19,7 @@ You need to have [Docker Engine](https://docs.docker.com/engine/) and [Docker Co
 Under Mac OS (Intel or Apple silicon), instead of installing [Docker Desktop](https://docs.docker.com/desktop/) you can also use [HomeBrew](https://brew.sh/) with [Colima](https://github.com/abiosoft/colima): `brew install colima docker docker-compose`.
 
 ```
-docker-compose up --build
+docker compose up --build
 ```
 
 On Linux you may have to prefix that command with `sudo`, depending on your Docker setup.
@@ -31,7 +31,7 @@ When the website dependencies change (the content of the `Gemfile`), you have to
 If you have problems with the Docker image or want to force the rebuild of the Docker image:
 
 ```
-docker-compose build --no-cache
+docker compose build --no-cache
 ```
 
 ### Manually with Ruby tooling
