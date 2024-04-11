@@ -8,7 +8,7 @@ We use Vite to provide live-reloading of the Scala.js application in the browser
 We also configure it to build a minimal bundle for production.
 
 Going through this tutorial will make sure you understand the basic building blocks.
-If you prefer to skip this step and directly write Scala.js code, you may jump to [Getting Started with Scala.js and Laminar](./laminar-scalablytyped.html).
+If you prefer to skip this step and directly write Scala.js code, you may jump to [Getting Started with Scala.js and Laminar](./laminar.html).
 
 If you prefer to look at the end result for this tutorial directly, checkout [the scalajs-vite-end-state branch](https://github.com/sjrd/scalajs-sbt-vite-laminar-chartjs-example/tree/scalajs-vite-end-state) instead of creating everything from scratch.
 
