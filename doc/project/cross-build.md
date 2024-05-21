@@ -38,7 +38,7 @@ addSbtPlugin("org.portable-scala" % "sbt-scalajs-crossproject" % "1.2.0")
 You can then use the `crossProject` builder in your `build.sbt` file:
 
 {% highlight scala %}
-ThisBuild / scalaVersion := "2.13.1"
+ThisBuild / scalaVersion := "2.13.14"
 
 lazy val root = project.in(file(".")).
   aggregate(foo.js, foo.jvm).
