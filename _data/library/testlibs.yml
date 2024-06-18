@@ -4,6 +4,10 @@
       url: https://junit.org/junit4/
       desc: A programmer-friendly Java testing framework
       dep: 'enablePlugins(ScalaJSJUnitPlugin)'
+    - name: MUnit
+      url: https://scalameta.org/munit/
+      desc: Scala testing library with actionable errors and extensible APIs
+      dep: '"org.scalameta" %%% "munit" % "1.0.0" % "test"'
     - name: uTest
       url: https://github.com/lihaoyi/utest
       desc: Simple testing framework with good Scala.js support
