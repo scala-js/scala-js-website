@@ -37,7 +37,7 @@ $ npm install -D @types/chart.js@2.9.29 typescript@4.9.5
 In `project/plugins.sbt`, we add a dependency on ScalablyTyped:
 
 {% highlight scala %}
-addSbtPlugin("org.scalablytyped.converter" % "sbt-converter" % "1.0.0-beta41")
+addSbtPlugin("org.scalablytyped.converter" % "sbt-converter" % "1.0.0-beta44")
 {% endhighlight %}
 
 Finally, in `build.sbt`, we configure ScalablyTyped on our project:
@@ -47,10 +47,10 @@ Finally, in `build.sbt`, we configure ScalablyTyped on our project:
    .enablePlugins(ScalaJSPlugin) // Enable the Scala.js plugin in this project
 +  .enablePlugins(ScalablyTypedConverterExternalNpmPlugin)
    .settings(
-     scalaVersion := "3.2.2",
+     scalaVersion := "3.3.3",
      [...]
      // Testing framework
-     libraryDependencies += "org.scalameta" %%% "munit" % "0.7.29" % Test,
+     libraryDependencies += "org.scalameta" %%% "munit" % "1.0.0" % Test,
 +
 +    // Tell ScalablyTyped that we manage `npm install` ourselves
 +    externalNpm := baseDirectory.value,
