@@ -104,7 +104,7 @@ In the subdirectory `livechart/project/`, we add two files: `build.properties` a
 * `project/build.properties`: set the version of sbt
 
 {% highlight plaintext %}
-sbt.version=1.8.2
+sbt.version=1.10.0
 {% endhighlight %}
 
 * `project/plugins.sbt`: declare sbt plugins; in this case, only sbt-scalajs
@@ -123,7 +123,7 @@ import org.scalajs.linker.interface.ModuleSplitStyle
 lazy val livechart = project.in(file("."))
   .enablePlugins(ScalaJSPlugin) // Enable the Scala.js plugin in this project
   .settings(
-    scalaVersion := "3.2.2",
+    scalaVersion := "3.3.3",
 
     // Tell Scala.js that this is an application with a main method
     scalaJSUseMainModuleInitializer := true,

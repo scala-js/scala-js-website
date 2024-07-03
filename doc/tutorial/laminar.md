@@ -26,10 +26,10 @@ We will elaborate on this point later.
 To start off, we add a dependency on Laminar in our `build.sbt`:
 
 {% highlight diff %}
-     libraryDependencies += "org.scala-js" %%% "scalajs-dom" % "2.4.0",
+     libraryDependencies += "org.scala-js" %%% "scalajs-dom" % "{{ site.versions.scalaJSDOM }}",
 +
 +    // Depend on Laminar
-+    libraryDependencies += "com.raquo" %%% "laminar" % "15.0.1",
++    libraryDependencies += "com.raquo" %%% "laminar" % "17.0.0",
    )
 {% endhighlight %}
 
@@ -263,10 +263,10 @@ We first add the following dependency on [MUnit](https://scalameta.org/munit/), 
 
 {% highlight diff %}
      // Depend on Laminar
-     libraryDependencies += "com.raquo" %%% "laminar" % "15.0.1",
+     libraryDependencies += "com.raquo" %%% "laminar" % "17.0.0",
 +
 +    // Testing framework
-+    libraryDependencies += "org.scalameta" %%% "munit" % "0.7.29" % Test,
++    libraryDependencies += "org.scalameta" %%% "munit" % "1.0.0" % Test,
    )
 {% endhighlight %}
 
