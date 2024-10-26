@@ -1,6 +1,6 @@
 ---
 layout: doc
-title: Emitting JavaScript modules
+title: Experimental WebAssembly backend
 ---
 
 # Experimental WebAssembly backend
