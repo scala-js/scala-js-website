@@ -61,7 +61,7 @@ We expect to lift that limitation in the future.
 
 ## Minimal setup
 
-The following sbt setup enables the Wasm backend and configures flags for Node.js 22.
+The following sbt setup enables the Wasm backend and configures flags for Node.js 23.
 
 {% highlight scala %}
 // Emit ES modules with the Wasm backend
@@ -71,7 +71,7 @@ scalaJSLinkerConfig := {
     .withModuleKind(ModuleKind.ESModule)  // required by the Wasm backend
 },
 
-// Configure Node.js (at least v22) to support the required Wasm features
+// Configure Node.js (at least v23) to support the required Wasm features
 jsEnv := {
   val config = NodeJSEnv.Config()
     .withArgs(List(
@@ -92,7 +92,7 @@ Here are some engines known to support enough Wasm features.
 
 ### Node.js 22
 
-As mentioned above, Node.js 22 and above requires the following flags:
+As mentioned above, Node.js 23 and above requires the following flags:
 
 * `--experimental-wasm-exnref`: required
 * `--experimental-wasm-imported-strings`: optional (good for performance)
