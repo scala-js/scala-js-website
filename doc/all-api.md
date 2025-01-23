@@ -5,6 +5,16 @@ title: All previous versions of the Scala.js API
 
 ## All previous versions of the API
 
+### Scala.js 1.18.2
+* [1.18.2 scalajs-library]({{ site.production_url }}/api/scalajs-library/1.18.2/scala/scalajs/js/index.html)
+* [1.18.2 scalajs-test-interface]({{ site.production_url }}/api/scalajs-test-interface/1.18.2/)
+* [1.18.2 scalajs-javalib-intf]({{ site.production_url }}/api/scalajs-javalib-intf/1.18.2/)
+* [1.18.2 scalajs-ir]({{ site.production_url }}/api/scalajs-ir/1.18.2/org/scalajs/ir/index.html)
+* [1.18.2 scalajs-linker-interface]({{ site.production_url }}/api/scalajs-linker-interface/1.18.2/org/scalajs/linker/interface/index.html) ([Scala.js version]({{ site.production_url }}/api/scalajs-linker-interface-js/1.18.2/org/scalajs/linker/interface/index.html))
+* [1.18.2 scalajs-linker]({{ site.production_url }}/api/scalajs-linker/1.18.2/org/scalajs/linker/index.html) ([Scala.js version]({{ site.production_url }}/api/scalajs-linker-js/1.18.2/org/scalajs/linker/index.html))
+* [1.18.2 scalajs-test-adapter]({{ site.production_url }}/api/scalajs-sbt-test-adapter/1.18.2/org/scalajs/testing/adapter/index.html)
+* [1.18.2 sbt-scalajs]({{ site.production_url }}/api/sbt-scalajs/1.18.2/#org.scalajs.sbtplugin.package)
+
 ### Scala.js 1.18.1
 * [1.18.1 scalajs-library]({{ site.production_url }}/api/scalajs-library/1.18.1/scala/scalajs/js/index.html)
 * [1.18.1 scalajs-test-interface]({{ site.production_url }}/api/scalajs-test-interface/1.18.1/)
