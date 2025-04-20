@@ -89,25 +89,6 @@ Instead, it uses the more sensible `java.lang.Void`, as `Void` is the boxed clas
 This means that while `java.lang.Void` is not instantiable on the JVM, in Scala.js it has a singleton instance, namely `()`.
 This also manifests itself in `Array[Unit]` which is effectively `Array[java.lang.Void]` at run-time, instead of `Array[scala.runtime.BoxedUnit]`.
 
-### Non-strict floats (deprecated; default until Scala.js 1.8.0)
-
-Until v1.8.0, Scala.js underspecified the behavior of `Float`s by default with so-called *non-strict floats*.
-
-Non-strict floats can still be enabled with the following sbt setting:
-
-{% highlight scala %}
-scalaJSLinkerConfig ~= { _.withSemantics(_.withStrictFloats(false)) }
-{% endhighlight %}
-
-Under non-strict floats, any `Float` value can be stored as a `Double` instead, and any operation on `Float`s can be computed with double precision.
-The choice of whether or not to behave as such, when and where, is left to the implementation.
-In addition, `x.isInstanceOf[Float]` will return `true` for any `number` values (not only the ones that fit in a 32-bit float).
-
-Non-strict floats are deprecated and will eventually be removed in a later major or minor version of Scala.js.
-
-Enabling non-strict floats may significantly improve the performance (up to 4x for `Float`-intensive applications) when targeting JS engines that do not support [the `Math.fround` function](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Math/fround), such as Internet Explorer (which implies emitting ES 5.1 code).
-If you are in that situation, we advise to use `Double`s instead of `Float`s as much as possible.
-
 ## Undefined behaviors
 
 The JVM is a very well specified environment, which even specifies how some
@@ -238,3 +219,24 @@ val <ident> = Value(
 We believe that this covers most use cases of
 `scala.Enumeration`. Please let us know if another (generalized)
 rewrite would make your life easier.
+
+## Historical
+
+### Non-strict floats (removed in Scala.js 1.19.0; default until 1.8.0)
+
+Until v1.8.0, Scala.js underspecified the behavior of `Float`s by default with so-called *non-strict floats*.
+
+Non-strict floats could be enabled with the following sbt setting, until v1.19.0 excluded:
+
+{% highlight scala %}
+scalaJSLinkerConfig ~= { _.withSemantics(_.withStrictFloats(false)) }
+{% endhighlight %}
+
+Under non-strict floats, any `Float` value can be stored as a `Double` instead, and any operation on `Float`s can be computed with double precision.
+The choice of whether or not to behave as such, when and where, is left to the implementation.
+In addition, `x.isInstanceOf[Float]` will return `true` for any `number` values (not only the ones that fit in a 32-bit float).
+
+Non-strict floats were deprecated in v1.8.0 and removed in v1.19.0.
+
+Non-strict floats could significantly improve the performance (up to 4x for `Float`-intensive applications) when targeting JS engines that do not support [the `Math.fround` function](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Math/fround), such as Internet Explorer (which implies emitting ES 5.1 code).
+If you are in that situation, we advise to use `Double`s instead of `Float`s as much as possible.

@@ -31,9 +31,9 @@ The Wasm backend emits code with the following requirements:
   * Wasm GC
   * Exception handling, including the latest `exnref`-based variant
 * The `ESModule` module kind (see [emitting modules](./module.html))
-* Strict floats (which is the default since Scala.js 1.9.0; non-strict floats are deprecated)
 
-Supported engines include Node.js 22, Chrome and Firefox, all using some experimental flags (see below).
+Supported engines include Node.js 23, Chrome, Firefox and Safari.
+Node.js and Chrome currently require using some experimental flags (see below).
 
 ## Language semantics
 
@@ -75,7 +75,8 @@ scalaJSLinkerConfig := {
 jsEnv := {
   val config = NodeJSEnv.Config()
     .withArgs(List(
-      "--experimental-wasm-exnref", // required
+      "--experimental-wasm-exnref", // always required
+      "--experimental-wasm-jspi", // required for js.async/js.await
       "--experimental-wasm-imported-strings", // optional (good for performance)
       "--turboshaft-wasm", // optional, but significantly increases stability
     ))
@@ -90,11 +91,12 @@ The backend emits ES modules with the same layout and interface as those produce
 
 Here are some engines known to support enough Wasm features.
 
-### Node.js 22
+### Node.js 23
 
 As mentioned above, Node.js 23 and above requires the following flags:
 
-* `--experimental-wasm-exnref`: required
+* `--experimental-wasm-exnref`: always required
+* `--experimental-wasm-jspi`: required to use `js.async`/`js.await`
 * `--experimental-wasm-imported-strings`: optional (good for performance)
 * `--turboshaft-wasm`: optional, bug significantly increases stability
 
@@ -102,17 +104,26 @@ As mentioned above, Node.js 23 and above requires the following flags:
 
 In `chrome://flags/`, enable ["Experimental WebAssembly"](chrome://flags/#enable-experimental-webassembly-features).
 
+For `js.async`/`js.await` support, also enable ["Experimental WebAssembly JavaScript Promise Integration (JSPI)"](chrome://flags/#enable-experimental-webassembly-jspi).
+
 ### Firefox
 
-In `about:config`, enable `javascript.options.wasm_exnref`.
+Firefox supports all the "always required" features since v131, with enhanced performance since v134.
 
-Make sure to *disable* `javascript.options.wasm_js_string_builtins`.
-Firefox has two issues with it that break Scala.js ([1919901](https://bugzilla.mozilla.org/show_bug.cgi?id=1919901) and [1920337](https://bugzilla.mozilla.org/show_bug.cgi?id=1920337)).
+For `js.async/js.await` support, go to `about:config`, enable `javascript.options.wasm_js_promise_integration`.
+This may require a Firefox Nightly build when you read these lines, although it should be available by default soon.
+
+### Safari
+
+Safari supports all the "always required" features since v18.4.
+
+`js.async/js.await` is not supported yet, however.
 
 ## Performance
 
-Performance of the generated code is currently a hit-or-miss.
-Depending on the codebase, it may be several times faster or slower than the JS backend.
+If the performance of your application depends a lot on JavaScript interop, the Wasm output may be (significantly) slower than the JS output.
+
+For applications whose performance is dominated by computions inside Scala code, the Wasm output should be significantly faster than the JS output (geomean 15% lower run time across our benchmarks).
 
 Further work on improving performance is ongoing.
 Keep in mind that performance work on the Wasm backend is a few months old, compared to a decade of optimizations in the JS backend.
