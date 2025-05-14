@@ -78,7 +78,7 @@ jsEnv := {
       "--experimental-wasm-exnref", // always required
       "--experimental-wasm-jspi", // required for js.async/js.await
       "--experimental-wasm-imported-strings", // optional (good for performance)
-      "--turboshaft-wasm", // optional, but significantly increases stability
+      "--turboshaft-wasm", // optional, Node.js 23.x.x only, but significantly increases stability
     ))
   new NodeJSEnv(config)
 },
@@ -98,7 +98,7 @@ As mentioned above, Node.js 23 and above requires the following flags:
 * `--experimental-wasm-exnref`: always required
 * `--experimental-wasm-jspi`: required to use `js.async`/`js.await`
 * `--experimental-wasm-imported-strings`: optional (good for performance)
-* `--turboshaft-wasm`: optional, bug significantly increases stability
+* `--turboshaft-wasm`: optional, bug significantly increases stability. Only applies to Node.js 23.x.x: version 24.0.0 and up enables this by default, and has removed the flag.
 
 ### Chrome
 
