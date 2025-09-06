@@ -32,8 +32,8 @@ The Wasm backend emits code with the following requirements:
   * Exception handling, including the latest `exnref`-based variant
 * The `ESModule` module kind (see [emitting modules](./module.html))
 
-Supported engines include Node.js 23, Chrome, Firefox and Safari.
-Node.js and Chrome currently require using some experimental flags (see below).
+Supported engines include Node.js 23, Chrome 137, Firefox 131 and Safari 18.4.
+Node.js currently requires using some experimental flags (see below).
 
 ## Language semantics
 
@@ -102,9 +102,7 @@ As mentioned above, Node.js 23 and above requires the following flags:
 
 ### Chrome
 
-In `chrome://flags/`, enable ["Experimental WebAssembly"](chrome://flags/#enable-experimental-webassembly-features).
-
-For `js.async`/`js.await` support, also enable ["Experimental WebAssembly JavaScript Promise Integration (JSPI)"](chrome://flags/#enable-experimental-webassembly-jspi).
+Chrome supports all the features we use since v137.
 
 ### Firefox
 
@@ -123,7 +121,7 @@ Safari supports all the "always required" features since v18.4.
 
 If the performance of your application depends a lot on JavaScript interop, the Wasm output may be (significantly) slower than the JS output.
 
-For applications whose performance is dominated by computions inside Scala code, the Wasm output should be significantly faster than the JS output (geomean 15% lower run time across our benchmarks).
+For applications whose performance is dominated by computions inside Scala code, the Wasm output should be significantly faster than the JS output (geomean 30% lower run time across our benchmarks).
 
 Further work on improving performance is ongoing.
 Keep in mind that performance work on the Wasm backend is a few months old, compared to a decade of optimizations in the JS backend.
