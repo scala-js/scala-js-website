@@ -22,7 +22,7 @@ We bootstrap our setup using the vanilla Vite template.
 Navigate to a directory where you store projects, and run the command
 
 {% highlight shell %}
-$ npm create vite@4.1.0
+$ npm create vite@6.5.0
 {% endhighlight %}
 
 Choose a project name (we choose `livechart`).
@@ -30,9 +30,9 @@ Select the "Vanilla" framework and the "JavaScript" variant.
 Our output gives:
 
 {% highlight shell %}
-$ npm create vite@4.1.0
+$ npm create vite@6.5.0
 Need to install the following packages:
-  create-vite@4.1.0
+  create-vite@6.5.0
 Ok to proceed? (y)
 ✔ Project name: … livechart
 ✔ Select a framework: › Vanilla
@@ -55,11 +55,11 @@ $ npm install
 [...]
 $ npm run dev
 
-  VITE v4.1.4  ready in 156 ms
+  VITE v6.3.5  ready in 156 ms
 
   ➜  Local:   http://localhost:5173/
   ➜  Network: use --host to expose
-  ➜  press h to show help
+  ➜  press h + enter to show help
 {% endhighlight %}
 
 Open the provided URL to see the running JavaScript-based hello world.
@@ -69,12 +69,12 @@ Open the provided URL to see the running JavaScript-based hello world.
 In the generated folder, we find the following relevant files:
 
 * `index.html`: the main web page; it contains a `<script type=module src="/main.js">` referencing the main JavaScript entry point.
-* `main.js`: the main JavaScript entry point; it sets up some DOM elements, and sets up a counter for a button.
-* `counter.js`: it implements a counter functionality for a button.
+* `/src/main.js`: the main JavaScript entry point; it sets up some DOM elements, and sets up a counter for a button.
+* `/src/counter.js`: it implements a counter functionality for a button.
 * `package.json`: the config file for `npm`, the JavaScript package manager and build orchestrator.
 
 Remarkably, there is no `vite.config.js` file, which would be the configuration for Vite itself.
-Vite gives a decent experience out of the box, without any configuration.
+Vite gives a decent experience out of the box, without any configuration, but we will need one soon enough.
 
 ### Live changes
 
@@ -99,12 +99,12 @@ Observe that the page automatically and instantaneously refreshes to show the ch
 We use [sbt](https://www.scala-sbt.org/) as a build tool for Scala and Scala.js.
 We set it up as follows.
 
-In the subdirectory `livechart/project/`, we add two files: `build.properties` and `plugins.sbt`.
+Create the subdirectory `project/`, and add two files: `build.properties` and `plugins.sbt`.
 
 * `project/build.properties`: set the version of sbt
 
 {% highlight plaintext %}
-sbt.version=1.10.0
+sbt.version=1.11.3
 {% endhighlight %}
 
 * `project/plugins.sbt`: declare sbt plugins; in this case, only sbt-scalajs
@@ -113,7 +113,7 @@ sbt.version=1.10.0
 addSbtPlugin("org.scala-js" % "sbt-scalajs" % "{{ site.versions.scalaJS }}")
 {% endhighlight %}
 
-At the root of our `livechart/` project, we add one file: `build.sbt`.
+At the root of our project, we add one file: `build.sbt`.
 
 * `build.sbt`: the main sbt build
 
@@ -123,7 +123,7 @@ import org.scalajs.linker.interface.ModuleSplitStyle
 lazy val livechart = project.in(file("."))
   .enablePlugins(ScalaJSPlugin) // Enable the Scala.js plugin in this project
   .settings(
-    scalaVersion := "3.3.3",
+    scalaVersion := "3.7.1",
 
     // Tell Scala.js that this is an application with a main method
     scalaJSUseMainModuleInitializer := true,
@@ -158,8 +158,8 @@ import scala.scalajs.js.annotation.*
 
 import org.scalajs.dom
 
-// import javascriptLogo from "/javascript.svg"
-@js.native @JSImport("/javascript.svg", JSImport.Default)
+// import javascriptLogo from "/src/javascript.svg"
+@js.native @JSImport("/src/javascript.svg", JSImport.Default)
 val javascriptLogo: String = js.native
 
 @main
@@ -206,13 +206,13 @@ The definition of `javascriptLogo` deserves some explanation.
 We translated it from the JavaScript import
 
 {% highlight javascript %}
-import javascriptLogo from "/javascript.svg"
+import javascriptLogo from "/src/javascript.svg"
 {% endhighlight %}
 
 which is actually a shorthand for
 
 {% highlight javascript %}
-import { default as javascriptLogo } from "/javascript.svg"
+import { default as javascriptLogo } from "/src/javascript.svg"
 {% endhighlight %}
 
 Many bundlers, Vite included, treat `import`s with asset files such as `.svg` as pseudo-modules whose `default` import is the *file path* to the corresponding asset in the processed bundle.
@@ -222,12 +222,12 @@ Read more about this mechanism [in the Vite documentation on static asset handli
 The translation in Scala.js reads as
 
 {% highlight scala %}
-@js.native @JSImport("/javascript.svg", JSImport.Default)
+@js.native @JSImport("/src/javascript.svg", JSImport.Default)
 val javascriptLogo: String = js.native
 {% endhighlight %}
 
 The `@js.native` annotation tells Scala.js that `javascriptLogo` is provided externally by JavaScript.
-The `@JSImport("/javascript.svg", JSImport.Default)` is the translation of the `default` import from the `/javascript.svg` pseudo-module.
+The `@JSImport("/src/javascript.svg", JSImport.Default)` is the translation of the `default` import from the `/src/javascript.svg` pseudo-module.
 Since it represents a file path, we declare `javascriptLogo` as a `String`.
 
 The `= js.native` is a Scala.js idiosyncrasy: we need a concrete value to satisfy the Scala typechecker.
@@ -285,7 +285,7 @@ Let us change the message to
 
 {% highlight diff %}
        <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript" target="_blank">
-         <img src="/javascript.svg" class="logo vanilla" alt="JavaScript logo" />
+         <img src="/src/javascript.svg" class="logo vanilla" alt="JavaScript logo" />
        </a>
 -      <h1>Hello Scala.js!</h1>
 +      <h1>Hello Scala.js and Vite!</h1>
@@ -319,7 +319,7 @@ $ npm run build
 > livechart@0.0.0 build
 > vite build
 
-vite v4.1.4 building for production...
+vite v6.3.5 building for production...
 [info] welcome to sbt 1.8.0 (Temurin Java 1.8.0_362)
 [...]
 [info] Full optimizing .../livechart/target/scala-3.2.2/livechart-opt
