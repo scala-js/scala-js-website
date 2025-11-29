@@ -1,6 +1,6 @@
 ---
 layout: doc
-title: Getting Started with Scala.js and Vite
+title: Getting Started with Scala.js and Vite using Mill
 ---
 
 In this first tutorial, we learn how to get started with Scala.js and [Vite](https://vitejs.dev/).
@@ -96,59 +96,46 @@ Observe that the page automatically and instantaneously refreshes to show the ch
 
 ## Introducing Scala.js
 
-We use [sbt](https://www.scala-sbt.org/) as a build tool for Scala and Scala.js.
+In this tutorial we will use [Mill](https://mill-build.org) as a build tool for Scala and Scala.js.
 We set it up as follows.
 
-In the subdirectory `livechart/project/`, we add two files: `build.properties` and `plugins.sbt`.
+At the root of our `livechart/` project, we add one file: `build.mill`.
 
-* `project/build.properties`: set the version of sbt
-
-{% highlight plaintext %}
-sbt.version=1.10.0
-{% endhighlight %}
-
-* `project/plugins.sbt`: declare sbt plugins; in this case, only sbt-scalajs
+* `build.mill`: the main Mill build
 
 {% highlight scala %}
-addSbtPlugin("org.scala-js" % "sbt-scalajs" % "{{ site.versions.scalaJS }}")
+//| mill-version: 1.1.0-RC2
+//| mill-jvm-version: temurin:17.0.6
+
+package build
+
+import mill.*, scalalib.*, scalajslib.*, scalajslib.api.*
+
+trait AppScalaModule extends ScalaModule {
+  def scalaVersion = "3.7.4"
+}
+
+trait AppScalaJSModule extends AppScalaModule, ScalaJSModule {
+  def scalaJSVersion = "1.20.1"
+  
+  def moduleKind = ModuleKind.ESModule
+
+  def scalaJSSourceMap = false
+}
+
+object `package` extends AppScalaModule {
+
+  object livechart extends AppScalaJSModule {
+    def moduleSplitStyle = ModuleSplitStyle.SmallModulesFor("livechart")
+
+    def mvnDeps = Seq(
+      mvn"org.scala-js::scalajs-dom::2.8.1",
+    )
+  }
+}
 {% endhighlight %}
 
-At the root of our `livechart/` project, we add one file: `build.sbt`.
-
-* `build.sbt`: the main sbt build
-
-{% highlight scala %}
-import org.scalajs.linker.interface.ModuleSplitStyle
-
-lazy val livechart = project.in(file("."))
-  .enablePlugins(ScalaJSPlugin) // Enable the Scala.js plugin in this project
-  .settings(
-    scalaVersion := "3.3.3",
-
-    // Tell Scala.js that this is an application with a main method
-    scalaJSUseMainModuleInitializer := true,
-
-    /* Configure Scala.js to emit modules in the optimal way to
-     * connect to Vite's incremental reload.
-     * - emit ECMAScript modules
-     * - emit as many small modules as possible for classes in the "livechart" package
-     * - emit as few (large) modules as possible for all other classes
-     *   (in particular, for the standard library)
-     */
-    scalaJSLinkerConfig ~= {
-      _.withModuleKind(ModuleKind.ESModule)
-        .withModuleSplitStyle(
-          ModuleSplitStyle.SmallModulesFor(List("livechart")))
-    },
-
-    /* Depend on the scalajs-dom library.
-     * It provides static types for the browser DOM APIs.
-     */
-    libraryDependencies += "org.scala-js" %%% "scalajs-dom" % "{{ site.versions.scalaJSDOM }}",
-  )
-{% endhighlight %}
-
-Finally, we write the following content in the file `src/main/scala/livechart/LiveChart.scala`:
+Mill will expect to find a subdirectory called livechart at `livechart/livechart` because that is what we named the `AppScalaJsModule` in our `build.mill`.  And finally, we write the following content in the file `livechart/livechart/src/LiveChart.scala`:
 
 {% highlight scala %}
 package livechart
@@ -233,33 +220,35 @@ Since it represents a file path, we declare `javascriptLogo` as a `String`.
 The `= js.native` is a Scala.js idiosyncrasy: we need a concrete value to satisfy the Scala typechecker.
 In an ideal world, it would not be required.
 
-We can now build the Scala.js project by opening a new console, and entering sbt:
+We can now build the Scala.js project by opening a new console, and running the following Mill command:
 
 {% highlight shell %}
-$ sbt
+$ mill -w livechart.fastLinkJS
 [...]
-sbt:livechart> ~fastLinkJS
+Watching for changes to 12 paths and 11 other values...  (Enter to re-run, Ctrl-C to exit)
 {% endhighlight %}
 
 The `fastLinkJS` task produces the `.js` outputs from the Scala.js command.
-The `~` prefix instructs sbt to re-run that task every time a source file changes.
+The `-w` command line parameter instructs Mill to re-run that task every time a source file changes.
 
 There is one thing left to change: replace the hand-written JavaScript code with our Scala.js application.
-We use the `@scala-js/vite-plugin-scalajs` plugin to link Vite and Scala.js with minimal configuration.
+We use the `vite-plugin-scalajs-mill` plugin to link Vite and Scala.js with minimal configuration.
 We install it in the dev-dependencies with:
 
 {% highlight shell %}
-$ npm install -D @scala-js/vite-plugin-scalajs@1.0.0
+$ npm install -D vite-plugin-scalajs-mill@1.0.1
 {% endhighlight %}
 
 and instruct Vite to use it with the following configuration in a new file `vite.config.js`:
 
 {% highlight javascript %}
 import { defineConfig } from "vite";
-import scalaJSPlugin from "@scala-js/vite-plugin-scalajs";
+import scalaJSMillPlugin from "vite-plugin-scalajs-mill";
 
 export default defineConfig({
-  plugins: [scalaJSPlugin()],
+  plugins: [scalaJSMillPlugin({
+        moduleNames: "livechart"
+    })],
 });
 {% endhighlight %}
 
@@ -270,7 +259,7 @@ import './style.css'
 import 'scalajs:main.js'
 {% endhighlight %}
 
-When we `import` a URI starting with `scalajs:`, `vite-plugin-scalajs` resolves it to point to the output directory of Scala.js' `fastLinkJS` task.
+When we `import` a URI starting with `scalajs:`, `vite-plugin-scalajs-mill` resolves it to point to the output directory of Scala.js' `fastLinkJS` task.
 
 You may have to stop and restart the `npm run dev` process, so that Vite picks up the newly created configuration file.
 Vite will refresh the browser with our updated "Hello Scala.js!" message.
@@ -298,7 +287,7 @@ Once we save, we notice that the browser refreshes with the updated message.
 
 There are two things happening behind the scenes:
 
-1. The `~fastLinkJS` task in sbt notices that a `.scala` file has changed, and therefore rebuilds the `.js` output.
+1. The `~fastLinkJS` task in Mill notices that a `.scala` file has changed, and therefore rebuilds the `.js` output.
 1. The `npm run dev` process with Vite notices that a `.js` file imported from `/main.js` has changed, and triggers a refresh with the updated files.
 
 All these steps are *incremental*.
@@ -309,11 +298,12 @@ This ensures that the development cycle remains as short as possible.
 
 ## Production build
 
-The `fastLinkJS` task of sbt and the `npm run dev` task of Vite are optimized for incremental development.
+The `fastLinkJS` task of Mill and the `npm run dev` task of Vite are optimized for incremental development.
 For production, we want to perform more optimizations on the Scala.js side and bundle minimized files with `npm run build`.
 We stop Vite with `Ctrl+C` and launch the following instead:
 
 {% highlight shell %}
+$ mill livechart.fullLinkJS
 $ npm run build
 
 > livechart@0.0.0 build
@@ -348,7 +338,7 @@ Navigate to the mentioned URL to see your website.
 
 ## Conclusion
 
-In this tutorial, we saw how to configure Scala.js with Vite from the ground up using `@scala-js/vite-plugin-scalajs`.
+In this tutorial, we saw how to configure Scala.js with Vite from the ground up using `vite-plugin-scalajs-mill`.
 We used sbt as our build tool, but the same effect can be achieved with any other Scala build tool, such as [Mill](https://com-lihaoyi.github.io/mill/) or [scala-cli](https://scala-cli.virtuslab.org/).
 
 Our setup features the following properties:
