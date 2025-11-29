@@ -3,8 +3,10 @@
 - text: Tutorials
   url: /doc/tutorial/
   subitems:
-    - text: Getting Started with Scala.js and Vite
+    - text: Getting Started with Scala.js and Vite using SBT
       url: /doc/tutorial/scalajs-vite.html
+    - text: Getting Started with Scala.js and Vite using Mill
+      url: /doc/tutorial/scalajs-vite-mill.html
     - text: Build UIs with Laminar
       url: /doc/tutorial/laminar.html
     - text: Integrate JavaScript libraries with ScalablyTyped
