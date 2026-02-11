@@ -156,8 +156,6 @@ Note that there is no public module `main.js`, because there is no entry point u
 
 ### Dynamic Imports
 
-Warning: Dynamic imports in Scala.js 1.4.0 are affected by [#4386](https://github.com/scala-js/scala-js/issues/4386), see the issue for a workaround.
-
 Dynamic imports allow a Scala.js application to be loaded in multiple steps to reduce initial loading time.
 To defer loading of a part of your Scala.js application to a later point in time, use [`js.dynamicImport`]({{ site.production_url }}/api/scalajs-library/latest/scala/scalajs/js/index.html#dynamicImport[A](body:=%3EA):scala.scalajs.js.Promise[A]):
 
