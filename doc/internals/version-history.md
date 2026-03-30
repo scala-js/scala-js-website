@@ -5,6 +5,7 @@ title: Version history
 
 ## Version history of Scala.js
 
+- [1.21.0](/news/2026/04/04/announcing-scalajs-1.21.0/)
 - [1.20.2](/news/2026/01/05/announcing-scalajs-1.20.2/)
 - [1.20.1](/news/2025/09/06/announcing-scalajs-1.20.1/)
 - ~~1.20.0~~ ([severely broken](https://github.com/scala-js/scala-js/issues/5231) and therefore never announced)
