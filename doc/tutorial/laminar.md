@@ -720,6 +720,7 @@ As an approximation of its behavior, itt wraps a UI-from-data binder `<--` and a
         value <-- valueSignal.map(_.toString),
         onInput.mapToValue.map(_.toIntOption).collect {
           case Some(newCount) => newCount
+          case None => 0
         } --> valueUpdater,
       ),
     )
