@@ -64,6 +64,11 @@
       dep: '"co.fs2" %%% "fs2-core" % "3.2.3"'
 - topic: Web libraries/frameworks
   libraries:
+    - - name: Calico
+        url: https://www.armanbilge.com/calico/
+        desc: >
+          A Fluent DSL for building web applications that are composable, reactive, and safe with-out side effects.
+          Calico is highly-optimized for this pattern and by default schedules all tasks as so-called microtasks.
     - name: Udash
       url: http://udash.io/
       desc: A Scala(.js) framework for building beautiful and maintainable Web Applications
