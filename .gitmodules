@@ -1,0 +1,4 @@
+[submodule "doc/scala-js-dom"]
+	path = doc/scala-js-dom
+	url = https://github.com/scala-js/scala-js-dom.git
+	branch = docs
