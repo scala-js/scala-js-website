@@ -1,39 +1,49 @@
 ---
 layout: doc
-title: Experimental WebAssembly backend
+title: WebAssembly backend
 ---
 
-# Experimental WebAssembly backend
+# WebAssembly backend
 
-Since Scala.js 1.17.0, there is an *experimental* WebAssembly backend (Wasm for short).
+Since Scala.js 1.22.0, the WebAssembly backend is considered stable (Wasm for short).
 Under some conditions, it is designed to be a *drop-in* replacement for the usual JavaScript backend.
-
-## Experimental status
-
-Being experimental means that:
-
-* The Wasm backend may be removed in a future *minor* version of Scala.js (or moved to a separate plugin).
-* Future versions of Scala.js may emit Wasm that requires *newer* versions of Wasm engines, dropping support for older engines.
-
-However, we do *not* expect the the Wasm backend to be any less *correct* than the JS backend, modulo the limitations listed below.
-Feel free to report any issue you may experience with the same expectations as for the JS backend.
-
-Non-functional aspects, notably performance and size of the generated code, may not be as good as the JS backend for now.
-The backend is also not incremental yet, which means a slower `fastLinkJS` in the development cycle.
 
 ## Requirements
 
 The Wasm backend emits code with the following requirements:
 
-* A JavaScript host (i.e., we do not currently generate standalone Wasm)
-* A Wasm engine with support for:
-  * Wasm 3.0
-  * Wasm GC
-  * Exception handling, including the latest `exnref`-based variant
+* A JavaScript host (i.e., we do not currently generate standalone Wasm), supporting ECMAScript 2022+
+* A Wasm engine with support for [Wasm 3.0](https://webassembly.org/news/2025-09-17-wasm-3.0/)
 * The `ESModule` module kind (see [emitting modules](./module.html))
 
-Supported engines include Node.js 23, Chrome 137, Firefox 131 and Safari 18.4.
-Node.js currently requires using some experimental flags (see below).
+Supported engines include Node.js 25, Chrome 137, Firefox 134 and Safari 26.
+
+In order to use `js.async/js.await`, we also require [the JavaScript Promise Integration (JSPI) proposal](https://github.com/WebAssembly/js-promise-integration/tree/main).
+It has reached Stage 4 (standardized) but is not part of Wasm 3.0.
+
+## Minimal setup
+
+The following sbt setup enables the Wasm backend.
+
+{% highlight scala %}
+// Emit ES modules with the Wasm backend
+scalaJSLinkerConfig := {
+  scalaJSLinkerConfig.value
+    .withModuleKind(ModuleKind.ESModule)
+    .withESFeatures(_.withESVersion(ESVersion.ES2022).withUseWebAssembly(true))
+},
+{% endhighlight %}
+
+Compared to a setup with ES modules with the JS backend, the above setup should be a drop-in replacement (except for the two limitations mentioned below).
+The backend emits ES modules with the same layout and interface as those produced by the JS backend.
+
+Using `js.async/js.await` requires the following additional config, which requires that the Wasm engine support JSPI:
+
+{% highlight scala %}
+  scalaJSLinkerConfig.value
+    ...
+    .withWasmFeatures(_.withUseJSPI(true))
+{% endhighlight %}
 
 ## Language semantics
 
@@ -42,7 +52,7 @@ Its semantics are the same as Scala.js-on-JS, including JavaScript interoperabil
 
 ### Limitation: no `@JSExport` support
 
-Due to the current feature set of Wasm, it is not possible to implement the semantics of `@JSExport`.
+Due to the feature set of Wasm 3.0, it is not possible to implement the semantics of `@JSExport`.
 Therefore, the Wasm backend currently *silently ignores* all `@JSExport` and `@JSExportAll` annotations (the latter being sugar for many `@JSExport`s).
 
 This limitation has the following consequences:
@@ -52,70 +62,31 @@ This limitation has the following consequences:
 
 (String concatenation *in Scala.js code* is supported.)
 
+This limitation will be lifted in the future by opting in to [the Custom Descriptors proposal](https://github.com/WebAssembly/custom-descriptors) (at Stage 3 as of this writing).
+
 ### Limitation: no support for emitting multiple modules
 
 The WebAssembly backend does not yet support emitting multiple modules.
 The module split style must be set to `ModuleSplitStyle.FewestModules` (which is the default).
 Moreover, the codebase must not contain any feature that require emitting multiple modules: `@JSExportToplevel` annotations with several module names, or `js.dynamicImport`.
-We expect to lift that limitation in the future.
 
-## Minimal setup
-
-The following sbt setup enables the Wasm backend and configures flags for Node.js 23.
-
-{% highlight scala %}
-// Emit ES modules with the Wasm backend
-scalaJSLinkerConfig := {
-  scalaJSLinkerConfig.value
-    .withExperimentalUseWebAssembly(true) // use the Wasm backend
-    .withModuleKind(ModuleKind.ESModule)  // required by the Wasm backend
-},
-
-// Configure Node.js (at least v23) to support the required Wasm features
-jsEnv := {
-  val config = NodeJSEnv.Config()
-    .withArgs(List(
-      "--experimental-wasm-exnref", // always required
-      "--experimental-wasm-jspi", // required for js.async/js.await
-      "--experimental-wasm-imported-strings", // optional (good for performance)
-      "--turboshaft-wasm", // optional, Node.js 23.x.x only, but significantly increases stability
-    ))
-  new NodeJSEnv(config)
-},
-{% endhighlight %}
-
-Compared to a setup with ES modules with the JS backend, the above setup should be a drop-in replacement.
-The backend emits ES modules with the same layout and interface as those produced by the JS backend.
+We expect to lift that limitation in the future (with the same baseline of Wasm 3.0).
 
 ## Supported engines
 
-Here are some engines known to support enough Wasm features.
+Here are some engines known to support enough Wasm features:
 
-### Node.js 23
+* Node.js 25
+* Firefox 134
+* Chrome 137
+* Safari 26
 
-As mentioned above, Node.js 23 and above requires the following flags:
+The JSPI extension, for `js.async/js.await`, requires:
 
-* `--experimental-wasm-exnref`: always required
-* `--experimental-wasm-jspi`: required to use `js.async`/`js.await`
-* `--experimental-wasm-imported-strings`: optional (good for performance)
-* `--turboshaft-wasm`: optional, but significantly increases stability. Only applies to Node.js 23.x.x: version 24.0.0 and up enables this by default, and has removed the flag.
-
-### Chrome
-
-Chrome supports all the features we use since v137.
-
-### Firefox
-
-Firefox supports all the "always required" features since v131, with enhanced performance since v134.
-
-For `js.async/js.await` support, go to `about:config`, enable `javascript.options.wasm_js_promise_integration`.
-This may require a Firefox Nightly build when you read these lines, although it should be available by default soon.
-
-### Safari
-
-Safari supports all the "always required" features since v18.4.
-
-`js.async/js.await` is not supported yet, however.
+* Node.js 25
+* Firefox 143 (in Nightly as of this writing)
+* Chrome 137
+* Safari Technical Preview 238
 
 ## Performance
 
@@ -124,7 +95,7 @@ If the performance of your application depends a lot on JavaScript interop, the 
 For applications whose performance is dominated by computions inside Scala code, the Wasm output should be significantly faster than the JS output (geomean 30% lower run time across our benchmarks).
 
 Further work on improving performance is ongoing.
-Keep in mind that performance work on the Wasm backend is a few months old, compared to a decade of optimizations in the JS backend.
+Keep in mind that performance work on the Wasm backend is still young, compared to a decade of optimizations in the JS backend.
 
 ## Code size
 
