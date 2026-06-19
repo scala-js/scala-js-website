@@ -13,12 +13,15 @@ Each tutorial starts with a link to a repo that you can clone to get off the gro
 
 In any case, make sure that you have the prerequisites listed below covered.
 
-1. [Scala.js and Vite](./scalajs-vite.html):
+1. [Scala.js and Vite using SBT](./scalajs-vite.html):
   * Set up a hello world project ready for live reloading in the browser.
   * Generate minimized production assets.
-2. [Laminar](./laminar.html):
+1. [Scala.js and Vite using Mill](./scalajs-vite-mill.html):
+  * Set up a hello world project ready for live reloading in the browser.
+  * Generate minimized production assets.
+1. [Laminar](./laminar.html):
   * Build UIs with Laminar using Functional Reactive Programming (FRP), a hybrid model between imperative and functional programming particularly well suited for UI development in Scala.
-3. [ScalablyTyped](./scalablytyped.html):
+1. [ScalablyTyped](./scalablytyped.html):
   * Integrate JavaScript libraries using ScalablyTyped.
 
 ## Prerequisites
