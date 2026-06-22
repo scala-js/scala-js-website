@@ -15,6 +15,7 @@ If you prefer to look at the end result for this tutorial directly, checkout [th
 ## Prerequisites
 
 Make sure to install [the prerequisites](./index.html#prerequisites) before continuing further.
+Additionally, verify if your Node.js version is sufficient for Vite (check it under the _compatibility notes_ on [npm](https://www.npmjs.com/package/create-vite)).
 
 ## Vite template
 
@@ -22,17 +23,20 @@ We bootstrap our setup using the vanilla Vite template.
 Navigate to a directory where you store projects, and run the command
 
 {% highlight shell %}
-$ npm create vite@4.1.0
+$ npm create vite@8.3.0
 {% endhighlight %}
 
-Choose a project name (we choose `livechart`).
+_create-vite_ is just a tool which makes project scaffolding easier.
+
+Next, choose a project name (we choose `livechart`).
 Select the "Vanilla" framework and the "JavaScript" variant.
+Choose "Install with npm and start now" option.
 Our output gives:
 
 {% highlight shell %}
-$ npm create vite@4.1.0
+$ npm create vite@8.3.0
 Need to install the following packages:
-  create-vite@4.1.0
+  create-vite@8.3.0
 Ok to proceed? (y)
 ✔ Project name: … livechart
 ✔ Select a framework: › Vanilla
@@ -40,41 +44,26 @@ Ok to proceed? (y)
 
 Scaffolding project in .../livechart...
 
-Done. Now run:
+VITE v7.3.1 ready in 156 ms
 
-  cd livechart
-  npm install
-  npm run dev
-{% endhighlight %}
-
-As instructed, we follow up with
-
-{% highlight shell %}
-$ cd livechart
-$ npm install
-[...]
-$ npm run dev
-
-  VITE v4.1.4  ready in 156 ms
-
-  ➜  Local:   http://localhost:5173/
-  ➜  Network: use --host to expose
-  ➜  press h to show help
+➜  Local:   http://localhost:5173/
+➜  Network: use --host to expose
+➜  press h + enter to show help
 {% endhighlight %}
 
 Open the provided URL to see the running JavaScript-based hello world.
 
 ### Exploring the template
 
-In the generated folder, we find the following relevant files:
+In the generated directory, we find the following relevant files:
 
-* `index.html`: the main web page; it contains a `<script type=module src="/main.js">` referencing the main JavaScript entry point.
-* `main.js`: the main JavaScript entry point; it sets up some DOM elements, and sets up a counter for a button.
-* `counter.js`: it implements a counter functionality for a button.
+* `index.html`: the main web page; it contains a `<script type=module src="/src/main.js">` referencing the main JavaScript entry point.
+* `src/main.js`: the main JavaScript entry point; it sets up some DOM elements, and sets up a counter for a button.
+* `src/counter.js`: it implements a counter functionality for a button.
 * `package.json`: the config file for `npm`, the JavaScript package manager and build orchestrator.
 
 Remarkably, there is no `vite.config.js` file, which would be the configuration for Vite itself.
-Vite gives a decent experience out of the box, without any configuration.
+Vite gives a decent experience out of the box, without any configuration(but we will eventually add a simple one).
 
 ### Live changes
 
@@ -99,12 +88,12 @@ Observe that the page automatically and instantaneously refreshes to show the ch
 We use [sbt](https://www.scala-sbt.org/) as a build tool for Scala and Scala.js.
 We set it up as follows.
 
-In the subdirectory `livechart/project/`, we add two files: `build.properties` and `plugins.sbt`.
+Create the subdirectory `project/`, and add two files inside: `build.properties` and `plugins.sbt`.
 
 * `project/build.properties`: set the version of sbt
 
 {% highlight plaintext %}
-sbt.version=1.10.0
+sbt.version=1.12.2
 {% endhighlight %}
 
 * `project/plugins.sbt`: declare sbt plugins; in this case, only sbt-scalajs
@@ -113,7 +102,7 @@ sbt.version=1.10.0
 addSbtPlugin("org.scala-js" % "sbt-scalajs" % "{{ site.versions.scalaJS }}")
 {% endhighlight %}
 
-At the root of our `livechart/` project, we add one file: `build.sbt`.
+At the root of our project, we add one file: `build.sbt`.
 
 * `build.sbt`: the main sbt build
 
@@ -123,7 +112,7 @@ import org.scalajs.linker.interface.ModuleSplitStyle
 lazy val livechart = project.in(file("."))
   .enablePlugins(ScalaJSPlugin) // Enable the Scala.js plugin in this project
   .settings(
-    scalaVersion := "3.3.3",
+    scalaVersion := "3.8.1",
 
     // Tell Scala.js that this is an application with a main method
     scalaJSUseMainModuleInitializer := true,
@@ -158,8 +147,8 @@ import scala.scalajs.js.annotation.*
 
 import org.scalajs.dom
 
-// import javascriptLogo from "/javascript.svg"
-@js.native @JSImport("/javascript.svg", JSImport.Default)
+// import javascriptLogo from "src/javascript.svg"
+@js.native @JSImport("/src/javascript.svg", JSImport.Default)
 val javascriptLogo: String = js.native
 
 @main
@@ -206,13 +195,13 @@ The definition of `javascriptLogo` deserves some explanation.
 We translated it from the JavaScript import
 
 {% highlight javascript %}
-import javascriptLogo from "/javascript.svg"
+import javascriptLogo from "/src/javascript.svg"
 {% endhighlight %}
 
 which is actually a shorthand for
 
 {% highlight javascript %}
-import { default as javascriptLogo } from "/javascript.svg"
+import { default as javascriptLogo } from "/src/javascript.svg"
 {% endhighlight %}
 
 Many bundlers, Vite included, treat `import`s with asset files such as `.svg` as pseudo-modules whose `default` import is the *file path* to the corresponding asset in the processed bundle.
@@ -222,12 +211,12 @@ Read more about this mechanism [in the Vite documentation on static asset handli
 The translation in Scala.js reads as
 
 {% highlight scala %}
-@js.native @JSImport("/javascript.svg", JSImport.Default)
+@js.native @JSImport("/src/javascript.svg", JSImport.Default)
 val javascriptLogo: String = js.native
 {% endhighlight %}
 
 The `@js.native` annotation tells Scala.js that `javascriptLogo` is provided externally by JavaScript.
-The `@JSImport("/javascript.svg", JSImport.Default)` is the translation of the `default` import from the `/javascript.svg` pseudo-module.
+The `@JSImport("/src/javascript.svg", JSImport.Default)` is the translation of the `default` import from the `/src/javascript.svg` pseudo-module.
 Since it represents a file path, we declare `javascriptLogo` as a `String`.
 
 The `= js.native` is a Scala.js idiosyncrasy: we need a concrete value to satisfy the Scala typechecker.
@@ -285,7 +274,7 @@ Let us change the message to
 
 {% highlight diff %}
        <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript" target="_blank">
-         <img src="/javascript.svg" class="logo vanilla" alt="JavaScript logo" />
+         <img src="/src/javascript.svg" class="logo vanilla" alt="JavaScript logo" />
        </a>
 -      <h1>Hello Scala.js!</h1>
 +      <h1>Hello Scala.js and Vite!</h1>
@@ -319,11 +308,11 @@ $ npm run build
 > livechart@0.0.0 build
 > vite build
 
-vite v4.1.4 building for production...
-[info] welcome to sbt 1.8.0 (Temurin Java 1.8.0_362)
+vite v7.3.1 building for production...
+[info] welcome to sbt 1.12.2 (Temurin Java 17.0.18)
 [...]
-[info] Full optimizing .../livechart/target/scala-3.2.2/livechart-opt
-.../livechart/target/scala-3.2.2/livechart-opt
+[info] Full optimizing .../livechart/target/scala-3.8.1/livechart-opt
+.../livechart/target/scala-3.8.1/livechart-opt
 ✓ 11 modules transformed.
 dist/index.html                       0.45 kB
 dist/assets/javascript-8dac5379.svg   1.00 kB
