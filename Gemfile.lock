@@ -88,7 +88,7 @@ DEPENDENCIES
   uglifier (= 2.7.2)
 
 RUBY VERSION
-   ruby 2.7.5p203
+   ruby 2.7.8p225
 
 BUNDLED WITH
    2.3.7

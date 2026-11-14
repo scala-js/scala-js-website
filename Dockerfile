@@ -1,4 +1,4 @@
-FROM ruby:2.7.5-bullseye
+FROM ruby:2.7.8-bullseye
 
 # We need Node.js for the `execjs` gem, used by `_plugins/tokenize.rb`
 # Since it is a (sufficiently) standalone binary, we can just copy it from the node image.
