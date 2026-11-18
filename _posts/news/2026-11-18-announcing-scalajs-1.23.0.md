@@ -3,7 +3,7 @@ layout: post
 title: Announcing Scala.js 1.23.0
 category: news
 tags: [releases]
-permalink: /news/2026/11/16/announcing-scalajs-1.23.0/
+permalink: /news/2026/11/18/announcing-scalajs-1.23.0/
 ---
 
 
